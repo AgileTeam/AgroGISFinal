@@ -403,6 +403,7 @@ private void btnAgregarDeptoActionPerformed(java.awt.event.ActionEvent evt) {//G
     tblDepto.setModel(modeloTabla);
     gDepto.actualizarDepartamento(idDepto, txtDepto, cmbProvincia);
     txtDepto.setText(""); 
+    System.out.println("");
 }//GEN-LAST:event_btnAgregarDeptoActionPerformed
 
 private void txtDeptoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeptoKeyTyped
