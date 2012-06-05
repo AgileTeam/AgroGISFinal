@@ -15,6 +15,8 @@ public class Pais {
 private long idPais;
 
     private String nombrePais;
+    private boolean estado;
+    
 
     /**
      * @return the nombrePais
