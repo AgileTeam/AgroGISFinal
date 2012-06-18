@@ -15,6 +15,7 @@ public class EspecialidadLaboratorio {
 private long idEspecialidadLaboratorio;    
     
     private String nombreEspecialidad;
+    private String codigoEspecialidad;
 
     /**
      * @return the nombreEspecialidad
@@ -28,6 +29,34 @@ private long idEspecialidadLaboratorio;
      */
     public void setNombreEspecialidad(String nombreEspecialidad) {
         this.nombreEspecialidad = nombreEspecialidad;
+    }
+
+    /**
+     * @return the idEspecialidadLaboratorio
+     */
+    public long getIdEspecialidadLaboratorio() {
+        return idEspecialidadLaboratorio;
+    }
+
+    /**
+     * @param idEspecialidadLaboratorio the idEspecialidadLaboratorio to set
+     */
+    public void setIdEspecialidadLaboratorio(long idEspecialidadLaboratorio) {
+        this.idEspecialidadLaboratorio = idEspecialidadLaboratorio;
+    }
+
+    /**
+     * @return the codigoEspecialidad
+     */
+    public String getCodigoEspecialidad() {
+        return codigoEspecialidad;
+    }
+
+    /**
+     * @param codigoEspecialidad the codigoEspecialidad to set
+     */
+    public void setCodigoEspecialidad(String codigoEspecialidad) {
+        this.codigoEspecialidad = codigoEspecialidad;
     }
     
 }
