@@ -140,9 +140,9 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jPanel2.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Orden Nº");
+        jLabel4.setText("Orden Pendiente Nº");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(70, 20, 60, 20);
+        jLabel4.setBounds(10, 20, 140, 20);
 
         jPanel2.add(cmbOrden);
         cmbOrden.setBounds(130, 20, 120, 20);
@@ -157,7 +157,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Taller de Reparacion");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(10, 50, 130, 20);
+        jLabel6.setBounds(10, 50, 150, 20);
 
         jPanel2.add(cmbTaller);
         cmbTaller.setBounds(130, 50, 210, 20);
@@ -165,7 +165,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Especialidad");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(440, 50, 80, 20);
+        jLabel7.setBounds(440, 50, 110, 20);
         jPanel2.add(txtEspecialidad);
         txtEspecialidad.setBounds(520, 50, 150, 20);
 
@@ -210,14 +210,14 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Observaciones");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(60, 170, 100, 15);
+        jLabel14.setBounds(50, 160, 100, 15);
 
         areaObservacion.setColumns(20);
         areaObservacion.setRows(5);
         jScrollPane2.setViewportView(areaObservacion);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(150, 120, 550, 96);
+        jScrollPane2.setBounds(140, 120, 550, 96);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setText("Importe Total: $ ");
@@ -289,12 +289,6 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 37, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +300,12 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))))
+                        .addGap(105, 105, 105))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 37, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +354,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         pack();
