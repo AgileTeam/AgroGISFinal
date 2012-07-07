@@ -4,7 +4,10 @@
  */
 package Ventanas_Transporte;
 
+import Gestores_Vista.gestorRegistrarEnvioAlTaller;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -15,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Carolina
  */
 public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
-
+gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
     /**
      * Creates new form frmRegistrarEnvioTaller
      */
@@ -64,6 +67,15 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
+        cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+        cmbTaller.setModel(gRegistro.rellenaComboTallerReparacion());
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        }
+        }
+        );
+        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
     }
 
     /**
