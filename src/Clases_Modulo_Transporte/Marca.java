@@ -32,4 +32,7 @@ private long idMarca;
         this.nombreMarca = nombreMarca;
     }
 
+    public String toString(){
+        return getNombreMarca();
+    }
 }

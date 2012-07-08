@@ -136,6 +136,43 @@ public class gestorRegistrarOrden extends GestorHibernate{
         return modelo;
    }
 
+    public String rellenaTxtDominio(Vehiculo seleccion){
+       String dominio = null;
+       Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();
+           if (vehiculo == (Vehiculo)seleccion) {
+               dominio = vehiculo.getDominio();
+           }
+       }
+       
+       return dominio;
+   }
 
+    public String rellenaTxtAnio(Vehiculo seleccion){
+       String anio = null;
+       Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();
+           if (vehiculo == (Vehiculo)seleccion) {
+               anio = vehiculo.getAnioCompra().toString();
+           }
+       }
+       
+       return anio;
+   }
+    
+   public String rellenaTxtEstado(Vehiculo seleccion){
+       String estado = null;
+       Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();
+           if (vehiculo == (Vehiculo)seleccion) {
+               estado = vehiculo.getEstado().toString();
+           }
+       }
+       
+       return estado;
+   } 
 
 }

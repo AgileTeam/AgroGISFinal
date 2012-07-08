@@ -252,6 +252,6 @@ private String estadoCivil;
     }
     
     public String toString(){
-        return (nombre + apellido);
+        return (nombre +" "+ apellido);
     }
 }

@@ -213,6 +213,6 @@ private Transportista transportista;
     }
     
     public String toString(){
-        return String.valueOf(modelo)+ String.valueOf(modelo.getMarca());
+        return (String.valueOf(modelo.getMarca()+" "+String.valueOf(modelo)));
     }
 }

@@ -12,8 +12,12 @@ package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.Localidad;
 import Clases_Modulo_Transporte.Transportista;
+import Clases_Modulo_Transporte.Vehiculo;
+import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmOrdenTaller extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
     /** Creates new form frmOrdenTaller */
     public frmOrdenTaller() {
         initComponents();
@@ -54,6 +59,30 @@ GestorHibernate gestorH = new GestorHibernate();
             modeloT.addRow(fila);
             tblTransportista.setModel(modeloT);
         }
+        
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
+        }
+        }
+        );
+         txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
+         
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
+        }
+        }
+        );
+         txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
+         
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
+        }
+        }
+        );
+        txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
   }
 
     /** This method is called from within the constructor to
@@ -82,7 +111,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtEstado = new javax.swing.JTextField();
         cmbVehiculo = new javax.swing.JComboBox();
         btnAgregarTransportista = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
+        labelTransportista = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtAnioCompra = new javax.swing.JTextField();
@@ -189,15 +218,14 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel2.add(btnAgregarTransportista);
         btnAgregarTransportista.setBounds(580, 70, 40, 30);
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setText("Jose Torrea");
-        jPanel2.add(jLabel16);
-        jLabel16.setBounds(360, 140, 110, 17);
+        labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel2.add(labelTransportista);
+        labelTransportista.setBounds(320, 130, 250, 40);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(260, 140, 110, 17);
+        jLabel4.setBounds(220, 140, 110, 17);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(40, 170, 600, 10);
         jPanel2.add(txtAnioCompra);
@@ -313,7 +341,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,7 +359,10 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTransportistaActionPerformed
-    
+        DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
+        int fila= tblTransportista.getSelectedRow();
+        labelTransportista.setText(modeloT.getValueAt(fila, 0).toString());
+        cmbVehiculo.setModel(gestorO.rellenaComboVehiculo((Transportista)modeloT.getValueAt(fila,0)));
     }//GEN-LAST:event_btnAgregarTransportistaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -348,7 +379,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -365,6 +395,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelTransportista;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtAnioCompra;
     private javax.swing.JTextField txtDepartamento;

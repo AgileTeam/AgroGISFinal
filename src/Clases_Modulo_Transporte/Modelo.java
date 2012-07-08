@@ -46,4 +46,22 @@ private String nombreModelo;
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
+
+    /**
+     * @return the idModelo
+     */
+    public long getIdModelo() {
+        return idModelo;
+    }
+
+    /**
+     * @param idModelo the idModelo to set
+     */
+    public void setIdModelo(long idModelo) {
+        this.idModelo = idModelo;
+    }
+    
+    public String toString(){
+        return getNombreModelo();
+    }
 }
