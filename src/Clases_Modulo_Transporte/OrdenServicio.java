@@ -25,8 +25,6 @@ private TipoServicio tipoServicio;
 @ManyToOne(targetEntity = Vehiculo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Vehiculo vehiculo;
 
-@ManyToOne(targetEntity = EstacionDeServicio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private EstacionDeServicio estacionServicio;
 
     private String fecha;
     private String hora;
@@ -133,21 +131,7 @@ private EstacionDeServicio estacionServicio;
         this.vehiculo = vehiculo;
     }
 
-    /**
-     * @return the estacionServicio
-     */
-    public EstacionDeServicio getEstacionServicio() {
-        return estacionServicio;
-    }
-
-    /**
-     * @param estacionServicio the estacionServicio to set
-     */
-    public void setEstacionServicio(EstacionDeServicio estacionServicio) {
-        this.estacionServicio = estacionServicio;
-    }
-
-    /**
+        /**
      * @return the estado
      */
     public String getEstado() {
@@ -164,5 +148,7 @@ private EstacionDeServicio estacionServicio;
     /**
      * @return the transportista
      */
-    
+    public String toString(){
+        return String.valueOf(getNumeroOrden());
+    }
 }

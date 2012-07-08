@@ -30,6 +30,20 @@ private String nombreTipoServicio;
         this.nombreTipoServicio = nombreTipoServicio;
     }
 
+    /**
+     * @return the idTipoServicio
+     */
+    public long getIdTipoServicio() {
+        return idTipoServicio;
+    }
+
+    /**
+     * @param idTipoServicio the idTipoServicio to set
+     */
+    public void setIdTipoServicio(long idTipoServicio) {
+        this.idTipoServicio = idTipoServicio;
+    }
+
 
 
    

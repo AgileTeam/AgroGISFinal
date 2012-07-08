@@ -25,8 +25,8 @@ private Domicilio domicilio;
 @ManyToOne(targetEntity = TipoTelefono.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TipoTelefono tipoTelefono;
 
-@ManyToMany(targetEntity = Especialidad.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Set<Especialidad> especialidad = new HashSet();
+@ManyToOne(targetEntity = Especialidad.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Especialidad especialidad;
 
 
     private String email;
@@ -119,18 +119,22 @@ private Set<Especialidad> especialidad = new HashSet();
     }
 
     /**
-     * @param especialidad the especialidad to set
-     */
-    public void setEspecialidad(Set<Especialidad> especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    /**
      * @return the especialidad
      */
-    public Set<Especialidad> getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
+    /**
+     * @param especialidad the especialidad to set
+     */
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+
+  public String toString(){
+      return getRazonSocial();
+  }
+    
   
 }

@@ -211,4 +211,8 @@ private Transportista transportista;
     public void setCarga(double carga) {
         this.carga = carga;
     }
+    
+    public String toString(){
+        return (String.valueOf(modelo.getMarca()+" "+String.valueOf(modelo)));
+    }
 }
