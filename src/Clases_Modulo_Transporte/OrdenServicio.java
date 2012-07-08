@@ -164,5 +164,7 @@ private EstacionDeServicio estacionServicio;
     /**
      * @return the transportista
      */
-    
+    public String toString(){
+        return String.valueOf(numeroOrden);
+    }
 }

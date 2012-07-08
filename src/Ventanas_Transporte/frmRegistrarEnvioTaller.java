@@ -69,6 +69,7 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         this.setLocation(posX, 0);
         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
         cmbTaller.setModel(gRegistro.rellenaComboTallerReparacion());
+        
         cmbOrden.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
             txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));

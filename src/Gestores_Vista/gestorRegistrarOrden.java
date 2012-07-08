@@ -124,7 +124,17 @@ public class gestorRegistrarOrden extends GestorHibernate{
            }
         return modelo;
    }
-
+ 
+ public DefaultComboBoxModel rellenaComboVehiculo(Transportista transportista){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();  
+           if(vehiculo.getTransportista()== transportista)
+           modelo.addElement(vehiculo);
+           }
+        return modelo;
+   }
 
 
 

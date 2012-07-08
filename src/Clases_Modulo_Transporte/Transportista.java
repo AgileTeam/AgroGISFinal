@@ -251,4 +251,7 @@ private String estadoCivil;
         this.estadoCivil = estadoCivil;
     }
     
+    public String toString(){
+        return (nombre + apellido);
+    }
 }

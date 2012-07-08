@@ -10,15 +10,20 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.Localidad;
+import Clases_Modulo_Transporte.Transportista;
+import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.util.Iterator;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Charito
  */
 public class frmOrdenTaller extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmOrdenTaller */
     public frmOrdenTaller() {
         initComponents();
@@ -40,6 +45,15 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
+        
+        DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
+        Iterator ite = gestorH.listarClase(Transportista.class).iterator();
+        while(ite.hasNext()){
+            Transportista trans = (Transportista) ite.next();
+            Object fila[] = {trans, trans.getNumeroDocumento()};
+            modeloT.addRow(fila);
+            tblTransportista.setModel(modeloT);
+        }
   }
 
     /** This method is called from within the constructor to
@@ -128,7 +142,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 
         tblTransportista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Jose Torrea", "28.979.456"}
+
             },
             new String [] {
                 "Transportista", "Numero Documento"
@@ -167,6 +181,11 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         cmbVehiculo.setBounds(130, 180, 200, 20);
 
         btnAgregarTransportista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarTransportista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTransportistaActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAgregarTransportista);
         btnAgregarTransportista.setBounds(580, 70, 40, 30);
 
@@ -294,7 +313,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
@@ -310,6 +329,10 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     dispose();
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAgregarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTransportistaActionPerformed
+    
+    }//GEN-LAST:event_btnAgregarTransportistaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDesperfecto;
