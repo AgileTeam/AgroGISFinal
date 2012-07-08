@@ -10,10 +10,7 @@
  */
 package Ventanas_Transporte;
 
-import Clases_Modulo_Transporte.Localidad;
-import Clases_Modulo_Transporte.TallerReparacion;
-import Clases_Modulo_Transporte.Transportista;
-import Clases_Modulo_Transporte.Vehiculo;
+import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -346,6 +343,11 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnEmitirOrden.setText("Emitir Orden");
+        btnEmitirOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirOrdenActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -395,6 +397,24 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         labelTransportista.setText(modeloT.getValueAt(fila, 0).toString());
         cmbVehiculo.setModel(gestorO.rellenaComboVehiculo((Transportista)modeloT.getValueAt(fila,0)));
     }//GEN-LAST:event_btnAgregarTransportistaActionPerformed
+
+    private void btnEmitirOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirOrdenActionPerformed
+        OrdenServicio orden = new OrdenServicio();
+        DetalleReparacion detalle = new DetalleReparacion();
+        EnvioTaller envio = new EnvioTaller();
+      
+        Iterator ite = gestorH.listarClase(TipoServicio.class).iterator();
+        while(ite.hasNext()){
+             TipoServicio tipoSer = (TipoServicio) ite.next();
+           if (tipoSer.getIdTipoServicio() == 1) {
+               orden.setTipoServicio(tipoSer);
+           }
+       }
+        orden.setFecha(txtFecha.getText());
+        orden.setHora(txtHora.getText());
+        orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
+        
+    }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDesperfecto;
