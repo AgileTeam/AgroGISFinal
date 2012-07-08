@@ -30,4 +30,7 @@ private long idEspecialidad;
         this.nombreEspecialidad = nombreEspecialidad;
     }
     
+    public String toString(){
+        return getNombreEspecialidad();
+    }
 }

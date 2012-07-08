@@ -346,9 +346,7 @@
             <Component class="javax.swing.JComboBox" name="cmbTalleres">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="El Guri"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -451,9 +449,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDomicilio">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDomicilioActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="130" y="60" width="230" height="20"/>

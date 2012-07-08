@@ -174,5 +174,80 @@ public class gestorRegistrarOrden extends GestorHibernate{
        
        return estado;
    } 
+   
+   public DefaultComboBoxModel rellenaComboTaller(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();  
+           modelo.addElement(taller);
+           }
+        return modelo;
+   }
+   
+   public String rellenaTxtEspecialidad(TallerReparacion seleccion){
+       String especialidad = null;
+       Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();
+           if (taller == (TallerReparacion)seleccion) {
+               especialidad = taller.getEspecialidad().toString();
+           }
+       }
+       
+       return especialidad;
+   } 
+   
+    public String rellenaTxtDomicilio(TallerReparacion seleccion){
+       String domicilio = null;
+       Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();
+           if (taller == (TallerReparacion)seleccion) {
+               domicilio = taller.getDomicilio().toString();
+           }
+       }
+       
+       return domicilio;
+   } 
+    
+    public String rellenaTxtLocalidad(TallerReparacion seleccion){
+       String localidad = null;
+       Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();
+           if (taller == (TallerReparacion)seleccion) {
+               localidad = taller.getDomicilio().getBarrio().getLocalidad().toString();
+           }
+       }
+       
+       return localidad;
+   } 
+    
+    public String rellenaTxtDepartamento(TallerReparacion seleccion){
+       String depto = null;
+       Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();
+           if (taller == (TallerReparacion)seleccion) {
+               depto = taller.getDomicilio().getBarrio().getLocalidad().getDepartamento().toString();
+           }
+       }
+       
+       return depto;
+   } 
+    public String rellenaTxtProvincia(TallerReparacion seleccion){
+       String prov = null;
+       Iterator ite = this.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion taller =(TallerReparacion) ite.next();
+           if (taller == (TallerReparacion)seleccion) {
+               prov = taller.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia().toString();
+           }
+       }
+       
+       return prov;
+   } 
+    
 
 }

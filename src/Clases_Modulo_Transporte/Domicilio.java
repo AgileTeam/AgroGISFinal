@@ -93,4 +93,8 @@ private Barrio barrio;
         this.piso = piso;
     }
     
+    public String toString(){
+        return (getCalle() +" "+ String.valueOf(getNumero()));
+    }
+    
 }

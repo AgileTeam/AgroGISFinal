@@ -11,6 +11,7 @@
 package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.Localidad;
+import Clases_Modulo_Transporte.TallerReparacion;
 import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorRegistrarOrden;
@@ -59,6 +60,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
             modeloT.addRow(fila);
             tblTransportista.setModel(modeloT);
         }
+        cmbTalleres.setModel(gestorO.rellenaComboTaller());
         
         cmbVehiculo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
@@ -83,7 +85,47 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         }
         );
         txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
-  }
+        
+        cmbTalleres.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEspecialidad.setText(gestorO.rellenaTxtEspecialidad((TallerReparacion)cmbTalleres.getSelectedItem()));
+        }
+        }
+        );
+        txtEspecialidad.setText(gestorO.rellenaTxtEspecialidad((TallerReparacion)cmbTalleres.getSelectedItem()));
+        
+         cmbTalleres.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDomicilio.setText(gestorO.rellenaTxtDomicilio((TallerReparacion)cmbTalleres.getSelectedItem()));
+        }
+        }
+        );
+        txtDomicilio.setText(gestorO.rellenaTxtDomicilio((TallerReparacion)cmbTalleres.getSelectedItem()));
+        
+        cmbTalleres.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtLocalidad.setText(gestorO.rellenaTxtLocalidad((TallerReparacion)cmbTalleres.getSelectedItem()));
+        }
+        }
+        );
+        txtLocalidad.setText(gestorO.rellenaTxtLocalidad((TallerReparacion)cmbTalleres.getSelectedItem()));
+    
+         cmbTalleres.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDepartamento.setText(gestorO.rellenaTxtDepartamento((TallerReparacion)cmbTalleres.getSelectedItem()));
+        }
+        }
+        );
+         txtDepartamento.setText(gestorO.rellenaTxtDepartamento((TallerReparacion)cmbTalleres.getSelectedItem()));
+         
+         cmbTalleres.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtProvincia.setText(gestorO.rellenaTxtProvincia((TallerReparacion)cmbTalleres.getSelectedItem()));
+        }
+        }
+        );
+         txtProvincia.setText(gestorO.rellenaTxtProvincia((TallerReparacion)cmbTalleres.getSelectedItem()));
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -242,7 +284,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         jPanel3.add(jLabel7);
         jLabel7.setBounds(10, 30, 120, 20);
 
-        cmbTalleres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "El Guri" }));
         jPanel3.add(cmbTalleres);
         cmbTalleres.setBounds(130, 30, 210, 20);
 
@@ -278,12 +319,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         jLabel12.setBounds(410, 90, 80, 20);
         jPanel3.add(txtProvincia);
         txtProvincia.setBounds(470, 90, 190, 20);
-
-        txtDomicilio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDomicilioActionPerformed(evt);
-            }
-        });
         jPanel3.add(txtDomicilio);
         txtDomicilio.setBounds(130, 60, 230, 20);
         jPanel3.add(jSeparator2);
@@ -346,10 +381,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDomicilioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDomicilioActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
     int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
