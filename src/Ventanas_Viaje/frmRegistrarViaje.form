@@ -28,7 +28,7 @@
           <Component id="jPanel2" max="32767" attributes="0"/>
           <Component id="jPanel1" pref="701" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
                   <Component id="btnCancelar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnAgenda" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -620,7 +620,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="20" width="110" height="20"/>
+              <AbsoluteConstraints x="460" y="20" width="110" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -646,7 +646,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="20" width="60" height="20"/>
+              <AbsoluteConstraints x="260" y="20" width="60" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -676,14 +676,14 @@
         <Component class="javax.swing.JTextField" name="txtEstado">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="250" y="20" width="120" height="-1"/>
+              <AbsoluteConstraints x="300" y="20" width="120" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="datechooser.beans.DateChooserCombo" name="calendarioSolicitud">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="510" y="20" width="90" height="-1"/>
+              <AbsoluteConstraints x="550" y="20" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

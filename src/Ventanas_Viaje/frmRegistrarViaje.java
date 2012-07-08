@@ -26,6 +26,10 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         txtFecha.setEnabled(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        txtNumViaje.setEditable(false);
+        txtNumViaje.setEnabled(false);
+        txtEstado.setEnabled(false);
+        txtEstado.setEditable(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -340,7 +344,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Fecha Solicitud");
         jPanel8.add(jLabel5);
-        jLabel5.setBounds(420, 20, 110, 20);
+        jLabel5.setBounds(460, 20, 110, 20);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel17.setText("Solicitante");
@@ -350,7 +354,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel18.setText("Estado");
         jPanel8.add(jLabel18);
-        jLabel18.setBounds(210, 20, 60, 20);
+        jLabel18.setBounds(260, 20, 60, 20);
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel19.setText("Número Viaje");
@@ -365,9 +369,9 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jPanel8.add(txtNumViaje);
         txtNumViaje.setBounds(90, 20, 70, 20);
         jPanel8.add(txtEstado);
-        txtEstado.setBounds(250, 20, 120, 20);
+        txtEstado.setBounds(300, 20, 120, 20);
         jPanel8.add(calendarioSolicitud);
-        calendarioSolicitud.setBounds(510, 20, 90, 20);
+        calendarioSolicitud.setBounds(550, 20, 90, 20);
         jPanel8.add(txtSolicitante);
         txtSolicitante.setBounds(90, 50, 160, 20);
 
@@ -390,7 +394,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addGap(211, 211, 211)
                 .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
