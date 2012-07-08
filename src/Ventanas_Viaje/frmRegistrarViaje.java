@@ -52,8 +52,8 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 730;
-        int alto = 630;
+        int ancho = 725;
+        int alto = 635;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
@@ -77,38 +77,52 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblLote = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
         txtProductor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmbEstablecimiento = new javax.swing.JComboBox();
-        btnConsultarMapa = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtLote = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtHas = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        cmbCereal = new javax.swing.JComboBox();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel3 = new javax.swing.JPanel();
+        btnAgregarTransportista = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        calendarioViaje = new datechooser.beans.DateChooserCombo();
-        jLabel12 = new javax.swing.JLabel();
-        txtHoraViaje = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        txtSolicitante = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        txtEstado = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtNumViaje = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jTextField7 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnAgregarTransportista1 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        jTextField10 = new javax.swing.JTextField();
+        btnEmitirOrden = new javax.swing.JButton();
+        btnEmitirOrden1 = new javax.swing.JButton();
+        btnEmitirOrden2 = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -140,60 +154,23 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jPanel1.add(txtFecha);
         txtFecha.setBounds(50, 10, 70, 20);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel2.setLayout(null);
-
-        tblLote.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Lote Nº", "Hectáreas"
-            }
-        ));
-        jScrollPane1.setViewportView(tblLote);
-
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(120, 290, 452, 100);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Productor");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(290, 10, 90, 17);
         jPanel2.add(txtProductor);
-        txtProductor.setBounds(80, 140, 210, 20);
+        txtProductor.setBounds(80, 130, 210, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Productor");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(20, 140, 80, 20);
+        jLabel6.setBounds(20, 130, 80, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Establecimiento");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(330, 140, 120, 20);
+        jLabel4.setBounds(330, 130, 120, 20);
 
         jPanel2.add(cmbEstablecimiento);
-        cmbEstablecimiento.setBounds(430, 140, 210, 20);
-
-        btnConsultarMapa.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnConsultarMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map.png"))); // NOI18N
-        btnConsultarMapa.setText(" Mapa");
-        jPanel2.add(btnConsultarMapa);
-        btnConsultarMapa.setBounds(280, 170, 100, 30);
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Lote Nº");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(260, 220, 60, 20);
-        jPanel2.add(txtLote);
-        txtLote.setBounds(310, 220, 70, 20);
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Hectáreas");
-        jPanel2.add(jLabel9);
-        jLabel9.setBounds(430, 220, 80, 20);
-        jPanel2.add(txtHas);
-        txtHas.setBounds(490, 220, 80, 20);
+        cmbEstablecimiento.setBounds(430, 130, 210, 20);
 
         tblProductor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,132 +183,256 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblProductor);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 30, 490, 100);
+        jScrollPane2.setBounds(100, 20, 490, 100);
 
-        btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        btnAgregar.setText("Agregar");
-        jPanel2.add(btnAgregar);
-        btnAgregar.setBounds(280, 250, 101, 30);
+        btnAgregarTransportista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        jPanel2.add(btnAgregarTransportista);
+        btnAgregarTransportista.setBounds(220, 360, 40, 30);
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Cereal");
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(90, 220, 60, 20);
-
-        jPanel2.add(cmbCereal);
-        cmbCereal.setBounds(130, 220, 100, 20);
-        jPanel2.add(jSeparator1);
-        jSeparator1.setBounds(90, 210, 480, 10);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel3.setLayout(null);
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel9.setText("Lote");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(60, 370, 50, 20);
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Fecha Realización");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(10, 20, 130, 20);
-        jPanel3.add(calendarioViaje);
-        calendarioViaje.setBounds(120, 20, 89, 20);
-
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Hora Realización");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(250, 20, 110, 20);
-        jPanel3.add(txtHoraViaje);
-        txtHoraViaje.setBounds(350, 20, 80, 20);
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setText("Solicitante");
-        jPanel3.add(jLabel14);
-        jLabel14.setBounds(460, 20, 80, 20);
-        jPanel3.add(txtSolicitante);
-        txtSolicitante.setBounds(520, 20, 150, 20);
-
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Estado");
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(69, 50, 60, 20);
-        jPanel3.add(txtEstado);
-        txtEstado.setBounds(120, 50, 90, 20);
+        jLabel11.setText("Cereal");
+        jPanel2.add(jLabel11);
+        jLabel11.setBounds(50, 340, 70, 20);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel16.setText("Numero Viaje");
-        jPanel3.add(jLabel16);
-        jLabel16.setBounds(260, 50, 110, 20);
-        jPanel3.add(txtNumViaje);
-        txtNumViaje.setBounds(350, 50, 80, 20);
+        jLabel16.setText("Hectareas");
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(30, 400, 80, 20);
 
-        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(90, 340, 110, 20);
 
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
+        jPanel2.add(jComboBox2);
+        jComboBox2.setBounds(90, 370, 110, 20);
+        jPanel2.add(jTextField7);
+        jTextField7.setBounds(90, 400, 110, 20);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Lote Nº", "Hectáreas"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(310, 330, 340, 89);
+
+        btnAgregarTransportista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        jPanel2.add(btnAgregarTransportista1);
+        btnAgregarTransportista1.setBounds(600, 60, 40, 30);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Referencias", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Localidad", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel3.setLayout(null);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setText("Nombre");
+        jPanel3.add(jLabel7);
+        jLabel7.setBounds(40, 30, 79, 20);
+        jPanel3.add(jTextField1);
+        jTextField1.setBounds(90, 30, 140, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setText("Departamento");
+        jPanel3.add(jLabel12);
+        jLabel12.setBounds(10, 60, 110, 20);
+        jPanel3.add(jTextField2);
+        jTextField2.setBounds(90, 60, 140, 20);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel6);
+        jPanel6.setBounds(-10, -30, 100, 30);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rutas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel4.setLayout(null);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Altura Km");
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(20, 60, 80, 20);
+        jPanel4.add(jTextField3);
+        jTextField3.setBounds(80, 60, 97, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setText("Ruta");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(40, 30, 50, 20);
+        jPanel4.add(jTextField4);
+        jTextField4.setBounds(80, 30, 110, 20);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Coordenadas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel5.setLayout(null);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Latitud");
+        jPanel5.add(jLabel14);
+        jLabel14.setBounds(20, 30, 60, 20);
+
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel15.setText("Longitud");
+        jPanel5.add(jLabel15);
+        jLabel15.setBounds(10, 60, 70, 20);
+        jPanel5.add(jTextField5);
+        jTextField5.setBounds(70, 30, 90, 20);
+        jPanel5.add(jTextField6);
+        jTextField6.setBounds(70, 60, 90, 20);
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map.png"))); // NOI18N
+        jButton1.setText("Ver \nMapa");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
+
+        jPanel2.add(jPanel7);
+        jPanel7.setBounds(10, 160, 680, 170);
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel8.setLayout(null);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Fecha Solicitud");
+        jPanel8.add(jLabel5);
+        jLabel5.setBounds(420, 20, 110, 20);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setText("Solicitante");
+        jPanel8.add(jLabel17);
+        jLabel17.setBounds(20, 50, 90, 20);
+
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel18.setText("Estado");
+        jPanel8.add(jLabel18);
+        jLabel18.setBounds(210, 20, 60, 20);
+
+        jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel19.setText("Número Viaje");
+        jPanel8.add(jLabel19);
+        jLabel19.setBounds(10, 20, 110, 20);
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jTextField8);
+        jTextField8.setBounds(90, 20, 70, 20);
+        jPanel8.add(jTextField9);
+        jTextField9.setBounds(250, 20, 120, 20);
+        jPanel8.add(dateChooserCombo1);
+        dateChooserCombo1.setBounds(510, 20, 90, 20);
+        jPanel8.add(jTextField10);
+        jTextField10.setBounds(90, 50, 160, 20);
+
+        btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnEmitirOrden.setText("Guardar");
+
+        btnEmitirOrden1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEmitirOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
+        btnEmitirOrden1.setText("Cancelar");
+
+        btnEmitirOrden2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEmitirOrden2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calendar.png"))); // NOI18N
+        btnEmitirOrden2.setText("Agenda");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(199, 199, 199)
+                .addComponent(btnEmitirOrden)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmitirOrden1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmitirOrden2)
                 .addContainerGap())
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmitirOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmitirOrden2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnConsultarMapa;
-    private javax.swing.JButton btnGuardar;
-    private datechooser.beans.DateChooserCombo calendarioViaje;
-    private javax.swing.JComboBox cmbCereal;
+    private javax.swing.JButton btnAgregarTransportista;
+    private javax.swing.JButton btnAgregarTransportista1;
+    private javax.swing.JButton btnEmitirOrden;
+    private javax.swing.JButton btnEmitirOrden1;
+    private javax.swing.JButton btnEmitirOrden2;
     private javax.swing.JComboBox cmbEstablecimiento;
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -340,30 +441,41 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tblLote;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tblProductor;
-    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHas;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtHoraViaje;
-    private javax.swing.JTextField txtLote;
-    private javax.swing.JTextField txtNumViaje;
     private javax.swing.JTextField txtProductor;
-    private javax.swing.JTextField txtSolicitante;
     // End of variables declaration//GEN-END:variables
 }
