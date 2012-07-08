@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -268,6 +269,11 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(310, 230, 110, 30);
 
@@ -276,7 +282,7 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
 
             },
             new String [] {
-                "Fecha", "Orden Nº", "Comprobante Nº", "Reparacion Efectuada", "Importe Total"
+                "Fecha Reparacion", "Orden Nº", "Comprobante Nº", "Reparacion Efectuada", "Importe Total"
             }
         ));
         jScrollPane3.setViewportView(tblDetalleRep);
@@ -291,6 +297,11 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -308,6 +319,11 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -428,6 +444,24 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
     dispose();
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
+      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
+      modeloT.addRow(fila);
+      tblDetalleRep.setModel(modeloT);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+      
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        frmRegistrarProvincia v = new frmRegistrarProvincia();
+        frmPrincipal.Escritorio.add(v);
+        v.toFront();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaObservacion;
