@@ -26,6 +26,10 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         txtFecha.setEnabled(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        txtNumViaje.setEditable(false);
+        txtNumViaje.setEnabled(false);
+        txtEstado.setEnabled(false);
+        txtEstado.setEditable(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
