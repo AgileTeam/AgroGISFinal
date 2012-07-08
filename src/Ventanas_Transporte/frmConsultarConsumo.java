@@ -444,7 +444,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                                         .addGap(39, 39, 39)
                                         .addComponent(ckTodosCons)
                                         .addGap(28, 28, 28)))))
-                        .addGap(0, 77, Short.MAX_VALUE)))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -822,7 +822,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                         .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 431, Short.MAX_VALUE))
+                        .addGap(0, 359, Short.MAX_VALUE))
                     .addComponent(panelConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
