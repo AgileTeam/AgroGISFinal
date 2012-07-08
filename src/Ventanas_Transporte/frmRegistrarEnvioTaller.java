@@ -4,6 +4,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.OrdenServicio;
 import Gestores_Vista.gestorRegistrarEnvioAlTaller;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -68,7 +69,6 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
-        cmbTaller.setModel(gRegistro.rellenaComboTallerReparacion());
         
         cmbOrden.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
@@ -77,6 +77,22 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         }
         );
         txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+        txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
     }
 
     /**
@@ -101,9 +117,9 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         jLabel5 = new javax.swing.JLabel();
         txtFechaEmision = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cmbTaller = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtEspecialidad = new javax.swing.JTextField();
+        txtTaller = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         calendarioReparacion = new datechooser.beans.DateChooserCombo();
@@ -172,15 +188,14 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
         jPanel2.add(jLabel6);
         jLabel6.setBounds(10, 50, 150, 20);
 
-        jPanel2.add(cmbTaller);
-        cmbTaller.setBounds(130, 50, 210, 20);
-
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Especialidad");
         jPanel2.add(jLabel7);
         jLabel7.setBounds(440, 50, 110, 20);
         jPanel2.add(txtEspecialidad);
         txtEspecialidad.setBounds(520, 50, 150, 20);
+        jPanel2.add(txtTaller);
+        txtTaller.setBounds(130, 50, 260, 20);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Reparacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
@@ -367,7 +382,7 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 34, Short.MAX_VALUE))
         );
 
         pack();
@@ -425,7 +440,6 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
     private datechooser.beans.DateChooserCombo calendarioReparacion;
     private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbReparacion;
-    private javax.swing.JComboBox cmbTaller;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -453,5 +467,6 @@ gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
     private javax.swing.JTextField txtImporteTotal;
     private javax.swing.JTextField txtNumComprobante;
     private javax.swing.JTextField txtResponsable;
+    private javax.swing.JTextField txtTaller;
     // End of variables declaration//GEN-END:variables
 }
