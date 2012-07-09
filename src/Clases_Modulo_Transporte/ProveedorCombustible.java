@@ -28,4 +28,8 @@ private long idProveedor;
     public void setNombreProveedor(String nombreProveedor) {
         this.nombreProveedor = nombreProveedor;
     }
+    
+    public String toString(){
+        return getNombreProveedor();
+    }
 }

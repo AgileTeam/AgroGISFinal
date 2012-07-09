@@ -16,6 +16,9 @@ private long idDetalleEnvio;
     
 @ManyToOne(targetEntity = ArregloEfectuado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private ArregloEfectuado arregloEfectuado;
+
+@ManyToOne(targetEntity = EnvioTaller.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private EnvioTaller envio;
     
    
 private double precio;
@@ -47,6 +50,34 @@ private double precio;
      */
     public void setArregloEfectuado(ArregloEfectuado arregloEfectuado) {
         this.arregloEfectuado = arregloEfectuado;
+    }
+
+    /**
+     * @return the idDetalleEnvio
+     */
+    public long getIdDetalleEnvio() {
+        return idDetalleEnvio;
+    }
+
+    /**
+     * @param idDetalleEnvio the idDetalleEnvio to set
+     */
+    public void setIdDetalleEnvio(long idDetalleEnvio) {
+        this.idDetalleEnvio = idDetalleEnvio;
+    }
+
+    /**
+     * @return the envio
+     */
+    public EnvioTaller getEnvio() {
+        return envio;
+    }
+
+    /**
+     * @param envio the envio to set
+     */
+    public void setEnvio(EnvioTaller envio) {
+        this.envio = envio;
     }
     
 }

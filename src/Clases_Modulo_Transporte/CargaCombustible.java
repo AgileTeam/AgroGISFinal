@@ -24,6 +24,9 @@ private long idCargaCombustible;
 
 @ManyToOne(targetEntity = OrdenServicio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
  private OrdenServicio ordenServicio;
+
+@ManyToOne(targetEntity = TipoOperacionEstacionServicio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+ private TipoOperacionEstacionServicio tipo;
   
 private String tipoOperacion;
 private String producto;
@@ -157,6 +160,20 @@ private String responsableVenta;
      */
     public void setOrdenServicio(OrdenServicio ordenServicio) {
         this.ordenServicio = ordenServicio;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public TipoOperacionEstacionServicio getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(TipoOperacionEstacionServicio tipo) {
+        this.tipo = tipo;
     }
            
    

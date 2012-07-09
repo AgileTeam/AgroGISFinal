@@ -44,4 +44,8 @@ private long idArreglo;
     public void setNombreArreglo(String nombreArreglo) {
         this.nombreArreglo = nombreArreglo;
     }
+    
+    public String toString(){
+        return getNombreArreglo();
+    }
 }

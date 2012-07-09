@@ -105,16 +105,6 @@ public class gestorRegistrarOrden extends GestorHibernate{
        return texto;
    }
      
-  public DefaultComboBoxModel rellenaComboEstacion(){
-    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-    Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
-       while(ite.hasNext()){
-           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();  
-           modelo.addElement(estacion);
-           }
-        return modelo;
-   }
- 
  public DefaultComboBoxModel rellenaComboTipoServicio(){
     DefaultComboBoxModel modelo = new DefaultComboBoxModel();
     Iterator ite = this.listarClase(TipoServicio.class).iterator();
@@ -249,5 +239,88 @@ public class gestorRegistrarOrden extends GestorHibernate{
        return prov;
    } 
     
-
+ public DefaultComboBoxModel rellenaComboEstacion(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();  
+           modelo.addElement(estacion);
+           }
+        return modelo;
+   }
+ 
+     public String rellenaTxtDomicilioEstacion(EstacionDeServicio seleccion){
+       String domicilio = null;
+       Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();
+           if (estacion == seleccion) {
+               domicilio = estacion.getDomicilio().toString();
+           }
+       }
+       
+       return domicilio;
+   } 
+    
+    public String rellenaTxtLocalidadEstacion(EstacionDeServicio seleccion){
+       String localidad = null;
+       Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();
+           if (estacion == seleccion) {
+               localidad = estacion.getDomicilio().getBarrio().getLocalidad().toString();
+           }
+       }
+       
+       return localidad;
+   } 
+    
+    public String rellenaTxtDepartamentoEstacion(EstacionDeServicio seleccion){
+       String depto = null;
+       Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();
+           if (estacion == seleccion) {
+               depto = estacion.getDomicilio().getBarrio().getLocalidad().getDepartamento().toString();
+           }
+       }
+       
+       return depto;
+   } 
+    public String rellenaTxtProvinciaEstacion(EstacionDeServicio seleccion){
+       String prov = null;
+       Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();
+           if (estacion == seleccion) {
+               prov = estacion.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia().toString();
+           }
+       }
+       
+       return prov;
+   } 
+    
+     public String rellenaTxtProveedorCombustible(EstacionDeServicio seleccion){
+       String prov = null;
+       Iterator ite = this.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio estacion =(EstacionDeServicio) ite.next();
+           if (estacion == seleccion) {
+               prov = estacion.getProveedor().toString();
+           }
+       }
+       
+       return prov;
+   } 
+ 
+     
+   public DefaultComboBoxModel rellenaComboTipoOperacion(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    Iterator ite = this.listarClase(TipoOperacionEstacionServicio.class).iterator();
+       while(ite.hasNext()){
+           TipoOperacionEstacionServicio tipo =(TipoOperacionEstacionServicio) ite.next();  
+           modelo.addElement(tipo);
+           }
+        return modelo;
+   }
 }

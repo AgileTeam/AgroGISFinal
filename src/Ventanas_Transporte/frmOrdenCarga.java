@@ -11,10 +11,7 @@
 package Ventanas_Transporte;
 
 
-import Clases_Modulo_Transporte.EstacionDeServicio;
-import Clases_Modulo_Transporte.OrdenServicio;
-import Clases_Modulo_Transporte.TipoServicio;
-import Clases_Modulo_Transporte.Vehiculo;
+import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import javax.swing.UIManager;
@@ -23,22 +20,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmOrdenCarga extends javax.swing.JInternalFrame {
-gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
+gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmOrdenCarga */
     public frmOrdenCarga() {
         initComponents();
-        gOrden.rellenaTablaVehiculo(tblTransportista);
-        cmbEstacionServicio.setModel(gOrden.rellenaComboEstacion());
-        cmbOperacion.setModel(gOrden.rellenaComboTipoServicio());
         
         txtFechaCarga.setEditable(false);
         txtFechaCarga.setEnabled(false);
@@ -62,16 +54,81 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
         SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
         txtHoraCarga.setText(formateadorHora.format(calendario.getTime()));
          
-        cmbEstacionServicio.addActionListener(new ActionListener(){
-        //Cargo TXT Proveedor
-        public void actionPerformed(ActionEvent arg0){
-            txtProveedor.setText(gOrden.rellenaTxtProveedor(cmbEstacionServicio.getSelectedItem().toString()));
+        DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
+        Iterator ite = gestorH.listarClase(Transportista.class).iterator();
+        while(ite.hasNext()){
+            Transportista trans = (Transportista) ite.next();
+            Object fila[] = {trans, trans.getNumeroDocumento()};
+            modeloT.addRow(fila);
+            tblTransportista.setModel(modeloT);
+        }
+        cmbEstacionServicio.setModel(gestorO.rellenaComboEstacion());
+        cmbOperacion.setModel(gestorO.rellenaComboTipoOperacion());
+        
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
         }
         }
         );
-        txtProveedor.setText(gOrden.rellenaTxtProveedor(cmbEstacionServicio.getSelectedItem().toString()));
-
+         txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
+         
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
+        }
+        }
+        );
+         txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
+         
+        cmbVehiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
+        }
+        }
+        );
+        txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
         
+        cmbEstacionServicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtProveedor.setText(gestorO.rellenaTxtProveedorCombustible((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        }
+        }
+        );
+        txtProveedor.setText(gestorO.rellenaTxtProveedorCombustible((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        
+        cmbEstacionServicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDomicilio.setText(gestorO.rellenaTxtDomicilioEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        }
+        }
+        );
+            txtDomicilio.setText(gestorO.rellenaTxtDomicilioEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        
+       cmbEstacionServicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtLocalidad.setText(gestorO.rellenaTxtLocalidadEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        }
+        }
+        );
+            txtLocalidad.setText(gestorO.rellenaTxtLocalidadEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+            
+         cmbEstacionServicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtDeptoEstacion.setText(gestorO.rellenaTxtDepartamentoEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        }
+        }
+        );
+            txtDeptoEstacion.setText(gestorO.rellenaTxtDepartamentoEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));   
+       
+        cmbEstacionServicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtProvincia.setText(gestorO.rellenaTxtProvinciaEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+        }
+        }
+        );
+            txtProvincia.setText(gestorO.rellenaTxtProvinciaEstacion((EstacionDeServicio)cmbEstacionServicio.getSelectedItem()));
+            
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
         
@@ -107,7 +164,7 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
         tblTransportista = new javax.swing.JTable();
         btnAgregarTransportista = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        labelTransportista = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         cmbVehiculo = new javax.swing.JComboBox();
@@ -189,6 +246,11 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
         jScrollPane1.setBounds(120, 30, 452, 120);
 
         btnAgregarTransportista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarTransportista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTransportistaActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAgregarTransportista);
         btnAgregarTransportista.setBounds(580, 70, 40, 30);
 
@@ -197,10 +259,9 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
         jPanel2.add(jLabel4);
         jLabel4.setBounds(250, 160, 110, 17);
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setText("Jose Torrea");
-        jPanel2.add(jLabel16);
-        jLabel16.setBounds(350, 160, 110, 17);
+        labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel2.add(labelTransportista);
+        labelTransportista.setBounds(350, 160, 200, 20);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(40, 190, 600, 10);
 
@@ -310,6 +371,11 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
         btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnEmitirOrden.setText("Emitir Orden");
+        btnEmitirOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirOrdenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,7 +397,7 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -343,6 +409,38 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
     dispose();
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAgregarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTransportistaActionPerformed
+      DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
+      int fila= tblTransportista.getSelectedRow();
+      labelTransportista.setText(modeloT.getValueAt(fila, 0).toString());
+      cmbVehiculo.setModel(gestorO.rellenaComboVehiculo((Transportista)modeloT.getValueAt(fila,0)));
+    }//GEN-LAST:event_btnAgregarTransportistaActionPerformed
+
+    private void btnEmitirOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirOrdenActionPerformed
+        OrdenServicio orden = new OrdenServicio();
+        DetalleConsumo detalle = new DetalleConsumo();
+        CargaCombustible carga = new CargaCombustible();
+        Iterator ite = gestorH.listarClase(TipoServicio.class).iterator();
+        while(ite.hasNext()){
+             TipoServicio tipoSer = (TipoServicio) ite.next();
+           if (tipoSer.getIdTipoServicio() == 0) {
+               orden.setTipoServicio(tipoSer);
+           }
+        }     
+        orden.setFecha(txtFechaCarga.getText());
+        orden.setHora(txtHoraCarga.getText());
+        orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
+        orden.setEstado("Pendiente");
+        gestorH.guardarObjeto(orden);
+        carga.setEstacionServicio((EstacionDeServicio)cmbEstacionServicio.getSelectedItem());
+        carga.setTipo((TipoOperacionEstacionServicio)cmbOperacion.getSelectedItem());
+        gestorH.guardarObjeto(carga);
+        detalle.setCargaCombustible(carga);
+        detalle.setOrdenServicio(orden);
+        gestorH.guardarObjeto(detalle);
+        
+    }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarTransportista;
@@ -358,7 +456,6 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -373,6 +470,7 @@ gestorRegistrarOrden gOrden = new gestorRegistrarOrden();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelTransportista;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtAnioCompra;
     private javax.swing.JTextField txtDeptoEstacion;

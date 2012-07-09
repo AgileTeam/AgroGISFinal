@@ -15,8 +15,7 @@ public class EnvioTaller {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idEnvio;  
 
-@ManyToOne(targetEntity = DetalleEnvio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private DetalleEnvio detalle;
+
     
 @ManyToOne(targetEntity = Motivo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Motivo motivo;
@@ -28,20 +27,9 @@ private String fecha;
 private String hora;
 private double importeTotal;
 private String responsable;
+private int numeroComprobante;
 
-    /**
-     * @return the detalle
-     */
-    public DetalleEnvio getDetalle() {
-        return detalle;
-    }
-
-    /**
-     * @param detalle the detalle to set
-     */
-    public void setDetalle(DetalleEnvio detalle) {
-        this.detalle = detalle;
-    }
+   
 
     /**
      * @return the motivo
@@ -125,6 +113,34 @@ private String responsable;
      */
     public void setResponsable(String responsable) {
         this.responsable = responsable;
+    }
+
+    /**
+     * @return the idEnvio
+     */
+    public long getIdEnvio() {
+        return idEnvio;
+    }
+
+    /**
+     * @param idEnvio the idEnvio to set
+     */
+    public void setIdEnvio(long idEnvio) {
+        this.idEnvio = idEnvio;
+    }
+
+    /**
+     * @return the numeroComprobante
+     */
+    public int getNumeroComprobante() {
+        return numeroComprobante;
+    }
+
+    /**
+     * @param numeroComprobante the numeroComprobante to set
+     */
+    public void setNumeroComprobante(int numeroComprobante) {
+        this.numeroComprobante = numeroComprobante;
     }
     
 
