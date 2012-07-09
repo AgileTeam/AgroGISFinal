@@ -409,11 +409,16 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
            if (tipoSer.getIdTipoServicio() == 1) {
                orden.setTipoServicio(tipoSer);
            }
-       }
+        }     
         orden.setFecha(txtFecha.getText());
         orden.setHora(txtHora.getText());
         orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
-        
+        orden.setEstado("Pendiente");
+        gestorH.guardarObjeto(orden);
+        envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
+        gestorH.guardarObjeto(envio);
+        detalle.setEnvioTaller(envio);
+        detalle.setOrden(orden);
     }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,7 +24,6 @@ private Motivo motivo;
 @ManyToOne(targetEntity = TallerReparacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TallerReparacion taller;
 
-
 private String fecha;
 private String hora;
 private double importeTotal;

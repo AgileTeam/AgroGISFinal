@@ -4,10 +4,7 @@
  */
 package Gestores_Vista;
 
-import Clases_Modulo_Transporte.OrdenServicio;
-import Clases_Modulo_Transporte.Pais;
-import Clases_Modulo_Transporte.Provincia;
-import Clases_Modulo_Transporte.TallerReparacion;
+import Clases_Modulo_Transporte.*;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
@@ -56,5 +53,38 @@ public class gestorRegistrarEnvioAlTaller extends GestorHibernate {
        
        return fecha;
    }
+    public String rellenaTxtTaller(OrdenServicio seleccion){
+       String taller = null;
+       Iterator ite = this.listarClase(EnvioTaller.class).iterator();
+       while(ite.hasNext()){
+           EnvioTaller envio=(EnvioTaller) ite.next();
+           Iterator ite1 = this.listarClase(DetalleReparacion.class).iterator();
+            while(ite1.hasNext()){
+                DetalleReparacion detalle = (DetalleReparacion) ite.next();
+                if((detalle.getEnvioTaller()== envio)&&(detalle.getOrden()== (OrdenServicio)seleccion)){
+                    taller=envio.getTaller().toString();
+                }
+            }
+           
+           }
+       return taller;
+       }
     
+       public String rellenaTxtEspecialidad(OrdenServicio seleccion){
+       String especialidad = null;
+       Iterator ite = this.listarClase(EnvioTaller.class).iterator();
+       while(ite.hasNext()){
+           EnvioTaller envio=(EnvioTaller) ite.next();
+           Iterator ite1 = this.listarClase(DetalleReparacion.class).iterator();
+            while(ite1.hasNext()){
+                DetalleReparacion detalle = (DetalleReparacion) ite.next();
+                if((detalle.getEnvioTaller()== envio)&&(detalle.getOrden()== (OrdenServicio)seleccion)){
+                    especialidad=envio.getTaller().getEspecialidad().toString();
+                }
+            }
+           
+           }
+       return especialidad;
+       }
+      
 }

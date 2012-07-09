@@ -332,6 +332,7 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     if (respuesta==0){
     dispose();
     }
+
 }//GEN-LAST:event_btnCancelarActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
