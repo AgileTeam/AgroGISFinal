@@ -4,11 +4,6 @@
  */
 package Ventanas_Viaje;
 
-import java.awt.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.*;
-
 /**
  *
  * @author Carolina
@@ -20,44 +15,7 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
      */
     public frmAsignarTransporte() {
         initComponents();
-        
-        txtFecha.setEditable(false);
-        txtFecha.setEnabled(false);
-        txtHora.setEditable(false);
-        txtHora.setEnabled(false);
-        //setear el campo de fecha con la del sistema
-        GregorianCalendar gc=new GregorianCalendar();
-        GregorianCalendar.getInstance();
-        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
-        gc.get(Calendar.DAY_OF_WEEK);
-        gc.get(Calendar.MONTH);
-        gc.get(Calendar.YEAR);
-        SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
-        txtFecha.setText(formateador.format(gc.getTime()));
-        //setear el campo de hora con la del sistema
-        GregorianCalendar calendario=new GregorianCalendar();
-        GregorianCalendar.getInstance();
-        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
-        calendario.get(Calendar.HOUR);
-        calendario.get(Calendar.MINUTE);
-        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
-        txtHora.setText(formateadorHora.format(calendario.getTime()));
-        
-        
-        //borrar el icono del InternalFrame
-        this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
-        
-        
-        //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 600;
-        int alto = 510;
-        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
-//        int posY = (int) ((tamanioPantalla.height - alto) / 2);
-        this.setSize(ancho, alto);
-        this.setLocation(320, 50);
-            
+
     }
 
     /**
@@ -69,161 +27,19 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        btnEmitirOrden = new javax.swing.JButton();
-        btnAsignarVehiculo = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        ckFechaCons = new javax.swing.JCheckBox();
-        ckOrdenCons = new javax.swing.JCheckBox();
-
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-        setTitle("Asignacion");
-
-        jPanel1.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 10, 60, 20);
-        jPanel1.add(txtHora);
-        txtHora.setBounds(190, 10, 70, 20);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Hora");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(155, 10, 51, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Carolina");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(460, 0, 50, 40);
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel1.add(jLabel13);
-        jLabel13.setBounds(510, 0, 30, 30);
-        jPanel1.add(txtFecha);
-        txtFecha.setBounds(50, 10, 70, 20);
-
-        btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        btnEmitirOrden.setText("Emitir Orden");
-
-        btnAsignarVehiculo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnAsignarVehiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
-        btnAsignarVehiculo.setText("Asignar");
-
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnEmitirOrden)
-                .addGap(18, 18, 18)
-                .addComponent(btnAsignarVehiculo)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAsignarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setText("Buscar Viajes por");
-
-        ckFechaCons.setText("Fecha");
-
-        ckOrdenCons.setText("Número");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel8)
-                        .addGap(48, 48, 48)
-                        .addComponent(ckFechaCons)
-                        .addGap(39, 39, 39)
-                        .addComponent(ckOrdenCons)
-                        .addContainerGap())
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jSeparator2)
-                            .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jSeparator1)
-                            .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(95, 95, 95))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
-                            .addContainerGap()))))
+            .addGap(0, 1882, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(ckOrdenCons)
-                    .addComponent(ckFechaCons))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(317, 317, 317)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addGap(0, 444, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAsignarVehiculo;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEmitirOrden;
-    private javax.swing.JCheckBox ckFechaCons;
-    private javax.swing.JCheckBox ckOrdenCons;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
     // End of variables declaration//GEN-END:variables
 }

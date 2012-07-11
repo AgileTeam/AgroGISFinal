@@ -61,7 +61,7 @@ public class HibernateUtil {
 //                conf.addAnnotatedClass(Clases_Modulo_Transporte.Transportista.class);
                 conf.addAnnotatedClass(Clases_Modulo_Transporte.Vehiculo.class);
                 conf.addAnnotatedClass(Clases_Modulo_Transporte.OpcionEditar.class);
-                
+                conf.addAnnotatedClass(Clases_Modulo_Transporte.TipoOperacionEstacionServicio.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasCereal.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Descarga.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Destino.class);

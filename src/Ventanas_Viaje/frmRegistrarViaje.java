@@ -50,7 +50,30 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
-        
+        //1) datos de puerto - 2) datos de establecimiento
+        scpPuerto.setVisible(false); //1
+        scpEstablecimiento.setVisible(true); //2
+        btnAgregarProd.setVisible(true); //2
+        btnAgregarPuerto.setVisible(false); //1
+        labelEstablecimiento.setVisible(true); //2
+        labelPuerto.setVisible(false); //1
+        txtPuerto.setVisible(false); //1
+        cmbEstablecimientoT.setVisible(true); //2
+        labelLocalidad.setVisible(true); //1 y 2
+        txtLocalidad.setVisible(true); //1 y 2
+        labelDepto.setVisible(true); //2
+        labelProvincia.setVisible(false); //1
+        txtProvinciaT.setVisible(false); //1 
+        txtDeptoT.setVisible(true); //2
+        labelProductor.setVisible(true); //1 y 2
+        txtProductor.setVisible(true); //1 y 2
+        labelCereal.setVisible(true); //1 y 2
+        cmbCereal.setVisible(true); //1 y 2
+        labelToneladasD.setVisible(true); //2
+        labelToneladasE.setVisible(false); //1
+        txtToneladasD.setVisible(true); //2
+        txtToneladasE.setVisible(false); //1
+ 
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
         
@@ -98,21 +121,30 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnAgenda = new javax.swing.JButton();
         panelPuerto = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPuerto = new javax.swing.JTable();
-        btnAgregarPuerto = new javax.swing.JButton();
-        txtToneladas = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtLocalidad = new javax.swing.JTextField();
-        txtProvincia = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        txtPuerto = new javax.swing.JTextField();
         txtProductor = new javax.swing.JTextField();
         cmbCereal = new javax.swing.JComboBox();
+        btnAgregarPuerto = new javax.swing.JButton();
+        txtProvinciaT = new javax.swing.JTextField();
+        txtToneladasE = new javax.swing.JTextField();
+        txtPuerto = new javax.swing.JTextField();
+        labelLocalidad = new javax.swing.JLabel();
+        scpPuerto = new javax.swing.JScrollPane();
+        tblPuerto = new javax.swing.JTable();
+        labelDepto = new javax.swing.JLabel();
+        txtDeptoT = new javax.swing.JTextField();
+        txtLocalidad = new javax.swing.JTextField();
+        cmbEstablecimientoT = new javax.swing.JComboBox();
+        labelProductor = new javax.swing.JLabel();
+        labelCereal = new javax.swing.JLabel();
+        labelToneladasD = new javax.swing.JLabel();
+        txtToneladasD = new javax.swing.JTextField();
+        btnAgregarProd = new javax.swing.JButton();
+        scpEstablecimiento = new javax.swing.JScrollPane();
+        tblEstablecimiento = new javax.swing.JTable();
+        labelPuerto = new javax.swing.JLabel();
+        labelEstablecimiento = new javax.swing.JLabel();
+        labelProvincia = new javax.swing.JLabel();
+        labelToneladasE = new javax.swing.JLabel();
         panelEstablecimiento = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
@@ -246,70 +278,109 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelPuerto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destino Puerto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelPuerto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Traslado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelPuerto.setLayout(null);
+        panelPuerto.add(txtProductor);
+        txtProductor.setBounds(470, 150, 180, 20);
+
+        panelPuerto.add(cmbCereal);
+        cmbCereal.setBounds(470, 180, 110, 20);
+
+        btnAgregarPuerto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        panelPuerto.add(btnAgregarPuerto);
+        btnAgregarPuerto.setBounds(630, 70, 40, 30);
+        panelPuerto.add(txtProvinciaT);
+        txtProvinciaT.setBounds(110, 210, 180, 20);
+        panelPuerto.add(txtToneladasE);
+        txtToneladasE.setBounds(470, 210, 110, 20);
+        panelPuerto.add(txtPuerto);
+        txtPuerto.setBounds(110, 150, 180, 20);
+
+        labelLocalidad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelLocalidad.setText("Localidad");
+        panelPuerto.add(labelLocalidad);
+        labelLocalidad.setBounds(50, 180, 90, 20);
 
         tblPuerto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Puerto", "Localidad", "Provincia"
+                "Puerto", "Localidad"
             }
         ));
-        jScrollPane1.setViewportView(tblPuerto);
+        scpPuerto.setViewportView(tblPuerto);
 
-        panelPuerto.add(jScrollPane1);
-        jScrollPane1.setBounds(90, 30, 492, 92);
+        panelPuerto.add(scpPuerto);
+        scpPuerto.setBounds(110, 40, 510, 100);
 
-        btnAgregarPuerto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        panelPuerto.add(btnAgregarPuerto);
-        btnAgregarPuerto.setBounds(590, 60, 40, 30);
-        panelPuerto.add(txtToneladas);
-        txtToneladas.setBounds(450, 200, 110, 20);
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Puerto");
-        panelPuerto.add(jLabel9);
-        jLabel9.setBounds(40, 140, 70, 20);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Localidad");
-        panelPuerto.add(jLabel10);
-        jLabel10.setBounds(20, 170, 90, 20);
-
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Provincia");
-        panelPuerto.add(jLabel11);
-        jLabel11.setBounds(20, 200, 90, 20);
+        labelDepto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDepto.setText("Departamento");
+        panelPuerto.add(labelDepto);
+        labelDepto.setBounds(20, 210, 100, 20);
+        panelPuerto.add(txtDeptoT);
+        txtDeptoT.setBounds(110, 210, 180, 20);
         panelPuerto.add(txtLocalidad);
-        txtLocalidad.setBounds(90, 170, 180, 20);
-        panelPuerto.add(txtProvincia);
-        txtProvincia.setBounds(90, 200, 180, 20);
+        txtLocalidad.setBounds(110, 180, 180, 20);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Productor");
-        panelPuerto.add(jLabel12);
-        jLabel12.setBounds(380, 140, 90, 20);
+        panelPuerto.add(cmbEstablecimientoT);
+        cmbEstablecimientoT.setBounds(110, 150, 180, 20);
 
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setText("Cereal");
-        panelPuerto.add(jLabel14);
-        jLabel14.setBounds(400, 170, 70, 20);
+        labelProductor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelProductor.setText("Productor");
+        panelPuerto.add(labelProductor);
+        labelProductor.setBounds(410, 150, 70, 20);
 
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Toneladas a Extraer");
-        panelPuerto.add(jLabel15);
-        jLabel15.setBounds(330, 200, 150, 20);
-        panelPuerto.add(txtPuerto);
-        txtPuerto.setBounds(90, 140, 180, 20);
-        panelPuerto.add(txtProductor);
-        txtProductor.setBounds(450, 140, 180, 20);
+        labelCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCereal.setText("Cereal");
+        panelPuerto.add(labelCereal);
+        labelCereal.setBounds(420, 180, 80, 20);
 
-        panelPuerto.add(cmbCereal);
-        cmbCereal.setBounds(450, 170, 110, 20);
+        labelToneladasD.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelToneladasD.setText("Toneladas a Depositar");
+        panelPuerto.add(labelToneladasD);
+        labelToneladasD.setBounds(330, 210, 150, 20);
+        panelPuerto.add(txtToneladasD);
+        txtToneladasD.setBounds(470, 210, 110, 20);
 
-        panelEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destino Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        panelPuerto.add(btnAgregarProd);
+        btnAgregarProd.setBounds(630, 70, 40, 30);
+
+        tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Productor", "Número de Documento"
+            }
+        ));
+        scpEstablecimiento.setViewportView(tblEstablecimiento);
+
+        panelPuerto.add(scpEstablecimiento);
+        scpEstablecimiento.setBounds(110, 40, 510, 100);
+
+        labelPuerto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPuerto.setText("Puerto");
+        panelPuerto.add(labelPuerto);
+        labelPuerto.setBounds(60, 150, 70, 20);
+
+        labelEstablecimiento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelEstablecimiento.setText("Establecimiento");
+        panelPuerto.add(labelEstablecimiento);
+        labelEstablecimiento.setBounds(10, 150, 110, 20);
+
+        labelProvincia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelProvincia.setText("Provincia");
+        panelPuerto.add(labelProvincia);
+        labelProvincia.setBounds(50, 210, 80, 20);
+
+        labelToneladasE.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelToneladasE.setText("Toneladas a Extraer");
+        panelPuerto.add(labelToneladasE);
+        labelToneladasE.setBounds(350, 210, 150, 20);
+
+        panelEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelEstablecimiento.setLayout(null);
 
         tblProductor.setModel(new javax.swing.table.DefaultTableModel(
@@ -323,7 +394,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblProductor);
 
         panelEstablecimiento.add(jScrollPane2);
-        jScrollPane2.setBounds(88, 22, 492, 92);
+        jScrollPane2.setBounds(90, 20, 492, 92);
 
         btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         panelEstablecimiento.add(btnAgregarLote);
@@ -389,7 +460,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
 
         btnAgregarProductor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         panelEstablecimiento.add(btnAgregarProductor);
-        btnAgregarProductor.setBounds(590, 60, 40, 30);
+        btnAgregarProductor.setBounds(590, 50, 40, 30);
 
         tblLote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -415,8 +486,8 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(panelEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 194, Short.MAX_VALUE)
@@ -430,7 +501,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -452,6 +523,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgenda;
     private javax.swing.JButton btnAgregarLote;
+    private javax.swing.JButton btnAgregarProd;
     private javax.swing.JButton btnAgregarProductor;
     private javax.swing.JButton btnAgregarPuerto;
     private javax.swing.JButton btnCancelar;
@@ -460,15 +532,11 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbCereal;
     private javax.swing.JComboBox cmbCerealEst;
     private javax.swing.JComboBox cmbEstablecimiento;
+    private javax.swing.JComboBox cmbEstablecimientoT;
     private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbTipoViaje;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -483,19 +551,30 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel labelCereal;
+    private javax.swing.JLabel labelDepto;
+    private javax.swing.JLabel labelEstablecimiento;
+    private javax.swing.JLabel labelLocalidad;
+    private javax.swing.JLabel labelProductor;
+    private javax.swing.JLabel labelProvincia;
+    private javax.swing.JLabel labelPuerto;
+    private javax.swing.JLabel labelToneladasD;
+    private javax.swing.JLabel labelToneladasE;
     private javax.swing.JPanel panelEstablecimiento;
     private javax.swing.JPanel panelPuerto;
+    private javax.swing.JScrollPane scpEstablecimiento;
+    private javax.swing.JScrollPane scpPuerto;
+    private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTable tblLote;
     private javax.swing.JTable tblProductor;
     private javax.swing.JTable tblPuerto;
     private javax.swing.JTextField txtDepto;
+    private javax.swing.JTextField txtDeptoT;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHas;
@@ -505,9 +584,10 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNumViaje;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProductorEst;
-    private javax.swing.JTextField txtProvincia;
+    private javax.swing.JTextField txtProvinciaT;
     private javax.swing.JTextField txtPuerto;
     private javax.swing.JTextField txtSolicitante;
-    private javax.swing.JTextField txtToneladas;
+    private javax.swing.JTextField txtToneladasD;
+    private javax.swing.JTextField txtToneladasE;
     // End of variables declaration//GEN-END:variables
 }
