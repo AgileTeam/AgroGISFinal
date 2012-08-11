@@ -1,24 +1,35 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.ArregloEfectuado;
+import Clases_Modulo_Transporte.DetalleEnvio;
+import Clases_Modulo_Transporte.EnvioTaller;
+import Clases_Modulo_Transporte.OrdenServicio;
+import Gestores_Vista.gestorRegistrarEnvioAlTaller;
+import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
- *
- * @author Carolina
- */
+*
+* @author Carolina
+*/
 public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
-
+gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
+Double total;
+GestorHibernate gestorH = new GestorHibernate();
     /**
-     * Creates new form frmRegistrarEnvioTaller
-     */
+* Creates new form frmRegistrarEnvioTaller
+*/
     public frmRegistrarEnvioTaller() {
         initComponents();
         
@@ -27,6 +38,8 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         txtHora.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
+        txtTotal.setEditable(false);
+        txtTotal.setEnabled(false);
         
         //configurar hora y fecha
         GregorianCalendar gc=new GregorianCalendar();
@@ -61,9 +74,37 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         int ancho = 800;
         int alto = 630;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
-//        int posY = (int) ((tamanioPantalla.height - alto) / 2);
+// int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
+        cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        }
+        }
+        );
+        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+        txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
+            
+       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
+      
     }
 
     /**
@@ -88,9 +129,9 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtFechaEmision = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cmbTaller = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtEspecialidad = new javax.swing.JTextField();
+        txtTaller = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         calendarioReparacion = new datechooser.beans.DateChooserCombo();
@@ -113,6 +154,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        txtTotal = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -159,15 +201,14 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(10, 50, 130, 20);
 
-        jPanel2.add(cmbTaller);
-        cmbTaller.setBounds(130, 50, 210, 20);
-
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Especialidad");
         jPanel2.add(jLabel7);
         jLabel7.setBounds(440, 50, 80, 20);
         jPanel2.add(txtEspecialidad);
         txtEspecialidad.setBounds(520, 50, 150, 20);
+        jPanel2.add(txtTaller);
+        txtTaller.setBounds(130, 50, 260, 20);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Reparacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
@@ -240,6 +281,11 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(310, 230, 110, 30);
 
@@ -257,12 +303,22 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         jScrollPane3.setBounds(30, 280, 670, 100);
 
         btnEliminarDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDetalleActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnEliminarDetalle);
         btnEliminarDetalle.setBounds(710, 320, 49, 30);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -280,6 +336,11 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -308,15 +369,19 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(155, 155, 155)
+                .addGap(159, 159, 159)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,13 +399,15 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,7 +422,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
@@ -402,6 +469,58 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
+      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
+      modeloT.addRow(fila);
+      tblDetalleRep.setModel(modeloT);
+      for(int i=0; i<modeloT.getRowCount(); i++){
+           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+           txtTotal.setText(total.toString());
+       }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
+       modeloT.removeRow(tblDetalleRep.getSelectedRow());
+       for(int i=0; i<modeloT.getRowCount(); i++){
+       total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+       txtTotal.setText(total.toString());
+       }
+    }//GEN-LAST:event_btnEliminarDetalleActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblDetalleRep.getModel();
+        cmbOrden.setSelectedItem("");
+        txtEspecialidad.setText("");
+        txtFechaEmision.setText("");
+        txtImporteTotal.setText("");
+        txtNumComprobante.setText("");
+        txtResponsable.setText("");
+        txtTaller.setText("");
+        txtTotal.setText("");
+        for(int i=0; i<modelo.getRowCount(); i++){
+            modelo.removeRow(i);
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+      DefaultTableModel modelo = (DefaultTableModel) tblDetalleRep.getModel();
+      EnvioTaller envio = new EnvioTaller();
+      envio.setFecha(modelo.getValueAt(0,0).toString());
+      envio.setResponsable(txtResponsable.getText());
+      envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
+      envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
+      gestorH.guardarObjeto(envio);
+      for(int i=0; i<modelo.getRowCount(); i++){
+            DetalleEnvio detalle = new DetalleEnvio();
+            detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
+            detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
+            detalle.setEnvio(envio);
+            gestorH.guardarObjeto(detalle);
+      }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaObservacion;
     private javax.swing.JButton btnAgregar;
@@ -413,7 +532,6 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
     private datechooser.beans.DateChooserCombo calendarioReparacion;
     private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbReparacion;
-    private javax.swing.JComboBox cmbTaller;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -441,5 +559,7 @@ public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtImporteTotal;
     private javax.swing.JTextField txtNumComprobante;
     private javax.swing.JTextField txtResponsable;
+    private javax.swing.JTextField txtTaller;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
