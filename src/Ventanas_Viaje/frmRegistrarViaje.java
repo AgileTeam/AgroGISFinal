@@ -51,28 +51,28 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
         //1) datos de puerto - 2) datos de establecimiento
-        scpPuerto.setVisible(false); //1
-        scpEstablecimiento.setVisible(true); //2
-        btnAgregarProd.setVisible(true); //2
-        btnAgregarPuerto.setVisible(false); //1
-        labelEstablecimiento.setVisible(true); //2
-        labelPuerto.setVisible(false); //1
-        txtPuerto.setVisible(false); //1
-        cmbEstablecimientoT.setVisible(true); //2
+        scpPuerto.setVisible(true); //1
+        scpEstablecimiento.setVisible(false); //2
+        btnAgregarProd.setVisible(false); //2
+        btnAgregarPuerto.setVisible(true); //1
+        labelEstablecimiento.setVisible(false); //2
+        labelPuerto.setVisible(true); //1
+        txtPuerto.setVisible(true); //1
+        cmbEstablecimientoT.setVisible(false); //2
         labelLocalidad.setVisible(true); //1 y 2
         txtLocalidad.setVisible(true); //1 y 2
-        labelDepto.setVisible(true); //2
-        labelProvincia.setVisible(false); //1
-        txtProvinciaT.setVisible(false); //1 
-        txtDeptoT.setVisible(true); //2
+        labelDepto.setVisible(false); //2
+        labelProvincia.setVisible(true); //1
+        txtProvinciaT.setVisible(true); //1 
+        txtDeptoT.setVisible(false); //2
         labelProductor.setVisible(true); //1 y 2
         txtProductor.setVisible(true); //1 y 2
         labelCereal.setVisible(true); //1 y 2
         cmbCereal.setVisible(true); //1 y 2
-        labelToneladasD.setVisible(true); //2
-        labelToneladasE.setVisible(false); //1
-        txtToneladasD.setVisible(true); //2
-        txtToneladasE.setVisible(false); //1
+        labelToneladasD.setVisible(false); //2
+        labelToneladasE.setVisible(true); //1
+        txtToneladasD.setVisible(false); //2
+        txtToneladasE.setVisible(true); //1
  
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
@@ -224,12 +224,6 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jLabel8.setText("Fecha Solicitud");
         jPanel9.add(jLabel8);
         jLabel8.setBounds(370, 60, 110, 20);
-
-        txtNumViaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumViajeActionPerformed(evt);
-            }
-        });
         jPanel9.add(txtNumViaje);
         txtNumViaje.setBounds(100, 30, 82, 20);
         jPanel9.add(txtEstado);
@@ -501,7 +495,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -511,10 +505,6 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNumViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumViajeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumViajeActionPerformed
 
     private void txtLocalidadEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalidadEstActionPerformed
         // TODO add your handling code here:
