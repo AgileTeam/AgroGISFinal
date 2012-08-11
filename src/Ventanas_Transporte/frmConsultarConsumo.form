@@ -202,7 +202,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="116" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="124" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -660,9 +660,6 @@
                   <Image iconType="3" name="/Imagenes/plus.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarTodosActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnQuitarTodos">
               <Properties>
@@ -670,9 +667,6 @@
                   <Image iconType="3" name="/Imagenes/delete.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuitarTodosActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
