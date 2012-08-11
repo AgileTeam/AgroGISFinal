@@ -10,23 +10,15 @@
  */
 package Ventanas_Transporte;
 
-import Clases_Modulo_Transporte.*;
-import Gestores_Vista.gestorRegistrarOrden;
-import Hibernate.GestorHibernate;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Iterator;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Charito
  */
 public class frmOrdenTaller extends javax.swing.JInternalFrame {
-GestorHibernate gestorH = new GestorHibernate();
-gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
+
     /** Creates new form frmOrdenTaller */
     public frmOrdenTaller() {
         initComponents();
@@ -48,81 +40,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
-        
-        DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
-        Iterator ite = gestorH.listarClase(Transportista.class).iterator();
-        while(ite.hasNext()){
-            Transportista trans = (Transportista) ite.next();
-            Object fila[] = {trans, trans.getNumeroDocumento()};
-            modeloT.addRow(fila);
-            tblTransportista.setModel(modeloT);
-        }
-        cmbTalleres.setModel(gestorO.rellenaComboTaller());
-        
-        cmbVehiculo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
-        }
-        }
-        );
-         txtDominio.setText(gestorO.rellenaTxtDominio((Vehiculo)cmbVehiculo.getSelectedItem()));
-         
-        cmbVehiculo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
-        }
-        }
-        );
-         txtAnioCompra.setText(gestorO.rellenaTxtAnio((Vehiculo)cmbVehiculo.getSelectedItem()));
-         
-        cmbVehiculo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
-        }
-        }
-        );
-        txtEstado.setText(gestorO.rellenaTxtEstado((Vehiculo)cmbVehiculo.getSelectedItem()));
-        
-        cmbTalleres.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtEspecialidad.setText(gestorO.rellenaTxtEspecialidad((TallerReparacion)cmbTalleres.getSelectedItem()));
-        }
-        }
-        );
-        txtEspecialidad.setText(gestorO.rellenaTxtEspecialidad((TallerReparacion)cmbTalleres.getSelectedItem()));
-        
-         cmbTalleres.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtDomicilio.setText(gestorO.rellenaTxtDomicilio((TallerReparacion)cmbTalleres.getSelectedItem()));
-        }
-        }
-        );
-        txtDomicilio.setText(gestorO.rellenaTxtDomicilio((TallerReparacion)cmbTalleres.getSelectedItem()));
-        
-        cmbTalleres.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtLocalidad.setText(gestorO.rellenaTxtLocalidad((TallerReparacion)cmbTalleres.getSelectedItem()));
-        }
-        }
-        );
-        txtLocalidad.setText(gestorO.rellenaTxtLocalidad((TallerReparacion)cmbTalleres.getSelectedItem()));
-    
-         cmbTalleres.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtDepartamento.setText(gestorO.rellenaTxtDepartamento((TallerReparacion)cmbTalleres.getSelectedItem()));
-        }
-        }
-        );
-         txtDepartamento.setText(gestorO.rellenaTxtDepartamento((TallerReparacion)cmbTalleres.getSelectedItem()));
-         
-         cmbTalleres.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtProvincia.setText(gestorO.rellenaTxtProvincia((TallerReparacion)cmbTalleres.getSelectedItem()));
-        }
-        }
-        );
-         txtProvincia.setText(gestorO.rellenaTxtProvincia((TallerReparacion)cmbTalleres.getSelectedItem()));
-    }
+  }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -150,7 +68,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         txtEstado = new javax.swing.JTextField();
         cmbVehiculo = new javax.swing.JComboBox();
         btnAgregarTransportista = new javax.swing.JButton();
-        labelTransportista = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtAnioCompra = new javax.swing.JTextField();
@@ -210,7 +128,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
 
         tblTransportista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Jose Torrea", "28.979.456"}
             },
             new String [] {
                 "Transportista", "Numero Documento"
@@ -249,22 +167,18 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         cmbVehiculo.setBounds(130, 180, 200, 20);
 
         btnAgregarTransportista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        btnAgregarTransportista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTransportistaActionPerformed(evt);
-            }
-        });
         jPanel2.add(btnAgregarTransportista);
         btnAgregarTransportista.setBounds(580, 70, 40, 30);
 
-        labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel2.add(labelTransportista);
-        labelTransportista.setBounds(320, 130, 250, 40);
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel16.setText("Jose Torrea");
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(360, 140, 110, 17);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(220, 140, 110, 17);
+        jLabel4.setBounds(260, 140, 110, 17);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(40, 170, 600, 10);
         jPanel2.add(txtAnioCompra);
@@ -281,6 +195,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         jPanel3.add(jLabel7);
         jLabel7.setBounds(10, 30, 120, 20);
 
+        cmbTalleres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "El Guri" }));
         jPanel3.add(cmbTalleres);
         cmbTalleres.setBounds(130, 30, 210, 20);
 
@@ -316,6 +231,12 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         jLabel12.setBounds(410, 90, 80, 20);
         jPanel3.add(txtProvincia);
         txtProvincia.setBounds(470, 90, 190, 20);
+
+        txtDomicilio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDomicilioActionPerformed(evt);
+            }
+        });
         jPanel3.add(txtDomicilio);
         txtDomicilio.setBounds(130, 60, 230, 20);
         jPanel3.add(jSeparator2);
@@ -343,11 +264,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
         btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnEmitirOrden.setText("Emitir Orden");
-        btnEmitirOrden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmitirOrdenActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -378,11 +294,15 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDomicilioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDomicilioActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
     int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
@@ -390,36 +310,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
     dispose();
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnAgregarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTransportistaActionPerformed
-        DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();
-        int fila= tblTransportista.getSelectedRow();
-        labelTransportista.setText(modeloT.getValueAt(fila, 0).toString());
-        cmbVehiculo.setModel(gestorO.rellenaComboVehiculo((Transportista)modeloT.getValueAt(fila,0)));
-    }//GEN-LAST:event_btnAgregarTransportistaActionPerformed
-
-    private void btnEmitirOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirOrdenActionPerformed
-        OrdenServicio orden = new OrdenServicio();
-        DetalleReparacion detalle = new DetalleReparacion();
-        EnvioTaller envio = new EnvioTaller();
-      
-        Iterator ite = gestorH.listarClase(TipoServicio.class).iterator();
-        while(ite.hasNext()){
-             TipoServicio tipoSer = (TipoServicio) ite.next();
-           if (tipoSer.getIdTipoServicio() == 1) {
-               orden.setTipoServicio(tipoSer);
-           }
-        }     
-        orden.setFecha(txtFecha.getText());
-        orden.setHora(txtHora.getText());
-        orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
-        orden.setEstado("Pendiente");
-        gestorH.guardarObjeto(orden);
-        envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
-        gestorH.guardarObjeto(envio);
-        detalle.setEnvioTaller(envio);
-        detalle.setOrden(orden);
-    }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDesperfecto;
@@ -435,6 +325,7 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -451,7 +342,6 @@ gestorRegistrarOrden gestorO = new gestorRegistrarOrden();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel labelTransportista;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtAnioCompra;
     private javax.swing.JTextField txtDepartamento;

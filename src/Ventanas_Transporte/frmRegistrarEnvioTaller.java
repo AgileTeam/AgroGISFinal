@@ -4,19 +4,10 @@
  */
 package Ventanas_Transporte;
 
-import Clases_Modulo_Transporte.ArregloEfectuado;
-import Clases_Modulo_Transporte.DetalleEnvio;
-import Clases_Modulo_Transporte.EnvioTaller;
-import Clases_Modulo_Transporte.OrdenServicio;
-import Gestores_Vista.gestorRegistrarEnvioAlTaller;
-import Hibernate.GestorHibernate;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -24,9 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Carolina
  */
 public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
-gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
-Double total;
-GestorHibernate gestorH = new GestorHibernate();
+
     /**
      * Creates new form frmRegistrarEnvioTaller
      */
@@ -38,8 +27,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
-        txtTotal.setEditable(false);
-        txtTotal.setEnabled(false);
         
         //configurar hora y fecha
         GregorianCalendar gc=new GregorianCalendar();
@@ -77,34 +64,6 @@ GestorHibernate gestorH = new GestorHibernate();
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
-        cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
-        
-        cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-        }
-        }
-        );
-        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-        
-        cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
-        }
-        }
-        );
-        txtTaller.setText(gRegistro.rellenaTxtTaller((OrdenServicio)cmbOrden.getSelectedItem()));
-        
-        cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
-        }
-        }
-        );
-            txtEspecialidad.setText(gRegistro.rellenaTxtEspecialidad((OrdenServicio)cmbOrden.getSelectedItem()));
-            
-       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
-      
     }
 
     /**
@@ -129,9 +88,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel5 = new javax.swing.JLabel();
         txtFechaEmision = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        cmbTaller = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtEspecialidad = new javax.swing.JTextField();
-        txtTaller = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         calendarioReparacion = new datechooser.beans.DateChooserCombo();
@@ -150,8 +109,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDetalleRep = new javax.swing.JTable();
         btnEliminarDetalle = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
@@ -183,9 +140,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel2.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Orden Pendiente Nº");
+        jLabel4.setText("Orden Nº");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 20, 140, 20);
+        jLabel4.setBounds(70, 20, 60, 20);
 
         jPanel2.add(cmbOrden);
         cmbOrden.setBounds(130, 20, 120, 20);
@@ -200,16 +157,17 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Taller de Reparacion");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(10, 50, 150, 20);
+        jLabel6.setBounds(10, 50, 130, 20);
+
+        jPanel2.add(cmbTaller);
+        cmbTaller.setBounds(130, 50, 210, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Especialidad");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(440, 50, 110, 20);
+        jLabel7.setBounds(440, 50, 80, 20);
         jPanel2.add(txtEspecialidad);
         txtEspecialidad.setBounds(520, 50, 150, 20);
-        jPanel2.add(txtTaller);
-        txtTaller.setBounds(130, 50, 260, 20);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Reparacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
@@ -252,19 +210,19 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Observaciones");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(50, 160, 100, 15);
+        jLabel14.setBounds(60, 170, 100, 15);
 
         areaObservacion.setColumns(20);
         areaObservacion.setRows(5);
         jScrollPane2.setViewportView(areaObservacion);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(140, 120, 550, 96);
+        jScrollPane2.setBounds(150, 120, 550, 96);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Importe: $ ");
+        jLabel15.setText("Importe Total: $ ");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(270, 90, 80, 20);
+        jLabel15.setBounds(250, 90, 100, 20);
 
         txtImporteTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,11 +240,6 @@ GestorHibernate gestorH = new GestorHibernate();
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(310, 230, 110, 30);
 
@@ -295,7 +248,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Fecha Reparacion", "Orden Nº", "Comprobante Nº", "Reparacion Efectuada", "Importe"
+                "Fecha", "Orden Nº", "Comprobante Nº", "Reparacion Efectuada", "Importe Total"
             }
         ));
         jScrollPane3.setViewportView(tblDetalleRep);
@@ -304,29 +257,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane3.setBounds(30, 280, 670, 100);
 
         btnEliminarDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnEliminarDetalle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarDetalleActionPerformed(evt);
-            }
-        });
         jPanel3.add(btnEliminarDetalle);
         btnEliminarDetalle.setBounds(710, 320, 49, 30);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setText("Total: $");
-        jPanel3.add(jLabel8);
-        jLabel8.setBounds(500, 390, 60, 14);
-        jPanel3.add(txtTotal);
-        txtTotal.setBounds(570, 390, 130, 20);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -344,11 +280,6 @@ GestorHibernate gestorH = new GestorHibernate();
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -357,6 +288,12 @@ GestorHibernate gestorH = new GestorHibernate();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 37, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -369,22 +306,17 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 37, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(105, 105, 105))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,13 +333,14 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -421,8 +354,8 @@ GestorHibernate gestorH = new GestorHibernate();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
@@ -469,58 +402,6 @@ GestorHibernate gestorH = new GestorHibernate();
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
-      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
-      modeloT.addRow(fila);
-      tblDetalleRep.setModel(modeloT);
-      for(int i=0; i<modeloT.getRowCount(); i++){
-           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
-           txtTotal.setText(total.toString());
-       }
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-      DefaultTableModel modelo = (DefaultTableModel) tblDetalleRep.getModel();
-      EnvioTaller envio = new EnvioTaller();
-      envio.setFecha(modelo.getValueAt(0,0).toString());
-      envio.setResponsable(txtResponsable.getText());
-      envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
-      envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
-      gestorH.guardarObjeto(envio);
-      for(int i=0; i<modelo.getRowCount(); i++){
-            DetalleEnvio detalle = new DetalleEnvio();
-            detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
-            detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
-            detalle.setEnvio(envio);
-            gestorH.guardarObjeto(detalle);
-      }
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) tblDetalleRep.getModel();
-        cmbOrden.setSelectedItem("");
-        txtEspecialidad.setText("");
-        txtFechaEmision.setText("");
-        txtImporteTotal.setText("");
-        txtNumComprobante.setText("");
-        txtResponsable.setText("");
-        txtTaller.setText("");
-        txtTotal.setText("");
-        for(int i=0; i<modelo.getRowCount(); i++){
-            modelo.removeRow(i);
-        }
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed
-    DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
-    modeloT.removeRow(tblDetalleRep.getSelectedRow());
-    for(int i=0; i<modeloT.getRowCount(); i++){
-       total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
-       txtTotal.setText(total.toString());
-       }
-    }//GEN-LAST:event_btnEliminarDetalleActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaObservacion;
     private javax.swing.JButton btnAgregar;
@@ -532,6 +413,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private datechooser.beans.DateChooserCombo calendarioReparacion;
     private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbReparacion;
+    private javax.swing.JComboBox cmbTaller;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -545,7 +427,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -560,7 +441,5 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtImporteTotal;
     private javax.swing.JTextField txtNumComprobante;
     private javax.swing.JTextField txtResponsable;
-    private javax.swing.JTextField txtTaller;
-    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
