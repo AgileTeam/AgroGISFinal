@@ -386,6 +386,11 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         ckTodosCons.setText("Todos");
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodosActionPerformed(evt);
+            }
+        });
 
         btnQuitarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
 
@@ -818,6 +823,12 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     dispose();
     }
 }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
+       if(ckFechaCons.isSelected()==true){
+           calendarioDCons.setEnabled(true);
+       }
+    }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTranspC;

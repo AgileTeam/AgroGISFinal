@@ -660,6 +660,9 @@
                   <Image iconType="3" name="/Imagenes/plus.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarTodosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnQuitarTodos">
               <Properties>
