@@ -86,7 +86,13 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-        
+        calendarioDCons.setEnabled(false);
+        calendarioHCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
+        cmbOperacion.setEnabled(false);
         
         
     }
@@ -825,7 +831,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
-       if(ckFechaCons.isSelected()==true){
+       if(ckFechaCons.isSelected()){
            calendarioDCons.setEnabled(true);
        }
     }//GEN-LAST:event_btnAceptarTodosActionPerformed
