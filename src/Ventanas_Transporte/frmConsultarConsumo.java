@@ -86,8 +86,19 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
+        calendarioDCons.setEnabled(false);
+        calendarioHCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
+        cmbOperacion.setEnabled(false);
         
-        
+        if(ckFechaCons.isSelected()==true){
+            calendarioDCons.setEnabled(true);
+        } else{
+            calendarioDCons.setEnabled(false);
+        }
         
     }
 
@@ -377,11 +388,21 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         btnBuscarConsumo.setText("Buscar");
 
         ckOrdenCons.setText("Número Orden");
+        ckOrdenCons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckOrdenConsActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("Buscar Ordenes por");
 
         ckFechaCons.setText("Fecha");
+        ckFechaCons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckFechaConsActionPerformed(evt);
+            }
+        });
 
         ckTranspCons.setText("Transportista");
 
@@ -444,7 +465,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                                         .addGap(39, 39, 39)
                                         .addComponent(ckTodosCons)
                                         .addGap(28, 28, 28)))))
-                        .addGap(0, 117, Short.MAX_VALUE)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -822,7 +843,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                         .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 471, Short.MAX_VALUE))
+                        .addGap(0, 369, Short.MAX_VALUE))
                     .addComponent(panelConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -846,6 +867,14 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     dispose();
     }
 }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void ckFechaConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckFechaConsActionPerformed
+        calendarioDCons.setEnabled(true);
+    }//GEN-LAST:event_ckFechaConsActionPerformed
+
+    private void ckOrdenConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckOrdenConsActionPerformed
+        txtOrdenCons.setEnabled(true);
+    }//GEN-LAST:event_ckOrdenConsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTranspC;

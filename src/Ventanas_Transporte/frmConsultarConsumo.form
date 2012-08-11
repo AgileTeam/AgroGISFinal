@@ -34,7 +34,7 @@
                       <Component id="btnVerOrden" min="-2" pref="104" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSalir" min="-2" pref="104" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="471" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="369" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelConsumo" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -132,7 +132,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -587,6 +587,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero Orden"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckOrdenConsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -600,6 +603,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fecha"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckFechaConsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckTranspCons">
               <Properties>
