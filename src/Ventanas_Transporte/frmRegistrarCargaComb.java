@@ -164,7 +164,7 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDetalleCarga = new javax.swing.JTable();
         btnEliminarDetalle = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
@@ -383,9 +383,9 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         jPanel3.add(btnEliminarDetalle);
         btnEliminarDetalle.setBounds(700, 220, 47, 30);
 
-        jTextField1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel3.add(jTextField1);
-        jTextField1.setBounds(590, 290, 100, 20);
+        txtTotal.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel3.add(txtTotal);
+        txtTotal.setBounds(590, 290, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel7.setText("TOTAL  $");
@@ -435,7 +435,7 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -557,7 +557,6 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelLitros;
     private javax.swing.JLabel labelPrecioLitro;
     private javax.swing.JLabel labelPrecioU;
@@ -574,5 +573,6 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     private javax.swing.JTextField txtOperacion;
     private javax.swing.JTextField txtPrecioLitro;
     private javax.swing.JTextField txtResponsable;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
