@@ -16,11 +16,9 @@ import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.TimeZone;
+import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,7 +27,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Charito
  */
 public class frmConsultarConsumo extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+        
     /** Creates new form frmActualizarConsumo */
     public frmConsultarConsumo() {
         initComponents();
@@ -87,7 +86,12 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         this.setLocation(posX, 0);
         
         calendarioDCons.setEnabled(false);
-                
+        calendarioHCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
+        cmbOperacion.setEnabled(false);
         
         
         
@@ -371,6 +375,11 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         btnBuscarConsumo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarConsumo.setText("Buscar");
+        btnBuscarConsumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarConsumoActionPerformed(evt);
+            }
+        });
 
         ckOrdenCons.setText("Número Orden");
 
@@ -465,7 +474,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -762,12 +771,12 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 907, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 46, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 47, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -806,7 +815,7 @@ public class frmConsultarConsumo extends javax.swing.JInternalFrame {
                         .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 447, Short.MAX_VALUE))
+                        .addGap(0, 288, Short.MAX_VALUE))
                     .addComponent(panelConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -834,13 +843,113 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
       if(ckFechaCons.isSelected()){
           calendarioDCons.setEnabled(true);
+          calendarioHCons.setEnabled(true);
+      }
+      if(ckImporteCons.isSelected()){
+          txtImporteCons.setEnabled(true);
+      }
+      if(ckOperacion.isSelected()){
+          cmbOperacion.setEnabled(true);
+      }
+      if(ckOrdenCons.isSelected()){
+          txtOrdenCons.setEnabled(true);
+      }
+      if(ckTranspCons.isSelected()){
+          btnAgregarTranspC.setEnabled(true);
+          btnQuitarTranspC.setEnabled(true);
+      }
+      if(ckTodosCons.isSelected()){
+        calendarioDCons.setEnabled(true);
+        calendarioHCons.setEnabled(true);
+        txtImporteCons.setEnabled(true);
+        txtOrdenCons.setEnabled(true);
+        btnAgregarTranspC.setEnabled(true);
+        btnQuitarTranspC.setEnabled(true);
+        cmbOperacion.setEnabled(true);
       }
     }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
     private void btnQuitarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosActionPerformed
         calendarioDCons.setEnabled(false);
+        calendarioHCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
+        cmbOperacion.setEnabled(false);
     }//GEN-LAST:event_btnQuitarTodosActionPerformed
 
+    private void btnBuscarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumoActionPerformed
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+        Date fecha1 = sdf.parse(calendarioDCons.getText() , new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHCons.getText() , new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblConsumo.getModel();
+        //Verifico que este seleccionada la opcion de fecha
+        if(calendarioDCons.isEnabled()){
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while(ite.hasNext()){
+            int banderaFecha=0;
+            OrdenServicio orden =(OrdenServicio) ite.next();
+            //Verifico que la orden no este en la tabla previamente cargada
+                for(int i=0; i<modeloT.getRowCount(); i++){
+                    if(orden.getNumeroOrden()== modeloT.getValueAt(i, 1)){
+                        banderaFecha=1;   
+                    }
+                }
+            //La orden no esta cargada
+            if(banderaFecha==0){
+            Date fecha2 = sdf.parse(orden.getFecha() , new ParsePosition(0));
+            Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+            //Busco el objeto carga para traer el importe de la orden
+            while(ite2.hasNext()){
+            CargaCombustible carga = (CargaCombustible) ite2.next();
+                //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
+                if((carga.getOrdenServicio()== orden) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+            
+            }
+        }
+      }
+       //Verifico que este seleccionada la opcion de Numero de orden
+        if(txtOrdenCons.isEnabled()){
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while(ite.hasNext()){
+            int banderaFecha=0;
+            OrdenServicio orden =(OrdenServicio) ite.next();
+            //Verifico que la orden no este en la tabla previamente cargada
+                for(int i=0; i<modeloT.getRowCount(); i++){
+                    if(orden.getNumeroOrden()== modeloT.getValueAt(i, 1)){
+                        banderaFecha=1;   
+                    }
+                }
+            //La orden no esta cargada
+            if(banderaFecha==0){  
+            Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+            //Busco el objeto carga para traer el importe de la orden
+            while(ite2.hasNext()){
+            CargaCombustible carga = (CargaCombustible) ite2.next();
+                //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
+                if((carga.getOrdenServicio()== orden) && ((String.valueOf(orden.getNumeroOrden()))== txtOrdenCons.getText())){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+                
+            }
+            }
+        }
+    }//GEN-LAST:event_btnBuscarConsumoActionPerformed
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTranspC;
     private javax.swing.JTextArea areaTranspRep;
