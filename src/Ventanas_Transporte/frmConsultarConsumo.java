@@ -19,6 +19,7 @@ import java.awt.*;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -131,8 +132,8 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbTranspCons = new javax.swing.JComboBox();
         btnAgregarTranspC = new javax.swing.JButton();
         btnQuitarTranspC = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        areaTranspC = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstTransportista = new javax.swing.JList();
         jPanel9 = new javax.swing.JPanel();
         cmbOperacion = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -298,9 +299,7 @@ GestorHibernate gestorH = new GestorHibernate();
         btnQuitarTranspC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnQuitarTranspC.setText("<");
 
-        areaTranspC.setColumns(20);
-        areaTranspC.setRows(5);
-        jScrollPane2.setViewportView(areaTranspC);
+        jScrollPane3.setViewportView(lstTransportista);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -312,9 +311,9 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnQuitarTranspC)
                     .addComponent(btnAgregarTranspC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,8 +326,8 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(btnQuitarTranspC)
                 .addContainerGap())
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -506,16 +505,16 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(btnBuscarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
         );
 
         panelConsumo.addTab("Consumo", jPanel1);
@@ -771,12 +770,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 907, Short.MAX_VALUE)
+            .addGap(0, 937, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 15, Short.MAX_VALUE)
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 15, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -815,7 +814,7 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 288, Short.MAX_VALUE))
+                        .addGap(0, 384, Short.MAX_VALUE))
                     .addComponent(panelConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -947,11 +946,127 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
             }
         }
+        
+         //Verifico que este seleccionada la opcion de Numero de orden
+        if(txtImporteCons.isEnabled()){
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while(ite.hasNext()){
+            int banderaFecha=0;
+            OrdenServicio orden =(OrdenServicio) ite.next();
+            //Verifico que la orden no este en la tabla previamente cargada
+                for(int i=0; i<modeloT.getRowCount(); i++){
+                    if(orden.getNumeroOrden()== modeloT.getValueAt(i, 1)){
+                        banderaFecha=1;   
+                    }
+                }
+            //La orden no esta cargada
+            if(banderaFecha==0){  
+            Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+            //Busco el objeto carga para traer el importe de la orden
+            while(ite2.hasNext()){
+            CargaCombustible carga = (CargaCombustible) ite2.next();
+                if(cmbImporteCons.getSelectedItem()== ">="){
+                //Comparo que el importe para traer la orden correspondiente comparo el operador
+                if((carga.getOrdenServicio()== orden)&& (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText()) )){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+                if(cmbImporteCons.getSelectedItem()== "="){
+                //Comparo que el importe para traer la orden correspondiente comparo el operador
+                if((carga.getOrdenServicio()== orden)&& (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText()) )){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+                if(cmbImporteCons.getSelectedItem()== "<="){
+                //Comparo que el importe para traer la orden correspondiente comparo el operador
+                if((carga.getOrdenServicio()== orden)&& (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText()) )){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+            }
+            }
+            }
+        }
+        
+         //Verifico que este seleccionada la opcion de Numero de orden
+        if(cmbOperacion.isEnabled()){
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while(ite.hasNext()){
+            int banderaFecha=0;
+            OrdenServicio orden =(OrdenServicio) ite.next();
+            //Verifico que la orden no este en la tabla previamente cargada
+                for(int i=0; i<modeloT.getRowCount(); i++){
+                    if(orden.getNumeroOrden()== modeloT.getValueAt(i, 1)){
+                        banderaFecha=1;   
+                    }
+                }
+            //La orden no esta cargada
+            if(banderaFecha==0){  
+            Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+            //Busco el objeto carga para traer el importe de la orden
+            while(ite2.hasNext()){
+            CargaCombustible carga = (CargaCombustible) ite2.next();
+                //Comparo que el importe para traer la orden correspondiente
+                if((carga.getOrdenServicio()== orden) && (orden.getTipoServicio() == cmbOperacion.getSelectedItem())){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+                
+            }
+            }
+        }
+        
+        //Verifico que este seleccionada la opcion de Numero de orden
+        if(btnAgregarTranspC.isEnabled()){
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while(ite.hasNext()){
+            int banderaFecha=0;
+            OrdenServicio orden =(OrdenServicio) ite.next();
+            //Verifico que la orden no este en la tabla previamente cargada
+                for(int i=0; i<modeloT.getRowCount(); i++){
+                    if(orden.getNumeroOrden()== modeloT.getValueAt(i, 1)){
+                        banderaFecha=1;   
+                    }
+                }
+            //La orden no esta cargada
+            if(banderaFecha==0){  
+            Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+            //Busco el objeto carga para traer el importe de la orden
+            while(ite2.hasNext()){
+            CargaCombustible carga = (CargaCombustible) ite2.next();
+            for(int i=0; i<lstTransportista.getModel().getSize(); i++){
+                //Comparo que el importe para traer la orden correspondiente
+                if((carga.getOrdenServicio()== orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))){
+                //Guardo el objeto orden en la tabla
+                Object fila[]= {orden.getFecha(),orden.getNumeroOrden(),orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
+                modeloT.addRow(fila);
+                tblConsumo.setModel(modeloT);
+                }
+            }
+            } 
+            }
+            }
+        }
+        
     }//GEN-LAST:event_btnBuscarConsumoActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaTranspC;
     private javax.swing.JTextArea areaTranspRep;
     private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAgregarTranspC;
@@ -1015,7 +1130,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
@@ -1024,6 +1139,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JList lstTransportista;
     private javax.swing.JTabbedPane panelConsumo;
     private javax.swing.JTable tblConsumo;
     private javax.swing.JTable tblReparacion;
