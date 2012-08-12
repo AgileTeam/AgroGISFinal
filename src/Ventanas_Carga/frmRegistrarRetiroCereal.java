@@ -139,7 +139,6 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         ckFecha = new javax.swing.JCheckBox();
         ckNumSolicitud = new javax.swing.JCheckBox();
         ckProductor = new javax.swing.JCheckBox();
-        ckTodos = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -150,6 +149,8 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         txtNumSolicitud = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
+        btnAceptarTodos1 = new javax.swing.JButton();
+        btnAceptarTodos = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -317,34 +318,34 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Solicitudes Pendientes por", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Solicitudes Pendientes por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jPanel1.setLayout(null);
 
         btnBuscarSolicitud.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarSolicitud.setText("Buscar");
+        btnBuscarSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarSolicitudActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBuscarSolicitud);
-        btnBuscarSolicitud.setBounds(330, 140, 104, 30);
+        btnBuscarSolicitud.setBounds(380, 110, 104, 30);
 
-        ckFecha.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha Emision");
         jPanel1.add(ckFecha);
-        ckFecha.setBounds(60, 20, 110, 23);
+        ckFecha.setBounds(10, 30, 110, 23);
 
-        ckNumSolicitud.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckNumSolicitud.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckNumSolicitud.setText("Numero Solicitud");
         jPanel1.add(ckNumSolicitud);
-        ckNumSolicitud.setBounds(250, 20, 130, 23);
+        ckNumSolicitud.setBounds(10, 50, 130, 23);
 
-        ckProductor.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
         jPanel1.add(ckProductor);
-        ckProductor.setBounds(470, 20, 81, 23);
-
-        ckTodos.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckTodos.setText("Todos");
-        jPanel1.add(ckTodos);
-        ckTodos.setBounds(640, 20, 61, 23);
+        ckProductor.setBounds(10, 70, 100, 23);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -364,7 +365,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         calendarioDSolicitud.setBounds(70, 20, 90, 20);
 
         jPanel1.add(jPanel10);
-        jPanel10.setBounds(40, 40, 200, 90);
+        jPanel10.setBounds(140, 20, 200, 90);
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Solicitud", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
@@ -377,7 +378,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         txtNumSolicitud.setBounds(50, 40, 120, 20);
 
         jPanel1.add(jPanel12);
-        jPanel12.setBounds(270, 40, 200, 90);
+        jPanel12.setBounds(340, 20, 200, 90);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
@@ -386,7 +387,15 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         cmbProductor.setBounds(20, 40, 200, 20);
 
         jPanel1.add(jPanel13);
-        jPanel13.setBounds(490, 40, 240, 90);
+        jPanel13.setBounds(540, 20, 240, 90);
+
+        btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        jPanel1.add(btnAceptarTodos1);
+        btnAceptarTodos1.setBounds(20, 100, 30, 30);
+
+        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        jPanel1.add(btnAceptarTodos);
+        btnAceptarTodos.setBounds(60, 100, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,9 +406,11 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -412,7 +423,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -420,20 +431,21 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -486,12 +498,18 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void btnAceptarSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarSolicitud1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarSolicitud1ActionPerformed
+
+    private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarSolicitudActionPerformed
    
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarSolicitud1;
+    private javax.swing.JButton btnAceptarTodos;
+    private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAceptarVehiculo;
     private javax.swing.JButton btnBuscarSolicitud;
     private javax.swing.JButton btnCancelar;
@@ -501,7 +519,6 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumSolicitud;
     private javax.swing.JCheckBox ckProductor;
-    private javax.swing.JCheckBox ckTodos;
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

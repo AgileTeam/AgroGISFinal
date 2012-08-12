@@ -56,7 +56,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 920;
+        int ancho = 940;
         int alto = 635;
         this.setSize(ancho, alto);
         this.setLocation(200, 0);
@@ -80,8 +80,6 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMuestra = new javax.swing.JTable();
         btnAceptarMuestra = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -108,11 +106,6 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        ckFecha = new javax.swing.JCheckBox();
-        ckProductor = new javax.swing.JCheckBox();
-        ckNumMuestra = new javax.swing.JCheckBox();
-        ckTodos = new javax.swing.JCheckBox();
-        btnBuscarMuestra = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -123,6 +116,14 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtNumMuestra = new javax.swing.JTextField();
+        btnAceptarTodos = new javax.swing.JButton();
+        btnAceptarTodos1 = new javax.swing.JButton();
+        ckFechaCons = new javax.swing.JCheckBox();
+        ckFechaCons1 = new javax.swing.JCheckBox();
+        ckFechaCons3 = new javax.swing.JCheckBox();
+        btnBuscarMuestra = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMuestra = new javax.swing.JTable();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -153,16 +154,6 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jLabel48.setBounds(820, 0, 32, 32);
         jPanel3.add(txtHora);
         txtHora.setBounds(210, 10, 70, 20);
-
-        tblMuestra.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Fecha", "Nº Muestra", "Productor"
-            }
-        ));
-        jScrollPane1.setViewportView(tblMuestra);
 
         btnAceptarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
 
@@ -256,34 +247,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Muestras por", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
-        jPanel2.setLayout(null);
-
-        ckFecha.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckFecha.setText("Fecha");
-        jPanel2.add(ckFecha);
-        ckFecha.setBounds(80, 20, 80, 23);
-
-        ckProductor.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckProductor.setText("Productor");
-        jPanel2.add(ckProductor);
-        ckProductor.setBounds(290, 20, 110, 23);
-
-        ckNumMuestra.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckNumMuestra.setText("Nº Muestra");
-        jPanel2.add(ckNumMuestra);
-        ckNumMuestra.setBounds(510, 20, 100, 23);
-
-        ckTodos.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckTodos.setText("Todos");
-        jPanel2.add(ckTodos);
-        ckTodos.setBounds(720, 20, 80, 23);
-
-        btnBuscarMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnBuscarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        btnBuscarMuestra.setText("Buscar");
-        jPanel2.add(btnBuscarMuestra);
-        btnBuscarMuestra.setBounds(380, 130, 104, 30);
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Muestras por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -302,17 +266,11 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jPanel10.add(calendarioDMuestra);
         calendarioDMuestra.setBounds(80, 20, 90, 20);
 
-        jPanel2.add(jPanel10);
-        jPanel10.setBounds(40, 40, 230, 90);
-
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
 
         jPanel13.add(cmbProductor);
         cmbProductor.setBounds(40, 40, 200, 20);
-
-        jPanel2.add(jPanel13);
-        jPanel13.setBounds(300, 40, 280, 90);
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
@@ -324,62 +282,150 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jPanel12.add(txtNumMuestra);
         txtNumMuestra.setBounds(50, 40, 120, 20);
 
-        jPanel2.add(jPanel12);
-        jPanel12.setBounds(610, 40, 220, 90);
+        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+
+        btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodos1ActionPerformed(evt);
+            }
+        });
+
+        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaCons.setText("Productor");
+        ckFechaCons.setContentAreaFilled(false);
+        ckFechaCons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckFechaCons.setFocusPainted(false);
+
+        ckFechaCons1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaCons1.setText("Nº Muestra");
+        ckFechaCons1.setContentAreaFilled(false);
+        ckFechaCons1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckFechaCons1.setFocusPainted(false);
+
+        ckFechaCons3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaCons3.setText("Fecha");
+        ckFechaCons3.setContentAreaFilled(false);
+        ckFechaCons3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckFechaCons3.setFocusPainted(false);
+        ckFechaCons3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckFechaCons3ActionPerformed(evt);
+            }
+        });
+
+        btnBuscarMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnBuscarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        btnBuscarMuestra.setText("Buscar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnAceptarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(296, 296, 296)
+                        .addComponent(btnBuscarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ckFechaCons3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ckFechaCons1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ckFechaCons, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ckFechaCons3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckFechaCons)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ckFechaCons1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAceptarTodos1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tblMuestra.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha", "Nº Muestra", "Productor"
+            }
+        ));
+        jScrollPane1.setViewportView(tblMuestra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(64, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAceptarMuestra)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelar)
-                                .addGap(312, 312, 312))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminarEnvio))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(381, 381, 381)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAceptarMuestra)
+                                    .addComponent(btnEliminarEnvio, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(304, 304, 304)
+                                .addComponent(btnGuardar)
+                                .addGap(2, 2, 2)
+                                .addComponent(btnNuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(402, 402, 402)
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(43, 43, 43)
                         .addComponent(btnAceptarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -388,26 +434,37 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(863, 863, 863))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(btnEliminarEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGap(88, 88, 88)
+                        .addComponent(btnEliminarEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ckFechaCons3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckFechaCons3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckFechaCons3ActionPerformed
+
+    private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarMuestra;
+    private javax.swing.JButton btnAceptarTodos;
+    private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscarMuestra;
     private javax.swing.JButton btnCancelar;
@@ -417,10 +474,9 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
     private datechooser.beans.DateChooserCombo calendarioDMuestra;
     private datechooser.beans.DateChooserCombo calendarioEnvio;
     private datechooser.beans.DateChooserCombo calendarioHMuestra;
-    private javax.swing.JCheckBox ckFecha;
-    private javax.swing.JCheckBox ckNumMuestra;
-    private javax.swing.JCheckBox ckProductor;
-    private javax.swing.JCheckBox ckTodos;
+    private javax.swing.JCheckBox ckFechaCons;
+    private javax.swing.JCheckBox ckFechaCons1;
+    private javax.swing.JCheckBox ckFechaCons3;
     private javax.swing.JComboBox cmbCereal;
     private javax.swing.JComboBox cmbEspecialidad;
     private javax.swing.JComboBox cmbEstablecimiento;

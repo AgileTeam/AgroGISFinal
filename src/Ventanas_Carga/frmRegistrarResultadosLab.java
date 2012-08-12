@@ -53,7 +53,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 1150;
+        int ancho = 1210;
         int alto = 630;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
@@ -92,7 +92,6 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         ckProductor = new javax.swing.JCheckBox();
         ckTransportista = new javax.swing.JCheckBox();
         ckEstablecimiento = new javax.swing.JCheckBox();
-        ckTodos = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
         cmbEstablecimiento = new javax.swing.JComboBox();
         jPanel10 = new javax.swing.JPanel();
@@ -108,6 +107,8 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jPanel14 = new javax.swing.JPanel();
         jComboBox3 = new javax.swing.JComboBox();
         btnBuscarViaje = new javax.swing.JButton();
+        btnAceptarTodos1 = new javax.swing.JButton();
+        btnAceptarTodos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -211,38 +212,33 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
 
         btnAceptarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Viajes Finalizados por", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Viajes Finalizados por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jPanel5.setLayout(null);
 
-        ckFecha.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha");
         jPanel5.add(ckFecha);
-        ckFecha.setBounds(60, 20, 60, 23);
+        ckFecha.setBounds(10, 30, 60, 23);
 
-        ckNumViaje.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckNumViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckNumViaje.setText("Numero Viaje");
         jPanel5.add(ckNumViaje);
-        ckNumViaje.setBounds(180, 20, 110, 23);
+        ckNumViaje.setBounds(10, 50, 110, 23);
 
-        ckProductor.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
         jPanel5.add(ckProductor);
-        ckProductor.setBounds(330, 20, 90, 23);
+        ckProductor.setBounds(10, 70, 90, 23);
 
-        ckTransportista.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckTransportista.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckTransportista.setText("Transportista");
         jPanel5.add(ckTransportista);
-        ckTransportista.setBounds(460, 20, 120, 23);
+        ckTransportista.setBounds(10, 90, 120, 23);
 
-        ckEstablecimiento.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        ckEstablecimiento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckEstablecimiento.setText("Establecimiento");
         jPanel5.add(ckEstablecimiento);
-        ckEstablecimiento.setBounds(600, 20, 120, 23);
-
-        ckTodos.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        ckTodos.setText("Todos");
-        jPanel5.add(ckTodos);
-        ckTodos.setBounds(740, 20, 81, 23);
+        ckEstablecimiento.setBounds(10, 110, 120, 23);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel9.setLayout(null);
@@ -251,7 +247,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         cmbEstablecimiento.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel9);
-        jPanel9.setBounds(570, 50, 240, 90);
+        jPanel9.setBounds(930, 30, 240, 90);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -271,7 +267,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         calendarioDViaje.setBounds(50, 20, 90, 20);
 
         jPanel5.add(jPanel10);
-        jPanel10.setBounds(10, 50, 160, 90);
+        jPanel10.setBounds(130, 30, 160, 90);
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
@@ -284,7 +280,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         txtNumViaje.setBounds(40, 40, 100, 20);
 
         jPanel5.add(jPanel12);
-        jPanel12.setBounds(170, 50, 160, 90);
+        jPanel12.setBounds(290, 30, 160, 90);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
@@ -293,7 +289,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         cmbProductor.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel13);
-        jPanel13.setBounds(330, 50, 240, 90);
+        jPanel13.setBounds(450, 30, 240, 90);
 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel14.setLayout(null);
@@ -302,13 +298,21 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jComboBox3.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel14);
-        jPanel14.setBounds(810, 50, 240, 90);
+        jPanel14.setBounds(690, 30, 240, 90);
 
         btnBuscarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarViaje.setText("Buscar");
         jPanel5.add(btnBuscarViaje);
-        btnBuscarViaje.setBounds(500, 150, 100, 30);
+        btnBuscarViaje.setBounds(560, 140, 100, 30);
+
+        btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        jPanel5.add(btnAceptarTodos1);
+        btnAceptarTodos1.setBounds(30, 140, 30, 30);
+
+        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        jPanel5.add(btnAceptarTodos);
+        btnAceptarTodos.setBounds(70, 140, 30, 30);
 
         jPanel4.setLayout(null);
 
@@ -446,39 +450,35 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(229, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(26, 57, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(356, 356, 356))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(356, 356, 356))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Datos Muestra", jPanel2);
@@ -692,19 +692,19 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(157, 157, 157)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                        .addGap(238, 238, 238)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -720,8 +720,8 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(jLabel2)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -729,9 +729,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,16 +766,14 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(434, 434, 434)
+                .addGap(505, 505, 505)
                 .addComponent(btnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -788,7 +784,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -834,6 +830,8 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton botonMaiz;
     private javax.swing.JRadioButton botonSoja;
     private javax.swing.JRadioButton botonTrigo;
+    private javax.swing.JButton btnAceptarTodos;
+    private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAceptarViaje;
     private javax.swing.JButton btnBuscarViaje;
     private javax.swing.JButton btnCancelar;
@@ -847,7 +845,6 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumViaje;
     private javax.swing.JCheckBox ckProductor;
-    private javax.swing.JCheckBox ckTodos;
     private javax.swing.JCheckBox ckTransportista;
     private javax.swing.JComboBox cmbEspecialidad;
     private javax.swing.JComboBox cmbEstablecimiento;
