@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
 gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
-Double total;
     /**
      * Creates new form frmRegistrarCargaComb
      */
@@ -75,33 +74,33 @@ Double total;
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
         
-         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
-        
-          cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-        }
-        }
-        );
-        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-        
-        cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
-        }
-        }
-        );
-        txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
-        
-        cmbOrden.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0){
-            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
-        }
-        }
-        );
-            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
-            
-       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+//         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+//        
+//          cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+//        }
+//        }
+//        );
+//        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+//        
+//        cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        }
+//        }
+//        );
+//        txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        
+//        cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        }
+//        }
+//        );
+//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//            
+//       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
        
        if(txtOperacion.getText() == "Carga Combustible"){
             labelLitros.setVisible(true);
@@ -165,7 +164,7 @@ Double total;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDetalleCarga = new javax.swing.JTable();
         btnEliminarDetalle = new javax.swing.JButton();
-        txtTotal = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
@@ -384,9 +383,9 @@ Double total;
         jPanel3.add(btnEliminarDetalle);
         btnEliminarDetalle.setBounds(700, 220, 47, 30);
 
-        txtTotal.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel3.add(txtTotal);
-        txtTotal.setBounds(590, 290, 100, 20);
+        jTextField1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel3.add(jTextField1);
+        jTextField1.setBounds(590, 290, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel7.setText("TOTAL  $");
@@ -425,7 +424,7 @@ Double total;
             .addGroup(layout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -436,7 +435,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,14 +512,14 @@ Double total;
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
-      Object fila []= {calendarioFU.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),txtOperacion.getText(),cmbProducto.getSelectedItem(),txtImporteTotal.getText()};
-      modeloT.addRow(fila);
-      tblDetalleCarga.setModel(modeloT);
-      for(int i=0; i<modeloT.getRowCount(); i++){
-           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
-           txtTotal.setText(total.toString());
-       }
+//      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+//      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
+//      modeloT.addRow(fila);
+//      tblDetalleRep.setModel(modeloT);
+//      for(int i=0; i<modeloT.getRowCount(); i++){
+//           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+//           txtTotal.setText(total.toString());
+//       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtPrecioLitroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioLitroKeyReleased
@@ -558,6 +557,7 @@ Double total;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelLitros;
     private javax.swing.JLabel labelPrecioLitro;
     private javax.swing.JLabel labelPrecioU;
@@ -574,6 +574,5 @@ Double total;
     private javax.swing.JTextField txtOperacion;
     private javax.swing.JTextField txtPrecioLitro;
     private javax.swing.JTextField txtResponsable;
-    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
