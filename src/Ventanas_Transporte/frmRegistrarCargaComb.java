@@ -4,17 +4,22 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.OrdenServicio;
+import Gestores_Vista.gestorRegistrarCargaComb;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
-
+gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     /**
      * Creates new form frmRegistrarCargaComb
      */
@@ -69,9 +74,48 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
         
-        
-        
-        
+//         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+//        
+//          cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+//        }
+//        }
+//        );
+//        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+//        
+//        cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        }
+//        }
+//        );
+//        txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        
+//        cmbOrden.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent arg0){
+//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//        }
+//        }
+//        );
+//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+//            
+//       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+       
+       if(txtOperacion.getText() == "Carga Combustible"){
+            labelLitros.setVisible(true);
+            labelPrecioLitro.setVisible(true);
+            labelUnidades.setVisible(false);
+            labelPrecioU.setVisible(false);
+                    
+       }else{
+            labelLitros.setVisible(false);
+            labelPrecioLitro.setVisible(false);
+            labelUnidades.setVisible(true);
+            labelPrecioU.setVisible(true);
+       }
+       
+       
     }
 
     /**
@@ -96,9 +140,9 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtFechaEmision = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cmbEstacion = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         txtOperacion = new javax.swing.JTextField();
+        txtEstacion = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         calendarioFU = new datechooser.beans.DateChooserCombo();
@@ -184,15 +228,14 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel8);
         jLabel8.setBounds(10, 50, 140, 20);
 
-        jPanel2.add(cmbEstacion);
-        cmbEstacion.setBounds(130, 50, 230, 20);
-
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Operacion");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(450, 50, 60, 20);
         jPanel2.add(txtOperacion);
         txtOperacion.setBounds(510, 50, 150, 20);
+        jPanel2.add(txtEstacion);
+        txtEstacion.setBounds(130, 50, 260, 20);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(40, 50, 690, 90);
@@ -219,6 +262,13 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         labelLitros.setText("Litros cargados");
         jPanel3.add(labelLitros);
         labelLitros.setBounds(40, 60, 110, 20);
+
+        txtLitrosCargados.setText("0");
+        txtLitrosCargados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtLitrosCargadosKeyReleased(evt);
+            }
+        });
         jPanel3.add(txtLitrosCargados);
         txtLitrosCargados.setBounds(130, 60, 100, 20);
 
@@ -227,7 +277,11 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         jPanel3.add(labelPrecioLitro);
         labelPrecioLitro.setBounds(250, 60, 120, 20);
 
+        txtPrecioLitro.setText("0");
         txtPrecioLitro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPrecioLitroKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioLitroKeyTyped(evt);
             }
@@ -287,6 +341,11 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(300, 140, 110, 30);
 
@@ -372,7 +431,7 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         pack();
@@ -441,6 +500,25 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
     }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+//      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+//      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
+//      modeloT.addRow(fila);
+//      tblDetalleRep.setModel(modeloT);
+//      for(int i=0; i<modeloT.getRowCount(); i++){
+//           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+//           txtTotal.setText(total.toString());
+//       }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtPrecioLitroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioLitroKeyReleased
+      txtImporteTotal.setText(String.valueOf(Double.parseDouble(txtLitrosCargados.getText()) * Double.parseDouble(txtPrecioLitro.getText())));
+    }//GEN-LAST:event_txtPrecioLitroKeyReleased
+
+    private void txtLitrosCargadosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLitrosCargadosKeyReleased
+      txtImporteTotal.setText(String.valueOf(Double.parseDouble(txtLitrosCargados.getText()) * Double.parseDouble(txtPrecioLitro.getText())));
+    }//GEN-LAST:event_txtLitrosCargadosKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
@@ -449,7 +527,6 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnNuevo;
     private datechooser.beans.DateChooserCombo calendarioFU;
-    private javax.swing.JComboBox cmbEstacion;
     private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbProducto;
     private javax.swing.JLabel jLabel1;
@@ -474,6 +551,7 @@ public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelUnidades;
     private javax.swing.JLabel labelmporte;
     private javax.swing.JTable tblDetalleCarga;
+    private javax.swing.JTextField txtEstacion;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFechaEmision;
     private javax.swing.JTextField txtHora;
