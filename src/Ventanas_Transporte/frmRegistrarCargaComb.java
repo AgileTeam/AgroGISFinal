@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
 gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
+Double total;
     /**
      * Creates new form frmRegistrarCargaComb
      */
