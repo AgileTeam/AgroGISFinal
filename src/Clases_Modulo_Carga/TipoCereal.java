@@ -15,16 +15,24 @@ public class TipoCereal {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idTipoCereal;    
    
-    private String nombreCereal;
+private String nombreCereal;
 
-@ManyToOne(targetEntity = Temporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private TipoTemporada temporadaCosecha;
+@ManyToOne(targetEntity = TipoTemporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoTemporada tipoTemporada;
 
-@ManyToOne(targetEntity = Temporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private TipoTemporada temporadaSiembra;
-    
-@ManyToOne(targetEntity = CaracteristicasCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private CaracteristicasCereal caracteristicas;
+    /**
+     * @return the idTipoCereal
+     */
+    public long getIdTipoCereal() {
+        return idTipoCereal;
+    }
+
+    /**
+     * @param idTipoCereal the idTipoCereal to set
+     */
+    public void setIdTipoCereal(long idTipoCereal) {
+        this.idTipoCereal = idTipoCereal;
+    }
 
     /**
      * @return the nombreCereal
@@ -41,47 +49,20 @@ private CaracteristicasCereal caracteristicas;
     }
 
     /**
-     * @return the temporadaCosecha
+     * @return the tipoTemporada
      */
-    public TipoTemporada getTemporadaCosecha() {
-        return temporadaCosecha;
+    public TipoTemporada getTipoTemporada() {
+        return tipoTemporada;
     }
 
     /**
-     * @param temporadaCosecha the temporadaCosecha to set
+     * @param tipoTemporada the tipoTemporada to set
      */
-    public void setTemporadaCosecha(TipoTemporada temporadaCosecha) {
-        this.temporadaCosecha = temporadaCosecha;
+    public void setTipoTemporada(TipoTemporada tipoTemporada) {
+        this.tipoTemporada = tipoTemporada;
     }
 
-    /**
-     * @return the temporadaSiembra
-     */
-    public TipoTemporada getTemporadaSiembra() {
-        return temporadaSiembra;
-    }
 
-    /**
-     * @param temporadaSiembra the temporadaSiembra to set
-     */
-    public void setTemporadaSiembra(TipoTemporada temporadaSiembra) {
-        this.temporadaSiembra = temporadaSiembra;
-    }
 
-    /**
-     * @return the caracteristicas
-     */
-    public CaracteristicasCereal getCaracteristicas() {
-        return caracteristicas;
-    }
 
-    /**
-     * @param caracteristicas the caracteristicas to set
-     */
-    public void setCaracteristicas(CaracteristicasCereal caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
-
-    
-    
 }

@@ -14,29 +14,23 @@ public class HistorialProductor {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idHistorial;    
     
-@ManyToOne(targetEntity = Descarga.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Descarga descarga;
-
 @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Productor productor;
-
-@ManyToOne(targetEntity = SolicitudRetiro.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private SolicitudRetiro solicitud;
 
 private double toneladasDisponibles;
 
     /**
-     * @return the descarga
+     * @return the idHistorial
      */
-    public Descarga getDescarga() {
-        return descarga;
+    public long getIdHistorial() {
+        return idHistorial;
     }
 
     /**
-     * @param descarga the descarga to set
+     * @param idHistorial the idHistorial to set
      */
-    public void setDescarga(Descarga descarga) {
-        this.descarga = descarga;
+    public void setIdHistorial(long idHistorial) {
+        this.idHistorial = idHistorial;
     }
 
     /**
@@ -54,20 +48,6 @@ private double toneladasDisponibles;
     }
 
     /**
-     * @return the solicitud
-     */
-    public SolicitudRetiro getSolicitud() {
-        return solicitud;
-    }
-
-    /**
-     * @param solicitud the solicitud to set
-     */
-    public void setSolicitud(SolicitudRetiro solicitud) {
-        this.solicitud = solicitud;
-    }
-
-    /**
      * @return the toneladasDisponibles
      */
     public double getToneladasDisponibles() {
@@ -80,4 +60,6 @@ private double toneladasDisponibles;
     public void setToneladasDisponibles(double toneladasDisponibles) {
         this.toneladasDisponibles = toneladasDisponibles;
     }
+
+   
 }

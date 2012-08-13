@@ -16,8 +16,20 @@ public class CaracteristicasCereal {
 private long idCaracteristicasCereal;    
     
 private String nombreCaracteristica;
-private double valorDesde;
-private double valorHasta;
+
+    /**
+     * @return the idCaracteristicasCereal
+     */
+    public long getIdCaracteristicasCereal() {
+        return idCaracteristicasCereal;
+    }
+
+    /**
+     * @param idCaracteristicasCereal the idCaracteristicasCereal to set
+     */
+    public void setIdCaracteristicasCereal(long idCaracteristicasCereal) {
+        this.idCaracteristicasCereal = idCaracteristicasCereal;
+    }
 
     /**
      * @return the nombreCaracteristica
@@ -33,32 +45,5 @@ private double valorHasta;
         this.nombreCaracteristica = nombreCaracteristica;
     }
 
-    /**
-     * @return the valorDesde
-     */
-    public double getValorDesde() {
-        return valorDesde;
-    }
-
-    /**
-     * @param valorDesde the valorDesde to set
-     */
-    public void setValorDesde(double valorDesde) {
-        this.valorDesde = valorDesde;
-    }
-
-    /**
-     * @return the valorHasta
-     */
-    public double getValorHasta() {
-        return valorHasta;
-    }
-
-    /**
-     * @param valorHasta the valorHasta to set
-     */
-    public void setValorHasta(double valorHasta) {
-        this.valorHasta = valorHasta;
-    }
 
 }

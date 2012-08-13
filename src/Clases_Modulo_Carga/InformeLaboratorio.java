@@ -4,14 +4,20 @@
  */
 package Clases_Modulo_Carga;
 
-/**
- *
- * @author Charito
- */
+import javax.persistence.*;
+
+@Entity
+@Table(name="InformeLaboratorio")
+
 public class InformeLaboratorio {
+
+@Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
+private long idInforme;     
     
+@ManyToOne(targetEntity = .class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Productor productor;
+
     private Laboratorio laboratorio;
-    private MuestraTomada muestra;
     private TipoTemporada temporada;
 
     /**
