@@ -14,11 +14,30 @@ public class InformeLaboratorio {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idInforme;     
     
-@ManyToOne(targetEntity = .class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Productor productor;
+@ManyToOne(targetEntity = Laboratorio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Laboratorio laboratorio;
 
-    private Laboratorio laboratorio;
-    private TipoTemporada temporada;
+@ManyToOne(targetEntity = CaracteristicasPorTipoDeCerealPorMuestra.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private CaracteristicasPorTipoDeCerealPorMuestra caracteristicas;
+
+@ManyToOne(targetEntity = TipoTemporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoTemporada temporada;
+
+private String fecha;
+
+    /**
+     * @return the idInforme
+     */
+    public long getIdInforme() {
+        return idInforme;
+    }
+
+    /**
+     * @param idInforme the idInforme to set
+     */
+    public void setIdInforme(long idInforme) {
+        this.idInforme = idInforme;
+    }
 
     /**
      * @return the laboratorio
@@ -35,17 +54,17 @@ private Productor productor;
     }
 
     /**
-     * @return the muestra
+     * @return the caracteristicas
      */
-    public MuestraTomada getMuestra() {
-        return muestra;
+    public CaracteristicasPorTipoDeCerealPorMuestra getCaracteristicas() {
+        return caracteristicas;
     }
 
     /**
-     * @param muestra the muestra to set
+     * @param caracteristicas the caracteristicas to set
      */
-    public void setMuestra(MuestraTomada muestra) {
-        this.muestra = muestra;
+    public void setCaracteristicas(CaracteristicasPorTipoDeCerealPorMuestra caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 
     /**
@@ -62,5 +81,20 @@ private Productor productor;
         this.temporada = temporada;
     }
 
- 
+    /**
+     * @return the fecha
+     */
+    public String getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+
+
 }
