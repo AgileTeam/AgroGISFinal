@@ -635,7 +635,7 @@ private void ItemEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_ItemEstacionActionPerformed
 
 private void ItemDetalleConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemDetalleConsumoActionPerformed
-        frmConsultarConsumo consumo= new frmConsultarConsumo();
+        frmConsultaConsumo consumo= new frmConsultaConsumo();
         this.Escritorio.add(consumo);
         consumo.setVisible(true);
 }//GEN-LAST:event_ItemDetalleConsumoActionPerformed
@@ -714,7 +714,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_ItemEspecialidadActionPerformed
 
     private void ItemDetalleReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemDetalleReparacionActionPerformed
-        frmConsultarConsumo reparacion=new frmConsultarConsumo();
+        frmConsultaReparaciones reparacion=new frmConsultaReparaciones();
         this.Escritorio.add(reparacion);
         reparacion.setVisible(true);
     }//GEN-LAST:event_ItemDetalleReparacionActionPerformed
