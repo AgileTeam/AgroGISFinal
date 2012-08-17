@@ -171,23 +171,23 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("Buscar Ordenes por");
 
-        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckFechaCons.setText("Fecha");
         ckFechaCons.setFocusPainted(false);
 
-        ckOrdenCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckOrdenCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckOrdenCons.setText("Número Orden");
         ckOrdenCons.setFocusPainted(false);
 
-        ckTranspCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckTranspCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckTranspCons.setText("Transportista");
         ckTranspCons.setFocusPainted(false);
 
-        ckImporteCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckImporteCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckImporteCons.setText("Importe Total");
         ckImporteCons.setFocusPainted(false);
 
-        ckOperacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckOperacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckOperacion.setText("Operación");
         ckOperacion.setFocusPainted(false);
 
@@ -419,25 +419,25 @@ GestorHibernate gestorH = new GestorHibernate();
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 12, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addGap(30, 30, 30)
+                                .addGap(18, 18, 18)
                                 .addComponent(ckFechaCons)
-                                .addGap(44, 44, 44)
+                                .addGap(46, 46, 46)
                                 .addComponent(ckOrdenCons)
-                                .addGap(39, 39, 39)
+                                .addGap(46, 46, 46)
                                 .addComponent(ckTranspCons)
-                                .addGap(54, 54, 54)
+                                .addGap(47, 47, 47)
                                 .addComponent(ckImporteCons)
-                                .addGap(50, 50, 50)
+                                .addGap(43, 43, 43)
                                 .addComponent(ckOperacion)
-                                .addGap(63, 63, 63))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
+                                    .addComponent(jSeparator2))
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnQuitarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,7 +464,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGap(6, 6, 6)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -472,21 +472,15 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ckTranspCons)
-                                    .addComponent(ckImporteCons)
-                                    .addComponent(ckOperacion)
-                                    .addComponent(ckOrdenCons))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(ckFechaCons))
-                                .addGap(18, 18, 18)))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ckTranspCons)
+                            .addComponent(ckImporteCons)
+                            .addComponent(ckOperacion)
+                            .addComponent(ckOrdenCons)
+                            .addComponent(ckFechaCons)
+                            .addComponent(jLabel8))))
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -508,7 +502,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

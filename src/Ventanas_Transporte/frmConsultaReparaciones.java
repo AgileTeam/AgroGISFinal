@@ -4,35 +4,39 @@
  */
 package Ventanas_Transporte;
 
-
+import javax.swing.*;
 import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
-import java.text.*;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Carolina
  */
 public class frmConsultaReparaciones extends javax.swing.JInternalFrame {
-GestorHibernate gestorH = new GestorHibernate();
+
     /**
      * Creates new form frmConsultaReparaciones
      */
     public frmConsultaReparaciones() {
         initComponents();
         
-        txtHoraRep.setEditable(false);
         txtHoraRep.setEnabled(false);
+        txtHoraRep.setEditable(false);
         txtFechaRep.setEditable(false);
         txtFechaRep.setEnabled(false);
+        
+        //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
@@ -41,6 +45,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gc.get(Calendar.YEAR);
         SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
         txtFechaRep.setText(formateador.format(gc.getTime()));
+        //setear el campo de hora con la del sistema
         GregorianCalendar calendario=new GregorianCalendar();
         GregorianCalendar.getInstance();
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
@@ -48,32 +53,37 @@ GestorHibernate gestorH = new GestorHibernate();
         calendario.get(Calendar.MINUTE);
         SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
         txtHoraRep.setText(formateadorHora.format(calendario.getTime()));
+
         
+        //redimensionar columnas de la tabla Consumo
+        tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(20);
+        tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
+        tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(80);
+        tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(60);
+        
+        
+        
+        //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 975;
+        int ancho = 985;
         int alto = 635;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-        
-        //redimensionar columnas de la tabla Reparaciones
-        tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(20);
-        tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(20);
-        tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(80);
-        
-        calendarioDCons.setEnabled(false);
-        calendarioHCons.setEnabled(false);
-        txtImporteCons.setEnabled(false);
-        txtOrdenCons.setEnabled(false);
-        btnAgregarTranspC.setEnabled(false);
-        btnQuitarTranspC.setEnabled(false);
-        cmbOperacion.setEnabled(false);
+        calendarioDRep.setEnabled(false);
+        calendarioHRep.setEnabled(false);
+        txtImporteRep.setEnabled(false);
+        txtOrdenRep.setEnabled(false);
+        btnAgregarTranspR.setEnabled(false);
+        btnQuitarTranspR.setEnabled(false);
         lstTransportista.setModel(new DefaultListModel());
-            
+        
+        
+        
     }
 
     /**
@@ -113,66 +123,23 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbTranspRep = new javax.swing.JComboBox();
         btnAgregarTranspR = new javax.swing.JButton();
         btnQuitarTranspR = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         lstTransportista = new javax.swing.JList();
         btnBuscarReparacion = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel25 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblReparacion = new javax.swing.JTable();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtHoraCons = new javax.swing.JTextField();
-        txtFechaCons = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        ckFechaCons = new javax.swing.JCheckBox();
-        ckOrdenCons = new javax.swing.JCheckBox();
-        ckTranspCons = new javax.swing.JCheckBox();
-        ckImporteCons = new javax.swing.JCheckBox();
-        ckOperacion = new javax.swing.JCheckBox();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        calendarioHCons = new datechooser.beans.DateChooserCombo();
-        calendarioDCons = new datechooser.beans.DateChooserCombo();
-        jPanel7 = new javax.swing.JPanel();
-        txtOrdenCons = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        cmbImporteCons = new javax.swing.JComboBox();
-        txtImporteCons = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
-        cmbTranspCons = new javax.swing.JComboBox();
-        btnAgregarTranspC = new javax.swing.JButton();
-        btnQuitarTranspC = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        lstTransportista1 = new javax.swing.JList();
-        jPanel9 = new javax.swing.JPanel();
-        cmbOperacion = new javax.swing.JComboBox();
-        btnAceptarTodos = new javax.swing.JButton();
-        btnQuitarTodos = new javax.swing.JButton();
-        btnBuscarConsumo = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblConsumo = new javax.swing.JTable();
         btnVerOrden = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnVerOrden1 = new javax.swing.JButton();
-        btnSalir1 = new javax.swing.JButton();
-        btnAceptarTodos1 = new javax.swing.JButton();
-        btnQuitarTodos1 = new javax.swing.JButton();
+        btnAceptarTodosR = new javax.swing.JButton();
+        btnQuitarTodosR = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Reparaciones");
+        setPreferredSize(new java.awt.Dimension(993, 668));
 
         jPanel17.setLayout(null);
 
@@ -189,7 +156,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel23.setText("Usuario");
         jPanel17.add(jLabel23);
-        jLabel23.setBounds(660, 10, 50, 15);
+        jLabel23.setBounds(740, 10, 50, 15);
         jPanel17.add(txtHoraRep);
         txtHoraRep.setBounds(230, 10, 80, 20);
         jPanel17.add(txtFechaRep);
@@ -197,26 +164,22 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel17.add(jLabel24);
-        jLabel24.setBounds(720, 0, 30, 30);
+        jLabel24.setBounds(790, 0, 30, 30);
 
         jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel28.setText("Buscar Ordenes por");
 
-        ckFechaRep.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckFechaRep.setText("Fecha");
-        ckFechaRep.setFocusPainted(false);
 
-        ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckOrdenRep.setText("Número Orden");
-        ckOrdenRep.setFocusPainted(false);
 
-        ckTranspRep.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckTranspRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckTranspRep.setText("Transportista");
-        ckTranspRep.setFocusPainted(false);
 
-        ckImporteRep.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckImporteRep.setText("Importe Total");
-        ckImporteRep.setFocusPainted(false);
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel19.setLayout(null);
@@ -242,16 +205,16 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -274,45 +237,63 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
+        cmbTranspRep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+
         btnAgregarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAgregarTranspR.setText(">");
+        btnAgregarTranspR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTranspRActionPerformed(evt);
+            }
+        });
 
         btnQuitarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnQuitarTranspR.setText("<");
+        btnQuitarTranspR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarTranspRActionPerformed(evt);
+            }
+        });
 
-        jScrollPane4.setViewportView(lstTransportista);
+        jScrollPane1.setViewportView(lstTransportista);
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuitarTranspR)
-                    .addComponent(btnAgregarTranspR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                        .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAgregarTranspR))
+                    .addComponent(btnQuitarTranspR, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarTranspR))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnQuitarTranspR)))
+                        .addGap(65, 65, 65)
+                        .addComponent(btnQuitarTranspR))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAgregarTranspR))
+                                .addGap(62, 62, 62)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -343,240 +324,6 @@ GestorHibernate gestorH = new GestorHibernate();
         tblReparacion.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(tblReparacion);
 
-        jInternalFrame1.setTitle("Detalle");
-
-        jPanel3.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(10, 13, 40, 15);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Hora");
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(200, 10, 50, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(810, 10, 50, 15);
-        jPanel3.add(txtHoraCons);
-        txtHoraCons.setBounds(230, 10, 80, 20);
-        jPanel3.add(txtFechaCons);
-        txtFechaCons.setBounds(50, 10, 80, 20);
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel3.add(jLabel9);
-        jLabel9.setBounds(860, 0, 30, 30);
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setText("Buscar Ordenes por");
-
-        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFechaCons.setText("Fecha");
-        ckFechaCons.setFocusPainted(false);
-
-        ckOrdenCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckOrdenCons.setText("Número Orden");
-        ckOrdenCons.setFocusPainted(false);
-
-        ckTranspCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckTranspCons.setText("Transportista");
-        ckTranspCons.setFocusPainted(false);
-
-        ckImporteCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckImporteCons.setText("Importe Total");
-        ckImporteCons.setFocusPainted(false);
-
-        ckOperacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckOperacion.setText("Operación");
-        ckOperacion.setFocusPainted(false);
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-        jPanel6.setLayout(null);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Desde");
-        jPanel6.add(jLabel4);
-        jLabel4.setBounds(10, 30, 60, 20);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Hasta");
-        jPanel6.add(jLabel5);
-        jLabel5.setBounds(170, 30, 60, 20);
-        jPanel6.add(calendarioHCons);
-        calendarioHCons.setBounds(210, 30, 90, 20);
-        jPanel6.add(calendarioDCons);
-        calendarioDCons.setBounds(50, 30, 90, 20);
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Nº");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOrdenCons, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOrdenCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        cmbTranspCons.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
-
-        btnAgregarTranspC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAgregarTranspC.setText(">");
-        btnAgregarTranspC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTranspCActionPerformed(evt);
-            }
-        });
-
-        btnQuitarTranspC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnQuitarTranspC.setText("<");
-        btnQuitarTranspC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitarTranspCActionPerformed(evt);
-            }
-        });
-
-        jScrollPane3.setViewportView(lstTransportista1);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuitarTranspC)
-                    .addComponent(btnAgregarTranspC))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarTranspC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnQuitarTranspC)
-                .addContainerGap())
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
-        );
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Carga de Combustible", "Compra de Insumos" }));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
-        btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarTodosActionPerformed(evt);
-            }
-        });
-
-        btnQuitarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnQuitarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitarTodosActionPerformed(evt);
-            }
-        });
-
-        btnBuscarConsumo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnBuscarConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        btnBuscarConsumo.setText("Buscar");
-        btnBuscarConsumo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarConsumoActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("Detalle de Consumo");
-
-        tblConsumo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Fecha", "Orden N°", "Transportista", "Operación", "Importe Total"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblConsumo.getTableHeader().setResizingAllowed(false);
-        tblConsumo.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tblConsumo);
-
         btnVerOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnVerOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
         btnVerOrden.setText("Ver Orden");
@@ -590,485 +337,139 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(8, 8, 8))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(35, 35, 35)
-                                .addComponent(ckFechaCons)
-                                .addGap(39, 39, 39)
-                                .addComponent(ckOrdenCons)
-                                .addGap(39, 39, 39)
-                                .addComponent(ckTranspCons)
-                                .addGap(60, 60, 60)
-                                .addComponent(ckImporteCons)
-                                .addGap(47, 47, 47)
-                                .addComponent(ckOperacion)
-                                .addGap(60, 60, 60))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)))
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnQuitarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67))))
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(376, 376, 376)
-                        .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(426, 426, 426)
-                        .addComponent(btnBuscarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(404, 404, 404)
-                        .addComponent(jLabel7)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnQuitarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(ckFechaCons)
-                            .addComponent(ckOrdenCons)
-                            .addComponent(ckTranspCons)
-                            .addComponent(ckImporteCons)
-                            .addComponent(ckOperacion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodosRActionPerformed(evt);
+            }
+        });
 
-        btnVerOrden1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnVerOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
-        btnVerOrden1.setText("Ver Orden");
-
-        btnSalir1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir1.setText("Salir");
-
-        btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
-
-        btnQuitarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnQuitarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnQuitarTodosR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarTodosRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(btnVerOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(397, 397, 397)
-                        .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel28)
-                                        .addGap(69, 69, 69)
-                                        .addComponent(ckFechaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(ckOrdenRep)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ckTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(ckImporteRep)
-                                        .addGap(31, 31, 31))
-                                    .addComponent(jSeparator8)
-                                    .addComponent(jSeparator7))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnQuitarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAceptarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 33, Short.MAX_VALUE))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(220, 220, 220))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6)
-                            .addComponent(jSeparator9))
-                        .addGap(22, 22, 22))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(207, 207, 207)
+                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(371, 371, 371)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jLabel28)
+                                                .addGap(75, 75, 75)
+                                                .addComponent(ckFechaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(47, 47, 47)
+                                                .addComponent(ckOrdenRep)
+                                                .addGap(61, 61, 61)
+                                                .addComponent(ckTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(ckImporteRep))
+                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(431, 431, 431)
+                                        .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel25)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 470, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 470, Short.MAX_VALUE)))
+                .addGap(402, 402, 402))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
                             .addComponent(ckFechaRep)
                             .addComponent(ckOrdenRep)
                             .addComponent(ckTranspRep)
-                            .addComponent(ckImporteRep))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ckImporteRep)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAceptarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnQuitarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addGap(9, 9, 9)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVerOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 315, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 315, Short.MAX_VALUE)))
+                    .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(175, 175, 175))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgregarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspCActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
-        modelo.addElement(cmbTranspCons.getSelectedItem());
-    }//GEN-LAST:event_btnAgregarTranspCActionPerformed
-
-    private void btnQuitarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspCActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
-        modelo.remove(lstTransportista.getSelectedIndex());
-    }//GEN-LAST:event_btnQuitarTranspCActionPerformed
-
-    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
-        if (ckFechaCons.isSelected()) {
-            calendarioDCons.setEnabled(true);
-            calendarioHCons.setEnabled(true);
-        }
-        if (ckImporteCons.isSelected()) {
-            txtImporteCons.setEnabled(true);
-        }
-        if (ckOperacion.isSelected()) {
-            cmbOperacion.setEnabled(true);
-        }
-        if (ckOrdenCons.isSelected()) {
-            txtOrdenCons.setEnabled(true);
-        }
-        if (ckTranspCons.isSelected()) {
-            btnAgregarTranspC.setEnabled(true);
-            btnQuitarTranspC.setEnabled(true);
-        }
-    }//GEN-LAST:event_btnAceptarTodosActionPerformed
-
-    private void btnQuitarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosActionPerformed
-        calendarioDCons.setEnabled(false);
-        calendarioHCons.setEnabled(false);
-        txtImporteCons.setEnabled(false);
-        txtOrdenCons.setEnabled(false);
-        btnAgregarTranspC.setEnabled(false);
-        btnQuitarTranspC.setEnabled(false);
-        cmbOperacion.setEnabled(false);
-    }//GEN-LAST:event_btnQuitarTodosActionPerformed
-
-    private void btnBuscarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumoActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha1 = sdf.parse(calendarioDCons.getText(), new ParsePosition(0));
-        Date fecha3 = sdf.parse(calendarioHCons.getText(), new ParsePosition(0));
-        DefaultTableModel modeloT = (DefaultTableModel) tblConsumo.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
-        }
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtOrdenCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && ((String.valueOf(orden.getNumeroOrden())) == txtOrdenCons.getText())) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
-        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtImporteCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        if (cmbImporteCons.getSelectedItem() == ">=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                        if (cmbImporteCons.getSelectedItem() == "=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                        if (cmbImporteCons.getSelectedItem() == "<=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (cmbOperacion.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente
-                        if ((carga.getOrdenServicio() == orden) && (orden.getTipoServicio() == cmbOperacion.getSelectedItem())) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
-        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (btnAgregarTranspC.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
-                            //Comparo que el importe para traer la orden correspondiente
-                            if ((carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_btnBuscarConsumoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
@@ -1077,42 +478,58 @@ GestorHibernate gestorH = new GestorHibernate();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnAgregarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspRActionPerformed
+        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
+        modelo.addElement(cmbTranspRep.getSelectedItem());
+    }//GEN-LAST:event_btnAgregarTranspRActionPerformed
+
+    private void btnQuitarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspRActionPerformed
+        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
+        modelo.remove(lstTransportista.getSelectedIndex());
+    }//GEN-LAST:event_btnQuitarTranspRActionPerformed
+
+    private void btnAceptarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosRActionPerformed
+        if (ckFechaRep.isSelected()) {
+            calendarioDRep.setEnabled(true);
+            calendarioHRep.setEnabled(true);
+        }
+        if (ckImporteRep.isSelected()) {
+            txtImporteRep.setEnabled(true);
+        }
+        if (ckOrdenRep.isSelected()) {
+            txtOrdenRep.setEnabled(true);
+        }
+        if (ckTranspRep.isSelected()) {
+            btnAgregarTranspR.setEnabled(true);
+            btnQuitarTranspR.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAceptarTodosRActionPerformed
+
+    private void btnQuitarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosRActionPerformed
+        calendarioDRep.setEnabled(false);
+        calendarioHRep.setEnabled(false);
+        txtImporteRep.setEnabled(false);
+        txtOrdenRep.setEnabled(false);
+        btnAgregarTranspR.setEnabled(false);
+        btnQuitarTranspR.setEnabled(false);
+    }//GEN-LAST:event_btnQuitarTodosRActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptarTodos;
-    private javax.swing.JButton btnAceptarTodos1;
-    private javax.swing.JButton btnAgregarTranspC;
+    private javax.swing.JButton btnAceptarTodosR;
     private javax.swing.JButton btnAgregarTranspR;
-    private javax.swing.JButton btnBuscarConsumo;
     private javax.swing.JButton btnBuscarReparacion;
-    private javax.swing.JButton btnQuitarTodos;
-    private javax.swing.JButton btnQuitarTodos1;
-    private javax.swing.JButton btnQuitarTranspC;
+    private javax.swing.JButton btnQuitarTodosR;
     private javax.swing.JButton btnQuitarTranspR;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnSalir1;
     private javax.swing.JButton btnVerOrden;
-    private javax.swing.JButton btnVerOrden1;
-    private datechooser.beans.DateChooserCombo calendarioDCons;
     private datechooser.beans.DateChooserCombo calendarioDRep;
-    private datechooser.beans.DateChooserCombo calendarioHCons;
     private datechooser.beans.DateChooserCombo calendarioHRep;
-    private javax.swing.JCheckBox ckFechaCons;
     private javax.swing.JCheckBox ckFechaRep;
-    private javax.swing.JCheckBox ckImporteCons;
     private javax.swing.JCheckBox ckImporteRep;
-    private javax.swing.JCheckBox ckOperacion;
-    private javax.swing.JCheckBox ckOrdenCons;
     private javax.swing.JCheckBox ckOrdenRep;
-    private javax.swing.JCheckBox ckTranspCons;
     private javax.swing.JCheckBox ckTranspRep;
-    private javax.swing.JComboBox cmbImporteCons;
     private javax.swing.JComboBox cmbImporteRep;
-    private javax.swing.JComboBox cmbOperacion;
-    private javax.swing.JComboBox cmbTranspCons;
     private javax.swing.JComboBox cmbTranspRep;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1121,45 +538,21 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JList lstTransportista;
-    private javax.swing.JList lstTransportista1;
-    private javax.swing.JTable tblConsumo;
     private javax.swing.JTable tblReparacion;
-    private javax.swing.JTextField txtFechaCons;
     private javax.swing.JTextField txtFechaRep;
-    private javax.swing.JTextField txtHoraCons;
     private javax.swing.JTextField txtHoraRep;
-    private javax.swing.JTextField txtImporteCons;
     private javax.swing.JTextField txtImporteRep;
-    private javax.swing.JTextField txtOrdenCons;
     private javax.swing.JTextField txtOrdenRep;
     // End of variables declaration//GEN-END:variables
 }
