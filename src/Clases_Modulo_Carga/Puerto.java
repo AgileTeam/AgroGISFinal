@@ -17,7 +17,8 @@ public class Puerto {
 private long idPuerto;  
 
     private String nombrePuerto;
-@ManyToOne(targetEntity = Localidad.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    
+    @ManyToOne(targetEntity = Localidad.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Localidad localidad;
 
     /**

@@ -14,7 +14,7 @@ public class TipoTemporada {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idTipoTemporada;   
     
-    private String nombreTipoTemporada;
+private String nombreTipoTemporada;
 
 @ManyToOne(targetEntity = Temporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Temporada temporada;
