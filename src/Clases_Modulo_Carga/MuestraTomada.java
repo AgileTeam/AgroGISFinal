@@ -4,55 +4,81 @@
  */
 package Clases_Modulo_Carga;
 
-/**
- *
- * @author Charito
- */
+import Clases_Modulo_Transporte.Domicilio;
+import Clases_Modulo_Transporte.TipoTelefono;
+import javax.persistence.*;
+
+@Entity
+@Table(name="MuestraTomada")
+
 public class MuestraTomada {
+    @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
+    private long numeroMuestra;  
     
-    private int numeroMuestra;
-    private TipoCereal cereal;
-    private Viaje viaje;
+    @ManyToOne(targetEntity = Laboratorio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private Laboratorio laboratorio;
+    
+//    @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+//    private Viaje viaje;
+   
+    private String fechaEnvio;
 
     /**
      * @return the numeroMuestra
      */
-    public int getNumeroMuestra() {
+    public long getNumeroMuestra() {
         return numeroMuestra;
     }
 
     /**
      * @param numeroMuestra the numeroMuestra to set
      */
-    public void setNumeroMuestra(int numeroMuestra) {
+    public void setNumeroMuestra(long numeroMuestra) {
         this.numeroMuestra = numeroMuestra;
     }
 
     /**
-     * @return the cereal
+     * @return the laboratorio
      */
-    public TipoCereal getCereal() {
-        return cereal;
+    public Laboratorio getLaboratorio() {
+        return laboratorio;
     }
 
     /**
-     * @param cereal the cereal to set
+     * @param laboratorio the laboratorio to set
      */
-    public void setCereal(TipoCereal cereal) {
-        this.cereal = cereal;
+    public void setLaboratorio(Laboratorio laboratorio) {
+        this.laboratorio = laboratorio;
     }
 
     /**
      * @return the viaje
      */
-    public Viaje getViaje() {
-        return viaje;
+//    public Viaje getViaje() {
+//        return viaje;
+//    }
+//
+//    /**
+//     * @param viaje the viaje to set
+//     */
+//    public void setViaje(Viaje viaje) {
+//        this.viaje = viaje;
+//    }
+
+    /**
+     * @return the fechaEnvio
+     */
+    public String getFechaEnvio() {
+        return fechaEnvio;
     }
 
     /**
-     * @param viaje the viaje to set
+     * @param fechaEnvio the fechaEnvio to set
      */
-    public void setViaje(Viaje viaje) {
-        this.viaje = viaje;
+    public void setFechaEnvio(String fechaEnvio) {
+        this.fechaEnvio = fechaEnvio;
     }
+   
+
+    
 }
