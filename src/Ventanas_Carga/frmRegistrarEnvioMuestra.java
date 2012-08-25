@@ -4,16 +4,25 @@
  */
 package Ventanas_Carga;
 
+import Clases_Modulo_Carga.Laboratorio;
+import Clases_Modulo_Carga.MuestraTomada;
+import Clases_Modulo_Transporte.CargaCombustible;
+import Clases_Modulo_Transporte.OrdenServicio;
+import Clases_Modulo_Viaje.*;
+import Gestores_Vista.gestorEnvioMuestras;
+import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     /**
      * Creates new form frmRegistrarEnvioMuestras
      */
@@ -61,7 +70,13 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(200, 0);
         
+        calendarioDMuestra.setEnabled(false);
+        calendarioHMuestra.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
         
+        cmbEspecialidad.setModel(gestorE.rellenaComboEspecialidad());
+        cmbLaboratorio.setModel(gestorE.rellenaComboLaboratorio());
     }
 
     /**
@@ -91,13 +106,13 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtProductor = new javax.swing.JTextField();
-        cmbEstablecimiento = new javax.swing.JComboBox();
         txtMuestra = new javax.swing.JTextField();
         cmbEspecialidad = new javax.swing.JComboBox();
         cmbLaboratorio = new javax.swing.JComboBox();
-        cmbCereal = new javax.swing.JComboBox();
         calendarioEnvio = new datechooser.beans.DateChooserCombo();
         txtResponsable = new javax.swing.JTextField();
+        txtEstablecimiento = new javax.swing.JTextField();
+        txtCereal = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEnvios = new javax.swing.JTable();
         btnEliminarEnvio = new javax.swing.JButton();
@@ -116,7 +131,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtNumMuestra = new javax.swing.JTextField();
-        btnAceptarTodos = new javax.swing.JButton();
+        btnEliminarTodos = new javax.swing.JButton();
         btnAceptarTodos1 = new javax.swing.JButton();
         ckFechaCons = new javax.swing.JCheckBox();
         ckFechaCons1 = new javax.swing.JCheckBox();
@@ -156,6 +171,11 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         txtHora.setBounds(210, 10, 70, 20);
 
         btnAceptarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarMuestraActionPerformed(evt);
+            }
+        });
 
         jPanel1.setLayout(null);
 
@@ -200,9 +220,6 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jLabel14.setBounds(340, 70, 120, 20);
         jPanel1.add(txtProductor);
         txtProductor.setBounds(90, 10, 200, 20);
-
-        jPanel1.add(cmbEstablecimiento);
-        cmbEstablecimiento.setBounds(420, 10, 210, 20);
         jPanel1.add(txtMuestra);
         txtMuestra.setBounds(740, 10, 100, 20);
 
@@ -211,13 +228,14 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
 
         jPanel1.add(cmbLaboratorio);
         cmbLaboratorio.setBounds(420, 40, 210, 20);
-
-        jPanel1.add(cmbCereal);
-        cmbCereal.setBounds(740, 40, 100, 20);
         jPanel1.add(calendarioEnvio);
         calendarioEnvio.setBounds(90, 70, 90, 20);
         jPanel1.add(txtResponsable);
         txtResponsable.setBounds(420, 70, 170, 20);
+        jPanel1.add(txtEstablecimiento);
+        txtEstablecimiento.setBounds(420, 10, 210, 20);
+        jPanel1.add(txtCereal);
+        txtCereal.setBounds(740, 40, 100, 20);
 
         tblEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,10 +248,20 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblEnvios);
 
         btnEliminarEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarEnvio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEnvioActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -246,6 +274,11 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Muestras por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
@@ -282,7 +315,12 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         jPanel12.add(txtNumMuestra);
         txtNumMuestra.setBounds(50, 40, 120, 20);
 
-        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTodosActionPerformed(evt);
+            }
+        });
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
         btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +355,11 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
         btnBuscarMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarMuestra.setText("Buscar");
+        btnBuscarMuestra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMuestraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -328,7 +371,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
                         .addGap(16, 16, 16)
                         .addComponent(btnAceptarTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(296, 296, 296)
                         .addComponent(btnBuscarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -364,7 +407,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
                         .addComponent(ckFechaCons1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAceptarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAceptarTodos1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -404,10 +447,10 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
                                 .addContainerGap()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(304, 304, 304)
-                                .addComponent(btnGuardar)
-                                .addGap(2, 2, 2)
+                                .addGap(329, 329, 329)
                                 .addComponent(btnNuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar))
                             .addGroup(layout.createSequentialGroup()
@@ -436,7 +479,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -458,17 +501,184 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ckFechaCons3ActionPerformed
 
     private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
-        // TODO add your handling code here:
+        if (ckFechaCons3.isSelected()) {
+            calendarioDMuestra.setEnabled(true);
+            calendarioHMuestra.setEnabled(true);
+        }
+        if (ckFechaCons.isSelected()) {
+            cmbProductor.setEnabled(true);
+           }
+        if (ckFechaCons1.isSelected()) {
+            txtNumMuestra.setEnabled(true);
+        }
     }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
+
+    private void btnEliminarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTodosActionPerformed
+        calendarioDMuestra.setEnabled(false);
+        calendarioHMuestra.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
+    }//GEN-LAST:event_btnEliminarTodosActionPerformed
+
+    private void btnBuscarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMuestraActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha1 = sdf.parse(calendarioDMuestra.getText(), new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHMuestra.getText(), new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblMuestra.getModel();
+        //Verifico que este seleccionada la opcion de fecha
+        if (calendarioDMuestra.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getDescarga().getFecha(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getDescarga().getFecha(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblMuestra.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
+        }
+        
+         //Verifico que este seleccionada la opcion de Productor
+        if (cmbProductor.isEnabled()) {
+            //Creo el objeto muestra
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (viaje.getProductor()== cmbProductor.getSelectedItem())) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblMuestra.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
+        }
+        
+         //Verifico que este seleccionada la opcion de Numero de muestra
+        if (txtNumMuestra.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (muestra.getNumeroMuestra()== Long.parseLong(txtNumMuestra.getText()))) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblMuestra.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
+        }
+    }//GEN-LAST:event_btnBuscarMuestraActionPerformed
+
+    private void btnAceptarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarMuestraActionPerformed
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblMuestra.getModel();
+  
+    int fila = tblMuestra.getSelectedRow();
+    txtProductor.setText(modeloTabla.getValueAt(fila,2).toString());
+    Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+    while(ite.hasNext()){
+          MuestraTomada muestra = new MuestraTomada();
+          if(muestra.getNumeroMuestra()== modeloTabla.getValueAt(fila,1)){
+              txtEstablecimiento.setText(muestra.getDescarga().getEstablecimiento().toString());
+              txtMuestra.setText(String.valueOf(muestra.getNumeroMuestra()));
+              txtCereal.setText(muestra.getDescarga().getCereal().toString());
+          }
+    }
+    }//GEN-LAST:event_btnAceptarMuestraActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       DefaultTableModel modeloTabla = (DefaultTableModel) tblEnvios.getModel();
+       Object fila[]={calendarioEnvio.getText(), txtMuestra.getText(), txtProductor.getText(), txtCereal.getText(), cmbLaboratorio.getSelectedItem()};
+       modeloTabla.addRow(fila);
+       tblEnvios.setModel(modeloTabla);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEnvioActionPerformed
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblEnvios.getModel();
+        int fila = tblEnvios.getSelectedRow();
+        modeloTabla.removeRow(fila);
+        tblEnvios.setModel(modeloTabla);
+    }//GEN-LAST:event_btnEliminarEnvioActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblEnvios.getModel();
+        for(int i=0; i<tblEnvios.getRowCount(); i++){
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while(ite.hasNext()){
+                MuestraTomada muestra = new MuestraTomada();
+                if(muestra.getNumeroMuestra() == modeloTabla.getValueAt(i, 1)){
+                    muestra.setFechaEnvio(modeloTabla.getValueAt(i, 0).toString());
+                    muestra.setLaboratorio((Laboratorio)modeloTabla.getValueAt(i, 4));
+                    gestorH.actualizarObjeto(muestra);
+                }
+        }
+            
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarMuestra;
-    private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscarMuestra;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminarEnvio;
+    private javax.swing.JButton btnEliminarTodos;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private datechooser.beans.DateChooserCombo calendarioDMuestra;
@@ -477,9 +687,7 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox ckFechaCons;
     private javax.swing.JCheckBox ckFechaCons1;
     private javax.swing.JCheckBox ckFechaCons3;
-    private javax.swing.JComboBox cmbCereal;
     private javax.swing.JComboBox cmbEspecialidad;
-    private javax.swing.JComboBox cmbEstablecimiento;
     private javax.swing.JComboBox cmbLaboratorio;
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel1;
@@ -507,6 +715,8 @@ public class frmRegistrarEnvioMuestra extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblEnvios;
     private javax.swing.JTable tblMuestra;
+    private javax.swing.JTextField txtCereal;
+    private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtMuestra;

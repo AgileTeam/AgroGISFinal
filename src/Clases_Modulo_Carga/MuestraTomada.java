@@ -12,14 +12,18 @@ import javax.persistence.*;
 @Table(name="MuestraTomada")
 
 public class MuestraTomada {
+   
     @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
     private long numeroMuestra;  
     
     @ManyToOne(targetEntity = Laboratorio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Laboratorio laboratorio;
     
-//    @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-//    private Viaje viaje;
+    @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    public Viaje viaje;
+    
+    @ManyToOne(targetEntity = Descarga.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private Descarga descarga;
    
     private String fechaEnvio;
 
@@ -54,16 +58,16 @@ public class MuestraTomada {
     /**
      * @return the viaje
      */
-//    public Viaje getViaje() {
-//        return viaje;
-//    }
-//
-//    /**
-//     * @param viaje the viaje to set
-//     */
-//    public void setViaje(Viaje viaje) {
-//        this.viaje = viaje;
-//    }
+    public Viaje getViaje() {
+        return viaje;
+    }
+
+    /**
+     * @param viaje the viaje to set
+     */
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
+    }
 
     /**
      * @return the fechaEnvio
@@ -77,6 +81,20 @@ public class MuestraTomada {
      */
     public void setFechaEnvio(String fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
+    }
+
+    /**
+     * @return the descarga
+     */
+    public Descarga getDescarga() {
+        return descarga;
+    }
+
+    /**
+     * @param descarga the descarga to set
+     */
+    public void setDescarga(Descarga descarga) {
+        this.descarga = descarga;
     }
    
 

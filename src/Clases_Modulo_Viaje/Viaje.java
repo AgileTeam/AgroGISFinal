@@ -43,8 +43,11 @@ public class Viaje {
     @ManyToOne(targetEntity = Vehiculo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Vehiculo vehiculo;
     
-    private Date fecha;
-    private Time hora;
+    @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private Productor productor;
+    
+    private String fecha;
+    private String hora;
 
     /**
      * @return the cerealATransportar
@@ -130,33 +133,7 @@ public class Viaje {
         this.vehiculo = vehiculo;
     }
 
-    /**
-     * @return the fecha
-     */
-    public Date getFecha() {
-        return fecha;
-    }
-
-    /**
-     * @param fecha the fecha to set
-     */
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    /**
-     * @return the hora
-     */
-    public Time getHora() {
-        return hora;
-    }
-
-    /**
-     * @param hora the hora to set
-     */
-    public void setHora(Time hora) {
-        this.hora = hora;
-    }
+   
 
     /**
      * @return the idViaje
@@ -170,6 +147,48 @@ public class Viaje {
      */
     public void setIdViaje(long idViaje) {
         this.idViaje = idViaje;
+    }
+
+    /**
+     * @return the productor
+     */
+    public Productor getProductor() {
+        return productor;
+    }
+
+    /**
+     * @param productor the productor to set
+     */
+    public void setProductor(Productor productor) {
+        this.productor = productor;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public String getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the hora
+     */
+    public String getHora() {
+        return hora;
+    }
+
+    /**
+     * @param hora the hora to set
+     */
+    public void setHora(String hora) {
+        this.hora = hora;
     }
     
 }

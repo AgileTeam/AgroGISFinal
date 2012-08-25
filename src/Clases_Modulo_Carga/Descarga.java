@@ -31,10 +31,14 @@ private Transportista transportista;
 @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Productor productor;
 
+@ManyToOne(targetEntity = Establecimiento.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Establecimiento establecimiento;
+
+
     private String fecha;
     private String hora; 
     private double toneladas;
-    
+    private int numeroViaje;
 
     /**
      * @return the fecha
@@ -161,5 +165,35 @@ private Productor productor;
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
+
+    /**
+     * @return the numeroViaje
+     */
+    public int getNumeroViaje() {
+        return numeroViaje;
+    }
+
+    /**
+     * @param numeroViaje the numeroViaje to set
+     */
+    public void setNumeroViaje(int numeroViaje) {
+        this.numeroViaje = numeroViaje;
+    }
+
+    /**
+     * @return the establecimiento
+     */
+    public Establecimiento getEstablecimiento() {
+        return establecimiento;
+    }
+
+    /**
+     * @param establecimiento the establecimiento to set
+     */
+    public void setEstablecimiento(Establecimiento establecimiento) {
+        this.establecimiento = establecimiento;
+    }
+
+   
     
 }

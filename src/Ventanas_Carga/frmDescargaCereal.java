@@ -11,6 +11,7 @@
 package Ventanas_Carga;
 
 import Clases_Modulo_Carga.*;
+
 import Clases_Modulo_Transporte.Transportista;
 import Gestores_Vista.gestorDescargaCereal;
 import Hibernate.GestorHibernate;
@@ -129,7 +130,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtEstablecimiento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtViaje = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -324,8 +325,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel14.setText("Nº Viaje");
         jPanel2.add(jLabel14);
         jLabel14.setBounds(360, 130, 70, 20);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(410, 130, 90, 20);
+        jPanel2.add(txtViaje);
+        txtViaje.setBounds(410, 130, 90, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -368,7 +369,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -399,6 +400,13 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             descarga.setProductor(productor);
         }
     }
+    while(ite.hasNext()){
+        Establecimiento establecimiento= (Establecimiento) ite.next();
+        if(establecimiento.getNombreEstablecimiento().equals(txtEstablecimiento.getText())){
+            descarga.setEstablecimiento(establecimiento);
+        }
+    }
+    descarga.setNumeroViaje(Integer.parseInt(txtViaje.getText()));
     gestorH.guardarObjeto(descarga);
     
 
@@ -468,7 +476,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
@@ -476,5 +483,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTextField txtHumedad;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtToneladas;
+    private javax.swing.JTextField txtViaje;
     // End of variables declaration//GEN-END:variables
 }
