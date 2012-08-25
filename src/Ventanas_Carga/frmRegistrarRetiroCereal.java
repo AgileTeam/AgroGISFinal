@@ -130,6 +130,9 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         txtPesoNeto = new javax.swing.JTextField();
         txtPesoTotal = new javax.swing.JTextField();
         btnAceptarVehiculo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSolicitud = new javax.swing.JTable();
         btnGuardar = new javax.swing.JButton();
@@ -254,12 +257,12 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel23.setText("Peso Total");
         jPanel5.add(jLabel23);
-        jLabel23.setBounds(260, 180, 90, 20);
+        jLabel23.setBounds(270, 180, 90, 20);
 
         jLabel24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel24.setText("Peso Neto");
         jPanel5.add(jLabel24);
-        jLabel24.setBounds(510, 180, 90, 20);
+        jLabel24.setBounds(530, 180, 90, 20);
         jPanel5.add(txtNumeroSolicitud);
         txtNumeroSolicitud.setBounds(90, 20, 80, 20);
         jPanel5.add(txtToneladas);
@@ -280,6 +283,21 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnAceptarVehiculo);
         btnAceptarVehiculo.setBounds(720, 90, 49, 30);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jLabel1.setText("Kgs.");
+        jPanel5.add(jLabel1);
+        jLabel1.setBounds(710, 180, 30, 20);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jLabel2.setText("Kgs.");
+        jPanel5.add(jLabel2);
+        jLabel2.setBounds(190, 180, 30, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jLabel3.setText("Kgs.");
+        jPanel5.add(jLabel3);
+        jLabel3.setBounds(450, 180, 30, 20);
 
         tblSolicitud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -445,7 +463,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -520,6 +538,7 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JCheckBox ckNumSolicitud;
     private javax.swing.JCheckBox ckProductor;
     private javax.swing.JComboBox cmbProductor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -528,11 +547,13 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
