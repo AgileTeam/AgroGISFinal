@@ -10,11 +10,7 @@
  */
 package Ventanas_Carga;
 
-import Clases_Modulo_Carga.Descarga;
-import Clases_Modulo_Carga.Productor;
-import Clases_Modulo_Carga.Silo;
-import Clases_Modulo_Carga.TipoCereal;
-import Clases_Modulo_Carga.TipoTemporada;
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.Transportista;
 import Gestores_Vista.gestorDescargaCereal;
 import Hibernate.GestorHibernate;
@@ -34,10 +30,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmDescargaCereal extends javax.swing.JInternalFrame {
 gestorDescargaCereal gestorD = new gestorDescargaCereal();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmDescargaCereal */
     public frmDescargaCereal() {
         initComponents();
+        
         gestorD.rellenaTablaProductor(tblEstablecimiento);
+        
+        cmbTipoCereal.setModel(gestorD.rellenaComboTipoCereal());
+        cmbTemporada.setModel(gestorD.rellenaComboTemporada());
+        cmbSilo.setModel(gestorD.rellenaComboSilo());
+        cmbTransportista.setModel(gestorD.rellenaComboTransportista());
+        
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -76,8 +80,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
-        
-        
+     
         
         
     }
@@ -125,6 +128,8 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
         jLabel1 = new javax.swing.JLabel();
         txtEstablecimiento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -281,6 +286,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
         jPanel2.add(jLabel6);
         jLabel6.setBounds(0, 100, 120, 20);
 
+        cmbImpurezas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bajo", "Medio", "Alto" }));
         jPanel2.add(cmbImpurezas);
         cmbImpurezas.setBounds(110, 100, 110, 20);
 
@@ -290,7 +296,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
         jLabel7.setBounds(360, 100, 60, 20);
 
         jPanel2.add(cmbSilo);
-        cmbSilo.setBounds(410, 100, 90, 20);
+        cmbSilo.setBounds(410, 100, 130, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Transportista");
@@ -300,19 +306,26 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
         jPanel2.add(cmbTransportista);
         cmbTransportista.setBounds(110, 130, 200, 20);
         jPanel2.add(txtProductor);
-        txtProductor.setBounds(110, 10, 110, 20);
+        txtProductor.setBounds(110, 10, 190, 20);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Productor");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(40, 10, 80, 20);
         jPanel2.add(txtEstablecimiento);
-        txtEstablecimiento.setBounds(410, 10, 130, 20);
+        txtEstablecimiento.setBounds(410, 10, 170, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Establecimiento");
         jPanel2.add(jLabel13);
         jLabel13.setBounds(310, 10, 130, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Nº Viaje");
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(360, 130, 70, 20);
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(410, 130, 90, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,7 +368,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -440,6 +453,7 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -454,6 +468,7 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
