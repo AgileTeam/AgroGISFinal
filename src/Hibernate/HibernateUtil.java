@@ -81,6 +81,8 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoTemporada.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Establecimiento.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Productor.class);
+                conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra.class);
+               
                 
             sessionFactory = conf.buildSessionFactory();
             session=sessionFactory.openSession();
