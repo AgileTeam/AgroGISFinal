@@ -10,11 +10,7 @@
  */
 package Ventanas_Carga;
 
-import Clases_Modulo_Carga.Descarga;
-import Clases_Modulo_Carga.Productor;
-import Clases_Modulo_Carga.Silo;
-import Clases_Modulo_Carga.TipoCereal;
-import Clases_Modulo_Carga.TipoTemporada;
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.Transportista;
 import Gestores_Vista.gestorDescargaCereal;
 import Hibernate.GestorHibernate;
@@ -34,10 +30,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmDescargaCereal extends javax.swing.JInternalFrame {
 gestorDescargaCereal gestorD = new gestorDescargaCereal();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmDescargaCereal */
     public frmDescargaCereal() {
         initComponents();
+        
         gestorD.rellenaTablaProductor(tblEstablecimiento);
+        
+        cmbTipoCereal.setModel(gestorD.rellenaComboTipoCereal());
+        cmbTemporada.setModel(gestorD.rellenaComboTemporada());
+        cmbSilo.setModel(gestorD.rellenaComboSilo());
+        cmbTransportista.setModel(gestorD.rellenaComboTransportista());
+        
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -76,8 +80,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
-        
-        
+     
         
         
     }
@@ -281,6 +284,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
         jPanel2.add(jLabel6);
         jLabel6.setBounds(0, 100, 120, 20);
 
+        cmbImpurezas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bajo", "Medio", "Alto" }));
         jPanel2.add(cmbImpurezas);
         cmbImpurezas.setBounds(110, 100, 110, 20);
 
@@ -355,7 +359,7 @@ gestorDescargaCereal gestorD = new gestorDescargaCereal();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
