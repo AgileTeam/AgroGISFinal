@@ -394,7 +394,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     TipoCereal cereal = new TipoCereal();
     CaracteristicasCereal caracteristicas = new CaracteristicasCereal();
     cereal.setNombreCereal(txtNombreCereal.getText());
-   
+  
 }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
