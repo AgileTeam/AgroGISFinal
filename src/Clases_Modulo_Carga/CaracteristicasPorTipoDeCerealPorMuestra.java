@@ -20,10 +20,9 @@ private CaracteristicasCereal caracteristicas;
 @ManyToOne(targetEntity = MuestraTomada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private MuestraTomada muestra;
 
-private Double valorDesde;
-private Double valorHasta;
+private Double valor;
 
-    /**
+/**
      * @return the idCarPorTipoPorMuestra
      */
     public long getIdCarPorTipoPorMuestra() {
@@ -66,31 +65,19 @@ private Double valorHasta;
     }
 
     /**
-     * @return the valorDesde
+     * @return the valor
      */
-    public Double getValorDesde() {
-        return valorDesde;
+    public Double getValor() {
+        return valor;
     }
 
     /**
-     * @param valorDesde the valorDesde to set
+     * @param valor the valor to set
      */
-    public void setValorDesde(Double valorDesde) {
-        this.valorDesde = valorDesde;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    /**
-     * @return the valorHasta
-     */
-    public Double getValorHasta() {
-        return valorHasta;
-    }
-
-    /**
-     * @param valorHasta the valorHasta to set
-     */
-    public void setValorHasta(Double valorHasta) {
-        this.valorHasta = valorHasta;
-    }
+    
     
 }

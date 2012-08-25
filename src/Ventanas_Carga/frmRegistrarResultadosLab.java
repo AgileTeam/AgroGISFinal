@@ -4,9 +4,16 @@
  */
 package Ventanas_Carga;
 
+import Clases_Modulo_Carga.CaracteristicasCereal;
+import Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra;
+import Clases_Modulo_Carga.Descarga;
+import Clases_Modulo_Carga.MuestraTomada;
+import Clases_Modulo_Viaje.Viaje;
+import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -14,7 +21,7 @@ import java.util.*;
  * @author Carolina
  */
 public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmRegistrarResultadosLab
      */
@@ -29,6 +36,14 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtFecha.setEnabled(false);
+        
+        calendarioDViaje.setEnabled(false);
+        calendarioHViaje.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
+  
+                
+       
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -60,11 +75,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-        
-        
-        
-        
-        
+       
     }
 
     /**
@@ -88,12 +99,10 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         btnAceptarViaje = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         ckFecha = new javax.swing.JCheckBox();
-        ckNumViaje = new javax.swing.JCheckBox();
+        ckNumMuestra = new javax.swing.JCheckBox();
         ckProductor = new javax.swing.JCheckBox();
         ckTransportista = new javax.swing.JCheckBox();
         ckEstablecimiento = new javax.swing.JCheckBox();
-        jPanel9 = new javax.swing.JPanel();
-        cmbEstablecimiento = new javax.swing.JComboBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -101,55 +110,30 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         calendarioDViaje = new datechooser.beans.DateChooserCombo();
         jPanel12 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        txtNumViaje = new javax.swing.JTextField();
+        txtNumMuestra = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
-        jPanel14 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox();
         btnBuscarViaje = new javax.swing.JButton();
         btnAceptarTodos1 = new javax.swing.JButton();
         btnAceptarTodos = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtViaje = new javax.swing.JTextField();
-        txtFechaViaje = new javax.swing.JTextField();
-        txtProductor = new javax.swing.JTextField();
-        txtDomicilio = new javax.swing.JTextField();
-        txtEstablecimiento = new javax.swing.JTextField();
-        txtHas = new javax.swing.JTextField();
-        txNumLote = new javax.swing.JTextField();
-        txtTransportista = new javax.swing.JTextField();
-        txtVehiculo = new javax.swing.JTextField();
-        txtNumMuestra = new javax.swing.JTextField();
-        txtTempCosecha = new javax.swing.JTextField();
-        jLabel42 = new javax.swing.JLabel();
-        txtCereal = new javax.swing.JTextField();
-        txtToneladas = new javax.swing.JTextField();
-        txtImpurezas = new javax.swing.JTextField();
-        txtPesoHect = new javax.swing.JTextField();
-        txtDominio = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtHumedad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViaje = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtProductor = new javax.swing.JTextField();
+        txtMuestra = new javax.swing.JTextField();
+        txtEstablecimiento = new javax.swing.JTextField();
+        txtCereal = new javax.swing.JTextField();
+        txtFechaEnvio = new javax.swing.JTextField();
+        txtEnviadoPor = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        cmbLaboratorio = new javax.swing.JComboBox();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         txtDomicilioLab = new javax.swing.JTextField();
@@ -159,7 +143,8 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         txtTelefonoLab = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         txtProvinciaLab = new javax.swing.JTextField();
-        cmbEspecialidad = new javax.swing.JComboBox();
+        txtEspecialidad = new javax.swing.JTextField();
+        txtLaboratorio = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -172,11 +157,11 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         botonSoja = new javax.swing.JRadioButton();
         botonTrigo = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        labelDureza = new javax.swing.JLabel();
+        labelProteinas = new javax.swing.JLabel();
+        labelGluten = new javax.swing.JLabel();
+        labelColor = new javax.swing.JLabel();
+        labelAlmidon = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         txtDurezaObtenida = new javax.swing.JTextField();
@@ -211,19 +196,24 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
 
         btnAceptarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarViajeActionPerformed(evt);
+            }
+        });
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Viajes Finalizados por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Muestras Enviadas por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jPanel5.setLayout(null);
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFecha.setText("Fecha");
+        ckFecha.setText("Fecha Envío");
         jPanel5.add(ckFecha);
-        ckFecha.setBounds(10, 30, 60, 23);
+        ckFecha.setBounds(10, 30, 90, 23);
 
-        ckNumViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckNumViaje.setText("Numero Viaje");
-        jPanel5.add(ckNumViaje);
-        ckNumViaje.setBounds(10, 50, 110, 23);
+        ckNumMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckNumMuestra.setText("Numero Viaje");
+        jPanel5.add(ckNumMuestra);
+        ckNumMuestra.setBounds(10, 50, 110, 23);
 
         ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
@@ -239,15 +229,6 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         ckEstablecimiento.setText("Establecimiento");
         jPanel5.add(ckEstablecimiento);
         ckEstablecimiento.setBounds(10, 110, 120, 23);
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-        jPanel9.setLayout(null);
-
-        jPanel9.add(cmbEstablecimiento);
-        cmbEstablecimiento.setBounds(20, 40, 200, 20);
-
-        jPanel5.add(jPanel9);
-        jPanel9.setBounds(930, 30, 240, 90);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -267,20 +248,20 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         calendarioDViaje.setBounds(50, 20, 90, 20);
 
         jPanel5.add(jPanel10);
-        jPanel10.setBounds(130, 30, 160, 90);
+        jPanel10.setBounds(160, 30, 160, 90);
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Nº");
         jPanel12.add(jLabel11);
         jLabel11.setBounds(20, 40, 50, 20);
-        jPanel12.add(txtNumViaje);
-        txtNumViaje.setBounds(40, 40, 100, 20);
+        jPanel12.add(txtNumMuestra);
+        txtNumMuestra.setBounds(40, 40, 100, 20);
 
         jPanel5.add(jPanel12);
-        jPanel12.setBounds(290, 30, 160, 90);
+        jPanel12.setBounds(340, 30, 160, 90);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
@@ -289,197 +270,130 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         cmbProductor.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel13);
-        jPanel13.setBounds(450, 30, 240, 90);
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-        jPanel14.setLayout(null);
-
-        jPanel14.add(jComboBox3);
-        jComboBox3.setBounds(20, 40, 200, 20);
-
-        jPanel5.add(jPanel14);
-        jPanel14.setBounds(690, 30, 240, 90);
+        jPanel13.setBounds(520, 30, 240, 90);
 
         btnBuscarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarViaje.setText("Buscar");
+        btnBuscarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarViajeActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnBuscarViaje);
-        btnBuscarViaje.setBounds(560, 140, 100, 30);
+        btnBuscarViaje.setBounds(320, 140, 100, 30);
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodos1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnAceptarTodos1);
         btnAceptarTodos1.setBounds(30, 140, 30, 30);
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodosActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnAceptarTodos);
         btnAceptarTodos.setBounds(70, 140, 30, 30);
-
-        jPanel4.setLayout(null);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Establecimiento");
-        jPanel4.add(jLabel6);
-        jLabel6.setBounds(20, 40, 120, 20);
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Productor");
-        jPanel4.add(jLabel8);
-        jLabel8.setBounds(360, 10, 90, 20);
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Domicilio");
-        jPanel4.add(jLabel9);
-        jLabel9.setBounds(640, 10, 90, 20);
-
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Vehiculo");
-        jPanel4.add(jLabel15);
-        jLabel15.setBounds(370, 70, 80, 20);
-
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel13.setText("Muestra Nº");
-        jPanel4.add(jLabel13);
-        jLabel13.setBounds(40, 100, 100, 20);
-
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel17.setText("Fecha");
-        jPanel4.add(jLabel17);
-        jLabel17.setBounds(170, 10, 60, 20);
-
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel21.setText("Temporada Cosecha");
-        jPanel4.add(jLabel21);
-        jLabel21.setBounds(290, 100, 150, 20);
-
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel20.setText("Toneladas");
-        jPanel4.add(jLabel20);
-        jLabel20.setBounds(660, 100, 90, 20);
-
-        jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel18.setText("Lote Nº");
-        jPanel4.add(jLabel18);
-        jLabel18.setBounds(370, 40, 80, 20);
-
-        jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel23.setText("Peso Hectolítrico");
-        jPanel4.add(jLabel23);
-        jLabel23.setBounds(10, 130, 130, 20);
-
-        jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel22.setText("Impurezas");
-        jPanel4.add(jLabel22);
-        jLabel22.setBounds(660, 130, 80, 20);
-
-        jLabel35.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel35.setText("% Humedad");
-        jPanel4.add(jLabel35);
-        jLabel35.setBounds(340, 130, 100, 20);
-
-        jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel16.setText("Nº Viaje");
-        jPanel4.add(jLabel16);
-        jLabel16.setBounds(10, 10, 70, 20);
-
-        jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel19.setText("Hectáreas");
-        jPanel4.add(jLabel19);
-        jLabel19.setBounds(550, 40, 100, 20);
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setText("Transportista");
-        jPanel4.add(jLabel14);
-        jLabel14.setBounds(30, 70, 110, 20);
-        jPanel4.add(txtViaje);
-        txtViaje.setBounds(60, 10, 80, 20);
-        jPanel4.add(txtFechaViaje);
-        txtFechaViaje.setBounds(210, 10, 90, 20);
-        jPanel4.add(txtProductor);
-        txtProductor.setBounds(420, 10, 180, 20);
-        jPanel4.add(txtDomicilio);
-        txtDomicilio.setBounds(700, 10, 220, 20);
-        jPanel4.add(txtEstablecimiento);
-        txtEstablecimiento.setBounds(110, 40, 200, 20);
-        jPanel4.add(txtHas);
-        txtHas.setBounds(610, 40, 90, 20);
-        jPanel4.add(txNumLote);
-        txNumLote.setBounds(420, 40, 90, 20);
-        jPanel4.add(txtTransportista);
-        txtTransportista.setBounds(110, 70, 200, 20);
-        jPanel4.add(txtVehiculo);
-        txtVehiculo.setBounds(420, 70, 200, 20);
-        jPanel4.add(txtNumMuestra);
-        txtNumMuestra.setBounds(110, 100, 90, 20);
-        jPanel4.add(txtTempCosecha);
-        txtTempCosecha.setBounds(420, 100, 90, 20);
-
-        jLabel42.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel42.setText("Cereal");
-        jPanel4.add(jLabel42);
-        jLabel42.setBounds(750, 40, 80, 20);
-        jPanel4.add(txtCereal);
-        txtCereal.setBounds(790, 40, 100, 20);
-        jPanel4.add(txtToneladas);
-        txtToneladas.setBounds(720, 100, 90, 20);
-        jPanel4.add(txtImpurezas);
-        txtImpurezas.setBounds(720, 130, 90, 20);
-        jPanel4.add(txtPesoHect);
-        txtPesoHect.setBounds(110, 130, 90, 20);
-        jPanel4.add(txtDominio);
-        txtDominio.setBounds(720, 70, 90, 20);
-
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Dominio");
-        jPanel4.add(jLabel12);
-        jLabel12.setBounds(670, 70, 70, 20);
-        jPanel4.add(txtHumedad);
-        txtHumedad.setBounds(420, 130, 90, 20);
 
         tblViaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha", "Nº Viaje", "Productor", "Establecimiento", "Transportista"
+                "Fecha", "Nº Fecha", "Productor"
             }
         ));
         jScrollPane1.setViewportView(tblViaje);
+
+        jPanel8.setLayout(null);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("Productor");
+        jPanel8.add(jLabel6);
+        jLabel6.setBounds(30, 10, 90, 20);
+
+        jLabel41.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel41.setText("Establecimiento");
+        jPanel8.add(jLabel41);
+        jLabel41.setBounds(320, 10, 130, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Enviado por");
+        jPanel8.add(jLabel8);
+        jLabel8.setBounds(250, 40, 90, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel9.setText("Fecha Envio");
+        jPanel8.add(jLabel9);
+        jLabel9.setBounds(20, 40, 80, 20);
+
+        jLabel43.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel43.setText("Nº Muestra");
+        jPanel8.add(jLabel43);
+        jLabel43.setBounds(670, 10, 100, 20);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel13.setText("Cereal");
+        jPanel8.add(jLabel13);
+        jLabel13.setBounds(590, 40, 70, 20);
+        jPanel8.add(txtProductor);
+        txtProductor.setBounds(90, 10, 200, 20);
+        jPanel8.add(txtMuestra);
+        txtMuestra.setBounds(740, 10, 100, 20);
+        jPanel8.add(txtEstablecimiento);
+        txtEstablecimiento.setBounds(420, 10, 210, 20);
+        jPanel8.add(txtCereal);
+        txtCereal.setBounds(640, 40, 100, 20);
+        jPanel8.add(txtFechaEnvio);
+        txtFechaEnvio.setBounds(90, 40, 100, 20);
+        jPanel8.add(txtEnviadoPor);
+        txtEnviadoPor.setBounds(320, 40, 210, 20);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(229, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 945, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(204, 204, 204))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 823, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(356, 356, 356))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(406, 406, 406))
         );
+
+        jPanel5.getAccessibleContext().setAccessibleName("Buscar Muestras Enviadas por");
 
         jTabbedPane1.addTab("Datos Muestra", jPanel2);
 
@@ -490,9 +404,6 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jLabel26.setText("Especialidad");
         jPanel7.add(jLabel26);
         jLabel26.setBounds(30, 30, 110, 20);
-
-        jPanel7.add(cmbLaboratorio);
-        cmbLaboratorio.setBounds(470, 30, 247, 20);
 
         jLabel27.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel27.setText("Laboratorio");
@@ -526,9 +437,10 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jLabel31.setBounds(410, 90, 80, 20);
         jPanel7.add(txtProvinciaLab);
         txtProvinciaLab.setBounds(110, 90, 250, 20);
-
-        jPanel7.add(cmbEspecialidad);
-        cmbEspecialidad.setBounds(110, 30, 247, 20);
+        jPanel7.add(txtEspecialidad);
+        txtEspecialidad.setBounds(110, 30, 250, 20);
+        jPanel7.add(txtLaboratorio);
+        txtLaboratorio.setBounds(470, 30, 250, 20);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultados Analisis", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel6.setLayout(null);
@@ -574,30 +486,30 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(30, 60, 850, 10);
 
-        jLabel33.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel33.setText("Dureza");
-        jPanel6.add(jLabel33);
-        jLabel33.setBounds(140, 160, 120, 20);
+        labelDureza.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDureza.setText("Dureza");
+        jPanel6.add(labelDureza);
+        labelDureza.setBounds(140, 160, 120, 20);
 
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel34.setText("Nivel de Proteínas");
-        jPanel6.add(jLabel34);
-        jLabel34.setBounds(140, 190, 130, 20);
+        labelProteinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelProteinas.setText("Nivel de Proteínas");
+        jPanel6.add(labelProteinas);
+        labelProteinas.setBounds(140, 190, 130, 20);
 
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel36.setText("Nivel de Gluten");
-        jPanel6.add(jLabel36);
-        jLabel36.setBounds(140, 220, 140, 20);
+        labelGluten.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGluten.setText("Nivel de Gluten");
+        jPanel6.add(labelGluten);
+        labelGluten.setBounds(140, 220, 140, 20);
 
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel37.setText("Color");
-        jPanel6.add(jLabel37);
-        jLabel37.setBounds(140, 250, 110, 20);
+        labelColor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelColor.setText("Color");
+        jPanel6.add(labelColor);
+        labelColor.setBounds(140, 250, 110, 20);
 
-        jLabel38.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel38.setText("Almidon");
-        jPanel6.add(jLabel38);
-        jLabel38.setBounds(140, 280, 100, 20);
+        labelAlmidon.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelAlmidon.setText("Almidon");
+        jPanel6.add(labelAlmidon);
+        labelAlmidon.setBounds(140, 280, 100, 20);
 
         jLabel39.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel39.setText("Valores Obtenidos");
@@ -610,76 +522,22 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         jLabel40.setBounds(330, 130, 110, 15);
         jPanel6.add(txtDurezaObtenida);
         txtDurezaObtenida.setBounds(520, 160, 100, 20);
-
-        txtDurezaNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDurezaNormalActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtDurezaNormal);
         txtDurezaNormal.setBounds(330, 160, 100, 20);
-
-        txtProtNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProtNormalActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtProtNormal);
         txtProtNormal.setBounds(330, 190, 100, 20);
-
-        txtGlutenNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGlutenNormalActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtGlutenNormal);
         txtGlutenNormal.setBounds(330, 220, 100, 20);
-
-        txtAlmidonNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlmidonNormalActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtAlmidonNormal);
         txtAlmidonNormal.setBounds(330, 280, 100, 20);
-
-        txtProtObtenidas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProtObtenidasActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtProtObtenidas);
         txtProtObtenidas.setBounds(520, 190, 100, 20);
-
-        txtGlutenObtenido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGlutenObtenidoActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtGlutenObtenido);
         txtGlutenObtenido.setBounds(520, 220, 100, 20);
-
-        txtColorNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtColorNormalActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtColorNormal);
         txtColorNormal.setBounds(330, 250, 100, 20);
-
-        txtAlmidonObtenido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlmidonObtenidoActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtAlmidonObtenido);
         txtAlmidonObtenido.setBounds(520, 280, 100, 20);
-
-        txtColorObtenido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtColorObtenidoActionPerformed(evt);
-            }
-        });
         jPanel6.add(txtColorObtenido);
         txtColorObtenido.setBounds(520, 250, 100, 20);
         jPanel6.add(jSeparator2);
@@ -692,12 +550,12 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(209, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,7 +587,7 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -760,19 +618,24 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(505, 505, 505)
+                .addGap(298, 298, 298)
+                .addComponent(btnNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
-                .addContainerGap())
+                .addContainerGap(327, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -784,47 +647,216 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDurezaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDurezaNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDurezaNormalActionPerformed
+    private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
+         if (ckFecha.isSelected()) {
+            calendarioDViaje.setEnabled(true);
+            calendarioHViaje.setEnabled(true);
+        }
+      
+         if (ckNumMuestra.isSelected()) {
+           txtNumMuestra.setEnabled(true);
+        }
+         if (ckProductor.isSelected()) {
+            cmbProductor.setEnabled(true);
+        }
+    
+    }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
 
-    private void txtProtNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProtNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProtNormalActionPerformed
+    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
+        calendarioDViaje.setEnabled(false);
+        calendarioHViaje.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
+       
+    }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
-    private void txtGlutenNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGlutenNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGlutenNormalActionPerformed
+    private void btnBuscarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarViajeActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha1 = sdf.parse(calendarioDViaje.getText(), new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHViaje.getText(), new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
+        //Verifico que este seleccionada la opcion de fecha
+        if (calendarioDViaje.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getDescarga().getFecha(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (fecha2.after(fecha1)) && (fecha1.before(fecha3)) && muestra.getEstado()==1) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getDescarga().getFecha(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblViaje.setModel(modeloT);
+                        }
+                    }
 
-    private void txtAlmidonNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlmidonNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlmidonNormalActionPerformed
+                }
+            }
+        }
+        //Verifico que este seleccionada la opcion de Productor
+        if (cmbProductor.isEnabled()) {
+            //Creo el objeto muestra
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (viaje.getProductor()== cmbProductor.getSelectedItem()) && muestra.getEstado()==1) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblViaje.setModel(modeloT);
+                        }
+                    }
 
-    private void txtProtObtenidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProtObtenidasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProtObtenidasActionPerformed
+                }
+            }
+        }
+         //Verifico que este seleccionada la opcion de Numero de muestra
+        if (txtNumMuestra.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                MuestraTomada muestra = (MuestraTomada) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
+                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+                    //Busco el objeto viaje
+                    while (ite2.hasNext()) {
+                        Viaje viaje = (Viaje) ite2.next();
+                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (muestra.getNumeroMuestra()== Long.parseLong(txtNumMuestra.getText())) && muestra.getEstado()==1) {
+                            //Guardo el objeto muestra en la tabla
+                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
+                            modeloT.addRow(fila);
+                            tblViaje.setModel(modeloT);
+                        }
+                    }
 
-    private void txtGlutenObtenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGlutenObtenidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGlutenObtenidoActionPerformed
+                }
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnBuscarViajeActionPerformed
 
-    private void txtColorNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColorNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtColorNormalActionPerformed
+    private void btnAceptarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarViajeActionPerformed
+   DefaultTableModel modeloTabla = (DefaultTableModel) tblViaje.getModel();
+  
+    int fila = tblViaje.getSelectedRow();
+    txtProductor.setText(modeloTabla.getValueAt(fila,2).toString());
+    Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+    while(ite.hasNext()){
+          MuestraTomada muestra = new MuestraTomada();
+          if(muestra.getNumeroMuestra()== modeloTabla.getValueAt(fila,1)){
+              txtEstablecimiento.setText(muestra.getDescarga().getEstablecimiento().toString());
+              txtMuestra.setText(String.valueOf(muestra.getNumeroMuestra()));
+              txtCereal.setText(muestra.getDescarga().getCereal().toString());
+              txtFechaEnvio.setText(muestra.getFechaEnvio());
+              txtEnviadoPor.setText(muestra.getResponsableEnvio());
+              txtLaboratorio.setText(muestra.getLaboratorio().toString());
+              txtEspecialidad.setText(muestra.getLaboratorio().getEspecialidad().toString());
+              txtDomicilioLab.setText(muestra.getLaboratorio().getDomicilio().getCalle().toString());
+              txtLocalidadLab.setText(muestra.getLaboratorio().getDomicilio().getBarrio().getLocalidad().toString());
+              txtProvinciaLab.setText(muestra.getLaboratorio().getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia().toString());
+              txtTelefonoLab.setText(muestra.getLaboratorio().getTelefono().toString());
+              txtMuestraLab.setText(String.valueOf(muestra.getNumeroMuestra()));
+          }
+    }
+    if(txtCereal.getText()=="Trigo"){
+        botonTrigo.setSelected(true);
+        botonMaiz.setSelected(false);
+        botonSoja.setSelected(false);
+    }
+    if(txtCereal.getText()=="Soja"){
+        botonTrigo.setSelected(false);
+        botonMaiz.setSelected(false);
+        botonSoja.setSelected(true);
+    }
+    if(txtCereal.getText()=="Maiz"){
+        botonTrigo.setSelected(false);
+        botonMaiz.setSelected(true);
+        botonSoja.setSelected(false);
+    }
+    }//GEN-LAST:event_btnAceptarViajeActionPerformed
 
-    private void txtAlmidonObtenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlmidonObtenidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlmidonObtenidoActionPerformed
-
-    private void txtColorObtenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColorObtenidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtColorObtenidoActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Iterator ite = gestorH.listarClase(CaracteristicasCereal.class).iterator();
+        CaracteristicasCereal caracteristicas = new CaracteristicasCereal();
+        while(ite.hasNext()){
+            if(caracteristicas.getNombreCaracteristica()== labelAlmidon.getText()){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtAlmidonObtenido.getText()));
+                gestorH.guardarObjeto(car1);
+            }
+            if(caracteristicas.getNombreCaracteristica()== labelColor.getText()){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtColorObtenido.getText()));
+                gestorH.guardarObjeto(car1);
+            }
+            if(caracteristicas.getNombreCaracteristica()== labelDureza.getText()){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtDurezaObtenida.getText()));
+                gestorH.guardarObjeto(car1);
+            }
+            if(caracteristicas.getNombreCaracteristica()== labelGluten.getText()){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtGlutenObtenido.getText()));
+                gestorH.guardarObjeto(car1);
+            }
+            if(caracteristicas.getNombreCaracteristica()== labelProteinas.getText()){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtProtObtenidas.getText()));
+                gestorH.guardarObjeto(car1);
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton botonMaiz;
@@ -843,30 +875,15 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
     private datechooser.beans.DateChooserCombo calendarioRecep;
     private javax.swing.JCheckBox ckEstablecimiento;
     private javax.swing.JCheckBox ckFecha;
-    private javax.swing.JCheckBox ckNumViaje;
+    private javax.swing.JCheckBox ckNumMuestra;
     private javax.swing.JCheckBox ckProductor;
     private javax.swing.JCheckBox ckTransportista;
-    private javax.swing.JComboBox cmbEspecialidad;
-    private javax.swing.JComboBox cmbEstablecimiento;
-    private javax.swing.JComboBox cmbLaboratorio;
     private javax.swing.JComboBox cmbProductor;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -877,15 +894,10 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -896,53 +908,47 @@ public class frmRegistrarResultadosLab extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelAlmidon;
+    private javax.swing.JLabel labelColor;
+    private javax.swing.JLabel labelDureza;
+    private javax.swing.JLabel labelGluten;
+    private javax.swing.JLabel labelProteinas;
     private javax.swing.JTable tblViaje;
-    private javax.swing.JTextField txNumLote;
     private javax.swing.JTextField txtAlmidonNormal;
     private javax.swing.JTextField txtAlmidonObtenido;
     private javax.swing.JTextField txtCereal;
     private javax.swing.JTextField txtColorNormal;
     private javax.swing.JTextField txtColorObtenido;
-    private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtDomicilioLab;
-    private javax.swing.JTextField txtDominio;
     private javax.swing.JTextField txtDurezaNormal;
     private javax.swing.JTextField txtDurezaObtenida;
+    private javax.swing.JTextField txtEnviadoPor;
+    private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtFechaViaje;
+    private javax.swing.JTextField txtFechaEnvio;
     private javax.swing.JTextField txtGlutenNormal;
     private javax.swing.JTextField txtGlutenObtenido;
-    private javax.swing.JTextField txtHas;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtHumedad;
-    private javax.swing.JTextField txtImpurezas;
+    private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txtLocalidadLab;
+    private javax.swing.JTextField txtMuestra;
     private javax.swing.JTextField txtMuestraLab;
     private javax.swing.JTextField txtNumMuestra;
-    private javax.swing.JTextField txtNumViaje;
-    private javax.swing.JTextField txtPesoHect;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProtNormal;
     private javax.swing.JTextField txtProtObtenidas;
     private javax.swing.JTextField txtProvinciaLab;
     private javax.swing.JTextField txtTelefonoLab;
-    private javax.swing.JTextField txtTempCosecha;
-    private javax.swing.JTextField txtToneladas;
-    private javax.swing.JTextField txtTransportista;
-    private javax.swing.JTextField txtVehiculo;
-    private javax.swing.JTextField txtViaje;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,6 +26,8 @@ public class MuestraTomada {
     private Descarga descarga;
    
     private String fechaEnvio;
+    private int estado;
+    private String responsableEnvio;
 
     /**
      * @return the numeroMuestra
@@ -95,6 +97,34 @@ public class MuestraTomada {
      */
     public void setDescarga(Descarga descarga) {
         this.descarga = descarga;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the responsableEnvio
+     */
+    public String getResponsableEnvio() {
+        return responsableEnvio;
+    }
+
+    /**
+     * @param responsableEnvio the responsableEnvio to set
+     */
+    public void setResponsableEnvio(String responsableEnvio) {
+        this.responsableEnvio = responsableEnvio;
     }
    
 

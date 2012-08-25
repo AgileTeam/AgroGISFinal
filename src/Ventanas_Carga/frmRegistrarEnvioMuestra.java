@@ -104,15 +104,15 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         txtProductor = new javax.swing.JTextField();
         txtMuestra = new javax.swing.JTextField();
         cmbEspecialidad = new javax.swing.JComboBox();
         cmbLaboratorio = new javax.swing.JComboBox();
         calendarioEnvio = new datechooser.beans.DateChooserCombo();
-        txtResponsable = new javax.swing.JTextField();
         txtEstablecimiento = new javax.swing.JTextField();
         txtCereal = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtResponsable = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEnvios = new javax.swing.JTable();
         btnEliminarEnvio = new javax.swing.JButton();
@@ -190,9 +190,9 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel7.setBounds(320, 10, 130, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Laboratorio");
+        jLabel8.setText("Responsable");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(350, 40, 90, 20);
+        jLabel8.setBounds(340, 70, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Especialidad");
@@ -213,11 +213,6 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel13.setText("Cereal");
         jPanel1.add(jLabel13);
         jLabel13.setBounds(690, 40, 70, 20);
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setText("Responsable");
-        jPanel1.add(jLabel14);
-        jLabel14.setBounds(340, 70, 120, 20);
         jPanel1.add(txtProductor);
         txtProductor.setBounds(90, 10, 200, 20);
         jPanel1.add(txtMuestra);
@@ -230,12 +225,17 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         cmbLaboratorio.setBounds(420, 40, 210, 20);
         jPanel1.add(calendarioEnvio);
         calendarioEnvio.setBounds(90, 70, 90, 20);
-        jPanel1.add(txtResponsable);
-        txtResponsable.setBounds(420, 70, 170, 20);
         jPanel1.add(txtEstablecimiento);
         txtEstablecimiento.setBounds(420, 10, 210, 20);
         jPanel1.add(txtCereal);
         txtCereal.setBounds(740, 40, 100, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Laboratorio");
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(350, 40, 90, 20);
+        jPanel1.add(txtResponsable);
+        txtResponsable.setBounds(420, 70, 210, 20);
 
         tblEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -546,7 +546,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     while (ite2.hasNext()) {
                         Viaje viaje = (Viaje) ite2.next();
                         //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))) {
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (fecha2.after(fecha1)) && (fecha1.before(fecha3)) && muestra.getEstado()==0) {
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getDescarga().getFecha(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
@@ -579,7 +579,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     while (ite2.hasNext()) {
                         Viaje viaje = (Viaje) ite2.next();
                         //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (viaje.getProductor()== cmbProductor.getSelectedItem())) {
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (viaje.getProductor()== cmbProductor.getSelectedItem()) && muestra.getEstado()==0) {
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
@@ -612,7 +612,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     while (ite2.hasNext()) {
                         Viaje viaje = (Viaje) ite2.next();
                         //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (muestra.getNumeroMuestra()== Long.parseLong(txtNumMuestra.getText()))) {
+                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (muestra.getNumeroMuestra()== Long.parseLong(txtNumMuestra.getText())) && muestra.getEstado()==0) {
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
@@ -664,6 +664,8 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                 if(muestra.getNumeroMuestra() == modeloTabla.getValueAt(i, 1)){
                     muestra.setFechaEnvio(modeloTabla.getValueAt(i, 0).toString());
                     muestra.setLaboratorio((Laboratorio)modeloTabla.getValueAt(i, 4));
+                    muestra.setEstado(1);
+                    muestra.setResponsableEnvio(txtResponsable.getText());
                     gestorH.actualizarObjeto(muestra);
                 }
         }
