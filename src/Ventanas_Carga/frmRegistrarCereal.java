@@ -394,29 +394,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     TipoCereal cereal = new TipoCereal();
     CaracteristicasCereal caracteristicas = new CaracteristicasCereal();
     cereal.setNombreCereal(txtNombreCereal.getText());
-    Iterator ite = gestorH.listarClase(TipoTemporada.class).iterator();
-    while(ite.hasNext()){
-         TipoTemporada tipoTemporada= (TipoTemporada) ite.next();
-         if(tipoTemporada.getNombreTipoTemporada()=="Cosecha"){
-            Temporada temporada = new Temporada();
-            temporada.setMesDesde((Mes)cmbMesInicioCosecha.getSelectedItem());
-            temporada.setMesHasta((Mes)cmbMesFinCosecha.getSelectedItem());
-            tipoTemporada.setTemporada(temporada);
-            cereal.setTemporadaCosecha(tipoTemporada);
-         } else {
-            Temporada temporada = new Temporada();
-            temporada.setMesDesde((Mes)cmbMesInicioSiembra.getSelectedItem());
-            temporada.setMesHasta((Mes)cmbMesFinSiembra.getSelectedItem());
-            tipoTemporada.setTemporada(temporada);
-            cereal.setTemporadaCosecha(tipoTemporada);
-         }
-    }
-    caracteristicas.setNombreCaracteristica("Humedad");
-    caracteristicas.setValorDesde(0);
-    caracteristicas.setValorHasta(Double.parseDouble(txtHumedad.getText()));
-    gestorH.guardarObjeto(caracteristicas);
-    cereal.setCaracteristicas(caracteristicas);
-    gestorH.guardarObjeto(cereal);
+   
 }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
