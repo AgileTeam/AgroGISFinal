@@ -18,8 +18,8 @@ public class MuestraTomada {
     @ManyToOne(targetEntity = Laboratorio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Laboratorio laboratorio;
     
-    @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private Viaje viaje;
+//    @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+//    private Viaje viaje;
    
     private String fechaEnvio;
 
@@ -54,16 +54,16 @@ public class MuestraTomada {
     /**
      * @return the viaje
      */
-    public Viaje getViaje() {
-        return viaje;
-    }
-
-    /**
-     * @param viaje the viaje to set
-     */
-    public void setViaje(Viaje viaje) {
-        this.viaje = viaje;
-    }
+//    public Viaje getViaje() {
+//        return viaje;
+//    }
+//
+//    /**
+//     * @param viaje the viaje to set
+//     */
+//    public void setViaje(Viaje viaje) {
+//        this.viaje = viaje;
+//    }
 
     /**
      * @return the fechaEnvio
