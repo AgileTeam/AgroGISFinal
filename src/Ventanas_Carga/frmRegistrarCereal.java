@@ -61,23 +61,23 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
         
-        
-        
-        
-        
+                      
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 655;
-        int alto = 470;
+        int ancho = 700;
+        int alto = 620;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 60);
+        this.setLocation(280, 5);
         
         
-        
-        
+        //redimensionar columnas de la tabla
+        tblCaracteristica.getColumnModel().getColumn(0).setPreferredWidth(120);
+        tblCaracteristica.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblCaracteristica.getColumnModel().getColumn(2).setPreferredWidth(50);
+       
     }
 
     /** This method is called from within the constructor to
@@ -90,6 +90,14 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombreCereal = new javax.swing.JTextField();
@@ -108,25 +116,67 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         cmbMesInicioSiembra = new javax.swing.JComboBox();
         cmbMesFinSiembra = new javax.swing.JComboBox();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
-        txtHora = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        cmbCaracteristica = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        txtPesoH = new javax.swing.JTextField();
+        txtValorHasta = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtHumedad = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
+        txtValorDesde = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCaracteristica = new javax.swing.JTable();
+        btnAgregar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Cereal");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        jPanel4.setLayout(null);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setText("Fecha");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(10, 13, 40, 15);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel11.setText("Hora");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(190, 10, 50, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel12.setText("Usuario");
+        jPanel4.add(jLabel12);
+        jLabel12.setBounds(560, 10, 50, 15);
+        jPanel4.add(txtFecha);
+        txtFecha.setBounds(50, 10, 80, 20);
+        jPanel4.add(txtHora);
+        txtHora.setBounds(220, 10, 80, 20);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel4.add(jLabel13);
+        jLabel13.setBounds(610, 0, 30, 30);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel1.setLayout(null);
@@ -159,159 +209,97 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Tipo Temporada");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 160, 110, 20);
+        jLabel3.setBounds(70, 160, 110, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Mes Comienzo");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(300, 190, 90, 20);
+        jLabel4.setBounds(370, 190, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Mes Fin");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(330, 220, 50, 20);
+        jLabel5.setBounds(410, 220, 90, 20);
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setText("Cosecha");
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(110, 160, 90, 20);
+        jLabel16.setBounds(170, 160, 90, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel14.setText("Siembra");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(390, 160, 90, 20);
+        jLabel14.setBounds(460, 160, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Tipo Temporada");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(290, 160, 110, 20);
+        jLabel8.setBounds(360, 160, 110, 20);
 
         jPanel1.add(cmbMesInicioCosecha);
-        cmbMesInicioCosecha.setBounds(110, 190, 100, 20);
+        cmbMesInicioCosecha.setBounds(170, 190, 100, 20);
 
         jPanel1.add(cmbMesFinCosecha);
-        cmbMesFinCosecha.setBounds(110, 220, 100, 20);
+        cmbMesFinCosecha.setBounds(170, 220, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Mes Comienzo");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(20, 190, 90, 20);
+        jLabel9.setBounds(80, 190, 90, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setText("Mes Fin");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(50, 220, 50, 20);
+        jLabel15.setBounds(120, 220, 50, 20);
 
         jPanel1.add(cmbMesInicioSiembra);
-        cmbMesInicioSiembra.setBounds(390, 190, 100, 20);
+        cmbMesInicioSiembra.setBounds(460, 190, 100, 20);
 
         jPanel1.add(cmbMesFinSiembra);
-        cmbMesFinSiembra.setBounds(390, 220, 100, 20);
-
-        jPanel4.setLayout(null);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel10.setText("Fecha");
-        jPanel4.add(jLabel10);
-        jLabel10.setBounds(10, 13, 40, 15);
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Hora");
-        jPanel4.add(jLabel11);
-        jLabel11.setBounds(210, 10, 40, 20);
-
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel12.setText("Usuario");
-        jPanel4.add(jLabel12);
-        jLabel12.setBounds(520, 10, 50, 15);
-        jPanel4.add(txtFecha);
-        txtFecha.setBounds(60, 10, 80, 20);
-        jPanel4.add(txtHora);
-        txtHora.setBounds(250, 10, 70, 20);
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel4.add(jLabel13);
-        jLabel13.setBounds(570, 0, 30, 30);
+        cmbMesFinSiembra.setBounds(460, 220, 100, 20);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Caracteristicas Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel3.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setText("Característica");
+        jPanel3.add(jLabel17);
+        jLabel17.setBounds(20, 30, 92, 20);
+
+        jPanel3.add(cmbCaracteristica);
+        cmbCaracteristica.setBounds(100, 30, 180, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Peso Hectolítrico");
-
-        txtPesoH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPesoHKeyTyped(evt);
-            }
-        });
+        jLabel6.setText("Valor Desde");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(300, 30, 90, 20);
+        jPanel3.add(txtValorHasta);
+        txtValorHasta.setBounds(550, 30, 90, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setText("% Humedad");
+        jLabel7.setText("Valor Hasta");
+        jPanel3.add(jLabel7);
+        jLabel7.setBounds(480, 30, 90, 20);
+        jPanel3.add(txtValorDesde);
+        txtValorDesde.setBounds(370, 30, 90, 20);
 
-        txtHumedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHumedadKeyTyped(evt);
+        tblCaracteristica.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Caracteristica", "Valor Desde", "Valor Hasta"
             }
-        });
+        ));
+        jScrollPane2.setViewportView(tblCaracteristica);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPesoH, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHumedad, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtPesoH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtHumedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(40, 110, 590, 110);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        jPanel3.add(btnAgregar);
+        btnAgregar.setBounds(280, 70, 100, 30);
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
@@ -321,29 +309,54 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(216, 216, 216)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(47, 47, 47))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,30 +368,6 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     dispose();
     }
 }//GEN-LAST:event_btnCancelarActionPerformed
-
-private void txtPesoHKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoHKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtPesoHKeyTyped
-
-private void txtHumedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHumedadKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtHumedadKeyTyped
 
 private void txtNombreCerealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreCerealKeyTyped
     char c = evt.getKeyChar();
@@ -397,10 +386,17 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
   
 }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaCereal;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JComboBox cmbCaracteristica;
     private javax.swing.JComboBox cmbMesFinCosecha;
     private javax.swing.JComboBox cmbMesFinSiembra;
     private javax.swing.JComboBox cmbMesInicioCosecha;
@@ -413,6 +409,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -426,10 +423,12 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtHumedad;
     private javax.swing.JTextField txtNombreCereal;
-    private javax.swing.JTextField txtPesoH;
+    private javax.swing.JTextField txtValorDesde;
+    private javax.swing.JTextField txtValorHasta;
     // End of variables declaration//GEN-END:variables
 }

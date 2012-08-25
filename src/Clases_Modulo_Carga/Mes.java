@@ -29,4 +29,8 @@ private long idMes;
     public void setNombreMes(String nombreMes) {
         this.nombreMes = nombreMes;
     }
+    
+    public String toString(){
+        return getNombreMes();
+    }
 }
