@@ -17,8 +17,6 @@ private long idTipoCereal;
    
 private String nombreCereal;
 
-@ManyToOne(targetEntity = TipoTemporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private TipoTemporada tipoTemporada;
 
     /**
      * @return the idTipoCereal
@@ -48,21 +46,5 @@ private TipoTemporada tipoTemporada;
         this.nombreCereal = nombreCereal;
     }
 
-    /**
-     * @return the tipoTemporada
-     */
-    public TipoTemporada getTipoTemporada() {
-        return tipoTemporada;
-    }
-
-    /**
-     * @param tipoTemporada the tipoTemporada to set
-     */
-    public void setTipoTemporada(TipoTemporada tipoTemporada) {
-        this.tipoTemporada = tipoTemporada;
-    }
-
-
-
-
+   
 }
