@@ -41,9 +41,16 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioHViaje.setEnabled(false);
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
-  
-                
-       
+ 
+        txtAlmidonDesde.setEnabled(false);
+        txtAlmidonHasta.setEnabled(false);
+        txtColorNormal.setEnabled(false);
+        txtDurezaDesde.setEnabled(false);
+        txtDurezaHasta.setEnabled(false);
+        txtGlutenDesde.setEnabled(false);
+        txtGlutenHasta.setEnabled(false);
+        txtProtDesde.setEnabled(false);
+        txtProtHasta.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -866,6 +873,24 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioHViaje.setEnabled(false);
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
+        txtCereal.setText("");
+        txtEstablecimiento.setText("");
+        txtEspecialidad.setText("");
+        txtProductor.setText("");
+        txtProvinciaLab.setText("");
+        txtLaboratorio.setText("");
+        txtDomicilioLab.setText("");
+        txtEnviadoPor.setText("");
+        txtFechaEnvio.setText("");
+        txtMuestra.setText("");
+        txtTelefonoLab.setText("");
+        txtLocalidadLab.setText("");
+        txtFEnvio.setText("");
+        txtAlmidonObtenido.setText("");
+        txtDurezaObtenida.setText("");
+        txtGlutenObtenido.setText("");
+        txtProtObtenidas.setText("");
+        txtColorObtenido.setText("");
          for(int i=0; i<modeloT.getRowCount(); i++){
             modeloT.removeRow(i);
             tblMuestras.setModel(modeloT);

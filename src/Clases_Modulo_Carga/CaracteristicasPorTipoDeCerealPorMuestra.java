@@ -20,6 +20,9 @@ private CaracteristicasCereal caracteristicas;
 @ManyToOne(targetEntity = MuestraTomada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private MuestraTomada muestra;
 
+@ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoCereal tipoCereal;
+
 private Double valor;
 
 /**
@@ -76,6 +79,20 @@ private Double valor;
      */
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    /**
+     * @return the tipoCereal
+     */
+    public TipoCereal getTipoCereal() {
+        return tipoCereal;
+    }
+
+    /**
+     * @param tipoCereal the tipoCereal to set
+     */
+    public void setTipoCereal(TipoCereal tipoCereal) {
+        this.tipoCereal = tipoCereal;
     }
 
     

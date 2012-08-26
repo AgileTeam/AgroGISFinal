@@ -6,11 +6,12 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Carga.*;
+import Clases_Modulo_Cliente.Lote;
 import Clases_Modulo_Transporte.Transportista;
+import Clases_Modulo_Transporte.Vehiculo;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,16 +42,7 @@ public class gestorDescargaCereal extends GestorHibernate {
        return modelo;
    }
      
-       public DefaultComboBoxModel rellenaComboTemporada(){
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-       Iterator ite = this.listarClase(TipoTemporada.class).iterator();
-       while(ite.hasNext()){
-           TipoTemporada tipo =(TipoTemporada) ite.next();
-               modelo.addElement(tipo);
-           }
-       return modelo;
-   }
-       
+        
        public DefaultComboBoxModel rellenaComboSilo(){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
        Iterator ite = this.listarClase(Silo.class).iterator();
@@ -70,4 +62,105 @@ public class gestorDescargaCereal extends GestorHibernate {
            }
        return modelo;
    }
+       public DefaultComboBoxModel rellenaComboVehiculo(String seleccion){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();
+           Transportista transportista = vehiculo.getTransportista();
+           if (transportista.getNombre().equals(seleccion)){
+               modelo.addElement(vehiculo);
+           }
+       }
+       
+       return modelo;
+   }
+       public DefaultComboBoxModel rellenaComboPatente(String seleccion){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo vehiculo =(Vehiculo) ite.next();
+           if (vehiculo.getModelo().equals(seleccion)){
+               modelo.addElement(vehiculo.getDominio());
+           }
+       }
+       
+       return modelo;
+   }
+       
+       
+     public void guardarDescarga(JTable tablaCaracteristica, JTable tablaLote, JTextField establecimiento, JTextField fecha, JTextField viaje, JComboBox tipoCereal, JTextField toneladas, JComboBox transportista, JComboBox silo){
+     DefaultTableModel modeloTabla = (DefaultTableModel) tablaCaracteristica.getModel();  
+     DefaultTableModel modeloLote = (DefaultTableModel) tablaLote.getModel();
+        Iterator iterator = this.listarClase(Descarga.class).iterator();
+        if(iterator.hasNext()==false){
+            Descarga descarga = new Descarga();
+            descarga.setCereal((TipoCereal)tipoCereal.getSelectedItem());
+            descarga.setFecha(fecha.getText());
+            descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
+            descarga.setToneladas(Double.parseDouble(toneladas.getText()));
+            descarga.setTransportista((Transportista)transportista.getSelectedItem());
+            descarga.setSilo((Silo)silo.getSelectedItem());
+            this.guardarObjeto(descarga);
+            MuestraTomada muestra = new MuestraTomada();
+            muestra.setDescarga(descarga);
+            muestra.setEstado(0);
+            this.guardarObjeto(muestra);
+            for (int i=0; i<modeloLote.getRowCount();i++){
+                LotePorDescarga lotes = new LotePorDescarga();
+                lotes.setDescarga(descarga);
+                lotes.setLote((Lote)modeloLote.getValueAt(i, 0));
+                this.guardarObjeto(lotes);
+            }
+            for (int i=0; i< modeloTabla.getRowCount(); i++){
+                CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
+                c.setMuestra(muestra);
+                c.setTipoCereal((TipoCereal)tipoCereal.getSelectedItem());
+                c.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(i, 0));
+                c.setValor(Double.parseDouble(modeloTabla.getValueAt(i, 1).toString()));
+                this.guardarObjeto(c);
+            }
+            
+        }
+        for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                int bandera=0;
+                CaracteristicasPorTipoDeCerealPorMuestra caracteristicas = new CaracteristicasPorTipoDeCerealPorMuestra();
+                Iterator ite = this.listarClase(CaracteristicasPorTipoDeCerealPorMuestra.class).iterator();
+                while(ite.hasNext()){
+                    CaracteristicasPorTipoDeCerealPorMuestra c = (CaracteristicasPorTipoDeCerealPorMuestra) ite.next();
+                    if((c.getCaracteristicas()==(modeloTabla.getValueAt(i,0)))){
+                         bandera=1;               
+                    }
+                }
+                if(bandera==0){
+                    Descarga descarga = new Descarga();
+                    descarga.setCereal((TipoCereal)tipoCereal.getSelectedItem());
+                    descarga.setFecha(fecha.getText());
+                    descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
+                    descarga.setToneladas(Double.parseDouble(toneladas.getText()));
+                    descarga.setTransportista((Transportista)transportista.getSelectedItem());
+                    descarga.setSilo((Silo)silo.getSelectedItem());
+                    this.guardarObjeto(descarga);
+                    MuestraTomada muestra = new MuestraTomada();
+                    muestra.setDescarga(descarga);
+                    muestra.setEstado(0);
+                    this.guardarObjeto(muestra);
+                    for (int j=0; j<modeloLote.getRowCount();j++){
+                        LotePorDescarga lotes = new LotePorDescarga();
+                        lotes.setDescarga(descarga);
+                        lotes.setLote((Lote)modeloLote.getValueAt(j, 0));
+                        this.guardarObjeto(lotes);
+                    }
+                    for (int j=0; j< modeloTabla.getRowCount(); j++){
+                        CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
+                        c.setMuestra(muestra);
+                        c.setTipoCereal((TipoCereal)tipoCereal.getSelectedItem());
+                        c.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(j, 0));
+                        c.setValor(Double.parseDouble(modeloTabla.getValueAt(j, 1).toString()));
+                        this.guardarObjeto(c);
+                    }
+                 }
+                }
+     
+     }
 }

@@ -17,6 +17,8 @@ import Gestores_Vista.gestorDescargaCereal;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -82,7 +84,21 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
      
+        cmbTransportista.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            cmbVehiculo.setModel(gestorD.rellenaComboVehiculo(cmbTransportista.getSelectedItem().toString()));
+        }
+        }
+        );
+        cmbVehiculo.setModel(gestorD.rellenaComboVehiculo(cmbTransportista.getSelectedItem().toString()));
         
+        cmbVehiculo.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            cmbDominio.setModel(gestorD.rellenaComboPatente(cmbVehiculo.getSelectedItem().toString()));
+        }
+        }
+        );
+        cmbDominio.setModel(gestorD.rellenaComboPatente(cmbVehiculo.getSelectedItem().toString()));
         
     }
 
@@ -132,10 +148,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel18 = new javax.swing.JLabel();
         cmbSilo = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cmbLote = new javax.swing.JComboBox();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblLote = new javax.swing.JTable();
+        btnAgregarLote = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -316,10 +332,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel19);
         jLabel19.setBounds(610, 240, 80, 20);
 
-        jPanel1.add(jComboBox2);
-        jComboBox2.setBounds(650, 240, 70, 20);
+        jPanel1.add(cmbLote);
+        cmbLote.setBounds(650, 240, 70, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -327,14 +343,19 @@ GestorHibernate gestorH = new GestorHibernate();
                 "Lote Nº"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tblLote);
 
         jPanel1.add(jScrollPane3);
         jScrollPane3.setBounds(770, 230, 110, 70);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        jPanel1.add(jButton1);
-        jButton1.setBounds(730, 240, 30, 30);
+        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarLote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLoteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarLote);
+        btnAgregarLote.setBounds(730, 240, 30, 30);
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -449,7 +470,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -464,28 +485,7 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_btnCancelarActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    GestorHibernate gestorH = new GestorHibernate();
-    Descarga descarga = new Descarga();
-    descarga.setCereal((TipoCereal) cmbTipoCereal.getSelectedItem());
-    descarga.setFecha(txtFecha.getText());
-    descarga.setHora(txtHora.getText());
-    descarga.setSilo((Silo) cmbSilo.getSelectedItem());
-    descarga.setTransportista((Transportista) cmbTransportista.getSelectedItem());
-    Iterator ite = gestorH.listarClase(Productor.class).iterator();
-    while(ite.hasNext()){
-        Productor productor = (Productor) ite.next();
-        if(productor.getNombre().equals(txtProductor.getText())){
-            descarga.setProductor(productor);
-        }
-    }
-    while(ite.hasNext()){
-        Establecimiento establecimiento= (Establecimiento) ite.next();
-        if(establecimiento.getNombreEstablecimiento().equals(txtEstablecimiento.getText())){
-            descarga.setEstablecimiento(establecimiento);
-        }
-    }
-    descarga.setNumeroViaje(Integer.parseInt(txtNumViaje.getText()));
-    gestorH.guardarObjeto(descarga);
+   gestorD.guardarDescarga(tblCaracteristica, tblLote, txtEstablecimiento, txtFecha, txtNumViaje, cmbTipoCereal, txtPesoNeto, cmbTransportista, cmbSilo);
     
 
 }//GEN-LAST:event_btnGuardarActionPerformed
@@ -502,19 +502,26 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCaracteristicaActionPerformed
 
+    private void btnAgregarLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLoteActionPerformed
+     DefaultTableModel modeloT = (DefaultTableModel) tblLote.getModel();
+     Object fila[] = {cmbLote.getSelectedItem()};
+     modeloT.addRow(fila);
+     tblLote.setModel(modeloT);
+    }//GEN-LAST:event_btnAgregarLoteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregarCaracteristica;
+    private javax.swing.JButton btnAgregarLote;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cmbCaracteristica;
     private javax.swing.JComboBox cmbDominio;
+    private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbSilo;
     private javax.swing.JComboBox cmbTipoCereal;
     private javax.swing.JComboBox cmbTransportista;
     private javax.swing.JComboBox cmbVehiculo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -543,9 +550,9 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTable tblEstablecimiento;
+    private javax.swing.JTable tblLote;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
