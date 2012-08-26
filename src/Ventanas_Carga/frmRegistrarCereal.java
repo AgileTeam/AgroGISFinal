@@ -32,11 +32,12 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
     public frmRegistrarCereal() {
         initComponents();
         gestorRegistrarCereal gRegistroCereal = new gestorRegistrarCereal();
+        
         cmbMesInicioSiembra.setModel(gRegistroCereal.rellenaComboMes());
         cmbMesFinSiembra.setModel(gRegistroCereal.rellenaComboMes());
         cmbMesInicioCosecha.setModel(gRegistroCereal.rellenaComboMes());
         cmbMesFinCosecha.setModel(gRegistroCereal.rellenaComboMes());
-       
+        cmbCaracteristica.setModel(gRegistroCereal.rellenaComboCaracteristica());
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);

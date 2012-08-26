@@ -23,6 +23,9 @@ private TipoTemporada tipoTemporada;
 @ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TipoCereal tipoCereal;
 
+@ManyToOne(targetEntity = Temporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Temporada temporada;
+
     /**
      * @return the idTipoTemporadaPorTipoCereal
      */
@@ -63,5 +66,19 @@ private TipoCereal tipoCereal;
      */
     public void setTipoCereal(TipoCereal tipoCereal) {
         this.tipoCereal = tipoCereal;
+    }
+
+    /**
+     * @return the temporada
+     */
+    public Temporada getTemporada() {
+        return temporada;
+    }
+
+    /**
+     * @param temporada the temporada to set
+     */
+    public void setTemporada(Temporada temporada) {
+        this.temporada = temporada;
     }
 }

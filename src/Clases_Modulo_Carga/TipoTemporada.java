@@ -16,8 +16,6 @@ private long idTipoTemporada;
     
 private String nombreTipoTemporada;
 
-@ManyToOne(targetEntity = Temporada.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Temporada temporada;
 
     /**
      * @return the nombreTipoTemporada
@@ -33,17 +31,4 @@ private Temporada temporada;
         this.nombreTipoTemporada = nombreTipoTemporada;
     }
 
-    /**
-     * @return the temporada
-     */
-    public Temporada getTemporada() {
-        return temporada;
     }
-
-    /**
-     * @param temporada the temporada to set
-     */
-    public void setTemporada(Temporada temporada) {
-        this.temporada = temporada;
-    }
-}

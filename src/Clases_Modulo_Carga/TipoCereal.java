@@ -46,5 +46,8 @@ private String nombreCereal;
         this.nombreCereal = nombreCereal;
     }
 
+       public String toString(){
+        return getNombreCereal();
+    }
    
 }

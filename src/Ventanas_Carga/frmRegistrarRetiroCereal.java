@@ -11,21 +11,21 @@
 package Ventanas_Carga;
 
 
+import Clases_Modulo_Carga.MuestraTomada;
 import Clases_Modulo_Carga.Retiro;
 import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
+import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorFecha;
 import Gestores_Vista.gestorRegistrarRetiro;
 import Hibernate.GestorHibernate;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.TimeZone;
+import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -39,7 +39,7 @@ import sun.swing.table.DefaultTableCellHeaderRenderer;
  * @author Charito
  */
 public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarRetiroCereal */
     public frmRegistrarRetiroCereal() {
         initComponents();      
@@ -48,6 +48,11 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        
+        calendarioDSolicitud.setEnabled(false);
+        calendarioHSolicitud.setEnabled(false);
+        txtNumSolicitud.setEnabled(false);
+        cmbProductor.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -153,7 +158,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
         btnAceptarTodos1 = new javax.swing.JButton();
-        btnAceptarTodos = new javax.swing.JButton();
+        btnCancelarTodos = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -408,12 +413,22 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
         jPanel13.setBounds(540, 20, 240, 90);
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
+        btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodos1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAceptarTodos1);
         btnAceptarTodos1.setBounds(20, 100, 30, 30);
 
-        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        jPanel1.add(btnAceptarTodos);
-        btnAceptarTodos.setBounds(60, 100, 30, 30);
+        btnCancelarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnCancelarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarTodosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelarTodos);
+        btnCancelarTodos.setBounds(60, 100, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -463,7 +478,7 @@ public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -518,19 +533,122 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnAceptarSolicitud1ActionPerformed
 
     private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
-        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha1 = sdf.parse(calendarioDSolicitud.getText(), new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHSolicitud.getText(), new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblSolicitud.getModel();
+        //Verifico que este seleccionada la opcion de fecha
+        if (calendarioDSolicitud.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
+                    if ((fecha2.after(fecha1)) && (fecha1.before(fecha3)) && solicitud.getEstado()=="Pendiente") {
+                            //Guardo el objeto solicitud en la tabla
+                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
+                            modeloT.addRow(fila);
+                            tblSolicitud.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
+        
+         //Verifico que este seleccionada la opcion de fnumero de solicitud
+        if (txtNumSolicitud.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
+                    if (Long.parseLong(txtNumSolicitud.getText())== solicitud.getNumeroSolicitud() && solicitud.getEstado()=="Pendiente") {
+                            //Guardo el objeto solicitud en la tabla
+                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
+                            modeloT.addRow(fila);
+                            tblSolicitud.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
+        
+         //Verifico que este seleccionada la opcion de productor
+        if (cmbProductor.isEnabled()) {
+            //Creo el objeto orden
+            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while (ite.hasNext()) {
+                int banderaFecha = 0;
+                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+                //Verifico que la muestra no este en la tabla previamente cargada
+                for (int i = 0; i < modeloT.getRowCount(); i++) {
+                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
+                        banderaFecha = 1;
+                    }
+                }
+                //La orden no esta cargada
+                if (banderaFecha == 0) {
+                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
+                    if (Long.parseLong(cmbProductor.getSelectedItem().toString()) == solicitud.getNumeroSolicitud() && solicitud.getEstado()=="Pendiente") {
+                            //Guardo el objeto solicitud en la tabla
+                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
+                            modeloT.addRow(fila);
+                            tblSolicitud.setModel(modeloT);
+                        }
+                    }
+
+                }
+            }
     }//GEN-LAST:event_btnBuscarSolicitudActionPerformed
+
+    private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
+         if (ckFecha.isSelected()) {
+            calendarioDSolicitud.setEnabled(true);
+            calendarioHSolicitud.setEnabled(true);
+        }
+           if (ckNumSolicitud.isSelected()) {
+            txtNumSolicitud.setEnabled(true);
+        }
+            if (ckProductor.isSelected()) {
+            cmbProductor.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
+
+    private void btnCancelarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTodosActionPerformed
+        calendarioDSolicitud.setEnabled(false);
+        calendarioHSolicitud.setEnabled(false);
+        txtNumSolicitud.setEnabled(false);
+        cmbProductor.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarTodosActionPerformed
    
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarSolicitud1;
-    private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAceptarVehiculo;
     private javax.swing.JButton btnBuscarSolicitud;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarTodos;
     private javax.swing.JButton btnGuardar;
     private datechooser.beans.DateChooserCombo calendarioDSolicitud;
     private datechooser.beans.DateChooserCombo calendarioHSolicitud;

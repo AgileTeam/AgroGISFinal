@@ -30,7 +30,7 @@ public class gestorBarrio extends GestorHibernate{
         return modelo;
     }
       
-       public void guardarBarrio(JTable tabla){
+     public void guardarBarrio(JTable tabla){
      DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();      
         Iterator iterator = this.listarClase(Barrio.class).iterator();
         if(iterator.hasNext()==false){
