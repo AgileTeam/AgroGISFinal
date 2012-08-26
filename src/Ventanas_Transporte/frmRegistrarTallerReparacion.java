@@ -120,7 +120,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         btnEliminarTaller = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         btnGuardarTaller = new javax.swing.JButton();
-        btnCancelarTaller = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -307,7 +307,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         txtEmail.setBounds(100, 250, 240, 20);
 
         btnNuevoTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnNuevoTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnNuevoTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnNuevoTaller.setText("Agregar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -317,7 +317,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNuevoTaller)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,12 +356,12 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         btnGuardarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardarTaller.setText("Guardar");
 
-        btnCancelarTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelarTaller.setText("Cancelar");
-        btnCancelarTaller.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarTallerActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -373,7 +373,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCancelarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -382,7 +382,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -460,7 +460,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
@@ -508,18 +508,18 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
-    private void btnCancelarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTallerActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
     int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
     if (respuesta==0){
     dispose();
     }
-    }//GEN-LAST:event_btnCancelarTallerActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarTaller;
     private javax.swing.JButton btnEliminarTaller;
     private javax.swing.JButton btnGuardarTaller;
     private javax.swing.JButton btnNuevoTaller;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cmbBarrio;
     private javax.swing.JComboBox cmbCondicion;
     private javax.swing.JComboBox cmbDepartamento;

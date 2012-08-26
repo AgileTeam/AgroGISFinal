@@ -408,12 +408,6 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jLabel18.setText("Departamento");
         panelEstablecimiento.add(jLabel18);
         jLabel18.setBounds(360, 160, 110, 20);
-
-        txtLocalidadEst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocalidadEstActionPerformed(evt);
-            }
-        });
         panelEstablecimiento.add(txtLocalidadEst);
         txtLocalidadEst.setBounds(110, 160, 180, 20);
         panelEstablecimiento.add(txtDepto);
@@ -495,7 +489,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -505,10 +499,6 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtLocalidadEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalidadEstActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocalidadEstActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgenda;

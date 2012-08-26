@@ -164,11 +164,11 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDetalleCarga = new javax.swing.JTable();
         btnEliminarDetalle = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         btnGuardar1 = new javax.swing.JButton();
 
         setIconifiable(true);
@@ -341,7 +341,7 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         txtResponsable.setBounds(480, 100, 200, 20);
 
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,14 +383,14 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         jPanel3.add(btnEliminarDetalle);
         btnEliminarDetalle.setBounds(700, 220, 47, 30);
 
-        jTextField1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel3.add(jTextField1);
-        jTextField1.setBounds(590, 290, 100, 20);
+        txtTotal.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel3.add(txtTotal);
+        txtTotal.setBounds(580, 290, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel7.setText("TOTAL  $");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(534, 290, 70, 20);
+        jLabel7.setBounds(530, 290, 70, 20);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(20, 140, 760, 330);
@@ -403,12 +403,12 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         btnDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
         btnDetalle.setText("Detalle");
 
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -424,24 +424,24 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
             .addGroup(layout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -504,12 +504,12 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarDetalleActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
     int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
     if (respuesta==0){
     dispose();
     }
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 //      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
@@ -532,11 +532,11 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnEliminarDetalle;
     private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioFU;
     private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbProducto;
@@ -557,7 +557,6 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelLitros;
     private javax.swing.JLabel labelPrecioLitro;
     private javax.swing.JLabel labelPrecioU;
@@ -574,5 +573,6 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     private javax.swing.JTextField txtOperacion;
     private javax.swing.JTextField txtPrecioLitro;
     private javax.swing.JTextField txtResponsable;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

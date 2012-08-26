@@ -158,7 +158,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
         btnEliminarEstacion = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         btnGuardarEstacion = new javax.swing.JButton();
-        btnCancelarEstacion = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         setIconifiable(true);
@@ -292,7 +292,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
         jLabel11.setBounds(50, 210, 40, 20);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnNuevo.setText("Agregar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -302,7 +302,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNuevo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,12 +378,12 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
             }
         });
 
-        btnCancelarEstacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelarEstacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelarEstacion.setText("Cancelar");
-        btnCancelarEstacion.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarEstacionActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -395,7 +395,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
                 .addGap(21, 21, 21)
                 .addComponent(btnGuardarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCancelarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -404,7 +404,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -471,7 +471,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -482,12 +482,12 @@ private void btnEliminarEstacionActionPerformed(java.awt.event.ActionEvent evt) 
     modeloTabla.removeRow(tblEstacion.getSelectedRow());
 }//GEN-LAST:event_btnEliminarEstacionActionPerformed
 
-private void btnCancelarEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEstacionActionPerformed
+private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
     int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
     if (respuesta==0){
     dispose();
     }
-}//GEN-LAST:event_btnCancelarEstacionActionPerformed
+}//GEN-LAST:event_btnSalirActionPerformed
 
 private void txtRazonSocialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonSocialKeyTyped
     char c = evt.getKeyChar();
@@ -554,10 +554,10 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarEstacion;
     private javax.swing.JButton btnEliminarEstacion;
     private javax.swing.JButton btnGuardarEstacion;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cmbBarrio;
     private javax.swing.JComboBox cmbCondicion;
     private javax.swing.JComboBox cmbDepartamento;

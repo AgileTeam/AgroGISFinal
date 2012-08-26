@@ -438,7 +438,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel2.add(btnEliminarTel);
         btnEliminarTel.setBounds(530, 150, 40, 30);
 
-        btnAgregarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarTelActionPerformed(evt);
@@ -558,21 +558,21 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel3.add(cmbDepto);
         cmbDepto.setBounds(100, 80, 190, 20);
 
-        btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarDepartamentoActionPerformed(evt);
             }
         });
 
-        btnAgregarPais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarPais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarPaisActionPerformed(evt);
             }
         });
 
-        btnAgregarBarrio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarBarrio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarBarrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarBarrioActionPerformed(evt);
@@ -606,14 +606,14 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel3.add(jPanel18);
         jPanel18.setBounds(250, 30, 100, 120);
 
-        btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProvinciaActionPerformed(evt);
             }
         });
 
-        btnAgregarLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarLocalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarLocalidadActionPerformed(evt);
@@ -1037,9 +1037,9 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         btnEliminarVehiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         panelVehiculo.add(btnEliminarVehiculo);
-        btnEliminarVehiculo.setBounds(800, 410, 40, 30);
+        btnEliminarVehiculo.setBounds(800, 380, 40, 30);
 
-        btnAgregarCamionAcoplado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarCamionAcoplado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarCamionAcoplado.setText("Agregar");
         btnAgregarCamionAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1076,7 +1076,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
             }
         });
         panelVehiculo.add(btnEditarVehiculo);
-        btnEditarVehiculo.setBounds(800, 370, 40, 30);
+        btnEditarVehiculo.setBounds(800, 340, 40, 30);
 
         jTabbedPane1.addTab("Vehiculo", panelVehiculo);
 
@@ -1145,8 +1145,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnEmitirFicha.setText("Emitir Ficha");
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnCancelar.setText("Salir");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
