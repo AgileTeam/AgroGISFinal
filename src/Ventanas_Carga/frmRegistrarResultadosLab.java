@@ -393,8 +393,6 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGap(406, 406, 406))
         );
 
-        jPanel5.getAccessibleContext().setAccessibleName("Buscar Muestras Enviadas por");
-
         jTabbedPane1.addTab("Datos Muestra", jPanel2);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
@@ -610,6 +608,11 @@ GestorHibernate gestorH = new GestorHibernate();
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -647,7 +650,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -857,6 +860,18 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
+        calendarioDViaje.setEnabled(false);
+        calendarioHViaje.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
+         for(int i=0; i<modeloT.getRowCount(); i++){
+            modeloT.removeRow(i);
+            tblViaje.setModel(modeloT);
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton botonMaiz;

@@ -266,6 +266,11 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
@@ -479,7 +484,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -672,6 +677,28 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
             
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        DefaultTableModel modeloT = (DefaultTableModel) tblMuestra.getModel();
+        DefaultTableModel modeloT2 = (DefaultTableModel) tblEnvios.getModel();
+        calendarioDMuestra.setEnabled(false);
+        calendarioHMuestra.setEnabled(false);
+        txtNumMuestra.setEnabled(false);
+        cmbProductor.setEnabled(false);
+        txtProductor.setText("");
+        txtEstablecimiento.setText("");
+        txtCereal.setText("");
+        txtResponsable.setText("");
+        txtMuestra.setText("");
+        for(int i=0; i<modeloT.getRowCount(); i++){
+            modeloT.removeRow(i);
+            tblMuestra.setModel(modeloT);
+        }
+        for(int i=0; i<modeloT2.getRowCount(); i++){
+            modeloT.removeRow(i);
+            tblEnvios.setModel(modeloT2);
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarMuestra;

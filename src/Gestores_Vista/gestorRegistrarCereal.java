@@ -58,8 +58,23 @@ public class gestorRegistrarCereal extends GestorHibernate {
                     Temporada temporada = new Temporada();
                     temporada.setMesDesde((Mes)mesDesdeCosecha.getSelectedItem());
                     temporada.setMesHasta((Mes)mesHastaCosecha.getSelectedItem());
+                    this.guardarObjeto(temporada);
                     TipoTemporadaPorTipoCereal t = new TipoTemporadaPorTipoCereal();
-                    t.set
+                    t.setTemporada(temporada);
+                    t.setTipoCereal(tipo);
+                    t.setTipoTemporada(tipoTemporada);
+                    this.guardarObjeto(t);
+                }
+                if(tipoTemporada.getNombreTipoTemporada()== siembra.getText()){
+                    Temporada temporada = new Temporada();
+                    temporada.setMesDesde((Mes)mesDesdeSiembra.getSelectedItem());
+                    temporada.setMesHasta((Mes)mesHastaSiembra.getSelectedItem());
+                    this.guardarObjeto(temporada);
+                    TipoTemporadaPorTipoCereal t = new TipoTemporadaPorTipoCereal();
+                    t.setTemporada(temporada);
+                    t.setTipoCereal(tipo);
+                    t.setTipoTemporada(tipoTemporada);
+                    this.guardarObjeto(t);
                 }
             }
             }
@@ -81,6 +96,33 @@ public class gestorRegistrarCereal extends GestorHibernate {
                 this.guardarObjeto(tipo);
                 caracteristicas.setTipoCereal(tipo);
                 this.guardarObjeto(caracteristicas);
+                 Iterator ite1 = this.listarClase(TipoTemporada.class).iterator();
+            while(ite1.hasNext()){
+                TipoTemporada tipoTemporada = new TipoTemporada();
+                if(tipoTemporada.getNombreTipoTemporada()== cosecha.getText()){
+                    Temporada temporada = new Temporada();
+                    temporada.setMesDesde((Mes)mesDesdeCosecha.getSelectedItem());
+                    temporada.setMesHasta((Mes)mesHastaCosecha.getSelectedItem());
+                    this.guardarObjeto(temporada);
+                    TipoTemporadaPorTipoCereal t = new TipoTemporadaPorTipoCereal();
+                    t.setTemporada(temporada);
+                    t.setTipoCereal(tipo);
+                    t.setTipoTemporada(tipoTemporada);
+                    this.guardarObjeto(t);
+                }
+                if(tipoTemporada.getNombreTipoTemporada()== siembra.getText()){
+                    Temporada temporada = new Temporada();
+                    temporada.setMesDesde((Mes)mesDesdeSiembra.getSelectedItem());
+                    temporada.setMesHasta((Mes)mesHastaSiembra.getSelectedItem());
+                    this.guardarObjeto(temporada);
+                    TipoTemporadaPorTipoCereal t = new TipoTemporadaPorTipoCereal();
+                    t.setTemporada(temporada);
+                    t.setTipoCereal(tipo);
+                    t.setTipoTemporada(tipoTemporada);
+                    this.guardarObjeto(t);
+                }
+            }
+                
                 }
                 }
      

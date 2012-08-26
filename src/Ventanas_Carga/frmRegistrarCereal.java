@@ -21,13 +21,15 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Charito
  */
 public class frmRegistrarCereal extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
     /** Creates new form frmRegistrarCereal */
     public frmRegistrarCereal() {
         initComponents();
@@ -108,8 +110,8 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        labelCosecha = new javax.swing.JLabel();
+        labelSiembra = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cmbMesInicioCosecha = new javax.swing.JComboBox();
         cmbMesFinCosecha = new javax.swing.JComboBox();
@@ -222,15 +224,15 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(410, 220, 90, 20);
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setText("Cosecha");
-        jPanel1.add(jLabel16);
-        jLabel16.setBounds(170, 160, 90, 20);
+        labelCosecha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelCosecha.setText("Cosecha");
+        jPanel1.add(labelCosecha);
+        labelCosecha.setBounds(170, 160, 90, 20);
 
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel14.setText("Siembra");
-        jPanel1.add(jLabel14);
-        jLabel14.setBounds(460, 160, 90, 20);
+        labelSiembra.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelSiembra.setText("Siembra");
+        jPanel1.add(labelSiembra);
+        labelSiembra.setBounds(460, 160, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Tipo Temporada");
@@ -299,6 +301,11 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(280, 70, 100, 30);
 
@@ -357,7 +364,7 @@ public class frmRegistrarCereal extends javax.swing.JInternalFrame {
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -380,16 +387,23 @@ private void txtNombreCerealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 }//GEN-LAST:event_txtNombreCerealKeyTyped
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    GestorHibernate gestorH = new GestorHibernate();
-    TipoCereal cereal = new TipoCereal();
-    CaracteristicasCereal caracteristicas = new CaracteristicasCereal();
-    cereal.setNombreCereal(txtNombreCereal.getText());
+    gestorR.guardarCaracteristicas(tblCaracteristica, txtNombreCereal, labelCosecha, labelSiembra, cmbMesInicioCosecha, cmbMesFinCosecha, cmbMesInicioSiembra, cmbMesFinSiembra);
   
 }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+       txtNombreCereal.setText("");
+       areaCereal.setText("");
+       txtValorDesde.setText("");
+       txtValorHasta.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblCaracteristica.getModel();
+       Object fila[]={cmbCaracteristica.getSelectedItem(), txtValorDesde.getText(), txtValorHasta.getText()};
+       modeloT.addRow(fila);
+       tblCaracteristica.setModel(modeloT);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaCereal;
@@ -407,9 +421,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -425,6 +437,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelCosecha;
+    private javax.swing.JLabel labelSiembra;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
