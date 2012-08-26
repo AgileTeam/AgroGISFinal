@@ -163,4 +163,14 @@ public class gestorDescargaCereal extends GestorHibernate {
                 }
      
      }
+     
+     public long obtenerNumeroMuestra(){
+         Iterator ite = listarClase(MuestraTomada.class).iterator();
+         long numero=0;
+         while(ite.hasNext()){
+            MuestraTomada muestra = (MuestraTomada) ite.next();
+            numero= muestra.getNumeroMuestra();
+         }
+         return numero;
+     }
 }
