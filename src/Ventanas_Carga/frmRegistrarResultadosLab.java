@@ -101,8 +101,6 @@ GestorHibernate gestorH = new GestorHibernate();
         ckFecha = new javax.swing.JCheckBox();
         ckNumMuestra = new javax.swing.JCheckBox();
         ckProductor = new javax.swing.JCheckBox();
-        ckTransportista = new javax.swing.JCheckBox();
-        ckEstablecimiento = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -117,7 +115,7 @@ GestorHibernate gestorH = new GestorHibernate();
         btnAceptarTodos1 = new javax.swing.JButton();
         btnAceptarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblViaje = new javax.swing.JTable();
+        tblMuestras = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -149,7 +147,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         calendarioRecep = new datechooser.beans.DateChooserCombo();
-        calendarioEnvio = new datechooser.beans.DateChooserCombo();
         jLabel32 = new javax.swing.JLabel();
         txtMuestraLab = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
@@ -165,16 +162,21 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         txtDurezaObtenida = new javax.swing.JTextField();
-        txtDurezaNormal = new javax.swing.JTextField();
-        txtProtNormal = new javax.swing.JTextField();
-        txtGlutenNormal = new javax.swing.JTextField();
-        txtAlmidonNormal = new javax.swing.JTextField();
+        txtAlmidonHasta = new javax.swing.JTextField();
+        txtProtDesde = new javax.swing.JTextField();
+        txtGlutenDesde = new javax.swing.JTextField();
+        txtAlmidonDesde = new javax.swing.JTextField();
         txtProtObtenidas = new javax.swing.JTextField();
         txtGlutenObtenido = new javax.swing.JTextField();
         txtColorNormal = new javax.swing.JTextField();
         txtAlmidonObtenido = new javax.swing.JTextField();
         txtColorObtenido = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        txtFEnvio = new javax.swing.JTextField();
+        txtDurezaDesde = new javax.swing.JTextField();
+        txtDurezaHasta = new javax.swing.JTextField();
+        txtProtHasta = new javax.swing.JTextField();
+        txtGlutenHasta = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -208,27 +210,17 @@ GestorHibernate gestorH = new GestorHibernate();
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha Envío");
         jPanel5.add(ckFecha);
-        ckFecha.setBounds(10, 30, 90, 23);
+        ckFecha.setBounds(20, 40, 90, 23);
 
         ckNumMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckNumMuestra.setText("Numero Viaje");
         jPanel5.add(ckNumMuestra);
-        ckNumMuestra.setBounds(10, 50, 110, 23);
+        ckNumMuestra.setBounds(20, 60, 110, 23);
 
         ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
         jPanel5.add(ckProductor);
-        ckProductor.setBounds(10, 70, 90, 23);
-
-        ckTransportista.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckTransportista.setText("Transportista");
-        jPanel5.add(ckTransportista);
-        ckTransportista.setBounds(10, 90, 120, 23);
-
-        ckEstablecimiento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckEstablecimiento.setText("Establecimiento");
-        jPanel5.add(ckEstablecimiento);
-        ckEstablecimiento.setBounds(10, 110, 120, 23);
+        ckProductor.setBounds(20, 80, 90, 23);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -248,7 +240,7 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioDViaje.setBounds(50, 20, 90, 20);
 
         jPanel5.add(jPanel10);
-        jPanel10.setBounds(160, 30, 160, 90);
+        jPanel10.setBounds(160, 30, 170, 90);
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
@@ -281,7 +273,7 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel5.add(btnBuscarViaje);
-        btnBuscarViaje.setBounds(320, 140, 100, 30);
+        btnBuscarViaje.setBounds(390, 130, 100, 30);
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/plus.png"))); // NOI18N
         btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
@@ -290,7 +282,7 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel5.add(btnAceptarTodos1);
-        btnAceptarTodos1.setBounds(30, 140, 30, 30);
+        btnAceptarTodos1.setBounds(20, 110, 30, 30);
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -299,61 +291,61 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel5.add(btnAceptarTodos);
-        btnAceptarTodos.setBounds(70, 140, 30, 30);
+        btnAceptarTodos.setBounds(60, 110, 30, 30);
 
-        tblViaje.setModel(new javax.swing.table.DefaultTableModel(
+        tblMuestras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha", "Nº Fecha", "Productor"
+                "Fecha", "Nº Muestra", "Productor"
             }
         ));
-        jScrollPane1.setViewportView(tblViaje);
+        jScrollPane1.setViewportView(tblMuestras);
 
         jPanel8.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Productor");
         jPanel8.add(jLabel6);
-        jLabel6.setBounds(30, 10, 90, 20);
+        jLabel6.setBounds(580, 10, 90, 20);
 
         jLabel41.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel41.setText("Establecimiento");
         jPanel8.add(jLabel41);
-        jLabel41.setBounds(320, 10, 130, 20);
+        jLabel41.setBounds(240, 40, 130, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Enviado por");
         jPanel8.add(jLabel8);
-        jLabel8.setBounds(250, 40, 90, 20);
+        jLabel8.setBounds(570, 40, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Fecha Envio");
         jPanel8.add(jLabel9);
-        jLabel9.setBounds(20, 40, 80, 20);
+        jLabel9.setBounds(20, 10, 80, 20);
 
         jLabel43.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel43.setText("Nº Muestra");
         jPanel8.add(jLabel43);
-        jLabel43.setBounds(670, 10, 100, 20);
+        jLabel43.setBounds(260, 10, 100, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Cereal");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(590, 40, 70, 20);
+        jLabel13.setBounds(50, 40, 70, 20);
         jPanel8.add(txtProductor);
-        txtProductor.setBounds(90, 10, 200, 20);
+        txtProductor.setBounds(640, 10, 200, 20);
         jPanel8.add(txtMuestra);
-        txtMuestra.setBounds(740, 10, 100, 20);
+        txtMuestra.setBounds(330, 10, 100, 20);
         jPanel8.add(txtEstablecimiento);
-        txtEstablecimiento.setBounds(420, 10, 210, 20);
+        txtEstablecimiento.setBounds(640, 40, 210, 20);
         jPanel8.add(txtCereal);
-        txtCereal.setBounds(640, 40, 100, 20);
+        txtCereal.setBounds(90, 40, 100, 20);
         jPanel8.add(txtFechaEnvio);
-        txtFechaEnvio.setBounds(90, 40, 100, 20);
+        txtFechaEnvio.setBounds(90, 10, 100, 20);
         jPanel8.add(txtEnviadoPor);
-        txtEnviadoPor.setBounds(320, 40, 210, 20);
+        txtEnviadoPor.setBounds(330, 40, 210, 20);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -379,18 +371,17 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(406, 406, 406))
+                        .addGap(60, 60, 60)
+                        .addComponent(btnAceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(338, 338, 338))
         );
 
         jTabbedPane1.addTab("Datos Muestra", jPanel2);
@@ -454,8 +445,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel25.setBounds(580, 30, 120, 20);
         jPanel6.add(calendarioRecep);
         calendarioRecep.setBounds(680, 30, 110, 20);
-        jPanel6.add(calendarioEnvio);
-        calendarioEnvio.setBounds(400, 30, 110, 20);
 
         jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel32.setText("Muestra Nº");
@@ -520,26 +509,36 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel40.setBounds(330, 130, 110, 15);
         jPanel6.add(txtDurezaObtenida);
         txtDurezaObtenida.setBounds(520, 160, 100, 20);
-        jPanel6.add(txtDurezaNormal);
-        txtDurezaNormal.setBounds(330, 160, 100, 20);
-        jPanel6.add(txtProtNormal);
-        txtProtNormal.setBounds(330, 190, 100, 20);
-        jPanel6.add(txtGlutenNormal);
-        txtGlutenNormal.setBounds(330, 220, 100, 20);
-        jPanel6.add(txtAlmidonNormal);
-        txtAlmidonNormal.setBounds(330, 280, 100, 20);
+        jPanel6.add(txtAlmidonHasta);
+        txtAlmidonHasta.setBounds(380, 280, 40, 20);
+        jPanel6.add(txtProtDesde);
+        txtProtDesde.setBounds(330, 190, 40, 20);
+        jPanel6.add(txtGlutenDesde);
+        txtGlutenDesde.setBounds(330, 220, 40, 20);
+        jPanel6.add(txtAlmidonDesde);
+        txtAlmidonDesde.setBounds(330, 280, 40, 20);
         jPanel6.add(txtProtObtenidas);
         txtProtObtenidas.setBounds(520, 190, 100, 20);
         jPanel6.add(txtGlutenObtenido);
         txtGlutenObtenido.setBounds(520, 220, 100, 20);
         jPanel6.add(txtColorNormal);
-        txtColorNormal.setBounds(330, 250, 100, 20);
+        txtColorNormal.setBounds(330, 250, 90, 20);
         jPanel6.add(txtAlmidonObtenido);
         txtAlmidonObtenido.setBounds(520, 280, 100, 20);
         jPanel6.add(txtColorObtenido);
         txtColorObtenido.setBounds(520, 250, 100, 20);
         jPanel6.add(jSeparator2);
         jSeparator2.setBounds(30, 150, 850, 10);
+        jPanel6.add(txtFEnvio);
+        txtFEnvio.setBounds(400, 30, 100, 20);
+        jPanel6.add(txtDurezaDesde);
+        txtDurezaDesde.setBounds(330, 160, 40, 20);
+        jPanel6.add(txtDurezaHasta);
+        txtDurezaHasta.setBounds(380, 160, 40, 20);
+        jPanel6.add(txtProtHasta);
+        txtProtHasta.setBounds(380, 190, 40, 20);
+        jPanel6.add(txtGlutenHasta);
+        txtGlutenHasta.setBounds(380, 220, 40, 20);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -650,7 +649,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -683,7 +682,7 @@ GestorHibernate gestorH = new GestorHibernate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha1 = sdf.parse(calendarioDViaje.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHViaje.getText(), new ParsePosition(0));
-        DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
+        DefaultTableModel modeloT = (DefaultTableModel) tblMuestras.getModel();
         //Verifico que este seleccionada la opcion de fecha
         if (calendarioDViaje.isEnabled()) {
             //Creo el objeto orden
@@ -709,7 +708,7 @@ GestorHibernate gestorH = new GestorHibernate();
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getDescarga().getFecha(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
+                            tblMuestras.setModel(modeloT);
                         }
                     }
 
@@ -741,7 +740,7 @@ GestorHibernate gestorH = new GestorHibernate();
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
+                            tblMuestras.setModel(modeloT);
                         }
                     }
 
@@ -773,7 +772,7 @@ GestorHibernate gestorH = new GestorHibernate();
                             //Guardo el objeto muestra en la tabla
                             Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
                             modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
+                            tblMuestras.setModel(modeloT);
                         }
                     }
 
@@ -785,9 +784,9 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnBuscarViajeActionPerformed
 
     private void btnAceptarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarViajeActionPerformed
-   DefaultTableModel modeloTabla = (DefaultTableModel) tblViaje.getModel();
+   DefaultTableModel modeloTabla = (DefaultTableModel) tblMuestras.getModel();
   
-    int fila = tblViaje.getSelectedRow();
+    int fila = tblMuestras.getSelectedRow();
     txtProductor.setText(modeloTabla.getValueAt(fila,2).toString());
     Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
     while(ite.hasNext()){
@@ -862,14 +861,14 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
+        DefaultTableModel modeloT = (DefaultTableModel) tblMuestras.getModel();
         calendarioDViaje.setEnabled(false);
         calendarioHViaje.setEnabled(false);
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
          for(int i=0; i<modeloT.getRowCount(); i++){
             modeloT.removeRow(i);
-            tblViaje.setModel(modeloT);
+            tblMuestras.setModel(modeloT);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -885,14 +884,11 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private datechooser.beans.DateChooserCombo calendarioDViaje;
-    private datechooser.beans.DateChooserCombo calendarioEnvio;
     private datechooser.beans.DateChooserCombo calendarioHViaje;
     private datechooser.beans.DateChooserCombo calendarioRecep;
-    private javax.swing.JCheckBox ckEstablecimiento;
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumMuestra;
     private javax.swing.JCheckBox ckProductor;
-    private javax.swing.JCheckBox ckTransportista;
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -938,21 +934,25 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel labelDureza;
     private javax.swing.JLabel labelGluten;
     private javax.swing.JLabel labelProteinas;
-    private javax.swing.JTable tblViaje;
-    private javax.swing.JTextField txtAlmidonNormal;
+    private javax.swing.JTable tblMuestras;
+    private javax.swing.JTextField txtAlmidonDesde;
+    private javax.swing.JTextField txtAlmidonHasta;
     private javax.swing.JTextField txtAlmidonObtenido;
     private javax.swing.JTextField txtCereal;
     private javax.swing.JTextField txtColorNormal;
     private javax.swing.JTextField txtColorObtenido;
     private javax.swing.JTextField txtDomicilioLab;
-    private javax.swing.JTextField txtDurezaNormal;
+    private javax.swing.JTextField txtDurezaDesde;
+    private javax.swing.JTextField txtDurezaHasta;
     private javax.swing.JTextField txtDurezaObtenida;
     private javax.swing.JTextField txtEnviadoPor;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtEstablecimiento;
+    private javax.swing.JTextField txtFEnvio;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFechaEnvio;
-    private javax.swing.JTextField txtGlutenNormal;
+    private javax.swing.JTextField txtGlutenDesde;
+    private javax.swing.JTextField txtGlutenHasta;
     private javax.swing.JTextField txtGlutenObtenido;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtLaboratorio;
@@ -961,7 +961,8 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtMuestraLab;
     private javax.swing.JTextField txtNumMuestra;
     private javax.swing.JTextField txtProductor;
-    private javax.swing.JTextField txtProtNormal;
+    private javax.swing.JTextField txtProtDesde;
+    private javax.swing.JTextField txtProtHasta;
     private javax.swing.JTextField txtProtObtenidas;
     private javax.swing.JTextField txtProvinciaLab;
     private javax.swing.JTextField txtTelefonoLab;
