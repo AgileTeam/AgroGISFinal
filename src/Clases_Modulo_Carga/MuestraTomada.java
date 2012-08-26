@@ -20,7 +20,7 @@ public class MuestraTomada {
     private Laboratorio laboratorio;
     
     @ManyToOne(targetEntity = Viaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    public Viaje viaje;
+    private Viaje viaje;
     
     @ManyToOne(targetEntity = Descarga.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Descarga descarga;
@@ -63,10 +63,10 @@ public class MuestraTomada {
     public Viaje getViaje() {
         return viaje;
     }
-
-    /**
-     * @param viaje the viaje to set
-     */
+//
+//    /**
+//     * @param viaje the viaje to set
+//     */
     public void setViaje(Viaje viaje) {
         this.viaje = viaje;
     }
