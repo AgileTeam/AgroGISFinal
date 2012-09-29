@@ -99,7 +99,7 @@ GestorHibernate gestorH = new GestorHibernate();
         }
         );
         cmbDominio.setModel(gestorD.rellenaComboPatente(cmbVehiculo.getSelectedItem().toString()));
-        
+       
     }
 
     /** This method is called from within the constructor to
