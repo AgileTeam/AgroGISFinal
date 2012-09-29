@@ -4,6 +4,12 @@
  */
 package Ventanas_Viaje;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.text.*;
+import java.util.*;
+
+
 /**
  *
  * @author Carolina
@@ -15,7 +21,44 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
      */
     public frmAsignarTransporte() {
         initComponents();
-
+        
+        txtFecha.setEditable(false);
+        txtFecha.setEnabled(false);
+        txtHora.setEditable(false);
+        txtHora.setEnabled(false);
+         //setear el campo de fecha con la del sistema
+        GregorianCalendar gc=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        gc.get(Calendar.DAY_OF_WEEK);
+        gc.get(Calendar.MONTH);
+        gc.get(Calendar.YEAR);
+        SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
+        txtFecha.setText(formateador.format(gc.getTime()));
+        //setear el campo de hora con la del sistema
+        GregorianCalendar calendario=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        calendario.get(Calendar.HOUR);
+        calendario.get(Calendar.MINUTE);
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        txtHora.setText(formateadorHora.format(calendario.getTime()));
+        
+        //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension tamanioPantalla = kit.getScreenSize();
+        int ancho = 750;
+        int alto = 570;
+//        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
+//        int posY = (int) ((tamanioPantalla.height - alto) / 2);
+        this.setSize(ancho, alto);
+        this.setLocation(270, 10);
+        
+        tblViaje.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblViaje.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblViaje.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblVehiculo.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tblVehiculo.getColumnModel().getColumn(1).setPreferredWidth(100);
     }
 
     /**
@@ -27,19 +70,303 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblViaje = new javax.swing.JTable();
+        btnAgregarViaje = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtTipoViaje = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtNumViaje = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtFechaRealizacion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtDestino = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtProductor = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtCereal = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblVehiculo = new javax.swing.JTable();
+        btnAgregarVehiculo = new javax.swing.JButton();
+        txtMarca = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtTransportista = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtTipoVehiculo = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btnOrden = new javax.swing.JButton();
+        btnAgenda = new javax.swing.JButton();
+
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Asignar Transporte");
+
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setText("Fecha");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(10, 10, 60, 20);
+        jPanel1.add(txtHora);
+        txtHora.setBounds(190, 10, 70, 20);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Hora");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(155, 10, 51, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setText("Carolina");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(600, 0, 50, 40);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(650, 0, 30, 30);
+        jPanel1.add(txtFecha);
+        txtFecha.setBounds(50, 10, 70, 20);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel2.setLayout(null);
+
+        tblViaje.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nº Viaje", "Fecha", "Productor"
+            }
+        ));
+        jScrollPane1.setViewportView(tblViaje);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(110, 30, 510, 89);
+
+        btnAgregarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        jPanel2.add(btnAgregarViaje);
+        btnAgregarViaje.setBounds(630, 60, 40, 30);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("Nº Viaje");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(20, 140, 67, 20);
+        jPanel2.add(txtTipoViaje);
+        txtTipoViaje.setBounds(70, 170, 104, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Tipo Viaje");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(10, 170, 80, 20);
+        jPanel2.add(txtNumViaje);
+        txtNumViaje.setBounds(70, 140, 104, 20);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("Fecha Realización");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(210, 140, 130, 20);
+        jPanel2.add(txtFechaRealizacion);
+        txtFechaRealizacion.setBounds(320, 140, 110, 20);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setText("Destino");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(270, 170, 70, 20);
+        jPanel2.add(txtDestino);
+        txtDestino.setBounds(320, 170, 110, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Productor");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(470, 140, 60, 20);
+        jPanel2.add(txtProductor);
+        txtProductor.setBounds(530, 140, 180, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel9.setText("Cereal");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(490, 170, 50, 20);
+        jPanel2.add(txtCereal);
+        txtCereal.setBounds(530, 170, 100, 20);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Transporte", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel3.setLayout(null);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setText("Marca");
+        jPanel3.add(jLabel10);
+        jLabel10.setBounds(80, 130, 59, 20);
+
+        tblVehiculo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vehículo", "Transportista"
+            }
+        ));
+        jScrollPane2.setViewportView(tblVehiculo);
+
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(90, 30, 452, 92);
+
+        btnAgregarVehiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        jPanel3.add(btnAgregarVehiculo);
+        btnAgregarVehiculo.setBounds(550, 70, 40, 30);
+        jPanel3.add(txtMarca);
+        txtMarca.setBounds(120, 130, 110, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("Modelo");
+        jPanel3.add(jLabel11);
+        jLabel11.setBounds(330, 130, 90, 20);
+        jPanel3.add(txtModelo);
+        txtModelo.setBounds(380, 130, 110, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setText("Tipo Vehículo");
+        jPanel3.add(jLabel12);
+        jLabel12.setBounds(40, 160, 100, 20);
+        jPanel3.add(txtTransportista);
+        txtTransportista.setBounds(380, 160, 180, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Transportista");
+        jPanel3.add(jLabel14);
+        jLabel14.setBounds(300, 160, 90, 20);
+        jPanel3.add(txtTipoVehiculo);
+        txtTipoVehiculo.setBounds(120, 160, 160, 20);
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+
+        btnOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
+        btnOrden.setText("Ver Orden");
+
+        btnAgenda.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calendar.png"))); // NOI18N
+        btnAgenda.setText("Agenda");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOrden)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1882, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 65, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgenda;
+    private javax.swing.JButton btnAgregarVehiculo;
+    private javax.swing.JButton btnAgregarViaje;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnOrden;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblVehiculo;
+    private javax.swing.JTable tblViaje;
+    private javax.swing.JTextField txtCereal;
+    private javax.swing.JTextField txtDestino;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtFechaRealizacion;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtNumViaje;
+    private javax.swing.JTextField txtProductor;
+    private javax.swing.JTextField txtTipoVehiculo;
+    private javax.swing.JTextField txtTipoViaje;
+    private javax.swing.JTextField txtTransportista;
     // End of variables declaration//GEN-END:variables
 }

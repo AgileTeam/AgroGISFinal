@@ -73,6 +73,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         labelToneladasE.setVisible(true); //1
         txtToneladasD.setVisible(false); //2
         txtToneladasE.setVisible(true); //1
+        
  
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));

@@ -83,6 +83,14 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Productor.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Viaje.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.Agenda.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.Anio.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.Dia.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.OrdenViaje.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.Semana.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.Solicitante.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.TipoViaje.class);
+             
                
                 
             sessionFactory = conf.buildSessionFactory();

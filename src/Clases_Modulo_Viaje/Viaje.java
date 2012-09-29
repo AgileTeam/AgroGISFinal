@@ -34,8 +34,8 @@ public class Viaje {
     @ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Estado estado;
     
-    @ManyToOne(targetEntity = Solicitante.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private Solicitante solicitante;
+//    @ManyToOne(targetEntity = Solicitante.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+//    private Solicitante solicitante;
     
     @ManyToOne(targetEntity = TipoViaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private TipoViaje tipoViaje;
@@ -48,6 +48,7 @@ public class Viaje {
     
     private String fecha;
     private String hora;
+    private String solicitante;
 
     /**
      * @return the cerealATransportar
@@ -94,16 +95,16 @@ public class Viaje {
     /**
      * @return the solicitante
      */
-    public Solicitante getSolicitante() {
-        return solicitante;
-    }
+//    public Solicitante getSolicitante() {
+//        return solicitante;
+//    }
 
     /**
      * @param solicitante the solicitante to set
      */
-    public void setSolicitante(Solicitante solicitante) {
-        this.solicitante = solicitante;
-    }
+//    public void setSolicitante(Solicitante solicitante) {
+//        this.solicitante = solicitante;
+//    }
 
     /**
      * @return the tipoViaje

@@ -4,9 +4,11 @@
  */
 package Clases_Modulo_Carga;
 
+
 import Clases_Modulo_Transporte.Domicilio;
 import Clases_Modulo_Transporte.TipoTelefono;
 import javax.persistence.*;
+import Clases_Modulo_Viaje.Viaje;
 
 @Entity
 @Table(name="MuestraTomada")
