@@ -53,7 +53,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="104" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="295" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="299" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="290" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -234,7 +234,10 @@
         <Component class="javax.swing.JComboBox" name="cmbTipoViaje">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Traslado"/>
+                <StringItem index="1" value="Retiro"/>
+              </StringArray>
             </Property>
           </Properties>
           <Constraints>

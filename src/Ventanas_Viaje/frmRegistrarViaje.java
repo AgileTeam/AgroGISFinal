@@ -4,7 +4,10 @@
  */
 package Ventanas_Viaje;
 
+import Gestores_Vista.gestorRegistrarViaje;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
@@ -15,7 +18,7 @@ import javax.swing.*;
  * @author Carolina
  */
 public class frmRegistrarViaje extends javax.swing.JInternalFrame {
-
+gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
     /**
      * Creates new form frmRegistrarViaje
      */
@@ -48,32 +51,16 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         calendario.get(Calendar.MINUTE);
         SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
-        panelPuerto.setVisible(true);
-        panelEstablecimiento.setVisible(false);
+
         //1) datos de puerto - 2) datos de establecimiento
-        scpPuerto.setVisible(true); //1
-        scpEstablecimiento.setVisible(false); //2
-        btnAgregarProd.setVisible(false); //2
-        btnAgregarPuerto.setVisible(true); //1
-        labelEstablecimiento.setVisible(false); //2
-        labelPuerto.setVisible(true); //1
-        txtPuerto.setVisible(true); //1
-        cmbEstablecimientoT.setVisible(false); //2
+   
         labelLocalidad.setVisible(true); //1 y 2
         txtLocalidad.setVisible(true); //1 y 2
-        labelDepto.setVisible(false); //2
-        labelProvincia.setVisible(true); //1
-        txtProvinciaT.setVisible(true); //1 
-        txtDeptoT.setVisible(false); //2
         labelProductor.setVisible(true); //1 y 2
         txtProductor.setVisible(true); //1 y 2
         labelCereal.setVisible(true); //1 y 2
         cmbCereal.setVisible(true); //1 y 2
-        labelToneladasD.setVisible(false); //2
-        labelToneladasE.setVisible(true); //1
-        txtToneladasD.setVisible(false); //2
-        txtToneladasE.setVisible(true); //1
-        
+              
  
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
@@ -95,6 +82,14 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         tblProductor.getColumnModel().getColumn(1).setPreferredWidth(80);
         tblPuerto.getColumnModel().getColumn(0).setPreferredWidth(80);
         tblPuerto.getColumnModel().getColumn(1).setPreferredWidth(80);
+        
+        cmbTipoViaje.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), scpPuerto, scpEstablecimiento, btnAgregarProd, btnAgregarPuerto, cmbEstablecimientoT, labelEstablecimiento, labelPuerto, txtPuerto, labelDepto, labelProvincia, txtProvinciaT, txtDeptoT, labelToneladasD, labelToneladasE, txtToneladasD, txtToneladasE, panelPuerto, panelEstablecimiento);
+        }
+        }
+        );
+         gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), scpPuerto, scpEstablecimiento, btnAgregarProd, btnAgregarPuerto, cmbEstablecimientoT, labelEstablecimiento, labelPuerto, txtPuerto, labelDepto, labelProvincia, txtProvinciaT, txtDeptoT, labelToneladasD, labelToneladasE, txtToneladasD, txtToneladasE, panelPuerto, panelEstablecimiento);
     }
 
     /**
@@ -237,6 +232,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
         jPanel9.add(txtEstado);
         txtEstado.setBounds(290, 30, 140, 20);
 
+        cmbTipoViaje.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Traslado", "Retiro" }));
         jPanel9.add(cmbTipoViaje);
         cmbTipoViaje.setBounds(530, 30, 140, 20);
         jPanel9.add(txtSolicitante);
@@ -508,7 +504,7 @@ public class frmRegistrarViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
