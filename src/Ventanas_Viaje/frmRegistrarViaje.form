@@ -53,7 +53,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="104" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="299" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="303" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="290" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -355,6 +355,9 @@
               <Image iconType="3" name="/Imagenes/Aceptar.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarPuertoActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="630" y="70" width="40" height="30"/>
@@ -501,19 +504,15 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtToneladasD">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="470" y="210" width="110" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JButton" name="btnAgregarProd">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/Aceptar.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarProdActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="630" y="70" width="40" height="30"/>
@@ -798,6 +797,9 @@
               <Image iconType="3" name="/Imagenes/Aceptar.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarProductorActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="630" y="50" width="40" height="30"/>

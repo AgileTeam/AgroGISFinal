@@ -4,6 +4,8 @@
  */
 package Gestores_Vista;
 
+import Clases_Modulo_Carga.Establecimiento;
+import Clases_Modulo_Carga.Productor;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
@@ -23,8 +25,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
     
      public void ActualizarDatos(String seleccion, JPanel panelPuerto, JPanel panelEstablecimiento, JLabel labelPuerto, JLabel labelEstablecimiento, JLabel labelProvincia, JLabel labelDepartamento,
                                    JTable tblEstablecimiento, JTable tblPuerto, JScrollPane scpEstablecimiento, JScrollPane scpPuerto ){
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-       if (seleccion == "Traslado a Puerto"){
+        if (seleccion == "Traslado a Puerto"){
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
         labelDepartamento.setVisible(false);
@@ -35,10 +36,12 @@ public class gestorRegistrarViaje extends GestorHibernate {
         tblEstablecimiento.setVisible(false);
         scpEstablecimiento.setVisible(false);
         scpPuerto.setVisible(true);
+        
         }if(seleccion== "Retiro"){
         panelPuerto.setVisible(false);
         panelEstablecimiento.setVisible(true);
        }
+        
         if(seleccion == "Traslado a Establecimiento"){
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
@@ -50,9 +53,25 @@ public class gestorRegistrarViaje extends GestorHibernate {
         tblPuerto.setVisible(false);
         scpEstablecimiento.setVisible(true);
         scpPuerto.setVisible(false);
-        
         }
        }
        
+     public DefaultComboBoxModel AgregarProductor(String productor){
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+         Iterator ite = this.listarClase(Establecimiento.class).iterator();
+         while(ite.hasNext()){
+             Establecimiento establecimiento = (Establecimiento) ite.next();
+             if(establecimiento.getProductor().toString() == productor){
+                 modelo.addElement(establecimiento);
+             }
+         }
+         return modelo;
+     }
+     
+     public void CargarDatosEstablecimiento(){
+     
+     
+     }
+     
         }
     

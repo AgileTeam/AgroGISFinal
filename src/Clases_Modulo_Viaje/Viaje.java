@@ -28,15 +28,11 @@ public class Viaje {
     @ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private TipoCereal cerealATransportar;
     
-    @ManyToOne(targetEntity = Destino.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private Destino destino;
-    
+      
     @ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Estado estado;
     
-//    @ManyToOne(targetEntity = Solicitante.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-//    private Solicitante solicitante;
-    
+   
     @ManyToOne(targetEntity = TipoViaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private TipoViaje tipoViaje;
     
@@ -45,6 +41,7 @@ public class Viaje {
     
     @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Productor productor;
+    
     
     private String fecha;
     private String hora;
@@ -64,19 +61,6 @@ public class Viaje {
         this.cerealATransportar = cerealATransportar;
     }
 
-    /**
-     * @return the destino
-     */
-    public Destino getDestino() {
-        return destino;
-    }
-
-    /**
-     * @param destino the destino to set
-     */
-    public void setDestino(Destino destino) {
-        this.destino = destino;
-    }
 
     /**
      * @return the estado
@@ -92,20 +76,7 @@ public class Viaje {
         this.estado = estado;
     }
 
-    /**
-     * @return the solicitante
-     */
-//    public Solicitante getSolicitante() {
-//        return solicitante;
-//    }
-
-    /**
-     * @param solicitante the solicitante to set
-     */
-//    public void setSolicitante(Solicitante solicitante) {
-//        this.solicitante = solicitante;
-//    }
-
+ 
     /**
      * @return the tipoViaje
      */
@@ -190,6 +161,20 @@ public class Viaje {
      */
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    /**
+     * @return the solicitante
+     */
+    public String getSolicitante() {
+        return solicitante;
+    }
+
+    /**
+     * @param solicitante the solicitante to set
+     */
+    public void setSolicitante(String solicitante) {
+        this.solicitante = solicitante;
     }
     
 }
