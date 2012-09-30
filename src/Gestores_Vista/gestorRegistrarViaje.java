@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -20,49 +21,37 @@ import javax.swing.JTextField;
  */
 public class gestorRegistrarViaje extends GestorHibernate {
     
-     public void ActualizarDatos(String seleccion, JScrollPane scpPuerto, JScrollPane scpEstablecimiento, JButton btnAgregarProd,JButton btnAgregarPuerto, JComboBox cmbEstablecimientoT, JLabel labelEstablecimiento,
-                                 JLabel labelPuerto, JTextField txtPuerto, JLabel labelDepto, JLabel labelProvincia, JTextField txtProvinciaT, JTextField txtDeptoT, JLabel labelToneladasD, JLabel labelToneladasE,
-                                 JTextField txtToneladasD, JTextField txtToneladasE, JPanel panelPuerto, JPanel panelEstablecimiento){
+     public void ActualizarDatos(String seleccion, JPanel panelPuerto, JPanel panelEstablecimiento, JLabel labelPuerto, JLabel labelEstablecimiento, JLabel labelProvincia, JLabel labelDepartamento,
+                                   JTable tblEstablecimiento, JTable tblPuerto, JScrollPane scpEstablecimiento, JScrollPane scpPuerto ){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-       if (seleccion == "Traslado"){
-        scpPuerto.setVisible(true); //1
-        scpEstablecimiento.setVisible(false); //2
-        btnAgregarProd.setVisible(false); //2
-        btnAgregarPuerto.setVisible(true); //1
-        labelEstablecimiento.setVisible(false); //2
-        labelPuerto.setVisible(true); //1
-        txtPuerto.setVisible(true); //1
-        cmbEstablecimientoT.setVisible(false); //2
-        labelDepto.setVisible(false); //2
-        labelProvincia.setVisible(true); //1
-        txtProvinciaT.setVisible(true); //1 
-        txtDeptoT.setVisible(false); //2
-        labelToneladasD.setVisible(false); //2
-        labelToneladasE.setVisible(true); //1
-        txtToneladasD.setVisible(false); //2
-        txtToneladasE.setVisible(true); //1
+       if (seleccion == "Traslado a Puerto"){
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
-        }else{
-        scpPuerto.setVisible(false); //1
-        scpEstablecimiento.setVisible(true); //2
-        btnAgregarProd.setVisible(true); //2
-        btnAgregarPuerto.setVisible(false); //1
-        labelEstablecimiento.setVisible(true); //2
-        labelPuerto.setVisible(false); //1
-        txtPuerto.setVisible(false); //1
-        cmbEstablecimientoT.setVisible(true); //2
-        labelDepto.setVisible(true); //2
-        labelProvincia.setVisible(false); //1
-        txtProvinciaT.setVisible(false); //1 
-        txtDeptoT.setVisible(true); //2
-        labelToneladasD.setVisible(true); //2
-        labelToneladasE.setVisible(false); //1
-        txtToneladasD.setVisible(true); //2
-        txtToneladasE.setVisible(false); //1
+        labelDepartamento.setVisible(false);
+        labelProvincia.setVisible(true);
+        labelEstablecimiento.setVisible(false);
+        labelPuerto.setVisible(true);
+        tblPuerto.setVisible(true);
+        tblEstablecimiento.setVisible(false);
+        scpEstablecimiento.setVisible(false);
+        scpPuerto.setVisible(true);
+        }if(seleccion== "Retiro"){
         panelPuerto.setVisible(false);
         panelEstablecimiento.setVisible(true);
        }
+        if(seleccion == "Traslado a Establecimiento"){
+        panelPuerto.setVisible(true);
+        panelEstablecimiento.setVisible(false);
+        labelDepartamento.setVisible(true);
+        labelProvincia.setVisible(false);
+        labelEstablecimiento.setVisible(true);
+        labelPuerto.setVisible(false);
+        tblEstablecimiento.setVisible(true);
+        tblPuerto.setVisible(false);
+        scpEstablecimiento.setVisible(true);
+        scpPuerto.setVisible(false);
+        
+        }
        }
        
         }

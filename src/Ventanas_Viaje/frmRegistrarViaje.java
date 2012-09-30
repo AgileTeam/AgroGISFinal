@@ -4,13 +4,19 @@
  */
 package Ventanas_Viaje;
 
+import Clases_Modulo_Carga.Establecimiento;
+import Clases_Modulo_Carga.Productor;
+import Clases_Modulo_Carga.Puerto;
+import Clases_Modulo_Transporte.Barrio;
 import Gestores_Vista.gestorRegistrarViaje;
+import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -19,13 +25,12 @@ import javax.swing.*;
  */
 public class frmRegistrarViaje extends javax.swing.JInternalFrame {
 gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmRegistrarViaje
      */
     public frmRegistrarViaje() {
         initComponents();
-        
-        
         txtFecha.setEditable(false);
         txtFecha.setEnabled(false);
         txtHora.setEditable(false);
@@ -85,11 +90,30 @@ gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
         
         cmbTipoViaje.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-            gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), scpPuerto, scpEstablecimiento, btnAgregarProd, btnAgregarPuerto, cmbEstablecimientoT, labelEstablecimiento, labelPuerto, txtPuerto, labelDepto, labelProvincia, txtProvinciaT, txtDeptoT, labelToneladasD, labelToneladasE, txtToneladasD, txtToneladasE, panelPuerto, panelEstablecimiento);
-        }
+           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento, tblPuerto, scpEstablecimiento, scpPuerto);
+           }
         }
         );
-         gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), scpPuerto, scpEstablecimiento, btnAgregarProd, btnAgregarPuerto, cmbEstablecimientoT, labelEstablecimiento, labelPuerto, txtPuerto, labelDepto, labelProvincia, txtProvinciaT, txtDeptoT, labelToneladasD, labelToneladasE, txtToneladasD, txtToneladasE, panelPuerto, panelEstablecimiento);
+          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento, tblPuerto, scpEstablecimiento, scpPuerto);
+        
+        DefaultTableModel modeloT = (DefaultTableModel) tblPuerto.getModel();
+        Iterator ite = gestorH.listarClase(Puerto.class).iterator();
+        while(ite.hasNext()){
+            Puerto puerto = (Puerto) ite.next();
+            Object fila[] = {puerto.getNombrePuerto(), puerto.getLocalidad()};
+            modeloT.addRow(fila);
+            tblPuerto.setModel(modeloT);
+        }
+        
+        DefaultTableModel modeloT1 = (DefaultTableModel) tblProductor.getModel();
+        Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
+        while(ite1.hasNext()){
+            Productor prod = (Productor) ite1.next();
+            Object fila[] = {prod.getNombre(), prod.getNumeroDocumento()};
+            modeloT.addRow(fila);
+            tblPuerto.setModel(modeloT1);
+        }
+    
     }
 
     /**
@@ -138,7 +162,6 @@ gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
         cmbEstablecimientoT = new javax.swing.JComboBox();
         labelProductor = new javax.swing.JLabel();
         labelCereal = new javax.swing.JLabel();
-        labelToneladasD = new javax.swing.JLabel();
         txtToneladasD = new javax.swing.JTextField();
         btnAgregarProd = new javax.swing.JButton();
         scpEstablecimiento = new javax.swing.JScrollPane();
@@ -232,7 +255,7 @@ gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
         jPanel9.add(txtEstado);
         txtEstado.setBounds(290, 30, 140, 20);
 
-        cmbTipoViaje.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Traslado", "Retiro" }));
+        cmbTipoViaje.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Traslado a Puerto", "Traslado a Establecimiento", "Retiro" }));
         jPanel9.add(cmbTipoViaje);
         cmbTipoViaje.setBounds(530, 30, 140, 20);
         jPanel9.add(txtSolicitante);
@@ -326,11 +349,6 @@ gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
         labelCereal.setText("Cereal");
         panelPuerto.add(labelCereal);
         labelCereal.setBounds(70, 210, 80, 20);
-
-        labelToneladasD.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelToneladasD.setText("Toneladas a Depositar");
-        panelPuerto.add(labelToneladasD);
-        labelToneladasD.setBounds(340, 210, 150, 20);
         panelPuerto.add(txtToneladasD);
         txtToneladasD.setBounds(470, 210, 110, 20);
 
@@ -558,7 +576,6 @@ gestorRegistrarViaje gViaje = new gestorRegistrarViaje();
     private javax.swing.JLabel labelProductor;
     private javax.swing.JLabel labelProvincia;
     private javax.swing.JLabel labelPuerto;
-    private javax.swing.JLabel labelToneladasD;
     private javax.swing.JLabel labelToneladasE;
     private javax.swing.JPanel panelEstablecimiento;
     private javax.swing.JPanel panelPuerto;
