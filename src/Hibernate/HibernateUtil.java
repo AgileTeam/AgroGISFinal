@@ -90,7 +90,8 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Semana.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Solicitante.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.TipoViaje.class);
-             
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.EstablecimientoPorViaje.class);
+                conf.addAnnotatedClass(Clases_Modulo_Viaje.PuertoPorViaje.class);
                
                 
             sessionFactory = conf.buildSessionFactory();
