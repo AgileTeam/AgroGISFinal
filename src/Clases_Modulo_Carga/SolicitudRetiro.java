@@ -4,6 +4,7 @@
  */
 package Clases_Modulo_Carga;
 
+import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Estado;
 
 import javax.persistence.*;

@@ -4,8 +4,7 @@
  */
 package Ventanas_Viaje;
 
-import Clases_Modulo_Carga.Establecimiento;
-import Clases_Modulo_Carga.Productor;
+import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Carga.Puerto;
 import Clases_Modulo_Transporte.Barrio;
 import Gestores_Vista.gestorRegistrarViaje;
@@ -330,7 +329,7 @@ GestorHibernate gestorH = new GestorHibernate();
         scpPuerto.setViewportView(tblPuerto);
 
         panelPuerto.add(scpPuerto);
-        scpPuerto.setBounds(60, 30, 560, 100);
+        scpPuerto.setBounds(60, 60, 560, 100);
 
         labelDepto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDepto.setText("Departamento");
@@ -534,7 +533,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

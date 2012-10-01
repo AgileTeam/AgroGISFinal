@@ -4,7 +4,7 @@
  */
 package Clases_Modulo_Viaje;
 
-import Clases_Modulo_Carga.Establecimiento;
+import Clases_Modulo_Cliente.Establecimiento;
 import javax.persistence.*;
 
 @Entity

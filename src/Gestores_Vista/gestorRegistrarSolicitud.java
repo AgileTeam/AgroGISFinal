@@ -5,6 +5,7 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Carga.*;
+import Clases_Modulo_Cliente.Establecimiento;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;

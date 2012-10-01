@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases_Modulo_Carga;
+package Clases_Modulo_Cliente;
 
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.Domicilio;
 import Clases_Modulo_Transporte.TipoDocumento;
 import Clases_Modulo_Transporte.TipoTelefono;

@@ -6,6 +6,7 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Carga.*;
+import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Lote;
 import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;

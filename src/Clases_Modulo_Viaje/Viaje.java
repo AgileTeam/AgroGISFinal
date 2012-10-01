@@ -5,6 +5,7 @@
 package Clases_Modulo_Viaje;
 
 import Clases_Modulo_Carga.*;
+import Clases_Modulo_Cliente.Productor;
 import java.sql.Time;
 import java.util.Date;
 import javax.persistence.CascadeType;

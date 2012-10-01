@@ -4,18 +4,14 @@
  */
 package Gestores_Vista;
 
-import Clases_Modulo_Carga.Establecimiento;
-import Clases_Modulo_Carga.Productor;
+import Clases_Modulo_Cliente.Establecimiento;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
 /**
  *

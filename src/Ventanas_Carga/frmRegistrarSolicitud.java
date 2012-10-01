@@ -18,7 +18,7 @@ import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import Clases_Modulo_Carga.Destino;
 import Clases_Modulo_Carga.Establecimiento;
-import Clases_Modulo_Carga.Productor;
+import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Carga.Silo;
 import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Carga.TipoOperacion;
@@ -330,7 +330,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         );
 
         jPanel8.add(jPanel19);
-        jPanel19.setBounds(120, 0, 100, 70);
+        jPanel19.setBounds(130, 0, 100, 70);
 
         tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -446,7 +446,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

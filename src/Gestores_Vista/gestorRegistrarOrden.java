@@ -5,13 +5,11 @@
 
 package Gestores_Vista;
 
-import Clases_Modulo_Carga.Establecimiento;
 import Clases_Modulo_Transporte.*;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**

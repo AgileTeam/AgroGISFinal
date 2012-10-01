@@ -79,8 +79,6 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoCereal.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoOperacion.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoTemporada.class);
-                conf.addAnnotatedClass(Clases_Modulo_Carga.Establecimiento.class);
-                conf.addAnnotatedClass(Clases_Modulo_Carga.Productor.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Viaje.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Agenda.class);
@@ -92,7 +90,8 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.TipoViaje.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.EstablecimientoPorViaje.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.PuertoPorViaje.class);
-               
+                conf.addAnnotatedClass(Clases_Modulo_Cliente.Productor.class);
+                conf.addAnnotatedClass(Clases_Modulo_Cliente.Establecimiento.class);
                 
             sessionFactory = conf.buildSessionFactory();
             session=sessionFactory.openSession();
