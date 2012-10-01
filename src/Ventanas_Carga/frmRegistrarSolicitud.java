@@ -17,7 +17,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import Clases_Modulo_Carga.Destino;
-import Clases_Modulo_Carga.Establecimiento;
+import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Carga.Silo;
 import Clases_Modulo_Carga.SolicitudRetiro;
