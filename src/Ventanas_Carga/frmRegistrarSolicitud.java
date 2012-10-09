@@ -83,7 +83,16 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-         
+        gRegistro.rellenaTablaProductor(tblProductor1);
+        gRegistro.rellenaTablaProductor(tblProductor2);
+        
+         cmbTipoSolicitud.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+           gRegistro.ActualizarDatos(cmbTipoSolicitud.getSelectedItem().toString(), panelEstablecimiento, panelPlanta);
+           }
+        }
+        );
+            gRegistro.ActualizarDatos(cmbTipoSolicitud.getSelectedItem().toString(), panelEstablecimiento, panelPlanta);
 
         
     }
@@ -202,6 +211,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         jPanel1.add(jLabel4);
         jLabel4.setBounds(390, 60, 130, 15);
 
+        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Retiro en Establecimiento", "Retiro en Planta" }));
         jPanel1.add(cmbTipoSolicitud);
         cmbTipoSolicitud.setBounds(100, 30, 190, 20);
         jPanel1.add(txtNumSolicitud);
@@ -407,7 +417,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

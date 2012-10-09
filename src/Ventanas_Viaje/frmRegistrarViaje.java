@@ -148,20 +148,16 @@ GestorHibernate gestorH = new GestorHibernate();
         panelPuerto = new javax.swing.JPanel();
         txtProductor = new javax.swing.JTextField();
         cmbCereal = new javax.swing.JComboBox();
-        btnAgregarPuerto = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         txtProvinciaT = new javax.swing.JTextField();
         txtToneladasE = new javax.swing.JTextField();
-        txtPuerto = new javax.swing.JTextField();
         labelLocalidad = new javax.swing.JLabel();
-        scpPuerto = new javax.swing.JScrollPane();
-        tblPuerto = new javax.swing.JTable();
         labelDepto = new javax.swing.JLabel();
         txtDeptoT = new javax.swing.JTextField();
         txtLocalidad = new javax.swing.JTextField();
         cmbEstablecimientoT = new javax.swing.JComboBox();
         labelProductor = new javax.swing.JLabel();
         labelCereal = new javax.swing.JLabel();
-        btnAgregarProd = new javax.swing.JButton();
         scpEstablecimiento = new javax.swing.JScrollPane();
         tblEstablecimiento = new javax.swing.JTable();
         labelPuerto = new javax.swing.JLabel();
@@ -298,38 +294,23 @@ GestorHibernate gestorH = new GestorHibernate();
         panelPuerto.add(cmbCereal);
         cmbCereal.setBounds(110, 210, 110, 20);
 
-        btnAgregarPuerto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        btnAgregarPuerto.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarPuertoActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        panelPuerto.add(btnAgregarPuerto);
-        btnAgregarPuerto.setBounds(630, 70, 40, 30);
+        panelPuerto.add(btnAgregar);
+        btnAgregar.setBounds(630, 70, 40, 30);
         panelPuerto.add(txtProvinciaT);
         txtProvinciaT.setBounds(110, 180, 180, 20);
         panelPuerto.add(txtToneladasE);
         txtToneladasE.setBounds(470, 210, 110, 20);
-        panelPuerto.add(txtPuerto);
-        txtPuerto.setBounds(470, 150, 180, 20);
 
         labelLocalidad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelLocalidad.setText("Localidad");
         panelPuerto.add(labelLocalidad);
         labelLocalidad.setBounds(410, 180, 90, 20);
-
-        tblPuerto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Puerto", "Localidad"
-            }
-        ));
-        scpPuerto.setViewportView(tblPuerto);
-
-        panelPuerto.add(scpPuerto);
-        scpPuerto.setBounds(60, 60, 560, 100);
 
         labelDepto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDepto.setText("Departamento");
@@ -352,15 +333,6 @@ GestorHibernate gestorH = new GestorHibernate();
         labelCereal.setText("Cereal");
         panelPuerto.add(labelCereal);
         labelCereal.setBounds(70, 210, 80, 20);
-
-        btnAgregarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        btnAgregarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProdActionPerformed(evt);
-            }
-        });
-        panelPuerto.add(btnAgregarProd);
-        btnAgregarProd.setBounds(630, 70, 40, 30);
 
         tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -533,7 +505,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -544,31 +516,26 @@ GestorHibernate gestorH = new GestorHibernate();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProdActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
     int fila = tblEstablecimiento.getSelectedRow();
     txtProductor.setText((String)modeloT.getValueAt(fila, 0));
-    cmbEstablecimiento.setModel(gViaje.AgregarProductor(txtProductor.getText()));
+    if(cmbTipoViaje.getSelectedItem().toString()=="Traslado a Establecimiento"){
+        cmbEstablecimientoT.setModel(gViaje.CargarDatosEstablecimiento(txt));
     
-    }//GEN-LAST:event_btnAgregarProdActionPerformed
-
-    private void btnAgregarPuertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPuertoActionPerformed
-    DefaultTableModel modeloT = (DefaultTableModel) tblPuerto.getModel();
-    int fila = tblPuerto.getSelectedRow();
-    txtPuerto.setText((String)modeloT.getValueAt(fila, 0));
-    txtLocalidad.setText((String) modeloT.getValueAt(fila, 1));
     
-    }//GEN-LAST:event_btnAgregarPuertoActionPerformed
+    }
+    
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductorActionPerformed
     
     }//GEN-LAST:event_btnAgregarProductorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregarLote;
-    private javax.swing.JButton btnAgregarProd;
     private javax.swing.JButton btnAgregarProductor;
-    private javax.swing.JButton btnAgregarPuerto;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioViaje;
@@ -611,11 +578,9 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPanel panelEstablecimiento;
     private javax.swing.JPanel panelPuerto;
     private javax.swing.JScrollPane scpEstablecimiento;
-    private javax.swing.JScrollPane scpPuerto;
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTable tblLote;
     private javax.swing.JTable tblProductor;
-    private javax.swing.JTable tblPuerto;
     private javax.swing.JTextField txtDepto;
     private javax.swing.JTextField txtDeptoT;
     private javax.swing.JTextField txtEstado;
@@ -628,7 +593,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProductorEst;
     private javax.swing.JTextField txtProvinciaT;
-    private javax.swing.JTextField txtPuerto;
     private javax.swing.JTextField txtSolicitante;
     private javax.swing.JTextField txtToneladasE;
     // End of variables declaration//GEN-END:variables

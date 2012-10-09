@@ -74,7 +74,7 @@
                   <Component id="btnGuardar1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -223,7 +223,10 @@
         <Component class="javax.swing.JComboBox" name="cmbTipoSolicitud">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Retiro en Establecimiento"/>
+                <StringItem index="1" value="Retiro en Planta"/>
+              </StringArray>
             </Property>
           </Properties>
           <Constraints>

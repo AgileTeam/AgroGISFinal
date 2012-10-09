@@ -6,14 +6,17 @@ package Gestores_Vista;
 
 import Clases_Modulo_Carga.*;
 import Clases_Modulo_Cliente.Establecimiento;
+import Clases_Modulo_Cliente.Productor;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
 public class gestorRegistrarSolicitud extends GestorHibernate {
+    
     public DefaultComboBoxModel rellenaComboCereal(){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
        Iterator ite = this.listarClase(TipoCereal.class).iterator();
@@ -36,12 +39,11 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
     
     public JTable rellenaTablaProductor(JTable tabla){
        DefaultTableModel modeloT = (DefaultTableModel) tabla.getModel();
-       Iterator ite = this.listarClase(Establecimiento.class).iterator();
+       Iterator ite = this.listarClase(Productor.class).iterator();
        while(ite.hasNext()){
-           Establecimiento establecimiento =(Establecimiento) ite.next();
-           Object fila[]= {establecimiento.getNombreEstablecimiento(), establecimiento.getProductor()};
+           Productor productor =(Productor) ite.next();
+           Object fila[]= {productor.getNombre(), productor.getNumeroDocumento()};
            modeloT.addRow(fila);
-          
        }
        tabla.setModel(modeloT);
        return tabla;
@@ -76,5 +78,17 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
      return modelo;
     } 
      
+     public void ActualizarDatos(String seleccion, JPanel panelEstablecimiento, JPanel panelPlanta){
+        if (seleccion == "Retiro en Establecimiento"){
+        panelEstablecimiento.setVisible(true);
+        panelPlanta.setVisible(false);
+//        tblEstablecimiento.setVisible(false);
+//        scpEstablecimiento.setVisible(false);
+//        scpPuerto.setVisible(true);
+        }if(seleccion== "Retiro en Planta"){
+        panelPlanta.setVisible(true);
+        panelEstablecimiento.setVisible(false);
+       }
       
+       }
 }
