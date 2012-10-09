@@ -85,6 +85,10 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         
         gRegistro.rellenaTablaProductor(tblProductor1);
         gRegistro.rellenaTablaProductor(tblProductor2);
+        cmbTipoCereal1.setModel(gRegistro.rellenaComboCereal());
+        cmbTipoCereal2.setModel(gRegistro.rellenaComboCereal());
+        cmbTipoOperacion2.setModel(gRegistro.rellenaComboTipoOperacion());
+        cmbSilo2.setModel(gRegistro.rellenaComboSilo());
         
          cmbTipoSolicitud.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
@@ -94,7 +98,13 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         );
             gRegistro.ActualizarDatos(cmbTipoSolicitud.getSelectedItem().toString(), panelEstablecimiento, panelPlanta);
 
-        
+        cmbDestino2.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+           gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString());
+           }
+        }
+        );
+           gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString());
     }
 
     /** This method is called from within the constructor to
@@ -242,6 +252,11 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         jScrollPane1.setBounds(60, 30, 500, 150);
 
         btnAgregarProductor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarProductor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarProductor1ActionPerformed(evt);
+            }
+        });
         panelEstablecimiento.add(btnAgregarProductor1);
         btnAgregarProductor1.setBounds(570, 90, 40, 30);
 
@@ -298,7 +313,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
             }
         });
         panelPlanta.add(btnAgregarProductor2);
-        btnAgregarProductor2.setBounds(570, 90, 40, 30);
+        btnAgregarProductor2.setBounds(580, 90, 40, 30);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Establecimiento");
@@ -348,6 +363,7 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         panelPlanta.add(jLabel20);
         jLabel20.setBounds(60, 280, 80, 20);
 
+        cmbDestino2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Puerto", "Establecimiento" }));
         panelPlanta.add(cmbDestino2);
         cmbDestino2.setBounds(120, 280, 120, 20);
 
@@ -424,8 +440,17 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarProductor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductor2ActionPerformed
-        // TODO add your handling code here:
+    DefaultTableModel modeloT = (DefaultTableModel) tblProductor2.getModel();
+    int fila = tblProductor2.getSelectedRow();
+    txtProductor2.setText((String)modeloT.getValueAt(fila, 0));
+    cmbEstablecimiento2.setModel(gRegistro.rellenaComboEstablecimiento(txtProductor2.getText()));
     }//GEN-LAST:event_btnAgregarProductor2ActionPerformed
+
+    private void btnAgregarProductor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductor1ActionPerformed
+    DefaultTableModel modeloT = (DefaultTableModel) tblProductor1.getModel();
+    int fila = tblProductor1.getSelectedRow();
+    txtProductor1.setText((String)modeloT.getValueAt(fila, 0));
+    }//GEN-LAST:event_btnAgregarProductor1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProductor1;

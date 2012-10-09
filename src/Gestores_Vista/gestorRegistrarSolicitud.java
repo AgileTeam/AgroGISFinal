@@ -82,13 +82,22 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
         if (seleccion == "Retiro en Establecimiento"){
         panelEstablecimiento.setVisible(true);
         panelPlanta.setVisible(false);
-//        tblEstablecimiento.setVisible(false);
-//        scpEstablecimiento.setVisible(false);
-//        scpPuerto.setVisible(true);
+
         }if(seleccion== "Retiro en Planta"){
         panelPlanta.setVisible(true);
         panelEstablecimiento.setVisible(false);
        }
       
        }
+     
+    public DefaultComboBoxModel rellenaComboEstablecimiento(String productor){
+    DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+    Iterator ite=this.listarClase(Establecimiento.class).iterator();
+    while(ite.hasNext()){
+        Establecimiento establecimiento=(Establecimiento) ite.next();
+        if(establecimiento.getProductor().getNombre().equals(productor))
+            modelo.addElement(establecimiento);
+       }
+     return modelo;
+    } 
 }
