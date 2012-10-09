@@ -100,4 +100,40 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
        }
      return modelo;
     } 
+    
+    
+    public void guardarSolicitud(TipoSolicitud tipoSolicitud, String fecha, Productor productor, TipoCereal tipoCereal, Establecimiento establecimiento,
+                                double hectareas, TipoOperacion tipoOperacion, Puerto puerto, Silo silo, double toneladas){
+        
+        SolicitudRetiro solicitud = new SolicitudRetiro();
+            solicitud.setFechaSolicitud(fecha);
+            solicitud.setProductor(productor);
+            solicitud.setTipoSolicitud(tipoSolicitud);
+            solicitud.setTipoCereal(tipoCereal);
+            solicitud.setEstado("Pendiente");
+            this.guardarObjeto(solicitud);
+        if(tipoSolicitud.getNombreTipoSolicitud() == "Retiro en Establecimiento"){
+            EstablecimientoPorSolicitud estab = new EstablecimientoPorSolicitud();
+            estab.setEstablecimiento(establecimiento);
+            estab.setSolicitud(solicitud);
+            estab.setHectareasATrillar(hectareas);
+            this.guardarObjeto(estab);
+        }
+        if(tipoSolicitud.getNombreTipoSolicitud()== "Retiro en Planta" && tipoOperacion.getNombreTipoOperacion() == "Venta"){
+            PuertoPorSolicitud puertosol = new PuertoPorSolicitud();
+            puertosol.setPuerto(puerto);
+            puertosol.setSilo(silo);
+            puertosol.setSolicitud(solicitud);
+            puertosol.setTipoOperacion(tipoOperacion);
+            puertosol.setToneladasAExtraer(toneladas);
+        }
+        if(tipoSolicitud.getNombreTipoSolicitud()== "Retiro en Planta" && tipoOperacion.getNombreTipoOperacion() == "Transferencia"){
+            EstablecimientoPorSolicitud est = new EstablecimientoPorSolicitud();
+            est.setEstablecimiento(establecimiento);
+            est.setSilo(silo);
+            est.setSolicitud(solicitud);
+            est.setTipoOperacion(tipoOperacion);
+            est.setToneladasAExtraer(toneladas);
+        }
+    }
 }

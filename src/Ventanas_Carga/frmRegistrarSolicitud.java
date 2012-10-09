@@ -10,18 +10,15 @@
  */
 package Ventanas_Carga;
 
+import Clases_Modulo_Carga.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
-import Clases_Modulo_Carga.Destino;
 import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Productor;
-import Clases_Modulo_Carga.Silo;
-import Clases_Modulo_Carga.SolicitudRetiro;
-import Clases_Modulo_Carga.TipoOperacion;
 import Gestores_Vista.gestorRegistrarSolicitud;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -36,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarSolicitud extends javax.swing.JInternalFrame {
 gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarSolicitud */
     public frmRegistrarSolicitud() {
         initComponents();
@@ -381,6 +379,11 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -450,7 +453,13 @@ gestorRegistrarSolicitud gRegistro = new gestorRegistrarSolicitud();
     DefaultTableModel modeloT = (DefaultTableModel) tblProductor1.getModel();
     int fila = tblProductor1.getSelectedRow();
     txtProductor1.setText((String)modeloT.getValueAt(fila, 0));
+    cmbEstablecimiento1.setModel(gRegistro.rellenaComboEstablecimiento(txtProductor1.getText()));
     }//GEN-LAST:event_btnAgregarProductor1ActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    
+        gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), , null, null, WIDTH, null, null, null, WIDTH);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProductor1;
