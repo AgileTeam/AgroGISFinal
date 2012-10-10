@@ -4,10 +4,14 @@
  */
 package Ventanas_Viaje;
 
+import Clases_Modulo_Transporte.*;
+import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.*;
 import java.util.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
