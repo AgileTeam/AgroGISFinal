@@ -4,6 +4,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Gestores_Vista.gestorRegistrarCargaComb;
 import java.awt.*;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
 gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
+Double total;
     /**
      * Creates new form frmRegistrarCargaComb
      */
@@ -74,33 +76,33 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         this.setSize(ancho, alto);
         this.setLocation(posX, 30);
         
-//         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
-//        
-//          cmbOrden.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent arg0){
-//            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-//        }
-//        }
-//        );
-//        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
-//        
-//        cmbOrden.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent arg0){
-//            txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
-//        }
-//        }
-//        );
-//        txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
-//        
-//        cmbOrden.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent arg0){
-//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
-//        }
-//        }
-//        );
-//            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
-//            
-//       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+        
+          cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        }
+        }
+        );
+        txtFechaEmision.setText(gRegistro.rellenaTxtFecha(cmbOrden.getSelectedItem().toString()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+        txtEstacion.setText(gRegistro.rellenaTxtEstacion((OrdenServicio)cmbOrden.getSelectedItem()));
+        
+        cmbOrden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0){
+            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+        }
+        }
+        );
+            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+            
+       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
        
        if(txtOperacion.getText() == "Carga Combustible"){
             labelLitros.setVisible(true);
@@ -415,6 +417,11 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         btnGuardar1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar1.setText("Guardar");
+        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -435,7 +442,7 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,14 +519,14 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-//      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
-//      Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
-//      modeloT.addRow(fila);
-//      tblDetalleRep.setModel(modeloT);
-//      for(int i=0; i<modeloT.getRowCount(); i++){
-//           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
-//           txtTotal.setText(total.toString());
-//       }
+      DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+      Object fila []= {calendarioFU.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),txtOperacion.getText(),cmbProducto.getSelectedItem(),txtImporteTotal.getText()};
+      modeloT.addRow(fila);
+      tblDetalleCarga.setModel(modeloT);
+      for(int i=0; i<modeloT.getRowCount(); i++){
+           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+           txtTotal.setText(total.toString());
+       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtPrecioLitroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioLitroKeyReleased
@@ -529,6 +536,25 @@ gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
     private void txtLitrosCargadosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLitrosCargadosKeyReleased
       txtImporteTotal.setText(String.valueOf(Double.parseDouble(txtLitrosCargados.getText()) * Double.parseDouble(txtPrecioLitro.getText())));
     }//GEN-LAST:event_txtLitrosCargadosKeyReleased
+
+    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
+     DefaultTableModel modelo = (DefaultTableModel) tblDetalleCarga.getModel();
+     CargaCombustible carga= new CargaCombustible();
+      carga.setFecha(modelo.getValueAt(0,0).toString());
+      carga.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
+      carga.setOrdenServicio((OrdenServicio)cmbOrden.getSelectedItem());
+      carga.set
+      envio.setResponsable(txtResponsable.getText());
+      envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
+      gestorH.guardarObjeto(envio);
+      for(int i=0; i<modelo.getRowCount(); i++){
+            DetalleEnvio detalle = new DetalleEnvio();
+            detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
+            detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
+            detalle.setEnvio(envio);
+            gestorH.guardarObjeto(detalle);
+      }
+    }//GEN-LAST:event_btnGuardar1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

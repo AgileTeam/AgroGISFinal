@@ -15,10 +15,7 @@ public class CargaCombustible {
 
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long idCargaCombustible;
- 
-@ManyToOne(targetEntity = DetalleCarga.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
- private DetalleCarga detalle;
-    
+   
 @ManyToOne(targetEntity = EstacionDeServicio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )  
  private EstacionDeServicio estacionServicio;
 
@@ -36,19 +33,6 @@ private double importeTotal;
 private String responsableVenta;
  
 
-    /**
-     * @return the detalle
-     */
-    public DetalleCarga getDetalle() {
-        return detalle;
-    }
-
-    /**
-     * @param detalle the detalle to set
-     */
-    public void setDetalle(DetalleCarga detalle) {
-        this.detalle = detalle;
-    }
 
     /**
      * @return the estacionServicio
