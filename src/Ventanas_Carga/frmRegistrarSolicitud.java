@@ -25,6 +25,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -457,8 +458,13 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAgregarProductor1ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    
-        gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), , null, null, WIDTH, null, null, null, WIDTH);
+    Iterator ite=gestorH.listarClase(Productor.class).iterator();
+    while(ite.hasNext()){
+        Productor productor=(Productor) ite.next();
+        if(productor.getNombre()== txtProductor1.getText() || productor.getNombre()== txtProductor2.getText())
+            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), (Puerto)cmbDestino2.getSelectedItem(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()));
+       }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
