@@ -118,26 +118,22 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtTara = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblVehiculo = new javax.swing.JTable();
-        jLabel20 = new javax.swing.JLabel();
-        txtTransportista = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtVehiculo = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         txtNumeroSolicitud = new javax.swing.JTextField();
-        txtToneladas = new javax.swing.JTextField();
-        txtFechaSolicitud = new javax.swing.JTextField();
-        txtPesoNeto = new javax.swing.JTextField();
-        txtPesoTotal = new javax.swing.JTextField();
-        btnAceptarVehiculo = new javax.swing.JButton();
+        txtTipoCereal = new javax.swing.JTextField();
+        txtFechaViaje = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtProductor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtSilo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtTnDisponibles = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtTnAlmacenadas = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtTnExtraer = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSolicitud = new javax.swing.JTable();
         btnGuardar = new javax.swing.JButton();
@@ -198,111 +194,73 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehiculo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14)))); // NOI18N
         jPanel5.setLayout(null);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel17.setText("Toneladas");
+        jLabel17.setText("Tipo Cereal");
         jPanel5.add(jLabel17);
-        jLabel17.setBounds(240, 20, 100, 20);
+        jLabel17.setBounds(360, 50, 100, 20);
 
         jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel18.setText("Solicitud N°");
         jPanel5.add(jLabel18);
-        jLabel18.setBounds(20, 20, 80, 20);
-        jPanel5.add(txtTara);
-        txtTara.setBounds(70, 180, 120, 20);
+        jLabel18.setBounds(20, 20, 100, 20);
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel19.setText("Fecha Solicitud");
+        jLabel19.setText("Fecha Viaje");
         jPanel5.add(jLabel19);
-        jLabel19.setBounds(470, 20, 110, 20);
-
-        tblVehiculo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Vehiculo", "Capacidad de Vehiculo (Tn)", "Transportista"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblVehiculo.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(tblVehiculo);
-
-        jPanel5.add(jScrollPane3);
-        jScrollPane3.setBounds(20, 50, 690, 90);
-
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel20.setText("Vehiculo");
-        jPanel5.add(jLabel20);
-        jLabel20.setBounds(20, 150, 70, 20);
-        jPanel5.add(txtTransportista);
-        txtTransportista.setBounds(460, 150, 250, 20);
-
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel21.setText("Transportista");
-        jPanel5.add(jLabel21);
-        jLabel21.setBounds(370, 150, 100, 20);
-        jPanel5.add(txtVehiculo);
-        txtVehiculo.setBounds(70, 150, 220, 20);
-
-        jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel22.setText("Tara ");
-        jPanel5.add(jLabel22);
-        jLabel22.setBounds(40, 180, 50, 20);
-
-        jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel23.setText("Peso Total");
-        jPanel5.add(jLabel23);
-        jLabel23.setBounds(270, 180, 90, 20);
-
-        jLabel24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel24.setText("Peso Neto");
-        jPanel5.add(jLabel24);
-        jLabel24.setBounds(530, 180, 90, 20);
+        jLabel19.setBounds(600, 20, 110, 20);
         jPanel5.add(txtNumeroSolicitud);
-        txtNumeroSolicitud.setBounds(90, 20, 80, 20);
-        jPanel5.add(txtToneladas);
-        txtToneladas.setBounds(300, 20, 140, 20);
-        jPanel5.add(txtFechaSolicitud);
-        txtFechaSolicitud.setBounds(570, 20, 140, 20);
-        jPanel5.add(txtPesoNeto);
-        txtPesoNeto.setBounds(590, 180, 120, 20);
-        jPanel5.add(txtPesoTotal);
-        txtPesoTotal.setBounds(330, 180, 120, 20);
+        txtNumeroSolicitud.setBounds(90, 20, 110, 20);
+        jPanel5.add(txtTipoCereal);
+        txtTipoCereal.setBounds(430, 50, 140, 20);
+        jPanel5.add(txtFechaViaje);
+        txtFechaViaje.setBounds(670, 20, 110, 20);
 
-        btnAceptarVehiculo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnAceptarVehiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        btnAceptarVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarVehiculoActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnAceptarVehiculo);
-        btnAceptarVehiculo.setBounds(720, 90, 49, 30);
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("Tipo Solicitud");
+        jPanel5.add(jLabel4);
+        jLabel4.setBounds(300, 20, 100, 20);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel1.setText("Kgs.");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("RETIRO EN PLANTA");
         jPanel5.add(jLabel1);
-        jLabel1.setBounds(710, 180, 30, 20);
+        jLabel1.setBounds(380, 20, 150, 20);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel2.setText("Kgs.");
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Productor");
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(190, 180, 30, 20);
+        jLabel2.setBounds(30, 50, 100, 20);
+        jPanel5.add(txtProductor);
+        txtProductor.setBounds(90, 50, 230, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel3.setText("Kgs.");
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Silo Nº");
         jPanel5.add(jLabel3);
-        jLabel3.setBounds(450, 180, 30, 20);
+        jLabel3.setBounds(630, 50, 70, 20);
+        jPanel5.add(txtSilo);
+        txtSilo.setBounds(670, 50, 110, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Toneladas Almacenadas");
+        jPanel5.add(jLabel5);
+        jLabel5.setBounds(10, 80, 160, 20);
+        jPanel5.add(txtTnDisponibles);
+        txtTnDisponibles.setBounds(670, 80, 110, 20);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("Toneladas a Extraer");
+        jPanel5.add(jLabel6);
+        jLabel6.setBounds(280, 80, 150, 20);
+        jPanel5.add(txtTnAlmacenadas);
+        txtTnAlmacenadas.setBounds(150, 80, 110, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Toneladas Disponibles");
+        jPanel5.add(jLabel8);
+        jLabel8.setBounds(530, 80, 160, 20);
+        jPanel5.add(txtTnExtraer);
+        txtTnExtraer.setBounds(400, 80, 110, 20);
 
         tblSolicitud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -452,9 +410,9 @@ GestorHibernate gestorH = new GestorHibernate();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(303, 303, 303)
+                                .addGap(302, 302, 302)
                                 .addComponent(btnGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -467,18 +425,18 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -490,21 +448,6 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     dispose();
     }
 }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnAceptarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarVehiculoActionPerformed
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
-        GestorHibernate gestorH = new GestorHibernate();
-        int fila = tblVehiculo.getSelectedRow();
-        Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
-        while(ite.hasNext()){
-            Vehiculo vehiculo=  (Vehiculo) ite.next();
-            if(vehiculo.getDominio().equals(modeloTabla.getValueAt(fila, 0))&& vehiculo.getCarga()>=Double.parseDouble(txtToneladas.getText())){
-                txtVehiculo.setText(vehiculo.getDominio());
-                txtTransportista.setText(vehiculo.getTransportista().toString());
-                txtTara.setText(String.valueOf(vehiculo.getTara()));
-            }
-        }
-    }//GEN-LAST:event_btnAceptarVehiculoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         GestorHibernate gestorH = new GestorHibernate();
@@ -645,7 +588,6 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarSolicitud1;
     private javax.swing.JButton btnAceptarTodos1;
-    private javax.swing.JButton btnAceptarVehiculo;
     private javax.swing.JButton btnBuscarSolicitud;
     private javax.swing.JButton btnCancelarTodos;
     private javax.swing.JButton btnGuardar;
@@ -666,13 +608,12 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -681,19 +622,17 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblSolicitud;
-    private javax.swing.JTable tblVehiculo;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtFechaSolicitud;
+    private javax.swing.JTextField txtFechaViaje;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNumSolicitud;
     private javax.swing.JTextField txtNumeroSolicitud;
-    private javax.swing.JTextField txtPesoNeto;
-    private javax.swing.JTextField txtPesoTotal;
-    private javax.swing.JTextField txtTara;
-    private javax.swing.JTextField txtToneladas;
-    private javax.swing.JTextField txtTransportista;
-    private javax.swing.JTextField txtVehiculo;
+    private javax.swing.JTextField txtProductor;
+    private javax.swing.JTextField txtSilo;
+    private javax.swing.JTextField txtTipoCereal;
+    private javax.swing.JTextField txtTnAlmacenadas;
+    private javax.swing.JTextField txtTnDisponibles;
+    private javax.swing.JTextField txtTnExtraer;
     // End of variables declaration//GEN-END:variables
 }
