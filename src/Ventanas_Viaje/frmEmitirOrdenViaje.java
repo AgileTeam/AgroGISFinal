@@ -108,6 +108,8 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         txtTipoVehiculo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtNumOrden = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtDestino = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -280,6 +282,13 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         jPanel2.add(txtNumOrden);
         txtNumOrden.setBounds(410, 220, 110, 20);
 
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Destino");
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(40, 250, 80, 20);
+        jPanel2.add(txtDestino);
+        txtDestino.setBounds(90, 250, 180, 20);
+
         btnImprimir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -331,11 +340,11 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
                 .addComponent(btnBuscarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(276, 276, 276))
             .addGroup(layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(188, 188, 188)
                 .addComponent(btnImprimir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
                 .addContainerGap())
         );
@@ -362,7 +371,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,6 +404,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -412,6 +422,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tblViaje;
+    private javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNumOrden;

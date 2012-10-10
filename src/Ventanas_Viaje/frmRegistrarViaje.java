@@ -80,12 +80,13 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-        tblEstablecimiento.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tblEstablecimiento.getColumnModel().getColumn(1).setPreferredWidth(80);
-        tblProductor.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tblProductor.getColumnModel().getColumn(1).setPreferredWidth(80);
-        tblPuerto.getColumnModel().getColumn(0).setPreferredWidth(80);
-        tblPuerto.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tblEstablecimiento.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblEstablecimiento.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblEstablecimiento.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblProductor.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblProductor.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblProductor.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
         
         cmbTipoViaje.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
@@ -339,7 +340,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Productor", "Número de Documento"
+                "Nº Solicitud", "Productor", "Número de Documento"
             }
         ));
         scpEstablecimiento.setViewportView(tblEstablecimiento);
@@ -375,7 +376,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Productor", "Número de Documento"
+                "Nº Solicitud", "Productor", "Número de Documento"
             }
         ));
         jScrollPane2.setViewportView(tblProductor);
@@ -505,7 +506,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
