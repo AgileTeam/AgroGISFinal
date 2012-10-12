@@ -248,7 +248,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Tipo Cereal");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 280, 100, 20);
+        jLabel2.setBounds(20, 280, 100, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Transportista");
@@ -292,7 +292,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtNumViaje.setBounds(390, 280, 100, 20);
 
         jPanel1.add(cmbTipoCereal);
-        cmbTipoCereal.setBounds(80, 280, 140, 20);
+        cmbTipoCereal.setBounds(90, 280, 140, 20);
 
         jPanel1.add(cmbVehiculo);
         cmbVehiculo.setBounds(410, 310, 210, 20);
@@ -470,7 +470,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();

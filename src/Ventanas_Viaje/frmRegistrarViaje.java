@@ -139,10 +139,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtNumViaje = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         cmbTipoViaje = new javax.swing.JComboBox();
         txtSolicitante = new javax.swing.JTextField();
         calendarioViaje = new datechooser.beans.DateChooserCombo();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -247,8 +247,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setBounds(350, 60, 130, 20);
         jPanel9.add(txtNumViaje);
         txtNumViaje.setBounds(100, 30, 82, 20);
-        jPanel9.add(txtEstado);
-        txtEstado.setBounds(290, 30, 140, 20);
 
         cmbTipoViaje.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Traslado a Puerto", "Traslado a Establecimiento", "Retiro" }));
         jPanel9.add(cmbTipoViaje);
@@ -257,6 +255,11 @@ GestorHibernate gestorH = new GestorHibernate();
         txtSolicitante.setBounds(100, 60, 190, 20);
         jPanel9.add(calendarioViaje);
         calendarioViaje.setBounds(460, 60, 90, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setText("PENDIENTE");
+        jPanel9.add(jLabel9);
+        jLabel9.setBounds(290, 30, 90, 20);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -506,7 +509,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -562,6 +565,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -584,7 +588,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTable tblProductor;
     private javax.swing.JTextField txtDepto;
     private javax.swing.JTextField txtDeptoT;
-    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHas;
     private javax.swing.JTextField txtHora;

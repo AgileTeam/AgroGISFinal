@@ -20,6 +20,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
     public frmEmitirOrdenViaje() {
         initComponents();
         
+        lblHas.setEnabled(false);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -110,6 +111,10 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         txtNumOrden = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtDestino = new javax.swing.JTextField();
+        lblToneladas = new javax.swing.JLabel();
+        lblHas = new javax.swing.JLabel();
+        txtToneladas = new javax.swing.JTextField();
+        txtHas = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -262,7 +267,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         jPanel2.add(txtTransportista);
         txtTransportista.setBounds(410, 160, 220, 20);
         jPanel2.add(txtResponsable);
-        txtResponsable.setBounds(90, 220, 180, 20);
+        txtResponsable.setBounds(90, 220, 190, 20);
         jPanel2.add(txtVehiculo);
         txtVehiculo.setBounds(90, 160, 220, 20);
         jPanel2.add(txtTara);
@@ -271,23 +276,37 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Responsable");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(10, 220, 80, 14);
+        jLabel11.setBounds(10, 220, 100, 20);
         jPanel2.add(txtTipoVehiculo);
-        txtTipoVehiculo.setBounds(90, 190, 180, 20);
+        txtTipoVehiculo.setBounds(90, 190, 190, 20);
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel12.setText("Número Orden");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(320, 220, 120, 20);
+        jLabel12.setBounds(320, 250, 120, 20);
         jPanel2.add(txtNumOrden);
-        txtNumOrden.setBounds(410, 220, 110, 20);
+        txtNumOrden.setBounds(410, 250, 110, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Destino");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(40, 250, 80, 20);
+        jLabel14.setBounds(360, 220, 80, 20);
         jPanel2.add(txtDestino);
-        txtDestino.setBounds(90, 250, 180, 20);
+        txtDestino.setBounds(410, 220, 180, 20);
+
+        lblToneladas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblToneladas.setText("Toneladas a Extraer");
+        jPanel2.add(lblToneladas);
+        lblToneladas.setBounds(10, 250, 140, 20);
+
+        lblHas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblHas.setText("Hectareas a Trillar");
+        jPanel2.add(lblHas);
+        lblHas.setBounds(10, 250, 130, 20);
+        jPanel2.add(txtToneladas);
+        txtToneladas.setBounds(130, 250, 150, 20);
+        jPanel2.add(txtHas);
+        txtHas.setBounds(130, 250, 150, 20);
 
         btnImprimir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
@@ -377,7 +396,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -421,15 +440,19 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblHas;
+    private javax.swing.JLabel lblToneladas;
     private javax.swing.JTable tblViaje;
     private javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHas;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNumOrden;
     private javax.swing.JTextField txtNumViaje;
     private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtTara;
     private javax.swing.JTextField txtTipoVehiculo;
+    private javax.swing.JTextField txtToneladas;
     private javax.swing.JTextField txtTransportista;
     private javax.swing.JTextField txtVehiculo;
     // End of variables declaration//GEN-END:variables
