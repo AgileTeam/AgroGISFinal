@@ -148,7 +148,6 @@ GestorHibernate gestorH = new GestorHibernate();
         btnSalir = new javax.swing.JButton();
         panelPuerto = new javax.swing.JPanel();
         txtProductor = new javax.swing.JTextField();
-        cmbCereal = new javax.swing.JComboBox();
         btnAgregar = new javax.swing.JButton();
         txtProvinciaT = new javax.swing.JTextField();
         txtToneladasE = new javax.swing.JTextField();
@@ -156,7 +155,6 @@ GestorHibernate gestorH = new GestorHibernate();
         labelDepto = new javax.swing.JLabel();
         txtDeptoT = new javax.swing.JTextField();
         txtLocalidad = new javax.swing.JTextField();
-        cmbEstablecimientoT = new javax.swing.JComboBox();
         labelProductor = new javax.swing.JLabel();
         labelCereal = new javax.swing.JLabel();
         scpEstablecimiento = new javax.swing.JScrollPane();
@@ -165,6 +163,8 @@ GestorHibernate gestorH = new GestorHibernate();
         labelEstablecimiento = new javax.swing.JLabel();
         labelProvincia = new javax.swing.JLabel();
         labelToneladasE = new javax.swing.JLabel();
+        txtCerealT = new javax.swing.JTextField();
+        txtTraslado = new javax.swing.JTextField();
         panelEstablecimiento = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
@@ -176,8 +176,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtLocalidadEst = new javax.swing.JTextField();
-        cmbEstablecimiento = new javax.swing.JComboBox();
-        cmbCerealEst = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
         txtHas = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
@@ -187,6 +185,8 @@ GestorHibernate gestorH = new GestorHibernate();
         tblLote = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnAgregarLote = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        txtRetiro = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -210,11 +210,11 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Carolina");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(551, 0, 50, 40);
+        jLabel3.setBounds(600, 0, 50, 30);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(600, 0, 30, 30);
+        jLabel13.setBounds(650, 0, 30, 30);
         jPanel1.add(txtFecha);
         txtFecha.setBounds(50, 10, 70, 20);
 
@@ -295,9 +295,6 @@ GestorHibernate gestorH = new GestorHibernate();
         panelPuerto.add(txtProductor);
         txtProductor.setBounds(110, 150, 180, 20);
 
-        panelPuerto.add(cmbCereal);
-        cmbCereal.setBounds(110, 210, 110, 20);
-
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,29 +311,26 @@ GestorHibernate gestorH = new GestorHibernate();
         labelLocalidad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelLocalidad.setText("Localidad");
         panelPuerto.add(labelLocalidad);
-        labelLocalidad.setBounds(410, 180, 90, 20);
+        labelLocalidad.setBounds(400, 180, 90, 20);
 
         labelDepto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDepto.setText("Departamento");
         panelPuerto.add(labelDepto);
-        labelDepto.setBounds(30, 180, 100, 20);
+        labelDepto.setBounds(20, 180, 100, 20);
         panelPuerto.add(txtDeptoT);
         txtDeptoT.setBounds(110, 180, 180, 20);
         panelPuerto.add(txtLocalidad);
         txtLocalidad.setBounds(470, 180, 180, 20);
 
-        panelPuerto.add(cmbEstablecimientoT);
-        cmbEstablecimientoT.setBounds(470, 150, 180, 20);
-
         labelProductor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelProductor.setText("Productor");
         panelPuerto.add(labelProductor);
-        labelProductor.setBounds(50, 150, 80, 20);
+        labelProductor.setBounds(40, 150, 100, 20);
 
         labelCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelCereal.setText("Cereal");
         panelPuerto.add(labelCereal);
-        labelCereal.setBounds(70, 210, 80, 20);
+        labelCereal.setBounds(60, 210, 70, 20);
 
         tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -354,22 +348,26 @@ GestorHibernate gestorH = new GestorHibernate();
         labelPuerto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelPuerto.setText("Puerto");
         panelPuerto.add(labelPuerto);
-        labelPuerto.setBounds(430, 150, 70, 20);
+        labelPuerto.setBounds(420, 150, 70, 20);
 
         labelEstablecimiento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelEstablecimiento.setText("Establecimiento");
         panelPuerto.add(labelEstablecimiento);
-        labelEstablecimiento.setBounds(380, 150, 110, 20);
+        labelEstablecimiento.setBounds(370, 150, 110, 20);
 
         labelProvincia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelProvincia.setText("Provincia");
         panelPuerto.add(labelProvincia);
-        labelProvincia.setBounds(60, 180, 80, 20);
+        labelProvincia.setBounds(50, 180, 80, 20);
 
         labelToneladasE.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelToneladasE.setText("Toneladas a Extraer");
         panelPuerto.add(labelToneladasE);
         labelToneladasE.setBounds(350, 210, 150, 20);
+        panelPuerto.add(txtCerealT);
+        txtCerealT.setBounds(110, 210, 110, 20);
+        panelPuerto.add(txtTraslado);
+        txtTraslado.setBounds(470, 150, 180, 20);
 
         panelEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelEstablecimiento.setLayout(null);
@@ -385,7 +383,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane2.setViewportView(tblProductor);
 
         panelEstablecimiento.add(jScrollPane2);
-        jScrollPane2.setBounds(72, 20, 550, 92);
+        jScrollPane2.setBounds(70, 30, 560, 92);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel16.setText("Establecimiento");
@@ -400,44 +398,38 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel18.setText("Departamento");
         panelEstablecimiento.add(jLabel18);
-        jLabel18.setBounds(20, 160, 110, 20);
+        jLabel18.setBounds(30, 160, 110, 20);
         panelEstablecimiento.add(txtProductorEst);
-        txtProductorEst.setBounds(110, 130, 180, 20);
+        txtProductorEst.setBounds(120, 130, 180, 20);
         panelEstablecimiento.add(txtDepto);
-        txtDepto.setBounds(110, 160, 180, 20);
+        txtDepto.setBounds(120, 160, 180, 20);
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel19.setText("Productor");
         panelEstablecimiento.add(jLabel19);
-        jLabel19.setBounds(40, 130, 90, 20);
+        jLabel19.setBounds(50, 130, 90, 20);
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel20.setText("Cereal");
         panelEstablecimiento.add(jLabel20);
-        jLabel20.setBounds(60, 190, 80, 20);
+        jLabel20.setBounds(70, 190, 80, 20);
         panelEstablecimiento.add(txtLocalidadEst);
         txtLocalidadEst.setBounds(450, 160, 180, 20);
 
-        panelEstablecimiento.add(cmbEstablecimiento);
-        cmbEstablecimiento.setBounds(450, 130, 180, 20);
-
-        panelEstablecimiento.add(cmbCerealEst);
-        cmbCerealEst.setBounds(110, 190, 100, 20);
-
         jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel21.setText("Hectáreas");
+        jLabel21.setText("Hectáreas a Trillar");
         panelEstablecimiento.add(jLabel21);
-        jLabel21.setBounds(40, 250, 80, 20);
+        jLabel21.setBounds(10, 220, 130, 20);
         panelEstablecimiento.add(txtHas);
-        txtHas.setBounds(110, 250, 100, 20);
+        txtHas.setBounds(120, 220, 100, 20);
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel22.setText("Lote ");
         panelEstablecimiento.add(jLabel22);
-        jLabel22.setBounds(70, 220, 30, 20);
+        jLabel22.setBounds(80, 250, 70, 20);
 
         panelEstablecimiento.add(cmbLote);
-        cmbLote.setBounds(110, 220, 100, 20);
+        cmbLote.setBounds(120, 250, 100, 20);
 
         btnAgregarProductor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAgregarProductor.addActionListener(new java.awt.event.ActionListener() {
@@ -446,20 +438,20 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         panelEstablecimiento.add(btnAgregarProductor);
-        btnAgregarProductor.setBounds(630, 50, 40, 30);
+        btnAgregarProductor.setBounds(640, 60, 40, 30);
 
         tblLote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Lote", "Hectáreas", "Latitud", "Longitud"
+                "Lote", "Latitud", "Longitud"
             }
         ));
         jScrollPane3.setViewportView(tblLote);
 
         panelEstablecimiento.add(jScrollPane3);
-        jScrollPane3.setBounds(290, 200, 380, 70);
+        jScrollPane3.setBounds(280, 210, 410, 80);
 
         btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
 
@@ -468,7 +460,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregarLote, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -481,23 +473,27 @@ GestorHibernate gestorH = new GestorHibernate();
         );
 
         panelEstablecimiento.add(jPanel3);
-        jPanel3.setBounds(200, 190, 70, 80);
+        jPanel3.setBounds(220, 220, 60, 80);
+        panelEstablecimiento.add(jTextField1);
+        jTextField1.setBounds(120, 190, 100, 20);
+        panelEstablecimiento.add(txtRetiro);
+        txtRetiro.setBounds(450, 130, 180, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
                             .addComponent(panelEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
+                        .addGap(244, 244, 244)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -508,13 +504,13 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         pack();
@@ -543,10 +539,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioViaje;
-    private javax.swing.JComboBox cmbCereal;
-    private javax.swing.JComboBox cmbCerealEst;
-    private javax.swing.JComboBox cmbEstablecimiento;
-    private javax.swing.JComboBox cmbEstablecimientoT;
     private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbTipoViaje;
     private javax.swing.JLabel jLabel1;
@@ -572,6 +564,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelCereal;
     private javax.swing.JLabel labelDepto;
     private javax.swing.JLabel labelEstablecimiento;
@@ -586,6 +579,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTable tblLote;
     private javax.swing.JTable tblProductor;
+    private javax.swing.JTextField txtCerealT;
     private javax.swing.JTextField txtDepto;
     private javax.swing.JTextField txtDeptoT;
     private javax.swing.JTextField txtFecha;
@@ -597,7 +591,9 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProductorEst;
     private javax.swing.JTextField txtProvinciaT;
+    private javax.swing.JTextField txtRetiro;
     private javax.swing.JTextField txtSolicitante;
     private javax.swing.JTextField txtToneladasE;
+    private javax.swing.JTextField txtTraslado;
     // End of variables declaration//GEN-END:variables
 }
