@@ -330,7 +330,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel19.setText("Lote Nº");
         jPanel1.add(jLabel19);
-        jLabel19.setBounds(610, 240, 80, 20);
+        jLabel19.setBounds(610, 240, 60, 20);
 
         jPanel1.add(cmbLote);
         cmbLote.setBounds(650, 240, 70, 20);
@@ -470,7 +470,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();

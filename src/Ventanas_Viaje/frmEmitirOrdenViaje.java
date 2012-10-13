@@ -265,7 +265,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel10);
         jLabel10.setBounds(380, 190, 50, 20);
         jPanel2.add(txtTransportista);
-        txtTransportista.setBounds(410, 160, 220, 20);
+        txtTransportista.setBounds(410, 160, 210, 20);
         jPanel2.add(txtResponsable);
         txtResponsable.setBounds(90, 220, 190, 20);
         jPanel2.add(txtVehiculo);
@@ -396,7 +396,7 @@ public class frmEmitirOrdenViaje extends javax.swing.JInternalFrame {
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
