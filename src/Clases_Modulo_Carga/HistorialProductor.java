@@ -18,8 +18,6 @@ private long idHistorial;
 @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Productor productor;
 
-private double toneladasDisponibles;
-
     /**
      * @return the idHistorial
      */
@@ -48,19 +46,4 @@ private double toneladasDisponibles;
         this.productor = productor;
     }
 
-    /**
-     * @return the toneladasDisponibles
-     */
-    public double getToneladasDisponibles() {
-        return toneladasDisponibles;
-    }
-
-    /**
-     * @param toneladasDisponibles the toneladasDisponibles to set
-     */
-    public void setToneladasDisponibles(double toneladasDisponibles) {
-        this.toneladasDisponibles = toneladasDisponibles;
-    }
-
-   
 }

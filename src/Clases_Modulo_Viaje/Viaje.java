@@ -43,6 +43,9 @@ public class Viaje {
     @ManyToOne(targetEntity = Productor.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Productor productor;
     
+    @ManyToOne(targetEntity = SolicitudRetiro.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private SolicitudRetiro solicitud;
+    
     
     private String fecha;
     private String hora;
@@ -62,7 +65,6 @@ public class Viaje {
         this.cerealATransportar = cerealATransportar;
     }
 
-
     /**
      * @return the estado
      */
@@ -77,7 +79,6 @@ public class Viaje {
         this.estado = estado;
     }
 
- 
     /**
      * @return the tipoViaje
      */
@@ -104,9 +105,7 @@ public class Viaje {
      */
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
-    }
-
-   
+    } 
 
     /**
      * @return the idViaje
@@ -176,6 +175,20 @@ public class Viaje {
      */
     public void setSolicitante(String solicitante) {
         this.solicitante = solicitante;
+    }
+
+    /**
+     * @return the solicitud
+     */
+    public SolicitudRetiro getSolicitud() {
+        return solicitud;
+    }
+
+    /**
+     * @param solicitud the solicitud to set
+     */
+    public void setSolicitud(SolicitudRetiro solicitud) {
+        this.solicitud = solicitud;
     }
     
 }

@@ -11,9 +11,7 @@
 package Ventanas_Carga;
 
 
-import Clases_Modulo_Carga.MuestraTomada;
-import Clases_Modulo_Carga.Retiro;
-import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
 import Clases_Modulo_Viaje.Viaje;
@@ -452,15 +450,8 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         GestorHibernate gestorH = new GestorHibernate();
         Retiro retiro = new Retiro();
-        retiro.setPesoNeto(Double.parseDouble(txtTara.getText()));
-        retiro.setPesoTotal(Double.parseDouble(txtPesoTotal.getText()));
-        Iterator ite1 = gestorH.listarClase(Vehiculo.class).iterator();
-        while(ite1.hasNext()){
-            Vehiculo vehiculo = (Vehiculo) ite1.next();
-            if(vehiculo.getDominio().equals(txtVehiculo.getText())){
-                retiro.setVehiculo(vehiculo);
-            }
-        }
+
+    
         Iterator ite2 = gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite2.hasNext()){
             SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
@@ -472,7 +463,56 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarSolicitud1ActionPerformed
-        // TODO add your handling code here:
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblSolicitud.getModel();
+    int fila = tblSolicitud.getSelectedRow();
+    Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+    while(ite.hasNext()){
+        SolicitudRetiro sol = (SolicitudRetiro)ite.next();
+        if(sol.getNumeroSolicitud()== modeloTabla.getValueAt(fila,0)){
+            txtNumeroSolicitud.setText(modeloTabla.getValueAt(fila, 0).toString());
+            txtProductor.setText(sol.getProductor().toString());
+            txtTipoCereal.setText(sol.getTipoCereal().toString());         
+        
+        Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+        while(ite2.hasNext()){
+            Viaje viaje = (Viaje)ite2.next();
+            if(viaje.getSolicitud() == sol){
+                txtFechaViaje.setText(viaje.getFecha());
+            }
+        }
+         //Carga txt con toneladas disponibles del productor dueño de la solicitud
+         Iterator ite5 = gestorH.listarClase(SolicitudPorHistorial.class).iterator();
+         while(ite5.hasNext()){
+             SolicitudPorHistorial solXHist = (SolicitudPorHistorial) ite5.next();
+             Iterator ite3 = gestorH.listarClase(HistorialProductor.class).iterator();
+             while(ite3.hasNext()){
+                 HistorialProductor hist = new HistorialProductor();
+                 Iterator ite4 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
+                 while(ite4.hasNext()){
+                     ToneladasPorCereal toneladas = (ToneladasPorCereal) ite4.next();
+                     if(solXHist.getSolicitud()==sol && solXHist.getHistorial() == toneladas.getHistorial() && toneladas.getTipoCereal()==sol.getTipoCereal()){
+                     txtTnAlmacenadas.setText(String.valueOf(toneladas.getToneladas()));
+                     }
+                 }
+             }
+         }
+         Iterator ite6 = gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
+         while(ite6.hasNext()){
+             EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite6.next();
+             if(est.getSolicitud() == sol){
+                 txtTnExtraidas.setText(String.valueOf(est.getToneladasAExtraer()));
+             }
+         }
+         Iterator ite7 = gestorH.listarClase(PuertoPorSolicitud.class).iterator();
+         while(ite7.hasNext()){
+             PuertoPorSolicitud puerto = (PuertoPorSolicitud) ite7.next();
+             if(puerto.getSolicitud() == sol){
+                 txtTnExtraidas.setText(String.valueOf(puerto.getToneladasAExtraer()));
+             }
+         }
+    }
+    }
+    txtTnDisponibles.setText(String.valueOf(Double.parseDouble(txtTnAlmacenadas.getText())- Double.parseDouble(txtTnExtraidas.getText())));
     }//GEN-LAST:event_btnAceptarSolicitud1ActionPerformed
 
     private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
