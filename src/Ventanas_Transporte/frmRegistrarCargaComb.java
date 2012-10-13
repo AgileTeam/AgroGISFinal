@@ -543,8 +543,8 @@ Double total;
       carga.setFecha(modelo.getValueAt(0,0).toString());
       carga.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
       carga.setOrdenServicio((OrdenServicio)cmbOrden.getSelectedItem());
-      carga.set
-      envio.setResponsable(txtResponsable.getText());
+      carga.setResponsableVenta(txtResponsable.getText());
+      carga.setTipoOperacion(txtOperacion.getText());
       envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
       gestorH.guardarObjeto(envio);
       for(int i=0; i<modelo.getRowCount(); i++){
