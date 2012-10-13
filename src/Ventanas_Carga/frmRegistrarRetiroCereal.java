@@ -133,7 +133,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel6 = new javax.swing.JLabel();
         txtTnAlmacenadas = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtTnExtraer = new javax.swing.JTextField();
+        txtTnExtraidas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSolicitud = new javax.swing.JTable();
         btnGuardar = new javax.swing.JButton();
@@ -249,7 +249,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtTnDisponibles.setBounds(670, 80, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Toneladas Extraídas");
+        jLabel6.setText("Toneladas Extraidas");
         jPanel5.add(jLabel6);
         jLabel6.setBounds(280, 80, 150, 20);
         jPanel5.add(txtTnAlmacenadas);
@@ -259,8 +259,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setText("Toneladas Disponibles");
         jPanel5.add(jLabel8);
         jLabel8.setBounds(530, 80, 160, 20);
-        jPanel5.add(txtTnExtraer);
-        txtTnExtraer.setBounds(400, 80, 110, 20);
+        jPanel5.add(txtTnExtraidas);
+        txtTnExtraidas.setBounds(400, 80, 110, 20);
 
         tblSolicitud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -633,6 +633,6 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JTextField txtTipoCereal;
     private javax.swing.JTextField txtTnAlmacenadas;
     private javax.swing.JTextField txtTnDisponibles;
-    private javax.swing.JTextField txtTnExtraer;
+    private javax.swing.JTextField txtTnExtraidas;
     // End of variables declaration//GEN-END:variables
 }
