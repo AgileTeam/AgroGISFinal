@@ -249,7 +249,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtTnDisponibles.setBounds(670, 80, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Toneladas a Extraer");
+        jLabel6.setText("Toneladas Extraídas");
         jPanel5.add(jLabel6);
         jLabel6.setBounds(280, 80, 150, 20);
         jPanel5.add(txtTnAlmacenadas);
@@ -436,7 +436,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
