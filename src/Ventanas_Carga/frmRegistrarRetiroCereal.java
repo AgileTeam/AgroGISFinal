@@ -450,14 +450,25 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         GestorHibernate gestorH = new GestorHibernate();
         Retiro retiro = new Retiro();
-
-    
         Iterator ite2 = gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite2.hasNext()){
             SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
             if(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumeroSolicitud.getText())){
                 retiro.setSolicitud(solicitud);
+                retiro.setToneladas(Double.parseDouble(txtTnExtraidas.getText()));
+                Iterator ite3 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
+                while(ite3.hasNext()){
+                    ToneladasPorCereal ton = (ToneladasPorCereal) ite3.next();
+                    Iterator ite4 = gestorH.listarClase(SolicitudPorHistorial.class).iterator();
+                    while(ite4.hasNext()){
+                    SolicitudPorHistorial sol = (SolicitudPorHistorial) ite4.next();
+                    if(ton.getHistorial()== sol.getHistorial() && sol.getSolicitud()==solicitud){
+                        ton.setToneladas(Double.parseDouble(txtTnDisponibles.getText()));
+                        gestorH.actualizarObjeto(ton);
+                    }
+                }
             }
+        }
         }
         gestorH.guardarObjeto(retiro);
     }//GEN-LAST:event_btnGuardarActionPerformed

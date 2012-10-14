@@ -21,8 +21,7 @@ private SolicitudRetiro solicitud;
 @ManyToOne(targetEntity = Vehiculo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )    
 private Vehiculo vehiculo;
     
-private double pesoTotal;
-private double pesoNeto;
+private double toneladas;
 
     /**
      * @return the idRetiro
@@ -67,35 +66,18 @@ private double pesoNeto;
     }
 
     /**
-     * @return the pesoTotal
+     * @return the toneladas
      */
-    public double getPesoTotal() {
-        return pesoTotal;
+    public double getToneladas() {
+        return toneladas;
     }
 
     /**
-     * @param pesoTotal the pesoTotal to set
+     * @param toneladas the toneladas to set
      */
-    public void setPesoTotal(double pesoTotal) {
-        this.pesoTotal = pesoTotal;
+    public void setToneladas(double toneladas) {
+        this.toneladas = toneladas;
     }
-
-    /**
-     * @return the pesoNeto
-     */
-    public double getPesoNeto() {
-        return pesoNeto;
-    }
-
-    /**
-     * @param pesoNeto the pesoNeto to set
-     */
-    public void setPesoNeto(double pesoNeto) {
-        this.pesoNeto = pesoNeto;
-    }
-    
-    
-    
-    
+ 
    
 }
