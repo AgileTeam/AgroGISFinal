@@ -20,7 +20,7 @@ import javax.swing.JTable;
 public class gestorRegistrarViaje extends GestorHibernate {
     
      public void ActualizarDatos(String seleccion, JPanel panelPuerto, JPanel panelEstablecimiento, JLabel labelPuerto, JLabel labelEstablecimiento, JLabel labelProvincia, JLabel labelDepartamento,
-                                   JTable tblEstablecimiento, JTable tblPuerto, JScrollPane scpEstablecimiento, JScrollPane scpPuerto ){
+                                   JTable tblEstablecimiento, JScrollPane scpEstablecimiento){
         if (seleccion == "Traslado a Puerto"){
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
@@ -28,10 +28,10 @@ public class gestorRegistrarViaje extends GestorHibernate {
         labelProvincia.setVisible(true);
         labelEstablecimiento.setVisible(false);
         labelPuerto.setVisible(true);
-        tblPuerto.setVisible(true);
+        tblEstablecimiento.setVisible(true);
         tblEstablecimiento.setVisible(false);
         scpEstablecimiento.setVisible(false);
-        scpPuerto.setVisible(true);
+
         
         }if(seleccion== "Retiro"){
         panelPuerto.setVisible(false);
@@ -46,9 +46,8 @@ public class gestorRegistrarViaje extends GestorHibernate {
         labelEstablecimiento.setVisible(true);
         labelPuerto.setVisible(false);
         tblEstablecimiento.setVisible(true);
-        tblPuerto.setVisible(false);
         scpEstablecimiento.setVisible(true);
-        scpPuerto.setVisible(false);
+  
         }
        }
        

@@ -4,8 +4,11 @@
  */
 package Ventanas_Viaje;
 
+import Clases_Modulo_Carga.EstablecimientoPorSolicitud;
 import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Carga.Puerto;
+import Clases_Modulo_Carga.PuertoPorSolicitud;
+import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Transporte.Barrio;
 import Gestores_Vista.gestorRegistrarViaje;
 import Hibernate.GestorHibernate;
@@ -36,8 +39,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEnabled(false);
         txtNumViaje.setEditable(false);
         txtNumViaje.setEnabled(false);
-        txtEstado.setEnabled(false);
-        txtEstado.setEditable(false);
+
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -63,7 +65,7 @@ GestorHibernate gestorH = new GestorHibernate();
         labelProductor.setVisible(true); //1 y 2
         txtProductor.setVisible(true); //1 y 2
         labelCereal.setVisible(true); //1 y 2
-        cmbCereal.setVisible(true); //1 y 2
+//        cmbCereal.setVisible(true); //1 y 2
               
  
         //borrar el icono del InternalFrame
@@ -90,28 +92,43 @@ GestorHibernate gestorH = new GestorHibernate();
         
         cmbTipoViaje.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento, tblPuerto, scpEstablecimiento, scpPuerto);
+           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento);
            }
         }
         );
-          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento, tblPuerto, scpEstablecimiento, scpPuerto);
+          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento);
         
-        DefaultTableModel modeloT = (DefaultTableModel) tblPuerto.getModel();
-        Iterator ite = gestorH.listarClase(Puerto.class).iterator();
-        while(ite.hasNext()){
-            Puerto puerto = (Puerto) ite.next();
-            Object fila[] = {puerto.getNombrePuerto(), puerto.getLocalidad()};
-            modeloT.addRow(fila);
-            tblPuerto.setModel(modeloT);
-        }
-        
+            
         DefaultTableModel modeloT1 = (DefaultTableModel) tblProductor.getModel();
         Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
         while(ite1.hasNext()){
             Productor prod = (Productor) ite1.next();
-            Object fila[] = {prod.getNombre(), prod.getNumeroDocumento()};
-            modeloT.addRow(fila);
-            tblPuerto.setModel(modeloT1);
+            Iterator ite2= gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while(ite2.hasNext()){
+                SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
+                if(solicitud.getProductor() == prod){
+                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
+                    modeloT1.addRow(fila);
+                }
+            }
+            
+            tblProductor.setModel(modeloT1);
+        }
+        
+        DefaultTableModel modeloT2 = (DefaultTableModel) tblEstablecimiento.getModel();
+        Iterator ite3 = gestorH.listarClase(Productor.class).iterator();
+        while(ite3.hasNext()){
+            Productor prod = (Productor) ite3.next();
+            Iterator ite4= gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while(ite4.hasNext()){
+                SolicitudRetiro solicitud = (SolicitudRetiro) ite4.next();
+                if(solicitud.getProductor() == prod){
+                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
+                    modeloT2.addRow(fila);
+                }
+            }
+            
+            tblEstablecimiento.setModel(modeloT2);
         }
     
     }
@@ -153,7 +170,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtToneladasE = new javax.swing.JTextField();
         labelLocalidad = new javax.swing.JLabel();
         labelDepto = new javax.swing.JLabel();
-        txtDeptoT = new javax.swing.JTextField();
         txtLocalidad = new javax.swing.JTextField();
         labelProductor = new javax.swing.JLabel();
         labelCereal = new javax.swing.JLabel();
@@ -166,7 +182,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtCerealT = new javax.swing.JTextField();
         txtTraslado = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSilo = new javax.swing.JTextField();
         panelEstablecimiento = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
@@ -187,7 +203,7 @@ GestorHibernate gestorH = new GestorHibernate();
         tblLote = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnAgregarLote = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtCerealR = new javax.swing.JTextField();
         txtRetiro = new javax.swing.JTextField();
 
         setIconifiable(true);
@@ -319,8 +335,6 @@ GestorHibernate gestorH = new GestorHibernate();
         labelDepto.setText("Departamento");
         panelPuerto.add(labelDepto);
         labelDepto.setBounds(20, 180, 100, 20);
-        panelPuerto.add(txtDeptoT);
-        txtDeptoT.setBounds(110, 180, 180, 20);
         panelPuerto.add(txtLocalidad);
         txtLocalidad.setBounds(470, 180, 180, 20);
 
@@ -375,8 +389,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel10.setText("Silo Nº");
         panelPuerto.add(jLabel10);
         jLabel10.setBounds(520, 210, 70, 20);
-        panelPuerto.add(jTextField2);
-        jTextField2.setBounds(560, 210, 90, 20);
+        panelPuerto.add(txtSilo);
+        txtSilo.setBounds(560, 210, 90, 20);
 
         panelEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelEstablecimiento.setLayout(null);
@@ -483,8 +497,8 @@ GestorHibernate gestorH = new GestorHibernate();
 
         panelEstablecimiento.add(jPanel3);
         jPanel3.setBounds(220, 220, 60, 80);
-        panelEstablecimiento.add(jTextField1);
-        jTextField1.setBounds(120, 190, 100, 20);
+        panelEstablecimiento.add(txtCerealR);
+        txtCerealR.setBounds(120, 190, 100, 20);
         panelEstablecimiento.add(txtRetiro);
         txtRetiro.setBounds(450, 130, 180, 20);
 
@@ -517,7 +531,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -531,16 +545,87 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
     int fila = tblEstablecimiento.getSelectedRow();
-    txtProductor.setText((String)modeloT.getValueAt(fila, 0));
+    txtProductor.setText((String)modeloT.getValueAt(fila, 1));
     if(cmbTipoViaje.getSelectedItem().toString()=="Traslado a Establecimiento"){
-        cmbEstablecimientoT.setModel(gViaje.CargarDatosEstablecimiento(txt));
+        labelEstablecimiento.setVisible(true);
+        labelPuerto.setVisible(false);
+        labelDepto.setVisible(true);
+        labelProvincia.setVisible(false);
+        Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
+        while(ite.hasNext()){
+            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+                    txtCerealT.setText(sol.getTipoCereal().toString());
+                    
+            }
+            Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
+            while(ite1.hasNext()){
+                EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
+                if(est.getSolicitud()== sol){
+                    txtTraslado.setText(est.getEstablecimiento().toString());
+                    txtProvinciaT.setText(est.getEstablecimiento().getLocalidad().getDepartamento().toString());
+                    txtLocalidad.setText(est.getEstablecimiento().getLocalidad().toString());
+                    txtToneladasE.setText(String.valueOf(est.getToneladasAExtraer()));
+                    txtSilo.setText(est.getSilo().toString());
+                            
+                }
+            }
+        }
     
+    }
+    if(cmbTipoViaje.getSelectedItem().toString()=="Traslado a Puerto"){
+        labelEstablecimiento.setVisible(false);
+        labelPuerto.setVisible(true);
+        labelDepto.setVisible(false);
+        labelProvincia.setVisible(true);
+        Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
+        while(ite.hasNext()){
+            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+                    txtCerealT.setText(sol.getTipoCereal().toString());
+                    
+            }
+            Iterator ite1= gestorH.listarClase(PuertoPorSolicitud.class).iterator();
+            while(ite1.hasNext()){
+                PuertoPorSolicitud puerto = (PuertoPorSolicitud) ite1.next();
+                if(puerto.getSolicitud()== sol){
+                    txtTraslado.setText(puerto.getPuerto().toString());
+                    txtProvinciaT.setText(puerto.getPuerto().getLocalidad().getDepartamento().getProvincia().toString());
+                    txtLocalidad.setText(puerto.getPuerto().getLocalidad().toString());
+                    txtToneladasE.setText(String.valueOf(puerto.getToneladasAExtraer()));
+                    txtSilo.setText(puerto.getSilo().toString());
+                            
+                }
+            }
+        }
     
     }
     
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductorActionPerformed
+    DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
+    int fila = tblProductor.getSelectedRow();
+    txtProductorEst.setText((String)modeloT.getValueAt(fila, 1));
+        Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
+        while(ite.hasNext()){
+            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+                    txtCerealR.setText(sol.getTipoCereal().toString());
+                    
+            }
+            Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
+            while(ite1.hasNext()){
+                EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
+                if(est.getSolicitud()== sol){
+                    txtRetiro.setText(est.getEstablecimiento().toString());
+                    txtDepto.setText(est.getEstablecimiento().getLocalidad().getDepartamento().toString());
+                    txtLocalidadEst.setText(est.getEstablecimiento().getLocalidad().toString());
+                    txtHas.setText(String.valueOf(est.getHectareasATrillar()));                            
+                }
+            }
+        }
+    
     
     }//GEN-LAST:event_btnAgregarProductorActionPerformed
 
@@ -577,8 +662,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelCereal;
     private javax.swing.JLabel labelDepto;
     private javax.swing.JLabel labelEstablecimiento;
@@ -593,9 +676,9 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTable tblLote;
     private javax.swing.JTable tblProductor;
+    private javax.swing.JTextField txtCerealR;
     private javax.swing.JTextField txtCerealT;
     private javax.swing.JTextField txtDepto;
-    private javax.swing.JTextField txtDeptoT;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHas;
     private javax.swing.JTextField txtHora;
@@ -606,6 +689,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtProductorEst;
     private javax.swing.JTextField txtProvinciaT;
     private javax.swing.JTextField txtRetiro;
+    private javax.swing.JTextField txtSilo;
     private javax.swing.JTextField txtSolicitante;
     private javax.swing.JTextField txtToneladasE;
     private javax.swing.JTextField txtTraslado;
