@@ -32,7 +32,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel9" pref="724" max="32767" attributes="0"/>
                           <Component id="panelEstablecimiento" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelPuerto" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
@@ -44,6 +43,11 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelPuerto" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -53,7 +57,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="104" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="331" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="335" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -368,7 +372,7 @@
         <Component class="javax.swing.JTextField" name="txtToneladasE">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="470" y="210" width="110" height="-1"/>
+              <AbsoluteConstraints x="370" y="210" width="110" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -430,11 +434,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cereal"/>
+            <Property name="text" type="java.lang.String" value="Tipo de Cereal"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="210" width="70" height="20"/>
+              <AbsoluteConstraints x="20" y="210" width="110" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -511,7 +515,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="210" width="150" height="20"/>
+              <AbsoluteConstraints x="250" y="210" width="150" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -526,6 +530,26 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="470" y="150" width="180" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel10">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Silo N&#xba;"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="520" y="210" width="70" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="560" y="210" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -642,11 +666,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cereal"/>
+            <Property name="text" type="java.lang.String" value="Tipo Cereal"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="190" width="80" height="20"/>
+              <AbsoluteConstraints x="40" y="190" width="80" height="20"/>
             </Constraint>
           </Constraints>
         </Component>

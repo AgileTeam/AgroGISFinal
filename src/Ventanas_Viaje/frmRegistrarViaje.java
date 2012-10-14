@@ -165,6 +165,8 @@ GestorHibernate gestorH = new GestorHibernate();
         labelToneladasE = new javax.swing.JLabel();
         txtCerealT = new javax.swing.JTextField();
         txtTraslado = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         panelEstablecimiento = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
@@ -306,7 +308,7 @@ GestorHibernate gestorH = new GestorHibernate();
         panelPuerto.add(txtProvinciaT);
         txtProvinciaT.setBounds(110, 180, 180, 20);
         panelPuerto.add(txtToneladasE);
-        txtToneladasE.setBounds(470, 210, 110, 20);
+        txtToneladasE.setBounds(370, 210, 110, 20);
 
         labelLocalidad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelLocalidad.setText("Localidad");
@@ -328,9 +330,9 @@ GestorHibernate gestorH = new GestorHibernate();
         labelProductor.setBounds(40, 150, 100, 20);
 
         labelCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelCereal.setText("Cereal");
+        labelCereal.setText("Tipo de Cereal");
         panelPuerto.add(labelCereal);
-        labelCereal.setBounds(60, 210, 70, 20);
+        labelCereal.setBounds(20, 210, 110, 20);
 
         tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -363,11 +365,18 @@ GestorHibernate gestorH = new GestorHibernate();
         labelToneladasE.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelToneladasE.setText("Toneladas a Extraer");
         panelPuerto.add(labelToneladasE);
-        labelToneladasE.setBounds(350, 210, 150, 20);
+        labelToneladasE.setBounds(250, 210, 150, 20);
         panelPuerto.add(txtCerealT);
         txtCerealT.setBounds(110, 210, 110, 20);
         panelPuerto.add(txtTraslado);
         txtTraslado.setBounds(470, 150, 180, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setText("Silo Nº");
+        panelPuerto.add(jLabel10);
+        jLabel10.setBounds(520, 210, 70, 20);
+        panelPuerto.add(jTextField2);
+        jTextField2.setBounds(560, 210, 90, 20);
 
         panelEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelEstablecimiento.setLayout(null);
@@ -410,9 +419,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel19.setBounds(50, 130, 90, 20);
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel20.setText("Cereal");
+        jLabel20.setText("Tipo Cereal");
         panelEstablecimiento.add(jLabel20);
-        jLabel20.setBounds(70, 190, 80, 20);
+        jLabel20.setBounds(40, 190, 80, 20);
         panelEstablecimiento.add(txtLocalidadEst);
         txtLocalidadEst.setBounds(450, 160, 180, 20);
 
@@ -489,14 +498,17 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
-                            .addComponent(panelEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(panelEstablecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(244, 244, 244)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,7 +517,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -542,6 +554,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbTipoViaje;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -565,6 +578,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelCereal;
     private javax.swing.JLabel labelDepto;
     private javax.swing.JLabel labelEstablecimiento;

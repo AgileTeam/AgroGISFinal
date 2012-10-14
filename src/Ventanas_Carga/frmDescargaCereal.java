@@ -137,9 +137,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtProductor = new javax.swing.JTextField();
         txtNumViaje = new javax.swing.JTextField();
         cmbTipoCereal = new javax.swing.JComboBox();
-        cmbVehiculo = new javax.swing.JComboBox();
-        cmbTransportista = new javax.swing.JComboBox();
-        cmbDominio = new javax.swing.JComboBox();
         txtPesoNeto = new javax.swing.JTextField();
         txtTara = new javax.swing.JTextField();
         txtPesoTotal = new javax.swing.JTextField();
@@ -147,6 +144,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         cmbSilo = new javax.swing.JComboBox();
+        txtTransportista = new javax.swing.JTextField();
+        txtVehiculo = new javax.swing.JTextField();
+        txtDominio = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -287,15 +287,6 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jPanel1.add(cmbTipoCereal);
         cmbTipoCereal.setBounds(100, 250, 100, 20);
-
-        jPanel1.add(cmbVehiculo);
-        cmbVehiculo.setBounds(100, 220, 210, 20);
-
-        jPanel1.add(cmbTransportista);
-        cmbTransportista.setBounds(430, 190, 220, 20);
-
-        jPanel1.add(cmbDominio);
-        cmbDominio.setBounds(430, 220, 100, 20);
         jPanel1.add(txtPesoNeto);
         txtPesoNeto.setBounds(540, 280, 100, 20);
         jPanel1.add(txtTara);
@@ -320,6 +311,12 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jPanel1.add(cmbSilo);
         cmbSilo.setBounds(320, 250, 100, 20);
+        jPanel1.add(txtTransportista);
+        txtTransportista.setBounds(430, 190, 200, 20);
+        jPanel1.add(txtVehiculo);
+        txtVehiculo.setBounds(100, 220, 200, 20);
+        jPanel1.add(txtDominio);
+        txtDominio.setBounds(430, 220, 90, 20);
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -472,11 +469,8 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cmbCaracteristica;
-    private javax.swing.JComboBox cmbDominio;
     private javax.swing.JComboBox cmbSilo;
     private javax.swing.JComboBox cmbTipoCereal;
-    private javax.swing.JComboBox cmbTransportista;
-    private javax.swing.JComboBox cmbVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -505,6 +499,7 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTable tblEstablecimiento;
+    private javax.swing.JTextField txtDominio;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
@@ -513,6 +508,8 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTextField txtPesoTotal;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtTara;
+    private javax.swing.JTextField txtTransportista;
     private javax.swing.JTextField txtValor;
+    private javax.swing.JTextField txtVehiculo;
     // End of variables declaration//GEN-END:variables
 }
