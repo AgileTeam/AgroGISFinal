@@ -18,8 +18,8 @@ private long idVehiculo;
 @ManyToOne(targetEntity = AnioCompra.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private AnioCompra anioCompra;
     
-@ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Estado estado;    
+//@ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+//private Estado estado;    
 
 @ManyToOne(targetEntity = Modelo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Modelo modelo; 
@@ -37,7 +37,7 @@ private Transportista transportista;
     private double largo;
     private double tara;
     private double carga;
-
+    private String estado;
 
     /**
      * @return the ancho
@@ -98,16 +98,16 @@ private Transportista transportista;
     /**
      * @return the estado
      */
-    public Estado getEstado() {
-        return estado;
-    }
-
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+//    public Estado getEstado() {
+//        return estado;
+//    }
+//
+//    /**
+//     * @param estado the estado to set
+//     */
+//    public void setEstado(Estado estado) {
+//        this.estado = estado;
+//    }
 
     /**
      * @return the largo
@@ -214,5 +214,19 @@ private Transportista transportista;
     
     public String toString(){
         return (String.valueOf(modelo.getMarca()+" "+String.valueOf(modelo)));
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

@@ -410,13 +410,13 @@ GestorHibernate gestorH = new GestorHibernate();
                txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
                txtFechaRealizacion.setText(viaje.getFecha());
                txtTipoViaje.setText(viaje.getTipoViaje().toString());
-               //Destino txtDestino.setText;
                txtCereal.setText(viaje.getSolicitud().getTipoCereal().toString());
                txtProductor.setText(viaje.getProductor().toString());
-               
-           
+               //Falta Destino
+               gestorA.RellenarTablaVehiculo(tblVehiculo, viaje);
            }
        }
+       
     }//GEN-LAST:event_btnAgregarViajeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
