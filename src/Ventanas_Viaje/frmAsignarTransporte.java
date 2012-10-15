@@ -5,6 +5,8 @@
 package Ventanas_Viaje;
 
 import Clases_Modulo_Transporte.*;
+import Clases_Modulo_Viaje.Viaje;
+import Gestores_Vista.gestorAsignarTransporte;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Carolina
  */
 public class frmAsignarTransporte extends javax.swing.JInternalFrame {
-
+gestorAsignarTransporte gestorA = new gestorAsignarTransporte();
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmAsignarTransporte
      */
@@ -63,6 +66,8 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
         tblViaje.getColumnModel().getColumn(2).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(1).setPreferredWidth(100);
+        
+        gestorA.RellenarTablaViajes(tblViaje);
     }
 
     /**
@@ -166,6 +171,11 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
         jScrollPane1.setBounds(80, 30, 560, 89);
 
         btnAgregarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarViajeActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAgregarViaje);
         btnAgregarViaje.setBounds(650, 60, 40, 30);
 
@@ -368,7 +378,7 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -388,6 +398,26 @@ public class frmAsignarTransporte extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btnAceptarVehiculoActionPerformed
+
+    private void btnAgregarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarViajeActionPerformed
+       DefaultTableModel modelo = (DefaultTableModel) tblViaje.getModel();
+       int fila = tblViaje.getSelectedRow();
+       Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+       while(ite.hasNext()){
+           Viaje viaje = (Viaje) ite.next();
+           if(viaje.getIdViaje() == modelo.getValueAt(fila, 0)){
+               txtNumeroSolicitud.setText(viaje.getSolicitud().toString());
+               txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
+               txtFechaRealizacion.setText(viaje.getFecha());
+               txtTipoViaje.setText(viaje.getTipoViaje().toString());
+               //Destino txtDestino.setText;
+               txtCereal.setText(viaje.getSolicitud().getTipoCereal().toString());
+               txtProductor.setText(viaje.getProductor().toString());
+               
+           
+           }
+       }
+    }//GEN-LAST:event_btnAgregarViajeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarVehiculo;

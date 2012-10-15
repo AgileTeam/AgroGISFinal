@@ -30,8 +30,8 @@ public class Viaje {
     private TipoCereal cerealATransportar;
     
       
-    @ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-    private Estado estado;
+//    @ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+//    private Estado estado;
     
    
     @ManyToOne(targetEntity = TipoViaje.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
@@ -50,6 +50,7 @@ public class Viaje {
     private String fecha;
     private String hora;
     private String solicitante;
+    private String estado;
 
     /**
      * @return the cerealATransportar
@@ -68,16 +69,16 @@ public class Viaje {
     /**
      * @return the estado
      */
-    public Estado getEstado() {
-        return estado;
-    }
-
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+//    public Estado getEstado() {
+//        return estado;
+//    }
+//
+//    /**
+//     * @param estado the estado to set
+//     */
+//    public void setEstado(Estado estado) {
+//        this.estado = estado;
+//    }
 
     /**
      * @return the tipoViaje
@@ -189,6 +190,20 @@ public class Viaje {
      */
     public void setSolicitud(SolicitudRetiro solicitud) {
         this.solicitud = solicitud;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }
