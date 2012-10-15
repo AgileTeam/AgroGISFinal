@@ -48,7 +48,6 @@ public class gestorAsignarTransporte extends GestorHibernate{
                  if(bandera == 0 || vehiculo.getEstado()=="Disponible"){
                     Object fila[]={vehiculo.getDominio(), vehiculo.getCarga(), vehiculo.getTransportista()};
                     modelo.addRow(fila);
-                     
                     }
             }
         tabla.setModel(modelo);
