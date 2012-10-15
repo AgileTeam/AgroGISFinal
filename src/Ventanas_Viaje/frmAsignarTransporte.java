@@ -391,8 +391,9 @@ GestorHibernate gestorH = new GestorHibernate();
         Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
         while (ite.hasNext()) {
             Vehiculo vehiculo = (Vehiculo) ite.next();
-            if (vehiculo.getDominio().equals(modeloTabla.getValueAt(fila, 0)) && vehiculo.getCarga() >= Double.parseDouble(txtToneladas.getText())) {
-                txtVehiculo.setText(vehiculo.getDominio());
+            if (vehiculo.getDominio().equals(modeloTabla.getValueAt(fila, 0))) {
+                txtVehiculo.setText(vehiculo.getModelo().toString());
+                txtDominio.setText(vehiculo.getDominio());
                 txtTransportista.setText(vehiculo.getTransportista().toString());
                 txtTara.setText(String.valueOf(vehiculo.getTara()));
             }
