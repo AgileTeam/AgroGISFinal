@@ -136,7 +136,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtEstablecimiento = new javax.swing.JTextField();
         txtProductor = new javax.swing.JTextField();
         txtNumViaje = new javax.swing.JTextField();
-        cmbTipoCereal = new javax.swing.JComboBox();
         txtPesoNeto = new javax.swing.JTextField();
         txtTara = new javax.swing.JTextField();
         txtPesoTotal = new javax.swing.JTextField();
@@ -147,6 +146,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtTransportista = new javax.swing.JTextField();
         txtVehiculo = new javax.swing.JTextField();
         txtDominio = new javax.swing.JTextField();
+        txtTipoCereal = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -284,9 +284,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtProductor.setBounds(100, 160, 200, 20);
         jPanel1.add(txtNumViaje);
         txtNumViaje.setBounds(100, 190, 100, 20);
-
-        jPanel1.add(cmbTipoCereal);
-        cmbTipoCereal.setBounds(100, 250, 100, 20);
         jPanel1.add(txtPesoNeto);
         txtPesoNeto.setBounds(540, 280, 100, 20);
         jPanel1.add(txtTara);
@@ -317,6 +314,8 @@ GestorHibernate gestorH = new GestorHibernate();
         txtVehiculo.setBounds(100, 220, 200, 20);
         jPanel1.add(txtDominio);
         txtDominio.setBounds(430, 220, 90, 20);
+        jPanel1.add(txtTipoCereal);
+        txtTipoCereal.setBounds(100, 250, 100, 20);
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -401,15 +400,11 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(258, 258, 258)
@@ -431,7 +426,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -470,7 +465,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cmbCaracteristica;
     private javax.swing.JComboBox cmbSilo;
-    private javax.swing.JComboBox cmbTipoCereal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -508,6 +502,7 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTextField txtPesoTotal;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtTara;
+    private javax.swing.JTextField txtTipoCereal;
     private javax.swing.JTextField txtTransportista;
     private javax.swing.JTextField txtValor;
     private javax.swing.JTextField txtVehiculo;
