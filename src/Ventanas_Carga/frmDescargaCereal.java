@@ -14,6 +14,7 @@ import Clases_Modulo_Carga.*;
 
 import Clases_Modulo_Transporte.Transportista;
 import Gestores_Vista.gestorDescargaCereal;
+import Clases_Modulo_Viaje.*;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -39,9 +40,9 @@ GestorHibernate gestorH = new GestorHibernate();
         initComponents();
         
         gestorD.rellenaTablaProductor(tblEstablecimiento);
-        cmbTipoCereal.setModel(gestorD.rellenaComboTipoCereal());
+
         cmbSilo.setModel(gestorD.rellenaComboSilo());
-        cmbTransportista.setModel(gestorD.rellenaComboTransportista());
+
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -82,24 +83,7 @@ GestorHibernate gestorH = new GestorHibernate();
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 30);
-     
-        cmbTransportista.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent arg0){
-            cmbVehiculo.setModel(gestorD.rellenaComboVehiculo(cmbTransportista.getSelectedItem().toString()));
-        }
-        }
-        );
-        cmbVehiculo.setModel(gestorD.rellenaComboVehiculo(cmbTransportista.getSelectedItem().toString()));
-        
-        cmbVehiculo.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent arg0){
-            cmbDominio.setModel(gestorD.rellenaComboPatente(cmbVehiculo.getSelectedItem().toString()));
-        }
-        }
-        );
-        cmbDominio.setModel(gestorD.rellenaComboPatente(cmbVehiculo.getSelectedItem().toString()));
-       
+        this.setLocation(posX, 30);        
     }
 
     /** This method is called from within the constructor to
@@ -196,11 +180,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Establecimiento", "Productor"
+                "Establecimiento", "Productor", "Nro. de Viaje"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -286,8 +270,20 @@ GestorHibernate gestorH = new GestorHibernate();
         txtNumViaje.setBounds(100, 190, 100, 20);
         jPanel1.add(txtPesoNeto);
         txtPesoNeto.setBounds(540, 280, 100, 20);
+
+        txtTara.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTaraKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtTara);
         txtTara.setBounds(100, 280, 100, 20);
+
+        txtPesoTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesoTotalKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtPesoTotal);
         txtPesoTotal.setBounds(320, 280, 100, 20);
 
@@ -426,7 +422,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -441,8 +437,17 @@ private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_btnCancelarActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-   gestorD.guardarDescarga(tblCaracteristica, tblLote, txtEstablecimiento, txtFecha, txtNumViaje, cmbTipoCereal, txtPesoNeto, cmbTransportista, cmbSilo);
-    
+    Iterator ite = gestorH.listarClase(TipoCereal.class).iterator();
+    while(ite.hasNext()){
+        TipoCereal tipo = (TipoCereal) ite.next();
+        Iterator ite1 = gestorH.listarClase(Transportista.class).iterator();
+        while(ite1.hasNext()){
+            Transportista transportista = (Transportista) ite1.next();
+            if(transportista.getNombre() == txtTransportista.getText() && tipo.getNombreCereal() == txtTipoCereal.getText()){
+                gestorD.guardarDescarga(tblCaracteristica, txtEstablecimiento, txtFecha, txtNumViaje, tipo, txtPesoNeto, transportista, cmbSilo);
+            }
+        }
+    }
 
 }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -451,12 +456,31 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     int fila = tblEstablecimiento.getSelectedRow();
     txtProductor.setText((String) modeloT.getValueAt(fila, 1));
     txtEstablecimiento.setText((String) modeloT.getValueAt(fila, 0));
-
+    txtNumViaje.setText((String)modeloT.getValueAt(fila, 2));
+    Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+    while(ite.hasNext()){
+        Viaje viaje = (Viaje) ite.next();
+        if(viaje.getIdViaje() == modeloT.getValueAt(fila, 2)){
+            txtVehiculo.setText(viaje.getVehiculo().toString());
+            txtTransportista.setText(viaje.getVehiculo().getTransportista().toString());
+            txtDominio.setText(viaje.getVehiculo().getDominio().toString());
+            txtTipoCereal.setText(viaje.getSolicitud().getTipoCereal().toString());
+            txtTara.setText(String.valueOf(viaje.getVehiculo().getTara()));
+        }
+    }
 }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCaracteristicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCaracteristicaActionPerformed
+
+    private void txtTaraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraKeyReleased
+    txtPesoNeto.setText(String.valueOf(Double.parseDouble(txtPesoTotal.getText()) - Double.parseDouble(txtTara.getText())));
+    }//GEN-LAST:event_txtTaraKeyReleased
+
+    private void txtPesoTotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoTotalKeyReleased
+    txtPesoNeto.setText(String.valueOf(Double.parseDouble(txtPesoTotal.getText()) - Double.parseDouble(txtTara.getText())));
+    }//GEN-LAST:event_txtPesoTotalKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
