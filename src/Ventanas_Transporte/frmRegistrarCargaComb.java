@@ -5,8 +5,11 @@
 package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.CargaCombustible;
+import Clases_Modulo_Transporte.DetalleCarga;
+import Clases_Modulo_Transporte.DetalleConsumo;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Gestores_Vista.gestorRegistrarCargaComb;
+import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
 gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
+GestorHibernate gestorH = new GestorHibernate();
 Double total;
     /**
      * Creates new form frmRegistrarCargaComb
@@ -374,7 +378,7 @@ Double total;
         jScrollPane1.setViewportView(tblDetalleCarga);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 180, 660, 110);
+        jScrollPane1.setBounds(40, 180, 660, 110);
 
         btnEliminarDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnEliminarDetalle.addActionListener(new java.awt.event.ActionListener() {
@@ -442,7 +446,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,10 +549,9 @@ Double total;
       carga.setOrdenServicio((OrdenServicio)cmbOrden.getSelectedItem());
       carga.setResponsableVenta(txtResponsable.getText());
       carga.setTipoOperacion(txtOperacion.getText());
-      envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
-      gestorH.guardarObjeto(envio);
+      gestorH.guardarObjeto(carga);
       for(int i=0; i<modelo.getRowCount(); i++){
-            DetalleEnvio detalle = new DetalleEnvio();
+            DetalleCarga detalle = new DetalleCarga();
             detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
             detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
             detalle.setEnvio(envio);

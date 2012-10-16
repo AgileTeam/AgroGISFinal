@@ -10,6 +10,8 @@ import Clases_Modulo_Carga.Puerto;
 import Clases_Modulo_Carga.PuertoPorSolicitud;
 import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Transporte.Barrio;
+import Clases_Modulo_Viaje.TipoViaje;
+import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorRegistrarViaje;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -635,7 +637,11 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAgregarProductorActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+       Viaje viaje = new Viaje();
+       viaje.setFecha(calendarioViaje.getText());
+       viaje.setTipoViaje((TipoViaje)cmbTipoViaje.getSelectedItem());
+       viaje.setEstado("Pendiente");
+       viaje.setSolicitante(txtSolicitante.getText());
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
