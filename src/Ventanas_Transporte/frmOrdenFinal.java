@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Charito
  */
-public class frmOrdenFinal extends frmOrdenCarga {
+public class frmOrdenFinal extends frmRegistrarCargaComb {
 GestorHibernate gestor = new GestorHibernate();
 OrdenServicio orden = new OrdenServicio();
     /** Creates new form frmOrdenFinal */
