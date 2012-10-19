@@ -4,10 +4,7 @@
  */
 package Ventanas_Transporte;
 
-import Clases_Modulo_Transporte.CargaCombustible;
-import Clases_Modulo_Transporte.DetalleCarga;
-import Clases_Modulo_Transporte.DetalleConsumo;
-import Clases_Modulo_Transporte.OrdenServicio;
+import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarCargaComb;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -557,9 +554,16 @@ Double total;
       gestorH.guardarObjeto(carga);
       for(int i=0; i<modelo.getRowCount(); i++){
             DetalleCarga detalle = new DetalleCarga();
-            detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
-            detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
-            detalle.setEnvio(envio);
+            detalle.setImporteTotal(Double.parseDouble(modelo.getValueAt(i,5).toString()));
+            Iterator ite = gestorH.listarClase(TipoCombustible.class).iterator();
+            while(ite.hasNext()){
+                TipoCombustible tipo = (TipoCombustible) ite.next();
+                if(tipo.getNombreTipoCombustible() == modelo.getValueAt(i, 4)){
+                    detalle.setTipoCombustible(tipo);
+                }
+            }
+            
+            detalle.setCargaCombustible(carga);
             gestorH.guardarObjeto(detalle);
       }
     }//GEN-LAST:event_btnGuardar1ActionPerformed

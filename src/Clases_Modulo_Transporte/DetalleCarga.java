@@ -20,38 +20,11 @@ private TipoCombustible tipoCombustible;
 @ManyToOne(targetEntity = CargaCombustible.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private CargaCombustible cargaCombustible;
 
-    private int litrosCargados;
-    private double precioPorLitro;
+    
+    private double importeTotal;
 
 
-    /**
-     * @return the litrosCargados
-     */
-    public int getLitrosCargados() {
-        return litrosCargados;
-    }
-
-    /**
-     * @param litrosCargados the litrosCargados to set
-     */
-    public void setLitrosCargados(int litrosCargados) {
-        this.litrosCargados = litrosCargados;
-    }
-
-    /**
-     * @return the precioPorLitro
-     */
-    public double getPrecioPorLitro() {
-        return precioPorLitro;
-    }
-
-    /**
-     * @param precioPorLitro the precioPorLitro to set
-     */
-    public void setPrecioPorLitro(double precioPorLitro) {
-        this.precioPorLitro = precioPorLitro;
-    }
-
+  
     /**
      * @return the tipoCombustible
      */
@@ -78,6 +51,34 @@ private CargaCombustible cargaCombustible;
      */
     public void setCargaCombustible(CargaCombustible cargaCombustible) {
         this.cargaCombustible = cargaCombustible;
+    }
+
+    /**
+     * @return the idDetalleCarga
+     */
+    public long getIdDetalleCarga() {
+        return idDetalleCarga;
+    }
+
+    /**
+     * @param idDetalleCarga the idDetalleCarga to set
+     */
+    public void setIdDetalleCarga(long idDetalleCarga) {
+        this.idDetalleCarga = idDetalleCarga;
+    }
+
+    /**
+     * @return the importeTotal
+     */
+    public double getImporteTotal() {
+        return importeTotal;
+    }
+
+    /**
+     * @param importeTotal the importeTotal to set
+     */
+    public void setImporteTotal(double importeTotal) {
+        this.importeTotal = importeTotal;
     }
     
 }
