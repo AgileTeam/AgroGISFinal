@@ -5,6 +5,8 @@
 package Ventanas_Viaje;
 
 import Clases_Modulo_Transporte.*;
+import Clases_Modulo_Viaje.EstablecimientoPorViaje;
+import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorAsignarTransporte;
 import Hibernate.GestorHibernate;
@@ -231,6 +233,11 @@ GestorHibernate gestorH = new GestorHibernate();
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -378,7 +385,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,12 +420,43 @@ GestorHibernate gestorH = new GestorHibernate();
                txtTipoViaje.setText(viaje.getTipoViaje().toString());
                txtCereal.setText(viaje.getSolicitud().getTipoCereal().toString());
                txtProductor.setText(viaje.getProductor().toString());
-               //Falta Destino
+               Iterator ite1 = gestorH.listarClase(EstablecimientoPorViaje.class).iterator();
+               while(ite1.hasNext()){
+                   EstablecimientoPorViaje est = (EstablecimientoPorViaje) ite1.next();
+                   if(est.getViaje().equals(viaje)){
+                       txtDestino.setText(est.getEstablecimiento().getNombreEstablecimiento());
+                   }
+               }
+               Iterator ite2 = gestorH.listarClase(PuertoPorViaje.class).iterator();
+               while(ite1.hasNext()){
+                   EstablecimientoPorViaje est = (EstablecimientoPorViaje) ite1.next();
+                   if(est.getViaje().equals(viaje)){
+                       txtDestino.setText(est.getEstablecimiento().getNombreEstablecimiento());
+                   }
+               }
                gestorA.RellenarTablaVehiculo(tblVehiculo, viaje);
            }
        }
        
     }//GEN-LAST:event_btnAgregarViajeActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+       while(ite.hasNext()){
+           Viaje viaje = (Viaje) ite.next();
+           if(viaje.getIdViaje()== Long.parseLong(txtNumViaje.getText())){
+               Iterator ite1 = gestorH.listarClase(Vehiculo.class).iterator();
+               while(ite1.hasNext()){
+                   Vehiculo vehiculo = (Vehiculo) ite1.next();
+                   if(vehiculo.getDominio() == txtDominio.getText()){
+                       viaje.setVehiculo(vehiculo);
+                       viaje.setEstado("Con vehiculo asignado");
+                   }
+               }
+           
+           }
+       }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarVehiculo;

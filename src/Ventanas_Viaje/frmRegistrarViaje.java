@@ -9,7 +9,10 @@ import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Carga.Puerto;
 import Clases_Modulo_Carga.PuertoPorSolicitud;
 import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Transporte.Barrio;
+import Clases_Modulo_Viaje.EstablecimientoPorViaje;
+import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.TipoViaje;
 import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorRegistrarViaje;
@@ -41,6 +44,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEnabled(false);
         txtNumViaje.setEditable(false);
         txtNumViaje.setEnabled(false);
+        tblEstablecimiento.getTableHeader().setVisible(false);
 
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
@@ -642,6 +646,45 @@ GestorHibernate gestorH = new GestorHibernate();
        viaje.setTipoViaje((TipoViaje)cmbTipoViaje.getSelectedItem());
        viaje.setEstado("Pendiente");
        viaje.setSolicitante(txtSolicitante.getText());
+       gestorH.guardarObjeto(viaje);
+       if(cmbTipoViaje.getSelectedItem().toString()== "Traslado a Puerto"){
+           PuertoPorViaje puerto = new PuertoPorViaje();
+           Iterator ite = gestorH.listarClase(Puerto.class).iterator();
+           while(ite.hasNext()){
+               Puerto p = (Puerto) ite.next();
+               if (p.getNombrePuerto() == txtTraslado.getText()){
+                   puerto.setPuerto(p);
+                   puerto.setViaje(viaje);
+                   gestorH.guardarObjeto(puerto);
+               }
+           }
+       }
+       
+         if(cmbTipoViaje.getSelectedItem().toString()== "Traslado a Establecimiento"){
+           EstablecimientoPorViaje est = new EstablecimientoPorViaje();
+           Iterator ite = gestorH.listarClase(Establecimiento.class).iterator();
+           while(ite.hasNext()){
+               Establecimiento p = (Establecimiento) ite.next();
+               if (p.getNombreEstablecimiento() == txtTraslado.getText()){
+                   est.setEstablecimiento(p);
+                   est.setViaje(viaje);
+                   gestorH.guardarObjeto(est);
+               }
+           }
+       }
+         
+         if(cmbTipoViaje.getSelectedItem().toString()== "Retiro"){
+           EstablecimientoPorViaje est = new EstablecimientoPorViaje();
+           Iterator ite = gestorH.listarClase(Establecimiento.class).iterator();
+           while(ite.hasNext()){
+               Establecimiento p = (Establecimiento) ite.next();
+               if (p.getNombreEstablecimiento() == txtRetiro.getText()){
+                   est.setEstablecimiento(p);
+                   est.setViaje(viaje);
+                   gestorH.guardarObjeto(est);
+               }
+           }
+       } 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
