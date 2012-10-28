@@ -52,6 +52,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
         Calendario = new datechooser.beans.DateChooserCombo();
         pnlUsuarioLogin = new javax.swing.JPanel();
@@ -94,6 +96,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         ItemEnvioTaller = new javax.swing.JMenuItem();
         ItemFichaPersonal = new javax.swing.JMenuItem();
         MenuClientes = new javax.swing.JMenu();
+        MenuNuevoCliente = new javax.swing.JMenu();
+        ItemNuevoProductor = new javax.swing.JMenuItem();
+        ItemNuevoEst = new javax.swing.JMenuItem();
+        itemNuevoLote = new javax.swing.JMenuItem();
+        MenuConsultarCliente = new javax.swing.JMenu();
+        itemConsultarProd = new javax.swing.JMenuItem();
+        itemConsultarEst = new javax.swing.JMenuItem();
+        itemConsultarLote = new javax.swing.JMenuItem();
         MenuViaje = new javax.swing.JMenu();
         menuNuevoViaje = new javax.swing.JMenu();
         ItemNuevoViaje = new javax.swing.JMenuItem();
@@ -119,6 +129,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuListados = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem8.setText("jMenuItem8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AgroGIS");
@@ -404,6 +418,46 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cliente.png"))); // NOI18N
         MenuClientes.setText("Clientes");
         MenuClientes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        MenuNuevoCliente.setText("Nuevo");
+        MenuNuevoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        ItemNuevoProductor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemNuevoProductor.setText("Productor");
+        ItemNuevoProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemNuevoProductorActionPerformed(evt);
+            }
+        });
+        MenuNuevoCliente.add(ItemNuevoProductor);
+
+        ItemNuevoEst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemNuevoEst.setText("Establecimiento");
+        MenuNuevoCliente.add(ItemNuevoEst);
+
+        itemNuevoLote.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemNuevoLote.setText("Lote");
+        MenuNuevoCliente.add(itemNuevoLote);
+
+        MenuClientes.add(MenuNuevoCliente);
+
+        MenuConsultarCliente.setText("Consultar / Modificar");
+        MenuConsultarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        itemConsultarProd.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemConsultarProd.setText("Productor");
+        MenuConsultarCliente.add(itemConsultarProd);
+
+        itemConsultarEst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemConsultarEst.setText("Establecimiento");
+        MenuConsultarCliente.add(itemConsultarEst);
+
+        itemConsultarLote.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemConsultarLote.setText("Lote");
+        MenuConsultarCliente.add(itemConsultarLote);
+
+        MenuClientes.add(MenuConsultarCliente);
+
         MenuPrincipal.add(MenuClientes);
 
         MenuViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Organizador.png"))); // NOI18N
@@ -745,6 +799,10 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         agenda.setVisible(true);
     }//GEN-LAST:event_itemConsultarAgendaActionPerformed
 
+    private void ItemNuevoProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemNuevoProductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ItemNuevoProductorActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -798,9 +856,11 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemFichaPersonal;
     private javax.swing.JMenuItem ItemNuevoBarrio;
     private javax.swing.JMenuItem ItemNuevoDepto;
+    private javax.swing.JMenuItem ItemNuevoEst;
     private javax.swing.JMenuItem ItemNuevoLab;
     private javax.swing.JMenuItem ItemNuevoLocalidad;
     private javax.swing.JMenuItem ItemNuevoPais;
+    private javax.swing.JMenuItem ItemNuevoProductor;
     private javax.swing.JMenuItem ItemNuevoProvincia;
     private javax.swing.JMenuItem ItemNuevoSilo;
     private javax.swing.JMenuItem ItemNuevoTipoCereal;
@@ -822,12 +882,14 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuCarga;
     private javax.swing.JMenuItem MenuCierreSesion;
     private javax.swing.JMenu MenuClientes;
+    private javax.swing.JMenu MenuConsultarCliente;
     private javax.swing.JMenu MenuEmitirTransp;
     private javax.swing.JMenu MenuInicio;
     private javax.swing.JMenu MenuInicioNuevo;
     private javax.swing.JMenuItem MenuInicioSesion;
     private javax.swing.JMenu MenuListados;
     private javax.swing.JMenu MenuNuevoCarga;
+    private javax.swing.JMenu MenuNuevoCliente;
     private javax.swing.JMenu MenuNuevoTransp;
     private javax.swing.JMenu MenuOrdenServicio;
     private javax.swing.JMenuBar MenuPrincipal;
@@ -837,11 +899,17 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuVerTransp;
     private javax.swing.JMenu MenuViaje;
     private javax.swing.JMenuItem itemConsultarAgenda;
+    private javax.swing.JMenuItem itemConsultarEst;
+    private javax.swing.JMenuItem itemConsultarLote;
+    private javax.swing.JMenuItem itemConsultarProd;
+    private javax.swing.JMenuItem itemNuevoLote;
     private javax.swing.JMenuItem itemSolicitud;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
