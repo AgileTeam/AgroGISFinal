@@ -101,6 +101,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         ItemConsultarViaje = new javax.swing.JMenuItem();
         ItemAsignarTransporte = new javax.swing.JMenuItem();
         ItemEmitirOrden = new javax.swing.JMenuItem();
+        itemConsultarAgenda = new javax.swing.JMenuItem();
         MenuCarga = new javax.swing.JMenu();
         MenuNuevoCarga = new javax.swing.JMenu();
         ItemNuevoLab = new javax.swing.JMenuItem();
@@ -115,7 +116,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         ItemDescargaCereal = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         ItemResultadosLab = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        MenuListados = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -450,6 +451,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         MenuViaje.add(ItemEmitirOrden);
 
+        itemConsultarAgenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemConsultarAgenda.setText("Consultar Agenda");
+        itemConsultarAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConsultarAgendaActionPerformed(evt);
+            }
+        });
+        MenuViaje.add(itemConsultarAgenda);
+
         MenuPrincipal.add(MenuViaje);
 
         MenuCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/silos .png"))); // NOI18N
@@ -553,10 +563,10 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         MenuPrincipal.add(MenuCarga);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listado.png"))); // NOI18N
-        jMenu1.setText("Listados");
-        jMenu1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        MenuPrincipal.add(jMenu1);
+        MenuListados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listado.png"))); // NOI18N
+        MenuListados.setText("Listados");
+        MenuListados.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        MenuPrincipal.add(MenuListados);
 
         setJMenuBar(MenuPrincipal);
 
@@ -729,6 +739,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         muestra.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void itemConsultarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultarAgendaActionPerformed
+        frmConsultarAgenda agenda= new frmConsultarAgenda();
+        this.Escritorio.add(agenda);
+        agenda.setVisible(true);
+    }//GEN-LAST:event_itemConsultarAgendaActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -810,6 +826,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuInicio;
     private javax.swing.JMenu MenuInicioNuevo;
     private javax.swing.JMenuItem MenuInicioSesion;
+    private javax.swing.JMenu MenuListados;
     private javax.swing.JMenu MenuNuevoCarga;
     private javax.swing.JMenu MenuNuevoTransp;
     private javax.swing.JMenu MenuOrdenServicio;
@@ -819,10 +836,10 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuVerCarga;
     private javax.swing.JMenu MenuVerTransp;
     private javax.swing.JMenu MenuViaje;
+    private javax.swing.JMenuItem itemConsultarAgenda;
     private javax.swing.JMenuItem itemSolicitud;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;

@@ -80,6 +80,7 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoOperacion.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoTemporada.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra.class);
+                conf.addAnnotatedClass(Clases_Modulo_Carga.TipoSolicitud.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Viaje.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Agenda.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Anio.class);
