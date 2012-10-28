@@ -451,6 +451,7 @@ GestorHibernate gestorH = new GestorHibernate();
                    if(vehiculo.getDominio() == txtDominio.getText()){
                        viaje.setVehiculo(vehiculo);
                        viaje.setEstado("Con vehiculo asignado");
+                       gestorH.actualizarObjeto(viaje);
                    }
                }
            

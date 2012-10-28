@@ -582,7 +582,6 @@ GestorHibernate gestorH = new GestorHibernate();
                             tblConsumo.setModel(modeloT);
                         }
                     }
-
                 }
             }
         }
