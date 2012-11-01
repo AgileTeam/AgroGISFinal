@@ -533,7 +533,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuNuevoCarga.add(ItemNuevoLab);
 
         ItemNuevoTipoCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemNuevoTipoCereal.setText("Tipo de Cereal");
+        ItemNuevoTipoCereal.setText("Cereal");
         ItemNuevoTipoCereal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemNuevoTipoCerealActionPerformed(evt);
@@ -598,7 +598,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuCarga.add(ItemDescargaCereal);
 
         jMenuItem2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuItem2.setText("Registrar Envío de Muestras");
+        jMenuItem2.setText("Registrar Envío de Muestras a Laboratorio");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -607,7 +607,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuCarga.add(jMenuItem2);
 
         ItemResultadosLab.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemResultadosLab.setText("Registrar Resultados de Analisis");
+        ItemResultadosLab.setText("Registrar Resultados de Laboratorio");
         ItemResultadosLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemResultadosLabActionPerformed(evt);

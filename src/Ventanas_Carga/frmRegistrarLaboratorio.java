@@ -129,7 +129,6 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         cmbEspecialidad = new javax.swing.JComboBox();
         txtCalle = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         txtNum = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -223,8 +222,6 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel3.setText("Calle");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(50, 70, 50, 20);
-        jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(20, 60, 670, 10);
         jPanel1.add(txtNum);
         txtNum.setBounds(450, 70, 50, 20);
 
@@ -466,9 +463,8 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -575,7 +571,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblLaboratorio;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtEmail;
