@@ -639,7 +639,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void ItemCargaCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCargaCombustibleActionPerformed
-       
+        frmOrdenCarga carga = new  frmOrdenCarga();
+        this.Escritorio.add(carga);
+        carga.setVisible(true);
 }//GEN-LAST:event_ItemCargaCombustibleActionPerformed
 
 private void ItemEnvioTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEnvioTallerActionPerformed

@@ -33,19 +33,6 @@ private Vehiculo vehiculo;
    
    
 
-    /**
-     * @return the estado
-//     */
-//    public Estado getEstado() {
-//        return estado;
-//    }
-//
-//    /**
-//     * @param estado the estado to set
-//     */
-//    public void setEstado(Estado estado) {
-//        this.estado = estado;
-//    }
 
     /**
      * @return the fecha
