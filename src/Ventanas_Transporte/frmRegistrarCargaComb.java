@@ -389,11 +389,11 @@ Double total;
             }
         });
         jPanel3.add(btnEliminarDetalle);
-        btnEliminarDetalle.setBounds(700, 220, 47, 30);
+        btnEliminarDetalle.setBounds(710, 220, 47, 30);
 
         txtTotal.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         jPanel3.add(txtTotal);
-        txtTotal.setBounds(580, 290, 110, 20);
+        txtTotal.setBounds(590, 290, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel7.setText("TOTAL  $");
@@ -401,7 +401,7 @@ Double total;
         jLabel7.setBounds(530, 290, 70, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(20, 140, 760, 330);
+        jPanel3.setBounds(20, 140, 770, 330);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -448,7 +448,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
