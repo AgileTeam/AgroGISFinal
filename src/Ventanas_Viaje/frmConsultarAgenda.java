@@ -4,11 +4,14 @@
  */
 package Ventanas_Viaje;
 
+import Clases_Modulo_Viaje.Viaje;
+import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JScrollPane;
 
@@ -17,7 +20,7 @@ import javax.swing.JScrollPane;
  * @author Carolina
  */
 public class frmConsultarAgenda extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmConsultarAgenda
      */
@@ -95,7 +98,7 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
-        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        calendario = new datechooser.beans.DateChooserCombo();
         btnBuscar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -202,11 +205,16 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         jLabel50.setText("Fecha");
         jPanel5.add(jLabel50);
         jLabel50.setBounds(10, 10, 70, 20);
-        jPanel5.add(dateChooserCombo2);
-        dateChooserCombo2.setBounds(50, 10, 99, 20);
+        jPanel5.add(calendario);
+        calendario.setBounds(50, 10, 99, 20);
 
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnBuscar);
         btnBuscar.setBounds(170, 10, 40, 25);
 
@@ -648,15 +656,26 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2383, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2387, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String fecha1 = calendario.getText().substring(0, 1);
+        Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+        while(ite.hasNext()){
+            Viaje viaje = (Viaje) ite.next();
+            String fecha2 = 
+            
+                    }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSalir;
-    private datechooser.beans.DateChooserCombo dateChooserCombo2;
+    private datechooser.beans.DateChooserCombo calendario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

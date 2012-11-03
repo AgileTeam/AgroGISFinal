@@ -641,6 +641,8 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAgregarProductorActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        //VER GUARDAR SOLICITUD
+        
        Viaje viaje = new Viaje();
        viaje.setFecha(calendarioViaje.getText());
        viaje.setTipoViaje((TipoViaje)cmbTipoViaje.getSelectedItem());
