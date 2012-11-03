@@ -167,7 +167,7 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioViaje = new datechooser.beans.DateChooserCombo();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbHora = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -292,8 +292,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel9.add(jLabel11);
         jLabel11.setBounds(500, 60, 120, 20);
 
-        jPanel9.add(jComboBox1);
-        jComboBox1.setBounds(600, 60, 90, 20);
+        cmbHora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00" }));
+        jPanel9.add(cmbHora);
+        cmbHora.setBounds(600, 60, 90, 20);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -552,7 +553,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -655,6 +656,7 @@ GestorHibernate gestorH = new GestorHibernate();
         
        Viaje viaje = new Viaje();
        viaje.setFecha(calendarioViaje.getText());
+       viaje.setHora(cmbHora.getSelectedItem().toString());
        viaje.setTipoViaje((TipoViaje)cmbTipoViaje.getSelectedItem());
        viaje.setEstado("Pendiente");
        viaje.setSolicitante(txtSolicitante.getText());
@@ -706,9 +708,9 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioViaje;
+    private javax.swing.JComboBox cmbHora;
     private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbTipoViaje;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

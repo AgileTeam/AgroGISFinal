@@ -9,11 +9,10 @@ import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.TimeZone;
+import java.util.*;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -663,13 +662,22 @@ GestorHibernate gestorH = new GestorHibernate();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String fecha1 = calendario.getText().substring(0, 1);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        
+        
         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
-            String fecha2 = 
-            
+            if(viaje.getFecha().equals(calendario.getText())){
+               if(viaje.getEstado()== "Pendiente"){
+                     JLabel label = new JLabel();
+                     label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reloj.png")));
+                     label.setText(viaje.getProductor().getNombre());
                     }
+                            
+            }
+            
+          }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

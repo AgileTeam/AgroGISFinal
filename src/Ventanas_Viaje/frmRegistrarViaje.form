@@ -57,7 +57,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="346" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="350" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -284,10 +284,24 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmbHora">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="13">
+                <StringItem index="0" value="8:00"/>
+                <StringItem index="1" value="9:00"/>
+                <StringItem index="2" value="10:00"/>
+                <StringItem index="3" value="11:00"/>
+                <StringItem index="4" value="12:00"/>
+                <StringItem index="5" value="13:00"/>
+                <StringItem index="6" value="14:00"/>
+                <StringItem index="7" value="15:00"/>
+                <StringItem index="8" value="16:00"/>
+                <StringItem index="9" value="17:00"/>
+                <StringItem index="10" value="18:00"/>
+                <StringItem index="11" value="19:00"/>
+                <StringItem index="12" value="20:00"/>
+              </StringArray>
             </Property>
           </Properties>
           <Constraints>
