@@ -371,7 +371,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuTransporte.add(ItemRegistroCarga);
 
         ItemRegistroEnvio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemRegistroEnvio.setText("Registrar Envío a Taller");
+        ItemRegistroEnvio.setText("Registrar Envío de Vehículo a Taller");
         ItemRegistroEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemRegistroEnvioActionPerformed(evt);

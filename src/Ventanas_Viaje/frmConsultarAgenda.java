@@ -96,6 +96,7 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        btnBuscar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -200,9 +201,14 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         jLabel50.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel50.setText("Fecha");
         jPanel5.add(jLabel50);
-        jLabel50.setBounds(60, 10, 70, 20);
+        jLabel50.setBounds(10, 10, 70, 20);
         jPanel5.add(dateChooserCombo2);
-        dateChooserCombo2.setBounds(100, 10, 99, 20);
+        dateChooserCombo2.setBounds(50, 10, 99, 20);
+
+        btnBuscar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
+        jPanel5.add(btnBuscar);
+        btnBuscar.setBounds(170, 10, 40, 25);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.setLayout(null);
@@ -613,23 +619,17 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                    .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane31, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                    .addComponent(jScrollPane31, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -648,12 +648,13 @@ public class frmConsultarAgenda extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2379, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2383, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo dateChooserCombo2;
     private javax.swing.JLabel jLabel1;
