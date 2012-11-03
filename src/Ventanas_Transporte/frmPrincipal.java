@@ -506,7 +506,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuViaje.add(ItemEmitirOrden);
 
         itemConsultarAgenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemConsultarAgenda.setText("Consultar Agenda");
+        itemConsultarAgenda.setText("Consultar Agenda de Viajes");
         itemConsultarAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemConsultarAgendaActionPerformed(evt);

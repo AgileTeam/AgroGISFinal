@@ -166,6 +166,8 @@ GestorHibernate gestorH = new GestorHibernate();
         txtSolicitante = new javax.swing.JTextField();
         calendarioViaje = new datechooser.beans.DateChooserCombo();
         jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -263,12 +265,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Solicitante");
         jPanel9.add(jLabel7);
-        jLabel7.setBounds(40, 60, 90, 20);
+        jLabel7.setBounds(10, 60, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Fecha Realizacion");
         jPanel9.add(jLabel8);
-        jLabel8.setBounds(350, 60, 130, 20);
+        jLabel8.setBounds(280, 60, 130, 20);
         jPanel9.add(txtNumViaje);
         txtNumViaje.setBounds(100, 30, 82, 20);
 
@@ -276,14 +278,22 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel9.add(cmbTipoViaje);
         cmbTipoViaje.setBounds(530, 30, 140, 20);
         jPanel9.add(txtSolicitante);
-        txtSolicitante.setBounds(100, 60, 190, 20);
+        txtSolicitante.setBounds(70, 60, 190, 20);
         jPanel9.add(calendarioViaje);
-        calendarioViaje.setBounds(460, 60, 90, 20);
+        calendarioViaje.setBounds(390, 60, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("PENDIENTE");
         jPanel9.add(jLabel9);
         jLabel9.setBounds(290, 30, 90, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("Hora Realizacion");
+        jPanel9.add(jLabel11);
+        jLabel11.setBounds(500, 60, 120, 20);
+
+        jPanel9.add(jComboBox1);
+        jComboBox1.setBounds(600, 60, 90, 20);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -540,9 +550,9 @@ GestorHibernate gestorH = new GestorHibernate();
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -698,8 +708,10 @@ GestorHibernate gestorH = new GestorHibernate();
     private datechooser.beans.DateChooserCombo calendarioViaje;
     private javax.swing.JComboBox cmbLote;
     private javax.swing.JComboBox cmbTipoViaje;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
