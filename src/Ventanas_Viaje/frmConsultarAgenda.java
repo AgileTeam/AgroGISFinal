@@ -5,11 +5,15 @@
 package Ventanas_Viaje;
 
 import Clases_Modulo_Viaje.Viaje;
+import Gestores_Vista.gestorConsultarAgenda;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmConsultarAgenda extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     /**
      * Creates new form frmConsultarAgenda
      */
@@ -662,22 +667,67 @@ GestorHibernate gestorH = new GestorHibernate();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String rutaPendiente = "/Imagenes/reloj.png";
+        String rutaAsignado = "/Imagenes/proveedor.png";
+        String rutaEnProceso = "/Imagenes/proceso.png";
+        String rutaFinalizado = "/Imagenes/finalizado.png";
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        
+        Date fecha = null;
+        try {
+            fecha = formato.parse(calendario.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(frmConsultarAgenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
-            if(viaje.getFecha().equals(calendario.getText())){
-               if(viaje.getEstado()== "Pendiente"){
-                     JLabel label = new JLabel();
-                     label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reloj.png")));
-                     label.setText(viaje.getProductor().getNombre());
-                    }
-                            
+            if(viaje.getFecha() == calendario.getText()){
+                String productor = viaje.getProductor().getNombre();
+                if(viaje.getHora()== "8:00"){
+                    gestorC.cargarAgenda(tblOcho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "9:00"){
+                    gestorC.cargarAgenda(tblNueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "10:00"){
+                    gestorC.cargarAgenda(tblDiez, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "11:00"){
+                    gestorC.cargarAgenda(tblOnce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "12:00"){
+                    gestorC.cargarAgenda(tblDoce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "13:00"){
+                    gestorC.cargarAgenda(tblTrece, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "14:00"){
+                    gestorC.cargarAgenda(tblCatorce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "15:00"){
+                    gestorC.cargarAgenda(tblQuince, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "16:00"){
+                    gestorC.cargarAgenda(tblDieciseis, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "17:00"){
+                    gestorC.cargarAgenda(tblDiecisiete, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "18:00"){
+                    gestorC.cargarAgenda(tblDieciocho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "19:00"){
+                    gestorC.cargarAgenda(tblDiecinueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
+                if(viaje.getHora()== "20:00"){
+                    gestorC.cargarAgenda(tblVeinte, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                }
             }
-            
-          }
+        
+        }
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
