@@ -454,6 +454,8 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         while(ite2.hasNext()){
             SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
             if(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumeroSolicitud.getText())){
+                solicitud.setEstado("Utilizada");
+                gestorH.actualizarObjeto(solicitud);
                 retiro.setSolicitud(solicitud);
                 retiro.setToneladas(Double.parseDouble(txtTnExtraidas.getText()));
                 Iterator ite3 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
