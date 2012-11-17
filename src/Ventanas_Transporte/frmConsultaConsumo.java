@@ -7,6 +7,7 @@ package Ventanas_Transporte;
 import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
+import Gestores_Vista.gestorConsultarConsumo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmConsultaConsumo extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
     /**
      * Creates new form frmConsultaConsumo
      */
@@ -550,189 +552,413 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnQuitarTodosActionPerformed
 
     private void btnBuscarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumoActionPerformed
+        String numeroOrden = null;
+        String importeTotal = null;
+        String tipoOperacion = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha1 = sdf.parse(calendarioDCons.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHCons.getText(), new ParsePosition(0));
+        numeroOrden = txtOrdenCons.getText();
+        importeTotal = txtImporteCons.getText();
+        tipoOperacion = cmbOperacion.getSelectedItem().toString();
         DefaultTableModel modeloT = (DefaultTableModel) tblConsumo.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-                }
-            }
+        DefaultTableModel modeloLista = (DefaultTableModel) lstTransportista.getModel();
+         
+        if(fecha1.before(fecha3)){
+             
+         //Seleccion de FECHA
+         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  }
+             }
+         }        
         }
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtOrdenCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && ((String.valueOf(orden.getNumeroOrden())) == txtOrdenCons.getText())) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+        //Seleccion de NUMERO DE ORDEN
+         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenCons.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  }
+             }
+         }        
         }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtImporteCons.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        if (cmbImporteCons.getSelectedItem() == ">=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
+        //Seleccion de IMPORTE TOTAL
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText()))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                     }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
-                        if (cmbImporteCons.getSelectedItem() == "=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                        if (cmbImporteCons.getSelectedItem() == "<=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                     }
-                }
-            }
+               }//Cierre While Carga        
+            } //Cierre While Orden
+         }//Cierre If Numero Orden Orden
+         
+        //Seleccion de TRANSPORTISTA
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblConsumo, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+        
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             String tipoServicio= orden.getTipoServicio().toString();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (tipoServicio.equalsIgnoreCase(tipoOperacion))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion Fecha y Numero de Orden
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) && (Integer.parseInt(numeroOrden) == nroOrden)) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion FECHA e IMPORTE
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                     }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion de FECHA y TRANSPORTISTAS
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblConsumo, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+        
+        //seleccion de FECHA Y TIPO DE OPERACION
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             String tipoServicio= orden.getTipoServicio().toString();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (tipoServicio.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //seleccion NRO ORDEN E IMPORTE
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                     }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion de NRO DE ORDEN y TRANSPORTISTAS
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblConsumo, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden 
+        
+        //Seleccion NRO ORDEN Y TIPO DE OPERACION
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             String tipoServicio= orden.getTipoServicio().toString();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (tipoServicio.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion IMPORTE y TRANSPORTISTAS
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             String tipoOp = orden.getTipoServicio().toString(); 
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                  }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                      //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                  }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+           //seleccion NRO ORDEN E IMPORTE
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                     }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion de TRANSPORTISTAS Y TIPO DE OPERACION
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             String tipoOp = orden.getTipoServicio().toString();
+             int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+             Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  CargaCombustible carga = (CargaCombustible) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblConsumo, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden 
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
         }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (cmbOperacion.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente
-                        if ((carga.getOrdenServicio() == orden) && (orden.getTipoServicio() == cmbOperacion.getSelectedItem())) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblConsumo.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
-        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (btnAgregarTranspC.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
-                            //Comparo que el importe para traer la orden correspondiente
-                            if ((carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblConsumo.setModel(modeloT);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        
+       
     }//GEN-LAST:event_btnBuscarConsumoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
