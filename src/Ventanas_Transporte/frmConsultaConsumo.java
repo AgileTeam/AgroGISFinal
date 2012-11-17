@@ -841,7 +841,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -903,7 +903,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
          //Seleccion IMPORTE Y TIPO OPERACION
-         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -939,7 +939,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion de TRANSPORTISTAS Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -961,7 +961,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion FECHA, NRO ORDEN E IMPORTE
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -998,7 +998,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, NRO ORDEN, TRANSPORTISTA
-         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1021,7 +1021,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
          //Seleccion FECHA, NRO ORDEN Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1043,7 +1043,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
          
         //Seleccion FECHA, IMPORTE Y TRANSPORTISTA
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1085,7 +1085,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
        
         //Seleccion FECHA IMPORTE TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1122,7 +1122,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1145,7 +1145,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1187,7 +1187,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1224,7 +1224,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion NRO ORDEN, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1247,7 +1247,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         // Seleccion IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1290,7 +1290,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         
         //Seleccion FECHA, NRO ORDEN, IMPORTE, TRANSPORTISTA
         
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1333,7 +1333,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion FECHA, NRO ORDEN, IMPORTE, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1371,7 +1371,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1414,7 +1414,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion FECHA, NRO ORDEN, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1438,7 +1438,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1481,7 +1481,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA, FECHA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
