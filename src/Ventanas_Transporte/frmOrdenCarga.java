@@ -438,6 +438,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gestorH.guardarObjeto(orden);
         carga.setEstacionServicio((EstacionDeServicio)cmbEstacionServicio.getSelectedItem());
         carga.setTipo((TipoOperacionEstacionServicio)cmbOperacion.getSelectedItem());
+        carga.setOrdenServicio(orden);
         gestorH.guardarObjeto(carga);
         detalle.setCargaCombustible(carga);
         detalle.setOrdenServicio(orden);

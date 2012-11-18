@@ -23,6 +23,9 @@ private Motivo motivo;
 @ManyToOne(targetEntity = TallerReparacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TallerReparacion taller;
 
+@ManyToOne(targetEntity = OrdenServicio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+ private OrdenServicio ordenServicio;
+
 private String fecha;
 private String hora;
 private double importeTotal;
@@ -141,6 +144,20 @@ private int numeroComprobante;
      */
     public void setNumeroComprobante(int numeroComprobante) {
         this.numeroComprobante = numeroComprobante;
+    }
+
+    /**
+     * @return the ordenServicio
+     */
+    public OrdenServicio getOrdenServicio() {
+        return ordenServicio;
+    }
+
+    /**
+     * @param ordenServicio the ordenServicio to set
+     */
+    public void setOrdenServicio(OrdenServicio ordenServicio) {
+        this.ordenServicio = ordenServicio;
     }
     
 

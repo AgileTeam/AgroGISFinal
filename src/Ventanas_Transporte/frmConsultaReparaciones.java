@@ -6,8 +6,10 @@ package Ventanas_Transporte;
 
 import javax.swing.*;
 import Clases_Modulo_Transporte.CargaCombustible;
+import Clases_Modulo_Transporte.EnvioTaller;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
+import Gestores_Vista.gestorConsultaReparaciones;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -25,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmConsultaReparaciones extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     /**
      * Creates new form frmConsultaReparaciones
      */
@@ -520,189 +523,485 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
     private void btnBuscarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReparacionActionPerformed
+        String numeroOrden = null;
+        String importeTotal = null;        
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha1 = sdf.parse(calendarioDRep.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHRep.getText(), new ParsePosition(0));
+        numeroOrden = txtOrdenRep.getText();
+        importeTotal = txtImporteRep.getText();
         DefaultTableModel modeloT = (DefaultTableModel) tblReparacion.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDRep.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha1.before(fecha3))) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblReparacion.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+        DefaultTableModel modeloLista = (DefaultTableModel) lstTransportista.getModel();
+        
+         if(fecha1.before(fecha3)){
+             
+         //Seleccion FECHA    
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+             }
+         }        
         }
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtOrdenRep.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        //Comparo que el importe para traer la orden correspondiente, comparo el rango de fechas
-                        if ((carga.getOrdenServicio() == orden) && ((String.valueOf(orden.getNumeroOrden())) == txtOrdenRep.getText())) {
-                            //Guardo el objeto orden en la tabla
-                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                            modeloT.addRow(fila);
-                            tblReparacion.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+         //Seleccion NRO ORDEN
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenRep.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+             }
+         }        
         }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (txtImporteRep.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblReparacion.setModel(modeloT);
-                            }
+         //Seleccion TRANSPORTISTA
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()!= 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+         //Seleccion IMPORTE
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden==null && importeTotal!=null && modeloLista.getRowCount()== 0){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                     }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblReparacion.setModel(modeloT);
-                            }
-                        }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
-                            //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblReparacion.setModel(modeloT);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-//        if (cmbOperacion.isEnabled()) {
-//            //Creo el objeto orden
-//            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-//            while (ite.hasNext()) {
-//                int banderaFecha = 0;
-//                OrdenServicio orden = (OrdenServicio) ite.next();
-//                //Verifico que la orden no este en la tabla previamente cargada
-//                for (int i = 0; i < modeloT.getRowCount(); i++) {
-//                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-//                        banderaFecha = 1;
-//                    }
-//                }
-//                //La orden no esta cargada
-//                if (banderaFecha == 0) {
-//                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-//                    //Busco el objeto carga para traer el importe de la orden
-//                    while (ite2.hasNext()) {
-//                        CargaCombustible carga = (CargaCombustible) ite2.next();
-//                        //Comparo que el importe para traer la orden correspondiente
-//                        if ((carga.getOrdenServicio() == orden) && (orden.getTipoServicio() == cmbOperacion.getSelectedItem())) {
-//                            //Guardo el objeto orden en la tabla
-//                            Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-//                            modeloT.addRow(fila);
-//                            tblConsumo.setModel(modeloT);
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
-
-        //Verifico que este seleccionada la opcion de Numero de orden
-        if (btnAgregarTranspR.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                OrdenServicio orden = (OrdenServicio) ite.next();
-                //Verifico que la orden no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (orden.getNumeroOrden() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
-                    //Busco el objeto carga para traer el importe de la orden
-                    while (ite2.hasNext()) {
-                        CargaCombustible carga = (CargaCombustible) ite2.next();
-                        for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
-                            //Comparo que el importe para traer la orden correspondiente
-                            if ((carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
-                                //Guardo el objeto orden en la tabla
-                                Object fila[] = {orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(), orden.getTipoServicio(), carga.getImporteTotal()};
-                                modeloT.addRow(fila);
-                                tblReparacion.setModel(modeloT);
-                            }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                     }
-                }
-            }
-        }
+               }//Cierre While Carga        
+            } //Cierre While Orden
+         }//Cierre If Numero Orden Orden
+         
+         //Seleccion FECHA Y NRO ORDEN
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) && (Integer.parseInt(numeroOrden) == nroOrden)) {
+                  //Guardo el objeto orden en la tabla
+                  gestorC.cargarTabla(tblReparacion, orden, carga);
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+         
+         //Seleccion FECHA, TRANSPORTISTA
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+         //Seleccion FECHA E IMPORTE
+          if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                     }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+         
+         //Seleccion NRO ORDEN E IMPORTE
+          if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                     }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+          
+          //Seleccion NRO ORDEN Y TRANSPORTISTA
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden 
+          
+        //Seleccion IMPORTE Y TRANSPORTISTA
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                      }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      //Comparo que el importe para traer la orden correspondiente comparo el operador 
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                      }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion FECHA NRO ORDEN IMPORTE
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()== 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                     }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);  
+                       }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        //Seleccion FECHA NRO ORDEN TRANSPORTISTA
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden 
+             
+         //Seleccion FECHA TRANSPORTISTA IMPORTE
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                      }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      //Comparo que el importe para traer la orden correspondiente comparo el operador 
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                      }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden 
+         
+         //Seleccion NRO ORDEN TRANSPORTISTA IMPORTE
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                      }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      //Comparo que el importe para traer la orden correspondiente comparo el operador 
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                      }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden 
+         
+        //Seleccion FECHA ORDEN TRANSPORTISTA IMPORTE
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) &&(fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                        }
+                      }
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      //Comparo que el importe para traer la orden correspondiente comparo el operador 
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                      }
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden 
+         
+         
+         
+         }else {
+         JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
+         }
+ 
     }//GEN-LAST:event_btnBuscarReparacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
