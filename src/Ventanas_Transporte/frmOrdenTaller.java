@@ -392,7 +392,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
@@ -423,6 +423,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         orden.setEstado("Pendiente");
         gestorH.guardarObjeto(orden);
         envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
+        envio.setOrdenServicio(orden);
         gestorH.guardarObjeto(envio);
         detalle.setEnvioTaller(envio);
         detalle.setOrden(orden);
