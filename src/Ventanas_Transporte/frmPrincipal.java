@@ -11,6 +11,7 @@
 package Ventanas_Transporte;
 
 
+import Clases_Modulo_Seguridad.Usuario;
 import Ventanas_Viaje.*;
 import Ventanas_Carga.*;
 import javax.swing.UIManager;
@@ -19,10 +20,17 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import Clases_Modulo_Transporte.OpcionEditar;
+import Gestores_Vista.gestorFrmPrincipal;
 import Hibernate.GestorHibernate;
+import Ventanas_Seguridad.frmPrueba;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 
 public class frmPrincipal extends javax.swing.JFrame {
+gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form OrdenServicio */
     public frmPrincipal() {
         initComponents();
@@ -34,6 +42,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         MenuViaje.setEnabled(false);
         MenuCarga.setEnabled(false);
         MenuListados.setEnabled(false);
+ 
+        gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados);
+        
 //        this.setExtendedState(this.MAXIMIZED_BOTH);
         
     
@@ -210,10 +221,20 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         MenuInicioSesion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         MenuInicioSesion.setText("Iniciar Sesion");
+        MenuInicioSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuInicioSesionActionPerformed(evt);
+            }
+        });
         MenuSesion.add(MenuInicioSesion);
 
         MenuCierreSesion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         MenuCierreSesion.setText("Cerrar Sesion");
+        MenuCierreSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCierreSesionActionPerformed(evt);
+            }
+        });
         MenuSesion.add(MenuCierreSesion);
 
         MenuPrincipal.add(MenuSesion);
@@ -807,6 +828,26 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         // TODO add your handling code here:
     }//GEN-LAST:event_ItemNuevoProductorActionPerformed
 
+    private void MenuInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInicioSesionActionPerformed
+        frmPrueba agenda= new frmPrueba();
+        this.Escritorio.add(agenda);
+        agenda.setVisible(true);
+    }//GEN-LAST:event_MenuInicioSesionActionPerformed
+
+    private void MenuCierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCierreSesionActionPerformed
+       Iterator ite = gestorH.listarClase(Usuario.class).iterator();
+        while(ite.hasNext()){
+            Usuario u = (Usuario) ite.next();
+            if(u.isEstado()==true){
+                u.setEstado(false);
+                gestorH.actualizarObjeto(u);
+            }
+        }
+        frmPrincipal f = new frmPrincipal();
+        f.setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_MenuCierreSesionActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -922,4 +963,8 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu menuNuevoViaje;
     private javax.swing.JPanel pnlUsuarioLogin;
     // End of variables declaration//GEN-END:variables
+
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
