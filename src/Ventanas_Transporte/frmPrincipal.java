@@ -140,6 +140,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenuItem2 = new javax.swing.JMenuItem();
         ItemResultadosLab = new javax.swing.JMenuItem();
         MenuListados = new javax.swing.JMenu();
+        MenuAuditoria = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -645,6 +646,11 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         MenuPrincipal.add(MenuListados);
 
+        MenuAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bitacora.png"))); // NOI18N
+        MenuAuditoria.setText("Auditoria");
+        MenuAuditoria.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        MenuPrincipal.add(MenuAuditoria);
+
         setJMenuBar(MenuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -924,6 +930,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemVerTipoCereal;
     private javax.swing.JMenuItem ItemVerTransp;
     private javax.swing.JMenuItem ItemVerVehiculo;
+    private javax.swing.JMenu MenuAuditoria;
     private javax.swing.JMenu MenuCarga;
     private javax.swing.JMenuItem MenuCierreSesion;
     private javax.swing.JMenu MenuClientes;
