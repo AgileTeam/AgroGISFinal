@@ -28,10 +28,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setSize(1366,766);
         
-        //deshabilitamos lo que no estara disponible en esta entrega
-//        ItemVerTaller.setEnabled(false);
-        ItemVerEstacion.setEnabled(false);
-        MenuVerCarga.setEnabled(false);
+        MenuInicio.setEnabled(false);
+        MenuTransporte.setEnabled(false);
+        MenuClientes.setEnabled(false);
+        MenuViaje.setEnabled(false);
+        MenuCarga.setEnabled(false);
+        MenuListados.setEnabled(false);
 //        this.setExtendedState(this.MAXIMIZED_BOTH);
         
     
