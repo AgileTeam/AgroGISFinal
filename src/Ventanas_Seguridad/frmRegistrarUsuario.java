@@ -4,20 +4,28 @@
  */
 package Ventanas_Seguridad;
 
+import Clases_Modulo_Seguridad.Rol;
+import Clases_Modulo_Seguridad.Usuario;
+import Clases_Modulo_Seguridad.UsuarioPorRol;
+import Gestores_Vista.gestorRegistrarUsuario;
+import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
-
+gestorRegistrarUsuario gestorU = new gestorRegistrarUsuario();
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmRegistrarUsuario
      */
@@ -55,14 +63,14 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
           //lineas para mejorar el aspecto de la pantalla     
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();
-    int ancho = 500;
-    int alto = 520;
+    int ancho = 650;
+    int alto = 570;
 //    int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //    int posY = (int) ((tamanioPantalla.height - alto) / 2);
     this.setSize(ancho, alto);
-    this.setLocation(360, 60);
+    this.setLocation(360, 50);
 
-        
+        cmbRol.setModel(gestorU.cargarRoles());
         
     }
 
@@ -106,9 +114,9 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField3 = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        txtPass2 = new javax.swing.JPasswordField();
+        txtpass1 = new javax.swing.JPasswordField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -182,6 +190,11 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAgregar);
         btnAgregar.setBounds(230, 140, 110, 30);
 
@@ -209,6 +222,11 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
         jScrollPane1.setBounds(70, 180, 430, 110);
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEliminar);
         btnEliminar.setBounds(510, 220, 50, 30);
 
@@ -224,6 +242,11 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnEditarProvincia.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEditarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
@@ -280,16 +303,12 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
         jLabel7.setText("Repetir Contraseña");
         jPanel2.add(jLabel7);
         jLabel7.setBounds(120, 90, 160, 20);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(240, 30, 180, 20);
-
-        jPasswordField2.setText("jPasswordField2");
-        jPanel2.add(jPasswordField2);
-        jPasswordField2.setBounds(240, 90, 180, 20);
-
-        jPasswordField3.setText("jPasswordField2");
-        jPanel2.add(jPasswordField3);
-        jPasswordField3.setBounds(240, 60, 180, 20);
+        jPanel2.add(txtUsuario);
+        txtUsuario.setBounds(240, 30, 180, 20);
+        jPanel2.add(txtPass2);
+        txtPass2.setBounds(240, 90, 180, 20);
+        jPanel2.add(txtpass1);
+        txtpass1.setBounds(240, 60, 180, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,7 +338,7 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -329,11 +348,48 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+        int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
         if (respuesta == 0) {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
+       Object fila[]= {cmbRol.getSelectedItem(), areaDescrp.getText()};
+       modeloT.addRow(fila);
+       tblRoles.setModel(modeloT);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
+       int fila = tblRoles.getSelectedRow();
+       modeloT.removeRow(fila);
+       tblRoles.setModel(modeloT);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
+    Usuario usuario = new Usuario();
+    usuario.setPersona(txtApellido.getText() + "," + txtNombre.getText());
+    usuario.setNombreUsuario(txtUsuario.getText());
+    usuario.setPassword(txtpass1.getText());
+    usuario.setEstado(false);
+    gestorH.guardarObjeto(usuario);
+    for (int i=0; i<modeloT.getRowCount(); i++ ){
+        Iterator ite = gestorH.listarClase(Rol.class).iterator();
+        while(ite.hasNext()){
+            Rol rol = (Rol) ite.next();
+            if(rol.equals(modeloT.getValueAt(i, 0))){
+             UsuarioPorRol usu = new UsuarioPorRol();
+             usu.setRol(rol);
+             usu.setUsuario(usuario);
+             gestorH.guardarObjeto(usu);
+            }
+        }
+       
+    }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescrp;
@@ -360,15 +416,15 @@ public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblRoles;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JPasswordField txtPass2;
+    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JPasswordField txtpass1;
     // End of variables declaration//GEN-END:variables
 }
