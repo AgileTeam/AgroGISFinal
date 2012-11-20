@@ -369,6 +369,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    if(txtpass1.getText()== txtPass2.getText()){
     DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
     Usuario usuario = new Usuario();
     usuario.setPersona(txtApellido.getText() + "," + txtNombre.getText());
@@ -388,6 +389,11 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         }
        
+    }
+    }else{
+    JOptionPane.showMessageDialog(null, "Ingrese nuevamente la contraseña");
+    txtpass1.setText("");
+    txtPass2.setText("");
     }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

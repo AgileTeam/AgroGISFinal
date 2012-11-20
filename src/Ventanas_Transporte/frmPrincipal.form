@@ -69,6 +69,9 @@
               <Font name="Arial" size="12" style="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="frmPrincipal_MenuInicio"/>
+          </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="MenuInicioNuevo">
               <Properties>

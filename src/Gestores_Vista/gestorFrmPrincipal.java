@@ -7,6 +7,7 @@ package Gestores_Vista;
 import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Seguridad.UsuarioPorRol;
 import Hibernate.GestorHibernate;
+import Ventanas_Transporte.frmPrincipal;
 import java.util.Iterator;
 import javax.swing.JMenu;
 

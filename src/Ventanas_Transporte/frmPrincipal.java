@@ -28,6 +28,7 @@ import Ventanas_Seguridad.frmRegistrarUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
+import javax.swing.JMenu;
 
 
 public class frmPrincipal extends javax.swing.JFrame {
@@ -44,6 +45,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuViaje.setEnabled(false);
         MenuCarga.setEnabled(false);
         MenuListados.setEnabled(false);
+   
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados);
         
@@ -861,9 +863,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
                 gestorH.actualizarObjeto(u);
             }
         }
-        frmPrincipal f = new frmPrincipal();
-        f.setVisible(true);
-        dispose(); 
     }//GEN-LAST:event_MenuCierreSesionActionPerformed
 
     private void ItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuarioActionPerformed

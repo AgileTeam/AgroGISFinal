@@ -4,6 +4,13 @@
  */
 package Ventanas_Seguridad;
 
+import Clases_Modulo_Seguridad.Usuario;
+import Gestores_Vista.gestorFrmPrincipal;
+import Hibernate.GestorHibernate;
+import Ventanas_Transporte.frmPrincipal;
+import java.util.Iterator;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,6 +18,9 @@ import javax.swing.JOptionPane;
  * @author Carolina
  */
 public class frmIniciarSesion extends javax.swing.JInternalFrame {
+GestorHibernate gestorH = new GestorHibernate();
+gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
+
 
     /**
      * Creates new form frmIniciarSesion
@@ -39,7 +49,7 @@ public class frmIniciarSesion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        passUsuario = new javax.swing.JPasswordField();
+        txtpass = new javax.swing.JPasswordField();
         btnInicioSesion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
@@ -87,10 +97,8 @@ public class frmIniciarSesion extends javax.swing.JInternalFrame {
         jLabel2.setText("Contraseña");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(110, 80, 110, 20);
-
-        passUsuario.setText("jPasswordField1");
-        jPanel1.add(passUsuario);
-        passUsuario.setBounds(190, 80, 170, 20);
+        jPanel1.add(txtpass);
+        txtpass.setBounds(190, 80, 170, 20);
 
         btnInicioSesion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnInicioSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/candado_login.png"))); // NOI18N
@@ -135,14 +143,25 @@ public class frmIniciarSesion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioSesionActionPerformed
-        // TODO add your handling code here:
+    Iterator ite = gestorH.listarClase(Usuario.class).iterator();
+    while(ite.hasNext()){
+        Usuario usuario = (Usuario) ite.next();
+        if(usuario.getNombreUsuario().equalsIgnoreCase(txtNombreUsuario.getText())&& (usuario.getPassword().equalsIgnoreCase(txtpass.getText()))){
+            usuario.setEstado(true);
+            gestorH.actualizarObjeto(usuario);
+            frmPrincipal frm = new frmPrincipal();
+            frm.setVisible(true);
+            dispose();
+          }
+    
+    }
     }//GEN-LAST:event_btnInicioSesionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -156,9 +175,9 @@ public class frmIniciarSesion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField passUsuario;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
 }
