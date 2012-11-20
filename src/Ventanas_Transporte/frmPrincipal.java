@@ -22,7 +22,9 @@ import java.awt.Toolkit;
 import Clases_Modulo_Transporte.OpcionEditar;
 import Gestores_Vista.gestorFrmPrincipal;
 import Hibernate.GestorHibernate;
+import Ventanas_Seguridad.frmIniciarSesion;
 import Ventanas_Seguridad.frmPrueba;
+import Ventanas_Seguridad.frmRegistrarUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -86,6 +88,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemNuevoLocalidad = new javax.swing.JMenuItem();
         ItemNuevoBarrio = new javax.swing.JMenuItem();
         ItemEspecialidad = new javax.swing.JMenuItem();
+        ItemUsuario = new javax.swing.JMenuItem();
         MenuTransporte = new javax.swing.JMenu();
         MenuNuevoTransp = new javax.swing.JMenu();
         ItemTransportista = new javax.swing.JMenuItem();
@@ -300,6 +303,15 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         MenuInicioNuevo.add(ItemEspecialidad);
+
+        ItemUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemUsuario.setText("Usuario");
+        ItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemUsuarioActionPerformed(evt);
+            }
+        });
+        MenuInicioNuevo.add(ItemUsuario);
 
         MenuInicio.add(MenuInicioNuevo);
 
@@ -835,9 +847,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_ItemNuevoProductorActionPerformed
 
     private void MenuInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInicioSesionActionPerformed
-        frmPrueba agenda= new frmPrueba();
-        this.Escritorio.add(agenda);
-        agenda.setVisible(true);
+        frmIniciarSesion sesion= new frmIniciarSesion();
+        this.Escritorio.add(sesion);
+        sesion.setVisible(true);
     }//GEN-LAST:event_MenuInicioSesionActionPerformed
 
     private void MenuCierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCierreSesionActionPerformed
@@ -853,6 +865,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         f.setVisible(true);
         dispose(); 
     }//GEN-LAST:event_MenuCierreSesionActionPerformed
+
+    private void ItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuarioActionPerformed
+        frmRegistrarUsuario usuario=new frmRegistrarUsuario();
+        this.Escritorio.add(usuario);
+        usuario.setVisible(true);
+    }//GEN-LAST:event_ItemUsuarioActionPerformed
 
    
     public static void main(String args[]) {
@@ -922,6 +940,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemRetiroCereal;
     private javax.swing.JMenuItem ItemTaller;
     private javax.swing.JMenuItem ItemTransportista;
+    private javax.swing.JMenuItem ItemUsuario;
     private javax.swing.JMenuItem ItemVehiculo;
     private javax.swing.JMenuItem ItemVerEstacion;
     private javax.swing.JMenuItem ItemVerLab;
