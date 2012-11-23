@@ -61,7 +61,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
         calendario.get(Calendar.HOUR);
         calendario.get(Calendar.MINUTE);
-        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
 
         //1) datos de puerto - 2) datos de establecimiento

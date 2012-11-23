@@ -16,7 +16,11 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.TimeZone;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,6 +40,28 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         txtHora.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
+        
+        //setear el campo de fecha con la del sistema
+        GregorianCalendar gc=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        gc.get(Calendar.DAY_OF_WEEK);
+        gc.get(Calendar.MONTH);
+        gc.get(Calendar.YEAR);
+        SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
+        txtFecha.setText(formateador.format(gc.getTime()));
+        //setear el campo de hora con la del sistema
+        GregorianCalendar calendario=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        calendario.get(Calendar.HOUR);
+        calendario.get(Calendar.MINUTE);
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
+        txtHora.setText(formateadorHora.format(calendario.getTime()));
+        
+        
+        
+        
         
         //borrar el icono del InternalFrame
        this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png")); 

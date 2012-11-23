@@ -51,7 +51,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
         calendario.get(Calendar.HOUR);
         calendario.get(Calendar.MINUTE);
-        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHoraCarga.setText(formateadorHora.format(calendario.getTime()));
          
         DefaultTableModel modeloT = (DefaultTableModel) tblTransportista.getModel();

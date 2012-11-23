@@ -50,7 +50,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
         calendario.get(Calendar.HOUR);
         calendario.get(Calendar.MINUTE);
-        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
