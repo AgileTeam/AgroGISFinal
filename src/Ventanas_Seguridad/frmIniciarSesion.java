@@ -8,7 +8,13 @@ import Clases_Modulo_Seguridad.Usuario;
 import Gestores_Vista.gestorFrmPrincipal;
 import Hibernate.GestorHibernate;
 import Ventanas_Transporte.frmPrincipal;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.TimeZone;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JOptionPane;
@@ -27,6 +33,41 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
      */
     public frmIniciarSesion() {
         initComponents();
+        
+        txtFecha.setEnabled(false);
+        txtFecha.setEditable(false);
+        txtHora.setEditable(false);
+        txtHora.setEnabled(false);
+        //setear el campo de fecha con la del sistema
+        GregorianCalendar gc=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        gc.get(Calendar.DAY_OF_WEEK);
+        gc.get(Calendar.MONTH);
+        gc.get(Calendar.YEAR);
+        SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
+        txtFecha.setText(formateador.format(gc.getTime()));
+        //setear el campo de hora con la del sistema
+        GregorianCalendar calendario=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        calendario.get(Calendar.HOUR);
+        calendario.get(Calendar.MINUTE);
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        txtHora.setText(formateadorHora.format(calendario.getTime()));
+        
+           
+    //lineas para mejorar el aspecto de la pantalla     
+    Toolkit kit = Toolkit.getDefaultToolkit();
+    Dimension tamanioPantalla = kit.getScreenSize();
+    int ancho = 500;
+    int alto = 300;
+//    int posX = (int) ((tamanioPantalla.width - ancho) / 2);
+//    int posY = (int) ((tamanioPantalla.height - alto) / 2);
+    this.setSize(ancho, alto);
+    this.setLocation(370, 170);
+        
+        
     }
 
     /**
@@ -112,6 +153,11 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +169,7 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addGap(126, 126, 126)
                         .addComponent(btnInicioSesion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,11 +185,11 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -163,6 +209,13 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
     
     }
     }//GEN-LAST:event_btnInicioSesionActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
+        if (respuesta == 0) {
+            dispose();
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicioSesion;
