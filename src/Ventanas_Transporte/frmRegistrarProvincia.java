@@ -62,7 +62,7 @@ int bandera = 0;
         gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
         calendario.get(Calendar.HOUR);
         calendario.get(Calendar.MINUTE);
-        SimpleDateFormat formateadorHora=new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         DefaultTableModel modeloT = (DefaultTableModel) tblProvincia.getModel();
         Iterator ite = gestorH.listarClase(Provincia.class).iterator();
