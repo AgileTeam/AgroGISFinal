@@ -22,8 +22,6 @@ private Domicilio domicilio;
 @ManyToOne(targetEntity = TipoDocumento.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TipoDocumento tipoDocumento;
 
-@ManyToMany(targetEntity = TipoTelefono.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Set<TipoTelefono> tipoTelefono = new HashSet();
 
 @ManyToOne(targetEntity = CondicionContratacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private CondicionContratacion condicionContratacion;
@@ -35,7 +33,6 @@ private String email;
 private String fechaNacimiento;
 private String nombre;
 private String numeroDocumento;
-private String numeroTelefono;
 private String fechaIngreso;
 private String fechaSalida;
 private String cuil;
@@ -83,20 +80,7 @@ private String estadoCivil;
         this.tipoDocumento = tipoDocumento;
     }
 
-    /**
-     * @return the tipoTelefono
-     */
-    public Set<TipoTelefono> getTipoTelefono() {
-        return tipoTelefono;
-    }
-
-    /**
-     * @param tipoTelefono the tipoTelefono to set
-     */
-    public void setTipoTelefono(Set<TipoTelefono> tipoTelefono) {
-        this.tipoTelefono = tipoTelefono;
-    }
-
+   
     /**
      * @return the condicionContratacion
      */
@@ -181,19 +165,7 @@ private String estadoCivil;
         this.numeroDocumento = numeroDocumento;
     }
 
-    /**
-     * @return the numeroTelefono
-     */
-    public String getNumeroTelefono() {
-        return numeroTelefono;
-    }
 
-    /**
-     * @param numeroTelefono the numeroTelefono to set
-     */
-    public void setNumeroTelefono(String numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
-    }
 
     /**
      * @return the fechaIngreso

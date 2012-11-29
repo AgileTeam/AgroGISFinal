@@ -1198,10 +1198,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     transportista.setFechaNacimiento(calendarioNacimiento.getText());
     transportista.setNombre(txtNombres.getText());
     transportista.setNumeroDocumento(txtDocumento.getText());
-    for(int i=0;i<modelo.getRowCount();i++){
-        transportista.setNumeroTelefono((String)modelo.getValueAt(i, 1));
-        transportista.setTipoTelefono((Set<TipoTelefono>)(TipoTelefono) modelo.getValueAt(i, 0));
-    }
     transportista.setCondicionContratacion((CondicionContratacion)cmbTipoContratacion.getSelectedItem());
     transportista.setCuil(txtCUIL.getText());
     transportista.setEstadoCivil((String)cmbEstadoCivil.getSelectedItem());
