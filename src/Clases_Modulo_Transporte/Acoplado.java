@@ -17,8 +17,7 @@ private long idAcoplado;
 @ManyToOne(targetEntity = AnioCompra.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private AnioCompra anioCompra;
     
-@ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Estado estado;    
+ 
 
 @ManyToOne(targetEntity = Marca.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Marca marca; 
@@ -31,6 +30,7 @@ private Vehiculo vehiculo;
     private String dominio;
     private double largo;
     private double tara;
+    private String estado;
 
     /**
      * @return the idAcoplado
@@ -60,19 +60,7 @@ private Vehiculo vehiculo;
         this.anioCompra = anioCompra;
     }
 
-    /**
-     * @return the estado
-     */
-    public Estado getEstado() {
-        return estado;
-    }
 
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
 
     /**
      * @return the marca
@@ -156,6 +144,20 @@ private Vehiculo vehiculo;
      */
     public void setTara(double tara) {
         this.tara = tara;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
