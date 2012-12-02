@@ -16,10 +16,6 @@ public class EnvioTaller {
 private long idEnvio;  
 
 
-    
-@ManyToOne(targetEntity = Motivo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-private Motivo motivo;
-
 @ManyToOne(targetEntity = TallerReparacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TallerReparacion taller;
 
@@ -33,20 +29,6 @@ private String responsable;
 private int numeroComprobante;
 
    
-
-    /**
-     * @return the motivo
-     */
-    public Motivo getMotivo() {
-        return motivo;
-    }
-
-    /**
-     * @param motivo the motivo to set
-     */
-    public void setMotivo(Motivo motivo) {
-        this.motivo = motivo;
-    }
 
     /**
      * @return the taller

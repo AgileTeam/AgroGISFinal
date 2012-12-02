@@ -25,6 +25,9 @@ private TipoServicio tipoServicio;
 @ManyToOne(targetEntity = Vehiculo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Vehiculo vehiculo;
 
+@ManyToOne(targetEntity = Motivo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Motivo motivo;
+
 
     private String fecha;
     private String hora;
@@ -137,5 +140,19 @@ private Vehiculo vehiculo;
      */
     public String toString(){
         return String.valueOf(getNumeroOrden());
+    }
+
+    /**
+     * @return the motivo
+     */
+    public Motivo getMotivo() {
+        return motivo;
+    }
+
+    /**
+     * @param motivo the motivo to set
+     */
+    public void setMotivo(Motivo motivo) {
+        this.motivo = motivo;
     }
 }

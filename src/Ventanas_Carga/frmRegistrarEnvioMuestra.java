@@ -223,6 +223,8 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
 
         jPanel1.add(cmbLaboratorio);
         cmbLaboratorio.setBounds(420, 40, 210, 20);
+
+        calendarioEnvio.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel1.add(calendarioEnvio);
         calendarioEnvio.setBounds(90, 70, 90, 20);
         jPanel1.add(txtEstablecimiento);
@@ -299,8 +301,12 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel15.setText("Hasta");
         jPanel10.add(jLabel15);
         jLabel15.setBounds(40, 50, 60, 20);
+
+        calendarioHMuestra.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioHMuestra);
         calendarioHMuestra.setBounds(80, 50, 90, 20);
+
+        calendarioDMuestra.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioDMuestra);
         calendarioDMuestra.setBounds(80, 20, 90, 20);
 
@@ -484,7 +490,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

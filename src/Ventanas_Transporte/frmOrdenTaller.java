@@ -166,11 +166,6 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtFecha = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransportista = new javax.swing.JTable();
@@ -203,7 +198,13 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         areaDesperfecto = new javax.swing.JTextArea();
-        jLabel13 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         btnEmitirOrden = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
@@ -214,35 +215,12 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(null);
 
-        txtFecha.setText("03-10-2011");
-        jPanel1.add(txtFecha);
-        txtFecha.setBounds(60, 10, 70, 20);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 10, 40, 20);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Hora");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(150, 10, 40, 20);
-
-        txtHora.setText("16:00");
-        jPanel1.add(txtHora);
-        txtHora.setBounds(180, 10, 50, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(560, 0, 60, 40);
-
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel2.setLayout(null);
 
         tblTransportista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Jose Torrea", "28.979.456"}
+
             },
             new String [] {
                 "Transportista", "Numero Documento"
@@ -290,21 +268,20 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         btnAgregarTransportista.setBounds(580, 70, 40, 30);
 
         labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelTransportista.setText("Jose Torrea");
         jPanel2.add(labelTransportista);
-        labelTransportista.setBounds(360, 140, 110, 17);
+        labelTransportista.setBounds(350, 140, 230, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(260, 140, 110, 17);
+        jLabel4.setBounds(250, 140, 120, 17);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(40, 170, 600, 10);
         jPanel2.add(txtAnioCompra);
         txtAnioCompra.setBounds(130, 210, 100, 20);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(20, 40, 690, 250);
+        jPanel2.setBounds(10, 50, 700, 250);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Proveedor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
@@ -368,11 +345,35 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jScrollPane2.setBounds(110, 140, 530, 100);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(20, 290, 690, 250);
+        jPanel3.setBounds(10, 300, 690, 250);
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel1.add(jLabel13);
-        jLabel13.setBounds(610, 10, 30, 30);
+        jPanel4.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setText("Fecha");
+        jPanel4.add(jLabel1);
+        jLabel1.setBounds(10, 13, 40, 15);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Hora");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(200, 10, 50, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setText("Usuario");
+        jPanel4.add(jLabel3);
+        jLabel3.setBounds(600, 10, 50, 20);
+        jPanel4.add(txtHora);
+        txtHora.setBounds(230, 10, 80, 20);
+        jPanel4.add(txtFecha);
+        txtFecha.setBounds(50, 10, 80, 20);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel4.add(jLabel16);
+        jLabel16.setBounds(650, 0, 30, 30);
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(10, 10, 700, 40);
 
         btnEmitirOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEmitirOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
@@ -396,9 +397,9 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(246, 246, 246)
+                .addGap(247, 247, 247)
                 .addComponent(btnEmitirOrden)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,12 +408,12 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -483,9 +484,9 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -498,6 +499,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

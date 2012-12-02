@@ -33,4 +33,8 @@ private long idAnio;
     public void setAnioCompra(String anioCompra) {
         this.anioCompra = anioCompra;
     }
+    
+    public String toString(){
+        return anioCompra;
+    }
 }

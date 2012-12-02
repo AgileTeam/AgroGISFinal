@@ -279,6 +279,8 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbTipoViaje.setBounds(530, 30, 140, 20);
         jPanel9.add(txtSolicitante);
         txtSolicitante.setBounds(70, 60, 190, 20);
+
+        calendarioViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel9.add(calendarioViaje);
         calendarioViaje.setBounds(390, 60, 90, 20);
 
@@ -553,7 +555,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

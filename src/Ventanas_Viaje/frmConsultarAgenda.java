@@ -209,6 +209,8 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel50.setText("Fecha");
         jPanel5.add(jLabel50);
         jLabel50.setBounds(10, 10, 70, 20);
+
+        calendario.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel5.add(calendario);
         calendario.setBounds(50, 10, 99, 20);
 
@@ -660,7 +662,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2387, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2399, Short.MAX_VALUE)
         );
 
         pack();

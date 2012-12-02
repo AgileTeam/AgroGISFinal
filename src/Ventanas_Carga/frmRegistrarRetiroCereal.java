@@ -342,8 +342,12 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         jLabel13.setText("Hasta");
         jPanel10.add(jLabel13);
         jLabel13.setBounds(30, 50, 60, 20);
+
+        calendarioHSolicitud.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioHSolicitud);
         calendarioHSolicitud.setBounds(70, 50, 90, 20);
+
+        calendarioDSolicitud.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioDSolicitud);
         calendarioDSolicitud.setBounds(70, 20, 90, 20);
 
@@ -438,7 +442,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();

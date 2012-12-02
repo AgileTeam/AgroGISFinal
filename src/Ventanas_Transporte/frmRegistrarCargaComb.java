@@ -252,6 +252,8 @@ Double total;
         jLabel12.setText("Fecha Utilizacion");
         jPanel3.add(jLabel12);
         jLabel12.setBounds(30, 30, 130, 20);
+
+        calendarioFU.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel3.add(calendarioFU);
         calendarioFU.setBounds(130, 30, 100, 20);
 
@@ -448,7 +450,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -218,6 +218,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel9.setText("Fecha Reparacion");
         jPanel3.add(jLabel9);
         jLabel9.setBounds(30, 30, 110, 20);
+
+        calendarioReparacion.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel3.add(calendarioReparacion);
         calendarioReparacion.setBounds(140, 30, 90, 20);
 
@@ -426,7 +428,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
 
         pack();

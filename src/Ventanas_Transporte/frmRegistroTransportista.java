@@ -464,6 +464,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         jPanel2.add(jPanel10);
         jPanel10.setBounds(580, 70, 100, 70);
+
+        calendarioNacimiento.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel2.add(calendarioNacimiento);
         calendarioNacimiento.setBounds(130, 70, 120, 20);
 
@@ -678,8 +680,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel25.setText("Fecha de Salida");
         jPanel5.add(jLabel25);
         jLabel25.setBounds(500, 20, 110, 20);
+
+        calendarioFin.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel5.add(calendarioFin);
         calendarioFin.setBounds(590, 20, 100, 20);
+
+        calendarioIngreso.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel5.add(calendarioIngreso);
         calendarioIngreso.setBounds(380, 20, 100, 20);
 

@@ -191,8 +191,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel6.setText("Hasta");
         jPanel6.add(jLabel6);
         jLabel6.setBounds(170, 30, 60, 20);
+
+        calendarioHViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioHViaje);
         calendarioHViaje.setBounds(210, 30, 90, 20);
+
+        calendarioDViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioDViaje);
         calendarioDViaje.setBounds(50, 30, 90, 20);
 
@@ -452,7 +456,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

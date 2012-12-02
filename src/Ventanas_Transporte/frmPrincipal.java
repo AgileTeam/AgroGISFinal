@@ -161,6 +161,7 @@ GestorHibernate gestorH = new GestorHibernate();
         Escritorio.setBackground(java.awt.Color.lightGray);
 
         Calendario.setFieldFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
+        Calendario.setLocale(new java.util.Locale("es", "AR", ""));
         Calendario.setNavigateFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
         Calendario.setBounds(1060, 60, 155, 20);
         Escritorio.add(Calendario, javax.swing.JLayeredPane.DEFAULT_LAYER);
