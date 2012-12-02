@@ -10,6 +10,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
@@ -442,7 +443,17 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
            if (tipoSer.getIdTipoServicio() == 1) {
                orden.setTipoServicio(tipoSer);
            }
-        }     
+        }
+        
+        
+        Iterator iteuser = gestorH.listarClase(Usuario.class).iterator();
+        while(iteuser.hasNext()){
+             Usuario user = (Usuario) iteuser.next();
+           if (user.isEstado() == true) {
+               orden.setResponsable(user.getNombreUsuario());
+           }
+        }
+        
         orden.setFecha(txtFecha.getText());
         orden.setHora(txtHora.getText());
         orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
@@ -451,8 +462,9 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
         envio.setOrdenServicio(orden);
         gestorH.guardarObjeto(envio);
-        detalle.setEnvioTaller(envio);
-        detalle.setOrden(orden);
+//        detalle.setEnvioTaller(envio);
+//        detalle.setOrden(orden);
+//        gestorH.guardarObjeto(detalle);
     }//GEN-LAST:event_btnEmitirOrdenActionPerformed
  
 

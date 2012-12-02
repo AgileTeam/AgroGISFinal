@@ -44,6 +44,10 @@ private String nombreCaracteristica;
     public void setNombreCaracteristica(String nombreCaracteristica) {
         this.nombreCaracteristica = nombreCaracteristica;
     }
+    
+    public String toString(){
+        return nombreCaracteristica;
+    }
 
 
 }

@@ -82,4 +82,7 @@ private String nombreEstablecimiento;
         this.localidad = localidad;
     }
 
+    public String toString(){
+        return nombreEstablecimiento;
+    }
 }

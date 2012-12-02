@@ -63,6 +63,7 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Transporte.OpcionEditar.class);
                 conf.addAnnotatedClass(Clases_Modulo_Transporte.TipoOperacionEstacionServicio.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasCereal.class);
+                conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCereal.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Descarga.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.Destino.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.EspecialidadLaboratorio.class);
@@ -81,6 +82,8 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoTemporada.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoSolicitud.class);
+                conf.addAnnotatedClass(Clases_Modulo_Carga.EstablecimientoPorSolicitud.class);
+                 conf.addAnnotatedClass(Clases_Modulo_Carga.PuertoPorSolicitud.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Viaje.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Agenda.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Anio.class);

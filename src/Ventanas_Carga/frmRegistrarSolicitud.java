@@ -82,20 +82,22 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
+        cmbTipoSolicitud.setModel(gRegistro.rellenaComboTipoSolicitudRetiro());
         gRegistro.rellenaTablaProductor(tblProductor1);
         gRegistro.rellenaTablaProductor(tblProductor2);
         cmbTipoCereal1.setModel(gRegistro.rellenaComboCereal());
         cmbTipoCereal2.setModel(gRegistro.rellenaComboCereal());
         cmbTipoOperacion2.setModel(gRegistro.rellenaComboTipoOperacion());
         cmbSilo2.setModel(gRegistro.rellenaComboSilo());
+        cmbNombre2.setModel(gRegistro.rellenaComboPuerto());
         
          cmbTipoSolicitud.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-           gRegistro.ActualizarDatos(cmbTipoSolicitud.getSelectedItem().toString(), panelEstablecimiento, panelPlanta);
+           gRegistro.ActualizarDatos((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), panelEstablecimiento, panelPlanta);
            }
         }
         );
-            gRegistro.ActualizarDatos(cmbTipoSolicitud.getSelectedItem().toString(), panelEstablecimiento, panelPlanta);
+            gRegistro.ActualizarDatos((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), panelEstablecimiento, panelPlanta);
 
         cmbDestino2.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
@@ -220,7 +222,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel4);
         jLabel4.setBounds(390, 60, 130, 15);
 
-        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Retiro en Establecimiento", "Retiro en Planta" }));
         jPanel1.add(cmbTipoSolicitud);
         cmbTipoSolicitud.setBounds(100, 30, 190, 20);
         jPanel1.add(txtNumSolicitud);
@@ -286,6 +287,8 @@ GestorHibernate gestorH = new GestorHibernate();
 
         panelEstablecimiento.add(cmbTipoCereal1);
         cmbTipoCereal1.setBounds(120, 230, 120, 20);
+
+        txtHas1.setText("0.0");
         panelEstablecimiento.add(txtHas1);
         txtHas1.setBounds(440, 230, 110, 20);
 
@@ -354,6 +357,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel15.setText("Toneladas a Extraer");
         panelPlanta.add(jLabel15);
         jLabel15.setBounds(330, 250, 150, 20);
+
+        txtToneladas2.setText("0.0");
         panelPlanta.add(txtToneladas2);
         txtToneladas2.setBounds(450, 250, 90, 20);
 
@@ -437,7 +442,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -461,10 +466,10 @@ GestorHibernate gestorH = new GestorHibernate();
     Iterator ite=gestorH.listarClase(Productor.class).iterator();
     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
-        if(productor.getNombre()== txtProductor1.getText() || productor.getNombre()== txtProductor2.getText())
-            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), (Puerto)cmbDestino2.getSelectedItem(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()));
+        if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())){
+            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), (Puerto)cmbNombre2.getSelectedItem(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()));
        }
-        
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

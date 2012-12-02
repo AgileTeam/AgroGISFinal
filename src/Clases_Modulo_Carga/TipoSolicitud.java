@@ -43,4 +43,8 @@ private String nombreTipoSolicitud;
     public void setNombreTipoSolicitud(String nombreTipoSolicitud) {
         this.nombreTipoSolicitud = nombreTipoSolicitud;
     }
+    
+    public String toString(){
+        return nombreTipoSolicitud;
+    }
 }

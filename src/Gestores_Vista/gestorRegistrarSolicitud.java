@@ -27,6 +27,26 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
        return modelo;
    }
     
+      public DefaultComboBoxModel rellenaComboTipoSolicitudRetiro(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(TipoSolicitud.class).iterator();
+       while(ite.hasNext()){
+           TipoSolicitud solicitud =(TipoSolicitud) ite.next();
+           modelo.addElement(solicitud);
+       }
+       return modelo;
+   }
+      
+       public DefaultComboBoxModel rellenaComboPuerto(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Puerto.class).iterator();
+       while(ite.hasNext()){
+           Puerto puerto =(Puerto) ite.next();
+           modelo.addElement(puerto);
+       }
+       return modelo;
+   }
+    
     public DefaultComboBoxModel rellenaComboSilo(){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
        Iterator ite = this.listarClase(Silo.class).iterator();
@@ -78,12 +98,12 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
      return modelo;
     } 
      
-     public void ActualizarDatos(String seleccion, JPanel panelEstablecimiento, JPanel panelPlanta){
-        if (seleccion == "Retiro en Establecimiento"){
+     public void ActualizarDatos(TipoSolicitud seleccion, JPanel panelEstablecimiento, JPanel panelPlanta){
+        if (seleccion.getNombreTipoSolicitud().equalsIgnoreCase("Retiro en Establecimiento")){
         panelEstablecimiento.setVisible(true);
         panelPlanta.setVisible(false);
 
-        }if(seleccion== "Retiro en Planta"){
+        }if(seleccion.getNombreTipoSolicitud().equalsIgnoreCase("Retiro en Planta")){
         panelPlanta.setVisible(true);
         panelEstablecimiento.setVisible(false);
        }

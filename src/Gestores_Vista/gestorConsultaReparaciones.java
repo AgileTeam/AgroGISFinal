@@ -6,7 +6,10 @@ package Gestores_Vista;
 
 import Clases_Modulo_Transporte.EnvioTaller;
 import Clases_Modulo_Transporte.OrdenServicio;
+import Clases_Modulo_Transporte.Transportista;
 import Hibernate.GestorHibernate;
+import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,5 +38,18 @@ public class gestorConsultaReparaciones extends GestorHibernate{
        tabla.setModel(modelo);
    
    } 
+   
+    
+       public DefaultComboBoxModel rellenaComboTransportista(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Transportista.class).iterator();
+       while(ite.hasNext()){
+           Transportista transportista =(Transportista) ite.next();
+               modelo.addElement(transportista);
+               
+           }
+
+       return modelo;
+   }
     
 }

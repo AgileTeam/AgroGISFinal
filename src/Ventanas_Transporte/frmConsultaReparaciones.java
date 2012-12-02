@@ -13,9 +13,13 @@ import Gestores_Vista.gestorConsultaReparaciones;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -63,7 +67,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(20);
         tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
         tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(80);
-        tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(60);
+       
         
         
         
@@ -83,7 +87,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         txtOrdenRep.setEnabled(false);
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
-        lstTransportista.setModel(new DefaultListModel());
+        cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
         
         
         
@@ -126,8 +130,8 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         cmbTranspRep = new javax.swing.JComboBox();
         btnAgregarTranspR = new javax.swing.JButton();
         btnQuitarTranspR = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstTransportista = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTransportista = new javax.swing.JTable();
         btnBuscarReparacion = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel25 = new javax.swing.JLabel();
@@ -159,7 +163,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel23.setText("Usuario");
         jPanel17.add(jLabel23);
-        jLabel23.setBounds(740, 10, 50, 15);
+        jLabel23.setBounds(830, 10, 50, 15);
         jPanel17.add(txtHoraRep);
         txtHoraRep.setBounds(230, 10, 80, 20);
         jPanel17.add(txtFechaRep);
@@ -167,7 +171,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel17.add(jLabel24);
-        jLabel24.setBounds(790, 0, 30, 30);
+        jLabel24.setBounds(890, 0, 30, 30);
 
         jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel28.setText("Buscar Ordenes por");
@@ -196,287 +200,340 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         jLabel27.setText("Hasta");
         jPanel19.add(jLabel27);
         jLabel27.setBounds(170, 30, 60, 20);
+
+        calendarioHRep.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel19.add(calendarioHRep);
         calendarioHRep.setBounds(210, 30, 90, 20);
-        jPanel19.add(calendarioDRep);
-        calendarioDRep.setBounds(50, 30, 90, 20);
 
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        calendarioDRep.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    calendarioDRep.setLocale(new java.util.Locale("es", "AR", ""));
+    jPanel19.add(calendarioDRep);
+    calendarioDRep.setBounds(50, 30, 90, 20);
 
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+    jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+    javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+    jPanel20.setLayout(jPanel20Layout);
+    jPanel20Layout.setHorizontalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel20Layout.createSequentialGroup()
+            .addGap(61, 61, 61)
+            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(64, Short.MAX_VALUE))
+    );
+    jPanel20Layout.setVerticalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel20Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
 
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+    jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+    cmbImporteRep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
 
-        cmbTranspRep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+    javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+    jPanel18.setLayout(jPanel18Layout);
+    jPanel18Layout.setHorizontalGroup(
+        jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel18Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(24, Short.MAX_VALUE))
+    );
+    jPanel18Layout.setVerticalGroup(
+        jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel18Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
 
-        btnAgregarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAgregarTranspR.setText(">");
-        btnAgregarTranspR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTranspRActionPerformed(evt);
-            }
-        });
+    jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        btnQuitarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnQuitarTranspR.setText("<");
-        btnQuitarTranspR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitarTranspRActionPerformed(evt);
-            }
-        });
+    cmbTranspRep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
 
-        jScrollPane1.setViewportView(lstTransportista);
+    btnAgregarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnAgregarTranspR.setText(">");
+    btnAgregarTranspR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAgregarTranspRActionPerformed(evt);
+        }
+    });
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                        .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregarTranspR))
-                    .addComponent(btnQuitarTranspR, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(btnQuitarTranspR))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAgregarTranspR))
-                                .addGap(62, 62, 62)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+    btnQuitarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnQuitarTranspR.setText("<");
+    btnQuitarTranspR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnQuitarTranspRActionPerformed(evt);
+        }
+    });
 
-        btnBuscarReparacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnBuscarReparacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        btnBuscarReparacion.setText("Buscar");
-        btnBuscarReparacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarReparacionActionPerformed(evt);
-            }
-        });
+    tblTransportista.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
 
-        jLabel25.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel25.setText("Detalle de Reparaciones");
+        },
+        new String [] {
+            "Transportista"
+        }
+    ));
+    jScrollPane2.setViewportView(tblTransportista);
 
-        tblReparacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+    javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+    jPanel21.setLayout(jPanel21Layout);
+    jPanel21Layout.setHorizontalGroup(
+        jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel21Layout.createSequentialGroup()
+            .addGap(0, 10, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                    .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnAgregarTranspR))
+                .addComponent(btnQuitarTranspR, javax.swing.GroupLayout.Alignment.TRAILING))
+            .addGap(18, 18, 18)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25))
+    );
+    jPanel21Layout.setVerticalGroup(
+        jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel21Layout.createSequentialGroup()
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 20, Short.MAX_VALUE))
+        .addGroup(jPanel21Layout.createSequentialGroup()
+            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGap(29, 29, 29)
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarTranspR)))
+                .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGap(65, 65, 65)
+                    .addComponent(btnQuitarTranspR)))
+            .addContainerGap())
+    );
 
-            },
-            new String [] {
-                "Fecha", "Orden N°", "Transportista", "Importe Total"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+    btnBuscarReparacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnBuscarReparacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+    btnBuscarReparacion.setText("Buscar");
+    btnBuscarReparacion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBuscarReparacionActionPerformed(evt);
+        }
+    });
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblReparacion.getTableHeader().setResizingAllowed(false);
-        tblReparacion.getTableHeader().setReorderingAllowed(false);
-        jScrollPane6.setViewportView(tblReparacion);
+    jLabel25.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+    jLabel25.setText("Detalle de Reparaciones");
 
-        btnVerOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnVerOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
-        btnVerOrden.setText("Ver Orden");
+    tblReparacion.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
 
-        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
+        },
+        new String [] {
+            "Fecha", "Orden N°", "Transportista", "Importe Total"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false
+        };
 
-        btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarTodosRActionPerformed(evt);
-            }
-        });
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
+    tblReparacion.getTableHeader().setResizingAllowed(false);
+    tblReparacion.getTableHeader().setReorderingAllowed(false);
+    jScrollPane6.setViewportView(tblReparacion);
 
-        btnQuitarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnQuitarTodosR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitarTodosRActionPerformed(evt);
-            }
-        });
+    btnVerOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnVerOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
+    btnVerOrden.setText("Ver Orden");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(207, 207, 207)
-                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jLabel28)
-                                                .addGap(75, 75, 75)
-                                                .addComponent(ckFechaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(47, 47, 47)
-                                                .addComponent(ckOrdenRep)
-                                                .addGap(61, 61, 61)
-                                                .addComponent(ckTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(ckImporteRep))
-                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(431, 431, 431)
-                                        .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel25)
-                .addGap(402, 402, 402))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 33, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28)
-                            .addComponent(ckFechaRep)
-                            .addComponent(ckOrdenRep)
-                            .addComponent(ckTranspRep)
-                            .addComponent(ckImporteRep)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(175, 175, 175))
-        );
+    btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+    btnSalir.setText("Salir");
+    btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnSalirActionPerformed(evt);
+        }
+    });
 
-        pack();
+    btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+    btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAceptarTodosRActionPerformed(evt);
+        }
+    });
+
+    btnQuitarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+    btnQuitarTodosR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnQuitarTodosRActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(184, 184, 184)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(208, 208, 208)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(ckFechaRep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ckOrdenRep)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ckTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ckImporteRep)))))
+                    .addGap(0, 15, Short.MAX_VALUE)))
+            .addContainerGap())
+        .addGroup(layout.createSequentialGroup()
+            .addGap(465, 465, 465)
+            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel25)
+            .addGap(368, 368, 368))
+        .addGroup(layout.createSequentialGroup()
+            .addGap(397, 397, 397)
+            .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(6, 6, 6)
+            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(btnAceptarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQuitarTodosR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(43, 43, 43))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(ckFechaRep)
+                                    .addComponent(ckOrdenRep)
+                                    .addComponent(ckTranspRep)
+                                    .addComponent(ckImporteRep))
+                                .addComponent(jLabel28))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(29, 29, 29)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel25)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(8, 8, 8)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(407, 407, 407))
+    );
+
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -487,13 +544,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspRActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
-        modelo.addElement(cmbTranspRep.getSelectedItem());
+        DefaultTableModel modelo = (DefaultTableModel) tblTransportista.getModel();
+        Object fila[]={cmbTranspRep.getSelectedItem()};
+        modelo.addRow(fila);
+        tblTransportista.setModel(modelo);
     }//GEN-LAST:event_btnAgregarTranspRActionPerformed
 
     private void btnQuitarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspRActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
-        modelo.remove(lstTransportista.getSelectedIndex());
+        DefaultTableModel modelo = (DefaultTableModel) tblTransportista.getModel();
+        int fila = tblTransportista.getSelectedRow();
+        modelo.removeRow(fila);
+        tblTransportista.setModel(modelo);
     }//GEN-LAST:event_btnQuitarTranspRActionPerformed
 
     private void btnAceptarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosRActionPerformed
@@ -523,31 +584,39 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
     private void btnBuscarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReparacionActionPerformed
-        String numeroOrden = null;
-        String importeTotal = null;        
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha1 = sdf.parse(calendarioDRep.getText(), new ParsePosition(0));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+        Date fecha1=sdf.parse(calendarioDRep.getText(), new ParsePosition(0));
+        System.out.println(fecha1);
         Date fecha3 = sdf.parse(calendarioHRep.getText(), new ParsePosition(0));
-        numeroOrden = txtOrdenRep.getText();
-        importeTotal = txtImporteRep.getText();
+        System.out.println(fecha3);
         DefaultTableModel modeloT = (DefaultTableModel) tblReparacion.getModel();
-        DefaultTableModel modeloLista = (DefaultTableModel) lstTransportista.getModel();
+
         
-         if(fecha1.before(fecha3)){
+         if(fecha1.before(fecha3)|| calendarioDRep.isEnabled()==false || fecha1.equals(fecha3)){
              
          //Seleccion FECHA    
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()== 0){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
+         String numeroOrden = txtOrdenRep.getText();
+         String importeTotal = txtImporteRep.getText();
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   //comparo el rango de fechas
-                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) {
                   //Guardo el objeto orden en la tabla
                   gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -555,7 +624,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }        
         }
          //Seleccion NRO ORDEN
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()== 0){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -574,7 +643,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }        
         }
          //Seleccion TRANSPORTISTA
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -584,9 +653,9 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -596,7 +665,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden  
          
          //Seleccion IMPORTE
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden==null && importeTotal!=null && modeloLista.getRowCount()== 0){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -632,19 +701,24 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre If Numero Orden Orden
          
          //Seleccion FECHA Y NRO ORDEN
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()== 0){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int nroOrden = orden.getNumeroOrden();
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   //comparo el rango de fechas
-                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) && (Integer.parseInt(numeroOrden) == nroOrden)) {
+                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (Integer.parseInt(txtOrdenRep.getText()) == nroOrden) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                   //Guardo el objeto orden en la tabla
                   gestorC.cargarTabla(tblReparacion, orden, carga);
                   } //Cierre If carga
@@ -653,19 +727,25 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
          
          //Seleccion FECHA, TRANSPORTISTA
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden==null && importeTotal==null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -675,33 +755,39 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden  
          
          //Seleccion FECHA E IMPORTE
-          if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()== 0){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled()&& tblTransportista.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                      }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);  
                        }
@@ -709,10 +795,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              }//Cierre While Carga
          }//Cierre while orden        
         }//Cierre if orden
-         
+        
          //Seleccion NRO ORDEN E IMPORTE
-          if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()== 0){
-        Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
+         String numeroOrden = txtOrdenRep.getText();
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
@@ -747,7 +834,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
           
           //Seleccion NRO ORDEN Y TRANSPORTISTA
-        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()!= 0){
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -757,9 +844,9 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -767,9 +854,9 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                     }//Cierre Wile Carga
                 } //Cierre While Orden
              } //Cierre If Orden 
-          
+         
         //Seleccion IMPORTE Y TRANSPORTISTA
-        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -779,27 +866,27 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -810,34 +897,40 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
         
         //Seleccion FECHA NRO ORDEN IMPORTE
-        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()== 0){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int nroOrden = orden.getNumeroOrden();
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                      }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);  
                        }
@@ -847,20 +940,27 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
         
         //Seleccion FECHA NRO ORDEN TRANSPORTISTA
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden!=null && importeTotal==null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   EnvioTaller carga = (EnvioTaller) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -870,38 +970,44 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden 
              
          //Seleccion FECHA TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden == null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) &&  (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))) )) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -912,7 +1018,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden 
          
          //Seleccion NRO ORDEN TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -923,27 +1029,27 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -954,39 +1060,45 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden 
          
         //Seleccion FECHA ORDEN TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && numeroOrden != null && importeTotal!=null && modeloLista.getRowCount()!= 0){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
              int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
              Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) &&(fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteRep.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -994,9 +1106,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   } //Cierre If carga
              }//Cierre While Carga
          }//Cierre while orden        
-        }//Cierre if orden 
-         
-         
+        }//Cierre if orden         
          
          }else {
          JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
@@ -1033,13 +1143,13 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JList lstTransportista;
     private javax.swing.JTable tblReparacion;
+    private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtFechaRep;
     private javax.swing.JTextField txtHoraRep;
     private javax.swing.JTextField txtImporteRep;

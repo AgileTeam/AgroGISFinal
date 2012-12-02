@@ -58,15 +58,12 @@ public class gestorRegistrarEnvioAlTaller extends GestorHibernate {
        Iterator ite = this.listarClase(EnvioTaller.class).iterator();
        while(ite.hasNext()){
            EnvioTaller envio=(EnvioTaller) ite.next();
-           Iterator ite1 = this.listarClase(DetalleReparacion.class).iterator();
-            while(ite1.hasNext()){
-                DetalleReparacion detalle = (DetalleReparacion) ite.next();
-                if((detalle.getEnvioTaller()== envio)&&(detalle.getOrden()== (OrdenServicio)seleccion)){
+          if(envio.getOrdenServicio().equals(seleccion)){
                     taller=envio.getTaller().toString();
                 }
             }
            
-           }
+           
        return taller;
        }
     
@@ -75,16 +72,25 @@ public class gestorRegistrarEnvioAlTaller extends GestorHibernate {
        Iterator ite = this.listarClase(EnvioTaller.class).iterator();
        while(ite.hasNext()){
            EnvioTaller envio=(EnvioTaller) ite.next();
-           Iterator ite1 = this.listarClase(DetalleReparacion.class).iterator();
-            while(ite1.hasNext()){
-                DetalleReparacion detalle = (DetalleReparacion) ite.next();
-                if((detalle.getEnvioTaller()== envio)&&(detalle.getOrden()== (OrdenServicio)seleccion)){
+                if(envio.getOrdenServicio().equals(seleccion)){
                     especialidad=envio.getTaller().getEspecialidad().toString();
                 }
             }
            
-           }
+           
        return especialidad;
        }
+       
+       public DefaultComboBoxModel rellenaComboReparaciones(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(ArregloEfectuado.class).iterator();
+       while(ite.hasNext()){
+           ArregloEfectuado arreglo =(ArregloEfectuado) ite.next();
+               modelo.addElement(arreglo);
+               
+           }
+
+       return modelo;
+   }
       
 }

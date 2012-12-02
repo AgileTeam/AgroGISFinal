@@ -25,7 +25,6 @@ import javax.swing.table.DefaultTableModel;
 */
 public class frmRegistrarEnvioTaller extends javax.swing.JInternalFrame {
 gestorRegistrarEnvioAlTaller gRegistro = new gestorRegistrarEnvioAlTaller();
-Double total;
 GestorHibernate gestorH = new GestorHibernate();
     /**
 * Creates new form frmRegistrarEnvioTaller
@@ -78,6 +77,7 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+        cmbReparacion.setModel(gRegistro.rellenaComboReparaciones());
         
         cmbOrden.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
@@ -474,6 +474,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      Double total=0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
       Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
       modeloT.addRow(fila);
@@ -485,6 +486,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed
+       Double total=0.0;
        DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
        modeloT.removeRow(tblDetalleRep.getSelectedRow());
        for(int i=0; i<modeloT.getRowCount(); i++){
@@ -510,19 +512,28 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
       DefaultTableModel modelo = (DefaultTableModel) tblDetalleRep.getModel();
-      EnvioTaller envio = new EnvioTaller();
-      envio.setFecha(modelo.getValueAt(0,0).toString());
-      envio.setResponsable(txtResponsable.getText());
-      envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
-      envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
-      gestorH.guardarObjeto(envio);
-      for(int i=0; i<modelo.getRowCount(); i++){
-            DetalleEnvio detalle = new DetalleEnvio();
-            detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
-            detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
-            detalle.setEnvio(envio);
-            gestorH.guardarObjeto(detalle);
+      Iterator ite = gestorH.listarClase(EnvioTaller.class).iterator();
+      while(ite.hasNext()){
+          EnvioTaller envio = (EnvioTaller)ite.next();
+          if(envio.getOrdenServicio().equals(cmbOrden.getSelectedItem())){
+              envio.setFecha(modelo.getValueAt(0,0).toString());
+              envio.setResponsable(txtResponsable.getText());
+              envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
+              envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
+              gestorH.actualizarObjeto(envio);
+              for(int i=0; i<modelo.getRowCount(); i++){
+                   DetalleEnvio detalle = new DetalleEnvio();
+                   detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
+                   detalle.setPrecio(Double.parseDouble(modelo.getValueAt(i,4).toString()));
+                   detalle.setEnvio(envio);
+                   gestorH.guardarObjeto(detalle);
       }
+          
+          }
+      
+      }
+      
+      
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
