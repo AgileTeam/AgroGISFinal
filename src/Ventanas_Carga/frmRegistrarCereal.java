@@ -129,6 +129,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCaracteristica = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
+        btnEliminarLocal = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
 
@@ -309,6 +310,15 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         jPanel3.add(btnAgregar);
         btnAgregar.setBounds(280, 70, 100, 30);
 
+        btnEliminarLocal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarLocalActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEliminarLocal);
+        btnEliminarLocal.setBounds(640, 150, 40, 30);
+
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -333,9 +343,9 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,14 +374,14 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
@@ -405,10 +415,16 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
        tblCaracteristica.setModel(modeloT);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnEliminarLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLocalActionPerformed
+        DefaultTableModel modeloT = (DefaultTableModel) tblCaracteristica.getModel();
+        modeloT.removeRow(tblCaracteristica.getSelectedRow());
+    }//GEN-LAST:event_btnEliminarLocalActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaCereal;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminarLocal;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JComboBox cmbCaracteristica;

@@ -469,7 +469,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_txtImporteTotalActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
@@ -518,6 +518,8 @@ GestorHibernate gestorH = new GestorHibernate();
       while(ite.hasNext()){
           EnvioTaller envio = (EnvioTaller)ite.next();
           if(envio.getOrdenServicio().equals(cmbOrden.getSelectedItem())){
+              OrdenServicio orden = envio.getOrdenServicio();
+              orden.setEstado("Utilizada");
               envio.setFecha(modelo.getValueAt(0,0).toString());
               envio.setResponsable(txtResponsable.getText());
               envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
@@ -534,7 +536,7 @@ GestorHibernate gestorH = new GestorHibernate();
           }
       
       }
-      
+      JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
