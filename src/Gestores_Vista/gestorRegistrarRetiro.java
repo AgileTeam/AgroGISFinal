@@ -4,6 +4,7 @@
  */
 package Gestores_Vista;
 
+import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Transporte.Vehiculo;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
@@ -30,4 +31,23 @@ public class gestorRegistrarRetiro extends GestorHibernate {
        tabla.setModel(modeloT);
        return tabla;
    }
+       
+       public int buscarObjeto(JTable tabla, SolicitudRetiro sol ){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       int bandera = 0;
+       for(int i=0; i<modelo.getRowCount(); i++){
+           if(sol.getNumeroSolicitud() == tabla.getValueAt(i, 0)){
+               bandera=1;
+           }
+       }
+       return bandera;
+   }
+       
+        public void cargarTabla(JTable tabla, SolicitudRetiro solicitud){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       Object fila[]={solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
+       modelo.addRow(fila);
+       tabla.setModel(modelo);
+   
+   } 
 }

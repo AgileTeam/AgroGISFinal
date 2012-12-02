@@ -18,12 +18,15 @@ import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorFecha;
 import Gestores_Vista.gestorRegistrarRetiro;
 import Hibernate.GestorHibernate;
+import bsh.ParseException;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -38,6 +41,7 @@ import sun.swing.table.DefaultTableCellHeaderRenderer;
  */
 public class frmRegistrarRetiroCereal extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
     /** Creates new form frmRegistrarRetiroCereal */
     public frmRegistrarRetiroCereal() {
         initComponents();      
@@ -473,6 +477,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         }
         gestorH.guardarObjeto(retiro);
+        JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarSolicitud1ActionPerformed
@@ -529,90 +534,146 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnAceptarSolicitud1ActionPerformed
 
     private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
         Date fecha1 = sdf.parse(calendarioDSolicitud.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHSolicitud.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblSolicitud.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDSolicitud.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
-                    if ((fecha2.after(fecha1)) && (fecha1.before(fecha3)) && solicitud.getEstado()=="Pendiente") {
-                            //Guardo el objeto solicitud en la tabla
-                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
-                            modeloT.addRow(fila);
-                            tblSolicitud.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
         
-         //Verifico que este seleccionada la opcion de fnumero de solicitud
-        if (txtNumSolicitud.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
-                    if (Long.parseLong(txtNumSolicitud.getText())== solicitud.getNumeroSolicitud() && solicitud.getEstado()=="Pendiente") {
-                            //Guardo el objeto solicitud en la tabla
-                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
-                            modeloT.addRow(fila);
-                            tblSolicitud.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+        if(fecha1.before(fecha3)|| calendarioDSolicitud.isEnabled()==false || fecha1.equals(fecha3)){
         
-         //Verifico que este seleccionada la opcion de productor
-        if (cmbProductor.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (solicitud.getNumeroSolicitud() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
+        //Consulta por FECHA
+         if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled()==false && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(solicitud.getFechaSolicitud(), new ParsePosition(0));
-                    if (Long.parseLong(cmbProductor.getSelectedItem().toString()) == solicitud.getNumeroSolicitud() && solicitud.getEstado()=="Pendiente") {
-                            //Guardo el objeto solicitud en la tabla
-                            Object fila[] = {solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
-                            modeloT.addRow(fila);
-                            tblSolicitud.setModel(modeloT);
-                        }
-                    }
-
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }        
+        
+         //Consulta por NRO SOLICITUD
+         if(calendarioDSolicitud.isEnabled()==false && calendarioHSolicitud.isEnabled()==false && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }  
+       
+           //Consulta por PRODUCTOR
+         if(calendarioDSolicitud.isEnabled()==false && calendarioHSolicitud.isEnabled()==false && txtNumSolicitud.isEnabled()==false && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }  
+         
+           //Consulta por FECHA NRO SOLICITUD
+         if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }  
+         //Consulta por FECHA PRODUCTOR
+           if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }  
+           
+         //Consulta por PRODUCTOR NRO SOLICITUD  
+         if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }    
+         
+           //Consulta por FECHA PRODUCTOR NRO SOLICITUD
+           if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+             int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) && solicitud.getNumeroSolicitud()==Long.parseLong(txtNumSolicitud.getText())) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         } 
+        }else{JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");}
     }//GEN-LAST:event_btnBuscarSolicitudActionPerformed
 
     private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed

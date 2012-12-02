@@ -12,6 +12,7 @@ import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorConsultaReparaciones;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
+import ireport.GestorDeReportes;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -393,6 +394,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     btnVerOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
     btnVerOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
     btnVerOrden.setText("Ver Orden");
+    btnVerOrden.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnVerOrdenActionPerformed(evt);
+        }
+    });
 
     btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
     btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -465,7 +471,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                                     .addComponent(ckTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(ckImporteRep)))))
-                    .addGap(0, 15, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
         .addGroup(layout.createSequentialGroup()
             .addGap(465, 465, 465)
@@ -587,9 +593,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
         Date fecha1=sdf.parse(calendarioDRep.getText(), new ParsePosition(0));
-        System.out.println(fecha1);
         Date fecha3 = sdf.parse(calendarioHRep.getText(), new ParsePosition(0));
-        System.out.println(fecha3);
         DefaultTableModel modeloT = (DefaultTableModel) tblReparacion.getModel();
 
         
@@ -1113,6 +1117,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }
  
     }//GEN-LAST:event_btnBuscarReparacionActionPerformed
+
+    private void btnVerOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerOrdenActionPerformed
+    DefaultTableModel modelo = (DefaultTableModel) tblReparacion.getModel();
+    int fila = tblReparacion.getSelectedRow();
+    int nroOrden = Integer.parseInt(tblReparacion.getValueAt(fila, 1).toString());
+        
+    String arc="C:/listadoCliente.jasper";
+    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+    gestorC.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", nroOrden);
+    gestorReportes.imprimir();
+    }//GEN-LAST:event_btnVerOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodosR;
