@@ -32,7 +32,7 @@ private Especialidad especialidad;
     private String email;
     private int numeroTelefono;
     private String razonSocial;
-    
+    private String cuit;
     /**
      * @return the condicionIva
      */
@@ -135,6 +135,20 @@ private Especialidad especialidad;
   public String toString(){
       return getRazonSocial();
   }
+
+    /**
+     * @return the cuit
+     */
+    public String getCuit() {
+        return cuit;
+    }
+
+    /**
+     * @param cuit the cuit to set
+     */
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
     
   
 }

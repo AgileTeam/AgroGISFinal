@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +36,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarEstacionServicio extends javax.swing.JInternalFrame {
 gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio();
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
@@ -294,6 +296,11 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnNuevo.setText("Agregar");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -471,19 +478,27 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnEliminarEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstacionActionPerformed
+    int fila = tblEstacion.getSelectedRow();
+    Iterator ite = gestorH.listarClase(EstacionDeServicio.class).iterator();
+    while(ite.hasNext()){
+        EstacionDeServicio estacion = (EstacionDeServicio) ite.next();
+        if(estacion.getRazonSocial().equalsIgnoreCase(tblEstacion.getValueAt(fila, 0).toString())){
+            gestorH.eliminarObjeto(estacion);
+        }
+    }
     DefaultTableModel modeloTabla = (DefaultTableModel) tblEstacion.getModel();
     modeloTabla.removeRow(tblEstacion.getSelectedRow());
 }//GEN-LAST:event_btnEliminarEstacionActionPerformed
 
 private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
@@ -532,6 +547,10 @@ private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_txtTelefonoKeyTyped
 
 private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstacionActionPerformed
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+}//GEN-LAST:event_btnGuardarEstacionActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
     GestorHibernate gestorH = new GestorHibernate();
     EstacionDeServicio estacion = new EstacionDeServicio();
     estacion.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
@@ -551,7 +570,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblEstacion.setModel(modeloTabla);
-}//GEN-LAST:event_btnGuardarEstacionActionPerformed
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarEstacion;

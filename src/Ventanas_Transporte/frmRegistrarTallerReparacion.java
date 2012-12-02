@@ -4,10 +4,16 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.*;
+import Gestores_Vista.gestorRegistrarTaller;
+import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -15,13 +21,17 @@ import javax.swing.JOptionPane;
  * @author Carolina
  */
 public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
-
+gestorRegistrarTaller gestorT = new gestorRegistrarTaller();
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmRegistrarTallerReparacion
      */
     public frmRegistrarTallerReparacion() {
         initComponents();
         
+        cmbProvincia.setModel(gestorT.rellenaCombo());
+        cmbTipoTel.setModel(gestorT.rellenaComboTipoTel());
+        cmbCondicion.setModel(gestorT.rellenaComboCondicionIva());
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -60,6 +70,31 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(290, 30);
         
+        
+        cmbProvincia.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbDepartamento.setModel(gestorT.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+            }
+        });
+        cmbDepartamento.setModel(gestorT.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+
+        //Relleno Localidad de acuerdo al Departamento
+        cmbDepartamento.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbLocalidad.setModel(gestorT.rellenaComboLocalidad(cmbDepartamento.getSelectedItem().toString()));
+            }
+        });
+        cmbLocalidad.setModel(gestorT.rellenaComboLocalidad(cmbDepartamento.getSelectedItem().toString()));
+        //Carga Barrio de acuerdo a Localidad
+        cmbLocalidad.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            cmbBarrio.setModel(gestorT.rellenaComboBarrio(cmbLocalidad.getSelectedItem().toString()));
+        }
+        }
+        );
+         cmbBarrio.setModel(gestorT.rellenaComboBarrio(cmbLocalidad.getSelectedItem().toString()));
         
         
     }
@@ -309,6 +344,11 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         btnNuevoTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevoTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnNuevoTaller.setText("Agregar");
+        btnNuevoTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoTallerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -351,10 +391,20 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblTaller);
 
         btnEliminarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnEliminarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTallerActionPerformed(evt);
+            }
+        });
 
         btnGuardarTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardarTaller.setText("Guardar");
+        btnGuardarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarTallerActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -460,7 +510,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         pack();
@@ -509,11 +559,49 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
+    GestorHibernate gestorH = new GestorHibernate();
+    TallerReparacion taller = new TallerReparacion();
+    taller.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
+    taller.setEmail(txtEmail.getText());
+    taller.setRazonSocial(txtRazonSocial.getText());
+    taller.setNumeroTelefono(Integer.parseInt(txtTelefono.getText()));
+    taller.setCuit(txtCUIT.getText());
+    taller.setTipoTelefono((TipoTelefono) cmbTipoTel.getSelectedItem());
+    Domicilio domicilio = new Domicilio();
+    domicilio.setCalle(txtCalle.getText());
+    domicilio.setNumero(Integer.parseInt(txtNum.getText()));
+    domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
+    taller.setDomicilio(domicilio);
+    gestorH.guardarObjeto(taller);
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblTaller.getModel();
+    Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
+    modeloTabla.addRow(fila);
+    tblTaller.setModel(modeloTabla);
+    }//GEN-LAST:event_btnNuevoTallerActionPerformed
+
+    private void btnEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTallerActionPerformed
+    int fila = tblTaller.getSelectedRow();
+    Iterator ite = gestorH.listarClase(TallerReparacion.class).iterator();
+    while(ite.hasNext()){
+        TallerReparacion taller = (TallerReparacion) ite.next();
+        if(taller.getRazonSocial().equalsIgnoreCase(tblTaller.getValueAt(fila, 0).toString())){
+            gestorH.eliminarObjeto(taller);
+        }
+    }
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblTaller.getModel();
+    modeloTabla.removeRow(tblTaller.getSelectedRow());
+    }//GEN-LAST:event_btnEliminarTallerActionPerformed
+
+    private void btnGuardarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarTallerActionPerformed
+     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+    }//GEN-LAST:event_btnGuardarTallerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarTaller;
