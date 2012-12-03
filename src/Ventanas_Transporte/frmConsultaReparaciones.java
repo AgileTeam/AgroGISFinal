@@ -38,7 +38,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
      */
     public frmConsultaReparaciones() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelUsuario);
         txtHoraRep.setEnabled(false);
         txtHoraRep.setEditable(false);
         txtFechaRep.setEditable(false);
@@ -106,7 +106,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         jPanel17 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         txtHoraRep = new javax.swing.JTextField();
         txtFechaRep = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -161,10 +161,10 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         jPanel17.add(jLabel22);
         jLabel22.setBounds(200, 10, 50, 20);
 
-        jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel23.setText("Usuario");
-        jPanel17.add(jLabel23);
-        jLabel23.setBounds(760, 10, 50, 15);
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUsuario.setText("Usuario");
+        jPanel17.add(labelUsuario);
+        labelUsuario.setBounds(760, 10, 50, 15);
         jPanel17.add(txtHoraRep);
         txtHoraRep.setBounds(230, 10, 80, 20);
         jPanel17.add(txtFechaRep);
@@ -517,7 +517,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                 .addGroup(layout.createSequentialGroup()
                     .addGap(80, 80, 80)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(45, Short.MAX_VALUE))
     );
 
     pack();
@@ -1130,7 +1130,6 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     private javax.swing.JComboBox cmbTranspRep;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1145,6 +1144,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTable tblReparacion;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtFechaRep;

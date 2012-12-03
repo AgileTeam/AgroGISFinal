@@ -4,8 +4,11 @@
  */
 
 package Hibernate;
+import Clases_Modulo_Seguridad.Usuario;
 import java.awt.Component;
+import java.util.Iterator;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -50,7 +53,17 @@ private Transaction tx;
      * Actualiza un objeto en el repositorio
      * @param objeto Objeto a actualizar
      */
-
+   public void actualizarUsuario(JLabel label){
+       Iterator ite = this.listarClase(Usuario.class).iterator();
+       while(ite.hasNext()){
+           Usuario u = (Usuario) ite.next();
+           if(u.isEstado()==true){
+               label.setText(u.getNombreUsuario());
+           }
+       }
+   
+   }
+ 
     public void actualizarObjeto(Object objeto){
         try{
             Session s = HibernateUtil.getSession();

@@ -26,12 +26,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Charito
  */
 public class frmRegistrarSilo extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarSilo */
     public frmRegistrarSilo() {
         
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -104,7 +104,7 @@ public class frmRegistrarSilo extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -219,10 +219,10 @@ public class frmRegistrarSilo extends javax.swing.JInternalFrame {
         jPanel2.add(txtHora);
         txtHora.setBounds(230, 10, 70, 20);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Usuario");
-        jPanel2.add(jLabel11);
-        jLabel11.setBounds(380, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel2.add(labelusuario);
+        labelusuario.setBounds(380, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel2.add(jLabel12);
@@ -412,7 +412,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -430,6 +429,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblSilo;
     private javax.swing.JTextField txtAlto;
     private javax.swing.JTextField txtCapacidad;

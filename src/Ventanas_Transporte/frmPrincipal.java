@@ -27,7 +27,9 @@ import Ventanas_Seguridad.frmPrueba;
 import Ventanas_Seguridad.frmRegistrarUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.Iterator;
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 
 
@@ -48,7 +50,17 @@ GestorHibernate gestorH = new GestorHibernate();
    
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados);
-        
+        Iterator ite = gestorH.listarClase(Usuario.class).iterator();
+        while(ite.hasNext()){
+            Usuario u = (Usuario) ite.next();
+            if(u.isEstado()==true){
+                labelUsuario.setText(u.getNombreUsuario());
+                String path = "/Imagenes/UsuarioLogueado.png";  
+                URL url = this.getClass().getResource(path);  
+                ImageIcon icon = new ImageIcon(url); 
+                labelImagenUsuario.setIcon(icon);
+            }
+        }
 //        this.setExtendedState(this.MAXIMIZED_BOTH);
         
     
@@ -74,8 +86,8 @@ GestorHibernate gestorH = new GestorHibernate();
         Escritorio = new javax.swing.JDesktopPane();
         Calendario = new datechooser.beans.DateChooserCombo();
         pnlUsuarioLogin = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelImagenUsuario = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         labelPrincipal = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         MenuPrincipal = new javax.swing.JMenuBar();
@@ -169,30 +181,29 @@ GestorHibernate gestorH = new GestorHibernate();
         pnlUsuarioLogin.setBackground(new java.awt.Color(204, 204, 204));
         pnlUsuarioLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        labelImagenUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioNoLogueado.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Usuario");
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout pnlUsuarioLoginLayout = new javax.swing.GroupLayout(pnlUsuarioLogin);
         pnlUsuarioLogin.setLayout(pnlUsuarioLoginLayout);
         pnlUsuarioLoginLayout.setHorizontalGroup(
             pnlUsuarioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlUsuarioLoginLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(332, 332, 332))
+                .addGap(49, 49, 49)
+                .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelImagenUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(301, 301, 301))
         );
         pnlUsuarioLoginLayout.setVerticalGroup(
             pnlUsuarioLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUsuarioLoginLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelImagenUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 8, Short.MAX_VALUE))
             .addGroup(pnlUsuarioLoginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -853,6 +864,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         frmIniciarSesion sesion= new frmIniciarSesion();
         this.Escritorio.add(sesion);
         sesion.setVisible(true);
+        
     }//GEN-LAST:event_MenuInicioSesionActionPerformed
 
     private void MenuCierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCierreSesionActionPerformed
@@ -975,8 +987,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem itemConsultarProd;
     private javax.swing.JMenuItem itemNuevoLote;
     private javax.swing.JMenuItem itemSolicitud;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -984,7 +994,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JLabel labelImagenUsuario;
     private javax.swing.JLabel labelPrincipal;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JMenu menuConsultar;
     private javax.swing.JMenu menuNuevoViaje;
     private javax.swing.JPanel pnlUsuarioLogin;

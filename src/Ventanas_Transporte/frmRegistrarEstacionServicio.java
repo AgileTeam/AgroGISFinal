@@ -40,6 +40,7 @@ GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
+        gestorH.actualizarUsuario(labelUsuario);
         
         cmbProvincia.setModel(gEstacion.rellenaCombo());
         cmbTipoTel.setModel(gEstacion.rellenaComboTipoTel());
@@ -150,7 +151,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -336,10 +337,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3.add(jLabel15);
         jLabel15.setBounds(210, 10, 40, 20);
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel16.setText("Usuario");
-        jPanel3.add(jLabel16);
-        jLabel16.setBounds(500, 10, 50, 15);
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUsuario.setText("Usuario");
+        jPanel3.add(labelUsuario);
+        labelUsuario.setBounds(500, 10, 50, 15);
         jPanel3.add(txtFecha);
         txtFecha.setBounds(60, 10, 102, 20);
         jPanel3.add(txtHora);
@@ -478,7 +479,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -591,7 +592,6 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -610,6 +610,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTable tblEstacion;
     private javax.swing.JTextField txtCUIT;
     private javax.swing.JTextField txtCalle;

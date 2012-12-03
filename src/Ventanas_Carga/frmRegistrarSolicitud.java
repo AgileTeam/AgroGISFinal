@@ -38,7 +38,7 @@ GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmRegistrarSolicitud */
     public frmRegistrarSolicitud() {
         initComponents();
-       
+        gestorH.actualizarUsuario(labelusuario);
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -122,7 +122,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtFecha = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -190,10 +190,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3.add(txtHora);
         txtHora.setBounds(230, 10, 80, 20);
 
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel18.setText("Usuario");
-        jPanel3.add(jLabel18);
-        jLabel18.setBounds(560, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel3.add(labelusuario);
+        labelusuario.setBounds(560, 10, 50, 15);
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel19);
@@ -449,7 +449,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -511,7 +511,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -527,6 +526,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JPanel panelEstablecimiento;
     private javax.swing.JPanel panelPlanta;
     private javax.swing.JTable tblProductor1;

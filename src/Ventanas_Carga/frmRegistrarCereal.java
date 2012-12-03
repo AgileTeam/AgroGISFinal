@@ -34,6 +34,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
     public frmRegistrarCereal() {
         initComponents();
         gestorRegistrarCereal gRegistroCereal = new gestorRegistrarCereal();
+        gestorH.actualizarUsuario(labelusuario);
         
         cmbMesInicioSiembra.setModel(gRegistroCereal.rellenaComboMes());
         cmbMesFinSiembra.setModel(gRegistroCereal.rellenaComboMes());
@@ -97,7 +98,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -169,10 +170,10 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         jPanel4.add(jLabel11);
         jLabel11.setBounds(190, 10, 50, 20);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel12.setText("Usuario");
-        jPanel4.add(jLabel12);
-        jLabel12.setBounds(560, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel4.add(labelusuario);
+        labelusuario.setBounds(560, 10, 50, 15);
         jPanel4.add(txtFecha);
         txtFecha.setBounds(50, 10, 80, 20);
         jPanel4.add(txtHora);
@@ -374,7 +375,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -435,7 +436,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -455,6 +455,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCosecha;
     private javax.swing.JLabel labelSiembra;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;

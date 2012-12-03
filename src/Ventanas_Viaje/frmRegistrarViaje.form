@@ -57,7 +57,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="358" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="362" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="labelusuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>

@@ -47,6 +47,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     
     public frmRegistroTransportista() {
         initComponents();    
+        gBarrio.actualizarUsuario(labelusuario);
         cmbPais.setModel(gPais.getComboModelPais());
         cmbMarcaCamion.setModel(gRegistro.rellenaComboMarca());
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
@@ -163,7 +164,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelTransportista = new javax.swing.JPanel();
@@ -303,8 +304,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
 
         panelTransportista.setLayout(null);
 
@@ -1102,7 +1103,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(labelusuario)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1119,7 +1120,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(labelusuario)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1658,7 +1659,6 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1703,6 +1703,7 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JPanel panelTransportista;
     private javax.swing.JPanel panelVehiculo;
     private javax.swing.JPanel pnlAcoplado;

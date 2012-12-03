@@ -36,6 +36,7 @@ public class frmRegistrarPais extends javax.swing.JInternalFrame {
     /** Creates new form frmRegistrarPais */
     public frmRegistrarPais() {
         initComponents();
+        gestorH.actualizarUsuario(labelUsuario);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -106,7 +107,7 @@ public class frmRegistrarPais extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JButton();
@@ -212,10 +213,10 @@ public class frmRegistrarPais extends javax.swing.JInternalFrame {
         jPanel3.add(txtHora);
         txtHora.setBounds(210, 10, 70, 20);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Usuario");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(330, 10, 50, 15);
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUsuario.setText("Usuario");
+        jPanel3.add(labelUsuario);
+        labelUsuario.setBounds(330, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel12);
@@ -297,7 +298,7 @@ public class frmRegistrarPais extends javax.swing.JInternalFrame {
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -386,7 +387,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -394,6 +394,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTable tblPais;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;

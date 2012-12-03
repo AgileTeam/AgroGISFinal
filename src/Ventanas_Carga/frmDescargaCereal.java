@@ -38,6 +38,7 @@ GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmDescargaCereal */
     public frmDescargaCereal() {
         initComponents();
+        gestorH.actualizarUsuario(labelusuario);
         
         gestorD.rellenaTablaProductor(tblEstablecimiento);
 
@@ -100,7 +101,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -163,10 +164,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3.add(txtHora);
         txtHora.setBounds(210, 10, 100, 20);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Usuario");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(550, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel3.add(labelusuario);
+        labelusuario.setBounds(550, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel12);
@@ -422,7 +423,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -491,7 +492,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JComboBox cmbSilo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -515,6 +515,7 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTextField txtDominio;

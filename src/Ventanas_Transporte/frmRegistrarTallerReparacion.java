@@ -28,7 +28,7 @@ GestorHibernate gestorH = new GestorHibernate();
      */
     public frmRegistrarTallerReparacion() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
         cmbProvincia.setModel(gestorT.rellenaCombo());
         cmbTipoTel.setModel(gestorT.rellenaComboTipoTel());
         cmbCondicion.setModel(gestorT.rellenaComboCondicionIva());
@@ -114,7 +114,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -167,8 +167,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
 
@@ -186,7 +186,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(labelusuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
@@ -200,7 +200,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(labelusuario))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel48)
@@ -510,7 +510,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
 
         pack();
@@ -625,7 +625,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
@@ -642,6 +641,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblTaller;
     private javax.swing.JTextField txtCUIT;
     private javax.swing.JTextField txtCalle;

@@ -41,6 +41,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
     long idBarrio;
     public frmRegistrarBarrio() {
         initComponents();   
+        gestorH.actualizarUsuario(labelusuario);
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -148,7 +149,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
@@ -313,10 +314,10 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         jPanel3.add(txtHora);
         txtHora.setBounds(230, 10, 70, 20);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Usuario");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(380, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel3.add(labelusuario);
+        labelusuario.setBounds(380, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel12);
@@ -421,7 +422,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -508,7 +509,6 @@ private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t
     private javax.swing.JComboBox cmbProv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -522,6 +522,7 @@ private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblBarrio;
     private javax.swing.JTextField txtBarrio;
     private javax.swing.JTextField txtFecha;

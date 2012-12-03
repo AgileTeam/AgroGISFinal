@@ -30,7 +30,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
      */
     public frmConsultarAgenda() {
         initComponents();
-       
+        gestorH.actualizarUsuario(labelusuario);
         txtFecha.setEditable(false);
         txtFecha.setEnabled(false);
         txtHora.setEditable(false);
@@ -97,7 +97,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
@@ -193,10 +193,10 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jPanel1.add(txtHora);
         txtHora.setBounds(190, 10, 80, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Carolina");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(900, 0, 50, 40);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Carolina");
+        jPanel1.add(labelusuario);
+        labelusuario.setBounds(900, 0, 50, 40);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
@@ -662,7 +662,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2399, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2403, Short.MAX_VALUE)
         );
 
         pack();
@@ -746,7 +746,6 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -797,6 +796,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane33;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JScrollPane scrollPrincipal;
     private javax.swing.JTable tblCatorce;
     private javax.swing.JTable tblDiecinueve;

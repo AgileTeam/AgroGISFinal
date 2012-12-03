@@ -28,7 +28,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
      */
     public frmRegistrarEnvioMuestra() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -92,7 +92,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
         btnAceptarMuestra = new javax.swing.JButton();
@@ -159,10 +159,10 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jPanel3.add(txtFecha);
         txtFecha.setBounds(50, 10, 70, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(770, 10, 70, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel3.add(labelusuario);
+        labelusuario.setBounds(770, 10, 70, 15);
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel48);
@@ -490,7 +490,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -734,7 +734,6 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -748,6 +747,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblEnvios;
     private javax.swing.JTable tblMuestra;
     private javax.swing.JTextField txtCereal;

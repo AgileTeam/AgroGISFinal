@@ -38,6 +38,7 @@ GestorHibernate gestorH = new GestorHibernate();
      */
     public frmRegistrarViaje() {
         initComponents();
+        gestorH.actualizarUsuario(labelusuario);
         txtFecha.setEditable(false);
         txtFecha.setEnabled(false);
         txtHora.setEditable(false);
@@ -152,7 +153,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel1 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
@@ -233,10 +234,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel2);
         jLabel2.setBounds(155, 10, 51, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Carolina");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(600, 0, 50, 30);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Carolina");
+        jPanel1.add(labelusuario);
+        labelusuario.setBounds(600, 0, 50, 30);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
@@ -555,7 +556,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -725,7 +726,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -746,6 +746,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel labelProvincia;
     private javax.swing.JLabel labelPuerto;
     private javax.swing.JLabel labelToneladasE;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JPanel panelEstablecimiento;
     private javax.swing.JPanel panelPuerto;
     private javax.swing.JScrollPane scpEstablecimiento;

@@ -28,6 +28,8 @@ Double total;
      */
     public frmRegistrarCargaComb() {
         initComponents();
+        gestorH.actualizarUsuario(labelusuario);
+        
         labelUnidades.setVisible(true);
         labelPrecioU.setVisible(true);
         labelLitros.setVisible(false);
@@ -135,7 +137,7 @@ Double total;
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -201,10 +203,10 @@ Double total;
         jPanel1.add(txtHora);
         txtHora.setBounds(230, 20, 80, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Carolina");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(640, 20, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Carolina");
+        jPanel1.add(labelusuario);
+        labelusuario.setBounds(640, 20, 50, 15);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
@@ -450,7 +452,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -591,7 +593,6 @@ Double total;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -606,6 +607,7 @@ Double total;
     private javax.swing.JLabel labelPrecioU;
     private javax.swing.JLabel labelUnidades;
     private javax.swing.JLabel labelmporte;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblDetalleCarga;
     private javax.swing.JTextField txtEstacion;
     private javax.swing.JTextField txtFecha;

@@ -37,6 +37,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
     /** Creates new form frmRegistrarLaboratorio */
     public frmRegistrarLaboratorio() {
         initComponents();
+        gLaboratorio.actualizarUsuario(labelusuario);
         cmbEspecialidad.setModel(gLaboratorio.rellenaComboEspecialidad());
         cmbTipoTel.setModel(gLaboratorio.rellenaComboTipoTelefono());
         cmbProvincia.setModel(gLaboratorio.rellenaComboTipoProvincia());
@@ -121,7 +122,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         txtFecha = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -182,10 +183,10 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jPanel2.add(txtHora);
         txtHora.setBounds(250, 10, 70, 20);
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel13.setText("Usuario");
-        jPanel2.add(jLabel13);
-        jLabel13.setBounds(570, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel2.add(labelusuario);
+        labelusuario.setBounds(570, 10, 50, 15);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel2.add(jLabel14);
@@ -553,7 +554,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -571,6 +571,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblLaboratorio;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtEmail;

@@ -30,7 +30,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
      */
     public frmConsultaConsumo() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
 
         txtHoraCons.setEnabled(false);
         txtHoraCons.setEditable(false);
@@ -99,7 +99,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
         txtHoraCons = new javax.swing.JTextField();
         txtFechaCons = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -157,10 +157,10 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         jPanel3.add(jLabel2);
         jLabel2.setBounds(200, 10, 50, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Usuario");
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(750, 10, 50, 15);
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel3.add(labelusuario);
+        labelusuario.setBounds(750, 10, 50, 15);
         jPanel3.add(txtHoraCons);
         txtHoraCons.setBounds(230, 10, 80, 20);
         jPanel3.add(txtFechaCons);
@@ -488,7 +488,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -1543,7 +1543,6 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1560,6 +1559,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JList lstTransportista;
     private javax.swing.JTable tblConsumo;
     private javax.swing.JTextField txtFechaCons;
