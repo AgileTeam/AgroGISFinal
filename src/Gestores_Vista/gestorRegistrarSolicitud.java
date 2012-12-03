@@ -132,14 +132,15 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             solicitud.setTipoCereal(tipoCereal);
             solicitud.setEstado("Pendiente");
             this.guardarObjeto(solicitud);
-        if(tipoSolicitud.getNombreTipoSolicitud() == "Retiro en Establecimiento"){
+            
+        if(tipoSolicitud.getIdTipoSolicitud()==1){
             EstablecimientoPorSolicitud estab = new EstablecimientoPorSolicitud();
             estab.setEstablecimiento(establecimiento);
             estab.setSolicitud(solicitud);
             estab.setHectareasATrillar(hectareas);
             this.guardarObjeto(estab);
         }
-        if(tipoSolicitud.getNombreTipoSolicitud()== "Retiro en Planta" && tipoOperacion.getNombreTipoOperacion() == "Venta"){
+        if(tipoSolicitud.getIdTipoSolicitud()==2 && tipoOperacion.getNombreTipoOperacion() == "Venta"){
             PuertoPorSolicitud puertosol = new PuertoPorSolicitud();
             puertosol.setPuerto(puerto);
             puertosol.setSilo(silo);

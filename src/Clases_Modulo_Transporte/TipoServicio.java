@@ -43,6 +43,10 @@ private String nombreTipoServicio;
     public void setIdTipoServicio(long idTipoServicio) {
         this.idTipoServicio = idTipoServicio;
     }
+    
+    public String toString(){
+        return nombreTipoServicio;
+    }
 
 
 

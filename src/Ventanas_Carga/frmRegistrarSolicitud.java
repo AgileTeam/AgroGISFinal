@@ -101,11 +101,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         cmbDestino2.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-           gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString());
+           cmbNombre2.setModel(gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString()));
            }
         }
         );
-           gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString());
+          cmbNombre2.setModel(gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString()));
     }
 
     /** This method is called from within the constructor to
@@ -449,7 +449,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -473,7 +473,7 @@ GestorHibernate gestorH = new GestorHibernate();
     Iterator ite=gestorH.listarClase(Productor.class).iterator();
     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
-        if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())){
+        if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
             gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), (Puerto)cmbNombre2.getSelectedItem(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()));
        }
     }

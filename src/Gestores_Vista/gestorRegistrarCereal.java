@@ -41,14 +41,14 @@ public class gestorRegistrarCereal extends GestorHibernate {
     public void guardarCaracteristicas(JTable tabla, JTextField tipoCereal, JLabel cosecha, JLabel siembra, JComboBox mesDesdeCosecha, JComboBox mesHastaCosecha, JComboBox mesDesdeSiembra, JComboBox mesHastaSiembra){
      DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();  
      TipoCereal tipo = new TipoCereal();
+     tipo.setNombreCereal(tipoCereal.getText());
+     this.guardarObjeto(tipo);
         Iterator iterator = this.listarClase(CaracteristicasPorTipoDeCereal.class).iterator();
         if(iterator.hasNext()==false){
             CaracteristicasPorTipoDeCereal caracteristicas = new CaracteristicasPorTipoDeCereal();
             caracteristicas.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(0,0));
             caracteristicas.setValorDesde((Double.parseDouble(modeloTabla.getValueAt(0,1).toString())));
             caracteristicas.setValorHasta((Double.parseDouble(modeloTabla.getValueAt(0,2).toString())));
-            tipo.setNombreCereal(tipoCereal.getText());
-            this.guardarObjeto(tipo);
             caracteristicas.setTipoCereal(tipo);
             this.guardarObjeto(caracteristicas);
             Iterator ite1 = this.listarClase(TipoTemporada.class).iterator();

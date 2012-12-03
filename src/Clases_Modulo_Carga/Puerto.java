@@ -48,4 +48,8 @@ private long idPuerto;
     public void setLocalidad(Localidad localidad) {
         this.localidad = localidad;
     }
+    
+    public String toString(){
+        return nombrePuerto;
+    }
 }

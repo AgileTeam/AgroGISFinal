@@ -90,7 +90,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         btnQuitarTranspR.setEnabled(false);
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
         
-        
+        tblTransportista.setEnabled(false);
         
     }
 
@@ -560,6 +560,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         if (ckTranspRep.isSelected()) {
             btnAgregarTranspR.setEnabled(true);
             btnQuitarTranspR.setEnabled(true);
+            tblTransportista.setEnabled(true);
         }
     }//GEN-LAST:event_btnAceptarTodosRActionPerformed
 
@@ -1106,9 +1107,9 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     int fila = tblReparacion.getSelectedRow();
     int nroOrden = Integer.parseInt(tblReparacion.getValueAt(fila, 1).toString());
         
-    String arc="C:/listadoCliente.jasper";
+    String arc="C:/Reportes AgroGIS/OrdenServicio.jasper";
     GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-    gestorC.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", nroOrden);
+    gestorReportes.setColeccionDeDatos(gestorC.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",nroOrden));
     gestorReportes.imprimir();
     }//GEN-LAST:event_btnVerOrdenActionPerformed
 
