@@ -88,6 +88,8 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
             tblTransportista.setModel(modeloT);
         }
         cmbTalleres.setModel(gestorO.rellenaComboTaller());
+        cmbMotivo.setModel(gestorO.rellenaComboMotivo());
+        
         
         cmbVehiculo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
@@ -152,6 +154,8 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         }
         );
          txtProvincia.setText(gestorO.rellenaTxtProvincia((TallerReparacion)cmbTalleres.getSelectedItem()));
+   
+        
     }
         
     
@@ -198,7 +202,9 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        areaDesperfecto = new javax.swing.JTextArea();
+        areaObservaciones = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        cmbMotivo = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -275,7 +281,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(250, 140, 120, 17);
+        jLabel4.setBounds(250, 140, 120, 20);
         jPanel2.add(jSeparator1);
         jSeparator1.setBounds(40, 170, 600, 10);
         jPanel2.add(txtAnioCompra);
@@ -334,16 +340,24 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jSeparator2.setBounds(30, 130, 630, 10);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel17.setText("Desperfecto");
+        jLabel17.setText("Observaciones");
         jPanel3.add(jLabel17);
-        jLabel17.setBounds(40, 180, 90, 15);
+        jLabel17.setBounds(40, 190, 90, 15);
 
-        areaDesperfecto.setColumns(20);
-        areaDesperfecto.setRows(5);
-        jScrollPane2.setViewportView(areaDesperfecto);
+        areaObservaciones.setColumns(20);
+        areaObservaciones.setRows(3);
+        jScrollPane2.setViewportView(areaObservaciones);
 
         jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(110, 140, 530, 100);
+        jScrollPane2.setBounds(130, 170, 310, 60);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Motivo");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(80, 140, 80, 20);
+
+        jPanel3.add(cmbMotivo);
+        cmbMotivo.setBounds(130, 140, 200, 20);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(10, 300, 690, 250);
@@ -414,7 +428,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -460,6 +474,8 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         orden.setHora(txtHora.getText());
         orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
         orden.setEstado("Pendiente");
+        orden.setMotivo((Motivo)cmbMotivo.getSelectedItem());
+        orden.setObservaciones(areaObservaciones.getText());
         gestorH.guardarObjeto(orden);
         envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
         envio.setOrdenServicio(orden);
@@ -475,10 +491,11 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaDesperfecto;
+    private javax.swing.JTextArea areaObservaciones;
     private javax.swing.JButton btnAgregarTransportista;
     private javax.swing.JButton btnEmitirOrden;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox cmbMotivo;
     private javax.swing.JComboBox cmbTalleres;
     private javax.swing.JComboBox cmbVehiculo;
     private javax.swing.JLabel jLabel1;
@@ -490,6 +507,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

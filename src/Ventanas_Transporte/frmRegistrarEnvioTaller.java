@@ -60,11 +60,11 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
          //redimensionar columnas de la tabla
-        tblDetalleRep.getColumnModel().getColumn(0).setPreferredWidth(40);
-        tblDetalleRep.getColumnModel().getColumn(1).setPreferredWidth(50);
-        tblDetalleRep.getColumnModel().getColumn(2).setPreferredWidth(50);
-        tblDetalleRep.getColumnModel().getColumn(3).setPreferredWidth(80);
-        tblDetalleRep.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblDetalleRep.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tblDetalleRep.getColumnModel().getColumn(1).setPreferredWidth(30);
+        tblDetalleRep.getColumnModel().getColumn(2).setPreferredWidth(30);
+        tblDetalleRep.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblDetalleRep.getColumnModel().getColumn(4).setPreferredWidth(40);
         
         
         
@@ -382,9 +382,9 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
+                .addGap(164, 164, 164)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,14 +407,14 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -429,7 +429,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 45, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         pack();
@@ -522,6 +522,7 @@ GestorHibernate gestorH = new GestorHibernate();
               OrdenServicio orden = envio.getOrdenServicio();
               orden.setEstado("Utilizada");
               envio.setFecha(modelo.getValueAt(0,0).toString());
+              envio.setHora(txtHora.getText());
               envio.setResponsable(txtResponsable.getText());
               envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
               envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));

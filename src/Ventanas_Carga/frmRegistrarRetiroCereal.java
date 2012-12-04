@@ -18,7 +18,6 @@ import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorFecha;
 import Gestores_Vista.gestorRegistrarRetiro;
 import Hibernate.GestorHibernate;
-import bsh.ParseException;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;

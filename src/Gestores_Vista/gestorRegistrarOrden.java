@@ -173,6 +173,16 @@ public class gestorRegistrarOrden extends GestorHibernate{
         return modelo;
    }
    
+    public DefaultComboBoxModel rellenaComboMotivo(){
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    Iterator ite = this.listarClase(Motivo.class).iterator();
+       while(ite.hasNext()){
+           Motivo motivo =(Motivo) ite.next();  
+           modelo.addElement(motivo);
+           }
+        return modelo;
+   }
+   
    public String rellenaTxtEspecialidad(TallerReparacion seleccion){
        String especialidad = null;
        Iterator ite = this.listarClase(TallerReparacion.class).iterator();

@@ -33,6 +33,7 @@ private Motivo motivo;
     private String hora;
     private String responsable;
     private String estado;
+    private String observaciones;
    
    
 
@@ -154,5 +155,19 @@ private Motivo motivo;
      */
     public void setMotivo(Motivo motivo) {
         this.motivo = motivo;
+    }
+
+    /**
+     * @return the observaciones
+     */
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    /**
+     * @param observaciones the observaciones to set
+     */
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 }

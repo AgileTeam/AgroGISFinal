@@ -44,4 +44,8 @@ private long idMotivo;
     public void setNombreMotivo(String nombreMotivo) {
         this.nombreMotivo = nombreMotivo;
     }
+    
+    public String toString(){
+        return nombreMotivo;
+    }
 }
