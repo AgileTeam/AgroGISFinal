@@ -5,6 +5,7 @@
 
 package Hibernate;
 import Clases_Modulo_Seguridad.Usuario;
+import Clases_Modulo_Transporte.OrdenServicio;
 import java.awt.Component;
 import java.util.Iterator;
 import java.util.List;
@@ -61,6 +62,14 @@ private Transaction tx;
                label.setText(u.getNombreUsuario());
            }
        }
+   
+   }
+   
+   public List listarAtributosVarios(OrdenServicio orden){
+       List lista = null;
+       lista.add(orden.getNumeroOrden());
+       lista.add(orden.getVehiculo().getTransportista());
+       return lista;  
    
    }
  

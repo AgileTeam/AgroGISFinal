@@ -4,6 +4,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Cliente.Productor;
 import javax.swing.*;
 import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.EnvioTaller;

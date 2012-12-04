@@ -16,6 +16,7 @@ import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import javax.swing.UIManager;
 import de.javasoft.plaf.synthetica.SyntheticaGreenDreamLookAndFeel;
+import ireport.GestorDeReportes;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -443,6 +444,12 @@ GestorHibernate gestorH = new GestorHibernate();
         detalle.setCargaCombustible(carga);
         detalle.setOrdenServicio(orden);
         gestorH.guardarObjeto(detalle);
+        
+        //Prueba Nueva Orden
+         String arc="C:/Reportes AgroGIS/NuevaOrdenServicio.jasper";
+         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+         gestorReportes.setColeccionDeDatos(gestorH.listarAtributosVarios(orden));
+         gestorReportes.imprimir();
     }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
