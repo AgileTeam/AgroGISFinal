@@ -25,12 +25,23 @@ import Hibernate.GestorHibernate;
 import Ventanas_Seguridad.frmIniciarSesion;
 import Ventanas_Seguridad.frmPrueba;
 import Ventanas_Seguridad.frmRegistrarUsuario;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 public class frmPrincipal extends javax.swing.JFrame {
@@ -157,6 +168,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenuItem2 = new javax.swing.JMenuItem();
         ItemResultadosLab = new javax.swing.JMenuItem();
         MenuListados = new javax.swing.JMenu();
+        ItemPdf = new javax.swing.JMenuItem();
         MenuAuditoria = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -670,6 +682,16 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listado.png"))); // NOI18N
         MenuListados.setText("Listados");
         MenuListados.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        ItemPdf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemPdf.setText("Informe Pdf");
+        ItemPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemPdfActionPerformed(evt);
+            }
+        });
+        MenuListados.add(ItemPdf);
+
         MenuPrincipal.add(MenuListados);
 
         MenuAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bitacora.png"))); // NOI18N
@@ -884,6 +906,17 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         usuario.setVisible(true);
     }//GEN-LAST:event_ItemUsuarioActionPerformed
 
+    private void ItemPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemPdfActionPerformed
+       try {
+        File path = new File ("C:/prueba.pdf");
+        Desktop.getDesktop().open(path);
+        }catch (IOException ex) {
+        ex.printStackTrace();
+
+}
+
+    }//GEN-LAST:event_ItemPdfActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -946,6 +979,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemNuevoSilo;
     private javax.swing.JMenuItem ItemNuevoTipoCereal;
     private javax.swing.JMenuItem ItemNuevoViaje;
+    private javax.swing.JMenuItem ItemPdf;
     private javax.swing.JMenuItem ItemRegistroCarga;
     private javax.swing.JMenuItem ItemRegistroEnvio;
     private javax.swing.JMenuItem ItemResultadosLab;
