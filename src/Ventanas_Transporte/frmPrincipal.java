@@ -94,6 +94,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
         Calendario = new datechooser.beans.DateChooserCombo();
         pnlUsuarioLogin = new javax.swing.JPanel();
@@ -128,6 +129,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         ItemDetalleConsumo = new javax.swing.JMenuItem();
         ItemDetalleReparacion = new javax.swing.JMenuItem();
+        MenuEliminarOrden = new javax.swing.JMenu();
+        ItemEliminarCarga = new javax.swing.JMenuItem();
+        ItemEliminarTaller = new javax.swing.JMenuItem();
         ItemRegistroCarga = new javax.swing.JMenuItem();
         ItemRegistroEnvio = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -176,6 +180,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenu1.setText("jMenu1");
 
         jMenuItem8.setText("jMenuItem8");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AgroGIS");
@@ -422,6 +428,24 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuVerTransp.add(ItemDetalleReparacion);
 
         MenuTransporte.add(MenuVerTransp);
+
+        MenuEliminarOrden.setText("Eliminar Orden de Servicio");
+        MenuEliminarOrden.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        ItemEliminarCarga.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemEliminarCarga.setText("Carga de Combustible");
+        MenuEliminarOrden.add(ItemEliminarCarga);
+
+        ItemEliminarTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemEliminarTaller.setText("Envio a Taller");
+        ItemEliminarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemEliminarTallerActionPerformed(evt);
+            }
+        });
+        MenuEliminarOrden.add(ItemEliminarTaller);
+
+        MenuTransporte.add(MenuEliminarOrden);
 
         ItemRegistroCarga.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemRegistroCarga.setText("Registrar Carga de Combustible");
@@ -917,6 +941,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
 
     }//GEN-LAST:event_ItemPdfActionPerformed
 
+    private void ItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarTallerActionPerformed
+       frmEliminarOrdenTaller orden=new frmEliminarOrdenTaller();
+       this.Escritorio.add(orden);
+       orden.setVisible(true);
+    }//GEN-LAST:event_ItemEliminarTallerActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -963,6 +993,8 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemDescargaCereal;
     private javax.swing.JMenuItem ItemDetalleConsumo;
     private javax.swing.JMenuItem ItemDetalleReparacion;
+    private javax.swing.JMenuItem ItemEliminarCarga;
+    private javax.swing.JMenuItem ItemEliminarTaller;
     private javax.swing.JMenuItem ItemEmitirOrden;
     private javax.swing.JMenuItem ItemEnvioTaller;
     private javax.swing.JMenuItem ItemEspecialidad;
@@ -1000,6 +1032,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem MenuCierreSesion;
     private javax.swing.JMenu MenuClientes;
     private javax.swing.JMenu MenuConsultarCliente;
+    private javax.swing.JMenu MenuEliminarOrden;
     private javax.swing.JMenu MenuEmitirTransp;
     private javax.swing.JMenu MenuInicio;
     private javax.swing.JMenu MenuInicioNuevo;
@@ -1024,6 +1057,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
