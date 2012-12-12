@@ -37,4 +37,8 @@ public class TipoViaje {
         this.nombreTipoViaje = nombreTipoViaje;
     }
     
+    public String toString(){
+        return nombreTipoViaje;
+    }
+    
 }

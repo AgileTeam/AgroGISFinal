@@ -431,7 +431,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
 //evento salida
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operacion?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }

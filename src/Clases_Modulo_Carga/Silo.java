@@ -16,6 +16,9 @@ public class Silo {
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
 private long numeroSilo; 
 
+@ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoCereal tipoCereal;
+
 //@ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 //private Estado estado;
     

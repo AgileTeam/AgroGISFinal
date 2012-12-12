@@ -7,7 +7,7 @@ package Clases_Modulo_Carga;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ToneladasPorCereal")
+@Table(name="DescargaPorHistorial")
 
 public class DescargaPorHistorial {
     

@@ -68,6 +68,33 @@ public class gestorDescargaCereal extends GestorHibernate {
             descarga.setTransportista((Transportista)transportista);
             descarga.setSilo((Silo)silo.getSelectedItem());
             this.guardarObjeto(descarga);
+            Iterator ite2= this.listarClase(HistorialProductor.class).iterator();
+            while(ite2.hasNext()){
+                HistorialProductor h = (HistorialProductor) ite2.next();
+                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
+                while(ite3.hasNext()){
+                Establecimiento est = (Establecimiento) ite3.next();
+                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
+                    DescargaPorHistorial desc = new DescargaPorHistorial();
+                    desc.setHistorial(h);
+                    desc.setDescarga(descarga);
+                    this.guardarObjeto(desc);
+                    Iterator ite4 = this.listarClase(ToneladasPorCereal.class).iterator();
+                    while(ite4.hasNext()) {
+                        ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
+                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
+                            t.setToneladas(Double.parseDouble(toneladas.getText()));
+                            this.actualizarObjeto(t);
+                        
+                        }
+                    
+                    }
+                }
+                
+                }
+                
+            
+            }
             MuestraTomada muestra = new MuestraTomada();
             muestra.setDescarga(descarga);
             muestra.setEstado(0);

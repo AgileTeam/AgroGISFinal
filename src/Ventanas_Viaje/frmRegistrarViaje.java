@@ -45,7 +45,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEnabled(false);
         txtNumViaje.setEditable(false);
         txtNumViaje.setEnabled(false);
-        tblEstablecimiento.getTableHeader().setVisible(false);
+//        tblEstablecimiento.getTableHeader().setVisible(false);
 
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
@@ -96,47 +96,47 @@ GestorHibernate gestorH = new GestorHibernate();
         tblProductor.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblProductor.getColumnModel().getColumn(2).setPreferredWidth(50);
         
-        
+        cmbTipoViaje.setModel(gViaje.AgregarTipoViaje());
         cmbTipoViaje.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento);
+           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento,tblProductor);
            }
         }
         );
-          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento);
+          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento, tblProductor);
         
             
-        DefaultTableModel modeloT1 = (DefaultTableModel) tblProductor.getModel();
-        Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
-        while(ite1.hasNext()){
-            Productor prod = (Productor) ite1.next();
-            Iterator ite2= gestorH.listarClase(SolicitudRetiro.class).iterator();
-            while(ite2.hasNext()){
-                SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
-                if(solicitud.getProductor() == prod){
-                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
-                    modeloT1.addRow(fila);
-                }
-            }
-            
-            tblProductor.setModel(modeloT1);
-        }
-        
-        DefaultTableModel modeloT2 = (DefaultTableModel) tblEstablecimiento.getModel();
-        Iterator ite3 = gestorH.listarClase(Productor.class).iterator();
-        while(ite3.hasNext()){
-            Productor prod = (Productor) ite3.next();
-            Iterator ite4= gestorH.listarClase(SolicitudRetiro.class).iterator();
-            while(ite4.hasNext()){
-                SolicitudRetiro solicitud = (SolicitudRetiro) ite4.next();
-                if(solicitud.getProductor() == prod){
-                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
-                    modeloT2.addRow(fila);
-                }
-            }
-            
-            tblEstablecimiento.setModel(modeloT2);
-        }
+//        DefaultTableModel modeloT1 = (DefaultTableModel) tblProductor.getModel();
+//        Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
+//        while(ite1.hasNext()){
+//            Productor prod = (Productor) ite1.next();
+//            Iterator ite2= gestorH.listarClase(SolicitudRetiro.class).iterator();
+//            while(ite2.hasNext()){
+//                SolicitudRetiro solicitud = (SolicitudRetiro) ite2.next();
+//                if(solicitud.getProductor() == prod){
+//                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
+//                    modeloT1.addRow(fila);
+//                }
+//            }
+//            
+//            tblProductor.setModel(modeloT1);
+//        }
+//        
+//        DefaultTableModel modeloT2 = (DefaultTableModel) tblEstablecimiento.getModel();
+//        Iterator ite3 = gestorH.listarClase(Productor.class).iterator();
+//        while(ite3.hasNext()){
+//            Productor prod = (Productor) ite3.next();
+//            Iterator ite4= gestorH.listarClase(SolicitudRetiro.class).iterator();
+//            while(ite4.hasNext()){
+//                SolicitudRetiro solicitud = (SolicitudRetiro) ite4.next();
+//                if(solicitud.getProductor() == prod){
+//                    Object fila[] = {solicitud.getNumeroSolicitud(), prod.getNombre(), prod.getNumeroDocumento()};
+//                    modeloT2.addRow(fila);
+//                }
+//            }
+//            
+//            tblEstablecimiento.setModel(modeloT2);
+//        }
     
     }
 
@@ -275,7 +275,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel9.add(txtNumViaje);
         txtNumViaje.setBounds(100, 30, 82, 20);
 
-        cmbTipoViaje.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Traslado a Puerto", "Traslado a Establecimiento", "Retiro" }));
         jPanel9.add(cmbTipoViaje);
         cmbTipoViaje.setBounds(530, 30, 140, 20);
         jPanel9.add(txtSolicitante);
@@ -311,6 +310,11 @@ GestorHibernate gestorH = new GestorHibernate();
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -431,7 +435,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane2.setViewportView(tblProductor);
 
         panelEstablecimiento.add(jScrollPane2);
-        jScrollPane2.setBounds(70, 30, 560, 92);
+        jScrollPane2.setBounds(70, 30, 560, 90);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel16.setText("Establecimiento");
@@ -556,7 +560,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -570,8 +574,8 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
     int fila = tblEstablecimiento.getSelectedRow();
-    txtProductor.setText((String)modeloT.getValueAt(fila, 1));
-    if(cmbTipoViaje.getSelectedItem().toString()=="Traslado a Establecimiento"){
+    txtProductor.setText(modeloT.getValueAt(fila, 1).toString());
+    if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Establecimiento")){
         labelEstablecimiento.setVisible(true);
         labelPuerto.setVisible(false);
         labelDepto.setVisible(true);
@@ -598,7 +602,9 @@ GestorHibernate gestorH = new GestorHibernate();
         }
     
     }
-    if(cmbTipoViaje.getSelectedItem().toString()=="Traslado a Puerto"){
+    
+    
+    if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Puerto")){
         labelEstablecimiento.setVisible(false);
         labelPuerto.setVisible(true);
         labelDepto.setVisible(false);
@@ -631,7 +637,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnAgregarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductorActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
     int fila = tblProductor.getSelectedRow();
-    txtProductorEst.setText((String)modeloT.getValueAt(fila, 1));
+    txtProductorEst.setText(modeloT.getValueAt(fila, 1).toString());
         Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
@@ -690,7 +696,7 @@ GestorHibernate gestorH = new GestorHibernate();
            }
        }
          
-         if(cmbTipoViaje.getSelectedItem().toString()== "Retiro"){
+         if(cmbTipoViaje.getSelectedItem().toString()== "Retiro de Establecimiento"){
            EstablecimientoPorViaje est = new EstablecimientoPorViaje();
            Iterator ite = gestorH.listarClase(Establecimiento.class).iterator();
            while(ite.hasNext()){
@@ -703,6 +709,13 @@ GestorHibernate gestorH = new GestorHibernate();
            }
        } 
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
+        if (respuesta==0){
+            dispose();
+    }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

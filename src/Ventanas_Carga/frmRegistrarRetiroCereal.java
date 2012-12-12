@@ -538,7 +538,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd/MM/yy");
         Date fecha1 = sdf.parse(calendarioDSolicitud.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHSolicitud.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblSolicitud.getModel();
@@ -554,10 +554,11 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
              Date fecha2=null;
                 try {
                     fecha2 = sdfguion.parse(solicitud.getFechaSolicitud());
+                    System.out.println(fecha2);
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
