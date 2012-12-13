@@ -385,7 +385,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }

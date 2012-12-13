@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scrollPrincipal" alignment="0" pref="2407" max="32767" attributes="0"/>
+          <Component id="scrollPrincipal" alignment="0" pref="2411" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -1153,6 +1153,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
