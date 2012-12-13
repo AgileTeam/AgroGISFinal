@@ -96,14 +96,17 @@ GestorHibernate gestorH = new GestorHibernate();
         tblProductor.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblProductor.getColumnModel().getColumn(2).setPreferredWidth(50);
         
+        final int banderaP = gViaje.ContarPuerto();
+        final int banderaE= gViaje.ContarEst();
+        
         cmbTipoViaje.setModel(gViaje.AgregarTipoViaje());
         cmbTipoViaje.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
-           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento,tblProductor);
+           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento,tblProductor, banderaE, banderaP);
            }
         }
         );
-          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento, tblProductor);
+          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento, tblProductor, banderaE, banderaP);
         
             
 //        DefaultTableModel modeloT1 = (DefaultTableModel) tblProductor.getModel();
@@ -583,14 +586,15 @@ GestorHibernate gestorH = new GestorHibernate();
         Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
-                    txtCerealT.setText(sol.getTipoCereal().toString());
-                    
-            }
+//            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+//                    txtCerealT.setText(sol.getTipoCereal().toString());
+//                    
+//            }
             Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
             while(ite1.hasNext()){
                 EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
                 if(est.getSolicitud()== sol){
+                    txtCerealT.setText(sol.getTipoCereal().toString());
                     txtTraslado.setText(est.getEstablecimiento().toString());
                     txtProvinciaT.setText(est.getEstablecimiento().getLocalidad().getDepartamento().toString());
                     txtLocalidad.setText(est.getEstablecimiento().getLocalidad().toString());

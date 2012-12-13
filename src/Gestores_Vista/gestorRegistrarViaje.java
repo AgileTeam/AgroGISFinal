@@ -4,6 +4,8 @@
  */
 package Gestores_Vista;
 
+import Clases_Modulo_Carga.EstablecimientoPorSolicitud;
+import Clases_Modulo_Carga.PuertoPorSolicitud;
 import Clases_Modulo_Carga.SolicitudPorHistorial;
 import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Cliente.Establecimiento;
@@ -24,7 +26,10 @@ import javax.swing.table.DefaultTableModel;
 public class gestorRegistrarViaje extends GestorHibernate {
     
      public void ActualizarDatos(String seleccion, JPanel panelPuerto, JPanel panelEstablecimiento, JLabel labelPuerto, JLabel labelEstablecimiento, JLabel labelProvincia, JLabel labelDepartamento,
-                                   JTable tblEstablecimiento, JScrollPane scpEstablecimiento, JTable tblRetiro){
+                                   JTable tblEstablecimiento, JScrollPane scpEstablecimiento, JTable tblRetiro, int banderaE, int banderaP){
+        
+       
+       
         if (seleccion.equalsIgnoreCase("Traslado a Puerto")){
         panelPuerto.setVisible(true);
         panelEstablecimiento.setVisible(false);
@@ -35,6 +40,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
         tblEstablecimiento.setVisible(true);
         DefaultTableModel modelo= (DefaultTableModel) tblEstablecimiento.getModel();
         modelo.setRowCount(0);
+        if(banderaP != 0){
         Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
@@ -45,9 +51,11 @@ public class gestorRegistrarViaje extends GestorHibernate {
             }
         }
 //        scpEstablecimiento.setVisible(true);
-
+        }
         
-        }if(seleccion.equalsIgnoreCase("Retiro de Establecimiento")){
+        }
+        
+        if(seleccion.equalsIgnoreCase("Retiro de Establecimiento")){
         panelPuerto.setVisible(false);
         panelEstablecimiento.setVisible(true);
           DefaultTableModel modelo= (DefaultTableModel) tblRetiro.getModel();
@@ -73,6 +81,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
         tblEstablecimiento.setVisible(true);
         DefaultTableModel modelo= (DefaultTableModel) tblEstablecimiento.getModel();
          modelo.setRowCount(0);
+        if(banderaE != 0){
         Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
@@ -82,8 +91,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
             tblEstablecimiento.setModel(modelo);
             }
         }
-//        scpEstablecimiento.setVisible(true);
-  
+        }
         }
        }
        
@@ -107,6 +115,26 @@ public class gestorRegistrarViaje extends GestorHibernate {
              modelo.addElement(tviaje);
          }
          return modelo;
+     }
+     
+     public int ContarPuerto(){
+     int banderaP=0;
+        Iterator iteP = this.listarClase(PuertoPorSolicitud.class).iterator();
+        while(iteP.hasNext()){
+            PuertoPorSolicitud p = (PuertoPorSolicitud) iteP.next();
+            banderaP++;
+        }
+     return banderaP;  
+     }
+     
+     public int ContarEst(){
+     int banderaE = 0;
+        Iterator iteE= this.listarClase(EstablecimientoPorSolicitud.class).iterator();
+        while(iteE.hasNext()){
+            EstablecimientoPorSolicitud e = (EstablecimientoPorSolicitud) iteE.next();
+            banderaE++;
+        }
+        return banderaE;
      }
      
         }
