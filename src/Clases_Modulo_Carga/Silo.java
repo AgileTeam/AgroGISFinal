@@ -97,5 +97,26 @@ private TipoCereal tipoCereal;
         this.numeroSilo = numeroSilo;
     }
 
+    /**
+     * @return the tipoCereal
+     */
+    public TipoCereal getTipoCereal() {
+        return tipoCereal;
+    }
+
+    /**
+     * @param tipoCereal the tipoCereal to set
+     */
+    public void setTipoCereal(TipoCereal tipoCereal) {
+        this.tipoCereal = tipoCereal;
+    }
+    
+    public String toString(){
+        return String.valueOf(numeroSilo);
+    
+    }
+    
+    
+
    
 }

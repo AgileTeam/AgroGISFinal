@@ -4,10 +4,7 @@
  */
 package Gestores_Vista;
 
-import Clases_Modulo_Carga.EstablecimientoPorSolicitud;
-import Clases_Modulo_Carga.PuertoPorSolicitud;
-import Clases_Modulo_Carga.SolicitudPorHistorial;
-import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Viaje.*;
 import Hibernate.GestorHibernate;
@@ -135,6 +132,18 @@ public class gestorRegistrarViaje extends GestorHibernate {
             banderaE++;
         }
         return banderaE;
+     }
+     
+     public DefaultComboBoxModel CargaSilos(String TipoCereal){
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+         Iterator ite = this.listarClase(Silo.class).iterator();
+         while(ite.hasNext()){
+             Silo silo = (Silo) ite.next();
+             if(silo.getTipoCereal().getNombreCereal().equalsIgnoreCase(TipoCereal)){
+                 modelo.addElement(silo);
+             }
+         }
+         return modelo;     
      }
      
         }

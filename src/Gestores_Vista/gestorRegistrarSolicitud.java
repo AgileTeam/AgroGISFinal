@@ -148,7 +148,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             puertosol.setTipoOperacion(tipoOperacion);
             puertosol.setToneladasAExtraer(toneladas);
         }
-        if(tipoSolicitud.getNombreTipoSolicitud()== "Retiro en Planta" && tipoOperacion.getNombreTipoOperacion() == "Transferencia"){
+        if(tipoSolicitud.getNombreTipoSolicitud().equals("Retiro en Planta") && tipoOperacion.getNombreTipoOperacion().equals("Transferencia")){
             EstablecimientoPorSolicitud est = new EstablecimientoPorSolicitud();
             est.setEstablecimiento(establecimiento);
             est.setSilo(silo);
@@ -157,4 +157,16 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             est.setToneladasAExtraer(toneladas);
         }
     }
+    
+       public DefaultComboBoxModel CargaSilos(String TipoCereal){
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+         Iterator ite = this.listarClase(Silo.class).iterator();
+         while(ite.hasNext()){
+             Silo silo = (Silo) ite.next();
+             if(silo.getTipoCereal().getNombreCereal().equalsIgnoreCase(TipoCereal)){
+                 modelo.addElement(silo);
+             }
+         }
+         return modelo;     
+     }
 }

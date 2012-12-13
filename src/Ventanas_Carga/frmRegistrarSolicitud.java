@@ -106,6 +106,14 @@ GestorHibernate gestorH = new GestorHibernate();
         }
         );
           cmbNombre2.setModel(gRegistro.rellenaComboDestino(cmbDestino2.getSelectedItem().toString()));
+          
+          cmbTipoCereal2.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent arg0){
+              cmbSilo2.setModel(gRegistro.CargaSilos(cmbTipoCereal2.getSelectedItem().toString()));
+          }
+          }
+          );
+        
     }
 
     /** This method is called from within the constructor to

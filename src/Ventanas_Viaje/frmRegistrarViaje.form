@@ -62,7 +62,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="390" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="402" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -588,7 +588,7 @@
         <Component class="javax.swing.JTextField" name="txtSilo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="210" width="90" height="-1"/>
+              <AbsoluteConstraints x="570" y="210" width="80" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
