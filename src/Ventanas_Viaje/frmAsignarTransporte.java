@@ -56,12 +56,12 @@ GestorHibernate gestorH = new GestorHibernate();
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 750;
+        int ancho = 820;
         int alto = 570;
 //        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(270, 10);
+        this.setLocation(260, 10);
         
         tblViaje.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblViaje.getColumnModel().getColumn(1).setPreferredWidth(50);

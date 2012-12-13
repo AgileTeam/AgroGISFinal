@@ -57,7 +57,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 1110;
-        int alto = 580;
+        int alto = 600;
 //        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
