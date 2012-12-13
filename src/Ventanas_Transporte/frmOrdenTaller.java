@@ -71,8 +71,8 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
      //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 750;
-        int alto = 625;
+        int ancho = 730;
+        int alto = 628;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
@@ -360,7 +360,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         cmbMotivo.setBounds(130, 140, 200, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(10, 300, 690, 250);
+        jPanel3.setBounds(10, 300, 700, 250);
 
         jPanel4.setLayout(null);
 
@@ -428,7 +428,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

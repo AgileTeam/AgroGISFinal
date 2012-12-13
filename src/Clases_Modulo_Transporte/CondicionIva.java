@@ -30,4 +30,8 @@ private long idCondicionIva;
     public void setNombreCondicion(String nombreCondicion) {
         this.nombreCondicion = nombreCondicion;
     }
+    
+    public String toString(){
+    return nombreCondicion;
+    }
 }

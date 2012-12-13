@@ -89,6 +89,19 @@ public class gestorRegistrarTaller extends GestorHibernate {
        
       return modelo;
    }
+       
+     public DefaultComboBoxModel rellenaComboEspecialidad(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Especialidad.class).iterator();
+       while(ite.hasNext()){
+           Especialidad esp =(Especialidad) ite.next();
+           modelo.addElement(esp);
+           }
+       
+      return modelo;
+   }  
+       
+       
     
     
 }

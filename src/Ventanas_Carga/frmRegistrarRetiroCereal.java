@@ -77,11 +77,11 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 820;
-        int alto = 635;
+        int alto = 580;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 0);
+        this.setLocation(posX, 20);
         
          //redimensionar columnas de la tabla
         tblSolicitud.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -312,22 +312,25 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
             }
         });
         jPanel1.add(btnBuscarSolicitud);
-        btnBuscarSolicitud.setBounds(390, 110, 104, 30);
+        btnBuscarSolicitud.setBounds(380, 120, 104, 30);
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha Emision");
+        ckFecha.setFocusPainted(false);
         jPanel1.add(ckFecha);
-        ckFecha.setBounds(10, 30, 110, 23);
+        ckFecha.setBounds(10, 30, 110, 22);
 
         ckNumSolicitud.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckNumSolicitud.setText("Numero Solicitud");
+        ckNumSolicitud.setFocusPainted(false);
         jPanel1.add(ckNumSolicitud);
-        ckNumSolicitud.setBounds(10, 50, 130, 23);
+        ckNumSolicitud.setBounds(10, 50, 130, 22);
 
         ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
+        ckProductor.setFocusPainted(false);
         jPanel1.add(ckProductor);
-        ckProductor.setBounds(10, 70, 100, 23);
+        ckProductor.setBounds(10, 70, 100, 22);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -382,7 +385,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
             }
         });
         jPanel1.add(btnAceptarTodos1);
-        btnAceptarTodos1.setBounds(20, 100, 30, 30);
+        btnAceptarTodos1.setBounds(20, 110, 30, 30);
 
         btnCancelarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnCancelarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +394,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
             }
         });
         jPanel1.add(btnCancelarTodos);
-        btnCancelarTodos.setBounds(60, 100, 30, 30);
+        btnCancelarTodos.setBounds(60, 110, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -430,18 +433,16 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)))
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
