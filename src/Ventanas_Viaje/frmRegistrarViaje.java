@@ -45,6 +45,10 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEnabled(false);
         txtNumViaje.setEditable(false);
         txtNumViaje.setEnabled(false);
+        cmbLote.setEnabled(false);
+        btnAgregarLote.setEnabled(false);
+        tblLote.setEnabled(false);
+        
 //        tblEstablecimiento.getTableHeader().setVisible(false);
 
         //setear el campo de fecha con la del sistema
@@ -500,7 +504,15 @@ GestorHibernate gestorH = new GestorHibernate();
             new String [] {
                 "Lote", "Latitud", "Longitud"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblLote);
 
         panelEstablecimiento.add(jScrollPane3);

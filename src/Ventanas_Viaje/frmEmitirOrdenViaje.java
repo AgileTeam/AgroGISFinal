@@ -18,6 +18,7 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,7 +34,6 @@ GestorHibernate gestorH = new GestorHibernate();
     public frmEmitirOrdenViaje() {
         initComponents();
         gestorH.actualizarUsuario(labelusuario);
-        lblHas.setEnabled(false);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -60,19 +60,21 @@ GestorHibernate gestorH = new GestorHibernate();
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 670;
-        int alto = 630;
+        int ancho = 780;
+        int alto = 600;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 0);
+        this.setLocation(posX, 20);
         
          //redimensionar columnas de la tabla
         tblViaje.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tblViaje.getColumnModel().getColumn(1).setPreferredWidth(100);  
+        tblViaje.getColumnModel().getColumn(1).setPreferredWidth(70);  
         tblViaje.getColumnModel().getColumn(2).setPreferredWidth(100); 
         tblViaje.getColumnModel().getColumn(3).setPreferredWidth(70);    
         
+        lblHas.setVisible(true);
+        lblToneladas.setVisible(false);
         calendarioDViaje.setEnabled(false);
         calendarioHViaje.setEnabled(false);
         txtNumViaje.setEnabled(false);
@@ -104,6 +106,7 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioDViaje = new datechooser.beans.DateChooserCombo();
         jPanel7 = new javax.swing.JPanel();
         txtNumViaje = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
         btnBuscarViaje = new javax.swing.JButton();
@@ -127,9 +130,10 @@ GestorHibernate gestorH = new GestorHibernate();
         txtDestino = new javax.swing.JTextField();
         lblHas = new javax.swing.JLabel();
         txtHas = new javax.swing.JTextField();
+        lblToneladas = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         ckFecha = new javax.swing.JCheckBox();
@@ -137,7 +141,6 @@ GestorHibernate gestorH = new GestorHibernate();
         ckProductor = new javax.swing.JCheckBox();
         btnAceptarTodos = new javax.swing.JButton();
         btnQuitarTodos = new javax.swing.JButton();
-        lblToneladas = new javax.swing.JLabel();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -180,34 +183,25 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Hasta");
         jPanel6.add(jLabel6);
-        jLabel6.setBounds(170, 30, 60, 20);
+        jLabel6.setBounds(160, 30, 60, 20);
 
         calendarioHViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioHViaje);
-        calendarioHViaje.setBounds(210, 30, 90, 20);
+        calendarioHViaje.setBounds(200, 30, 90, 20);
 
         calendarioDViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioDViaje);
         calendarioDViaje.setBounds(50, 30, 90, 20);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel7.setLayout(null);
+        jPanel7.add(txtNumViaje);
+        txtNumViaje.setBounds(50, 30, 100, 20);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(txtNumViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtNumViaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Nº");
+        jPanel7.add(jLabel3);
+        jLabel3.setBounds(20, 30, 50, 20);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -215,17 +209,17 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(cmbProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cmbProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnBuscarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -251,7 +245,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane1.setViewportView(tblViaje);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(16, 22, 551, 127);
+        jScrollPane1.setBounds(101, 20, 550, 127);
 
         btnAceptarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAceptarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
@@ -261,56 +255,56 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel2.add(btnAceptarViaje);
-        btnAceptarViaje.setBounds(577, 61, 50, 30);
+        btnAceptarViaje.setBounds(660, 70, 50, 30);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Vehículo");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(40, 160, 70, 20);
+        jLabel7.setBounds(70, 160, 100, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Transportista");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(330, 160, 100, 20);
+        jLabel8.setBounds(410, 160, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Tipo Vehiculo");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(10, 190, 100, 20);
+        jLabel9.setBounds(40, 190, 120, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Tara");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(380, 190, 50, 20);
+        jLabel10.setBounds(450, 190, 50, 20);
         jPanel2.add(txtTransportista);
-        txtTransportista.setBounds(410, 160, 210, 20);
+        txtTransportista.setBounds(490, 160, 210, 20);
         jPanel2.add(txtResponsable);
-        txtResponsable.setBounds(90, 220, 190, 20);
+        txtResponsable.setBounds(130, 220, 190, 20);
         jPanel2.add(txtVehiculo);
-        txtVehiculo.setBounds(90, 160, 220, 20);
+        txtVehiculo.setBounds(130, 160, 220, 20);
         jPanel2.add(txtTara);
-        txtTara.setBounds(410, 190, 110, 20);
+        txtTara.setBounds(490, 190, 110, 20);
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Responsable");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(10, 220, 100, 20);
+        jLabel11.setBounds(40, 220, 120, 20);
         jPanel2.add(txtTipoVehiculo);
-        txtTipoVehiculo.setBounds(90, 190, 190, 20);
+        txtTipoVehiculo.setBounds(130, 190, 190, 20);
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel12.setText("Número Orden");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(320, 250, 120, 20);
+        jLabel12.setBounds(400, 250, 120, 20);
         jPanel2.add(txtNumOrden);
-        txtNumOrden.setBounds(410, 250, 110, 20);
+        txtNumOrden.setBounds(490, 250, 110, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Destino");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(360, 220, 80, 20);
+        jLabel14.setBounds(440, 220, 80, 20);
         jPanel2.add(txtDestino);
-        txtDestino.setBounds(410, 220, 180, 20);
+        txtDestino.setBounds(490, 220, 180, 20);
 
         lblHas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblHas.setText("Hectareas a Trillar");
@@ -318,6 +312,11 @@ GestorHibernate gestorH = new GestorHibernate();
         lblHas.setBounds(10, 250, 130, 20);
         jPanel2.add(txtHas);
         txtHas.setBounds(130, 250, 150, 20);
+
+        lblToneladas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblToneladas.setText("Toneladas a Extraer");
+        jPanel2.add(lblToneladas);
+        lblToneladas.setBounds(10, 250, 140, 20);
 
         btnImprimir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
@@ -332,9 +331,14 @@ GestorHibernate gestorH = new GestorHibernate();
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
 
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.white));
         jPanel3.setLayout(null);
@@ -342,22 +346,22 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Buscar Viajes por");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(12, 25, 150, 17);
+        jLabel4.setBounds(12, 15, 170, 40);
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckFecha.setText("Fecha");
         jPanel3.add(ckFecha);
-        ckFecha.setBounds(190, 20, 80, 23);
+        ckFecha.setBounds(210, 20, 80, 30);
 
         ckNumViaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckNumViaje.setText("Número Viaje");
         jPanel3.add(ckNumViaje);
-        ckNumViaje.setBounds(300, 20, 120, 23);
+        ckNumViaje.setBounds(330, 20, 120, 30);
 
         ckProductor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ckProductor.setText("Productor");
         jPanel3.add(ckProductor);
-        ckProductor.setBounds(460, 20, 100, 23);
+        ckProductor.setBounds(490, 20, 100, 30);
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -366,7 +370,7 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel3.add(btnAceptarTodos);
-        btnAceptarTodos.setBounds(600, 10, 35, 25);
+        btnAceptarTodos.setBounds(640, 10, 35, 25);
 
         btnQuitarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnQuitarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -375,47 +379,46 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel3.add(btnQuitarTodos);
-        btnQuitarTodos.setBounds(600, 40, 35, 25);
-
-        lblToneladas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblToneladas.setText("Toneladas a Extraer");
+        btnQuitarTodos.setBounds(640, 40, 35, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 46, Short.MAX_VALUE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lblToneladas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnImprimir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelar))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(30, 30, 30))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(192, 192, 192)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(274, 274, 274)
-                                .addComponent(btnBuscarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(btnBuscarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnImprimir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalir)
+                        .addGap(268, 268, 268))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,23 +427,20 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGap(4, 4, 4)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblToneladas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -632,14 +632,21 @@ GestorHibernate gestorH = new GestorHibernate();
        
     }//GEN-LAST:event_btnImprimirActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+         int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
+         if (respuesta==0){
+                dispose();
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAceptarViaje;
     private javax.swing.JButton btnBuscarViaje;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnQuitarTodos;
+    private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioDViaje;
     private datechooser.beans.DateChooserCombo calendarioHViaje;
     private javax.swing.JCheckBox ckFecha;
@@ -653,6 +660,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
