@@ -339,7 +339,7 @@ GestorHibernate gestorH = new GestorHibernate();
         btnAceptarVehiculo.setBounds(730, 70, 49, 30);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel16.setText("Kgs.");
+        jLabel16.setText("Tn.");
         jPanel5.add(jLabel16);
         jLabel16.setBounds(700, 130, 30, 20);
 
@@ -390,7 +390,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -408,6 +408,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 txtDominio.setText(vehiculo.getDominio());
                 txtTransportista.setText(vehiculo.getTransportista().toString());
                 txtTara.setText(String.valueOf(vehiculo.getTara()));
+                txtTipoVehiculo.setText(vehiculo.getTipoVehiculo().toString());
             }
         }
     }//GEN-LAST:event_btnAceptarVehiculoActionPerformed
@@ -453,15 +454,34 @@ GestorHibernate gestorH = new GestorHibernate();
                Iterator ite1 = gestorH.listarClase(Vehiculo.class).iterator();
                while(ite1.hasNext()){
                    Vehiculo vehiculo = (Vehiculo) ite1.next();
-                   if(vehiculo.getDominio() == txtDominio.getText()){
+                   if(vehiculo.getDominio().equalsIgnoreCase(txtDominio.getText())){
                        viaje.setVehiculo(vehiculo);
                        viaje.setEstado("Con vehiculo asignado");
                        gestorH.actualizarObjeto(viaje);
+                       vehiculo.setEstado("Asignado");
+                       gestorH.actualizarObjeto(vehiculo);
                    }
                }
            
            }
        }
+       DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
+       modeloT.setRowCount(0);
+       gestorA.RellenarTablaViajes(tblViaje);
+       txtNumeroSolicitud.setText("");
+       txtDestino.setText("");
+       txtCereal.setText("");
+       txtFechaRealizacion.setText("");
+       txtTipoViaje.setText("");
+       txtNumViaje.setText("");
+       txtProductor.setText("");
+       DefaultTableModel modelo = (DefaultTableModel) tblVehiculo.getModel();
+       modelo.setRowCount(0);
+       txtVehiculo.setText("");
+       txtTara.setText("");
+       txtTipoVehiculo.setText("");
+       txtTransportista.setText("");
+       txtDominio.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

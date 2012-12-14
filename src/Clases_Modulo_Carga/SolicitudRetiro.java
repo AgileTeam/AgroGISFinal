@@ -112,4 +112,8 @@ private TipoCereal tipoCereal;
     public void setTipoCereal(TipoCereal tipoCereal) {
         this.tipoCereal = tipoCereal;
     }
+    
+    public String toString(){
+        return String.valueOf(numeroSolicitud);
+    }
 }
