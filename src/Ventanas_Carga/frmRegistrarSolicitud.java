@@ -76,7 +76,7 @@ GestorHibernate gestorH = new GestorHibernate();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 695;
-        int alto = 530;
+        int alto = 550;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
@@ -233,8 +233,6 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbTipoSolicitud.setBounds(100, 30, 190, 20);
         jPanel1.add(txtNumSolicitud);
         txtNumSolicitud.setBounds(460, 30, 100, 20);
-
-        calendarioViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel1.add(calendarioViaje);
         calendarioViaje.setBounds(150, 60, 110, 20);
 
@@ -423,7 +421,6 @@ GestorHibernate gestorH = new GestorHibernate();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(183, 183, 183)
@@ -434,25 +431,27 @@ GestorHibernate gestorH = new GestorHibernate();
                             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(19, 19, 19)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(panelPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -480,6 +479,7 @@ GestorHibernate gestorH = new GestorHibernate();
             gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), (Puerto)cmbNombre2.getSelectedItem(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()));
        }
     }
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

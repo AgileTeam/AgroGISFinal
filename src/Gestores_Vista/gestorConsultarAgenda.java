@@ -32,6 +32,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(fecha);
         dia = cal.get(Calendar.DAY_OF_WEEK);
+        System.out.println(dia);
         //Busco los viajes
         if(viaje.getEstado()== "Pendiente"){
             for(int i=0; i< modelo.getRowCount(); i++){

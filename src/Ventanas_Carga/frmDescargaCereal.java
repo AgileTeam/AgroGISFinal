@@ -449,7 +449,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
         }
     }
-
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed

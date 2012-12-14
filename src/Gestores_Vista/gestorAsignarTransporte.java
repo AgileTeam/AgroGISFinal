@@ -22,7 +22,7 @@ public class gestorAsignarTransporte extends GestorHibernate{
         Iterator ite = this.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
-            if(viaje.getEstado()== "Pendiente"){
+            if(viaje.getEstado().equalsIgnoreCase("Pendiente")){
                  Object fila[]= {viaje.getIdViaje(),viaje.getFecha(), viaje.getProductor()};
                  modelo.addRow(fila);
             }

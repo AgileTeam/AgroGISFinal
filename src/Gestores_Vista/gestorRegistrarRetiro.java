@@ -5,9 +5,13 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Cliente.Productor;
+import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;
 import Hibernate.GestorHibernate;
+
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,4 +54,16 @@ public class gestorRegistrarRetiro extends GestorHibernate {
        tabla.setModel(modelo);
    
    } 
+        
+      public DefaultComboBoxModel rellenaComboProductor(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Productor.class).iterator();
+       while(ite.hasNext()){
+           Productor productor =(Productor) ite.next();
+               modelo.addElement(productor);
+               
+           }
+
+       return modelo;
+   }  
 }

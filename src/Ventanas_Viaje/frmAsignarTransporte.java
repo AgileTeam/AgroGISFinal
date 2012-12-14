@@ -418,7 +418,7 @@ GestorHibernate gestorH = new GestorHibernate();
        Iterator ite = gestorH.listarClase(Viaje.class).iterator();
        while(ite.hasNext()){
            Viaje viaje = (Viaje) ite.next();
-           if(viaje.getIdViaje() == modelo.getValueAt(fila, 0)){
+           if(viaje.getIdViaje()==modelo.getValueAt(fila, 0)){
                txtNumeroSolicitud.setText(viaje.getSolicitud().toString());
                txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
                txtFechaRealizacion.setText(viaje.getFecha());
@@ -462,6 +462,7 @@ GestorHibernate gestorH = new GestorHibernate();
            
            }
        }
+       JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

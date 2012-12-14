@@ -31,7 +31,6 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="panelPlanta" min="-2" pref="650" max="-2" attributes="0"/>
-                  <Component id="panelEstablecimiento" min="-2" pref="650" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
@@ -43,7 +42,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" pref="650" max="-2" attributes="1"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="panelEstablecimiento" min="-2" pref="650" max="-2" attributes="0"/>
+                              <Component id="jPanel1" min="-2" pref="650" max="-2" attributes="1"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -55,19 +57,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="99" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="99" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="274" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="panelPlanta" min="-2" pref="318" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="panelPlanta" min="-2" pref="318" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnGuardar1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

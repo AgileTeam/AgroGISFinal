@@ -29,4 +29,8 @@ private long idTipoOperacion;
     public void setNombreTipoOperacion(String nombreTipoOperacion) {
         this.nombreTipoOperacion = nombreTipoOperacion;
     }
+    
+    public String toString(){
+        return nombreTipoOperacion;
+    }
 }

@@ -723,6 +723,7 @@ GestorHibernate gestorH = new GestorHibernate();
                }
            }
        } 
+       JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");  
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

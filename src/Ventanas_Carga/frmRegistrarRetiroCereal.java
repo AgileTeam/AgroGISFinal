@@ -53,6 +53,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         calendarioDSolicitud.setEnabled(false);
         calendarioHSolicitud.setEnabled(false);
         txtNumSolicitud.setEnabled(false);
+        cmbProductor.setModel(gestorR.rellenaComboProductor());
         cmbProductor.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();

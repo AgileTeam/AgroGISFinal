@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Gestores_Vista.gestorRegistrarSilo;
 
 
 /**
@@ -32,6 +33,8 @@ GestorHibernate gestorH = new GestorHibernate();
         
         initComponents();
         gestorH.actualizarUsuario(labelusuario);
+        gestorRegistrarSilo gs=new gestorRegistrarSilo();
+        cmbTipoCereal.setModel(gs.rellenaComboTipoCereal());
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -60,7 +63,7 @@ GestorHibernate gestorH = new GestorHibernate();
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();
     int ancho = 580;
-    int alto = 510;
+    int alto = 440;
 //    int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //    int posY = (int) ((tamanioPantalla.height - alto) / 2);
     this.setSize(ancho, alto);
@@ -99,6 +102,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane2 = new javax.swing.JScrollPane();
         areaDescripcion = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cmbTipoCereal = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
@@ -106,31 +111,31 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora = new javax.swing.JTextField();
         labelusuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSilo = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        btnEditar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Silo");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Silo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Número de Silo");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(6, 10, 90, 20);
+        jLabel1.setBounds(20, 20, 120, 20);
         jPanel1.add(txtNumSilo);
-        txtNumSilo.setBounds(100, 10, 60, 20);
+        txtNumSilo.setBounds(110, 20, 60, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Estado");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(270, 10, 60, 20);
+        jLabel2.setBounds(340, 20, 60, 20);
 
         txtCapacidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -138,22 +143,22 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel1.add(txtCapacidad);
-        txtCapacidad.setBounds(100, 70, 110, 20);
+        txtCapacidad.setBounds(110, 80, 110, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Alto");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(70, 40, 30, 20);
+        jLabel3.setBounds(80, 50, 80, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Diametro");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(260, 40, 70, 20);
+        jLabel4.setBounds(330, 50, 90, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Capacidad");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 70, 70, 20);
+        jLabel5.setBounds(40, 80, 70, 20);
 
         txtDiametro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -161,12 +166,12 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel1.add(txtDiametro);
-        txtDiametro.setBounds(320, 40, 110, 20);
+        txtDiametro.setBounds(390, 50, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel6.setText("Tn");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(210, 70, 34, 20);
+        jLabel6.setBounds(220, 80, 34, 20);
 
         txtAlto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -174,34 +179,42 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel1.add(txtAlto);
-        txtAlto.setBounds(100, 40, 110, 20);
+        txtAlto.setBounds(110, 50, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel7.setText("mts");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(210, 40, 34, 20);
+        jLabel7.setBounds(220, 50, 34, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel8.setText("mts");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(430, 40, 34, 20);
+        jLabel8.setBounds(500, 50, 34, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Descripción");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(30, 140, 70, 15);
+        jLabel13.setBounds(40, 120, 130, 30);
 
         areaDescripcion.setColumns(20);
-        areaDescripcion.setRows(5);
+        areaDescripcion.setRows(3);
         jScrollPane2.setViewportView(areaDescripcion);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(100, 100, 440, 96);
+        jScrollPane2.setBounds(110, 110, 360, 60);
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel14.setText("DISPONIBLE");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(320, 10, 90, 20);
+        jLabel14.setBounds(390, 20, 90, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("Tipo Cereal");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(320, 80, 90, 20);
+
+        jPanel1.add(cmbTipoCereal);
+        cmbTipoCereal.setBounds(390, 80, 110, 20);
 
         jPanel2.setLayout(null);
 
@@ -222,11 +235,27 @@ GestorHibernate gestorH = new GestorHibernate();
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Usuario");
         jPanel2.add(labelusuario);
-        labelusuario.setBounds(380, 10, 50, 15);
+        labelusuario.setBounds(450, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(430, 0, 30, 30);
+        jLabel12.setBounds(510, 0, 30, 30);
+
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         tblSilo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,46 +284,8 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
-        );
-
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnEditar.setText("Editar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,24 +293,24 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(173, 173, 173)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -327,17 +318,21 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -407,11 +402,14 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescripcion;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox cmbTipoCereal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -425,10 +423,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblSilo;
     private javax.swing.JTextField txtAlto;

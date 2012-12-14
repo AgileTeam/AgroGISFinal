@@ -402,7 +402,7 @@ private void txtNombreCerealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     gestorR.guardarCaracteristicas(tblCaracteristica, txtNombreCereal, labelCosecha, labelSiembra, cmbMesInicioCosecha, cmbMesFinCosecha, cmbMesInicioSiembra, cmbMesFinSiembra);
-  
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");  
 }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
