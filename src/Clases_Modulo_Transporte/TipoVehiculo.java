@@ -30,4 +30,8 @@ private long idTipoVehiculo;
     public void setNombreTipoVehiculo(String nombreTipoVehiculo) {
         this.nombreTipoVehiculo = nombreTipoVehiculo;
     }
+    
+    public String toString(){
+        return nombreTipoVehiculo;
+    }
 }

@@ -690,7 +690,7 @@ GestorHibernate gestorH = new GestorHibernate();
            Iterator ite = gestorH.listarClase(Puerto.class).iterator();
            while(ite.hasNext()){
                Puerto p = (Puerto) ite.next();
-               if (p.getNombrePuerto() == txtTraslado.getText()){
+               if (p.getNombrePuerto().equalsIgnoreCase(txtTraslado.getText())){
                    puerto.setPuerto(p);
                    puerto.setViaje(viaje);
                    gestorH.guardarObjeto(puerto);
@@ -703,7 +703,7 @@ GestorHibernate gestorH = new GestorHibernate();
            Iterator ite = gestorH.listarClase(Establecimiento.class).iterator();
            while(ite.hasNext()){
                Establecimiento p = (Establecimiento) ite.next();
-               if (p.getNombreEstablecimiento() == txtTraslado.getText()){
+               if (p.getNombreEstablecimiento().equalsIgnoreCase(txtTraslado.getText())){
                    est.setEstablecimiento(p);
                    est.setViaje(viaje);
                    gestorH.guardarObjeto(est);
@@ -716,7 +716,7 @@ GestorHibernate gestorH = new GestorHibernate();
            Iterator ite = gestorH.listarClase(Establecimiento.class).iterator();
            while(ite.hasNext()){
                Establecimiento p = (Establecimiento) ite.next();
-               if (p.getNombreEstablecimiento() == txtRetiro.getText()){
+               if (p.getNombreEstablecimiento().equalsIgnoreCase(txtRetiro.getText())){
                    est.setEstablecimiento(p);
                    est.setViaje(viaje);
                    gestorH.guardarObjeto(est);

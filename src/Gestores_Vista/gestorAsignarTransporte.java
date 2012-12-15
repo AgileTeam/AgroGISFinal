@@ -39,13 +39,13 @@ public class gestorAsignarTransporte extends GestorHibernate{
                 Iterator ite = this.listarClase(Viaje.class).iterator();
                 while(ite.hasNext()){
                     Viaje viaje = (Viaje) ite.next();
-                    if(vehiculo.getEstado()== "Asignado"){
+                    if(vehiculo.getEstado().equalsIgnoreCase("Asignado")){
                     if(viaje.getFecha()== viaje1.getFecha() && viaje.getVehiculo()==vehiculo){
                         bandera=1;
                     }
                     }
                 }
-                 if(bandera == 0 || vehiculo.getEstado()=="Disponible"){
+                 if(bandera == 0 && vehiculo.getEstado().equalsIgnoreCase("Disponible")){
                     Object fila[]={vehiculo.getDominio(), vehiculo.getCarga(), vehiculo.getTransportista()};
                     modelo.addRow(fila);
                     }

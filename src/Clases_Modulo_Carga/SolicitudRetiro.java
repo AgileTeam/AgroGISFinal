@@ -116,5 +116,4 @@ private TipoCereal tipoCereal;
     public String toString(){
         return String.valueOf(numeroSolicitud);
     }
-    
 }

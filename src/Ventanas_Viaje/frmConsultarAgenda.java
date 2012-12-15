@@ -66,7 +66,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         
         
         
-        tblOcho.getTableHeader().setVisible(false);
+        tblOcho.getTableHeader().setVisible(true);
         tblNueve.getTableHeader().setVisible(false);
         tblDiez.getTableHeader().setVisible(false);
         tblOnce.getTableHeader().setVisible(false);
@@ -210,8 +210,6 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel50.setText("Fecha");
         jPanel5.add(jLabel50);
         jLabel50.setBounds(10, 10, 70, 20);
-
-        calendario.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel5.add(calendario);
         calendario.setBounds(50, 10, 99, 20);
 
@@ -362,6 +360,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblOcho.setRowHeight(30);
         jScrollPane21.setViewportView(tblOcho);
 
         tblNueve.setModel(new javax.swing.table.DefaultTableModel(
@@ -668,7 +667,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2411, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2419, Short.MAX_VALUE)
         );
 
         pack();
@@ -690,46 +689,46 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
-            if(viaje.getFecha() == calendario.getText()){
+            if(viaje.getFecha().equalsIgnoreCase(calendario.getText())){
                 String productor = viaje.getProductor().getNombre();
-                if(viaje.getHora()== "8:00"){
-                    gestorC.cargarAgenda(tblOcho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                if(viaje.getHora().equalsIgnoreCase("8:00")){
+                    gestorC.cargarAgenda(tblOcho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "9:00"){
-                    gestorC.cargarAgenda(tblNueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblNueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "10:00"){
-                    gestorC.cargarAgenda(tblDiez, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDiez, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "11:00"){
-                    gestorC.cargarAgenda(tblOnce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblOnce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "12:00"){
-                    gestorC.cargarAgenda(tblDoce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDoce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "13:00"){
-                    gestorC.cargarAgenda(tblTrece, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblTrece, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "14:00"){
-                    gestorC.cargarAgenda(tblCatorce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblCatorce, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "15:00"){
-                    gestorC.cargarAgenda(tblQuince, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblQuince, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "16:00"){
-                    gestorC.cargarAgenda(tblDieciseis, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDieciseis, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "17:00"){
-                    gestorC.cargarAgenda(tblDiecisiete, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDiecisiete, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "18:00"){
-                    gestorC.cargarAgenda(tblDieciocho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDieciocho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "19:00"){
-                    gestorC.cargarAgenda(tblDiecinueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblDiecinueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "20:00"){
-                    gestorC.cargarAgenda(tblVeinte, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, productor, viaje);           
+                    gestorC.cargarAgenda(tblVeinte, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
             }
         
