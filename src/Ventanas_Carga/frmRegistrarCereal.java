@@ -42,6 +42,8 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         cmbMesFinCosecha.setModel(gRegistroCereal.rellenaComboMes());
         cmbCaracteristica.setModel(gRegistroCereal.rellenaComboCaracteristica());
         
+        
+        //deshabilitar campos de fecha y hora
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
