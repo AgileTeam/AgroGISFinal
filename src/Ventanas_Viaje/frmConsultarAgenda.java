@@ -371,6 +371,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblNueve.setRowHeight(30);
         jScrollPane23.setViewportView(tblNueve);
 
         tblDiez.setModel(new javax.swing.table.DefaultTableModel(
@@ -381,6 +382,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDiez.setRowHeight(30);
         jScrollPane24.setViewportView(tblDiez);
 
         tblOnce.setModel(new javax.swing.table.DefaultTableModel(
@@ -391,6 +393,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblOnce.setRowHeight(30);
         jScrollPane25.setViewportView(tblOnce);
 
         tblDoce.setModel(new javax.swing.table.DefaultTableModel(
@@ -401,6 +404,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDoce.setRowHeight(30);
         jScrollPane27.setViewportView(tblDoce);
 
         tblTrece.setModel(new javax.swing.table.DefaultTableModel(
@@ -411,6 +415,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblTrece.setRowHeight(30);
         jScrollPane22.setViewportView(tblTrece);
 
         tblCatorce.setModel(new javax.swing.table.DefaultTableModel(
@@ -421,6 +426,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblCatorce.setRowHeight(30);
         jScrollPane26.setViewportView(tblCatorce);
 
         tblQuince.setModel(new javax.swing.table.DefaultTableModel(
@@ -431,6 +437,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblQuince.setRowHeight(30);
         jScrollPane28.setViewportView(tblQuince);
 
         tblDieciseis.setModel(new javax.swing.table.DefaultTableModel(
@@ -441,6 +448,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDieciseis.setRowHeight(30);
         jScrollPane29.setViewportView(tblDieciseis);
 
         tblDiecisiete.setModel(new javax.swing.table.DefaultTableModel(
@@ -451,6 +459,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDiecisiete.setRowHeight(30);
         jScrollPane30.setViewportView(tblDiecisiete);
 
         tblDieciocho.setModel(new javax.swing.table.DefaultTableModel(
@@ -461,6 +470,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDieciocho.setRowHeight(30);
         jScrollPane31.setViewportView(tblDieciocho);
 
         tblDiecinueve.setModel(new javax.swing.table.DefaultTableModel(
@@ -471,6 +481,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblDiecinueve.setRowHeight(30);
         jScrollPane33.setViewportView(tblDiecinueve);
 
         tblVeinte.setModel(new javax.swing.table.DefaultTableModel(
@@ -481,6 +492,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        tblVeinte.setRowHeight(30);
         jScrollPane32.setViewportView(tblVeinte);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -667,7 +679,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2419, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2423, Short.MAX_VALUE)
         );
 
         pack();
@@ -694,10 +706,10 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 if(viaje.getHora().equalsIgnoreCase("8:00")){
                     gestorC.cargarAgenda(tblOcho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
-                if(viaje.getHora()== "9:00"){
+                if(viaje.getHora().equalsIgnoreCase("9:00")){
                     gestorC.cargarAgenda(tblNueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
-                if(viaje.getHora()== "10:00"){
+                if(viaje.getHora().equalsIgnoreCase("10:00")){
                     gestorC.cargarAgenda(tblDiez, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora()== "11:00"){

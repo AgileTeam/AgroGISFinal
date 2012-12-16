@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scrollPrincipal" alignment="0" pref="2419" max="32767" attributes="0"/>
+          <Component id="scrollPrincipal" alignment="0" pref="2423" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -689,6 +689,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -713,6 +714,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -737,6 +739,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -761,6 +764,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -785,6 +789,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -809,6 +814,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -833,6 +839,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -857,6 +864,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -881,6 +889,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -905,6 +914,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -929,6 +939,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -953,6 +964,7 @@
                         <Column editable="true" title="Domingo" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="rowHeight" type="int" value="30"/>
                   </Properties>
                 </Component>
               </SubComponents>

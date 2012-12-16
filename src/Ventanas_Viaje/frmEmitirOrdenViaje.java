@@ -18,6 +18,8 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -78,7 +80,7 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioDViaje.setEnabled(false);
         calendarioHViaje.setEnabled(false);
         txtNumViaje.setEnabled(false);
-        cmbProductor.setEditable(false);
+        cmbProductor.setEnabled(false);
         cmbProductor.setModel(gestorE.rellenaComboProductor());
         
     }
@@ -474,10 +476,10 @@ GestorHibernate gestorH = new GestorHibernate();
         
         }
         Iterator ite2 = gestorH.listarClase(EstablecimientoPorViaje.class).iterator();
-        while(ite.hasNext()){
+        while(ite2.hasNext()){
             EstablecimientoPorViaje est = (EstablecimientoPorViaje)ite2.next();
             if(est.getViaje().getIdViaje()==(modeloTabla.getValueAt(fila, 0))){
-                if(est.getViaje().getTipoViaje().getNombreTipoViaje()=="Traslado a Establecimiento"){                
+                if(est.getViaje().getTipoViaje().getNombreTipoViaje().equalsIgnoreCase("Traslado a Establecimiento")){                
                 lblToneladas.setVisible(true);
                 lblHas.setVisible(false);              
                 }else{
@@ -528,90 +530,166 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
     private void btnBuscarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarViajeActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy");
         Date fecha1 = sdf.parse(calendarioDViaje.getText(), new ParsePosition(0));
+        System.out.println("Fecha1" + fecha1);
         Date fecha3 = sdf.parse(calendarioHViaje.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDViaje.isEnabled()) {
-            //Creo el objeto viaje
-            Iterator ite = gestorH.listarClase(Viaje.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                Viaje viaje = (Viaje) ite.next();
-                //Verifico que el viaje no este en la tabla previamente cargado
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (viaje.getIdViaje() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //El viaje no esta cargado
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(viaje.getFecha(), new ParsePosition(0));
-                   if (((fecha2.after(fecha1)) && (fecha1.before(fecha3)))&& viaje.getEstado()=="Con vehiculo asignado") {
-                            //Guardo el objeto viaje en la tabla
-                            Object fila[] = {viaje.getIdViaje(), viaje.getFecha(), viaje.getProductor(), viaje.getEstado() };
-                            modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
-                        }
-                    }
-                
-            }
-        }
+       
+        if(fecha1.before(fecha3)|| calendarioDViaje.isEnabled()==false || fecha1.equals(fecha3)){
         
-        //Verifico que este seleccionada la opcion de numero de viaje
-        if (txtNumViaje.isEnabled()){
-            //Creo el objeto viaje
-            Iterator ite = gestorH.listarClase(Viaje.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                Viaje viaje = (Viaje) ite.next();
-                //Verifico que el viaje no este en la tabla previamente cargado
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (viaje.getIdViaje() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
+        //Buscar FECHA
+        if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled()==false && cmbProductor.isEnabled()==false){
+         System.out.println("Prueba Fecha");
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //El viaje no esta cargado
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(viaje.getFecha(), new ParsePosition(0));
-                   if (viaje.getIdViaje() == Long.parseLong(txtNumViaje.getText())) {
-                            //Guardo el objeto viaje en la tabla
-                            Object fila[] = {viaje.getIdViaje(), viaje.getFecha(), viaje.getProductor(), viaje.getEstado() };
-                            modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
-                        }
-                    }
-                
-            }
-        }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
         
-        //Verifico que este seleccionada la opcion de productor
-        if (txtNumViaje.isEnabled()){
-            //Creo el objeto viaje
-            Iterator ite = gestorH.listarClase(Viaje.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                Viaje viaje = (Viaje) ite.next();
-                //Verifico que el viaje no este en la tabla previamente cargado
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (viaje.getIdViaje() == modeloT.getValueAt(i, 0)) {
-                        banderaFecha = 1;
-                    }
+         //Buscar NRO VIAJE
+        if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //El viaje no esta cargado
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(viaje.getFecha(), new ParsePosition(0));
-                   if (viaje.getProductor()== (Productor)cmbProductor.getSelectedItem()) {
-                            //Guardo el objeto viaje en la tabla
-                            Object fila[] = {viaje.getIdViaje(), viaje.getFecha(), viaje.getProductor(), viaje.getEstado() };
-                            modeloT.addRow(fila);
-                            tblViaje.setModel(modeloT);
-                        }
-                    }
-                
-            }
-        }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (viaje.getIdViaje()== Long.parseLong(txtNumViaje.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
+        
+         //Buscar PRODUCTOR
+        if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled()==false && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              //comparo el rango de fechas
+                  if ((bandera==0) && ((fecha2.after(fecha1)) && (viaje.getProductor().equals(cmbProductor.getSelectedItem())))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
+        
+        // buscar FECHA NRO VIAJE
+         if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (viaje.getIdViaje()== Long.parseLong(txtNumViaje.getText())) &&((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
+         
+          if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled()==false && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (viaje.getProductor().equals(cmbProductor.getSelectedItem())) &&((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
+          
+         //buscar PRODUCTOR NRO ORDEN
+         if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled() && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (viaje.getIdViaje()== Long.parseLong(txtNumViaje.getText())) && (viaje.getProductor().equals(cmbProductor.getSelectedItem()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }    
+         
+         //buscar FECHA NRO ORDEN PRODUCTOR
+         if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled() && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             int bandera = gestorE.buscarObjeto(tblViaje, viaje);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdf2.parse(viaje.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              //comparo el rango de fechas
+                  if ((bandera==0) && (viaje.getIdViaje()==Long.parseLong(txtNumViaje.getText()))&& (viaje.getProductor().equals(cmbProductor.getSelectedItem())) &&((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblViaje, viaje);
+                  }
+             }
+         }        
+        }else {
+         JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
+         }
+        
+        
     }//GEN-LAST:event_btnBuscarViajeActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed

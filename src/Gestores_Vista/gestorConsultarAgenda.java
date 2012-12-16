@@ -78,9 +78,9 @@ public class gestorConsultarAgenda extends GestorHibernate{
             
             if(viaje.getEstado().equalsIgnoreCase("En Proceso")){
                     for(int i=0; i< modelo.getRowCount(); i++){
-                        if(modelo.getValueAt(i, dia-1) == ""){
+                        if(modelo.getValueAt(i, dia) == ""){
                             JLabel label = new JLabel();
-                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaAsignado)));
+                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaEnProceso)));
                             label.setText(productor.getNombre());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
@@ -98,7 +98,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
                     for(int i=0; i< modelo.getRowCount(); i++){
                         if(modelo.getValueAt(i, dia)== ""){
                             JLabel label = new JLabel();
-                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaAsignado)));
+                            label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaFinalizado)));
                             label.setText(productor.getNombre());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
