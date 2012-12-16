@@ -58,28 +58,10 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuViaje.setEnabled(false);
         MenuCarga.setEnabled(false);
         MenuListados.setEnabled(false);
-        
-        //items deshabilitados para la reunion de avance
-        ItemTransportista.setEnabled(false);
-        ItemVehiculo.setEnabled(false);
-        ItemEstacion.setEnabled(false);
-        ItemVerTransp.setEnabled(false);
-        ItemVerVehiculo.setEnabled(false);
-        ItemVerTaller.setEnabled(false);
-        ItemVerEstacion.setEnabled(false);
-        ItemDetalleConsumo.setEnabled(false);
-        MenuEliminarOrden.setEnabled(false);
-        ItemRegistroCarga.setEnabled(false);
-        ItemFichaPersonal.setEnabled(false);
-        ItemCargaCombustible.setEnabled(false);
-        menuVerViaje.setEnabled(false);
-        ItemNuevoLab.setEnabled(false);
-        ItemNuevoSilo.setEnabled(false);
-        MenuVerCarga.setEnabled(false);
-        ItemResultadosLab.setEnabled(false);
-        ItemEnvioMuestras.setEnabled(false);
+        MenuAuditoria.setEnabled(false);
+   
  
-        gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados);
+        gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
         Iterator ite = gestorH.listarClase(Usuario.class).iterator();
         while(ite.hasNext()){
             Usuario u = (Usuario) ite.next();
