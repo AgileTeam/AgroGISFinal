@@ -559,6 +559,7 @@ GestorHibernate gestorH = new GestorHibernate();
     DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
     int fila = tblEstablecimiento.getSelectedRow();
     txtProductor.setText(modeloT.getValueAt(fila, 1).toString());
+    SolicitudRetiro sol = new SolicitudRetiro();
     if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Establecimiento")){
         labelEstablecimiento.setVisible(true);
         labelPuerto.setVisible(false);
@@ -566,11 +567,11 @@ GestorHibernate gestorH = new GestorHibernate();
         labelProvincia.setVisible(false);
         Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
-            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-//            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
-//                    txtCerealT.setText(sol.getTipoCereal().toString());
-//                    
-//            }
+            SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+            if(solicitud.getNumeroSolicitud()== Double.parseDouble(modeloT.getValueAt(fila, 0).toString())){
+                sol = solicitud; 
+            }
+        }
             Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
             while(ite1.hasNext()){
                 EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
@@ -580,10 +581,11 @@ GestorHibernate gestorH = new GestorHibernate();
                     txtProvinciaT.setText(est.getEstablecimiento().getLocalidad().getDepartamento().toString());
                     txtLocalidad.setText(est.getEstablecimiento().getLocalidad().toString());
                     txtToneladasE.setText(String.valueOf(est.getToneladasAExtraer()));
+                    txtSilo.setText(est.getSilo().toString());
                             
                 }
             }
-        }
+        
     
     }
     
@@ -595,7 +597,12 @@ GestorHibernate gestorH = new GestorHibernate();
         labelProvincia.setVisible(true);
         Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
-            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+            SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
+            if(solicitud.getNumeroSolicitud()== Double.parseDouble(modeloT.getValueAt(fila, 0).toString())){
+                sol = solicitud; 
+            }
+        }
+            
             if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
                     txtCerealT.setText(sol.getTipoCereal().toString());
                     
@@ -607,10 +614,11 @@ GestorHibernate gestorH = new GestorHibernate();
                     txtTraslado.setText(puerto.getPuerto().toString());
                     txtProvinciaT.setText(puerto.getPuerto().getLocalidad().getDepartamento().getProvincia().toString());
                     txtLocalidad.setText(puerto.getPuerto().getLocalidad().toString());
-                    txtToneladasE.setText(String.valueOf(puerto.getToneladasAExtraer()));      
+                    txtToneladasE.setText(String.valueOf(puerto.getToneladasAExtraer()));  
+                    txtSilo.setText(puerto.getSilo().toString());
                 }
             }
-        }
+        
     
     }
  
