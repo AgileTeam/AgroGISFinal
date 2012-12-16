@@ -4,24 +4,40 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Transporte.Especialidad;
+import Gestores_Clases.gestorEspecialidadTaller;
+import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+gestorEspecialidadTaller gestorE= new gestorEspecialidadTaller();
+long idEsp;
     /**
      * Creates new form frmRegistrarEspTaller
      */
     public frmRegistrarEspTaller() {
         initComponents();
+        
+        gestorH.actualizarUsuario(labelUsuario);
+        txtFecha.setEnabled(false);
+        txtFecha.setEditable(false);
+        txtHora.setEditable(false);
+        txtHora.setEnabled(false);
+        btnAceptarEdicion.setEnabled(false);
+        txtPais.setEnabled(false);
         
          //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
@@ -50,7 +66,14 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
 //    int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(380, 120);
-        
+        DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
+        Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
+        while(ite.hasNext()){
+            Especialidad p = (Especialidad) ite.next();
+            Object fila[] = {p.getNombreEspecialidad()};
+            modeloT.addRow(fila);
+            tblPais.setModel(modeloT);
+        }
         
         
     }
@@ -282,11 +305,11 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
         DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
         int fila = tblPais.getSelectedRow();
         txtPais.setText((String) modeloT.getValueAt(fila, 0));
-        Iterator ite = gestorH.listarClase(Pais.class).iterator();
+        Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
         while (ite.hasNext()) {
-            Pais p = (Pais) ite.next();
-            if (p.getNombrePais().equalsIgnoreCase(txtPais.getText())) {
-                idPais = p.getIdPais();
+            Especialidad p = (Especialidad) ite.next();
+            if (p.getNombreEspecialidad().equalsIgnoreCase(txtPais.getText())) {
+                idEsp = p.getIdEspecialidad();
             }
         }
         modeloT.removeRow(fila);
@@ -297,7 +320,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
         Object fila[] = {txtPais.getText()};
         modeloT.addRow(fila);
         tblPais.setModel(modeloT);
-        gestorP.actualizarPais(idPais, txtPais);
+        gestorE.actualizarEspecialidad(idEsp, txtPais);
         txtPais.setText("");
 
     }//GEN-LAST:event_btnAgregarEspecialidadActionPerformed
@@ -305,18 +328,16 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
     private void btnEliminarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEspecialidadActionPerformed
         DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
         int fila = tblPais.getSelectedRow();
-        Pais pais = new Pais();
-        pais.setNombrePais((String) modeloT.getValueAt(fila, 0));
-        Iterator ite = gestorH.listarClase(Pais.class).iterator();
+        Especialidad e = new Especialidad();
+        e.setNombreEspecialidad((String) modeloT.getValueAt(fila, 0));
+        Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
         while (ite.hasNext()) {
-            Pais p = (Pais) ite.next();
-            if (p.getNombrePais().equalsIgnoreCase(pais.getNombrePais())) {
+            Especialidad p = (Especialidad) ite.next();
+            if (p.getNombreEspecialidad().equalsIgnoreCase(e.getNombreEspecialidad())) {
                 gestorH.eliminarObjeto(p);
             }
         }
         modeloT.removeRow(tblPais.getSelectedRow());
-
-
     }//GEN-LAST:event_btnEliminarEspecialidadActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -334,7 +355,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
         if (btnEditarEspecialidad.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
-            gestorP.guardarPais(tblPais);
+            gestorE.guardarEspecialidad(tblPais);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
 
@@ -342,7 +363,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+        int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
         if (respuesta == 0) {
             dispose();
         }

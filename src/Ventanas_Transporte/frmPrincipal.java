@@ -135,6 +135,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemNuevoLocalidad = new javax.swing.JMenuItem();
         ItemNuevoBarrio = new javax.swing.JMenuItem();
         ItemEspecialidad = new javax.swing.JMenuItem();
+        itemEspTaller = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         ItemUsuario = new javax.swing.JMenuItem();
         MenuTransporte = new javax.swing.JMenu();
@@ -213,7 +214,6 @@ GestorHibernate gestorH = new GestorHibernate();
         Escritorio.setBackground(java.awt.Color.lightGray);
 
         Calendario.setFieldFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
-        Calendario.setLocale(new java.util.Locale("es", "AR", ""));
         Calendario.setNavigateFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
         Calendario.setBounds(1060, 60, 155, 20);
         Escritorio.add(Calendario, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -357,6 +357,15 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         MenuInicioNuevo.add(ItemEspecialidad);
+
+        itemEspTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        itemEspTaller.setText("Especialidad Taller Reparacion");
+        itemEspTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEspTallerActionPerformed(evt);
+            }
+        });
+        MenuInicioNuevo.add(itemEspTaller);
         MenuInicioNuevo.add(jSeparator3);
 
         ItemUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -970,6 +979,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
        orden.setVisible(true);
     }//GEN-LAST:event_ItemEliminarTallerActionPerformed
 
+    private void itemEspTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEspTallerActionPerformed
+        frmRegistrarEspTaller usuario=new frmRegistrarEspTaller();
+        this.Escritorio.add(usuario);
+        usuario.setVisible(true);
+    }//GEN-LAST:event_itemEspTallerActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1077,6 +1092,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem itemConsultarEst;
     private javax.swing.JMenuItem itemConsultarLote;
     private javax.swing.JMenuItem itemConsultarProd;
+    private javax.swing.JMenuItem itemEspTaller;
     private javax.swing.JMenuItem itemNuevoLote;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -1085,7 +1101,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JLabel labelImagenUsuario;
     private javax.swing.JLabel labelPrincipal;
     private javax.swing.JLabel labelUsuario;

@@ -33,4 +33,18 @@ private long idEspecialidad;
     public String toString(){
         return getNombreEspecialidad();
     }
+
+    /**
+     * @return the idEspecialidad
+     */
+    public long getIdEspecialidad() {
+        return idEspecialidad;
+    }
+
+    /**
+     * @param idEspecialidad the idEspecialidad to set
+     */
+    public void setIdEspecialidad(long idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
+    }
 }
