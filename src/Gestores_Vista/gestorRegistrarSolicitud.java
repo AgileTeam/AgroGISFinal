@@ -75,7 +75,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
        Iterator ite = this.listarClase(Establecimiento.class).iterator();
        Iterator ite2 = this.listarClase(Puerto.class).iterator();
-       if(seleccion=="Puerto"){
+       if(seleccion.equalsIgnoreCase("Puerto")){
        while(ite2.hasNext()){
            Puerto puerto=(Puerto) ite2.next();
            modelo.addElement(puerto);
@@ -125,7 +125,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
     
     
     public void guardarSolicitud(TipoSolicitud tipoSolicitud, String fecha, Productor productor, TipoCereal tipoCereal, Establecimiento establecimiento,
-                                double hectareas, TipoOperacion tipoOperacion, Puerto puerto, Silo silo, double toneladas, JTextField numeroSolicitud){
+                                double hectareas, TipoOperacion tipoOperacion, String destino, Silo silo, double toneladas, JTextField numeroSolicitud, JTextField toneladas2){
         
         SolicitudRetiro solicitud = new SolicitudRetiro();
             solicitud.setFechaSolicitud(fecha);
@@ -142,21 +142,71 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             estab.setHectareasATrillar(hectareas);
             this.guardarObjeto(estab);
         }
-        if(tipoSolicitud.getIdTipoSolicitud()==2 && tipoOperacion.getNombreTipoOperacion() == "Venta"){
+        if(tipoSolicitud.getIdTipoSolicitud()==2 && tipoOperacion.getNombreTipoOperacion().equalsIgnoreCase("Venta")){
             PuertoPorSolicitud puertosol = new PuertoPorSolicitud();
-            puertosol.setPuerto(puerto);
-            puertosol.setSilo(silo);
-            puertosol.setSolicitud(solicitud);
-            puertosol.setTipoOperacion(tipoOperacion);
-            puertosol.setToneladasAExtraer(toneladas);
+            Iterator iteP = this.listarClase(Puerto.class).iterator();
+            while(iteP.hasNext()){
+                Puerto p = (Puerto) iteP.next();
+                if(p.getNombrePuerto().equalsIgnoreCase(destino)){
+                    puertosol.setPuerto(p);
+                    puertosol.setSilo(silo);
+                    puertosol.setSolicitud(solicitud);
+                    puertosol.setTipoOperacion(tipoOperacion);
+                    Iterator ite2 = this.listarClase(ToneladasPorCereal.class).iterator();
+                    while(ite2.hasNext()){
+                    ToneladasPorCereal ton = (ToneladasPorCereal) ite2.next();
+                    if(ton.getHistorial().getProductor().equals(productor) && ton.getTipoCereal().equals(tipoCereal)){
+                           double suma_t=ton.getToneladas();
+                           double resultado=suma_t - Double.parseDouble(toneladas2.getText());
+                           if(resultado>=0){
+                           ton.setToneladas(resultado);
+                           System.out.println(resultado);
+                           this.actualizarObjeto(ton);
+                           puertosol.setToneladasAExtraer(toneladas);
+                           this.guardarObjeto(puertosol);
+                           } else{JOptionPane.showMessageDialog(null, "Las toneladas a extraer son mayores que las disponibles");
+                           }
+                        }
+                    }
+                
+                }
+            }
+//            
+            
+            
         }
         if(tipoSolicitud.getNombreTipoSolicitud().equals("Retiro en Planta") && tipoOperacion.getNombreTipoOperacion().equals("Transferencia")){
             EstablecimientoPorSolicitud est = new EstablecimientoPorSolicitud();
-            est.setEstablecimiento(establecimiento);
-            est.setSilo(silo);
-            est.setSolicitud(solicitud);
-            est.setTipoOperacion(tipoOperacion);
-            est.setToneladasAExtraer(toneladas);
+            Iterator iteE = this.listarClase(Establecimiento.class).iterator();
+            while(iteE.hasNext()){
+                Establecimiento e = (Establecimiento) iteE.next();
+                if(e.getNombreEstablecimiento().equalsIgnoreCase(destino)){
+                    est.setEstablecimiento(e);
+                    est.setSilo(silo);
+                    est.setSolicitud(solicitud);
+                    est.setTipoOperacion(tipoOperacion);
+                    Iterator ite2 = this.listarClase(ToneladasPorCereal.class).iterator();
+                    while(ite2.hasNext()){
+                    ToneladasPorCereal ton = (ToneladasPorCereal) ite2.next();
+                if(ton.getHistorial().getProductor().equals(productor) && ton.getTipoCereal().equals(tipoCereal)){
+                           double suma_t=ton.getToneladas();
+                           double resultado=suma_t - Double.parseDouble(toneladas2.getText());
+                           if(resultado>=0){
+                           ton.setToneladas(resultado);
+                           System.out.println(resultado);
+                           this.actualizarObjeto(ton);
+                           est.setToneladasAExtraer(toneladas);
+                           this.guardarObjeto(est);
+                           } else{JOptionPane.showMessageDialog(null, "Las toneladas a extraer son mayores que las disponibles");
+                           }
+                        }
+            }
+                
+                
+                }
+            }
+//            est.setEstablecimiento((Establecimiento)destino);
+            
         }
         JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
         numeroSolicitud.setText(String.valueOf(solicitud.getNumeroSolicitud()));

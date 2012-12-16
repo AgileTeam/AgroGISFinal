@@ -62,7 +62,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="410" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="414" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="307" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>

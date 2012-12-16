@@ -74,6 +74,7 @@ public class gestorDescargaCereal extends GestorHibernate {
             descarga.setFecha(fecha.getText());
             descarga.setHora(hora.getText());
             descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
+            
             descarga.setToneladas(Double.parseDouble(toneladas.getText()));
             descarga.setTransportista((Transportista)transportista);
             descarga.setSilo(silo);
@@ -96,7 +97,10 @@ public class gestorDescargaCereal extends GestorHibernate {
                     while(ite4.hasNext()) {
                         ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
                         if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
-                            t.setToneladas(Double.parseDouble(toneladas.getText()));
+                           double suma_t=t.getToneladas();
+                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
+                            t.setToneladas(resultado);
+                            System.out.println(resultado);
                             this.actualizarObjeto(t);
                         
                         }
@@ -184,7 +188,10 @@ public class gestorDescargaCereal extends GestorHibernate {
                     while(ite4.hasNext()) {
                         ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
                         if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
-                            t.setToneladas(Double.parseDouble(toneladas.getText()));
+                            double suma_t=t.getToneladas();
+                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
+                            t.setToneladas(resultado);
+                            System.out.println(resultado);
                             this.actualizarObjeto(t);
                         
                         }

@@ -130,10 +130,8 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         txtProductor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtSilo = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         txtTnDisponibles = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtTnAlmacenadas = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtTnExtraidas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -242,27 +240,20 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         jLabel3.setBounds(630, 50, 70, 20);
         jPanel5.add(txtSilo);
         txtSilo.setBounds(670, 50, 110, 20);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Toneladas Almacenadas");
-        jPanel5.add(jLabel5);
-        jLabel5.setBounds(10, 80, 160, 20);
         jPanel5.add(txtTnDisponibles);
-        txtTnDisponibles.setBounds(670, 80, 110, 20);
+        txtTnDisponibles.setBounds(430, 80, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Toneladas Extraidas");
         jPanel5.add(jLabel6);
-        jLabel6.setBounds(280, 80, 150, 20);
-        jPanel5.add(txtTnAlmacenadas);
-        txtTnAlmacenadas.setBounds(150, 80, 110, 20);
+        jLabel6.setBounds(20, 80, 150, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Toneladas Disponibles");
         jPanel5.add(jLabel8);
-        jLabel8.setBounds(530, 80, 160, 20);
+        jLabel8.setBounds(290, 80, 160, 20);
         jPanel5.add(txtTnExtraidas);
-        txtTnExtraidas.setBounds(400, 80, 110, 20);
+        txtTnExtraidas.setBounds(140, 80, 110, 20);
 
         tblSolicitud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -443,7 +434,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -467,17 +458,14 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 gestorH.actualizarObjeto(solicitud);
                 retiro.setSolicitud(solicitud);
                 retiro.setToneladas(Double.parseDouble(txtTnExtraidas.getText()));
-                Iterator ite3 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
-                while(ite3.hasNext()){
-                    ToneladasPorCereal ton = (ToneladasPorCereal) ite3.next();
-                    Iterator ite4 = gestorH.listarClase(SolicitudPorHistorial.class).iterator();
-                    while(ite4.hasNext()){
-                    SolicitudPorHistorial sol = (SolicitudPorHistorial) ite4.next();
-                    if(ton.getHistorial()== sol.getHistorial() && sol.getSolicitud()==solicitud){
-                        ton.setToneladas(Double.parseDouble(txtTnDisponibles.getText()));
-                        gestorH.actualizarObjeto(ton);
-                    }
+                
+            Iterator iteV = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Pendiente").iterator();
+            while(iteV.hasNext()){
+                Viaje viaje = (Viaje) iteV.next();
+                if(viaje.getSolicitud().equals(solicitud)){
+                    txtFechaViaje.setText(viaje.getFecha());
                 }
+            
             }
         }
         }
@@ -503,22 +491,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 txtFechaViaje.setText(viaje.getFecha());
             }
         }
-         //Carga txt con toneladas disponibles del productor dueño de la solicitud
-         Iterator ite5 = gestorH.listarClase(SolicitudPorHistorial.class).iterator();
-         while(ite5.hasNext()){
-             SolicitudPorHistorial solXHist = (SolicitudPorHistorial) ite5.next();
-             Iterator ite3 = gestorH.listarClase(HistorialProductor.class).iterator();
-             while(ite3.hasNext()){
-                 HistorialProductor hist = new HistorialProductor();
-                 Iterator ite4 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
-                 while(ite4.hasNext()){
-                     ToneladasPorCereal toneladas = (ToneladasPorCereal) ite4.next();
-                     if(solXHist.getSolicitud()==sol && solXHist.getHistorial() == toneladas.getHistorial() && toneladas.getTipoCereal()==sol.getTipoCereal()){
-                     txtTnAlmacenadas.setText(String.valueOf(toneladas.getToneladas()));
-                     }
-                 }
-             }
-         }
+        
          Iterator ite6 = gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
          while(ite6.hasNext()){
              EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite6.next();
@@ -533,9 +506,32 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                  txtTnExtraidas.setText(String.valueOf(puerto.getToneladasAExtraer()));
              }
          }
+    
+        
+        Iterator ite3 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
+                while(ite3.hasNext()){
+                    ToneladasPorCereal ton = (ToneladasPorCereal) ite3.next();
+                    if((ton.getHistorial().getProductor().getNombre().equalsIgnoreCase(txtProductor.getText()))&& (ton.getTipoCereal().getNombreCereal().equalsIgnoreCase(txtTipoCereal.getText()))){
+                        txtTnDisponibles.setText(String.valueOf(ton.getToneladas()));
+                    }
+            }
+        
+            Iterator iteP = gestorH.listarClase(PuertoPorSolicitud.class).iterator();
+            while(iteP.hasNext()){
+                PuertoPorSolicitud p = (PuertoPorSolicitud) iteP.next();
+                if(p.getSolicitud().equals(sol)){
+                    txtSilo.setText(p.getSilo().toString());
+                }
+             }
+            Iterator iteE = gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
+            while(iteE.hasNext()){
+                EstablecimientoPorSolicitud e = (EstablecimientoPorSolicitud) iteE.next();
+                if(e.getSolicitud().equals(sol)){
+                    txtSilo.setText(e.getSilo().toString());
+                }
+             }
     }
     }
-    txtTnDisponibles.setText(String.valueOf(Double.parseDouble(txtTnAlmacenadas.getText())- Double.parseDouble(txtTnExtraidas.getText())));
     }//GEN-LAST:event_btnAceptarSolicitud1ActionPerformed
 
     private void btnBuscarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolicitudActionPerformed
@@ -729,7 +725,6 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -751,7 +746,6 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtSilo;
     private javax.swing.JTextField txtTipoCereal;
-    private javax.swing.JTextField txtTnAlmacenadas;
     private javax.swing.JTextField txtTnDisponibles;
     private javax.swing.JTextField txtTnExtraidas;
     // End of variables declaration//GEN-END:variables

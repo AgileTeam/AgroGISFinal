@@ -38,11 +38,11 @@ public class gestorRegistrarViaje extends GestorHibernate {
         DefaultTableModel modelo= (DefaultTableModel) tblEstablecimiento.getModel();
         modelo.setRowCount(0);
         if(banderaP != 0){
-        Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
+        Iterator ite = this.listarClase(PuertoPorSolicitud.class).iterator();
         while(ite.hasNext()){
-            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-            if(sol.getTipoSolicitud().getIdTipoSolicitud()==2){
-            Object fila[]= {sol.getNumeroSolicitud(), sol.getProductor(), sol.getProductor().getNumeroDocumento()};
+            PuertoPorSolicitud p = (PuertoPorSolicitud) ite.next();
+            if(p.getSolicitud().getEstado().equalsIgnoreCase("Pendiente")){
+            Object fila[]= {p.getSolicitud().getNumeroSolicitud(), p.getSolicitud().getProductor(), p.getSolicitud().getProductor().getNumeroDocumento()};
             modelo.addRow(fila);
             tblEstablecimiento.setModel(modelo);
             }
@@ -79,11 +79,11 @@ public class gestorRegistrarViaje extends GestorHibernate {
         DefaultTableModel modelo= (DefaultTableModel) tblEstablecimiento.getModel();
          modelo.setRowCount(0);
         if(banderaE != 0){
-        Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
+        Iterator ite = this.listarClase(EstablecimientoPorSolicitud.class).iterator();
         while(ite.hasNext()){
-            SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-            if(sol.getTipoSolicitud().getIdTipoSolicitud()==2){
-            Object fila[]= {sol.getNumeroSolicitud(), sol.getProductor(), sol.getProductor().getNumeroDocumento()};
+            EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite.next();
+            if(est.getSolicitud().getEstado().equalsIgnoreCase("Pendiente")){
+            Object fila[]= {est.getSolicitud().getNumeroSolicitud(), est.getSolicitud().getProductor(), est.getSolicitud().getProductor().getNumeroDocumento()};
             modelo.addRow(fila);
             tblEstablecimiento.setModel(modelo);
             }
