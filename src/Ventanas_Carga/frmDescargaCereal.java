@@ -287,17 +287,17 @@ GestorHibernate gestorH = new GestorHibernate();
         txtPesoTotal.setBounds(320, 280, 100, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel4.setText("Kgs.");
+        jLabel4.setText("Tn.");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(640, 280, 34, 20);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel17.setText("Kgs.");
+        jLabel17.setText("Tn.");
         jPanel1.add(jLabel17);
         jLabel17.setBounds(200, 280, 34, 20);
 
         jLabel18.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel18.setText("Kgs.");
+        jLabel18.setText("Tn.");
         jPanel1.add(jLabel18);
         jLabel18.setBounds(420, 280, 34, 20);
 
@@ -421,7 +421,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();

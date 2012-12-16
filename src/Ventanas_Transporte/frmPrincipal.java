@@ -58,9 +58,10 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuViaje.setEnabled(false);
         MenuCarga.setEnabled(false);
         MenuListados.setEnabled(false);
+        MenuAuditoria.setEnabled(false);
    
  
-        gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados);
+        gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
         Iterator ite = gestorH.listarClase(Usuario.class).iterator();
         while(ite.hasNext()){
             Usuario u = (Usuario) ite.next();

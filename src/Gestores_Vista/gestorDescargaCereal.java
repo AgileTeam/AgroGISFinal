@@ -84,6 +84,9 @@ public class gestorDescargaCereal extends GestorHibernate {
                 while(ite3.hasNext()){
                 Establecimiento est = (Establecimiento) ite3.next();
                 if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
+                    descarga.setEstablecimiento(est);
+                    descarga.setProductor(est.getProductor());
+                    this.actualizarObjeto(descarga);
                     DescargaPorHistorial desc = new DescargaPorHistorial();
                     desc.setHistorial(h);
                     desc.setDescarga(descarga);
@@ -112,7 +115,13 @@ public class gestorDescargaCereal extends GestorHibernate {
                 CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
                 c.setMuestra(muestra);
                 c.setTipoCereal((TipoCereal)tipoCereal);
-                c.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(i, 0));
+                Iterator iteCa = this.listarClase(CaracteristicasCereal.class).iterator();
+                        while(iteCa.hasNext()){
+                            CaracteristicasCereal ca = (CaracteristicasCereal) iteCa.next();
+                            if(ca.getNombreCaracteristica().equalsIgnoreCase(modeloTabla.getValueAt(i,0).toString())){
+                                c.setCaracteristicas(ca);
+                            }
+                        }
                 c.setValor(Double.parseDouble(modeloTabla.getValueAt(i, 1).toString()));
                 this.guardarObjeto(c);
             }
@@ -156,6 +165,36 @@ public class gestorDescargaCereal extends GestorHibernate {
                         c.setValor(Double.parseDouble(modeloTabla.getValueAt(j, 1).toString()));
                         this.guardarObjeto(c);
                     }
+                     Iterator ite2= this.listarClase(HistorialProductor.class).iterator();
+                while(ite2.hasNext()){
+                HistorialProductor h = (HistorialProductor) ite2.next();
+                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
+                while(ite3.hasNext()){
+                Establecimiento est = (Establecimiento) ite3.next();
+                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
+                    descarga.setEstablecimiento(est);
+                    descarga.setProductor(est.getProductor());
+                    this.actualizarObjeto(descarga);
+                    DescargaPorHistorial desc = new DescargaPorHistorial();
+                    desc.setHistorial(h);
+                    desc.setDescarga(descarga);
+                    this.guardarObjeto(desc);
+                    Iterator ite4 = this.listarClase(ToneladasPorCereal.class).iterator();
+                    while(ite4.hasNext()) {
+                        ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
+                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
+                            t.setToneladas(Double.parseDouble(toneladas.getText()));
+                            this.actualizarObjeto(t);
+                        
+                        }
+                    
+                    }
+                }
+                
+                }
+                
+            
+            }
                  }
                 }
      

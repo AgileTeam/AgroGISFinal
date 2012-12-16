@@ -17,7 +17,7 @@ import javax.swing.JMenu;
  */
 public class gestorFrmPrincipal extends GestorHibernate{
     
-    public void HabilitarMenu(JMenu menuInicio, JMenu menuCarga, JMenu menuTransporte, JMenu menuViaje, JMenu menuCliente, JMenu menuListados){
+    public void HabilitarMenu(JMenu menuInicio, JMenu menuCarga, JMenu menuTransporte, JMenu menuViaje, JMenu menuCliente, JMenu menuListados, JMenu menuAuditoria){
         Iterator ite = this.listarClase(Usuario.class).iterator();
         while(ite.hasNext()){
             Usuario u = (Usuario) ite.next();
@@ -43,6 +43,7 @@ public class gestorFrmPrincipal extends GestorHibernate{
                              menuListados.setEnabled(true);
                              menuTransporte.setEnabled(true);
                              menuViaje.setEnabled(true);
+                             menuAuditoria.setEnabled(true);
                          }
                      
                      }
