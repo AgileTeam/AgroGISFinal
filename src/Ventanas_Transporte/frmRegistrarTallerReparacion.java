@@ -567,10 +567,17 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
     GestorHibernate gestorH = new GestorHibernate();
     TallerReparacion taller = new TallerReparacion();
+    Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
+    while(ite.hasNext()){
+        Especialidad e = (Especialidad) ite.next();
+        if(e.equals((Especialidad)cmbEspecialidad.getSelectedItem())){
+            taller.setEspecialidad(e);
+        }
+    } 
     taller.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
     taller.setEmail(txtEmail.getText());
     taller.setRazonSocial(txtRazonSocial.getText());
-    taller.setNumeroTelefono(Integer.parseInt(txtTelefono.getText()));
+    taller.setNumeroTelefono((txtTelefono.getText()));
     taller.setCuit(txtCUIT.getText());
     taller.setTipoTelefono((TipoTelefono) cmbTipoTel.getSelectedItem());
     Domicilio domicilio = new Domicilio();

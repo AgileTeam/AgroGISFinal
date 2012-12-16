@@ -30,7 +30,7 @@ private Especialidad especialidad;
 
 
     private String email;
-    private int numeroTelefono;
+    private String numeroTelefono;
     private String razonSocial;
     private String cuit;
     /**
@@ -76,19 +76,7 @@ private Especialidad especialidad;
     }
 
 
-    /**
-     * @return the numeroTelefono
-     */
-    public int getNumeroTelefono() {
-        return numeroTelefono;
-    }
-
-    /**
-     * @param numeroTelefono the numeroTelefono to set
-     */
-    public void setNumeroTelefono(int numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
-    }
+ 
 
     /**
      * @return the razonSocial
@@ -148,6 +136,20 @@ private Especialidad especialidad;
      */
     public void setCuit(String cuit) {
         this.cuit = cuit;
+    }
+
+    /**
+     * @return the numeroTelefono
+     */
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    /**
+     * @param numeroTelefono the numeroTelefono to set
+     */
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
     }
     
   
