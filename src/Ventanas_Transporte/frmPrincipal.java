@@ -59,6 +59,26 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuCarga.setEnabled(false);
         MenuListados.setEnabled(false);
         MenuAuditoria.setEnabled(false);
+        
+        //items deshabilitados para la reunion de avance
+        ItemTransportista.setEnabled(false);
+        ItemVehiculo.setEnabled(false);
+        ItemEstacion.setEnabled(false);
+        ItemVerEstacion.setEnabled(false);
+        ItemVerTransp.setEnabled(false);
+        ItemVerVehiculo.setEnabled(false);
+        ItemVerTaller.setEnabled(false);
+        ItemDetalleConsumo.setEnabled(false);
+        MenuEliminarOrden.setEnabled(false);
+        ItemRegistroCarga.setEnabled(false);
+        ItemFichaPersonal.setEnabled(false);
+        ItemCargaCombustible.setEnabled(false);
+        menuVerViaje.setEnabled(false);
+        ItemNuevoLab.setEnabled(false);
+        ItemNuevoSilo.setEnabled(false);
+        MenuVerCarga.setEnabled(false);
+        ItemResultadosLab.setEnabled(false);
+        ItemEnvioMuestras.setEnabled(false);
    
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
