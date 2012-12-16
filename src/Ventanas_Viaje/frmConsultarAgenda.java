@@ -204,24 +204,45 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel13.setBounds(960, 0, 30, 30);
 
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel5.setLayout(null);
 
         jLabel50.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel50.setText("Fecha");
-        jPanel5.add(jLabel50);
-        jLabel50.setBounds(10, 10, 70, 20);
-        jPanel5.add(calendario);
-        calendario.setBounds(50, 10, 99, 20);
 
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar_1.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel5.add(btnBuscar);
-        btnBuscar.setBounds(170, 10, 40, 25);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnBuscar))
+                .addGap(7, 7, 7))
+        );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel6.setLayout(null);
@@ -229,42 +250,42 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setText("Viajes Finalizados");
         jPanel6.add(jLabel16);
-        jLabel16.setBounds(560, 10, 110, 20);
+        jLabel16.setBounds(610, 10, 130, 20);
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reloj.png"))); // NOI18N
         jPanel6.add(jLabel35);
-        jLabel35.setBounds(120, 0, 40, 40);
+        jLabel35.setBounds(130, 0, 40, 40);
 
         jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel37.setText("Viajes Pendientes");
         jPanel6.add(jLabel37);
-        jLabel37.setBounds(10, 10, 110, 20);
+        jLabel37.setBounds(20, 10, 140, 20);
         jPanel6.add(jLabel38);
         jLabel38.setBounds(280, 10, 0, 0);
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/finalizado.png"))); // NOI18N
         jPanel6.add(jLabel39);
-        jLabel39.setBounds(670, 0, 40, 40);
+        jLabel39.setBounds(720, 0, 40, 40);
 
         jLabel40.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel40.setText("Viajes En Proceso");
         jPanel6.add(jLabel40);
-        jLabel40.setBounds(170, 10, 110, 20);
+        jLabel40.setBounds(200, 10, 130, 20);
         jPanel6.add(jLabel41);
-        jLabel41.setBounds(450, 10, 40, 14);
+        jLabel41.setBounds(480, 10, 40, 14);
 
         jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proceso.png"))); // NOI18N
         jPanel6.add(jLabel42);
-        jLabel42.setBounds(280, 0, 40, 40);
+        jLabel42.setBounds(310, 0, 40, 40);
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel43.setText("Viajes con Vehiculo Asignado");
         jPanel6.add(jLabel43);
-        jLabel43.setBounds(330, 10, 170, 20);
+        jLabel43.setBounds(370, 10, 200, 20);
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
         jPanel6.add(jLabel44);
-        jLabel44.setBounds(510, 0, 40, 40);
+        jLabel44.setBounds(540, 0, 40, 40);
 
         jPanel4.setLayout(null);
 
@@ -565,11 +586,6 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -601,7 +617,13 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                                     .addComponent(jScrollPane33, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
                                     .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(444, 444, 444)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -617,7 +639,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
