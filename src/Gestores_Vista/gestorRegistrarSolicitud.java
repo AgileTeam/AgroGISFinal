@@ -10,8 +10,10 @@ import Clases_Modulo_Cliente.Productor;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -123,7 +125,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
     
     
     public void guardarSolicitud(TipoSolicitud tipoSolicitud, String fecha, Productor productor, TipoCereal tipoCereal, Establecimiento establecimiento,
-                                double hectareas, TipoOperacion tipoOperacion, Puerto puerto, Silo silo, double toneladas){
+                                double hectareas, TipoOperacion tipoOperacion, Puerto puerto, Silo silo, double toneladas, JTextField numeroSolicitud){
         
         SolicitudRetiro solicitud = new SolicitudRetiro();
             solicitud.setFechaSolicitud(fecha);
@@ -156,6 +158,8 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             est.setTipoOperacion(tipoOperacion);
             est.setToneladasAExtraer(toneladas);
         }
+        JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
+        numeroSolicitud.setText(String.valueOf(solicitud.getNumeroSolicitud()));
     }
     
        public DefaultComboBoxModel CargaSilos(String TipoCereal){

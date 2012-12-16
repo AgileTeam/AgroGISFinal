@@ -369,7 +369,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Pais p = (Pais) ite.next();
         if(p.getNombrePais().equalsIgnoreCase(pais.getNombrePais())){
             gestorH.eliminarObjeto(p);
-            System.out.println("Puto");
         }
     }
     modeloT.removeRow(tblPais.getSelectedRow());

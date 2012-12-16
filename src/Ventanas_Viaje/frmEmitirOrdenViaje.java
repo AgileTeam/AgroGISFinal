@@ -40,6 +40,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        txtNumOrden.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -494,7 +495,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 Iterator ite1 = gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
                 while(ite1.hasNext()){
                     EstablecimientoPorSolicitud e = (EstablecimientoPorSolicitud) ite1.next();
-                    if(e.getSolicitud()== est.getViaje().getSolicitud() && est.getViaje().getTipoViaje().getNombreTipoViaje()=="Retiro"){
+                    if(e.getSolicitud()== est.getViaje().getSolicitud() && est.getViaje().getTipoViaje().getNombreTipoViaje().equalsIgnoreCase("Retiro de Establecimiento")){
                         txtHas.setText(String.valueOf(e.getHectareasATrillar()));
                     }
                     if(e.getSolicitud()== est.getViaje().getSolicitud() && est.getViaje().getTipoViaje().getNombreTipoViaje()=="Traslado a Establecimiento"){
@@ -702,9 +703,12 @@ GestorHibernate gestorH = new GestorHibernate();
                viaje.setEstado("En Proceso");
                OrdenViaje orden = new OrdenViaje();
                orden.setViaje(viaje);
+               orden.setResponsable(txtResponsable.getText());
                gestorH.actualizarObjeto(viaje);
                gestorH.guardarObjeto(orden);
                txtNumOrden.setText(String.valueOf(orden.getNumeroOrden()));
+               JOptionPane.showMessageDialog(null, "Se genero correctamente la orden Nº:"+ " " + orden.getNumeroOrden());
+               
            }
        }
        

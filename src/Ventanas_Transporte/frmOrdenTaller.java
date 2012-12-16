@@ -14,6 +14,7 @@ import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
+import ireport.GestorDeReportes;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -483,6 +484,12 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 //        detalle.setEnvioTaller(envio);
 //        detalle.setOrden(orden);
 //        gestorH.guardarObjeto(detalle);
+        
+       
+    String arc="C:/Reportes AgroGIS/OrdenServicio.jasper";
+    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+    gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",orden.getNumeroOrden()));
+    gestorReportes.imprimir();
     }//GEN-LAST:event_btnEmitirOrdenActionPerformed
  
 

@@ -116,21 +116,6 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
         jScrollPane21 = new javax.swing.JScrollPane();
         tblOcho = new javax.swing.JTable();
         jScrollPane23 = new javax.swing.JScrollPane();
@@ -286,92 +271,6 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
         jPanel6.add(jLabel44);
         jLabel44.setBounds(540, 0, 40, 40);
-
-        jPanel4.setLayout(null);
-
-        jLabel51.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel51.setText("Lunes");
-        jPanel4.add(jLabel51);
-        jLabel51.setBounds(10, 0, 40, 15);
-
-        jLabel52.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel52.setText("29/10/12");
-        jPanel4.add(jLabel52);
-        jLabel52.setBounds(50, 0, 60, 15);
-
-        jLabel53.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel53.setText("Martes");
-        jPanel4.add(jLabel53);
-        jLabel53.setBounds(140, 0, 50, 15);
-
-        jLabel54.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel54.setText("30/10/12");
-        jPanel4.add(jLabel54);
-        jLabel54.setBounds(190, 0, 60, 15);
-
-        jLabel55.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel55.setText("Miercoles");
-        jPanel4.add(jLabel55);
-        jLabel55.setBounds(280, 0, 60, 15);
-
-        jLabel56.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel56.setText("31/10/12");
-        jPanel4.add(jLabel56);
-        jLabel56.setBounds(340, 0, 50, 15);
-
-        jLabel57.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel57.setText("Jueves");
-        jPanel4.add(jLabel57);
-        jLabel57.setBounds(410, 0, 60, 15);
-
-        jLabel58.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel58.setText("01/11/12");
-        jPanel4.add(jLabel58);
-        jLabel58.setBounds(460, 0, 60, 15);
-
-        jLabel59.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel59.setText("Viernes");
-        jPanel4.add(jLabel59);
-        jLabel59.setBounds(550, 0, 60, 15);
-
-        jLabel60.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel60.setText("02/11/12");
-        jPanel4.add(jLabel60);
-        jLabel60.setBounds(600, 0, 60, 15);
-
-        jLabel61.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel61.setText("Sabado");
-        jPanel4.add(jLabel61);
-        jLabel61.setBounds(690, 0, 60, 15);
-
-        jLabel62.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel62.setText("03/11/12");
-        jPanel4.add(jLabel62);
-        jLabel62.setBounds(740, 0, 60, 15);
-
-        jLabel63.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel63.setText("Domingo");
-        jPanel4.add(jLabel63);
-        jLabel63.setBounds(820, 0, 70, 15);
-
-        jLabel64.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel64.setText("04/11/12");
-        jPanel4.add(jLabel64);
-        jLabel64.setBounds(880, 0, 60, 15);
 
         tblOcho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -615,8 +514,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                                     .addComponent(jScrollPane30, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
                                     .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
                                     .addComponent(jScrollPane33, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -640,9 +538,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -701,7 +597,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2423, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2427, Short.MAX_VALUE)
         );
 
         pack();
@@ -805,27 +701,12 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane21;

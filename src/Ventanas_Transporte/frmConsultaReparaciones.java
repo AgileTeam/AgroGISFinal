@@ -441,6 +441,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     btnQuitarTodosR.setBounds(800, 40, 35, 25);
 
     btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+    btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEliminarActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -1110,6 +1115,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     gestorReportes.setColeccionDeDatos(gestorC.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",nroOrden));
     gestorReportes.imprimir();
     }//GEN-LAST:event_btnVerOrdenActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    DefaultTableModel modelo = (DefaultTableModel) tblReparacion.getModel();
+    modelo.removeRow(tblReparacion.getSelectedRow());
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodosR;

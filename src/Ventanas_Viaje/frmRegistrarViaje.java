@@ -685,6 +685,9 @@ GestorHibernate gestorH = new GestorHibernate();
            }
        }
        gestorH.guardarObjeto(viaje);
+       JOptionPane.showMessageDialog(null, "Se genero correctamente el viaje Nº" + " " + viaje.getIdViaje());
+       txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
+       
        if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Puerto")){
            PuertoPorViaje puerto = new PuertoPorViaje();
            Iterator ite = gestorH.listarClase(Puerto.class).iterator();
@@ -723,7 +726,7 @@ GestorHibernate gestorH = new GestorHibernate();
                }
            }
        } 
-       JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");  
+   
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
