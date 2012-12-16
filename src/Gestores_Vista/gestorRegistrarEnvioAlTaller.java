@@ -21,7 +21,7 @@ public class gestorRegistrarEnvioAlTaller extends GestorHibernate {
        Iterator ite = this.listarClase(OrdenServicio.class).iterator();
        while(ite.hasNext()){
            OrdenServicio orden =(OrdenServicio) ite.next();
-               if(orden.getTipoServicio().getIdTipoServicio() == 1){
+               if(orden.getTipoServicio().getIdTipoServicio() == 1 && orden.getEstado().equalsIgnoreCase("Pendiente")){
                modelo.addElement(orden);
                }
            }

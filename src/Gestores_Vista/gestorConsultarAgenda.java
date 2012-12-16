@@ -63,7 +63,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
                         if(modelo.getValueAt(i, dia)== ""){
                             JLabel label = new JLabel();
                             label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaAsignado)));
-                            label.setText(productor.getNombre());
+                            label.setText(productor.getNombre()+" \t " + viaje.getFecha());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
                     }
@@ -81,7 +81,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
                         if(modelo.getValueAt(i, dia) == ""){
                             JLabel label = new JLabel();
                             label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaEnProceso)));
-                            label.setText(productor.getNombre());
+                            label.setText(productor.getNombre()+"\n " + viaje.getFecha());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
                     }
@@ -99,7 +99,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
                         if(modelo.getValueAt(i, dia)== ""){
                             JLabel label = new JLabel();
                             label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaFinalizado)));
-                            label.setText(productor.getNombre());
+                            label.setText(productor.getNombre()+" \t " + viaje.getFecha());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
                     }

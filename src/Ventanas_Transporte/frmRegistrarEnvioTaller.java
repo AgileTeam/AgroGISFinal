@@ -40,6 +40,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEditable(false);
         txtTotal.setEditable(false);
         txtTotal.setEnabled(false);
+        btnDetalle.setEnabled(false);
         
         //configurar hora y fecha
         GregorianCalendar gc=new GregorianCalendar();
@@ -523,7 +524,7 @@ GestorHibernate gestorH = new GestorHibernate();
               envio.setFecha(modelo.getValueAt(0,0).toString());
               envio.setHora(txtHora.getText());
               envio.setResponsable(txtResponsable.getText());
-              envio.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
+              envio.setImporteTotal(Double.parseDouble(txtTotal.getText()));
               envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
               gestorH.actualizarObjeto(envio);
               for(int i=0; i<modelo.getRowCount(); i++){
