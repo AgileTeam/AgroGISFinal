@@ -27,7 +27,7 @@ public class gestorDescargaCereal extends GestorHibernate {
        Iterator ite = this.listarClase(Viaje.class).iterator();
        while(ite.hasNext()){
            Viaje viaje = (Viaje) ite.next();
-           if(viaje.getEstado()=="En Proceso" && viaje.getTipoViaje().getNombreTipoViaje()== "Retiro"){
+           if(viaje.getEstado().equalsIgnoreCase("En Proceso") && viaje.getTipoViaje().getNombreTipoViaje().equalsIgnoreCase("Retiro de Establecimiento")){
                Iterator ite1 = this.listarClase(EstablecimientoPorSolicitud.class).iterator();
                while(ite1.hasNext()){
                    EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
@@ -49,14 +49,23 @@ public class gestorDescargaCereal extends GestorHibernate {
        Iterator ite = this.listarClase(Silo.class).iterator();
        while(ite.hasNext()){
            Silo tipo =(Silo) ite.next();
-               modelo.addElement(tipo.getNumeroSilo());
+               modelo.addElement(tipo);
            }
        return modelo;
    }
        
        
-     public void guardarDescarga(JTable tablaCaracteristica, JTextField establecimiento, JTextField fecha, JTextField viaje, TipoCereal tipoCereal, JTextField toneladas, Transportista transportista, JComboBox silo){
-     DefaultTableModel modeloTabla = (DefaultTableModel) tablaCaracteristica.getModel();  
+     public void guardarDescarga(JTable tablaCaracteristica, JTextField establecimiento, JTextField fecha, JTextField viaje, TipoCereal tipoCereal, JTextField toneladas, Transportista transportista, Silo silo){
+     DefaultTableModel modeloTabla = (DefaultTableModel) tablaCaracteristica.getModel(); 
+     
+     
+//     Descarga descarga = new Descarga();
+//     descarga.setCereal(tipoCereal);
+//     descarga.setTransportista(transportista);
+//     this.guardarObjeto(descarga);
+//     MuestraTomada muestra = new MuestraTomada();
+//     muestra.setDescarga(descarga);
+//     this.guardarObjeto(muestra);
    
         Iterator iterator = this.listarClase(Descarga.class).iterator();
         if(iterator.hasNext()==false){
@@ -66,7 +75,7 @@ public class gestorDescargaCereal extends GestorHibernate {
             descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
             descarga.setToneladas(Double.parseDouble(toneladas.getText()));
             descarga.setTransportista((Transportista)transportista);
-            descarga.setSilo((Silo)silo.getSelectedItem());
+            descarga.setSilo(silo);
             this.guardarObjeto(descarga);
             Iterator ite2= this.listarClase(HistorialProductor.class).iterator();
             while(ite2.hasNext()){
@@ -126,7 +135,7 @@ public class gestorDescargaCereal extends GestorHibernate {
                     descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
                     descarga.setToneladas(Double.parseDouble(toneladas.getText()));
                     descarga.setTransportista((Transportista)transportista);
-                    descarga.setSilo((Silo)silo.getSelectedItem());
+                    descarga.setSilo(silo);
                     this.guardarObjeto(descarga);
                     MuestraTomada muestra = new MuestraTomada();
                     muestra.setDescarga(descarga);
@@ -136,7 +145,14 @@ public class gestorDescargaCereal extends GestorHibernate {
                         CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
                         c.setMuestra(muestra);
                         c.setTipoCereal((TipoCereal)tipoCereal);
-                        c.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(j, 0));
+                        Iterator iteC = this.listarClase(CaracteristicasCereal.class).iterator();
+                        while(iteC.hasNext()){
+                            CaracteristicasCereal ca = (CaracteristicasCereal) iteC.next();
+                            if(ca.getNombreCaracteristica().equalsIgnoreCase(modeloTabla.getValueAt(j,0).toString())){
+                                c.setCaracteristicas(ca);
+                            }
+                        }
+                        
                         c.setValor(Double.parseDouble(modeloTabla.getValueAt(j, 1).toString()));
                         this.guardarObjeto(c);
                     }
@@ -144,6 +160,16 @@ public class gestorDescargaCereal extends GestorHibernate {
                 }
      
      }
+     
+        public DefaultComboBoxModel rellenaComboCaracteristica(){
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            Iterator ite = this.listarClase(CaracteristicasCereal.class).iterator();
+            while(ite.hasNext()){
+                CaracteristicasCereal cc =(CaracteristicasCereal) ite.next();
+                modelo.addElement(cc.getNombreCaracteristica());
+           }
+                return modelo;
+         }
      
      public long obtenerNumeroMuestra(){
          Iterator ite = listarClase(MuestraTomada.class).iterator();

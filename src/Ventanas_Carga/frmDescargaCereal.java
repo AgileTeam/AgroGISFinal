@@ -39,11 +39,9 @@ GestorHibernate gestorH = new GestorHibernate();
     public frmDescargaCereal() {
         initComponents();
         gestorH.actualizarUsuario(labelusuario);
-        
         gestorD.rellenaTablaProductor(tblEstablecimiento);
-
         cmbSilo.setModel(gestorD.rellenaComboSilo());
-
+        cmbCaracteristica.setModel(gestorD.rellenaComboCaracteristica());
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -252,17 +250,17 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Peso Total");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(260, 280, 90, 20);
+        jLabel8.setBounds(250, 280, 100, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Peso Neto");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(480, 280, 80, 20);
+        jLabel13.setBounds(470, 280, 90, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Silo Nº");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(280, 250, 70, 20);
+        jLabel14.setBounds(270, 250, 70, 20);
         jPanel1.add(txtEstablecimiento);
         txtEstablecimiento.setBounds(430, 160, 200, 20);
         jPanel1.add(txtProductor);
@@ -291,7 +289,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel4.setText("Kgs.");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(650, 280, 34, 20);
+        jLabel4.setBounds(640, 280, 34, 20);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel17.setText("Kgs.");
@@ -338,14 +336,14 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel20.setText("Valor");
         jPanel2.add(jLabel20);
-        jLabel20.setBounds(80, 70, 50, 20);
+        jLabel20.setBounds(70, 70, 80, 20);
         jPanel2.add(txtValor);
         txtValor.setBounds(110, 70, 91, 20);
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel21.setText("Caracteristica");
         jPanel2.add(jLabel21);
-        jLabel21.setBounds(30, 30, 110, 20);
+        jLabel21.setBounds(20, 30, 110, 20);
 
         jPanel2.add(cmbCaracteristica);
         cmbCaracteristica.setBounds(110, 30, 190, 20);
@@ -423,7 +421,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -444,8 +442,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Iterator ite1 = gestorH.listarClase(Transportista.class).iterator();
         while(ite1.hasNext()){
             Transportista transportista = (Transportista) ite1.next();
-            if(transportista.getNombre() == txtTransportista.getText() && tipo.getNombreCereal() == txtTipoCereal.getText()){
-                gestorD.guardarDescarga(tblCaracteristica, txtEstablecimiento, txtFecha, txtNumViaje, tipo, txtPesoNeto, transportista, cmbSilo);
+            if(transportista.toString().equalsIgnoreCase(txtTransportista.getText()) && tipo.getNombreCereal().equalsIgnoreCase(txtTipoCereal.getText())){
+                gestorD.guardarDescarga(tblCaracteristica, txtEstablecimiento, txtFecha, txtNumViaje, tipo, txtPesoNeto, transportista, (Silo)cmbSilo.getSelectedItem());
             }
         }
     }
@@ -455,9 +453,9 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
     int fila = tblEstablecimiento.getSelectedRow();
-    txtProductor.setText((String) modeloT.getValueAt(fila, 1));
-    txtEstablecimiento.setText((String) modeloT.getValueAt(fila, 0));
-    txtNumViaje.setText((String)modeloT.getValueAt(fila, 2));
+    txtProductor.setText(modeloT.getValueAt(fila, 1).toString());
+    txtEstablecimiento.setText(modeloT.getValueAt(fila, 0).toString());
+    txtNumViaje.setText(modeloT.getValueAt(fila, 2).toString());
     Iterator ite = gestorH.listarClase(Viaje.class).iterator();
     while(ite.hasNext()){
         Viaje viaje = (Viaje) ite.next();
@@ -472,7 +470,11 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCaracteristicaActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblCaracteristica.getModel();
+        Object fila[]={cmbCaracteristica.getSelectedItem(), txtValor.getText()};
+        modeloTabla.addRow(fila);
+        tblCaracteristica.setModel(modeloTabla);
+        txtValor.setText("");
     }//GEN-LAST:event_btnAgregarCaracteristicaActionPerformed
 
     private void txtTaraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraKeyReleased
