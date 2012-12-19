@@ -36,7 +36,6 @@ public class gestorConsultarAgenda extends GestorHibernate{
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(fecha);
         dia = cal.get(Calendar.DAY_OF_WEEK);
-        System.out.println(dia);
         //Busco los viajes
         if(viaje.getEstado().equalsIgnoreCase("Pendiente")){
             for(int i=0; i< modelo.getRowCount(); i++){
@@ -63,9 +62,10 @@ public class gestorConsultarAgenda extends GestorHibernate{
                         if(modelo.getValueAt(i, dia)== ""){
                             JLabel label = new JLabel();
                             label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaAsignado)));
-                            label.setText(productor.getNombre()+" \t " + viaje.getFecha());
+                            label.setText(productor.getNombre());
                             modelo.setValueAt(label, i, dia);
-                            tabla.setModel(modelo);                   
+                            tabla.setModel(modelo);          
+                            i= modelo.getRowCount();
                     }
                      else{ if(i == (modelo.getRowCount()-1)){
                      Object fila[]={"","" ,"" ,"" ,"" ,"" ,""};
@@ -81,9 +81,10 @@ public class gestorConsultarAgenda extends GestorHibernate{
                         if(modelo.getValueAt(i, dia) == ""){
                             JLabel label = new JLabel();
                             label.setIcon(new javax.swing.ImageIcon(getClass().getResource(rutaEnProceso)));
-                            label.setText(productor.getNombre()+"\n " + viaje.getFecha());
+                            label.setText(productor.getNombre());
                             modelo.setValueAt(label, i, dia);
-                            tabla.setModel(modelo);                   
+                            tabla.setModel(modelo);             
+                            i=modelo.getRowCount();
                     }
                     else{ if(i == (modelo.getRowCount()-1)){
                      Object fila[]={"","" ,"" ,"" ,"" ,"" ,""};
@@ -102,6 +103,7 @@ public class gestorConsultarAgenda extends GestorHibernate{
                             label.setText(productor.getNombre()+" \t " + viaje.getFecha());
                             modelo.setValueAt(label, i, dia);
                             tabla.setModel(modelo);                   
+                            i=modelo.getRowCount();
                     }
                     else{ if(i == (modelo.getRowCount()-1)){
                      Object fila[]={"","" ,"" ,"" ,"" ,"" ,""};

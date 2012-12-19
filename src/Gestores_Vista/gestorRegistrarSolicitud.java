@@ -156,6 +156,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                     while(ite2.hasNext()){
                     ToneladasPorCereal ton = (ToneladasPorCereal) ite2.next();
                     if(ton.getHistorial().getProductor().equals(productor) && ton.getTipoCereal().equals(tipoCereal)){
+                           System.out.println(ton.getTipoCereal().toString());
                            double suma_t=ton.getToneladas();
                            double resultado=suma_t - Double.parseDouble(toneladas2.getText());
                            if(resultado>=0){
@@ -164,14 +165,14 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                            this.actualizarObjeto(ton);
                            puertosol.setToneladasAExtraer(toneladas);
                            this.guardarObjeto(puertosol);
+                           JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
                            } else{JOptionPane.showMessageDialog(null, "Las toneladas a extraer son mayores que las disponibles");
                            }
                         }
                     }
                 
                 }
-            }
-//            
+            }  
             
             
         }
@@ -197,6 +198,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                            this.actualizarObjeto(ton);
                            est.setToneladasAExtraer(toneladas);
                            this.guardarObjeto(est);
+                           JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
                            } else{JOptionPane.showMessageDialog(null, "Las toneladas a extraer son mayores que las disponibles");
                            }
                         }
@@ -205,10 +207,9 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                 
                 }
             }
-//            est.setEstablecimiento((Establecimiento)destino);
             
         }
-        JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
+        
         numeroSolicitud.setText(String.valueOf(solicitud.getNumeroSolicitud()));
     }
     

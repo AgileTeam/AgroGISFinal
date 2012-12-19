@@ -544,7 +544,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -634,18 +634,19 @@ GestorHibernate gestorH = new GestorHibernate();
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
             if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
                     txtCerealR.setText(sol.getTipoCereal().toString());
-                    
-            }
-            Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
-            while(ite1.hasNext()){
-                EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
-                if(est.getSolicitud()== sol){
+                    Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
+                    while(ite1.hasNext()){
+                    EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite1.next();
+                    if(est.getSolicitud()== sol){
                     txtRetiro.setText(est.getEstablecimiento().toString());
                     txtDepto.setText(est.getEstablecimiento().getLocalidad().getDepartamento().toString());
                     txtLocalidadEst.setText(est.getEstablecimiento().getLocalidad().toString());
                     txtHas.setText(String.valueOf(est.getHectareasATrillar()));                            
                 }
             }
+                    
+            }
+            
         }
     
     

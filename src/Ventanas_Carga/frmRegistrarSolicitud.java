@@ -452,7 +452,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -477,7 +477,7 @@ GestorHibernate gestorH = new GestorHibernate();
     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
         if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
-            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal1.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2);
+            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal2.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2);
        }
     }
     
