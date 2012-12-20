@@ -556,7 +556,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -575,7 +575,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -594,7 +594,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -613,7 +613,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -631,7 +631,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -650,7 +650,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
@@ -659,7 +659,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
          
            //Consulta por FECHA PRODUCTOR NRO SOLICITUD
            if(calendarioDSolicitud.isEnabled() && calendarioHSolicitud.isEnabled() && txtNumSolicitud.isEnabled() && cmbProductor.isEnabled()==false){
-         Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorInteger(SolicitudRetiro.class, "tipoSolicitud", 2).iterator();
          while(ite.hasNext()){
              SolicitudRetiro solicitud = (SolicitudRetiro) ite.next();
              int bandera = gestorR.buscarObjeto(tblSolicitud, solicitud);
@@ -669,7 +669,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) && solicitud.getNumeroSolicitud()==Long.parseLong(txtNumSolicitud.getText())) {
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) && solicitud.getNumeroSolicitud()==Long.parseLong(txtNumSolicitud.getText())) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
