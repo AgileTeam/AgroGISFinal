@@ -954,6 +954,13 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
                 gestorH.actualizarObjeto(u);
             }
         }
+        MenuAuditoria.setEnabled(false);
+        MenuCarga.setEnabled(false);
+        MenuClientes.setEnabled(false);
+        MenuListados.setEnabled(false);
+        MenuTransporte.setEnabled(false);
+        MenuInicio.setEnabled(false);
+        MenuViaje.setEnabled(false);
     }//GEN-LAST:event_MenuCierreSesionActionPerformed
 
     private void ItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuarioActionPerformed
