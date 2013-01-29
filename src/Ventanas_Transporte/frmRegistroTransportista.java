@@ -648,7 +648,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelTransportista.add(jPanel3);
         jPanel3.setBounds(140, 220, 720, 150);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de contratacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de contratación", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel5.setLayout(null);
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -811,7 +811,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         cmbAnioCamion.setBounds(100, 70, 100, 20);
 
         jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel30.setText("Kilometros");
+        jLabel30.setText("Kilómetros");
         jPanel9.add(jLabel30);
         jLabel30.setBounds(260, 70, 80, 20);
 
@@ -978,10 +978,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.setLayout(null);
 
         jLabel35.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel35.setText("Tipo de Vehiculo");
+        jLabel35.setText("Tipo de Vehículo");
         jPanel11.add(jLabel35);
         jLabel35.setBounds(10, 10, 140, 20);
 
+        buttonCamion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamion.setText("Camión");
         buttonCamion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -991,6 +992,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.add(buttonCamion);
         buttonCamion.setBounds(130, 10, 93, 23);
 
+        buttonAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonAcoplado.setText("Acoplado");
         buttonAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1000,6 +1002,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.add(buttonAcoplado);
         buttonAcoplado.setBounds(220, 10, 80, 23);
 
+        buttonCamionAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamionAcoplado.setText("Camión y Acoplado");
         buttonCamionAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1079,7 +1082,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelVehiculo.add(btnEditarVehiculo);
         btnEditarVehiculo.setBounds(800, 340, 40, 30);
 
-        jTabbedPane1.addTab("Vehiculo", panelVehiculo);
+        jTabbedPane1.addTab("Vehículo", panelVehiculo);
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
 
