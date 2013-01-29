@@ -266,7 +266,7 @@ public class gestorRegistroTransportista extends GestorHibernate{
         this.dni = numero / 10 - this.sexo * (long) Math.pow(10, 8);
         this.verificador = numero % 10;
  
-        String serie = "2345672345";
+        String serie = String.valueOf(numero);
         String numero1 = String.valueOf(this.sexo) + String.valueOf(this.dni);
         long suma = 0;
         for (int i = 0; i < 10; i++) {

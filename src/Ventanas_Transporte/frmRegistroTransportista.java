@@ -1192,7 +1192,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     boolean cuil = gRegistro.validarCuit(Long.parseLong(txtCUIL.getText()));
     if(cuil==true){
-    
     if(tblVehiculo.getRowCount()!=0){
     DefaultTableModel modelo = (DefaultTableModel) tblTelefono.getModel();
     GestorHibernate gestorH = new GestorHibernate();
