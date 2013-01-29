@@ -133,6 +133,12 @@ Double total;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
+        labelusuario = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         cmbOrden = new javax.swing.JComboBox();
@@ -165,13 +171,6 @@ Double total;
         btnEliminarDetalle = new javax.swing.JButton();
         txtTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        labelusuario = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnDetalle = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -183,6 +182,35 @@ Double total;
         setTitle("Carga de Combustible");
 
         jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setText("Fecha");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(30, 20, 50, 20);
+
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtFecha);
+        txtFecha.setBounds(70, 20, 80, 20);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Hora");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(190, 20, 58, 20);
+        jPanel1.add(txtHora);
+        txtHora.setBounds(230, 20, 80, 20);
+
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Carolina");
+        jPanel1.add(labelusuario);
+        labelusuario.setBounds(640, 20, 50, 15);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(690, 10, 30, 30);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel2.setLayout(null);
@@ -196,34 +224,34 @@ Double total;
         cmbOrden.setBounds(130, 20, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Fecha  Emisión");
+        jLabel5.setText("Fecha  Emision");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(420, 20, 120, 20);
+        jLabel5.setBounds(420, 20, 100, 20);
         jPanel2.add(txtFechaEmision);
         txtFechaEmision.setBounds(510, 20, 100, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Estación de Servicio");
+        jLabel8.setText("Estacion de Servicio");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(10, 50, 140, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Operación");
+        jLabel6.setText("Operacion");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(450, 50, 90, 20);
+        jLabel6.setBounds(450, 50, 60, 20);
         jPanel2.add(txtOperacion);
         txtOperacion.setBounds(510, 50, 150, 20);
         jPanel2.add(txtEstacion);
         txtEstacion.setBounds(130, 50, 260, 20);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(50, 50, 690, 90);
+        jPanel2.setBounds(40, 50, 690, 90);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Carga", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Fecha Utilización");
+        jLabel12.setText("Fecha Utilizacion");
         jPanel3.add(jLabel12);
         jLabel12.setBounds(30, 30, 130, 20);
 
@@ -377,35 +405,7 @@ Double total;
         jLabel7.setBounds(530, 290, 70, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(10, 140, 770, 330);
-
-        jPanel4.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel4.add(jLabel1);
-        jLabel1.setBounds(10, 10, 70, 20);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Hora");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(190, 10, 50, 20);
-
-        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelusuario.setText("Usuario");
-        jPanel4.add(labelusuario);
-        labelusuario.setBounds(650, 10, 50, 15);
-        jPanel4.add(txtHora);
-        txtHora.setBounds(220, 10, 80, 20);
-        jPanel4.add(txtFecha);
-        txtFecha.setBounds(50, 10, 80, 20);
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel4.add(jLabel9);
-        jLabel9.setBounds(700, 0, 30, 30);
-
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(20, 10, 770, 40);
+        jPanel3.setBounds(20, 140, 770, 330);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -439,31 +439,35 @@ Double total;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(183, 183, 183)
+                .addGap(179, 179, 179)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtPrecioLitroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioLitroKeyTyped
         char caracter = evt.getKeyChar();
@@ -584,6 +588,7 @@ Double total;
     private javax.swing.JComboBox cmbProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -593,11 +598,9 @@ Double total;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelLitros;
     private javax.swing.JLabel labelPrecioLitro;

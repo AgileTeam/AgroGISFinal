@@ -160,7 +160,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Taller Reparación");
+        setTitle("Taller Reparacion");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Fecha");
@@ -221,7 +221,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nombre ");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(40, 40, 100, 20);
+        jLabel4.setBounds(40, 40, 70, 20);
         jPanel3.add(txtNombreTaller);
         txtNombreTaller.setBounds(100, 40, 280, 20);
 
@@ -236,9 +236,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7.setBounds(448, 70, 40, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Razón Social");
+        jLabel8.setText("Razon Social");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(10, 70, 120, 20);
+        jLabel8.setBounds(10, 70, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Calle");
@@ -271,12 +271,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel14.setBounds(380, 190, 100, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Tipo Teléfono");
+        jLabel15.setText("Tipo Telefono");
         jPanel3.add(jLabel15);
         jLabel15.setBounds(10, 220, 120, 20);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel16.setText("Teléfono");
+        jLabel16.setText("Telefono");
         jPanel3.add(jLabel16);
         jLabel16.setBounds(370, 220, 110, 20);
 
@@ -375,7 +375,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Razón Social", "CUIT", "Localidad"
+                "Razon Social", "CUIT", "Localidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -520,7 +520,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();

@@ -266,7 +266,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Vehículo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Vehiculo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel5.setLayout(null);
         jPanel5.add(txtTara);
         txtTara.setBounds(580, 130, 120, 20);
@@ -276,7 +276,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Vehículo", "Capacidad de Vehículo (Tn)", "Transportista"
+                "Vehiculo", "Capacidad de Vehiculo (Tn)", "Transportista"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -294,9 +294,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jScrollPane3.setBounds(60, 30, 660, 90);
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel20.setText("Vehículo");
+        jLabel20.setText("Vehiculo");
         jPanel5.add(jLabel20);
-        jLabel20.setBounds(30, 130, 90, 20);
+        jLabel20.setBounds(30, 130, 70, 20);
         jPanel5.add(txtTransportista);
         txtTransportista.setBounds(460, 160, 240, 20);
 
@@ -352,12 +352,12 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 23, Short.MAX_VALUE)))
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 38, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -374,7 +374,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -418,10 +418,10 @@ GestorHibernate gestorH = new GestorHibernate();
                    }
                }
                Iterator ite2 = gestorH.listarClase(PuertoPorViaje.class).iterator();
-               while(ite2.hasNext()){
-                   PuertoPorViaje est = (PuertoPorViaje) ite2.next();
+               while(ite1.hasNext()){
+                   EstablecimientoPorViaje est = (EstablecimientoPorViaje) ite1.next();
                    if(est.getViaje().equals(viaje)){
-                       txtDestino.setText(est.getPuerto().getNombrePuerto());
+                       txtDestino.setText(est.getEstablecimiento().getNombreEstablecimiento());
                    }
                }
                gestorA.RellenarTablaVehiculo(tblVehiculo, viaje);

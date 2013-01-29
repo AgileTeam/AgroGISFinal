@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scrollPrincipal" alignment="0" pref="2435" max="32767" attributes="0"/>
+          <Component id="scrollPrincipal" alignment="0" pref="2431" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -435,7 +435,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Viajes con Veh&#xed;culo Asignado"/>
+                    <Property name="text" type="java.lang.String" value="Viajes con Vehiculo Asignado"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

@@ -340,15 +340,15 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Tipo Documento");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(10, 40, 150, 20);
+        jLabel7.setBounds(10, 40, 100, 20);
 
         jPanel2.add(cmbTipoDoc);
         cmbTipoDoc.setBounds(130, 40, 120, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Número Documento");
+        jLabel8.setText("Numero Documento");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(330, 40, 160, 20);
+        jLabel8.setBounds(330, 40, 120, 20);
 
         txtDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -361,12 +361,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Fecha de Nacimiento");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(10, 70, 150, 20);
+        jLabel9.setBounds(10, 70, 120, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Estado Civil");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(380, 70, 110, 20);
+        jLabel10.setBounds(380, 70, 70, 20);
 
         cmbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero", "Casado", "Viudo" }));
         jPanel2.add(cmbEstadoCivil);
@@ -375,7 +375,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Tipo Teléfono");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(10, 100, 150, 20);
+        jLabel11.setBounds(10, 100, 80, 20);
 
         jPanel2.add(cmbTipoTel);
         cmbTipoTel.setBounds(130, 100, 120, 20);
@@ -383,7 +383,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel12.setText("Número Teléfono");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(350, 100, 140, 20);
+        jLabel12.setBounds(350, 100, 100, 20);
 
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -817,7 +817,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         cmbAnioCamion.setBounds(100, 70, 100, 20);
 
         jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel30.setText("Kilómetros");
+        jLabel30.setText("Kilometros");
         jPanel9.add(jLabel30);
         jLabel30.setBounds(260, 70, 80, 20);
 
@@ -988,7 +988,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.add(jLabel35);
         jLabel35.setBounds(10, 10, 140, 20);
 
-        buttonCamion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamion.setText("Camión");
         buttonCamion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -998,7 +997,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.add(buttonCamion);
         buttonCamion.setBounds(130, 10, 93, 23);
 
-        buttonAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonAcoplado.setText("Acoplado");
         buttonAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1008,7 +1006,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jPanel11.add(buttonAcoplado);
         buttonAcoplado.setBounds(220, 10, 80, 23);
 
-        buttonCamionAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamionAcoplado.setText("Camión y Acoplado");
         buttonCamionAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

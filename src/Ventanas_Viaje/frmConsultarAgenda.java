@@ -264,7 +264,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel42.setBounds(310, 0, 40, 40);
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel43.setText("Viajes con Vehículo Asignado");
+        jLabel43.setText("Viajes con Vehiculo Asignado");
         jPanel6.add(jLabel43);
         jLabel43.setBounds(370, 10, 200, 20);
 
@@ -597,7 +597,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2435, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2427, Short.MAX_VALUE)
         );
 
         pack();

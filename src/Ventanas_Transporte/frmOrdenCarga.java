@@ -32,7 +32,7 @@ GestorHibernate gestorH = new GestorHibernate();
     /** Creates new form frmOrdenCarga */
     public frmOrdenCarga() {
         initComponents();
-        gestorH.actualizarUsuario(labelusuario);
+        gestorH.actualizarUsuario(labelUsuario);
         txtFechaCarga.setEditable(false);
         txtFechaCarga.setEnabled(false);
         txtHoraCarga.setEditable(false);
@@ -155,6 +155,11 @@ GestorHibernate gestorH = new GestorHibernate();
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txtFechaCarga = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtHoraCarga = new javax.swing.JTextField();
+        labelUsuario = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransportista = new javax.swing.JTable();
@@ -185,13 +190,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtProvincia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         cmbOperacion = new javax.swing.JComboBox();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        labelusuario = new javax.swing.JLabel();
-        txtHoraCarga = new javax.swing.JTextField();
-        txtFechaCarga = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnEmitirOrden = new javax.swing.JButton();
 
@@ -201,6 +200,25 @@ GestorHibernate gestorH = new GestorHibernate();
         setTitle("Orden Carga de Combustible");
 
         jPanel1.setLayout(null);
+        jPanel1.add(txtFechaCarga);
+        txtFechaCarga.setBounds(60, 20, 70, 20);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setText("Fecha");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(20, 20, 40, 20);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Hora");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(150, 20, 40, 20);
+        jPanel1.add(txtHoraCarga);
+        txtHoraCarga.setBounds(190, 20, 50, 20);
+
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUsuario.setText("Carolina");
+        jPanel1.add(labelUsuario);
+        labelUsuario.setBounds(560, 10, 50, 40);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel2.setLayout(null);
@@ -210,7 +228,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Transportista", "Número Documento"
+                "Transportista", "Numero Documento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -250,7 +268,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jSeparator1.setBounds(40, 190, 600, 10);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Vehículo");
+        jLabel5.setText("Vehiculo");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(70, 200, 110, 20);
 
@@ -279,15 +297,15 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel17.setBounds(420, 230, 50, 20);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(10, 50, 680, 270);
+        jPanel2.setBounds(30, 50, 680, 270);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Proveedor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setText("Estación de Servicio");
+        jLabel7.setText("Estacion de Servicio");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(10, 30, 160, 20);
+        jLabel7.setBounds(10, 30, 130, 20);
 
         jPanel3.add(cmbEstacionServicio);
         cmbEstacionServicio.setBounds(130, 30, 180, 20);
@@ -295,14 +313,14 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Proveedor Combustible");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(330, 30, 180, 20);
+        jLabel8.setBounds(330, 30, 140, 20);
         jPanel3.add(txtProveedor);
         txtProveedor.setBounds(470, 30, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Dirección");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(70, 60, 90, 20);
+        jLabel9.setBounds(70, 60, 70, 20);
         jPanel3.add(txtDomicilio);
         txtDomicilio.setBounds(130, 60, 230, 20);
 
@@ -316,7 +334,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Departamento");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(40, 90, 130, 20);
+        jLabel11.setBounds(40, 90, 100, 20);
         jPanel3.add(txtDeptoEstacion);
         txtDeptoEstacion.setBounds(130, 90, 230, 20);
 
@@ -328,44 +346,20 @@ GestorHibernate gestorH = new GestorHibernate();
         txtProvincia.setBounds(470, 90, 190, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Operación");
+        jLabel15.setText("Operacion");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(60, 120, 110, 20);
+        jLabel15.setBounds(60, 120, 60, 20);
 
         cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Carga Combustible", "Compra Insumos" }));
         jPanel3.add(cmbOperacion);
         cmbOperacion.setBounds(130, 120, 180, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(10, 320, 680, 150);
+        jPanel3.setBounds(30, 330, 680, 150);
 
-        jPanel4.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel4.add(jLabel1);
-        jLabel1.setBounds(10, 10, 70, 20);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Hora");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(170, 10, 50, 20);
-
-        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelusuario.setText("Usuario");
-        jPanel4.add(labelusuario);
-        labelusuario.setBounds(550, 10, 70, 15);
-        jPanel4.add(txtHoraCarga);
-        txtHoraCarga.setBounds(200, 10, 80, 20);
-        jPanel4.add(txtFechaCarga);
-        txtFechaCarga.setBounds(50, 10, 80, 20);
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
-        jPanel4.add(jLabel16);
-        jLabel16.setBounds(600, 0, 30, 30);
-
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(10, 10, 680, 40);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(610, 10, 30, 30);
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -389,9 +383,9 @@ GestorHibernate gestorH = new GestorHibernate();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
+                .addGap(269, 269, 269)
                 .addComponent(btnEmitirOrden)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,12 +394,12 @@ GestorHibernate gestorH = new GestorHibernate();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -469,9 +463,9 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -483,11 +477,10 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelTransportista;
-    private javax.swing.JLabel labelusuario;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtAnioCompra;
     private javax.swing.JTextField txtDeptoEstacion;
