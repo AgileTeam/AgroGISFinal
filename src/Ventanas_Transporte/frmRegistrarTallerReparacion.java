@@ -226,7 +226,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtNombreTaller.setBounds(100, 40, 280, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Condicion IVA");
+        jLabel6.setText("Condición IVA");
         jPanel3.add(jLabel6);
         jLabel6.setBounds(400, 40, 110, 20);
 
@@ -236,7 +236,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7.setBounds(448, 70, 40, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Razon Social");
+        jLabel8.setText("Razón Social");
         jPanel3.add(jLabel8);
         jLabel8.setBounds(10, 70, 90, 20);
 
@@ -271,12 +271,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel14.setBounds(380, 190, 100, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Tipo Telefono");
+        jLabel15.setText("Tipo Teléfono");
         jPanel3.add(jLabel15);
         jLabel15.setBounds(10, 220, 120, 20);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel16.setText("Telefono");
+        jLabel16.setText("Teléfono");
         jPanel3.add(jLabel16);
         jLabel16.setBounds(370, 220, 110, 20);
 
@@ -375,7 +375,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Razon Social", "CUIT", "Localidad"
+                "Razón Social", "CUIT", "Localidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -520,7 +520,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();

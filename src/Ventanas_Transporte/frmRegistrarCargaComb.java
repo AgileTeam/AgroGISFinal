@@ -224,19 +224,19 @@ Double total;
         cmbOrden.setBounds(130, 20, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Fecha  Emision");
+        jLabel5.setText("Fecha  Emisión");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(420, 20, 100, 20);
         jPanel2.add(txtFechaEmision);
         txtFechaEmision.setBounds(510, 20, 100, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Estacion de Servicio");
+        jLabel8.setText("Estación de Servicio");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(10, 50, 140, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Operacion");
+        jLabel6.setText("Operación");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(450, 50, 60, 20);
         jPanel2.add(txtOperacion);
@@ -251,7 +251,7 @@ Double total;
         jPanel3.setLayout(null);
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Fecha Utilizacion");
+        jLabel12.setText("Fecha Utilización");
         jPanel3.add(jLabel12);
         jLabel12.setBounds(30, 30, 130, 20);
 
@@ -452,7 +452,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)

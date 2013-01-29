@@ -184,7 +184,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtRazonSocial.setBounds(90, 10, 210, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Condicion IVA");
+        jLabel2.setText("Condición IVA");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(340, 10, 100, 20);
 
@@ -230,7 +230,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtNum.setBounds(420, 90, 50, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Numero");
+        jLabel4.setText("Número");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(370, 90, 50, 20);
 
@@ -270,12 +270,12 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbTipoTel.setBounds(90, 180, 120, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Tipo Telefono");
+        jLabel9.setText("Tipo Teléfono");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(10, 180, 80, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Telefono");
+        jLabel10.setText("Teléfono");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(370, 180, 60, 20);
 
@@ -355,7 +355,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Razon Social", "CUIT", "Localidad"
+                "Razón Social", "CUIT", "Localidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -479,7 +479,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
