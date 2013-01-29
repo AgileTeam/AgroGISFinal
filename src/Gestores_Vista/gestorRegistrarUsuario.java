@@ -6,8 +6,11 @@ package Gestores_Vista;
 
 import Clases_Modulo_Seguridad.Rol;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
 import java.util.Iterator;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +27,15 @@ public class gestorRegistrarUsuario extends GestorHibernate{
         }
         return modelo;
     
+    }
+    
+    public int CampoObligatorio(JTextField texto){
+        int bandera =0;
+        if(texto.getText().equalsIgnoreCase("")){
+            texto.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bandera=1;
+        }
+        return bandera;
     }
     
 }
