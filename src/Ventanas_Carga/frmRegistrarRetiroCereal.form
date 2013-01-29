@@ -79,7 +79,7 @@
                   <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -359,7 +359,7 @@
               <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="Solicitud N&#xb0;" type="java.lang.Object"/>
                 <Column editable="false" title="Productor" type="java.lang.Object"/>
-                <Column editable="false" title="Fecha de solicitud" type="java.lang.Object"/>
+                <Column editable="false" title="Fecha de Emisi&#xf3;n" type="java.lang.Object"/>
                 <Column editable="false" title="Estado" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -501,7 +501,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" title="Fecha">
+                <TitledBorder justification="2" title="Fecha Emisi&#xf3;n">
                   <Font PropertyName="font" name="Arial" size="12" style="1"/>
                 </TitledBorder>
               </Border>

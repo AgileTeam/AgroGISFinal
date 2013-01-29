@@ -289,7 +289,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Muestras por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha Envío", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -353,7 +353,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         ckFechaCons1.setFocusPainted(false);
 
         ckFechaCons3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFechaCons3.setText("Fecha");
+        ckFechaCons3.setText("Fecha Envío");
         ckFechaCons3.setContentAreaFilled(false);
         ckFechaCons3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ckFechaCons3.setFocusPainted(false);
@@ -386,10 +386,10 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                         .addGap(296, 296, 296)
                         .addComponent(btnBuscarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ckFechaCons3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ckFechaCons1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ckFechaCons, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ckFechaCons1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(ckFechaCons, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(ckFechaCons3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(28, 28, 28)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -428,7 +428,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
 
             },
             new String [] {
-                "Fecha", "Nº Muestra", "Productor"
+                "Fecha Envío", "Nº Muestra", "Productor"
             }
         ));
         jScrollPane1.setViewportView(tblMuestra);
@@ -490,7 +490,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

@@ -260,7 +260,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
 
             },
             new String [] {
-                "Solicitud N°", "Productor", "Fecha de solicitud", "Estado"
+                "Solicitud N°", "Productor", "Fecha de Emisión", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -324,7 +324,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         jPanel1.add(ckProductor);
         ckProductor.setBounds(10, 70, 100, 22);
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha Emisión", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -434,7 +434,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
