@@ -244,7 +244,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         txtTnDisponibles.setBounds(430, 80, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Toneladas Extraidas");
+        jLabel6.setText("Toneladas Extraídas");
         jPanel5.add(jLabel6);
         jLabel6.setBounds(20, 80, 150, 20);
 
@@ -307,13 +307,13 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         btnBuscarSolicitud.setBounds(380, 120, 104, 30);
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFecha.setText("Fecha Emision");
+        ckFecha.setText("Fecha Emisión");
         ckFecha.setFocusPainted(false);
         jPanel1.add(ckFecha);
         ckFecha.setBounds(10, 30, 110, 22);
 
         ckNumSolicitud.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckNumSolicitud.setText("Numero Solicitud");
+        ckNumSolicitud.setText("Número Solicitud");
         ckNumSolicitud.setFocusPainted(false);
         jPanel1.add(ckNumSolicitud);
         ckNumSolicitud.setBounds(10, 50, 130, 22);
@@ -434,7 +434,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();

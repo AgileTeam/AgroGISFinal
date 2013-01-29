@@ -198,7 +198,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Especialidad");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(370, 30, 100, 20);
+        jLabel1.setBounds(370, 30, 130, 20);
 
         txtRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -222,14 +222,14 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Calle");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 70, 50, 20);
+        jLabel3.setBounds(50, 70, 90, 20);
         jPanel1.add(txtNum);
         txtNum.setBounds(450, 70, 50, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Numero");
+        jLabel4.setText("Número");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(400, 70, 50, 20);
+        jLabel4.setBounds(400, 70, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Provincia");
@@ -242,7 +242,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Departamento");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(370, 110, 110, 20);
+        jLabel7.setBounds(370, 110, 160, 20);
 
         jPanel1.add(cmbDepartamento);
         cmbDepartamento.setBounds(450, 110, 190, 20);
@@ -253,7 +253,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Localidad");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 150, 80, 20);
+        jLabel5.setBounds(30, 150, 110, 20);
 
         jPanel1.add(cmbBarrio);
         cmbBarrio.setBounds(450, 150, 190, 20);
@@ -261,20 +261,20 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Barrio");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(410, 150, 70, 20);
+        jLabel8.setBounds(410, 150, 140, 20);
 
         jPanel1.add(cmbTipoTel);
         cmbTipoTel.setBounds(90, 190, 120, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Tipo Telefono");
+        jLabel9.setText("Tipo Teléfono");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(10, 190, 90, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Telefono");
+        jLabel10.setText("Teléfono");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(400, 190, 70, 20);
+        jLabel10.setBounds(400, 190, 90, 20);
 
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -318,7 +318,7 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 30, 100, 20);
+        jLabel2.setBounds(40, 30, 100, 20);
 
         btnAgregarDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
 

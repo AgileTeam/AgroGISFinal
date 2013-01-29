@@ -265,7 +265,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         jPanel1.add(cmbMesFinSiembra);
         cmbMesFinSiembra.setBounds(460, 220, 100, 20);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Caracteristicas Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Características Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -295,7 +295,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
 
             },
             new String [] {
-                "Caracteristica", "Valor Desde", "Valor Hasta"
+                "Característica", "Valor Desde", "Valor Hasta"
             }
         ));
         jScrollPane2.setViewportView(tblCaracteristica);
@@ -380,7 +380,7 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();

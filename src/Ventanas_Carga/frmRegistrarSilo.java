@@ -151,7 +151,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel3.setBounds(80, 50, 80, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Diametro");
+        jLabel4.setText("Diámetro");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(330, 50, 90, 20);
 
@@ -262,7 +262,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Número Silo", "Descripcion"
+                "Número Silo", "Descripción"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -332,7 +332,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();

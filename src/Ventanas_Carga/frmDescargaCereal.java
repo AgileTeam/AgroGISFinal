@@ -13,6 +13,7 @@ package Ventanas_Carga;
 import Clases_Modulo_Carga.*;
 
 import Clases_Modulo_Transporte.Transportista;
+import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorDescargaCereal;
 import Clases_Modulo_Viaje.*;
 import Hibernate.GestorHibernate;
@@ -233,7 +234,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel3.setBounds(340, 190, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Vehiculo");
+        jLabel5.setText("Vehículo");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(50, 220, 90, 20);
 
@@ -341,7 +342,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtValor.setBounds(110, 70, 91, 20);
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel21.setText("Caracteristica");
+        jLabel21.setText("Característica");
         jPanel2.add(jLabel21);
         jLabel21.setBounds(20, 30, 110, 20);
 
@@ -353,7 +354,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Caracteristica", "Valor"
+                "Característica", "Valor"
             }
         ));
         jScrollPane2.setViewportView(tblCaracteristica);
@@ -421,7 +422,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -446,6 +447,24 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 gestorD.guardarDescarga(tblCaracteristica, txtEstablecimiento, txtFecha, txtHora, txtNumViaje, tipo, txtPesoNeto, transportista, (Silo)cmbSilo.getSelectedItem());
             }
         }
+    }
+    Iterator ite1 = gestorH.listarClase(Vehiculo.class).iterator();
+    while(ite1.hasNext()){
+        Vehiculo v = (Vehiculo) ite1.next();
+        if(v.getDominio().equalsIgnoreCase(txtDominio.getText())){
+            v.setEstado("Disponible");
+            gestorH.actualizarObjeto(v);
+        }
+    
+    }
+    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
+    while(ite2.hasNext()){
+        Viaje vi = (Viaje) ite2.next();
+        if(vi.getIdViaje() == (Long.parseLong(txtNumViaje.getText()))){
+            vi.setEstado("Finalizado");
+            gestorH.actualizarObjeto(vi);
+        }
+    
     }
     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
 }//GEN-LAST:event_btnGuardarActionPerformed

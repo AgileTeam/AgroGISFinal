@@ -191,7 +191,7 @@ GestorHibernate gestorH = new GestorHibernate();
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Resultados Analisis");
+        setTitle("Resultados Análisis");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Fecha");
@@ -220,7 +220,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ckFecha.setBounds(20, 40, 90, 23);
 
         ckNumMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckNumMuestra.setText("Numero Viaje");
+        ckNumMuestra.setText("Número Viaje");
         jPanel5.add(ckNumMuestra);
         ckNumMuestra.setBounds(20, 60, 110, 23);
 
@@ -229,7 +229,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel5.add(ckProductor);
         ckProductor.setBounds(20, 80, 90, 23);
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha Envío", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -309,7 +309,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Fecha", "Nº Muestra", "Productor"
+                "Fecha Envío", "Nº Muestra", "Productor"
             }
         ));
         jScrollPane1.setViewportView(tblMuestras);
@@ -332,9 +332,9 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setBounds(570, 40, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Fecha Envio");
+        jLabel9.setText("Fecha Envío");
         jPanel8.add(jLabel9);
-        jLabel9.setBounds(20, 10, 80, 20);
+        jLabel9.setBounds(20, 10, 100, 20);
 
         jLabel43.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel43.setText("Nº Muestra");
@@ -432,9 +432,9 @@ GestorHibernate gestorH = new GestorHibernate();
         txtTelefonoLab.setBounds(470, 90, 250, 20);
 
         jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel31.setText("Telefono");
+        jLabel31.setText("Teléfono");
         jPanel7.add(jLabel31);
-        jLabel31.setBounds(410, 90, 80, 20);
+        jLabel31.setBounds(410, 90, 110, 20);
         jPanel7.add(txtProvinciaLab);
         txtProvinciaLab.setBounds(110, 90, 250, 20);
         jPanel7.add(txtEspecialidad);
@@ -446,7 +446,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel6.setLayout(null);
 
         jLabel24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel24.setText("Fecha Envio");
+        jLabel24.setText("Fecha Envío");
         jPanel6.add(jLabel24);
         jLabel24.setBounds(330, 30, 100, 20);
 
@@ -467,14 +467,17 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel11.setLayout(null);
 
+        botonMaiz.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonMaiz.setText("Maiz");
         jPanel11.add(botonMaiz);
         botonMaiz.setBounds(40, 20, 50, 23);
 
+        botonSoja.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonSoja.setText("Soja");
         jPanel11.add(botonSoja);
         botonSoja.setBounds(190, 20, 50, 23);
 
+        botonTrigo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonTrigo.setText("Trigo");
         jPanel11.add(botonTrigo);
         botonTrigo.setBounds(330, 20, 60, 23);
@@ -505,7 +508,7 @@ GestorHibernate gestorH = new GestorHibernate();
         labelColor.setBounds(140, 250, 110, 20);
 
         labelAlmidon.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelAlmidon.setText("Almidon");
+        labelAlmidon.setText("Almidón");
         jPanel6.add(labelAlmidon);
         labelAlmidon.setBounds(140, 280, 100, 20);
 
@@ -575,7 +578,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Datos Analisis", jPanel3);
+        jTabbedPane1.addTab("Datos Análisis", jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -660,7 +663,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();

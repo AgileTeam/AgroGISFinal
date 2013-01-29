@@ -182,7 +182,7 @@ long idEspecialidad;
 
             },
             new String [] {
-                "Codigo Especialidad", "Nombre Especialidad"
+                "Código Especialidad", "Nombre Especialidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -314,7 +314,7 @@ long idEspecialidad;
                     .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
