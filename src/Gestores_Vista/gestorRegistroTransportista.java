@@ -20,7 +20,10 @@ import javax.swing.table.TableModel;
  *
  * @author Charito
  */
-public class gestorRegistroTransportista extends GestorHibernate{ 
+public class gestorRegistroTransportista extends GestorHibernate{
+    private long sexo;
+    private long dni;
+    private long verificador;
    
      public DefaultComboBoxModel rellenaCombo(String seleccion){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -258,7 +261,22 @@ public class gestorRegistroTransportista extends GestorHibernate{
        return modelo;
    }    
       
-      
+     public boolean validarCuit(long numero) {
+        this.sexo = numero / (long) Math.pow(10, 9);
+        this.dni = numero / 10 - this.sexo * (long) Math.pow(10, 8);
+        this.verificador = numero % 10;
+ 
+        String serie = "2345672345";
+        String numero1 = String.valueOf(this.sexo) + String.valueOf(this.dni);
+        long suma = 0;
+        for (int i = 0; i < 10; i++) {
+                suma += (numero1.charAt(i)- '0') * (serie.charAt(9 - i) - '0');
+        }
+        long digito = 11 - suma % 11;
+        digito = digito == 11 ? 0 : digito;
+        digito = digito == 10 ? 9 : digito;
+        return this.verificador == digito;    
+     } 
       
  
 }

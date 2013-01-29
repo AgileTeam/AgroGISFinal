@@ -369,6 +369,12 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    int bandera1= gestorU.CampoObligatorio(txtApellido);
+    int bandera2= gestorU.CampoObligatorio(txtNombre);
+    int bandera3= gestorU.CampoObligatorio(txtPass2);
+    int bandera4= gestorU.CampoObligatorio(txtUsuario);
+    int bandera5= gestorU.CampoObligatorio(txtpass1);
+    if(bandera1==0 && bandera2==0 && bandera3==0 && bandera4==0 && bandera5==0){
     if(txtpass1.getText().equalsIgnoreCase(txtPass2.getText())){
     DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
     Usuario usuario = new Usuario();
@@ -394,6 +400,10 @@ GestorHibernate gestorH = new GestorHibernate();
     JOptionPane.showMessageDialog(null, "Ingrese nuevamente la contraseña");
     txtpass1.setText("");
     txtPass2.setText("");
+    }
+    }
+    else {
+    JOptionPane.showMessageDialog(null, "Campo Obligatorio");
     }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
