@@ -219,7 +219,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Reparacion");
+        setTitle("Orden Reparación");
 
         jPanel1.setLayout(null);
 
@@ -231,7 +231,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Transportista", "Numero Documento"
+                "Transportista", "Número Documento"
             }
         ));
         jScrollPane1.setViewportView(tblTransportista);
@@ -240,7 +240,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jScrollPane1.setBounds(120, 30, 452, 100);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Vehiculo");
+        jLabel5.setText("Vehículo");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(70, 180, 90, 20);
 
@@ -254,7 +254,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Año de Compra");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(40, 210, 100, 20);
+        jLabel14.setBounds(30, 210, 130, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setText("Estado");
@@ -429,7 +429,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

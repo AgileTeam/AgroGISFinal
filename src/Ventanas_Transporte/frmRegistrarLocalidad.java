@@ -162,7 +162,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("País");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 10, 30, 20);
+        jLabel1.setBounds(90, 10, 90, 20);
 
         jPanel1.add(cmbPais);
         cmbPais.setBounds(140, 10, 189, 20);
@@ -170,7 +170,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Provincia");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(70, 40, 60, 20);
+        jLabel2.setBounds(70, 40, 110, 20);
 
         jPanel1.add(cmbProv);
         cmbProv.setBounds(140, 40, 189, 20);
@@ -181,7 +181,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nombre Localidad");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 100, 110, 20);
+        jLabel4.setBounds(20, 100, 160, 20);
 
         txtLocalidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -194,7 +194,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Departamento");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(40, 70, 90, 20);
+        jLabel3.setBounds(40, 70, 140, 20);
 
         txtCodigoPostal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -205,9 +205,9 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
         txtCodigoPostal.setBounds(440, 100, 80, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Codigo Postal");
+        jLabel5.setText("Código Postal");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(350, 100, 100, 20);
+        jLabel5.setBounds(350, 100, 130, 20);
 
         btnAgregarLocal.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregarLocal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -272,7 +272,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nombre Localidad", "Codigo Postal", "Departamento"
+                "Nombre Localidad", "Código Postal", "Departamento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -432,7 +432,7 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

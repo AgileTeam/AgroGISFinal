@@ -751,7 +751,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuPrincipal.add(MenuListados);
 
         MenuAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bitacora.png"))); // NOI18N
-        MenuAuditoria.setText("Auditoria");
+        MenuAuditoria.setText("Auditoría");
         MenuAuditoria.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         MenuPrincipal.add(MenuAuditoria);
 

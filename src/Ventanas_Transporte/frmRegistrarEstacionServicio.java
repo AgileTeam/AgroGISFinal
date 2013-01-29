@@ -194,7 +194,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel12.setText("Proveedor de Combustible");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(270, 40, 160, 20);
+        jLabel12.setBounds(270, 40, 190, 20);
 
         jPanel1.add(cmbProveedor);
         cmbProveedor.setBounds(420, 40, 190, 20);
@@ -202,7 +202,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("CUIT");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(50, 40, 50, 20);
+        jLabel13.setBounds(50, 40, 70, 20);
         jPanel1.add(txtCUIT);
         txtCUIT.setBounds(90, 40, 130, 20);
 
@@ -217,7 +217,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Calle");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 90, 50, 20);
+        jLabel3.setBounds(50, 90, 80, 20);
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(20, 70, 590, 10);
 
@@ -230,14 +230,14 @@ GestorHibernate gestorH = new GestorHibernate();
         txtNum.setBounds(420, 90, 50, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Numero");
+        jLabel4.setText("Número");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(370, 90, 50, 20);
+        jLabel4.setBounds(370, 90, 80, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Provincia");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 120, 60, 20);
+        jLabel6.setBounds(30, 120, 110, 20);
 
         jPanel1.add(cmbProvincia);
         cmbProvincia.setBounds(90, 120, 200, 20);
@@ -245,7 +245,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Departamento");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(340, 120, 90, 20);
+        jLabel7.setBounds(340, 120, 120, 20);
 
         jPanel1.add(cmbDepartamento);
         cmbDepartamento.setBounds(420, 120, 190, 20);
@@ -256,7 +256,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Localidad");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 150, 80, 20);
+        jLabel5.setBounds(30, 150, 110, 20);
 
         jPanel1.add(cmbBarrio);
         cmbBarrio.setBounds(420, 150, 190, 20);
@@ -264,20 +264,20 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Barrio");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(380, 150, 60, 20);
+        jLabel8.setBounds(380, 150, 80, 20);
 
         jPanel1.add(cmbTipoTel);
         cmbTipoTel.setBounds(90, 180, 120, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Tipo Telefono");
+        jLabel9.setText("Tipo Teléfono");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(10, 180, 80, 20);
+        jLabel9.setBounds(10, 180, 130, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Telefono");
+        jLabel10.setText("Teléfono");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(370, 180, 60, 20);
+        jLabel10.setBounds(370, 180, 90, 20);
 
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -292,7 +292,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("E-Mail");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(50, 210, 40, 20);
+        jLabel11.setBounds(50, 210, 90, 20);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -355,7 +355,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Razon Social", "CUIT", "Localidad"
+                "Razón Social", "CUIT", "Localidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -479,7 +479,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();

@@ -273,7 +273,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     jPanel19.add(calendarioDRep);
     calendarioDRep.setBounds(50, 30, 90, 20);
 
-    jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+    jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
     javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
     jPanel20.setLayout(jPanel20Layout);
@@ -497,7 +497,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(15, Short.MAX_VALUE))
+            .addContainerGap(19, Short.MAX_VALUE))
     );
 
     pack();

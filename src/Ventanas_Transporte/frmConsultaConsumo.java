@@ -170,7 +170,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         jPanel3.add(jLabel9);
         jLabel9.setBounds(800, 0, 30, 30);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Nº");
@@ -271,7 +271,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operación", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Carga de Combustible", "Compra de Insumos" }));
 
@@ -488,7 +488,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

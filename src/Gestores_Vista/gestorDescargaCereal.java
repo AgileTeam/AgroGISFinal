@@ -58,15 +58,7 @@ public class gestorDescargaCereal extends GestorHibernate {
      public void guardarDescarga(JTable tablaCaracteristica, JTextField establecimiento, JTextField fecha, JTextField hora, JTextField viaje, TipoCereal tipoCereal, JTextField toneladas, Transportista transportista, Silo silo){
      DefaultTableModel modeloTabla = (DefaultTableModel) tablaCaracteristica.getModel(); 
      
-     
-//     Descarga descarga = new Descarga();
-//     descarga.setCereal(tipoCereal);
-//     descarga.setTransportista(transportista);
-//     this.guardarObjeto(descarga);
-//     MuestraTomada muestra = new MuestraTomada();
-//     muestra.setDescarga(descarga);
-//     this.guardarObjeto(muestra);
-   
+
         Iterator iterator = this.listarClase(Descarga.class).iterator();
         if(iterator.hasNext()==false){
             Descarga descarga = new Descarga();

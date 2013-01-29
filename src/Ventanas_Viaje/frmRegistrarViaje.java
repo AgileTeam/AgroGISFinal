@@ -245,7 +245,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel7.setBounds(10, 60, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Fecha Realizacion");
+        jLabel8.setText("Fecha Realización");
         jPanel9.add(jLabel8);
         jLabel8.setBounds(280, 60, 130, 20);
         jPanel9.add(txtNumViaje);
@@ -264,7 +264,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel9.setBounds(290, 30, 90, 20);
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Hora Realizacion");
+        jLabel11.setText("Hora Realización");
         jPanel9.add(jLabel11);
         jLabel11.setBounds(500, 60, 120, 20);
 
@@ -544,7 +544,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

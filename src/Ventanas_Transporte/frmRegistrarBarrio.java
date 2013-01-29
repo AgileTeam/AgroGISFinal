@@ -167,7 +167,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("País");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(100, 10, 30, 20);
+        jLabel1.setBounds(100, 10, 80, 20);
 
         jPanel1.add(cmbPais);
         cmbPais.setBounds(140, 10, 189, 20);
@@ -175,7 +175,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Provincia");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(80, 40, 60, 20);
+        jLabel2.setBounds(80, 40, 110, 20);
 
         jPanel1.add(cmbProv);
         cmbProv.setBounds(140, 40, 189, 20);
@@ -186,7 +186,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nombre Barrio");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(50, 130, 90, 20);
+        jLabel4.setBounds(50, 130, 120, 20);
 
         txtBarrio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -199,12 +199,12 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Localidad");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(70, 100, 60, 20);
+        jLabel3.setBounds(70, 100, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Departamento");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(50, 70, 90, 20);
+        jLabel5.setBounds(50, 70, 120, 20);
 
         jPanel1.add(cmbDepto);
         cmbDepto.setBounds(140, 70, 189, 20);
@@ -422,7 +422,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
