@@ -376,7 +376,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
         },
         new String [] {
-            "Fecha", "Orden N°", "Transportista", "Motivo de Envío", "Importe Total"
+            "                     Fecha", "Orden N°", "Transportista", "Motivo de Envío", "Importe Total"
         }
     ) {
         boolean[] canEdit = new boolean [] {
