@@ -7,6 +7,8 @@ package Gestores_Vista;
 import Clases_Modulo_Transporte.*;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -21,9 +23,7 @@ import javax.swing.table.TableModel;
  * @author Charito
  */
 public class gestorRegistroTransportista extends GestorHibernate{
-    private long sexo;
-    private long dni;
-    private long verificador;
+    
    
      public DefaultComboBoxModel rellenaCombo(String seleccion){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -262,12 +262,16 @@ public class gestorRegistroTransportista extends GestorHibernate{
    }    
       
      public boolean validarCuit(long numero) {
-        this.sexo = numero / (long) Math.pow(10, 9);
-        this.dni = numero / 10 - this.sexo * (long) Math.pow(10, 8);
-        this.verificador = numero % 10;
+        long sexo;
+        long dni;
+        long verificador;
+        
+        sexo = numero / (long) Math.pow(10, 9);
+        dni = numero / 10 - sexo * (long) Math.pow(10, 8);
+        verificador = numero % 10;
  
-        String serie = String.valueOf(numero);
-        String numero1 = String.valueOf(this.sexo) + String.valueOf(this.dni);
+        String serie = "2345672345";
+        String numero1 = String.valueOf(sexo) + String.valueOf(dni);
         long suma = 0;
         for (int i = 0; i < 10; i++) {
                 suma += (numero1.charAt(i)- '0') * (serie.charAt(9 - i) - '0');
@@ -275,8 +279,21 @@ public class gestorRegistroTransportista extends GestorHibernate{
         long digito = 11 - suma % 11;
         digito = digito == 11 ? 0 : digito;
         digito = digito == 10 ? 9 : digito;
-        return this.verificador == digito;    
+        return verificador == digito;    
      } 
+     
+     public boolean isEmail(String correo) {
+        Pattern pat = null;
+        Matcher mat = null;        
+        pat = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
+        mat = pat.matcher(correo);
+        if (mat.find()) {
+            System.out.println("[" + mat.group() + "]");
+            return true;
+        }else{
+            return false;
+        }        
+    }
       
  
 }

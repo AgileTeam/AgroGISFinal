@@ -63,8 +63,8 @@ GestorHibernate gestorH = new GestorHibernate();
         //items deshabilitados para la reunion de avance
         ItemTransportista.setEnabled(true);
         ItemVehiculo.setEnabled(false);
-        ItemEstacion.setEnabled(false);
-        ItemVerEstacion.setEnabled(false);
+        ItemEstacion.setEnabled(true);
+        ItemVerEstacion.setEnabled(true);
         ItemVerTransp.setEnabled(false);
         ItemVerVehiculo.setEnabled(false);
         ItemVerTaller.setEnabled(false);
