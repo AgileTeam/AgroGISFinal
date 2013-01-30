@@ -6,6 +6,7 @@ package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.*;
 import Gestores_Vista.gestorRegistrarTaller;
+import Gestores_Vista.gestorRegistroTransportista;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
 gestorRegistrarTaller gestorT = new gestorRegistrarTaller();
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     /**
      * Creates new form frmRegistrarTallerReparacion
      */
@@ -576,6 +578,9 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
+    boolean mail = gRegistro.isEmail(txtEmail.getText());
+    System.out.println(mail);
+    if(mail==true){
     GestorHibernate gestorH = new GestorHibernate();
     TallerReparacion taller = new TallerReparacion();
     Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
@@ -601,6 +606,10 @@ GestorHibernate gestorH = new GestorHibernate();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblTaller.setModel(modeloTabla);
+    }
+     else{
+        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
+    }
     }//GEN-LAST:event_btnNuevoTallerActionPerformed
 
     private void btnEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTallerActionPerformed

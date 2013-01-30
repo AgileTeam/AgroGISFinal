@@ -17,6 +17,7 @@ import Clases_Modulo_Transporte.EstacionDeServicio;
 import Clases_Modulo_Transporte.ProveedorCombustible;
 import Clases_Modulo_Transporte.TipoTelefono;
 import Gestores_Vista.gestorRegistrarEstacionServicio;
+import Gestores_Vista.gestorRegistroTransportista;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,6 +38,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarEstacionServicio extends javax.swing.JInternalFrame {
 gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio();
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
@@ -552,6 +554,9 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    boolean mail = gRegistro.isEmail(txtEmail.getText());
+    System.out.println(mail);
+    if(mail==true){
     GestorHibernate gestorH = new GestorHibernate();
     EstacionDeServicio estacion = new EstacionDeServicio();
     estacion.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
@@ -571,6 +576,10 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblEstacion.setModel(modeloTabla);
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
+    }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
