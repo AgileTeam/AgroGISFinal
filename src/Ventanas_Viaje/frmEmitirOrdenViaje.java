@@ -187,16 +187,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel6.setText("Hasta");
         jPanel6.add(jLabel6);
         jLabel6.setBounds(160, 30, 60, 20);
-
-        calendarioHViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioHViaje);
         calendarioHViaje.setBounds(200, 30, 90, 20);
-
-        calendarioDViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel6.add(calendarioDViaje);
         calendarioDViaje.setBounds(50, 30, 90, 20);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel7.setLayout(null);
         jPanel7.add(txtNumViaje);
         txtNumViaje.setBounds(50, 30, 100, 20);
@@ -310,9 +306,9 @@ GestorHibernate gestorH = new GestorHibernate();
         txtDestino.setBounds(490, 220, 180, 20);
 
         lblHas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblHas.setText("Hectareas a Trillar");
+        lblHas.setText("Hectáreas a Trillar");
         jPanel2.add(lblHas);
-        lblHas.setBounds(10, 250, 130, 20);
+        lblHas.setBounds(20, 250, 130, 20);
         jPanel2.add(txtHas);
         txtHas.setBounds(130, 250, 150, 20);
 
@@ -443,7 +439,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
