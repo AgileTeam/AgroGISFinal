@@ -68,8 +68,8 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(20);
         tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(20);
         tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(80);
-       
+        tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(80);
         
         
         
@@ -90,7 +90,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
-        
+        cmbMotivo.setModel(gestorC.rellenaComboMotivo());
         tblTransportista.setEnabled(false);
         
     }
@@ -375,11 +375,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
         },
         new String [] {
-            "Fecha", "Orden N°", "Transportista", "Importe Total"
+            "Fecha", "Orden N°", "Transportista", "Motivo de Envío", "Importe Total"
         }
     ) {
         boolean[] canEdit = new boolean [] {
-            false, false, false, false
+            false, false, false, true, false
         };
 
         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -489,7 +489,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
         },
         new String [] {
-            "Transportista"
+            "Motivo"
         }
     ));
     jScrollPane3.setViewportView(tblMotivo);
@@ -569,8 +569,9 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
                             .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addContainerGap())
     );
@@ -1206,11 +1207,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarMotivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMotivoActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        Object fila[]={cmbMotivo.getSelectedItem()};
+        modelo.addRow(fila);
+        tblMotivo.setModel(modelo);    
     }//GEN-LAST:event_btnAgregarMotivoActionPerformed
 
     private void btnQuitarMotivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarMotivoActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        int fila = tblMotivo.getSelectedRow();
+        modelo.removeRow(fila);
+        tblMotivo.setModel(modelo);
     }//GEN-LAST:event_btnQuitarMotivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

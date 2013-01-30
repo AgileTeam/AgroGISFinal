@@ -5,6 +5,7 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Transporte.EnvioTaller;
+import Clases_Modulo_Transporte.Motivo;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Transportista;
 import Hibernate.GestorHibernate;
@@ -51,5 +52,18 @@ public class gestorConsultaReparaciones extends GestorHibernate{
 
        return modelo;
    }
+       
+       
+    public DefaultComboBoxModel rellenaComboMotivo(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Motivo.class).iterator();
+       while(ite.hasNext()){
+           Motivo motivo =(Motivo) ite.next();
+               modelo.addElement(motivo);
+               
+           }
+
+       return modelo;
+   }   
     
 }
