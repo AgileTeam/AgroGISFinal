@@ -1237,7 +1237,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     }//GEN-LAST:event_btnQuitarMotivoActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+         DefaultTableModel modelot = (DefaultTableModel) tblReparacion.getModel();
+         String arc="C:/Reportes AgroGIS/DetalleReparaciones.jasper";
+         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+         for(int i=0; i<modelot.getRowCount();i++){
+           Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+           OrdenServicio orden = (OrdenServicio)ite.next();
+           if(orden.getNumeroOrden()== tblReparacion.getValueAt(i, 1)){
+           gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", orden.getNumeroOrden() ));
+            }
+            }
+         gestorReportes.imprimir();
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
