@@ -1301,7 +1301,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "=") {
                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1310,7 +1310,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "<=") {
                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1323,7 +1323,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                         if (cmbOrden.getSelectedItem() == ">=") {
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1333,7 +1333,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "=") {
                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1343,7 +1343,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "<=") {
                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1355,7 +1355,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == ">=") {
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1365,7 +1365,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "=") {
                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1375,7 +1375,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   if (cmbOrden.getSelectedItem() == "<=") {
                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                         //Comparo que el importe para traer la orden correspondiente comparo el operador
-                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) ) {
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) ) {
                         //Guardo el objeto orden en la tabla
                         gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
@@ -1391,7 +1391,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden 
          
         //Seleccion FECHA ORDEN TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1409,32 +1409,106 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              while (ite2.hasNext()) { 
                   EnvioTaller carga = (EnvioTaller) ite2.next();
                   if (cmbImporteRep.getSelectedItem() == ">=") {
-                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
-                  //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
-                       //Guardo el objeto orden en la tabla
-                       gestorC.cargarTabla(tblReparacion, orden, carga);
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
                   }
                   }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) ) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
+                  }
+                  }
+                      
                   }
                   if (cmbImporteRep.getSelectedItem() == "=") {
-                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
-                       //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
-                          //Guardo el objeto orden en la tabla
-                          gestorC.cargarTabla(tblReparacion, orden, carga);
-                        }
-                      }
+                        if (cmbOrden.getSelectedItem() == ">=") {
+                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) ) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
+                  
+                  }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
+                  }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) ) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
+                  }
+                  }
+                  }                 
                   if (cmbImporteRep.getSelectedItem() == "<=") {
-                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
-                      //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
-                          //Guardo el objeto orden en la tabla
-                          gestorC.cargarTabla(tblReparacion, orden, carga);
+                  if (cmbOrden.getSelectedItem() == ">=") {
+                        for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) ) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
                   }
-                      }
-                  } //Cierre If carga
+                  
+                  }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                       for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) ) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
+                  }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                      for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente comparo el operador
+                        if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                  }
+                  
+                  }
+                  }
+                   
+                  }
+                  
+                  
+                  
+                  //Cierre If carga
              }//Cierre While Carga
          }//Cierre while orden        
         }//Cierre if orden         
