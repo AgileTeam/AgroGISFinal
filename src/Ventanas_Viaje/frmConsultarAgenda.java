@@ -156,6 +156,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel36 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        btnImprimirAgenda = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -476,6 +477,9 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             }
         });
 
+        btnImprimirAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
+        btnImprimirAgenda.setText("Imprimir");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -523,7 +527,9 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(444, 444, 444)
+                        .addGap(335, 335, 335)
+                        .addComponent(btnImprimirAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1024, Short.MAX_VALUE))
         );
@@ -583,7 +589,9 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
                     .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btnImprimirAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
 
@@ -597,7 +605,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2435, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2439, Short.MAX_VALUE)
         );
 
         pack();
@@ -676,6 +684,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnImprimirAgenda;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendario;
     private javax.swing.JLabel jLabel1;
