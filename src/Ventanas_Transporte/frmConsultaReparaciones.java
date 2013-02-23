@@ -685,7 +685,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          if(fecha1.before(fecha3)|| calendarioDRep.isEnabled()==false || fecha1.equals(fecha3)){
              
          //Seleccion FECHA    
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
          String numeroOrden = txtOrdenRep.getText();
          String importeTotal = txtImporteRep.getText();
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
@@ -713,7 +713,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }        
         }
          //Seleccion NRO ORDEN
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -749,7 +749,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }        
         }
          //Seleccion TRANSPORTISTA
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -771,7 +771,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden  
          
          //Seleccion IMPORTE
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -806,8 +806,31 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
             } //Cierre While Orden
          }//Cierre If Numero Orden Orden
          
+         //Seleccion MOTIVO
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+         
          //Seleccion FECHA Y NRO ORDEN
-        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -849,7 +872,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
          
          //Seleccion FECHA, TRANSPORTISTA
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -877,7 +900,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden  
          
          //Seleccion FECHA E IMPORTE
-        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled()&& tblTransportista.isEnabled()==false){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled()&& tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -918,8 +941,105 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre while orden        
         }//Cierre if orden
         
+         //Seleccion MOTIVO Y FECHA
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }             
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+        //Seleccion MOTIVO TRANSPORTISTA
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                     for (int j = 0; j < tblMotivo.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                     //Comparo que el importe para traer la orden correspondiente
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+         //Seleccion MOTIVO IMPORTE
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For    
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For  
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For  
+                    }
+               }//Cierre While Carga        
+            } //Cierre While Orden
+         }//Cierre If Numero Orden Orden
+         
+        
          //Seleccion NRO ORDEN E IMPORTE
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
          String numeroOrden = txtOrdenRep.getText();
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
@@ -1003,7 +1123,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }//Cierre if orden
           
           //Seleccion NRO ORDEN Y TRANSPORTISTA
-        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1045,8 +1165,148 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                 } //Cierre While Orden
              } //Cierre If Orden 
          
+        //Seleccion MOTIVO NRO ORDEN
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                    for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  }//Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+        
+        
+        //Seleccion MOTIVO NRO ORDEN E IMPORTE
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
+         String numeroOrden = txtOrdenRep.getText();
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int nroOrden = orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) { 
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                   }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                      
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                        for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                      for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  }                 
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                  if (cmbOrden.getSelectedItem() == ">=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                      for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                       for (int i = 0; i < tblMotivo.getRowCount(); i++) {                       
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorC.cargarTabla(tblReparacion, orden, carga);
+                    }
+                    }
+                  }
+                   
+                  } //Cierre If carga
+             }//Cierre While Carga
+         }//Cierre while orden        
+        }//Cierre if orden
+        
+        
         //Seleccion IMPORTE Y TRANSPORTISTA
-        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1086,8 +1346,10 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre while orden        
         }//Cierre if orden
         
+        
+        
         //Seleccion FECHA NRO ORDEN IMPORTE
-        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1177,8 +1439,157 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre while orden        
         }//Cierre if orden
         
+        
+         //Seleccion MOTIVO IMPORTE FECHA  
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For    
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For  
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For  
+                    }
+               }//Cierre While Carga        
+            } //Cierre While Orden
+         }//Cierre If Numero Orden Orden
+         
+         //Seleccion MOTIVO NRO ORDEN TRANSPORTISTA
+        if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                        for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                     }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                        for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }//Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                    for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                        }
+                  }//Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+        
+        //Seleccion MOTIVO IMPORTE TRANSPORTISTA
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  if (cmbImporteRep.getSelectedItem() == ">=") {
+                    for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                     for (int j = 0; j < tblMotivo.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                     //Comparo que el importe para traer la orden correspondiente
+                        }   
+                   }
+                  if (cmbImporteRep.getSelectedItem() == "=") {
+                    for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                     for (int j = 0; j < tblMotivo.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                     //Comparo que el importe para traer la orden correspondiente
+                        }   
+                  }
+                  if (cmbImporteRep.getSelectedItem() == "<=") {
+                     for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                     for (int j = 0; j < tblMotivo.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                     //Comparo que el importe para traer la orden correspondiente
+                        }   
+                    }
+               }//Cierre While Carga        
+            } //Cierre While Orden
+         }//Cierre If Numero Orden Orden
+                 
+        
         //Seleccion FECHA NRO ORDEN TRANSPORTISTA
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1229,7 +1640,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
              } //Cierre If Orden 
              
          //Seleccion FECHA TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled() && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1276,8 +1687,91 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre while orden        
         }//Cierre if orden 
          
+        //Seleccion MOTIVO NRO ORDEN FECHA
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled()==false && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                    for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                  } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+        
+        
+        //Seleccion MOTIVO TRANSPORTISTA FECHA
+         if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled()==false && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                  for (int i = 0; i < tblTransportista.getRowCount(); i++) {
+                     for (int j = 0; j < tblMotivo.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        } //Cierre For
+                        } //Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
+         
+         
          //Seleccion NRO ORDEN TRANSPORTISTA IMPORTE
-         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
+         if(calendarioDRep.isEnabled()==false && calendarioHRep.isEnabled()==false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1390,8 +1884,63 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
          }//Cierre while orden        
         }//Cierre if orden 
          
+         //Seleccion MOTIVO NRO ORDEN TRANSPORTISTA FECHA
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled()==false && tblTransportista.isEnabled() && tblMotivo.isEnabled()){
+         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+         while(ite.hasNext()){
+             OrdenServicio orden = (OrdenServicio) ite.next();
+             int numero= orden.getNumeroOrden();
+             int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+             //Busco el objeto carga para traer el importe de la orden
+             while (ite2.hasNext()) {
+                  EnvioTaller carga = (EnvioTaller) ite2.next();
+                   if (cmbOrden.getSelectedItem() == ">=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                        for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                     }
+                  }
+                  if (cmbOrden.getSelectedItem() == "=") {
+                     for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                        for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }//Cierre If Carga
+                        }
+                  }
+                  if (cmbOrden.getSelectedItem() == "<=") {
+                    for (int i = 0; i < tblMotivo.getRowCount(); i++) {
+                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                         //Guardo el objeto orden en la tabla
+                         gestorC.cargarTabla(tblReparacion, orden, carga);
+                            } //Cierre If Carga
+                        }
+                        }
+                  }//Cierre For
+                    }//Cierre Wile Carga
+                } //Cierre While Orden
+             } //Cierre If Orden  
+         
         //Seleccion FECHA ORDEN TRANSPORTISTA IMPORTE
-        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()){
+        if(calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled() && tblMotivo.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1504,11 +2053,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                   }
                   }
                    
-                  }
-                  
-                  
-                  
-                  //Cierre If carga
+                  }              
              }//Cierre While Carga
          }//Cierre while orden        
         }//Cierre if orden         
