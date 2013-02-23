@@ -10,37 +10,22 @@
  */
 package Ventanas_Transporte;
 
-
-import Clases_Modulo_Seguridad.Usuario;
+import Clases_Modulo_Cliente.*;
+import Ventanas_Cliente.*;
+import Clases_Modulo_Seguridad.*;
 import Ventanas_Viaje.*;
 import Ventanas_Carga.*;
-import javax.swing.UIManager;
+import javax.swing.*;
 import de.javasoft.plaf.synthetica.SyntheticaGreenDreamLookAndFeel;
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
-import Clases_Modulo_Transporte.OpcionEditar;
-import Gestores_Vista.gestorFrmPrincipal;
+import java.awt.*;
+import Clases_Modulo_Transporte.*;
+import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
-import Ventanas_Seguridad.frmIniciarSesion;
-import Ventanas_Seguridad.frmPrueba;
-import Ventanas_Seguridad.frmRegistrarUsuario;
-import java.awt.Desktop;
+import Ventanas_Seguridad.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 
 
 
@@ -935,7 +920,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_itemConsultarAgendaActionPerformed
 
     private void ItemNuevoProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemNuevoProductorActionPerformed
-        // TODO add your handling code here:
+        frmRegistrarProductor productor=new frmRegistrarProductor();
+        this.Escritorio.add(productor);
+        productor.setVisible(true);
     }//GEN-LAST:event_ItemNuevoProductorActionPerformed
 
     private void MenuInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInicioSesionActionPerformed
