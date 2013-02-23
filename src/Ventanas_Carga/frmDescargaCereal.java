@@ -152,7 +152,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setText("Fecha");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(10, 13, 50, 15);
+        jLabel9.setBounds(10, 8, 50, 20);
         jPanel3.add(txtFecha);
         txtFecha.setBounds(50, 10, 102, 20);
 
@@ -422,7 +422,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();

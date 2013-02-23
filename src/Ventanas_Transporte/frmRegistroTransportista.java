@@ -661,11 +661,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel23.setText("Fecha de Ingreso");
         jPanel5.add(jLabel23);
-        jLabel23.setBounds(280, 20, 100, 20);
+        jLabel23.setBounds(280, 20, 130, 20);
 
+        jLabel24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel24.setText("CUIL");
         jPanel5.add(jLabel24);
-        jLabel24.setBounds(100, 50, 30, 20);
+        jLabel24.setBounds(100, 50, 60, 20);
 
         txtCUIL.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
