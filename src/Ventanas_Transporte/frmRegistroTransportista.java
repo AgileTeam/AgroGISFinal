@@ -1248,7 +1248,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
