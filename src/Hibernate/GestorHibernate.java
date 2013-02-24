@@ -109,7 +109,6 @@ private Transaction tx;
 
 
     public List listarClaseFitradaPorInteger(Class clase,String campo,int valor){
-
          Criteria crit = getSession().createCriteria(clase)
                  .add( Restrictions.idEq(valor));
     return crit.list();

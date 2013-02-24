@@ -35,7 +35,7 @@ public class gestorAsignarTransporte extends GestorHibernate{
         Iterator ite1 = this.listarClase(Vehiculo.class).iterator();
             while(ite1.hasNext()){
                 Vehiculo vehiculo = (Vehiculo) ite1.next();
-                int bandera =0;
+                int bandera = 0;
                 Iterator ite = this.listarClase(Viaje.class).iterator();
                 while(ite.hasNext()){
                     Viaje viaje = (Viaje) ite.next();
