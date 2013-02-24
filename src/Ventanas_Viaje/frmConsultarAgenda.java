@@ -479,6 +479,11 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
 
         btnImprimirAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
         btnImprimirAgenda.setText("Imprimir");
+        btnImprimirAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirAgendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -605,7 +610,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2439, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2443, Short.MAX_VALUE)
         );
 
         pack();
@@ -681,6 +686,10 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             dispose();
     }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnImprimirAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirAgendaActionPerformed
+ 
+    }//GEN-LAST:event_btnImprimirAgendaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

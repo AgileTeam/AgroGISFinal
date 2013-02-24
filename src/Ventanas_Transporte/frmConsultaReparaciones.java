@@ -140,10 +140,10 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         ckFechaRep = new javax.swing.JCheckBox();
         ckOrdenRep = new javax.swing.JCheckBox();
         ckTranspRep = new javax.swing.JCheckBox();
-        ckImporteRep = new javax.swing.JCheckBox();
+        ckMotivo = new javax.swing.JCheckBox();
         btnAceptarTodosR = new javax.swing.JButton();
         btnQuitarTodosR = new javax.swing.JButton();
-        ckImporteRep1 = new javax.swing.JCheckBox();
+        ckImporteRep = new javax.swing.JCheckBox();
         btnEliminar = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         cmbMotivo = new javax.swing.JComboBox();
@@ -429,10 +429,10 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     jPanel1.add(ckTranspRep);
     ckTranspRep.setBounds(710, 20, 120, 30);
 
-    ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-    ckImporteRep.setText("Motivo de Envío");
-    jPanel1.add(ckImporteRep);
-    ckImporteRep.setBounds(570, 20, 120, 30);
+    ckMotivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckMotivo.setText("Motivo de Envío");
+    jPanel1.add(ckMotivo);
+    ckMotivo.setBounds(570, 20, 120, 30);
 
     btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
     btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
@@ -452,10 +452,10 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     jPanel1.add(btnQuitarTodosR);
     btnQuitarTodosR.setBounds(850, 40, 35, 25);
 
-    ckImporteRep1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-    ckImporteRep1.setText("Importe Total");
-    jPanel1.add(ckImporteRep1);
-    ckImporteRep1.setBounds(430, 20, 120, 30);
+    ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckImporteRep.setText("Importe Total");
+    jPanel1.add(ckImporteRep);
+    ckImporteRep.setBounds(430, 20, 120, 30);
 
     btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
     btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -545,46 +545,44 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jSeparator9))
-                .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(296, 296, 296)
-                            .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 904, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnEliminar))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(413, 413, 413)
-                            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(386, 386, 386)
-                            .addComponent(jLabel25))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(4, 4, 4)
-                                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 904, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(413, 413, 413)
+                        .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(386, 386, 386)
+                        .addComponent(jLabel25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))))))
             .addContainerGap())
     );
     layout.setVerticalGroup(
@@ -663,6 +661,11 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
             btnQuitarTranspR.setEnabled(true);
             tblTransportista.setEnabled(true);
         }
+        if (ckMotivo.isSelected()){
+            tblMotivo.setEnabled(true);
+            btnAgregarMotivo.setEnabled(true);
+            btnQuitarMotivo.setEnabled(true);        
+        }
     }//GEN-LAST:event_btnAceptarTodosRActionPerformed
 
     private void btnQuitarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosRActionPerformed
@@ -672,6 +675,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         txtOrdenRep.setEnabled(false);
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
+        btnAgregarMotivo.setEnabled(false);
+        btnQuitarMotivo.setEnabled(false);
+        txtOrdenRep.setText("");
+        txtImporteRep.setText("");
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        modelo.setRowCount(0);
+        tblMotivo.setModel(modelo);
+        DefaultTableModel modelo1 = (DefaultTableModel) tblTransportista.getModel();
+        modelo1.setRowCount(0);
+        tblMotivo.setModel(modelo1);
+        
     }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
     private void btnBuscarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReparacionActionPerformed
@@ -2414,7 +2428,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
     private datechooser.beans.DateChooserCombo calendarioHRep;
     private javax.swing.JCheckBox ckFechaRep;
     private javax.swing.JCheckBox ckImporteRep;
-    private javax.swing.JCheckBox ckImporteRep1;
+    private javax.swing.JCheckBox ckMotivo;
     private javax.swing.JCheckBox ckOrdenRep;
     private javax.swing.JCheckBox ckTranspRep;
     private javax.swing.JComboBox cmbImporteRep;
