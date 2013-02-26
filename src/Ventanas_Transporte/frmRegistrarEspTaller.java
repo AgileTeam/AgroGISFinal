@@ -5,6 +5,7 @@
 package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.Especialidad;
+import Clases_Modulo_Transporte.TallerReparacion;
 import Gestores_Clases.gestorEspecialidadTaller;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
@@ -327,6 +328,7 @@ long idEsp;
 
     private void btnEliminarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEspecialidadActionPerformed
         DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
+        int bandera=0;
         int fila = tblPais.getSelectedRow();
         Especialidad e = new Especialidad();
         e.setNombreEspecialidad((String) modeloT.getValueAt(fila, 0));
@@ -334,7 +336,18 @@ long idEsp;
         while (ite.hasNext()) {
             Especialidad p = (Especialidad) ite.next();
             if (p.getNombreEspecialidad().equalsIgnoreCase(e.getNombreEspecialidad())) {
-                gestorH.eliminarObjeto(p);
+                Iterator ite2 = gestorH.listarClase(TallerReparacion.class).iterator();
+                while(ite2.hasNext()){
+                    TallerReparacion taller = (TallerReparacion) ite2.next();
+                    if(taller.getEspecialidad().equals(p)){
+                        bandera=1;
+                    }
+                }
+                if(bandera == 0){
+                gestorH.eliminarObjeto(p);}
+                else{
+                JOptionPane.showMessageDialog(null, "No es posible eliminar la especialidad seleccionada");
+                }
             }
         }
         modeloT.removeRow(tblPais.getSelectedRow());
