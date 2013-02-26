@@ -261,26 +261,42 @@ public class gestorRegistroTransportista extends GestorHibernate{
        return modelo;
    }    
       
-     public boolean validarCuit(long numero) {
-        long sexo;
-        long dni;
-        long verificador;
-        
-        sexo = numero / (long) Math.pow(10, 9);
-        dni = numero / 10 - sexo * (long) Math.pow(10, 8);
-        verificador = numero % 10;
- 
-        String serie = "2345672345";
-        String numero1 = String.valueOf(sexo) + String.valueOf(dni);
-        long suma = 0;
-        for (int i = 0; i < 10; i++) {
-                suma += (numero1.charAt(i)- '0') * (serie.charAt(9 - i) - '0');
-        }
-        long digito = 11 - suma % 11;
-        digito = digito == 11 ? 0 : digito;
-        digito = digito == 10 ? 9 : digito;
-        return verificador == digito;    
-     } 
+  public boolean validarCuit(String numCUIT) {
+        String coef = "5432765432"; //coeficiente
+
+        //método para determinar el CUIT
+            try {
+            int su = 0;
+            int lCuit = numCUIT.length();
+            if (lCuit < 9) {
+                numCUIT = "00000000000";
+            return false;
+                }
+            for(int i = 1; i < 11; i++) {
+            String Cd1 = coef.substring(i-1, i);
+            String Cd2 = numCUIT.substring(i-1, i);
+            int cf = Integer.parseInt(Cd1); //casteo...
+            int ct = Integer.parseInt(Cd2); //casteo...
+            su += (cf * ct);
+                }
+            int md = su / 11;
+            int re = su - (md * 11);
+            if(re > 1) {
+            re = 11 - re;
+            }
+            String CdDv = numCUIT.substring(lCuit - 1, lCuit);
+            int dv = Integer.parseInt(CdDv); //casteo...
+            if(dv == re) {
+            return true;
+            } else {
+            return false;
+            }
+            }
+            catch (Exception e) {
+            return false;
+           }
+}    
+     
      
      public boolean isEmail(String correo) {
         Pattern pat = null;

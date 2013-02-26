@@ -1195,6 +1195,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    boolean cuit = gRegistro.validarCuit(txtCUIL.getText());
+    if(cuit==true){    
     if(tblVehiculo.getRowCount()!=0){
     DefaultTableModel modelo = (DefaultTableModel) tblTelefono.getModel();
     GestorHibernate gestorH = new GestorHibernate();
@@ -1240,10 +1242,12 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         vehiculo.setTransportista(transportista);
 
     }
-    
 }  
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
+    }
+    } else{
+        JOptionPane.showMessageDialog(null, "El CUIT ingresado no es valido");
     }
     
 }//GEN-LAST:event_btnGuardarActionPerformed
