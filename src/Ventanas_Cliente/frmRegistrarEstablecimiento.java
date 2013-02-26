@@ -4,6 +4,10 @@
  */
 package Ventanas_Cliente;
 
+import Ventanas_Transporte.*;
+import groovy.model.DefaultTableModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carolina
@@ -26,19 +30,406 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
+        labelusuario = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEstablecimiento = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtProductor = new javax.swing.JTextField();
+        txtEstablecimiento = new javax.swing.JTextField();
+        cmbLocalidad = new javax.swing.JComboBox();
+        cmbProvincia = new javax.swing.JComboBox();
+        cmbDepartamento = new javax.swing.JComboBox();
+        jPanel18 = new javax.swing.JPanel();
+        btnAgregarDepartamento = new javax.swing.JButton();
+        btnAgregarProvincia = new javax.swing.JButton();
+        btnAgregarLocalidad = new javax.swing.JButton();
+        txtHas = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblLote = new javax.swing.JTable();
+        btnAgregarLote = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtLote = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtLongitud = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtHasLote = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtLatitud = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        labelEstablecimiento = new javax.swing.JLabel();
+        btnEliminarLote = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Establecimiento");
+
+        jPanel1.setLayout(null);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setText("Fecha");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(10, 10, 70, 20);
+        jPanel1.add(txtFecha);
+        txtFecha.setBounds(50, 10, 80, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setText("Hora");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(180, 10, 40, 20);
+        jPanel1.add(txtHora);
+        txtHora.setBounds(210, 10, 80, 20);
+
+        labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelusuario.setText("Usuario");
+        jPanel1.add(labelusuario);
+        labelusuario.setBounds(570, 10, 50, 15);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(630, 0, 30, 30);
+
+        jPanel4.setLayout(null);
+
+        tblEstablecimiento.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Establecimiento", "Productor"
+            }
+        ));
+        jScrollPane1.setViewportView(tblEstablecimiento);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(130, 20, 430, 100);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setText("Establecimiento");
+        jPanel4.add(jLabel1);
+        jLabel1.setBounds(30, 130, 130, 20);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Productor");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(370, 130, 80, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Hectáreas");
+        jPanel4.add(jLabel3);
+        jLabel3.setBounds(60, 290, 100, 20);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("Localidad");
+        jPanel4.add(jLabel4);
+        jLabel4.setBounds(60, 250, 100, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Provincia");
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(70, 170, 100, 20);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("Departamento");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(40, 210, 130, 20);
+        jPanel4.add(txtProductor);
+        txtProductor.setBounds(430, 130, 210, 20);
+        jPanel4.add(txtEstablecimiento);
+        txtEstablecimiento.setBounds(130, 130, 210, 20);
+
+        jPanel4.add(cmbLocalidad);
+        cmbLocalidad.setBounds(130, 250, 210, 20);
+
+        jPanel4.add(cmbProvincia);
+        cmbProvincia.setBounds(130, 170, 210, 20);
+
+        jPanel4.add(cmbDepartamento);
+        cmbDepartamento.setBounds(130, 210, 210, 20);
+
+        btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+        btnAgregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarDepartamentoActionPerformed(evt);
+            }
+        });
+
+        btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+        btnAgregarProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarProvinciaActionPerformed(evt);
+            }
+        });
+
+        btnAgregarLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+        btnAgregarLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLocalidadActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+
+        jPanel4.add(jPanel18);
+        jPanel18.setBounds(300, 160, 100, 120);
+        jPanel4.add(txtHas);
+        txtHas.setBounds(130, 290, 120, 20);
+
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        jPanel4.add(btnAceptar);
+        btnAceptar.setBounds(570, 60, 40, 30);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Establecimiento", jPanel2);
+
+        jPanel3.setLayout(null);
+
+        tblLote.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Lote Nº", "Latitud", "Longitud"
+            }
+        ));
+        jScrollPane2.setViewportView(tblLote);
+
+        jPanel3.add(jScrollPane2);
+        jScrollPane2.setBounds(120, 220, 452, 100);
+
+        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+        btnAgregarLote.setText("Agregar");
+        jPanel3.add(btnAgregarLote);
+        btnAgregarLote.setBounds(290, 170, 110, 30);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Lote", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel5.setLayout(null);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setText("Lote Nº");
+        jPanel5.add(jLabel7);
+        jLabel7.setBounds(30, 20, 90, 20);
+        jPanel5.add(txtLote);
+        txtLote.setBounds(80, 20, 90, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("Longitud");
+        jPanel5.add(jLabel11);
+        jLabel11.setBounds(20, 60, 86, 20);
+        jPanel5.add(txtLongitud);
+        txtLongitud.setBounds(80, 60, 110, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Hectáreas");
+        jPanel5.add(jLabel8);
+        jLabel8.setBounds(260, 20, 90, 20);
+        jPanel5.add(txtHasLote);
+        txtHasLote.setBounds(320, 20, 90, 20);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel13.setText("Latitud");
+        jPanel5.add(jLabel13);
+        jLabel13.setBounds(260, 60, 80, 20);
+        jPanel5.add(txtLatitud);
+        txtLatitud.setBounds(300, 60, 110, 20);
+
+        jPanel3.add(jPanel5);
+        jPanel5.setBounds(110, 50, 460, 100);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("Establecimiento");
+        jPanel3.add(jLabel14);
+        jLabel14.setBounds(10, 20, 130, 20);
+
+        labelEstablecimiento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelEstablecimiento.setText("AYRES DEL SUR");
+        jPanel3.add(labelEstablecimiento);
+        labelEstablecimiento.setBounds(110, 20, 120, 20);
+
+        btnEliminarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        jPanel3.add(btnEliminarLote);
+        btnEliminarLote.setBounds(580, 260, 40, 30);
+
+        jTabbedPane1.addTab("Lote", jPanel3);
+
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabbedPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDepartamentoActionPerformed
+        frmRegistrarProvincia provincia = new frmRegistrarProvincia();
+        frmPrincipal.Escritorio.add(provincia);
+        provincia.toFront();
+        provincia.setVisible(true);
+    }//GEN-LAST:event_btnAgregarDepartamentoActionPerformed
+
+    private void btnAgregarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProvinciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProvinciaActionPerformed
+
+    private void btnAgregarLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarLocalidadActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
+        if (respuesta == 0) {
+            dispose();
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAgregarDepartamento;
+    private javax.swing.JButton btnAgregarLocalidad;
+    private javax.swing.JButton btnAgregarLote;
+    private javax.swing.JButton btnAgregarProvincia;
+    private javax.swing.JButton btnEliminarLote;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox cmbDepartamento;
+    private javax.swing.JComboBox cmbLocalidad;
+    private javax.swing.JComboBox cmbProvincia;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelEstablecimiento;
+    private javax.swing.JLabel labelusuario;
+    private javax.swing.JTable tblEstablecimiento;
+    private javax.swing.JTable tblLote;
+    private javax.swing.JTextField txtEstablecimiento;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHas;
+    private javax.swing.JTextField txtHasLote;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtLatitud;
+    private javax.swing.JTextField txtLongitud;
+    private javax.swing.JTextField txtLote;
+    private javax.swing.JTextField txtProductor;
     // End of variables declaration//GEN-END:variables
 }
