@@ -1242,7 +1242,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         vehiculo.setTransportista(transportista);
 
     }
-}  
+    gestorBitacora gestorB = new gestorBitacora();
+    gestorB.cargarBitacora(transportista.getNumeroDocumento(), txtFecha.getText(), 4, labelusuario.getText());
+    }
+
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }

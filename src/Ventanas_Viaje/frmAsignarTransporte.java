@@ -8,6 +8,7 @@ import Clases_Modulo_Transporte.*;
 import Clases_Modulo_Viaje.EstablecimientoPorViaje;
 import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.Viaje;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorAsignarTransporte;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
@@ -431,6 +432,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnAgregarViajeActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       gestorBitacora gestorB = new gestorBitacora();
        Iterator ite = gestorH.listarClase(Viaje.class).iterator();
        while(ite.hasNext()){
            Viaje viaje = (Viaje) ite.next();
@@ -444,6 +446,7 @@ GestorHibernate gestorH = new GestorHibernate();
                        gestorH.actualizarObjeto(viaje);
                        vehiculo.setEstado("Asignado");
                        gestorH.actualizarObjeto(vehiculo);
+                       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 3, labelusuario.getText());
                    }
                }
            

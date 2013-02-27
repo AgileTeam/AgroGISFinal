@@ -7,11 +7,14 @@ package Ventanas_Viaje;
 import Clases_Modulo_Carga.*;
 import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Cliente.Establecimiento;
+import Clases_Modulo_Seguridad.Bitacora;
+import Clases_Modulo_Seguridad.Operacion;
 import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Viaje.EstablecimientoPorViaje;
 import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.TipoViaje;
 import Clases_Modulo_Viaje.Viaje;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarViaje;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -652,6 +655,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //VER GUARDAR SOLICITUD
+       gestorBitacora gestorB = new gestorBitacora();
        int filaE = tblEstablecimiento.getSelectedRow(); 
        int filaP = tblProductor.getSelectedRow();
        Viaje viaje = new Viaje();
@@ -695,6 +699,7 @@ GestorHibernate gestorH = new GestorHibernate();
        JOptionPane.showMessageDialog(null, "Se genero correctamente el viaje Nº" + " " + viaje.getIdViaje());
        txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
        
+       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 1 , labelusuario.getText());
        if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Puerto")){
            PuertoPorViaje puerto = new PuertoPorViaje();
            Iterator ite = gestorH.listarClase(Puerto.class).iterator();
