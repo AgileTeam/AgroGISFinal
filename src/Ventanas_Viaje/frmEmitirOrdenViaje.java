@@ -13,6 +13,7 @@ import Clases_Modulo_Viaje.EstablecimientoPorViaje;
 import Clases_Modulo_Viaje.OrdenViaje;
 import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.Viaje;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorEmitirOrden;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -690,6 +691,7 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnBuscarViajeActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+       gestorBitacora gestorB = new gestorBitacora();
        DefaultTableModel modeloTabla = (DefaultTableModel) tblViaje.getModel();
        Iterator ite = gestorH.listarClase(Viaje.class).iterator();
        int fila = tblViaje.getSelectedRow();
@@ -704,6 +706,7 @@ GestorHibernate gestorH = new GestorHibernate();
                gestorH.guardarObjeto(orden);
                txtNumOrden.setText(String.valueOf(orden.getNumeroOrden()));
                JOptionPane.showMessageDialog(null, "Se genero correctamente la orden Nº:"+ " " + orden.getNumeroOrden());
+               gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 2, labelusuario.getText());
                
            }
        }

@@ -23,6 +23,7 @@ private Operacion operacion;
 
 private String fecha;
 private String nroComprobante;
+private String usuario;
 
     /**
      * @return the idBitacora
@@ -78,6 +79,20 @@ private String nroComprobante;
      */
     public void setNroComprobante(String nroComprobante) {
         this.nroComprobante = nroComprobante;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
 }
