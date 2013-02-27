@@ -19,12 +19,21 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
-public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
+/**
+ *
+ * @author Carolina
+ */
+public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
+
+    
         GestorHibernate gestorH = new GestorHibernate();
-        gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
-    public frmEliminarOrdenTaller() {
+        gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
+    
+    
+    public frmEliminarOrdenCarga() {
         initComponents();
+        
         gestorH.actualizarUsuario(labelUsuario);
         txtHoraRep.setEnabled(false);
         txtHoraRep.setEditable(false);
@@ -51,10 +60,10 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
         
         //redimensionar columnas de la tabla Consumo
-        tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(20);
-        tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(20);
-        tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(80);
+        tblConsumo.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tblConsumo.getColumnModel().getColumn(1).setPreferredWidth(20);
+        tblConsumo.getColumnModel().getColumn(2).setPreferredWidth(120);
+        tblConsumo.getColumnModel().getColumn(3).setPreferredWidth(80);
        
         
         
@@ -69,13 +78,13 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
-        calendarioDRep.setEnabled(false);
-        calendarioHRep.setEnabled(false);
-        txtImporteRep.setEnabled(false);
-        txtOrdenRep.setEnabled(false);
-        btnAgregarTranspR.setEnabled(false);
-        btnQuitarTranspR.setEnabled(false);
-        cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
+        calendarioDCons.setEnabled(false);
+        calendarioHCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
+        cmbTranspCons.setModel(gestorC.rellenaComboTransportista());
         
         tblTransportista.setEnabled(false);
       
@@ -99,35 +108,35 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jLabel24 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        ckFechaRep = new javax.swing.JCheckBox();
-        ckOrdenRep = new javax.swing.JCheckBox();
-        ckTranspRep = new javax.swing.JCheckBox();
-        ckImporteRep = new javax.swing.JCheckBox();
+        ckFechaCons = new javax.swing.JCheckBox();
+        ckOrdenCons = new javax.swing.JCheckBox();
+        ckTranspCons = new javax.swing.JCheckBox();
+        ckImporteCons = new javax.swing.JCheckBox();
         btnAceptarTodosR = new javax.swing.JButton();
         btnQuitarTodosR = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        calendarioHRep = new datechooser.beans.DateChooserCombo();
-        calendarioDRep = new datechooser.beans.DateChooserCombo();
+        calendarioHCons = new datechooser.beans.DateChooserCombo();
+        calendarioDCons = new datechooser.beans.DateChooserCombo();
         jPanel20 = new javax.swing.JPanel();
-        txtOrdenRep = new javax.swing.JTextField();
+        txtOrdenCons = new javax.swing.JTextField();
         jPanel18 = new javax.swing.JPanel();
-        cmbImporteRep = new javax.swing.JComboBox();
-        txtImporteRep = new javax.swing.JTextField();
-        btnBuscarReparacion = new javax.swing.JButton();
+        cmbImporteCons = new javax.swing.JComboBox();
+        txtImporteCons = new javax.swing.JTextField();
+        jPanel21 = new javax.swing.JPanel();
+        cmbTranspCons = new javax.swing.JComboBox();
+        btnAgregarTranspC = new javax.swing.JButton();
+        btnQuitarTranspC = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTransportista = new javax.swing.JTable();
+        btnBuscarConsumo = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel25 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tblReparacion = new javax.swing.JTable();
+        tblConsumo = new javax.swing.JTable();
         btnEliminarOrden = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jPanel21 = new javax.swing.JPanel();
-        cmbTranspRep = new javax.swing.JComboBox();
-        btnAgregarTranspR = new javax.swing.JButton();
-        btnQuitarTranspR = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblTransportista = new javax.swing.JTable();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -167,25 +176,25 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel28);
         jLabel28.setBounds(20, 10, 180, 50);
 
-        ckFechaRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckFechaRep.setText("Fecha");
-        jPanel1.add(ckFechaRep);
-        ckFechaRep.setBounds(220, 20, 80, 30);
+        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ckFechaCons.setText("Fecha");
+        jPanel1.add(ckFechaCons);
+        ckFechaCons.setBounds(220, 20, 80, 30);
 
-        ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckOrdenRep.setText("Número Orden");
-        jPanel1.add(ckOrdenRep);
-        ckOrdenRep.setBounds(350, 20, 130, 30);
+        ckOrdenCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ckOrdenCons.setText("Número Orden");
+        jPanel1.add(ckOrdenCons);
+        ckOrdenCons.setBounds(350, 20, 130, 30);
 
-        ckTranspRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckTranspRep.setText("Transportista");
-        jPanel1.add(ckTranspRep);
-        ckTranspRep.setBounds(500, 20, 120, 30);
+        ckTranspCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ckTranspCons.setText("Transportista");
+        jPanel1.add(ckTranspCons);
+        ckTranspCons.setBounds(500, 20, 120, 30);
 
-        ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckImporteRep.setText("Importe Total");
-        jPanel1.add(ckImporteRep);
-        ckImporteRep.setBounds(650, 20, 120, 30);
+        ckImporteCons.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ckImporteCons.setText("Importe Total");
+        jPanel1.add(ckImporteCons);
+        ckImporteCons.setBounds(650, 20, 120, 30);
 
         btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
@@ -218,11 +227,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jPanel19.add(jLabel27);
         jLabel27.setBounds(170, 30, 60, 20);
 
-        calendarioHRep.setLocale(new java.util.Locale("es", "AR", ""));
-        jPanel19.add(calendarioHRep);
-        calendarioHRep.setBounds(210, 30, 90, 20);
+        calendarioHCons.setLocale(new java.util.Locale("es", "AR", ""));
+        jPanel19.add(calendarioHCons);
+        calendarioHCons.setBounds(210, 30, 90, 20);
 
-        calendarioDRep.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+        calendarioDCons.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
                 new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(0, 0, 0),
@@ -263,9 +272,9 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    calendarioDRep.setLocale(new java.util.Locale("es", "AR", ""));
-    jPanel19.add(calendarioDRep);
-    calendarioDRep.setBounds(50, 30, 90, 20);
+    calendarioDCons.setLocale(new java.util.Locale("es", "AR", ""));
+    jPanel19.add(calendarioDCons);
+    calendarioDCons.setBounds(50, 30, 90, 20);
 
     jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -275,20 +284,20 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
             .addContainerGap(60, Short.MAX_VALUE)
-            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtOrdenCons, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(56, 56, 56))
     );
     jPanel20Layout.setVerticalGroup(
         jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel20Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtOrdenCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-    cmbImporteRep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
+    cmbImporteCons.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
 
     javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
     jPanel18.setLayout(jPanel18Layout);
@@ -296,9 +305,9 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel18Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(cmbImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
-            .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(24, Short.MAX_VALUE))
     );
     jPanel18Layout.setVerticalGroup(
@@ -306,76 +315,26 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         .addGroup(jPanel18Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cmbImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(txtImporteRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cmbImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtImporteCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    btnBuscarReparacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-    btnBuscarReparacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-    btnBuscarReparacion.setText("Buscar");
-    btnBuscarReparacion.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnBuscarReparacionActionPerformed(evt);
-        }
-    });
-
-    jLabel25.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-    jLabel25.setText("Ordenes de Servicio");
-
-    tblReparacion.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-
-        },
-        new String [] {
-            "Fecha", "Orden N°", "Transportista", "Importe Total"
-        }
-    ) {
-        boolean[] canEdit = new boolean [] {
-            false, false, false, false
-        };
-
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return canEdit [columnIndex];
-        }
-    });
-    tblReparacion.getTableHeader().setResizingAllowed(false);
-    tblReparacion.getTableHeader().setReorderingAllowed(false);
-    jScrollPane6.setViewportView(tblReparacion);
-
-    btnEliminarOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-    btnEliminarOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-    btnEliminarOrden.setText("Eliminar");
-    btnEliminarOrden.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnEliminarOrdenActionPerformed(evt);
-        }
-    });
-
-    btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-    btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-    btnSalir.setText("Salir");
-    btnSalir.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnSalirActionPerformed(evt);
-        }
-    });
-
     jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-    btnAgregarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-    btnAgregarTranspR.setText(">");
-    btnAgregarTranspR.addActionListener(new java.awt.event.ActionListener() {
+    btnAgregarTranspC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnAgregarTranspC.setText(">");
+    btnAgregarTranspC.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAgregarTranspRActionPerformed(evt);
+            btnAgregarTranspCActionPerformed(evt);
         }
     });
 
-    btnQuitarTranspR.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-    btnQuitarTranspR.setText("<");
-    btnQuitarTranspR.addActionListener(new java.awt.event.ActionListener() {
+    btnQuitarTranspC.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnQuitarTranspC.setText("<");
+    btnQuitarTranspC.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnQuitarTranspRActionPerformed(evt);
+            btnQuitarTranspCActionPerformed(evt);
         }
     });
 
@@ -397,10 +356,10 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGap(0, 10, Short.MAX_VALUE)
             .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                    .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(btnAgregarTranspR))
-                .addComponent(btnQuitarTranspR, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAgregarTranspC))
+                .addComponent(btnQuitarTranspC, javax.swing.GroupLayout.Alignment.TRAILING))
             .addGap(18, 18, 18)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(25, 25, 25))
@@ -412,59 +371,110 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(jPanel21Layout.createSequentialGroup()
                     .addGap(29, 29, 29)
                     .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbTranspRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAgregarTranspR)))
+                        .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarTranspC)))
                 .addGroup(jPanel21Layout.createSequentialGroup()
                     .addGap(65, 65, 65)
-                    .addComponent(btnQuitarTranspR)))
+                    .addComponent(btnQuitarTranspC)))
             .addContainerGap(30, Short.MAX_VALUE))
         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );
+
+    btnBuscarConsumo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnBuscarConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+    btnBuscarConsumo.setText("Buscar");
+    btnBuscarConsumo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBuscarConsumoActionPerformed(evt);
+        }
+    });
+
+    jLabel25.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+    jLabel25.setText("Ordenes de Servicio");
+
+    tblConsumo.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+
+        },
+        new String [] {
+            "Fecha", "Orden N°", "Transportista", "Importe Total"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
+    tblConsumo.getTableHeader().setResizingAllowed(false);
+    tblConsumo.getTableHeader().setReorderingAllowed(false);
+    jScrollPane6.setViewportView(tblConsumo);
+
+    btnEliminarOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnEliminarOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+    btnEliminarOrden.setText("Eliminar");
+    btnEliminarOrden.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEliminarOrdenActionPerformed(evt);
+        }
+    });
+
+    btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+    btnSalir.setText("Salir");
+    btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnSalirActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 4, Short.MAX_VALUE))))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(358, 358, 358)
+                            .addComponent(btnBuscarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(314, 314, 314)
+                            .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(347, 347, 347)
+                            .addComponent(jLabel25)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(405, 405, 405))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jLabel25)
-                    .addGap(382, 382, 382))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(202, 202, 202))))
+            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(183, 183, 183))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,17 +482,17 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(1, 1, 1)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(4, 4, 4)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(jPanel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnBuscarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel25)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -491,126 +501,126 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(27, Short.MAX_VALUE))
+            .addContainerGap(21, Short.MAX_VALUE))
     );
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosRActionPerformed
-        if (ckFechaRep.isSelected()) {
-            calendarioDRep.setEnabled(true);
-            calendarioHRep.setEnabled(true);
+        if (ckFechaCons.isSelected()) {
+            calendarioDCons.setEnabled(true);
+            calendarioHCons.setEnabled(true);
         }
-        if (ckImporteRep.isSelected()) {
-            txtImporteRep.setEnabled(true);
+        if (ckImporteCons.isSelected()) {
+            txtImporteCons.setEnabled(true);
         }
-        if (ckOrdenRep.isSelected()) {
-            txtOrdenRep.setEnabled(true);
+        if (ckOrdenCons.isSelected()) {
+            txtOrdenCons.setEnabled(true);
         }
-        if (ckTranspRep.isSelected()) {
-            btnAgregarTranspR.setEnabled(true);
-            btnQuitarTranspR.setEnabled(true);
+        if (ckTranspCons.isSelected()) {
+            btnAgregarTranspC.setEnabled(true);
+            btnQuitarTranspC.setEnabled(true);
             tblTransportista.setEnabled(true);
         }
     }//GEN-LAST:event_btnAceptarTodosRActionPerformed
 
     private void btnQuitarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosRActionPerformed
-        calendarioDRep.setEnabled(false);
-        calendarioHRep.setEnabled(false);
-        txtImporteRep.setEnabled(false);
-        txtOrdenRep.setEnabled(false);
-        btnAgregarTranspR.setEnabled(false);
-        btnQuitarTranspR.setEnabled(false);
+        calendarioDCons.setEnabled(false);
+        calendarioHCons.setEnabled(false);
+        txtImporteCons.setEnabled(false);
+        txtOrdenCons.setEnabled(false);
+        btnAgregarTranspC.setEnabled(false);
+        btnQuitarTranspC.setEnabled(false);
     }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
-    private void btnAgregarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspRActionPerformed
+    private void btnAgregarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspCActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblTransportista.getModel();
-        Object fila[] = {cmbTranspRep.getSelectedItem()};
+        Object fila[] = {cmbTranspCons.getSelectedItem()};
         modelo.addRow(fila);
         tblTransportista.setModel(modelo);
-    }//GEN-LAST:event_btnAgregarTranspRActionPerformed
+    }//GEN-LAST:event_btnAgregarTranspCActionPerformed
 
-    private void btnQuitarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspRActionPerformed
+    private void btnQuitarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspCActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblTransportista.getModel();
         int fila = tblTransportista.getSelectedRow();
         modelo.removeRow(fila);
         tblTransportista.setModel(modelo);
-    }//GEN-LAST:event_btnQuitarTranspRActionPerformed
+    }//GEN-LAST:event_btnQuitarTranspCActionPerformed
 
-    private void btnBuscarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReparacionActionPerformed
+    private void btnBuscarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumoActionPerformed
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
-        Date fecha1 = sdf.parse(calendarioDRep.getText(), new ParsePosition(0));
-        Date fecha3 = sdf.parse(calendarioHRep.getText(), new ParsePosition(0));
-        DefaultTableModel modeloT = (DefaultTableModel) tblReparacion.getModel();
+        Date fecha1 = sdf.parse(calendarioDCons.getText(), new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHCons.getText(), new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblConsumo.getModel();
 
 
-        if (fecha1.before(fecha3) || calendarioDRep.isEnabled() == false || fecha1.equals(fecha3)) {
+        if (fecha1.before(fecha3) || calendarioDCons.isEnabled() == false || fecha1.equals(fecha3)) {
 
             //Seleccion FECHA    
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled() == false) {
-                String numeroOrden = txtOrdenRep.getText();
-                String importeTotal = txtImporteRep.getText();
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled() == false) {
+                String numeroOrden = txtOrdenCons.getText();
+                String importeTotal = txtImporteCons.getText();
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         //comparo el rango de fechas
                         if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) {
                             //Guardo el objeto orden en la tabla
-                            gestorC.cargarTabla(tblReparacion, orden, carga);
+                            gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                     }
                 }
             }
             //Seleccion NRO ORDEN
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled() == false) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled() == false) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int numero = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         //comparo el rango de fechas
-                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenRep.getText()))) {
+                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenCons.getText()))) {
                             //Guardo el objeto orden en la tabla
-                            gestorC.cargarTabla(tblReparacion, orden, carga);
+                            gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                     }
                 }
             }
             //Seleccion TRANSPORTISTA
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int numero = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
                             if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
                         } //Cierre For
                     }//Cierre Wile Carga
@@ -618,35 +628,35 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             } //Cierre If Orden  
 
             //Seleccion IMPORTE
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() && tblTransportista.isEnabled() == false) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() && tblTransportista.isEnabled() == false) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText()))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText()))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText()))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
                     }//Cierre While Carga        
@@ -654,53 +664,53 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre If Numero Orden Orden
 
             //Seleccion FECHA Y NRO ORDEN
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled() == false) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled() == false) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         //comparo el rango de fechas
-                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (Integer.parseInt(txtOrdenRep.getText()) == nroOrden) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (Integer.parseInt(txtOrdenCons.getText()) == nroOrden) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                             //Guardo el objeto orden en la tabla
-                            gestorC.cargarTabla(tblReparacion, orden, carga);
+                            gestorC.cargarTabla(tblConsumo, orden, carga);
                         } //Cierre If carga
                     }//Cierre While Carga
                 }//Cierre while orden        
             }//Cierre if orden
 
             //Seleccion FECHA, TRANSPORTISTA
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
                             if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
                         } //Cierre For
                     }//Cierre Wile Carga
@@ -708,41 +718,41 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             } //Cierre If Orden  
 
             //Seleccion FECHA E IMPORTE
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() && tblTransportista.isEnabled() == false) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() && tblTransportista.isEnabled() == false) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         } //Cierre If carga
                     }//Cierre While Carga
@@ -750,36 +760,36 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden
 
             //Seleccion NRO ORDEN E IMPORTE
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled() == false) {
-                String numeroOrden = txtOrdenRep.getText();
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && tblTransportista.isEnabled() == false) {
+                String numeroOrden = txtOrdenCons.getText();
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(numeroOrden))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         } //Cierre If carga
                     }//Cierre While Carga
@@ -787,21 +797,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden
 
             //Seleccion NRO ORDEN Y TRANSPORTISTA
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText()))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
                         } //Cierre For
                     }//Cierre Wile Carga
@@ -809,39 +819,39 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             } //Cierre If Orden 
 
             //Seleccion IMPORTE Y TRANSPORTISTA
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         } //Cierre If carga
@@ -850,42 +860,42 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden
 
             //Seleccion FECHA NRO ORDEN IMPORTE
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled() == false) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && tblTransportista.isEnabled() == false) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             }
                         } //Cierre If carga
                     }//Cierre While Carga
@@ -893,29 +903,29 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden
 
             //Seleccion FECHA NRO ORDEN TRANSPORTISTA
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() == false && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() == false && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                 //Guardo el objeto orden en la tabla
-                                gestorC.cargarTabla(tblReparacion, orden, carga);
+                                gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
                         } //Cierre For
                     }//Cierre Wile Carga
@@ -923,46 +933,46 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             } //Cierre If Orden 
 
             //Seleccion FECHA TRANSPORTISTA IMPORTE
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() == false && txtImporteRep.isEnabled() && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() == false && txtImporteCons.isEnabled() && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         } //Cierre If carga
@@ -971,40 +981,40 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden 
 
             //Seleccion NRO ORDEN TRANSPORTISTA IMPORTE
-            if (calendarioDRep.isEnabled() == false && calendarioHRep.isEnabled() == false && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() == false && calendarioHCons.isEnabled() == false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText()))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText()))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText()))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         } //Cierre If carga
@@ -1013,47 +1023,47 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             }//Cierre if orden 
 
             //Seleccion FECHA ORDEN TRANSPORTISTA IMPORTE
-            if (calendarioDRep.isEnabled() && calendarioHRep.isEnabled() && txtOrdenRep.isEnabled() && txtImporteRep.isEnabled() && tblTransportista.isEnabled()) {
+            if (calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && tblTransportista.isEnabled()) {
                 Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
                 while (ite.hasNext()) {
                     OrdenServicio orden = (OrdenServicio) ite.next();
                     int nroOrden = orden.getNumeroOrden();
-                    int bandera = gestorC.buscarObjeto(tblReparacion, orden);
+                    int bandera = gestorC.buscarObjeto(tblConsumo, orden);
                     Date fecha2 = null;
                     try {
                         fecha2 = sdfguion.parse(orden.getFecha());
                         System.out.println(fecha2);
                     } catch (ParseException ex) {
-                        Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Iterator ite2 = gestorH.listarClase(EnvioTaller.class).iterator();
+                    Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
                     //Busco el objeto carga para traer el importe de la orden
                     while (ite2.hasNext()) {
-                        EnvioTaller carga = (EnvioTaller) ite2.next();
-                        if (cmbImporteRep.getSelectedItem() == ">=") {
+                        CargaCombustible carga = (CargaCombustible) ite2.next();
+                        if (cmbImporteCons.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "=") {
+                        if (cmbImporteCons.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         }
-                        if (cmbImporteRep.getSelectedItem() == "<=") {
+                        if (cmbImporteCons.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenCons.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
                                     //Guardo el objeto orden en la tabla
-                                    gestorC.cargarTabla(tblReparacion, orden, carga);
+                                    gestorC.cargarTabla(tblConsumo, orden, carga);
                                 }
                             }
                         } //Cierre If carga
@@ -1064,13 +1074,12 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
         }
-
-    }//GEN-LAST:event_btnBuscarReparacionActionPerformed
+    }//GEN-LAST:event_btnBuscarConsumoActionPerformed
 
     private void btnEliminarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarOrdenActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) tblReparacion.getModel();
-        int fila = tblReparacion.getSelectedRow();
-        int nroOrden = Integer.parseInt(tblReparacion.getValueAt(fila, 1).toString());
+        DefaultTableModel modelo = (DefaultTableModel) tblConsumo.getModel();
+        int fila = tblConsumo.getSelectedRow();
+        int nroOrden = Integer.parseInt(tblConsumo.getValueAt(fila, 1).toString());
 
         String arc = "C:/Reportes AgroGIS/OrdenServicio.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
@@ -1087,20 +1096,20 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodosR;
-    private javax.swing.JButton btnAgregarTranspR;
-    private javax.swing.JButton btnBuscarReparacion;
+    private javax.swing.JButton btnAgregarTranspC;
+    private javax.swing.JButton btnBuscarConsumo;
     private javax.swing.JButton btnEliminarOrden;
     private javax.swing.JButton btnQuitarTodosR;
-    private javax.swing.JButton btnQuitarTranspR;
+    private javax.swing.JButton btnQuitarTranspC;
     private javax.swing.JButton btnSalir;
-    private datechooser.beans.DateChooserCombo calendarioDRep;
-    private datechooser.beans.DateChooserCombo calendarioHRep;
-    private javax.swing.JCheckBox ckFechaRep;
-    private javax.swing.JCheckBox ckImporteRep;
-    private javax.swing.JCheckBox ckOrdenRep;
-    private javax.swing.JCheckBox ckTranspRep;
-    private javax.swing.JComboBox cmbImporteRep;
-    private javax.swing.JComboBox cmbTranspRep;
+    private datechooser.beans.DateChooserCombo calendarioDCons;
+    private datechooser.beans.DateChooserCombo calendarioHCons;
+    private javax.swing.JCheckBox ckFechaCons;
+    private javax.swing.JCheckBox ckImporteCons;
+    private javax.swing.JCheckBox ckOrdenCons;
+    private javax.swing.JCheckBox ckTranspCons;
+    private javax.swing.JComboBox cmbImporteCons;
+    private javax.swing.JComboBox cmbTranspCons;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
@@ -1118,11 +1127,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel labelUsuario;
-    private javax.swing.JTable tblReparacion;
+    private javax.swing.JTable tblConsumo;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtFechaRep;
     private javax.swing.JTextField txtHoraRep;
-    private javax.swing.JTextField txtImporteRep;
-    private javax.swing.JTextField txtOrdenRep;
+    private javax.swing.JTextField txtImporteCons;
+    private javax.swing.JTextField txtOrdenCons;
     // End of variables declaration//GEN-END:variables
 }
