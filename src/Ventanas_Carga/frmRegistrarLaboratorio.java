@@ -172,25 +172,25 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel11.setText("Fecha");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(30, 10, 50, 20);
+        jLabel11.setBounds(20, 10, 60, 20);
         jPanel2.add(txtFecha);
-        txtFecha.setBounds(70, 10, 102, 20);
+        txtFecha.setBounds(60, 10, 80, 20);
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setText("Hora");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(220, 10, 40, 20);
+        jLabel12.setBounds(210, 10, 60, 20);
         jPanel2.add(txtHora);
-        txtHora.setBounds(250, 10, 70, 20);
+        txtHora.setBounds(240, 10, 80, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Usuario");
         jPanel2.add(labelusuario);
-        labelusuario.setBounds(570, 10, 50, 15);
+        labelusuario.setBounds(620, 10, 50, 15);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(630, 0, 30, 30);
+        jLabel14.setBounds(670, 0, 30, 30);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel1.setLayout(null);

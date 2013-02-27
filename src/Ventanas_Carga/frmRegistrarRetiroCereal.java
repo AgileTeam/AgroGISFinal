@@ -167,14 +167,14 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         jPanel3.add(jLabel9);
         jLabel9.setBounds(10, 10, 60, 20);
         jPanel3.add(txtFecha);
-        txtFecha.setBounds(50, 10, 90, 20);
+        txtFecha.setBounds(50, 10, 80, 20);
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setText("Hora");
         jPanel3.add(jLabel10);
         jLabel10.setBounds(180, 10, 40, 20);
         jPanel3.add(txtHora);
-        txtHora.setBounds(210, 10, 70, 20);
+        txtHora.setBounds(210, 10, 80, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Usuario");
@@ -434,7 +434,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();

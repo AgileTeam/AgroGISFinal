@@ -344,9 +344,9 @@ gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
         jPanel3.add(labelUsuario);
         labelUsuario.setBounds(500, 10, 50, 15);
         jPanel3.add(txtFecha);
-        txtFecha.setBounds(60, 10, 102, 20);
+        txtFecha.setBounds(60, 10, 80, 20);
         jPanel3.add(txtHora);
-        txtHora.setBounds(250, 10, 70, 20);
+        txtHora.setBounds(250, 10, 80, 20);
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel17);
@@ -481,7 +481,7 @@ gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
