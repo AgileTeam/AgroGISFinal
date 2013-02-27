@@ -203,12 +203,12 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 60, 20);
         jPanel1.add(txtHora);
-        txtHora.setBounds(190, 10, 70, 20);
+        txtHora.setBounds(230, 10, 80, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(155, 10, 51, 20);
+        jLabel2.setBounds(200, 10, 51, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Carolina");
@@ -219,7 +219,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel13);
         jLabel13.setBounds(650, 0, 30, 30);
         jPanel1.add(txtFecha);
-        txtFecha.setBounds(50, 10, 70, 20);
+        txtFecha.setBounds(50, 10, 80, 20);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel9.setLayout(null);
@@ -532,7 +532,7 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -542,7 +542,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

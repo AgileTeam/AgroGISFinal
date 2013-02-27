@@ -201,24 +201,24 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jPanel1.setLayout(null);
         jPanel1.add(txtFechaCarga);
-        txtFechaCarga.setBounds(180, 20, 70, 20);
+        txtFechaCarga.setBounds(260, 20, 80, 20);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Fecha");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 20, 40, 20);
+        jLabel1.setBounds(20, 20, 70, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(150, 20, 40, 20);
+        jLabel2.setBounds(230, 20, 60, 20);
         jPanel1.add(txtHoraCarga);
-        txtHoraCarga.setBounds(60, 20, 70, 20);
+        txtHoraCarga.setBounds(60, 20, 80, 20);
 
         labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelUsuario.setText("Carolina");
         jPanel1.add(labelUsuario);
-        labelUsuario.setBounds(560, 10, 50, 40);
+        labelUsuario.setBounds(620, 10, 50, 40);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Transportista", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel2.setLayout(null);
@@ -359,7 +359,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(610, 10, 30, 30);
+        jLabel13.setBounds(670, 10, 30, 30);
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -399,7 +399,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();

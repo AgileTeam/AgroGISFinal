@@ -157,23 +157,23 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 10, 60, 20);
         jPanel1.add(txtHora);
-        txtHora.setBounds(190, 10, 70, 20);
+        txtHora.setBounds(220, 10, 80, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(155, 10, 51, 20);
+        jLabel2.setBounds(190, 10, 51, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Carolina");
         jPanel1.add(labelusuario);
-        labelusuario.setBounds(551, 0, 50, 40);
+        labelusuario.setBounds(680, 0, 50, 30);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(600, 0, 30, 30);
+        jLabel13.setBounds(730, 0, 30, 30);
         jPanel1.add(txtFecha);
-        txtFecha.setBounds(50, 10, 70, 20);
+        txtFecha.setBounds(50, 10, 80, 20);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel6.setLayout(null);
@@ -439,7 +439,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

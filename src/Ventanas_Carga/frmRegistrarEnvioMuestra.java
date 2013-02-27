@@ -155,9 +155,9 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(180, 10, 50, 20);
+        jLabel2.setBounds(210, 10, 50, 20);
         jPanel3.add(txtFecha);
-        txtFecha.setBounds(50, 10, 70, 20);
+        txtFecha.setBounds(50, 10, 80, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Usuario");
@@ -168,7 +168,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jPanel3.add(jLabel48);
         jLabel48.setBounds(820, 0, 32, 32);
         jPanel3.add(txtHora);
-        txtHora.setBounds(210, 10, 70, 20);
+        txtHora.setBounds(240, 10, 80, 20);
 
         btnAceptarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAceptarMuestra.addActionListener(new java.awt.event.ActionListener() {
@@ -490,7 +490,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

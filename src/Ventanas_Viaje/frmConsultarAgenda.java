@@ -176,9 +176,9 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Hora");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(160, 10, 51, 20);
+        jLabel2.setBounds(200, 10, 51, 20);
         jPanel1.add(txtHora);
-        txtHora.setBounds(190, 10, 80, 20);
+        txtHora.setBounds(230, 10, 80, 20);
 
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Carolina");
@@ -610,7 +610,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2443, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2447, Short.MAX_VALUE)
         );
 
         pack();
