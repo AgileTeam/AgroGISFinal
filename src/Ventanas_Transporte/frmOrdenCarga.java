@@ -12,6 +12,7 @@ package Ventanas_Transporte;
 
 
 import Clases_Modulo_Transporte.*;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import javax.swing.UIManager;
@@ -444,6 +445,8 @@ GestorHibernate gestorH = new GestorHibernate();
         detalle.setCargaCombustible(carga);
         detalle.setOrdenServicio(orden);
         gestorH.guardarObjeto(detalle);
+        gestorBitacora gestorB = new gestorBitacora();
+        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText());
         
         //Prueba Nueva Orden
          String arc="C:/Reportes AgroGIS/NuevaOrdenServicio.jasper";

@@ -1195,6 +1195,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    gestorBitacora gestorB = new gestorBitacora();
     boolean cuit = gRegistro.validarCuit(txtCUIL.getText());
     if(cuit==true){    
     if(tblVehiculo.getRowCount()!=0){
@@ -1240,9 +1241,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Vehiculo vehiculo = new Vehiculo();
         vehiculo = gRegistro.editar((String) modeloT.getValueAt(i, 0));
         vehiculo.setTransportista(transportista);
+        gestorB.cargarBitacora(vehiculo.getDominio(), txtFecha.getText(), 5, labelusuario.getText());
 
     }
-    gestorBitacora gestorB = new gestorBitacora();
+   
     gestorB.cargarBitacora(transportista.getNumeroDocumento(), txtFecha.getText(), 4, labelusuario.getText());
     }
 

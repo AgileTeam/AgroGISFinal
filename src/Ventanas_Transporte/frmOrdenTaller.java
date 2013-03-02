@@ -12,6 +12,7 @@ package Ventanas_Transporte;
 
 import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Transporte.*;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarOrden;
 import Hibernate.GestorHibernate;
 import ireport.GestorDeReportes;
@@ -485,6 +486,8 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 //        detalle.setOrden(orden);
 //        gestorH.guardarObjeto(detalle);
         
+        gestorBitacora gestorB = new gestorBitacora();
+        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 7, labelUsuario.getText());
        
     String arc="C:/Reportes AgroGIS/OrdenServicio.jasper";
     GestorDeReportes gestorReportes = new GestorDeReportes(arc);

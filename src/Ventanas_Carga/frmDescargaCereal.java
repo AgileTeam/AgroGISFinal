@@ -16,6 +16,7 @@ import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;
 import Gestores_Vista.gestorDescargaCereal;
 import Clases_Modulo_Viaje.*;
+import Gestores_Clases.gestorBitacora;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -463,6 +464,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         if(vi.getIdViaje() == (Long.parseLong(txtNumViaje.getText()))){
             vi.setEstado("Finalizado");
             gestorH.actualizarObjeto(vi);
+            gestorBitacora gestorB = new gestorBitacora();
+            gestorB.cargarBitacora(String.valueOf(vi.getIdViaje()), txtFecha.getText(), 14, labelusuario.getText());
         }
     
     }

@@ -15,6 +15,7 @@ import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
 import Clases_Modulo_Viaje.Viaje;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorFecha;
 import Gestores_Vista.gestorRegistrarRetiro;
 import Hibernate.GestorHibernate;
@@ -464,6 +465,8 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Viaje viaje = (Viaje) iteV.next();
                 if(viaje.getSolicitud().equals(solicitud)){
                     txtFechaViaje.setText(viaje.getFecha());
+                    gestorBitacora gestorB = new gestorBitacora();
+                    gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 15, labelusuario.getText());
                 }
             
             }

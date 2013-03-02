@@ -8,6 +8,7 @@ import Clases_Modulo_Transporte.ArregloEfectuado;
 import Clases_Modulo_Transporte.DetalleEnvio;
 import Clases_Modulo_Transporte.EnvioTaller;
 import Clases_Modulo_Transporte.OrdenServicio;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarEnvioAlTaller;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -527,6 +528,8 @@ GestorHibernate gestorH = new GestorHibernate();
               envio.setImporteTotal(Double.parseDouble(txtTotal.getText()));
               envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
               gestorH.actualizarObjeto(envio);
+              gestorBitacora gestorB = new gestorBitacora();
+              gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 9, labelUsuario.getText());
               for(int i=0; i<modelo.getRowCount(); i++){
                    DetalleEnvio detalle = new DetalleEnvio();
                    detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));
