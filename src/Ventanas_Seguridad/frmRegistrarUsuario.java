@@ -7,6 +7,7 @@ package Ventanas_Seguridad;
 import Clases_Modulo_Seguridad.Rol;
 import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Seguridad.UsuarioPorRol;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarUsuario;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
@@ -88,7 +89,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -139,10 +140,10 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3.add(txtHora);
         txtHora.setBounds(230, 10, 70, 20);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel11.setText("Usuario");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(490, 10, 50, 15);
+        labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUsuario.setText("Usuario");
+        jPanel3.add(labelUsuario);
+        labelUsuario.setBounds(490, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel12);
@@ -338,7 +339,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -396,6 +397,8 @@ GestorHibernate gestorH = new GestorHibernate();
         }
        
     }
+    gestorBitacora gestorB = new gestorBitacora();
+    gestorB.cargarBitacora("", txtFecha.getText(), 13, labelUsuario.getText());
     }else{
     JOptionPane.showMessageDialog(null, "Ingrese nuevamente la contraseña");
     txtpass1.setText("");
@@ -418,7 +421,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JComboBox cmbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -434,6 +436,7 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JTable tblRoles;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtFecha;

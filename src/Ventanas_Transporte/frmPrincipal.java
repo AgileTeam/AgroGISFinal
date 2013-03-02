@@ -19,6 +19,7 @@ import javax.swing.*;
 import de.javasoft.plaf.synthetica.SyntheticaGreenDreamLookAndFeel;
 import java.awt.*;
 import Clases_Modulo_Transporte.*;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
 import Ventanas_Seguridad.*;
@@ -939,6 +940,8 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
             if(u.isEstado()==true){
                 u.setEstado(false);
                 gestorH.actualizarObjeto(u);
+                gestorBitacora gestorB = new gestorBitacora();
+                gestorB.cargarBitacora("", Calendario.getText(), 12, u.getNombreUsuario());
             }
         }
         MenuAuditoria.setEnabled(false);

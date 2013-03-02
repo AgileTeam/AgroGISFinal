@@ -159,6 +159,20 @@ private String responsableVenta;
     public void setTipo(TipoOperacionEstacionServicio tipo) {
         this.tipo = tipo;
     }
+
+    /**
+     * @return the idCargaCombustible
+     */
+    public long getIdCargaCombustible() {
+        return idCargaCombustible;
+    }
+
+    /**
+     * @param idCargaCombustible the idCargaCombustible to set
+     */
+    public void setIdCargaCombustible(long idCargaCombustible) {
+        this.idCargaCombustible = idCargaCombustible;
+    }
            
    
    

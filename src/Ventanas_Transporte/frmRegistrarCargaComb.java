@@ -5,6 +5,7 @@
 package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.*;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarCargaComb;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -570,6 +571,8 @@ Double total;
             detalle.setCargaCombustible(carga);
             gestorH.guardarObjeto(detalle);
       }
+      gestorBitacora gestorB = new gestorBitacora();
+      gestorB.cargarBitacora(String.valueOf(carga.getIdCargaCombustible()), txtFecha.getText(), 8, labelusuario.getText());
     }//GEN-LAST:event_btnGuardar1ActionPerformed
 
     private void txtLitrosCargadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLitrosCargadosActionPerformed

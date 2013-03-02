@@ -5,6 +5,7 @@
 package Ventanas_Seguridad;
 
 import Clases_Modulo_Seguridad.Usuario;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorFrmPrincipal;
 import Hibernate.GestorHibernate;
 import Ventanas_Transporte.frmPrincipal;
@@ -205,6 +206,8 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
             frmPrincipal frm = new frmPrincipal();
             frm.setVisible(true);
             dispose();
+            gestorBitacora gestorB = new gestorBitacora();
+            gestorB.cargarBitacora("", txtFecha.getText(), 11, usuario.getNombreUsuario() );
           }
     
     }
