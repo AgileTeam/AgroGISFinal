@@ -437,6 +437,7 @@ GestorHibernate gestorH = new GestorHibernate();
         orden.setHora(txtHoraCarga.getText());
         orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
         orden.setEstado("Pendiente");
+        orden.setHabilita("1");
         gestorH.guardarObjeto(orden);
         carga.setEstacionServicio((EstacionDeServicio)cmbEstacionServicio.getSelectedItem());
         carga.setTipo((TipoOperacionEstacionServicio)cmbOperacion.getSelectedItem());

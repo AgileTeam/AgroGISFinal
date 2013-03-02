@@ -478,6 +478,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         orden.setEstado("Pendiente");
         orden.setMotivo((Motivo)cmbMotivo.getSelectedItem());
         orden.setObservaciones(areaObservaciones.getText());
+        orden.setHabilita("1");
         gestorH.guardarObjeto(orden);
         envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
         envio.setOrdenServicio(orden);

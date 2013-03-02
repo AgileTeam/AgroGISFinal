@@ -25,6 +25,9 @@ public class gestorConsultarConsumo extends GestorHibernate{
                bandera=1;
            }
        }
+       if(orden.getHabilita().equalsIgnoreCase("0")){
+           bandera=1;
+       }
        return bandera;
    }
     

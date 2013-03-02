@@ -7,6 +7,7 @@ package Ventanas_Transporte;
 import Clases_Modulo_Cliente.*;
 import javax.swing.*;
 import Clases_Modulo_Transporte.*;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.*;
 import Hibernate.*;
 import ireport.GestorDeReportes;
@@ -135,8 +136,8 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblConsumo = new javax.swing.JTable();
-        btnEliminarOrden = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnEliminarOrden = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -226,8 +227,6 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         jLabel27.setText("Hasta");
         jPanel19.add(jLabel27);
         jLabel27.setBounds(170, 30, 60, 20);
-
-        calendarioHCons.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel19.add(calendarioHCons);
         calendarioHCons.setBounds(210, 30, 90, 20);
 
@@ -272,7 +271,6 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    calendarioDCons.setLocale(new java.util.Locale("es", "AR", ""));
     jPanel19.add(calendarioDCons);
     calendarioDCons.setBounds(50, 30, 90, 20);
 
@@ -412,21 +410,21 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
     tblConsumo.getTableHeader().setReorderingAllowed(false);
     jScrollPane6.setViewportView(tblConsumo);
 
-    btnEliminarOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-    btnEliminarOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-    btnEliminarOrden.setText("Eliminar");
-    btnEliminarOrden.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnEliminarOrdenActionPerformed(evt);
-        }
-    });
-
     btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
     btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
     btnSalir.setText("Salir");
     btnSalir.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             btnSalirActionPerformed(evt);
+        }
+    });
+
+    btnEliminarOrden.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+    btnEliminarOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+    btnEliminarOrden.setText("Eliminar");
+    btnEliminarOrden.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEliminarOrdenActionPerformed(evt);
         }
     });
 
@@ -462,9 +460,9 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
                             .addContainerGap()
                             .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(314, 314, 314)
+                            .addGap(318, 318, 318)
                             .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(347, 347, 347)
@@ -484,9 +482,9 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(jPanel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addComponent(jPanel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -499,9 +497,9 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(25, Short.MAX_VALUE))
     );
 
     pack();
@@ -1076,23 +1074,32 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarConsumoActionPerformed
 
-    private void btnEliminarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarOrdenActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) tblConsumo.getModel();
-        int fila = tblConsumo.getSelectedRow();
-        int nroOrden = Integer.parseInt(tblConsumo.getValueAt(fila, 1).toString());
-
-        String arc = "C:/Reportes AgroGIS/OrdenServicio.jasper";
-        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-        gestorReportes.setColeccionDeDatos(gestorC.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", nroOrden));
-        gestorReportes.imprimir();
-    }//GEN-LAST:event_btnEliminarOrdenActionPerformed
-
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
         if (respuesta == 0) {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEliminarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarOrdenActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblConsumo.getModel();
+        int fila = tblConsumo.getSelectedRow();
+        int nroOrden = Integer.parseInt(tblConsumo.getValueAt(fila, 1).toString());
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar la orden Nro: " + nroOrden);
+        if (respuesta == 0) {
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            while (ite.hasNext()) {
+                OrdenServicio orden = (OrdenServicio) ite.next();
+                if (orden.getNumeroOrden() == nroOrden) {
+                    orden.setHabilita("0");
+                    gestorH.actualizarObjeto(orden);
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Se ha eliminado la orden Nro: " + nroOrden);
+            gestorBitacora gestorB = new gestorBitacora();
+            gestorB.cargarBitacora(String.valueOf(nroOrden), txtFechaRep.getText(), 10, labelUsuario.getText());
+        }
+    }//GEN-LAST:event_btnEliminarOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodosR;

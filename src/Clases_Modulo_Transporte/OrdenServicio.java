@@ -34,6 +34,7 @@ private Motivo motivo;
     private String responsable;
     private String estado;
     private String observaciones;
+    private String habilita;
    
    
 
@@ -169,5 +170,19 @@ private Motivo motivo;
      */
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    /**
+     * @return the habilita
+     */
+    public String getHabilita() {
+        return habilita;
+    }
+
+    /**
+     * @param habilita the habilita to set
+     */
+    public void setHabilita(String habilita) {
+        this.habilita = habilita;
     }
 }
