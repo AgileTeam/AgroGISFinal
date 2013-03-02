@@ -102,8 +102,6 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jLabel27 = new javax.swing.JLabel();
         calendarioHRep = new datechooser.beans.DateChooserCombo();
         calendarioDRep = new datechooser.beans.DateChooserCombo();
-        jPanel20 = new javax.swing.JPanel();
-        txtOrdenRep = new javax.swing.JTextField();
         jPanel18 = new javax.swing.JPanel();
         cmbImporteRep = new javax.swing.JComboBox();
         txtImporteRep = new javax.swing.JTextField();
@@ -135,6 +133,9 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         btnQuitarMotivo = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblMotivo = new javax.swing.JTable();
+        jPanel20 = new javax.swing.JPanel();
+        txtOrdenRep = new javax.swing.JTextField();
+        cmbOrden = new javax.swing.JComboBox();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -227,25 +228,6 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     calendarioDRep.setLocale(new java.util.Locale("es", "AR", ""));
     jPanel19.add(calendarioDRep);
     calendarioDRep.setBounds(50, 30, 90, 20);
-
-    jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-    javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-    jPanel20.setLayout(jPanel20Layout);
-    jPanel20Layout.setHorizontalGroup(
-        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-            .addContainerGap(60, Short.MAX_VALUE)
-            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(56, 56, 56))
-    );
-    jPanel20Layout.setVerticalGroup(
-        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel20Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
 
     jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -496,6 +478,31 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addContainerGap())
     );
 
+    jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+    cmbOrden.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
+
+    javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+    jPanel20.setLayout(jPanel20Layout);
+    jPanel20Layout.setHorizontalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+            .addContainerGap(32, Short.MAX_VALUE)
+            .addComponent(cmbOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+    jPanel20Layout.setVerticalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtOrdenRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
+    );
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -529,7 +536,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(43, 43, 43)
                                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1215,6 +1222,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox ckTranspRep;
     private javax.swing.JComboBox cmbImporteRep;
     private javax.swing.JComboBox cmbMotivo;
+    private javax.swing.JComboBox cmbOrden;
     private javax.swing.JComboBox cmbTranspRep;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
