@@ -97,14 +97,6 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         txtHoraRep = new javax.swing.JTextField();
         txtFechaRep = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        ckFechaRep = new javax.swing.JCheckBox();
-        ckOrdenRep = new javax.swing.JCheckBox();
-        ckTranspRep = new javax.swing.JCheckBox();
-        ckImporteRep = new javax.swing.JCheckBox();
-        btnAceptarTodosR = new javax.swing.JButton();
-        btnQuitarTodosR = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -128,6 +120,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         btnQuitarTranspR = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTransportista = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        ckFechaRep = new javax.swing.JCheckBox();
+        ckOrdenRep = new javax.swing.JCheckBox();
+        ckTranspRep = new javax.swing.JCheckBox();
+        ckMotivo = new javax.swing.JCheckBox();
+        btnAceptarTodosR = new javax.swing.JButton();
+        btnQuitarTodosR = new javax.swing.JButton();
+        ckImporteRep = new javax.swing.JCheckBox();
+        jPanel22 = new javax.swing.JPanel();
+        cmbMotivo = new javax.swing.JComboBox();
+        btnAgregarMotivo = new javax.swing.JButton();
+        btnQuitarMotivo = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblMotivo = new javax.swing.JTable();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -158,52 +165,6 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel17.add(jLabel24);
         jLabel24.setBounds(820, 0, 30, 30);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.white));
-        jPanel1.setLayout(null);
-
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel28.setText("Buscar Ordenes por");
-        jPanel1.add(jLabel28);
-        jLabel28.setBounds(20, 10, 180, 50);
-
-        ckFechaRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckFechaRep.setText("Fecha");
-        jPanel1.add(ckFechaRep);
-        ckFechaRep.setBounds(220, 20, 80, 30);
-
-        ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckOrdenRep.setText("Número Orden");
-        jPanel1.add(ckOrdenRep);
-        ckOrdenRep.setBounds(350, 20, 130, 30);
-
-        ckTranspRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckTranspRep.setText("Transportista");
-        jPanel1.add(ckTranspRep);
-        ckTranspRep.setBounds(500, 20, 120, 30);
-
-        ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ckImporteRep.setText("Importe Total");
-        jPanel1.add(ckImporteRep);
-        ckImporteRep.setBounds(650, 20, 120, 30);
-
-        btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarTodosRActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAceptarTodosR);
-        btnAceptarTodosR.setBounds(800, 10, 35, 25);
-
-        btnQuitarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnQuitarTodosR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitarTodosRActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnQuitarTodosR);
-        btnQuitarTodosR.setBounds(800, 40, 35, 25);
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel19.setLayout(null);
@@ -421,64 +382,184 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );
 
+    jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.white));
+    jPanel1.setLayout(null);
+
+    jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+    jLabel28.setText("Buscar Ordenes por");
+    jPanel1.add(jLabel28);
+    jLabel28.setBounds(20, 10, 180, 50);
+
+    ckFechaRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckFechaRep.setText("Fecha");
+    jPanel1.add(ckFechaRep);
+    ckFechaRep.setBounds(210, 20, 80, 30);
+
+    ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckOrdenRep.setText("Número Orden");
+    jPanel1.add(ckOrdenRep);
+    ckOrdenRep.setBounds(300, 20, 130, 30);
+
+    ckTranspRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckTranspRep.setText("Transportista");
+    jPanel1.add(ckTranspRep);
+    ckTranspRep.setBounds(710, 20, 120, 30);
+
+    ckMotivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckMotivo.setText("Motivo de Envío");
+    jPanel1.add(ckMotivo);
+    ckMotivo.setBounds(570, 20, 120, 30);
+
+    btnAceptarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+    btnAceptarTodosR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAceptarTodosRActionPerformed(evt);
+        }
+    });
+    jPanel1.add(btnAceptarTodosR);
+    btnAceptarTodosR.setBounds(850, 10, 35, 25);
+
+    btnQuitarTodosR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+    btnQuitarTodosR.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnQuitarTodosRActionPerformed(evt);
+        }
+    });
+    jPanel1.add(btnQuitarTodosR);
+    btnQuitarTodosR.setBounds(850, 40, 35, 25);
+
+    ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+    ckImporteRep.setText("Importe Total");
+    jPanel1.add(ckImporteRep);
+    ckImporteRep.setBounds(430, 20, 120, 30);
+
+    jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Motivo de Envío", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+    btnAgregarMotivo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnAgregarMotivo.setText(">");
+    btnAgregarMotivo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAgregarMotivoActionPerformed(evt);
+        }
+    });
+
+    btnQuitarMotivo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+    btnQuitarMotivo.setText("<");
+    btnQuitarMotivo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnQuitarMotivoActionPerformed(evt);
+        }
+    });
+
+    tblMotivo.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+
+        },
+        new String [] {
+            "Motivo"
+        }
+    ));
+    jScrollPane3.setViewportView(tblMotivo);
+
+    javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+    jPanel22.setLayout(jPanel22Layout);
+    jPanel22Layout.setHorizontalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel22Layout.createSequentialGroup()
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                    .addComponent(cmbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnAgregarMotivo))
+                .addComponent(btnQuitarMotivo, javax.swing.GroupLayout.Alignment.TRAILING))
+            .addGap(18, 18, 18)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25))
+    );
+    jPanel22Layout.setVerticalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel22Layout.createSequentialGroup()
+            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel22Layout.createSequentialGroup()
+                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel22Layout.createSequentialGroup()
+                            .addGap(29, 29, 29)
+                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarMotivo)))
+                        .addGroup(jPanel22Layout.createSequentialGroup()
+                            .addGap(65, 65, 65)
+                            .addComponent(btnQuitarMotivo)))
+                    .addGap(0, 19, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addContainerGap())
+    );
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-            .addContainerGap())
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(405, 405, 405))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(427, 427, 427)
+                    .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jLabel25)
-                    .addGap(382, 382, 382))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(202, 202, 202))))
+                    .addGap(0, 10, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(382, 382, 382)
+                                    .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(43, 43, 43)
+                                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(417, 417, 417)
+                            .addComponent(jLabel25)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(1, 1, 1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(4, 4, 4)
-            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btnBuscarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -491,38 +572,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(27, Short.MAX_VALUE))
+            .addContainerGap(29, Short.MAX_VALUE))
     );
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAceptarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosRActionPerformed
-        if (ckFechaRep.isSelected()) {
-            calendarioDRep.setEnabled(true);
-            calendarioHRep.setEnabled(true);
-        }
-        if (ckImporteRep.isSelected()) {
-            txtImporteRep.setEnabled(true);
-        }
-        if (ckOrdenRep.isSelected()) {
-            txtOrdenRep.setEnabled(true);
-        }
-        if (ckTranspRep.isSelected()) {
-            btnAgregarTranspR.setEnabled(true);
-            btnQuitarTranspR.setEnabled(true);
-            tblTransportista.setEnabled(true);
-        }
-    }//GEN-LAST:event_btnAceptarTodosRActionPerformed
-
-    private void btnQuitarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosRActionPerformed
-        calendarioDRep.setEnabled(false);
-        calendarioHRep.setEnabled(false);
-        txtImporteRep.setEnabled(false);
-        txtOrdenRep.setEnabled(false);
-        btnAgregarTranspR.setEnabled(false);
-        btnQuitarTranspR.setEnabled(false);
-    }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
     private void btnAgregarTranspRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspRActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblTransportista.getModel();
@@ -1085,11 +1139,70 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnAceptarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosRActionPerformed
+        if (ckFechaRep.isSelected()) {
+            calendarioDRep.setEnabled(true);
+            calendarioHRep.setEnabled(true);
+        }
+        if (ckImporteRep.isSelected()) {
+            txtImporteRep.setEnabled(true);
+        }
+        if (ckOrdenRep.isSelected()) {
+            txtOrdenRep.setEnabled(true);
+        }
+        if (ckTranspRep.isSelected()) {
+            btnAgregarTranspR.setEnabled(true);
+            btnQuitarTranspR.setEnabled(true);
+            tblTransportista.setEnabled(true);
+        }
+        if (ckMotivo.isSelected()) {
+            tblMotivo.setEnabled(true);
+            btnAgregarMotivo.setEnabled(true);
+            btnQuitarMotivo.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAceptarTodosRActionPerformed
+
+    private void btnQuitarTodosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosRActionPerformed
+        calendarioDRep.setEnabled(false);
+        calendarioHRep.setEnabled(false);
+        txtImporteRep.setEnabled(false);
+        txtOrdenRep.setEnabled(false);
+        btnAgregarTranspR.setEnabled(false);
+        btnQuitarTranspR.setEnabled(false);
+        btnAgregarMotivo.setEnabled(false);
+        btnQuitarMotivo.setEnabled(false);
+        txtOrdenRep.setText("");
+        txtImporteRep.setText("");
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        modelo.setRowCount(0);
+        tblMotivo.setModel(modelo);
+        DefaultTableModel modelo1 = (DefaultTableModel) tblTransportista.getModel();
+        modelo1.setRowCount(0);
+        tblMotivo.setModel(modelo1);
+
+    }//GEN-LAST:event_btnQuitarTodosRActionPerformed
+
+    private void btnAgregarMotivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMotivoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        Object fila[] = {cmbMotivo.getSelectedItem()};
+        modelo.addRow(fila);
+        tblMotivo.setModel(modelo);
+    }//GEN-LAST:event_btnAgregarMotivoActionPerformed
+
+    private void btnQuitarMotivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarMotivoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
+        int fila = tblMotivo.getSelectedRow();
+        modelo.removeRow(fila);
+        tblMotivo.setModel(modelo);
+    }//GEN-LAST:event_btnQuitarMotivoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodosR;
+    private javax.swing.JButton btnAgregarMotivo;
     private javax.swing.JButton btnAgregarTranspR;
     private javax.swing.JButton btnBuscarReparacion;
     private javax.swing.JButton btnEliminarOrden;
+    private javax.swing.JButton btnQuitarMotivo;
     private javax.swing.JButton btnQuitarTodosR;
     private javax.swing.JButton btnQuitarTranspR;
     private javax.swing.JButton btnSalir;
@@ -1097,9 +1210,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     private datechooser.beans.DateChooserCombo calendarioHRep;
     private javax.swing.JCheckBox ckFechaRep;
     private javax.swing.JCheckBox ckImporteRep;
+    private javax.swing.JCheckBox ckMotivo;
     private javax.swing.JCheckBox ckOrdenRep;
     private javax.swing.JCheckBox ckTranspRep;
     private javax.swing.JComboBox cmbImporteRep;
+    private javax.swing.JComboBox cmbMotivo;
     private javax.swing.JComboBox cmbTranspRep;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1114,10 +1229,13 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel labelUsuario;
+    private javax.swing.JTable tblMotivo;
     private javax.swing.JTable tblReparacion;
     private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtFechaRep;
