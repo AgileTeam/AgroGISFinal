@@ -4,6 +4,7 @@
  */
 package Ventanas_Cliente;
 
+import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Transporte.Domicilio;
 import Gestores_Vista.gestorRegistroTransportista;
@@ -20,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import Gestores_Clases.*;
 import Gestores_Vista.*;
+import Hibernate.GestorHibernate;
 
 /**
  *
@@ -34,6 +36,9 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
   gestorProvincia gProvincia = new gestorProvincia();
   gestorTipoDocumento gtipoDoc = new gestorTipoDocumento();
   gestorTipoTelefono gTipoTel = new gestorTipoTelefono();
+  gestorRegistrarProductor gProductor = new gestorRegistrarProductor();
+  GestorHibernate gHibernate = new GestorHibernate();
+  
     /**
      * Creates new form frmRegistrarProductor
      */
@@ -764,7 +769,14 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarLocalidadActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    Domicilio domicilio = new Domicilio();
+    Productor productor = new Productor();
+    Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
+    gProductor.guardarCondicionIva(cmbCondicionIva.getSelectedItem().toString(), productor);
+    productor.setApellido(txtApellido.getText());
+    productor.setNombre(txtNombres.getText());
+    productor.setNumeroDocumento(txtNombres.getText());
+    productor.seteMail(txtEmail.getText());
+    gHibernate.guardarObjeto(productor);
     
     }//GEN-LAST:event_btnGuardarActionPerformed
 
