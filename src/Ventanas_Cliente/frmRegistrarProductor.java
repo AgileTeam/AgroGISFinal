@@ -4,27 +4,43 @@
  */
 package Ventanas_Cliente;
 
+import Clases_Modulo_Transporte.Barrio;
+import Clases_Modulo_Transporte.Domicilio;
+import Gestores_Vista.gestorRegistroTransportista;
 import Ventanas_Transporte.frmPrincipal;
 import Ventanas_Transporte.frmRegistrarProvincia;
 import groovy.model.DefaultTableModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import Gestores_Clases.*;
+import Gestores_Vista.*;
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarProductor extends javax.swing.JInternalFrame {
-
+  gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
+  gestorBarrio gBarrio = new gestorBarrio();
+  gestorDepartamento gdepto = new gestorDepartamento();
+  gestorLocalidad gLocalidad = new gestorLocalidad();
+  gestorPais gPais = new gestorPais();
+  gestorProvincia gProvincia = new gestorProvincia();
+  gestorTipoDocumento gtipoDoc = new gestorTipoDocumento();
+  gestorTipoTelefono gTipoTel = new gestorTipoTelefono();
     /**
      * Creates new form frmRegistrarProductor
      */
     public frmRegistrarProductor() {
         initComponents();
+        gBarrio.actualizarUsuario(labelusuario);
+        cmbPais.setModel(gPais.getComboModelPais());
         
         
         txtFecha.setEnabled(false);
@@ -58,6 +74,43 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(posX, 20);        
+        
+         //Carga Tipo Documento
+        cmbTipoDoc.setModel(gRegistro.rellenaComboTipoDoc());
+        
+        //Carga Provincia de acuerdo al Pais
+        cmbPais.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            cmbProvincia.setModel(gRegistro.rellenaCombo(cmbPais.getSelectedItem().toString()));
+        }
+        }
+        );
+        cmbProvincia.setModel(gRegistro.rellenaCombo(cmbPais.getSelectedItem().toString()));
+        //Relleno Departamento de acuerdo a la Provincia
+        cmbProvincia.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbDepto.setModel(gRegistro.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+            }
+        });
+        cmbDepto.setModel(gRegistro.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+       
+        //Relleno Localidad de acuerdo al Departamento
+        cmbDepto.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbLocalidad.setModel(gRegistro.rellenaComboLocalidad(cmbDepto.getSelectedItem().toString()));
+            }
+        });
+        cmbLocalidad.setModel(gRegistro.rellenaComboLocalidad(cmbDepto.getSelectedItem().toString()));
+        //Carga Barrio de acuerdo a Localidad
+        cmbLocalidad.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+            cmbBarrio.setModel(gRegistro.rellenaComboBarrio(cmbLocalidad.getSelectedItem().toString()));
+        }
+        }
+        );
+         cmbBarrio.setModel(gRegistro.rellenaComboBarrio(cmbLocalidad.getSelectedItem().toString()));
                 
                       
         }
@@ -549,6 +602,11 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnEstablecimiento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEstablecimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map.png"))); // NOI18N
@@ -587,7 +645,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
                     .addComponent(btnEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -704,6 +762,11 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     private void btnAgregarLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLocalidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarLocalidadActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    Domicilio domicilio = new Domicilio();
+    
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarBarrio;

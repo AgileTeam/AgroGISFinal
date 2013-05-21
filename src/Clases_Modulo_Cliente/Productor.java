@@ -8,6 +8,7 @@ import Clases_Modulo_Carga.*;
 import Clases_Modulo_Transporte.Domicilio;
 import Clases_Modulo_Transporte.TipoDocumento;
 import Clases_Modulo_Transporte.TipoTelefono;
+import Clases_Modulo_Transporte.CondicionIva;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -22,22 +23,24 @@ private long idProductor;
 
 
 
-//@ManyToOne(targetEntity = TipoDocumento.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-//private String tipoDocumento;
-//
-//@ManyToMany(targetEntity = TipoTelefono.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-//private Set<TipoTelefono> tipoTelefono = new HashSet();
-//
-//@ManyToOne(targetEntity = Domicilio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
-//private Domicilio domicilio;
+@ManyToOne(targetEntity = TipoDocumento.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private String tipoDocumento;
 
-//private String numeroTelefono;
+@ManyToOne(targetEntity = CondicionIva.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private CondicionIva condicion;
+
+
+@ManyToMany(targetEntity = TipoTelefono.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Set<TipoTelefono> tipoTelefono = new HashSet();
+
+@ManyToOne(targetEntity = Domicilio.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Domicilio domicilio;
+
+private String numeroTelefono;
 private String nombre;
 private String numeroDocumento;
-//private String apellido;
-//private String eMail;
-//private TipoProductor tipoProductor;
-//private CondicionIva condicion;
+private String apellido;
+private String eMail;
 
     /**
      * @return the idProductor
@@ -93,72 +96,100 @@ private String numeroDocumento;
     /**
      * @return the apellido
      */
-//    public String getApellido() {
-//        return apellido;
-//    }
-//
-//    /**
-//     * @param apellido the apellido to set
-//     */
-//    public void setApellido(String apellido) {
-//        this.apellido = apellido;
-//    }
-//
-//    /**
-//     * @return the tipoDocumento
-//     */
-//    public String getTipoDocumento() {
-//        return tipoDocumento;
-//    }
-//
-//    /**
-//     * @param tipoDocumento the tipoDocumento to set
-//     */
-//    public void setTipoDocumento(String tipoDocumento) {
-//        this.tipoDocumento = tipoDocumento;
-//    }
-//
-//    /**
-//     * @return the eMail
-//     */
-//    public String geteMail() {
-//        return eMail;
-//    }
-//
-//    /**
-//     * @param eMail the eMail to set
-//     */
-//    public void seteMail(String eMail) {
-//        this.eMail = eMail;
-//    }
-//
-//      /**
-//     * @return the tipoTelefono
-//     */
-//    public Set<TipoTelefono> getTipoTelefono() {
-//        return tipoTelefono;
-//    }
-//
-//    /**
-//     * @param tipoTelefono the tipoTelefono to set
-//     */
-//    public void setTipoTelefono(Set<TipoTelefono> tipoTelefono) {
-//        this.tipoTelefono = tipoTelefono;
-//    }
-//
-//    /**
-//     * @return the numeroTelefono
-//     */
-//    public String getNumeroTelefono() {
-//        return numeroTelefono;
-//    }
-//
-//    /**
-//     * @param numeroTelefono the numeroTelefono to set
-//     */
-//    public void setNumeroTelefono(String numeroTelefono) {
-//        this.numeroTelefono = numeroTelefono;
-//    }
+    public String getApellido() {
+        return apellido;
+    }
+
+    /**
+     * @param apellido the apellido to set
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    /**
+     * @return the tipoDocumento
+     */
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    /**
+     * @param tipoDocumento the tipoDocumento to set
+     */
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    /**
+     * @return the eMail
+     */
+    public String geteMail() {
+        return eMail;
+    }
+
+    /**
+     * @param eMail the eMail to set
+     */
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+      /**
+     * @return the tipoTelefono
+     */
+    public Set<TipoTelefono> getTipoTelefono() {
+        return tipoTelefono;
+    }
+
+    /**
+     * @param tipoTelefono the tipoTelefono to set
+     */
+    public void setTipoTelefono(Set<TipoTelefono> tipoTelefono) {
+        this.tipoTelefono = tipoTelefono;
+    }
+
+    /**
+     * @return the numeroTelefono
+     */
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    /**
+     * @param numeroTelefono the numeroTelefono to set
+     */
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
+    /**
+     * @return the condicion
+     */
+    public CondicionIva getCondicion() {
+        return condicion;
+    }
+
+    /**
+     * @param condicion the condicion to set
+     */
+    public void setCondicion(CondicionIva condicion) {
+        this.condicion = condicion;
+    }
+
+    /**
+     * @return the domicilio
+     */
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+    /**
+     * @param domicilio the domicilio to set
+     */
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
 
 
 
