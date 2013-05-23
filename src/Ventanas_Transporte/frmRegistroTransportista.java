@@ -45,6 +45,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     gestorTipoDocumento gtipoDoc = new gestorTipoDocumento();
     gestorTipoTelefono gTipoTel = new gestorTipoTelefono();
     gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
+    gestorRegistrarProductor gProductor = new gestorRegistrarProductor();
     
     public frmRegistroTransportista() {
         initComponents();    
@@ -1213,26 +1214,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     transportista.setFechaIngreso(calendarioNacimiento.getText());
     transportista.setFechaSalida(calendarioFin.getText());
     transportista.setTipoDocumento((TipoDocumento)cmbTipoDoc.getSelectedItem());
-    Pais pais= new Pais();
-    pais.setNombrePais((String)cmbPais.getSelectedItem());
-    Provincia provincia = new Provincia();
-    provincia.setNombreProvincia((String)cmbProvincia.getSelectedItem());
-    provincia.setPais(pais);
-    Departamento departamento = new Departamento();
-    departamento.setNombreDepartamento((String)cmbDepto.getSelectedItem());
-    departamento.setProvincia(provincia);
-    Localidad localidad = new Localidad();
-    localidad.setNombreLocalidad((String)cmbLocalidad.getSelectedItem());
-    localidad.setDepartamento(departamento);
-    Barrio barrio = new Barrio();
-    barrio.setNombreBarrio((String)cmbBarrio.getSelectedItem());
-    barrio.setLocalidad(localidad);
-    Domicilio domicilio = new Domicilio();
-    domicilio.setCalle(txtCalle.getText());
-    domicilio.setDepartamento(txtDepto.getText());
-    domicilio.setNumero((Integer.parseInt(txtNumero.getText())));
-    domicilio.setPiso((Integer.parseInt(txtPiso.getText())));
-    domicilio.setBarrio(barrio);
+    Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
+
     gestorH.guardarObjeto(domicilio);
     transportista.setDomicilio(domicilio);
     gestorH.guardarObjeto(transportista);
