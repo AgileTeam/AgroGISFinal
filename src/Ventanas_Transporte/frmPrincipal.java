@@ -61,7 +61,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemCargaCombustible.setEnabled(false);
         menuVerViaje.setEnabled(false);
         ItemNuevoLab.setEnabled(false);
-        ItemNuevoSilo.setEnabled(false);
+        ItemNuevoSilo.setEnabled(true);
         MenuVerCarga.setEnabled(false);
         ItemResultadosLab.setEnabled(false);
         ItemEnvioMuestras.setEnabled(false);
