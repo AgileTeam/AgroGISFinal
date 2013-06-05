@@ -245,6 +245,8 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
     jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número Orden", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
+    txtOrdenRep.setToolTipText("Numero de Orden de Servicio");
+
     cmbOrden.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
 
     javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);

@@ -46,7 +46,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados.setEnabled(false);
         MenuAuditoria.setEnabled(false);
         
-        //items deshabilitados para la reunion de avance
+        //items habilitados y deshabilitados para la reunion de avance
         ItemTransportista.setEnabled(true);
         ItemVehiculo.setEnabled(false);
         ItemEstacion.setEnabled(true);
@@ -65,7 +65,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuVerCarga.setEnabled(false);
         ItemResultadosLab.setEnabled(false);
         ItemEnvioMuestras.setEnabled(false);
-   
+        ItemFichaPersonal.setEnabled(true);
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
         Iterator ite = gestorH.listarClase(Usuario.class).iterator();
@@ -513,6 +513,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemFichaPersonal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemFichaPersonal.setText("Ficha personal");
+        ItemFichaPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemFichaPersonalActionPerformed(evt);
+            }
+        });
         MenuEmitirTransp.add(ItemFichaPersonal);
 
         MenuTransporte.add(MenuEmitirTransp);
@@ -981,6 +986,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         this.Escritorio.add(usuario);
         usuario.setVisible(true);
     }//GEN-LAST:event_itemEspTallerActionPerformed
+
+    private void ItemFichaPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemFichaPersonalActionPerformed
+       frmFichaPersonal ficha=new frmFichaPersonal();
+       this.Escritorio.add(ficha);
+       ficha.setVisible(true); 
+    }//GEN-LAST:event_ItemFichaPersonalActionPerformed
 
    
     public static void main(String args[]) {
