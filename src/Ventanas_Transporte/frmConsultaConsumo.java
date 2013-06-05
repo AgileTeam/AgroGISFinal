@@ -7,6 +7,7 @@ package Ventanas_Transporte;
 import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
+import GUtilr.ireport.GestorDeReportes;
 import Gestores_Vista.gestorConsultarConsumo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
@@ -139,6 +140,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         btnAceptarTodos = new javax.swing.JButton();
         btnQuitarTodos = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -412,6 +414,15 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
 
+        btnImprimir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -423,7 +434,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -445,7 +456,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(380, 380, 380)
+                        .addGap(319, 319, 319)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,11 +497,12 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnVerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -1522,10 +1536,25 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        DefaultTableModel modelot = (DefaultTableModel) tblConsumo.getModel();
+        String arc = "C:/Reportes AgroGIS/DetalleReparaciones.jasper";
+        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+        for (int i = 0; i < modelot.getRowCount(); i++) {
+            Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+            OrdenServicio orden = (OrdenServicio) ite.next();
+            if (orden.getNumeroOrden() == tblConsumo.getValueAt(i, 1)) {
+                gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", orden.getNumeroOrden()));
+            }
+        }
+        gestorReportes.imprimir();
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAgregarTranspC;
     private javax.swing.JButton btnBuscarConsumo;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnQuitarTodos;
     private javax.swing.JButton btnQuitarTranspC;
     private javax.swing.JButton btnSalir;

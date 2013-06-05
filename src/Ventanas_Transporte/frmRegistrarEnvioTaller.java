@@ -41,7 +41,7 @@ GestorHibernate gestorH = new GestorHibernate();
         txtHora.setEditable(false);
         txtTotal.setEditable(false);
         txtTotal.setEnabled(false);
-        btnDetalle.setEnabled(false);
+        
         
         //configurar hora y fecha
         GregorianCalendar gc=new GregorianCalendar();
@@ -157,7 +157,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel8 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnDetalle = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
 
         setIconifiable(true);
@@ -221,8 +220,6 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel9.setText("Fecha Reparación");
         jPanel3.add(jLabel9);
         jLabel9.setBounds(30, 30, 110, 20);
-
-        calendarioReparacion.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel3.add(calendarioReparacion);
         calendarioReparacion.setBounds(140, 30, 90, 20);
 
@@ -344,10 +341,6 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        btnDetalle.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IrDetalle.png"))); // NOI18N
-        btnDetalle.setText("Detalle");
-
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -383,12 +376,10 @@ GestorHibernate gestorH = new GestorHibernate();
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE))
                         .addGap(0, 37, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(223, 223, 223)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -413,7 +404,6 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -430,7 +420,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         pack();
@@ -548,7 +538,6 @@ GestorHibernate gestorH = new GestorHibernate();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaObservacion;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnEliminarDetalle;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
