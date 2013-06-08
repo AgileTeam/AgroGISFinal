@@ -15,6 +15,7 @@ import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import ireport.GestorDeReportes;
 import java.awt.*;
+import java.awt.print.PrinterException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -2402,16 +2403,21 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
          DefaultTableModel modelot = (DefaultTableModel) tblReparacion.getModel();
-         String arc="C:/Reportes AgroGIS/DetalleReparaciones.jasper";
-         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-         for(int i=0; i<modelot.getRowCount();i++){
-           Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
-           OrdenServicio orden = (OrdenServicio)ite.next();
-           if(orden.getNumeroOrden()== tblReparacion.getValueAt(i, 1)){
-           gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", orden.getNumeroOrden() ));
-            }
-            }
-         gestorReportes.imprimir();
+        try {
+            tblReparacion.print();
+   //         String arc="C:/Reportes AgroGIS/DetalleReparaciones.jasper";
+   //         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+   //         for(int i=0; i<modelot.getRowCount();i++){
+   //           Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
+   //           OrdenServicio orden = (OrdenServicio)ite.next();
+   //           if(orden.getNumeroOrden()== tblReparacion.getValueAt(i, 1)){
+   //           gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class, "numeroOrden", orden.getNumeroOrden() ));
+   //            }
+   //         gestorReportes.imprimir();
+   //         gestorReportes.imprimir();
+        } catch (PrinterException ex) {
+            Logger.getLogger(frmConsultaReparaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
