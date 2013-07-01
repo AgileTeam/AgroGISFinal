@@ -93,6 +93,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
         cmbMotivo.setModel(gestorC.rellenaComboMotivo());
         tblTransportista.setEnabled(false);
+        tblMotivo.setEnabled(false);
         
     }
 

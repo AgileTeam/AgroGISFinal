@@ -37,7 +37,7 @@ public class gestorConsultaReparaciones extends GestorHibernate{
     
    public void cargarTabla(JTable tabla, OrdenServicio orden, EnvioTaller envio){
        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-       Object fila[]={orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(),envio.getImporteTotal()};
+       Object fila[]={orden.getFecha(), orden.getNumeroOrden(), orden.getVehiculo().getTransportista(),orden.getMotivo(),envio.getImporteTotal()};
        modelo.addRow(fila);
        tabla.setModel(modelo);
    
