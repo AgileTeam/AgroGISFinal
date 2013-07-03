@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Ventanas_Transporte.frmPrincipal;
 import java.util.Iterator;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 /**
  *
@@ -69,6 +70,10 @@ public class frmRegistrarPais extends javax.swing.JInternalFrame {
             tblPais.setModel(modeloT);
         }
         
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblPais.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         
     //lineas para mejorar el aspecto de la pantalla    

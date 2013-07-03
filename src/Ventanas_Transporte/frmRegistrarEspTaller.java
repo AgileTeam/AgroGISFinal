@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,6 +58,11 @@ long idEsp;
         calendario.get(Calendar.MINUTE);
         SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblPais.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
           //lineas para mejorar el aspecto de la pantalla    
         Toolkit kit = Toolkit.getDefaultToolkit();

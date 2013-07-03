@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -67,6 +68,9 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         
         
         tblOcho.getTableHeader().setVisible(true);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblOcho.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
         tblNueve.getTableHeader().setVisible(false);
         tblDiez.getTableHeader().setVisible(false);
         tblOnce.getTableHeader().setVisible(false);

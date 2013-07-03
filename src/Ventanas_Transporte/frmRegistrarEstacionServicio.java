@@ -28,6 +28,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -76,6 +77,11 @@ gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
         tblEstacion.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblEstacion.getColumnModel().getColumn(1).setPreferredWidth(40);
         tblEstacion.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEstacion.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();

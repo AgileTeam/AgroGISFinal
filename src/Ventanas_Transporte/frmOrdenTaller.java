@@ -25,6 +25,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -63,7 +64,13 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
-        
+        //redimensionar columnas tabla
+        tblTransportista.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblTransportista.getColumnModel().getColumn(1).setPreferredWidth(50);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTransportista.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         
         

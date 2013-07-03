@@ -25,6 +25,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -71,6 +72,10 @@ public class frmRegistrarDepartamento extends javax.swing.JInternalFrame {
         //redimensionar columnas de la tabla
         tblDepto.getColumnModel().getColumn(0).setPreferredWidth(60);
         tblDepto.getColumnModel().getColumn(1).setPreferredWidth(100);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblDepto.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
     
     
     

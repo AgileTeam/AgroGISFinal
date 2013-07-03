@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -66,6 +67,10 @@ Double total;
         tblDetalleCarga.getColumnModel().getColumn(3).setPreferredWidth(80);
         tblDetalleCarga.getColumnModel().getColumn(4).setPreferredWidth(100);
         tblDetalleCarga.getColumnModel().getColumn(5).setPreferredWidth(50);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblDetalleCarga.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));

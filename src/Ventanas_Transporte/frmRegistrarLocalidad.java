@@ -25,6 +25,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -81,7 +82,12 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
     //redimensionar columnas de la tabla
         tblLocal.getColumnModel().getColumn(0).setPreferredWidth(80);
         tblLocal.getColumnModel().getColumn(1).setPreferredWidth(5);
-        tblLocal.getColumnModel().getColumn(2).setPreferredWidth(80);    
+        tblLocal.getColumnModel().getColumn(2).setPreferredWidth(80);   
+        
+      //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblLocal.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
     cmbPais.setModel(gPais.getComboModelPais());
     //Carga Provincias

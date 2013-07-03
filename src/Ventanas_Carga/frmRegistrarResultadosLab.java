@@ -13,6 +13,7 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -82,6 +83,14 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(posX, 0);
         
+        //redimensionar columnas tabla
+        tblMuestras.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblMuestras.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblMuestras.getColumnModel().getColumn(2).setPreferredWidth(50);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblMuestras.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
        
     }
 

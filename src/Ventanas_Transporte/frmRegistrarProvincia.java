@@ -24,6 +24,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 /**
@@ -91,6 +92,10 @@ int bandera = 0;
     tblProvincia.getColumnModel().getColumn(0).setPreferredWidth(40);
     tblProvincia.getColumnModel().getColumn(1).setPreferredWidth(100);
     
+    //centrar cabecera jtable
+    DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblProvincia.getTableHeader().getDefaultRenderer();
+    renderer.setHorizontalAlignment(0);
+
     
     }
 

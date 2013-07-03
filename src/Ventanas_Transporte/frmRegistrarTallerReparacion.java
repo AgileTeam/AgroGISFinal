@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -63,6 +64,10 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
         tblTaller.getColumnModel().getColumn(1).setPreferredWidth(40);
         tblTaller.getColumnModel().getColumn(2).setPreferredWidth(100);
         
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTaller.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //estableccr tamaño de ventana
         Toolkit kit = Toolkit.getDefaultToolkit();

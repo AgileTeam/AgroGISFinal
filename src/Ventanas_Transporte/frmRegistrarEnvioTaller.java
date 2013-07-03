@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -71,7 +72,10 @@ GestorHibernate gestorH = new GestorHibernate();
         tblDetalleRep.getColumnModel().getColumn(3).setPreferredWidth(100);
         tblDetalleRep.getColumnModel().getColumn(4).setPreferredWidth(40);
         
-        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblDetalleRep.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //establecer tamaño pantalla
         Toolkit kit = Toolkit.getDefaultToolkit();

@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +69,10 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         tblLaboratorio.getColumnModel().getColumn(0).setPreferredWidth(80);
         tblLaboratorio.getColumnModel().getColumn(1).setPreferredWidth(80);
         tblLaboratorio.getColumnModel().getColumn(2).setPreferredWidth(80);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblLaboratorio.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
          
     //lineas para mejorar el aspecto de la pantalla    
     Toolkit kit = Toolkit.getDefaultToolkit();

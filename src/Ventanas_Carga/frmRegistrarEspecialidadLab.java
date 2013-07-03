@@ -11,6 +11,7 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,7 +58,9 @@ long idEspecialidad;
         tblEspecialidad.getColumnModel().getColumn(1).setPreferredWidth(50);
         
         //centrar cabecera jtable
-        
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEspecialidad.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();

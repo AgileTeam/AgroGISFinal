@@ -105,6 +105,17 @@ GestorHibernate gestorH = new GestorHibernate();
         tblProductor.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblProductor.getColumnModel().getColumn(2).setPreferredWidth(50);
         
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEstablecimiento.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblLote.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblProductor.getTableHeader().getDefaultRenderer();
+        renderer3.setHorizontalAlignment(0);
+
+
+
+        
         
                 
         final int banderaP = gViaje.ContarPuerto();

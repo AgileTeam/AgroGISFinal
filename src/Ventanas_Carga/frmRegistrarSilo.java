@@ -20,6 +20,7 @@ import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Gestores_Vista.gestorRegistrarSilo;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 /**
@@ -75,7 +76,11 @@ GestorHibernate gestorH = new GestorHibernate();
         tblSilo.getColumnModel().getColumn(2).setPreferredWidth(40); 
         tblSilo.getColumnModel().getColumn(3).setPreferredWidth(40); 
         tblSilo.getColumnModel().getColumn(4).setPreferredWidth(40); 
-        tblSilo.getColumnModel().getColumn(5).setPreferredWidth(100); 
+        tblSilo.getColumnModel().getColumn(5).setPreferredWidth(100);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblSilo.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
     }
 

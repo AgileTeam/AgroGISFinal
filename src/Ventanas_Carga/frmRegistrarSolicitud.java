@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -72,6 +73,14 @@ GestorHibernate gestorH = new GestorHibernate();
         tblProductor1.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblProductor2.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblProductor2.getColumnModel().getColumn(1).setPreferredWidth(100);
+        
+        //centrar cabecera de jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblProductor1.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblProductor2.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+
+
         
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();

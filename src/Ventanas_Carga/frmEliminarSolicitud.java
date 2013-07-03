@@ -48,6 +48,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         //redimensionar columnas tabla
         tblSolicitudes.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblSolicitudes.getColumnModel().getColumn(1).setPreferredWidth(50);
+        //centrar cabecera jtable
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblSolicitudes.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
 

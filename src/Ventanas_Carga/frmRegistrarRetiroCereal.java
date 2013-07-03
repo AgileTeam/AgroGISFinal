@@ -90,6 +90,11 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         tblSolicitud.getColumnModel().getColumn(1).setPreferredWidth(100);  
         tblSolicitud.getColumnModel().getColumn(2).setPreferredWidth(100); 
         tblSolicitud.getColumnModel().getColumn(3).setPreferredWidth(70); 
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblSolicitud.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
 
 
         

@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -64,11 +65,19 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(260, 10);
         
+        //redimensionar columnas tabla
         tblViaje.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblViaje.getColumnModel().getColumn(1).setPreferredWidth(50);
         tblViaje.getColumnModel().getColumn(2).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(1).setPreferredWidth(100);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblVehiculo.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblViaje.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+
+
         
         gestorA.RellenarTablaViajes(tblViaje);
     }

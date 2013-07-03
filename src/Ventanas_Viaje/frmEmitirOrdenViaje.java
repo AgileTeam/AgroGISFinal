@@ -22,6 +22,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -76,6 +77,11 @@ GestorHibernate gestorH = new GestorHibernate();
         tblViaje.getColumnModel().getColumn(1).setPreferredWidth(70);  
         tblViaje.getColumnModel().getColumn(2).setPreferredWidth(100); 
         tblViaje.getColumnModel().getColumn(3).setPreferredWidth(70);    
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblViaje.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         lblHas.setVisible(true);
         lblToneladas.setVisible(false);

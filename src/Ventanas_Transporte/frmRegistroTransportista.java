@@ -28,6 +28,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.ButtonGroup;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 /**
@@ -96,6 +97,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         tblVehiculo.getColumnModel().getColumn(4).setPreferredWidth(80);
         tblTelefono.getColumnModel().getColumn(0).setPreferredWidth(5);
         tblTelefono.getColumnModel().getColumn(1).setPreferredWidth(80);
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTelefono.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblVehiculo.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
     
         //Carga Tipo Documento
         cmbTipoDoc.setModel(gRegistro.rellenaComboTipoDoc());
