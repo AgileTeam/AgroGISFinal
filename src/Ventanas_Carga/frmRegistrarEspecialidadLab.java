@@ -51,8 +51,14 @@ long idEspecialidad;
         calendario.get(Calendar.MINUTE);
         SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
-    
-    
+        
+        //redimensionar columnas de la tabla
+        tblEspecialidad.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblEspecialidad.getColumnModel().getColumn(1).setPreferredWidth(50);
+        
+        //centrar cabecera jtable
+        
+        
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();
     int ancho = 550;

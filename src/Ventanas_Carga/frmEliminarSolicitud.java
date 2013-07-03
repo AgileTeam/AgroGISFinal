@@ -8,6 +8,7 @@ import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 /**
@@ -44,6 +45,12 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
+        //redimensionar columnas tabla
+        tblSolicitudes.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblSolicitudes.getColumnModel().getColumn(1).setPreferredWidth(50);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblSolicitudes.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -74,7 +81,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSolicitudes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -84,7 +91,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtTipoSolicitud = new javax.swing.JTextField();
-        btnAgregarProductor2 = new javax.swing.JButton();
+        btnAgregarSolicitud = new javax.swing.JButton();
         txtEstadoSolicitud = new javax.swing.JTextField();
         txtEstablecimiento = new javax.swing.JTextField();
         txtFechaEstimada = new javax.swing.JTextField();
@@ -128,7 +135,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Solicitud Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel1.setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -136,7 +143,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
                 "Nº Solicitud", "Tipo Solicitud"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSolicitudes);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(90, 30, 437, 136);
@@ -157,9 +164,9 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         jLabel3.setBounds(40, 210, 100, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Establecimiento");
+        jLabel4.setText("Destino");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(300, 210, 110, 20);
+        jLabel4.setBounds(350, 210, 110, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Tipo Cereal");
@@ -183,9 +190,9 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         jPanel1.add(txtTipoSolicitud);
         txtTipoSolicitud.setBounds(300, 180, 120, 20);
 
-        btnAgregarProductor2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        jPanel1.add(btnAgregarProductor2);
-        btnAgregarProductor2.setBounds(540, 90, 40, 30);
+        btnAgregarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        jPanel1.add(btnAgregarSolicitud);
+        btnAgregarSolicitud.setBounds(540, 90, 40, 30);
         jPanel1.add(txtEstadoSolicitud);
         txtEstadoSolicitud.setBounds(490, 180, 100, 20);
         jPanel1.add(txtEstablecimiento);
@@ -244,7 +251,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,7 +265,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarProductor2;
+    private javax.swing.JButton btnAgregarSolicitud;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
@@ -275,8 +282,8 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelusuario;
+    private javax.swing.JTable tblSolicitudes;
     private javax.swing.JTextField txtCereal;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtEstadoSolicitud;

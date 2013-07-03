@@ -28,6 +28,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -74,7 +75,12 @@ GestorHibernate gestorH = new GestorHibernate();
         tblEstablecimiento.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblCaracteristica.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblCaracteristica.getColumnModel().getColumn(1).setPreferredWidth(50);
-        
+        //centrar cabecera de la tabla
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEstablecimiento.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblCaracteristica.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+
         
          //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();

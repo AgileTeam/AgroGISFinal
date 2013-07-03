@@ -21,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -83,7 +84,10 @@ gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
         tblCaracteristica.getColumnModel().getColumn(0).setPreferredWidth(120);
         tblCaracteristica.getColumnModel().getColumn(1).setPreferredWidth(50);
         tblCaracteristica.getColumnModel().getColumn(2).setPreferredWidth(50);
-       
+        //centrar cabecera de la tabla
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblCaracteristica.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
     }
 
     /** This method is called from within the constructor to

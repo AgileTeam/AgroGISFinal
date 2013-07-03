@@ -14,6 +14,7 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,11 +58,18 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         tblEnvios.getColumnModel().getColumn(2).setPreferredWidth(100);
         tblEnvios.getColumnModel().getColumn(3).setPreferredWidth(30);
         tblEnvios.getColumnModel().getColumn(4).setPreferredWidth(100);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEnvios.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //redimensionar columnas de la tabla busqueda de muestras
         tblMuestra.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblMuestra.getColumnModel().getColumn(1).setPreferredWidth(40);
         tblMuestra.getColumnModel().getColumn(2).setPreferredWidth(200);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblMuestra.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
