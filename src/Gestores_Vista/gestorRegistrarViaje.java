@@ -146,5 +146,18 @@ public class gestorRegistrarViaje extends GestorHibernate {
          return modelo;     
      }
      
+     public void cargaTabla(JTable tblEstablecimiento){
+         DefaultTableModel modeloT = (DefaultTableModel) tblEstablecimiento.getModel();
+         Iterator ite = this.listarClase(Viaje.class).iterator();
+         while(ite.hasNext()){
+             Viaje viaje = (Viaje) ite.next();
+             if(viaje.getEstado().equalsIgnoreCase("Pendiente")){
+                 Object fila[] = {viaje.getIdViaje(),viaje.getTipoViaje()};
+                 modeloT.addRow(fila);
+                 tblEstablecimiento.setModel(modeloT);
+             }
+         }
+     }
+     
         }
     

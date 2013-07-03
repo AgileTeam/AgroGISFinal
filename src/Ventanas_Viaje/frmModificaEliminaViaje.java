@@ -4,16 +4,22 @@
  */
 package Ventanas_Viaje;
 
+import Clases_Modulo_Viaje.EstablecimientoPorViaje;
+import Clases_Modulo_Viaje.PuertoPorViaje;
+import Clases_Modulo_Viaje.Viaje;
+import Gestores_Vista.gestorRegistrarViaje;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Carolina
  */
 public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
+   gestorRegistrarViaje gestorV = new gestorRegistrarViaje();
 
     /**
      * Creates new form frmModificaEliminaViaje
@@ -57,6 +63,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(300, 70);
+        gestorV.cargaTabla(tblViajes);
         
     }
 
@@ -98,6 +105,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -146,6 +154,11 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         jScrollPane1.setBounds(90, 30, 452, 132);
 
         btnAgregarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarViajeActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAgregarViaje);
         btnAgregarViaje.setBounds(550, 80, 40, 30);
 
@@ -208,6 +221,11 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         btnEliminar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -215,6 +233,15 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -232,10 +259,12 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219))))
+                        .addGap(172, 172, 172))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,10 +273,11 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -260,9 +290,59 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnAgregarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarViajeActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblViajes.getModel();
+       int fila = tblViajes.getSelectedRow();
+       Iterator ite = gestorV.listarClase(Viaje.class).iterator();
+       while(ite.hasNext()){
+           Viaje viaje = (Viaje)ite.next();
+           if(viaje.getIdViaje() == modeloT.getValueAt(fila, 0)){
+               txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
+               txtTipoViaje.setText(viaje.getTipoViaje().toString());
+               txtEstadoViaje.setText(viaje.getEstado());
+               txtProductor.setText(viaje.getProductor().toString());
+               Iterator ite1 = gestorV.listarClase(EstablecimientoPorViaje.class).iterator();
+               while(ite1.hasNext()){
+                   EstablecimientoPorViaje est = (EstablecimientoPorViaje) ite1.next();
+                   if(est.getViaje().getIdViaje() == viaje.getIdViaje()){
+                       txtDestino.setText(est.getEstablecimiento().getNombreEstablecimiento());
+                   }
+               }
+               Iterator ite2 = gestorV.listarClase(PuertoPorViaje.class).iterator();
+               while(ite2.hasNext()){
+                   PuertoPorViaje est = (PuertoPorViaje) ite2.next();
+                   if(est.getViaje().getIdViaje() == viaje.getIdViaje()){
+                       txtDestino.setText(est.getPuerto().getNombrePuerto());
+                   }
+               }
+               txtFechaRealiza.setText(viaje.getFecha());
+               txtHoraRealiza.setText(viaje.getHora());
+               txtSolicitante.setText(viaje.getSolicitante());
+           }
+       }
+    }//GEN-LAST:event_btnAgregarViajeActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       btnModificar.setEnabled(false);
+        Iterator ite = gestorV.listarClase(Viaje.class).iterator();
+        while(ite.hasNext()){
+            Viaje viaje = (Viaje) ite.next();
+            if(viaje.getIdViaje() == Long.parseLong(txtNumViaje.getText())){
+                viaje.setEstado("Cancelado");
+                gestorV.actualizarObjeto(viaje);
+                txtEstadoViaje.setText(viaje.getEstado());
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    btnEliminar.setEnabled(false);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarViaje;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
