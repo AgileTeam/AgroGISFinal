@@ -17,6 +17,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -65,10 +66,14 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         tblConsumo.getColumnModel().getColumn(1).setPreferredWidth(20);
         tblConsumo.getColumnModel().getColumn(2).setPreferredWidth(120);
         tblConsumo.getColumnModel().getColumn(3).setPreferredWidth(80);
-       
         
-        
-        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblConsumo.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblTransportista.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+
+
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();

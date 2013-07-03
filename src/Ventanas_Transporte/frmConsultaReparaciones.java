@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -71,6 +72,17 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(120);
         tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(100);
         tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(80);
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblReparacion.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblMotivo.getTableHeader().getDefaultRenderer();
+        renderer2.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblTransportista.getTableHeader().getDefaultRenderer();
+        renderer3.setHorizontalAlignment(0);
+
+
+
         
         
         

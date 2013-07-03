@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class frmOrdenCarga extends javax.swing.JInternalFrame {
@@ -133,6 +134,14 @@ GestorHibernate gestorH = new GestorHibernate();
             
         //borrar el icono del InternalFrame
         this.setFrameIcon(new ImageIcon("Imagenes/Aceptar.png"));
+        
+        //redimensionar columnas tabla
+        tblTransportista.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblTransportista.getColumnModel().getColumn(1).setPreferredWidth(50);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTransportista.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
     //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();

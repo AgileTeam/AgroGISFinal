@@ -59,7 +59,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemRegistroCarga.setEnabled(false);
         ItemFichaPersonal.setEnabled(false);
         ItemCargaCombustible.setEnabled(false);
-        menuVerViaje.setEnabled(false);
+        menuModificarViaje.setEnabled(true);
         ItemNuevoLab.setEnabled(false);
         ItemNuevoSilo.setEnabled(true);
         MenuVerCarga.setEnabled(false);
@@ -161,7 +161,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuViaje = new javax.swing.JMenu();
         menuNuevoViaje = new javax.swing.JMenu();
         ItemNuevoViaje = new javax.swing.JMenuItem();
-        menuVerViaje = new javax.swing.JMenu();
+        menuModificarViaje = new javax.swing.JMenu();
         ItemConsultarViaje = new javax.swing.JMenuItem();
         ItemAsignarTransporte = new javax.swing.JMenuItem();
         ItemEmitirOrden = new javax.swing.JMenuItem();
@@ -176,6 +176,7 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemVerTipoCereal = new javax.swing.JMenuItem();
         ItemVerSilo = new javax.swing.JMenuItem();
         ItemSolicitud = new javax.swing.JMenuItem();
+        ItemElimSolicitud = new javax.swing.JMenuItem();
         ItemRetiroCereal = new javax.swing.JMenuItem();
         ItemDescargaCereal = new javax.swing.JMenuItem();
         ItemEnvioMuestras = new javax.swing.JMenuItem();
@@ -587,14 +588,19 @@ GestorHibernate gestorH = new GestorHibernate();
 
         MenuViaje.add(menuNuevoViaje);
 
-        menuVerViaje.setText("Consultar/Modificar");
-        menuVerViaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuModificarViaje.setText("Modificar / Eliminar");
+        menuModificarViaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         ItemConsultarViaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemConsultarViaje.setText("      Viaje        ");
-        menuVerViaje.add(ItemConsultarViaje);
+        ItemConsultarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemConsultarViajeActionPerformed(evt);
+            }
+        });
+        menuModificarViaje.add(ItemConsultarViaje);
 
-        MenuViaje.add(menuVerViaje);
+        MenuViaje.add(menuModificarViaje);
 
         ItemAsignarTransporte.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemAsignarTransporte.setText("Asignar Transporte a Viaje");
@@ -687,6 +693,15 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         MenuCarga.add(ItemSolicitud);
+
+        ItemElimSolicitud.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemElimSolicitud.setText("Eliminar Solicitud de Retiro de Cereal");
+        ItemElimSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemElimSolicitudActionPerformed(evt);
+            }
+        });
+        MenuCarga.add(ItemElimSolicitud);
 
         ItemRetiroCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemRetiroCereal.setText("Registrar Retiro de Cereal");
@@ -993,6 +1008,18 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
        ficha.setVisible(true); 
     }//GEN-LAST:event_ItemFichaPersonalActionPerformed
 
+    private void ItemElimSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemElimSolicitudActionPerformed
+       frmEliminarSolicitud solicitud=new frmEliminarSolicitud();
+       this.Escritorio.add(solicitud);
+       solicitud.setVisible(true);
+    }//GEN-LAST:event_ItemElimSolicitudActionPerformed
+
+    private void ItemConsultarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemConsultarViajeActionPerformed
+        frmModificaEliminaViaje viaje=new frmModificaEliminaViaje();
+        this.Escritorio.add(viaje);
+        viaje.setVisible(true);
+    }//GEN-LAST:event_ItemConsultarViajeActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1039,6 +1066,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemDescargaCereal;
     private javax.swing.JMenuItem ItemDetalleConsumo;
     private javax.swing.JMenuItem ItemDetalleReparacion;
+    private javax.swing.JMenuItem ItemElimSolicitud;
     private javax.swing.JMenuItem ItemEliminarCarga;
     private javax.swing.JMenuItem ItemEliminarTaller;
     private javax.swing.JMenuItem ItemEmitirOrden;
@@ -1113,8 +1141,8 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JLabel labelImagenUsuario;
     private javax.swing.JLabel labelPrincipal;
     private javax.swing.JLabel labelUsuario;
+    private javax.swing.JMenu menuModificarViaje;
     private javax.swing.JMenu menuNuevoViaje;
-    private javax.swing.JMenu menuVerViaje;
     private javax.swing.JPanel pnlUsuarioLogin;
     // End of variables declaration//GEN-END:variables
 

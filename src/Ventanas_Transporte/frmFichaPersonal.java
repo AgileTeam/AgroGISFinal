@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 public class frmFichaPersonal extends javax.swing.JInternalFrame {
@@ -52,6 +53,14 @@ public class frmFichaPersonal extends javax.swing.JInternalFrame {
         //int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(350,70);
+        
+        //redimensionar columnas tabla
+        tblTransp.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tblTransp.getColumnModel().getColumn(1).setPreferredWidth(80);
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTransp.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
     }
 
     /**
@@ -190,7 +199,7 @@ public class frmFichaPersonal extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -62,6 +63,11 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         tblConsumo.getColumnModel().getColumn(2).setPreferredWidth(120);
         tblConsumo.getColumnModel().getColumn(3).setPreferredWidth(80);
         tblConsumo.getColumnModel().getColumn(4).setPreferredWidth(60);
+        
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblConsumo.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         
         

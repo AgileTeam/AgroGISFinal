@@ -25,6 +25,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -71,7 +72,9 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
         //redimensionar columnas de la tabla
         tblBarrio.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblBarrio.getColumnModel().getColumn(1).setPreferredWidth(100);
-        
+        //centrar la cabecera de la tabla
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblBarrio.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
         
     //lineas para mejorar el aspecto de la pantalla     
     Toolkit kit = Toolkit.getDefaultToolkit();
