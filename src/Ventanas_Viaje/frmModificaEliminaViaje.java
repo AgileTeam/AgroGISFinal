@@ -12,6 +12,7 @@ import java.awt.*;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,6 +54,10 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         tblViajes.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblViajes.getColumnModel().getColumn(1).setPreferredWidth(50);
         
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblViajes.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+
         
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -103,6 +108,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         txtSolicitante = new javax.swing.JTextField();
         txtHoraRealiza = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        dateChooserViaje = new datechooser.beans.DateChooserCombo();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -218,6 +224,8 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         jLabel8.setText("Hora Realización");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(300, 240, 130, 20);
+        jPanel1.add(dateChooserViaje);
+        dateChooserViaje.setBounds(150, 240, 90, 20);
 
         btnEliminar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
@@ -290,7 +298,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -375,6 +383,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
+    private datechooser.beans.DateChooserCombo dateChooserViaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
