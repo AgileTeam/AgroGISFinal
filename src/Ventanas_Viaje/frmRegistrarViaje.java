@@ -23,7 +23,9 @@ import java.awt.event.ActionListener;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 
 /**
@@ -95,6 +97,7 @@ GestorHibernate gestorH = new GestorHibernate();
         this.setSize(ancho, alto);
         this.setLocation(250, 40);
         
+        
         tblEstablecimiento.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblEstablecimiento.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblEstablecimiento.getColumnModel().getColumn(2).setPreferredWidth(50);
@@ -102,6 +105,8 @@ GestorHibernate gestorH = new GestorHibernate();
         tblProductor.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblProductor.getColumnModel().getColumn(2).setPreferredWidth(50);
         
+        
+                
         final int banderaP = gViaje.ContarPuerto();
         final int banderaE= gViaje.ContarEst();
         
@@ -116,8 +121,13 @@ GestorHibernate gestorH = new GestorHibernate();
         
    
 //        
+      
     
     }
+    
+   
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
