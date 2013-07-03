@@ -249,6 +249,11 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,7 +290,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,13 +337,17 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
        btnModificar.setEnabled(false);
+       btnGuardar.setEnabled(false);
         Iterator ite = gestorV.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
             if(viaje.getIdViaje() == Long.parseLong(txtNumViaje.getText())){
-                viaje.setEstado("Cancelado");
-                gestorV.actualizarObjeto(viaje);
-                txtEstadoViaje.setText(viaje.getEstado());
+                  int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar el viaje?");
+                    if (respuesta==0){
+                         viaje.setEstado("Cancelado");
+                         gestorV.actualizarObjeto(viaje);
+                         txtEstadoViaje.setText(viaje.getEstado());
+                        }
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -346,6 +355,19 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
     btnEliminar.setEnabled(false);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    Iterator ite = gestorV.listarClase(Viaje.class).iterator();
+    while(ite.hasNext()){
+        Viaje viaje = (Viaje)ite.next();
+        if(viaje.getIdViaje() == Long.parseLong(txtNumViaje.getText())){
+            viaje.
+            gestorV.actualizarObjeto(viaje);
+            JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+        }
+    
+    }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarViaje;
