@@ -224,4 +224,18 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
          }
          return modelo;     
      }
+       
+       public void cargaTabla(JTable tblSolicitudes){
+         DefaultTableModel modeloT = (DefaultTableModel) tblSolicitudes.getModel();
+         Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
+         while(ite.hasNext()){
+             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+             if(sol.getEstado().equalsIgnoreCase("Pendiente")){
+                 Object fila[] = {sol.getNumeroSolicitud(),sol.getTipoSolicitud().toString()};
+                 modeloT.addRow(fila);
+                 tblSolicitudes.setModel(modeloT);
+             }
+         }
+     } 
+       
 }

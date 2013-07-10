@@ -4,11 +4,14 @@
  */
 package Ventanas_Carga;
 
+import Clases_Modulo_Carga.SolicitudRetiro;
+import Gestores_Vista.gestorRegistrarSolicitud;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -16,7 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author Carolina
  */
 public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
-
+gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
     /**
      * Creates new form frmEliminarSolicitud
      */
@@ -62,6 +65,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
         this.setLocation(300, 50);
+        gestorS.cargaTabla(tblSolicitudes);
     }
 
     /**
@@ -192,6 +196,11 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         txtTipoSolicitud.setBounds(300, 180, 120, 20);
 
         btnAgregarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAgregarSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarSolicitudActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAgregarSolicitud);
         btnAgregarSolicitud.setBounds(540, 90, 40, 30);
         jPanel1.add(txtEstadoSolicitud);
@@ -212,6 +221,11 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
         btnEliminar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -252,7 +266,7 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,6 +278,41 @@ public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAgregarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSolicitudActionPerformed
+     DefaultTableModel modeloT = (DefaultTableModel) tblSolicitudes.getModel();
+     int fila = tblSolicitudes.getSelectedRow();
+     Iterator ite = gestorS.listarClase(SolicitudRetiro.class).iterator();
+     while(ite.hasNext()){
+         SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+         if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila,0)){
+             txtNumSolicitud5.setText(String.valueOf(sol.getNumeroSolicitud()));
+             txtTipoSolicitud.setText(sol.getTipoSolicitud().toString());
+             txtEstadoSolicitud.setText(sol.getEstado());
+             txtProductor.setText(sol.getProductor().toString());
+             txtCereal.setText(sol.getTipoCereal().toString());
+             txtFechaSolicitud.setText(sol.getFechaSolicitud());
+             
+         }
+     }
+    }//GEN-LAST:event_btnAgregarSolicitudActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    Iterator ite = gestorS.listarClase(SolicitudRetiro.class).iterator();
+    while(ite.hasNext()){
+        SolicitudRetiro sol = (SolicitudRetiro) ite.next();
+        if(sol.getNumeroSolicitud() == Long.parseLong(txtNumSolicitud5.getText())){
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar el viaje?");
+                    if (respuesta==0){
+                         sol.setEstado("Cancelada");
+                         gestorS.actualizarObjeto(sol);
+                         txtEstadoSolicitud.setText(sol.getEstado());
+                        }
+           
+            
+        }
+    }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarSolicitud;
