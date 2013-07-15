@@ -28,6 +28,7 @@ private TipoCereal tipoCereal;
 
     private String estado;
     private String fechaSolicitud;
+    private String fechaEstimadaViaje;
 
     /**
      * @return the productor
@@ -115,5 +116,19 @@ private TipoCereal tipoCereal;
     
     public String toString(){
         return String.valueOf(numeroSolicitud);
+    }
+
+    /**
+     * @return the fechaEstimadaViaje
+     */
+    public String getFechaEstimadaViaje() {
+        return fechaEstimadaViaje;
+    }
+
+    /**
+     * @param fechaEstimadaViaje the fechaEstimadaViaje to set
+     */
+    public void setFechaEstimadaViaje(String fechaEstimadaViaje) {
+        this.fechaEstimadaViaje = fechaEstimadaViaje;
     }
 }

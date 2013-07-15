@@ -125,7 +125,8 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
     
     
     public void guardarSolicitud(TipoSolicitud tipoSolicitud, String fecha, Productor productor, TipoCereal tipoCereal, Establecimiento establecimiento,
-                                double hectareas, TipoOperacion tipoOperacion, String destino, Silo silo, double toneladas, JTextField numeroSolicitud, JTextField toneladas2){
+                                double hectareas, TipoOperacion tipoOperacion, String destino, Silo silo, double toneladas, JTextField numeroSolicitud, JTextField toneladas2,
+                                 String fechaEstimada){
         
         SolicitudRetiro solicitud = new SolicitudRetiro();
             solicitud.setFechaSolicitud(fecha);
@@ -133,6 +134,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             solicitud.setTipoSolicitud(tipoSolicitud);
             solicitud.setTipoCereal(tipoCereal);
             solicitud.setEstado("Pendiente");
+            solicitud.setFechaEstimadaViaje(fechaEstimada);
             this.guardarObjeto(solicitud);
             
         if(tipoSolicitud.getIdTipoSolicitud()==1){
