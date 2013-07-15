@@ -386,6 +386,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemVehiculo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemVehiculo.setText("Vehiculo");
+        ItemVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemVehiculoActionPerformed(evt);
+            }
+        });
         MenuNuevoTransp.add(ItemVehiculo);
 
         ItemTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -413,6 +418,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemVerTransp.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemVerTransp.setText("Transportista");
+        ItemVerTransp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemVerTranspActionPerformed(evt);
+            }
+        });
         MenuVerTransp.add(ItemVerTransp);
 
         ItemVerVehiculo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -453,6 +463,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemEliminarCarga.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemEliminarCarga.setText("Carga de Combustible");
+        ItemEliminarCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemEliminarCargaActionPerformed(evt);
+            }
+        });
         MenuEliminarOrden.add(ItemEliminarCarga);
 
         ItemEliminarTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -1019,6 +1034,22 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         this.Escritorio.add(viaje);
         viaje.setVisible(true);
     }//GEN-LAST:event_ItemConsultarViajeActionPerformed
+
+    private void ItemVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVehiculoActionPerformed
+        frmRegistroTransportista transportista= new frmRegistroTransportista();
+        this.Escritorio.add(transportista);
+        transportista.setVisible(true);
+    }//GEN-LAST:event_ItemVehiculoActionPerformed
+
+    private void ItemVerTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVerTranspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ItemVerTranspActionPerformed
+
+    private void ItemEliminarCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarCargaActionPerformed
+        frmEliminarOrdenCarga ordenC = new frmEliminarOrdenCarga();
+        this.Escritorio.add(ordenC);
+        ordenC.setVisible(true);
+    }//GEN-LAST:event_ItemEliminarCargaActionPerformed
 
    
     public static void main(String args[]) {

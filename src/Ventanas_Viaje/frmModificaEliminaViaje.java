@@ -298,7 +298,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,6 +346,8 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
        btnModificar.setEnabled(false);
        btnGuardar.setEnabled(false);
+       dateChooserViaje.setVisible(false);
+       txtFechaRealiza.setVisible(true);
         Iterator ite = gestorV.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
@@ -362,6 +364,8 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
     btnEliminar.setEnabled(false);
+    dateChooserViaje.setVisible(true);
+    txtFechaRealiza.setVisible(false);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -369,7 +373,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
     while(ite.hasNext()){
         Viaje viaje = (Viaje)ite.next();
         if(viaje.getIdViaje() == Long.parseLong(txtNumViaje.getText())){
-            viaje.
+            viaje.setFecha(dateChooserViaje.getText());
             gestorV.actualizarObjeto(viaje);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }

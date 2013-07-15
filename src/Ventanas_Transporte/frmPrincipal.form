@@ -217,6 +217,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Vehiculo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVehiculoActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemTaller">
                   <Properties>
@@ -257,6 +260,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Transportista"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVerTranspActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemVerVehiculo">
                   <Properties>
@@ -323,6 +329,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Carga de Combustible"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemEliminarCargaActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemEliminarTaller">
                   <Properties>
