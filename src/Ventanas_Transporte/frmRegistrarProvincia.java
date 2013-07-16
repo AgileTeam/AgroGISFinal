@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -34,6 +35,7 @@ import javax.swing.table.TableCellRenderer;
 public class frmRegistrarProvincia extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorProvincia gestorP = new gestorProvincia();
+gestorPais gestor = new gestorPais();
 long idProvincia;
 int bandera = 0;
     /** Creates new form frmRegistrarProvincia */
@@ -367,12 +369,15 @@ private void btnEliminarProvActionPerformed(java.awt.event.ActionEvent evt) {//G
 
 private void btnAgregarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProvActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblProvincia.getModel();
+    int campo = gestor.campoObligatorio(txtProvincia);
+    if(campo==0){
     Object fila[]={cmbPais.getSelectedItem(),txtProvincia.getText()};
     modeloTabla.addRow(fila);
     tblProvincia.setModel(modeloTabla);
     gestorP.actualizarProvincia(idProvincia, txtProvincia, cmbPais);
     txtProvincia.setText(""); 
-       
+    txtProvincia.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }   
 }//GEN-LAST:event_btnAgregarProvActionPerformed
 
 private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProvinciaKeyTyped
@@ -392,6 +397,7 @@ private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+      
         if(btnEditarProvincia.isEnabled()){
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
@@ -399,7 +405,7 @@ private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         gestorP.guardarProvincia(tblProvincia);
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
-             
+         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed

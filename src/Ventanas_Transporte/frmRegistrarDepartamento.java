@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -404,11 +405,15 @@ private void btnEliminarDeptoActionPerformed(java.awt.event.ActionEvent evt) {//
 
 private void btnAgregarDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDeptoActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblDepto.getModel();
+    int campo = gPais.campoObligatorio(txtDepto);
+    if(campo==0){
     Object fila[]={cmbProvincia.getSelectedItem(), txtDepto.getText()};
     modeloTabla.addRow(fila);
     tblDepto.setModel(modeloTabla);
     gDepto.actualizarDepartamento(idDepto, txtDepto, cmbProvincia);
     txtDepto.setText(""); 
+    txtDepto.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
 }//GEN-LAST:event_btnAgregarDeptoActionPerformed
 
 private void txtDeptoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeptoKeyTyped
@@ -428,13 +433,13 @@ private void txtDeptoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (btnEditarProvincia.isEnabled()) {
+      if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             gDepto.guardarDepartamento(tblDepto);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
-
+      
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed

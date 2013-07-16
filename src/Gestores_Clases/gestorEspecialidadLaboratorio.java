@@ -10,6 +10,9 @@ import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
         
 
@@ -58,5 +61,21 @@ public class gestorEspecialidadLaboratorio extends GestorHibernate {
        }
    }
      
+     }
+    
+    public int campoObligatorio(JTextField texto1, JTextField texto2 ){
+         int campo = 0;   
+         if(texto1.getText().equalsIgnoreCase("")){
+                texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+         if(texto2.getText().equalsIgnoreCase("")){
+                texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+         if(campo ==1){
+             JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+         }
+         return campo;
      }
 }

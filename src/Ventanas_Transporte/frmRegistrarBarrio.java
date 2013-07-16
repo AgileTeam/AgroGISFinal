@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -439,11 +440,15 @@ private void btnEliminarBarrioActionPerformed(java.awt.event.ActionEvent evt) {/
 
 private void btnAgregarBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBarrioActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblBarrio.getModel();
+    int campo = gPais.campoObligatorio(txtBarrio);
+    if(campo==0){
     Object fila[]={cmbLocal.getSelectedItem(), txtBarrio.getText()};
     modeloTabla.addRow(fila);
     tblBarrio.setModel(modeloTabla);
     gBarrio.actualizarBarrio(idBarrio, txtBarrio, cmbLocal);
     txtBarrio.setText(""); 
+    txtBarrio.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
 }//GEN-LAST:event_btnAgregarBarrioActionPerformed
 
 private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarrioKeyTyped
@@ -463,12 +468,14 @@ private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
         if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             gBarrio.guardarBarrio(tblBarrio);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed

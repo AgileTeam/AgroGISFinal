@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -447,11 +448,15 @@ private void btnEliminarLocalActionPerformed(java.awt.event.ActionEvent evt) {//
 
 private void btnAgregarLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLocalActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblLocal.getModel();
+    int campo = gPais.campoObligatorio(txtLocalidad);
+    if(campo==0){
     Object fila[]={txtLocalidad.getText(), txtCodigoPostal.getText(),cmbDepto.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblLocal.setModel(modeloTabla);
     glocalidad.actualizarLocalidad(idLocalidad, txtCodigoPostal, txtLocalidad, cmbDepto);
     txtLocalidad.setText(""); 
+    txtLocalidad.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
 }//GEN-LAST:event_btnAgregarLocalActionPerformed
 
 private void txtLocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocalidadKeyTyped
@@ -483,12 +488,14 @@ private void txtCodigoPostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
         if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             glocalidad.guardarLocalidad(tblLocal);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed

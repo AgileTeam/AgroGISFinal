@@ -8,10 +8,9 @@ import Hibernate.GestorHibernate;
 import Clases_Modulo_Transporte.Localidad;
 import Clases_Modulo_Transporte.Pais;
 import Clases_Modulo_Transporte.Provincia;
+import java.awt.Color;
 import java.util.Iterator;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -66,6 +65,16 @@ public class gestorPais extends GestorHibernate {
        }
    }
      
+     }
+     
+     public int campoObligatorio(JTextField nombrePais){
+         int campo = 0;   
+         if(nombrePais.getText().equalsIgnoreCase("")){
+                nombrePais.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+                campo=1;
+            }
+         return campo;
      }
     
 }

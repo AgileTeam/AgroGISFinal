@@ -23,7 +23,9 @@ import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Ventanas_Transporte.frmPrincipal;
+import java.awt.Color;
 import java.util.Iterator;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 /**
@@ -327,12 +329,15 @@ private void btnAceptarEdicionActionPerformed(java.awt.event.ActionEvent evt) {/
 
 private void btnAgregarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPaisActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
+    int campo = gestorP.campoObligatorio(txtPais);
+    if(campo == 0){
     Object fila[]={txtPais.getText()};
     modeloT.addRow(fila);
     tblPais.setModel(modeloT);
     gestorP.actualizarPais(idPais, txtPais);
-    txtPais.setText(""); 
-       
+    txtPais.setText("");
+    txtPais.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }   
 }//GEN-LAST:event_btnAgregarPaisActionPerformed
 
 private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -343,6 +348,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_btnSalirActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+ 
    if(btnEditarPais.isEnabled()){
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
@@ -350,7 +356,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         gestorP.guardarPais(tblPais);
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
-
+   
     
 }//GEN-LAST:event_btnGuardarActionPerformed
 
