@@ -8,8 +8,10 @@ import Clases_Modulo_Seguridad.Rol;
 import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Seguridad.UsuarioPorRol;
 import Gestores_Clases.gestorBitacora;
+import Gestores_Clases.gestorEspecialidadLaboratorio;
 import Gestores_Vista.gestorRegistrarUsuario;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -17,6 +19,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
 gestorRegistrarUsuario gestorU = new gestorRegistrarUsuario();
 GestorHibernate gestorH = new GestorHibernate();
+
     /**
      * Creates new form frmRegistrarUsuario
      */
@@ -350,6 +354,7 @@ GestorHibernate gestorH = new GestorHibernate();
        Object fila[]= {cmbRol.getSelectedItem(), areaDescrp.getText()};
        modeloT.addRow(fila);
        tblRoles.setModel(modeloT);
+       
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

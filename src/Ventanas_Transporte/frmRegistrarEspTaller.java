@@ -7,7 +7,9 @@ package Ventanas_Transporte;
 import Clases_Modulo_Transporte.Especialidad;
 import Clases_Modulo_Transporte.TallerReparacion;
 import Gestores_Clases.gestorEspecialidadTaller;
+import Gestores_Clases.gestorPais;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorEspecialidadTaller gestorE= new gestorEspecialidadTaller();
+gestorPais gestorEs = new gestorPais();
 long idEsp;
     /**
      * Creates new form frmRegistrarEspTaller
@@ -323,13 +327,16 @@ long idEsp;
     }//GEN-LAST:event_btnAceptarEdicionActionPerformed
 
     private void btnAgregarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEspecialidadActionPerformed
+        int campo = gestorEs.campoObligatorio(txtPais);
+        if(campo == 0){
         DefaultTableModel modeloT = (DefaultTableModel) tblPais.getModel();
         Object fila[] = {txtPais.getText()};
         modeloT.addRow(fila);
         tblPais.setModel(modeloT);
         gestorE.actualizarEspecialidad(idEsp, txtPais);
         txtPais.setText("");
-
+        txtPais.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+         }
     }//GEN-LAST:event_btnAgregarEspecialidadActionPerformed
 
     private void btnEliminarEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEspecialidadActionPerformed

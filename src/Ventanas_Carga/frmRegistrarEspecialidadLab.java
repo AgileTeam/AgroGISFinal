@@ -10,6 +10,7 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -374,13 +375,18 @@ long idEspecialidad;
                     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAgregarEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEspActionPerformed
+    int campo = gestorE.campoObligatorio(txtNombreEsp, txtCodEsp);
     DefaultTableModel modeloT = (DefaultTableModel) tblEspecialidad.getModel();
+    if(campo == 0){    
     Object fila[]={txtCodEsp.getText(), txtNombreEsp.getText()};
     modeloT.addRow(fila);
     tblEspecialidad.setModel(modeloT);
     gestorE.actualizarEspecialidad(idEspecialidad, txtNombreEsp, txtCodEsp);
     txtNombreEsp.setText("");
     txtCodEsp.setText("");
+    txtCodEsp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtNombreEsp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
     }//GEN-LAST:event_btnAgregarEspActionPerformed
 
     private void btnEliminarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPaisActionPerformed
