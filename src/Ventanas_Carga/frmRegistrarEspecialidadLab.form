@@ -42,9 +42,9 @@
                               <Component id="jSeparator1" min="-2" pref="510" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               <Component id="btnNuevo" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="btnEditarPais" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="btnGuardar" min="-2" pref="100" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
                   <Component id="btnNuevo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

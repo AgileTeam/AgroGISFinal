@@ -66,7 +66,7 @@ long idEspecialidad;
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();
     int ancho = 550;
-    int alto = 480;
+    int alto = 500;
 //    int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //    int posY = (int) ((tamanioPantalla.height - alto) / 2);
     this.setSize(ancho, alto);
@@ -295,9 +295,9 @@ long idEspecialidad;
                                 .addContainerGap()
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
+                                .addGap(51, 51, 51)
                                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(2, 2, 2)
                                 .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
                                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,7 +324,7 @@ long idEspecialidad;
                     .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();

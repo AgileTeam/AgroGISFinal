@@ -53,8 +53,9 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelTabla.setVisible(false);
         panelDatosP.setVisible(true);
         jScrollPane4.setVisible(false);
-        tblModificar.setVisible(false);
+        tblModificaT.setVisible(false);
         panelTransportista.setVisible(true);
+        panelVehiculo.setVisible(true);
         
         for(int i=0;i<panelContratacion.getComponents().length;i++){
            panelContratacion.getComponent(i).setEnabled(true);
@@ -124,7 +125,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         renderer.setHorizontalAlignment(0);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblVehiculo.getTableHeader().getDefaultRenderer();
         renderer2.setHorizontalAlignment(0);
-        DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblModificar.getTableHeader().getDefaultRenderer();
+        DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblModificaT.getTableHeader().getDefaultRenderer();
         renderer3.setHorizontalAlignment(0);
     
         //Carga Tipo Documento
@@ -246,7 +247,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnBuscarTransportista = new javax.swing.JButton();
         panelTabla = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblModificar = new javax.swing.JTable();
+        tblModificaT = new javax.swing.JTable();
         btnAceptarTransp = new javax.swing.JButton();
         panelDatosP = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -272,26 +273,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnAgregarTel = new javax.swing.JButton();
         calendarioNacimiento = new datechooser.beans.DateChooserCombo();
         panelVehiculo = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        cmbModeloCamion = new javax.swing.JComboBox();
-        jLabel28 = new javax.swing.JLabel();
-        cmbMarcaCamion = new javax.swing.JComboBox();
-        jLabel29 = new javax.swing.JLabel();
-        cmbAnioCamion = new javax.swing.JComboBox();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        txtKilometros = new javax.swing.JTextField();
-        jLabel32 = new javax.swing.JLabel();
-        txtDominioCamion = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        txtLargoCamion = new javax.swing.JTextField();
-        txtTaraCamion = new javax.swing.JTextField();
-        txtAnchoCamion = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        pnlAcoplado = new javax.swing.JPanel();
+        panelAcoplado = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         cmbMarcaAcoplado = new javax.swing.JComboBox();
         jLabel39 = new javax.swing.JLabel();
@@ -322,6 +304,25 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnAgregarCamion = new javax.swing.JButton();
         btnAgregarAcoplado = new javax.swing.JButton();
         btnEditarVehiculo = new javax.swing.JButton();
+        panelCamion1 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        cmbModeloCamion = new javax.swing.JComboBox();
+        jLabel50 = new javax.swing.JLabel();
+        cmbMarcaCamion = new javax.swing.JComboBox();
+        jLabel51 = new javax.swing.JLabel();
+        cmbAnioCamion = new javax.swing.JComboBox();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        txtKilometros = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        txtDominioCamion = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        txtLargoCamion = new javax.swing.JTextField();
+        txtTaraCamion = new javax.swing.JTextField();
+        txtAnchoCamion = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -639,7 +640,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         panelTabla.setLayout(null);
 
-        tblModificar.setModel(new javax.swing.table.DefaultTableModel(
+        tblModificaT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -647,7 +648,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 "Nº Documento", "Apellido y Nombre"
             }
         ));
-        jScrollPane4.setViewportView(tblModificar);
+        jScrollPane4.setViewportView(tblModificaT);
 
         panelTabla.add(jScrollPane4);
         jScrollPane4.setBounds(60, 10, 580, 130);
@@ -825,142 +826,43 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         panelVehiculo.setLayout(null);
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del camión", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel9.setLayout(null);
-
-        jLabel27.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel27.setText("Marca");
-        jPanel9.add(jLabel27);
-        jLabel27.setBounds(50, 40, 50, 20);
-
-        jPanel9.add(cmbModeloCamion);
-        cmbModeloCamion.setBounds(330, 40, 130, 20);
-
-        jLabel28.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel28.setText("Modelo");
-        jPanel9.add(jLabel28);
-        jLabel28.setBounds(280, 40, 60, 20);
-
-        jPanel9.add(cmbMarcaCamion);
-        cmbMarcaCamion.setBounds(100, 40, 130, 20);
-
-        jLabel29.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel29.setText("Año de Compra");
-        jPanel9.add(jLabel29);
-        jLabel29.setBounds(10, 70, 90, 20);
-
-        jPanel9.add(cmbAnioCamion);
-        cmbAnioCamion.setBounds(100, 70, 100, 20);
-
-        jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel30.setText("Kilómetros");
-        jPanel9.add(jLabel30);
-        jLabel30.setBounds(260, 70, 80, 20);
-
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel31.setText("Dominio");
-        jPanel9.add(jLabel31);
-        jLabel31.setBounds(50, 100, 60, 20);
-
-        txtKilometros.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtKilometrosKeyTyped(evt);
-            }
-        });
-        jPanel9.add(txtKilometros);
-        txtKilometros.setBounds(330, 70, 100, 20);
-
-        jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel32.setText("Largo");
-        jPanel9.add(jLabel32);
-        jLabel32.setBounds(60, 130, 40, 20);
-        jPanel9.add(txtDominioCamion);
-        txtDominioCamion.setBounds(100, 100, 100, 20);
-
-        jLabel33.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel33.setText("Ancho");
-        jPanel9.add(jLabel33);
-        jLabel33.setBounds(280, 130, 60, 20);
-
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel34.setText("Tara");
-        jPanel9.add(jLabel34);
-        jLabel34.setBounds(290, 100, 60, 20);
-
-        txtLargoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtLargoCamionKeyTyped(evt);
-            }
-        });
-        jPanel9.add(txtLargoCamion);
-        txtLargoCamion.setBounds(100, 130, 100, 20);
-
-        txtTaraCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTaraCamionKeyTyped(evt);
-            }
-        });
-        jPanel9.add(txtTaraCamion);
-        txtTaraCamion.setBounds(330, 100, 100, 20);
-
-        txtAnchoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnchoCamionKeyTyped(evt);
-            }
-        });
-        jPanel9.add(txtAnchoCamion);
-        txtAnchoCamion.setBounds(330, 130, 100, 20);
-
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel36.setText("mts");
-        jPanel9.add(jLabel36);
-        jLabel36.setBounds(430, 130, 30, 20);
-
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel37.setText("mts");
-        jPanel9.add(jLabel37);
-        jLabel37.setBounds(200, 130, 30, 20);
-
-        panelVehiculo.add(jPanel9);
-        jPanel9.setBounds(40, 60, 471, 190);
-
-        pnlAcoplado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del acoplado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        pnlAcoplado.setLayout(null);
+        panelAcoplado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del acoplado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelAcoplado.setLayout(null);
 
         jLabel38.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel38.setText("Marca");
-        pnlAcoplado.add(jLabel38);
+        panelAcoplado.add(jLabel38);
         jLabel38.setBounds(60, 40, 50, 20);
 
-        pnlAcoplado.add(cmbMarcaAcoplado);
+        panelAcoplado.add(cmbMarcaAcoplado);
         cmbMarcaAcoplado.setBounds(100, 40, 130, 20);
 
         jLabel39.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel39.setText("Ejes");
-        pnlAcoplado.add(jLabel39);
+        panelAcoplado.add(jLabel39);
         jLabel39.setBounds(250, 40, 60, 20);
 
-        pnlAcoplado.add(cmbEjesAcoplado);
+        panelAcoplado.add(cmbEjesAcoplado);
         cmbEjesAcoplado.setBounds(290, 40, 90, 20);
 
         jLabel40.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel40.setText("Año de Compra");
-        pnlAcoplado.add(jLabel40);
+        panelAcoplado.add(jLabel40);
         jLabel40.setBounds(10, 70, 90, 20);
 
-        pnlAcoplado.add(cmbAnioAcoplado);
+        panelAcoplado.add(cmbAnioAcoplado);
         cmbAnioAcoplado.setBounds(100, 70, 100, 20);
 
         jLabel41.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel41.setText("Dominio");
-        pnlAcoplado.add(jLabel41);
+        panelAcoplado.add(jLabel41);
         jLabel41.setBounds(230, 70, 70, 20);
-        pnlAcoplado.add(txtDominioAcoplado);
+        panelAcoplado.add(txtDominioAcoplado);
         txtDominioAcoplado.setBounds(290, 70, 100, 20);
 
         jLabel42.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel42.setText("Serie");
-        pnlAcoplado.add(jLabel42);
+        panelAcoplado.add(jLabel42);
         jLabel42.setBounds(250, 100, 70, 20);
 
         txtTaraAcoplado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -968,12 +870,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 txtTaraAcopladoKeyTyped(evt);
             }
         });
-        pnlAcoplado.add(txtTaraAcoplado);
+        panelAcoplado.add(txtTaraAcoplado);
         txtTaraAcoplado.setBounds(100, 100, 100, 20);
 
         jLabel43.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel43.setText("Largo");
-        pnlAcoplado.add(jLabel43);
+        panelAcoplado.add(jLabel43);
         jLabel43.setBounds(60, 130, 40, 20);
 
         txtLargoAcplado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -981,29 +883,29 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 txtLargoAcpladoKeyTyped(evt);
             }
         });
-        pnlAcoplado.add(txtLargoAcplado);
+        panelAcoplado.add(txtLargoAcplado);
         txtLargoAcplado.setBounds(100, 130, 100, 20);
 
         jLabel44.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel44.setText("mts");
-        pnlAcoplado.add(jLabel44);
+        panelAcoplado.add(jLabel44);
         jLabel44.setBounds(390, 130, 30, 20);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel45.setText("Ancho");
-        pnlAcoplado.add(jLabel45);
+        panelAcoplado.add(jLabel45);
         jLabel45.setBounds(250, 130, 50, 20);
-        pnlAcoplado.add(txtSerieAcoplado);
+        panelAcoplado.add(txtSerieAcoplado);
         txtSerieAcoplado.setBounds(290, 100, 100, 20);
 
         jLabel46.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel46.setText("mts");
-        pnlAcoplado.add(jLabel46);
+        panelAcoplado.add(jLabel46);
         jLabel46.setBounds(200, 130, 30, 20);
 
         jLabel47.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel47.setText("Tara");
-        pnlAcoplado.add(jLabel47);
+        panelAcoplado.add(jLabel47);
         jLabel47.setBounds(70, 100, 50, 20);
 
         txtAnchoAcoplado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1011,11 +913,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 txtAnchoAcopladoKeyTyped(evt);
             }
         });
-        pnlAcoplado.add(txtAnchoAcoplado);
+        panelAcoplado.add(txtAnchoAcoplado);
         txtAnchoAcoplado.setBounds(290, 130, 100, 20);
 
-        panelVehiculo.add(pnlAcoplado);
-        pnlAcoplado.setBounds(517, 60, 418, 190);
+        panelVehiculo.add(panelAcoplado);
+        panelAcoplado.setBounds(517, 60, 418, 190);
 
         jPanel11.setLayout(null);
 
@@ -1124,6 +1026,105 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelVehiculo.add(btnEditarVehiculo);
         btnEditarVehiculo.setBounds(800, 340, 40, 30);
 
+        panelCamion1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del camión", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelCamion1.setLayout(null);
+
+        jLabel49.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel49.setText("Marca");
+        panelCamion1.add(jLabel49);
+        jLabel49.setBounds(50, 40, 50, 20);
+
+        panelCamion1.add(cmbModeloCamion);
+        cmbModeloCamion.setBounds(330, 40, 130, 20);
+
+        jLabel50.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel50.setText("Modelo");
+        panelCamion1.add(jLabel50);
+        jLabel50.setBounds(280, 40, 60, 20);
+
+        panelCamion1.add(cmbMarcaCamion);
+        cmbMarcaCamion.setBounds(100, 40, 130, 20);
+
+        jLabel51.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel51.setText("Año de Compra");
+        panelCamion1.add(jLabel51);
+        jLabel51.setBounds(10, 70, 90, 20);
+
+        panelCamion1.add(cmbAnioCamion);
+        cmbAnioCamion.setBounds(100, 70, 100, 20);
+
+        jLabel52.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel52.setText("Kilómetros");
+        panelCamion1.add(jLabel52);
+        jLabel52.setBounds(260, 70, 80, 20);
+
+        jLabel53.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel53.setText("Dominio");
+        panelCamion1.add(jLabel53);
+        jLabel53.setBounds(50, 100, 60, 20);
+
+        txtKilometros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtKilometrosKeyTyped(evt);
+            }
+        });
+        panelCamion1.add(txtKilometros);
+        txtKilometros.setBounds(330, 70, 100, 20);
+
+        jLabel54.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel54.setText("Largo");
+        panelCamion1.add(jLabel54);
+        jLabel54.setBounds(60, 130, 40, 20);
+        panelCamion1.add(txtDominioCamion);
+        txtDominioCamion.setBounds(100, 100, 100, 20);
+
+        jLabel55.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel55.setText("Ancho");
+        panelCamion1.add(jLabel55);
+        jLabel55.setBounds(280, 130, 60, 20);
+
+        jLabel56.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel56.setText("Tara");
+        panelCamion1.add(jLabel56);
+        jLabel56.setBounds(290, 100, 60, 20);
+
+        txtLargoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLargoCamionKeyTyped(evt);
+            }
+        });
+        panelCamion1.add(txtLargoCamion);
+        txtLargoCamion.setBounds(100, 130, 100, 20);
+
+        txtTaraCamion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTaraCamionKeyTyped(evt);
+            }
+        });
+        panelCamion1.add(txtTaraCamion);
+        txtTaraCamion.setBounds(330, 100, 100, 20);
+
+        txtAnchoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnchoCamionKeyTyped(evt);
+            }
+        });
+        panelCamion1.add(txtAnchoCamion);
+        txtAnchoCamion.setBounds(330, 130, 100, 20);
+
+        jLabel57.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel57.setText("mts");
+        panelCamion1.add(jLabel57);
+        jLabel57.setBounds(430, 130, 30, 20);
+
+        jLabel58.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel58.setText("mts");
+        panelCamion1.add(jLabel58);
+        jLabel58.setBounds(200, 130, 30, 20);
+
+        panelVehiculo.add(panelCamion1);
+        panelCamion1.setBounds(40, 60, 471, 190);
+
         jTabbedPane1.addTab("Vehículo", panelVehiculo);
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
@@ -1141,7 +1142,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 503, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
                 .addComponent(labelusuario)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1150,7 +1151,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 .addGap(95, 95, 95))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1168,8 +1169,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                             .addComponent(jLabel4)))
                     .addComponent(jLabel48)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(41, 41, 41)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1204,20 +1205,18 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(333, 333, 333)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEmitirFicha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(333, 333, 333)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmitirFicha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1387,7 +1386,7 @@ private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent ev
        panelDatosP.setVisible(false);
        panelTabla.setVisible(true);
        jScrollPane4.setVisible(true);
-       tblModificar.setVisible(true);
+       tblModificaT.setVisible(true);
        for(int i=0;i<panelContratacion.getComponents().length;i++){
            panelContratacion.getComponent(i).setEnabled(false);
        }
@@ -1542,54 +1541,6 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
       }
 }//GEN-LAST:event_txtCUILKeyTyped
 
-private void txtLargoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLargoCamionKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtLargoCamionKeyTyped
-
-private void txtKilometrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrosKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtKilometrosKeyTyped
-
-private void txtTaraCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraCamionKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtTaraCamionKeyTyped
-
-private void txtAnchoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnchoCamionKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtAnchoCamionKeyTyped
-
 private void txtTaraAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraAcopladoKeyTyped
     char caracter = evt.getKeyChar();
 
@@ -1629,6 +1580,22 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
+
+    private void txtKilometrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrosKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKilometrosKeyTyped
+
+    private void txtLargoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLargoCamionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLargoCamionKeyTyped
+
+    private void txtTaraCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraCamionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTaraCamionKeyTyped
+
+    private void txtAnchoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnchoCamionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnchoCamionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
@@ -1689,17 +1656,7 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -1712,7 +1669,17 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1726,23 +1693,23 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelusuario;
+    private javax.swing.JPanel panelAcoplado;
     private javax.swing.JPanel panelBotonesD;
     private javax.swing.JPanel panelBotonesI;
+    private javax.swing.JPanel panelCamion1;
     private javax.swing.JPanel panelContratacion;
     private javax.swing.JPanel panelDatosP;
     private javax.swing.JPanel panelDatosU;
     private javax.swing.JPanel panelTabla;
     private javax.swing.JPanel panelTransportista;
     private javax.swing.JPanel panelVehiculo;
-    private javax.swing.JPanel pnlAcoplado;
-    private javax.swing.JTable tblModificar;
+    private javax.swing.JTable tblModificaT;
     private javax.swing.JScrollPane tblPrueba;
     private javax.swing.JTable tblTelefono;
     private javax.swing.JTable tblVehiculo;
