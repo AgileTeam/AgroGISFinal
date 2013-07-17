@@ -17,6 +17,7 @@ import Clases_Modulo_Transporte.EstacionDeServicio;
 import Clases_Modulo_Transporte.ProveedorCombustible;
 import Clases_Modulo_Transporte.TipoTelefono;
 import Gestores_Vista.gestorRegistrarEstacionServicio;
+import Gestores_Vista.gestorRegistrarTaller;
 import Gestores_Vista.gestorRegistroTransportista;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -27,6 +28,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +42,7 @@ public class frmRegistrarEstacionServicio extends javax.swing.JInternalFrame {
 gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio();
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
+gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
@@ -560,6 +563,8 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    int campo = gTaller.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum);
+    if(campo == 0){
     boolean mail = gRegistro.isEmail(txtEmail.getText());
     System.out.println(mail);
     if(mail==true){
@@ -582,9 +587,14 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblEstacion.setModel(modeloTabla);
+    txtRazonSocial.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtCUIT.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtNum.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
     else{
         JOptionPane.showMessageDialog(null, "Ingrese un email valido");
+    }
     }
     }//GEN-LAST:event_btnNuevoActionPerformed
 

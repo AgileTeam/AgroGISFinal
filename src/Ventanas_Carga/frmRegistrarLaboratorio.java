@@ -16,6 +16,7 @@ import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Transporte.Domicilio;
 import Clases_Modulo_Transporte.Especialidad;
 import Clases_Modulo_Transporte.TipoTelefono;
+import Gestores_Clases.gestorEspecialidadLaboratorio;
 import Gestores_Vista.gestorRegistroLaboratorio;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmRegistrarLaboratorio extends javax.swing.JInternalFrame {
 gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
+gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
     /** Creates new form frmRegistrarLaboratorio */
     public frmRegistrarLaboratorio() {
         initComponents();
@@ -299,6 +302,11 @@ gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
         btnAgregarLab.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregarLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarLab.setText("Agregar");
+        btnAgregarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLabActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -522,8 +530,14 @@ private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_txtTelefonoKeyTyped
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+}//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAgregarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLabActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblLaboratorio.getModel();
     GestorHibernate gestorH = new GestorHibernate();
+    int campo = gestorE.campoObligatorio(txtRazonSocial, txtCalle);
+    if(campo==0){
     Object fila[]= {txtRazonSocial.getText(), cmbEspecialidad.getSelectedItem(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblLaboratorio.setModel(modeloTabla);
@@ -538,7 +552,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     domicilio.setBarrio((Barrio)cmbBarrio.getSelectedItem());
     laboratorio.setDomicilio(domicilio);
     gestorH.guardarObjeto(laboratorio);
-}//GEN-LAST:event_btnGuardarActionPerformed
+    txtRazonSocial.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
+    }//GEN-LAST:event_btnAgregarLabActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarBarrio;

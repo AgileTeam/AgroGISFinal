@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -488,6 +489,8 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
       Double total=0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
+      int campo = gRegistro.campoObligatorio(txtImporteTotal, txtResponsable, txtNumComprobante);
+      if(campo==0){
       Object fila []= {calendarioReparacion.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),cmbReparacion.getSelectedItem(),txtImporteTotal.getText()};
       modeloT.addRow(fila);
       tblDetalleRep.setModel(modeloT);
@@ -495,6 +498,10 @@ GestorHibernate gestorH = new GestorHibernate();
            total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
            txtTotal.setText(total.toString());
        }
+      txtImporteTotal.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtResponsable.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtNumComprobante.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed

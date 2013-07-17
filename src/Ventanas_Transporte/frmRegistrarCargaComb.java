@@ -7,6 +7,7 @@ package Ventanas_Transporte;
 import Clases_Modulo_Transporte.*;
 import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarCargaComb;
+import Gestores_Vista.gestorRegistrarTaller;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarCargaComb extends javax.swing.JInternalFrame {
 gestorRegistrarCargaComb gRegistro = new gestorRegistrarCargaComb();
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
 Double total;
     /**
      * Creates new form frmRegistrarCargaComb
@@ -449,7 +451,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,6 +528,8 @@ Double total;
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+      int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtPrecioLitro);
+      if(campo==0){
       Object fila []= {calendarioFU.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),txtOperacion.getText(),cmbProducto.getSelectedItem(),txtImporteTotal.getText()};
       modeloT.addRow(fila);
       tblDetalleCarga.setModel(modeloT);
@@ -533,6 +537,11 @@ Double total;
            total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
            txtTotal.setText(total.toString());
        }
+      txtLitrosCargados.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtPrecioLitro.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtResponsable.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtNumComprobante.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtPrecioLitroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioLitroKeyReleased

@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -580,6 +581,8 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
+    int campo = gestorT.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum);
+    if(campo == 0){        
     boolean mail = gRegistro.isEmail(txtEmail.getText());
     System.out.println(mail);
     if(mail==true){
@@ -608,9 +611,16 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblTaller.setModel(modeloTabla);
+    txtRazonSocial.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtCUIT.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtNum.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    
     }
      else{
         JOptionPane.showMessageDialog(null, "Ingrese un email valido");
+    }
+    
     }
     }//GEN-LAST:event_btnNuevoTallerActionPerformed
 

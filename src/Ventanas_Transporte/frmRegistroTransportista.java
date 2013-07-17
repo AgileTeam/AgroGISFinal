@@ -1217,7 +1217,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1237,6 +1237,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtDominioCamion, txtTaraCamion);
+    if(campo==0){
     gestorBitacora gestorB = new gestorBitacora();
     boolean cuit = gRegistro.validarCuit(txtCUIL.getText());
     if(cuit==true){    
@@ -1278,7 +1280,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     } else{
         JOptionPane.showMessageDialog(null, "El CUIT ingresado no es valido");
     }
-    
+    }
+        
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

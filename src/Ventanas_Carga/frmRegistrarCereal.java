@@ -13,6 +13,7 @@ package Ventanas_Carga;
 import Clases_Modulo_Carga.CaracteristicasCereal;
 import Clases_Modulo_Carga.*;
 import Gestores_Vista.gestorRegistrarCereal;
+import Gestores_Vista.gestorRegistrarEnvioAlTaller;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarCereal extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistrarCereal gestorR = new gestorRegistrarCereal();
+gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
     /** Creates new form frmRegistrarCereal */
     public frmRegistrarCereal() {
         initComponents();
@@ -420,9 +423,15 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        DefaultTableModel modeloT = (DefaultTableModel) tblCaracteristica.getModel();
+       int campo = gestorE.campoObligatorio(txtNombreCereal, txtValorDesde, txtValorHasta);
+       if(campo==0){
        Object fila[]={cmbCaracteristica.getSelectedItem(), txtValorDesde.getText(), txtValorHasta.getText()};
        modeloT.addRow(fila);
        tblCaracteristica.setModel(modeloT);
+       txtNombreCereal.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+       txtValorDesde.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+       txtValorHasta.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLocalActionPerformed

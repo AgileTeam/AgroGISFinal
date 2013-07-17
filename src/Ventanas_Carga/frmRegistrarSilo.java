@@ -11,6 +11,7 @@
 package Ventanas_Carga;
 
 import Clases_Modulo_Carga.Silo;
+import Gestores_Clases.gestorEspecialidadLaboratorio;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Gestores_Vista.gestorRegistrarSilo;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableCellRenderer;
 
 
@@ -29,6 +31,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class frmRegistrarSilo extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
+gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
     /** Creates new form frmRegistrarSilo */
     public frmRegistrarSilo() {
         
@@ -298,6 +301,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,12 +354,11 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,9 +412,15 @@ char caracter = evt.getKeyChar();
 }//GEN-LAST:event_txtDiametroKeyTyped
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    Silo silo = new Silo();
+   
+}//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     GestorHibernate gestorH= new GestorHibernate();
     DefaultTableModel modeloTabla = (DefaultTableModel) tblSilo.getModel();
+    int campo = gestorE.campoObligatorio(txtNumSilo, txtCapacidad);
+    if(campo == 0){
+    Silo silo = new Silo();
     silo.setEstado("Disponible");
     silo.setAlto(Double.parseDouble(txtAlto.getText()));
     silo.setCapacidad(txtCapacidad.getText());
@@ -417,7 +430,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     Object fila[]={txtNumSilo.getText(), areaDescripcion.getText()};
     modeloTabla.addRow(fila);
     tblSilo.setModel(modeloTabla);
-}//GEN-LAST:event_btnGuardarActionPerformed
+    txtCapacidad.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtNumSilo.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescripcion;
