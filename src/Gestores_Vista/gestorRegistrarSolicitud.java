@@ -8,12 +8,9 @@ import Clases_Modulo_Carga.*;
 import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Productor;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
 import java.util.Iterator;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -239,5 +236,18 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
              }
          }
      } 
+       
+       public int campoObligatorio(JTextField texto1, JTextField texto2){
+         int campo = 0;   
+         if(texto1.getText().equalsIgnoreCase("") || texto2.getText().equalsIgnoreCase("")){
+                texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+         if(campo == 1){
+            JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+         }
+         return campo;
+     }    
        
 }
