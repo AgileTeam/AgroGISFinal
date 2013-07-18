@@ -103,7 +103,6 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        btnCancelar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -111,7 +110,8 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelContenedor = new javax.swing.JPanel();
+        panelDatosC = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombreCereal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -129,7 +129,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         jLabel15 = new javax.swing.JLabel();
         cmbMesInicioSiembra = new javax.swing.JComboBox();
         cmbMesFinSiembra = new javax.swing.JComboBox();
-        jPanel3 = new javax.swing.JPanel();
+        panelCaracteristicas = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         cmbCaracteristica = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
@@ -140,8 +140,10 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         tblCaracteristica = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
         btnEliminarLocal = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -158,14 +160,6 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnCancelar.setText("Salir");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         jPanel4.setLayout(null);
 
@@ -192,12 +186,14 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         jPanel4.add(jLabel13);
         jLabel13.setBounds(640, 0, 30, 30);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel1.setLayout(null);
+        panelContenedor.setLayout(null);
+
+        panelDatosC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelDatosC.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1);
+        panelDatosC.add(jLabel1);
         jLabel1.setBounds(60, 20, 80, 20);
 
         txtNombreCereal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -205,96 +201,99 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 txtNombreCerealKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNombreCereal);
+        panelDatosC.add(txtNombreCereal);
         txtNombreCereal.setBounds(110, 20, 160, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Descripción");
-        jPanel1.add(jLabel2);
+        panelDatosC.add(jLabel2);
         jLabel2.setBounds(40, 90, 80, 15);
 
         areaCereal.setColumns(20);
         areaCereal.setRows(5);
         jScrollPane1.setViewportView(areaCereal);
 
-        jPanel1.add(jScrollPane1);
+        panelDatosC.add(jScrollPane1);
         jScrollPane1.setBounds(110, 50, 450, 96);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Tipo Temporada");
-        jPanel1.add(jLabel3);
+        panelDatosC.add(jLabel3);
         jLabel3.setBounds(70, 160, 110, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Mes Comienzo");
-        jPanel1.add(jLabel4);
+        panelDatosC.add(jLabel4);
         jLabel4.setBounds(370, 190, 120, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Mes Fin");
-        jPanel1.add(jLabel5);
+        panelDatosC.add(jLabel5);
         jLabel5.setBounds(410, 220, 90, 20);
 
         labelCosecha.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         labelCosecha.setText("Cosecha");
-        jPanel1.add(labelCosecha);
+        panelDatosC.add(labelCosecha);
         labelCosecha.setBounds(170, 160, 90, 20);
 
         labelSiembra.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         labelSiembra.setText("Siembra");
-        jPanel1.add(labelSiembra);
+        panelDatosC.add(labelSiembra);
         labelSiembra.setBounds(460, 160, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Tipo Temporada");
-        jPanel1.add(jLabel8);
+        panelDatosC.add(jLabel8);
         jLabel8.setBounds(360, 160, 110, 20);
 
-        jPanel1.add(cmbMesInicioCosecha);
+        panelDatosC.add(cmbMesInicioCosecha);
         cmbMesInicioCosecha.setBounds(170, 190, 100, 20);
 
-        jPanel1.add(cmbMesFinCosecha);
+        panelDatosC.add(cmbMesFinCosecha);
         cmbMesFinCosecha.setBounds(170, 220, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setText("Mes Comienzo");
-        jPanel1.add(jLabel9);
+        panelDatosC.add(jLabel9);
         jLabel9.setBounds(80, 190, 90, 20);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setText("Mes Fin");
-        jPanel1.add(jLabel15);
+        panelDatosC.add(jLabel15);
         jLabel15.setBounds(120, 220, 50, 20);
 
-        jPanel1.add(cmbMesInicioSiembra);
+        panelDatosC.add(cmbMesInicioSiembra);
         cmbMesInicioSiembra.setBounds(460, 190, 100, 20);
 
-        jPanel1.add(cmbMesFinSiembra);
+        panelDatosC.add(cmbMesFinSiembra);
         cmbMesFinSiembra.setBounds(460, 220, 100, 20);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Características Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel3.setLayout(null);
+        panelContenedor.add(panelDatosC);
+        panelDatosC.setBounds(50, 10, 622, 257);
+
+        panelCaracteristicas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Características Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelCaracteristicas.setLayout(null);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel17.setText("Característica");
-        jPanel3.add(jLabel17);
+        panelCaracteristicas.add(jLabel17);
         jLabel17.setBounds(20, 30, 92, 20);
 
-        jPanel3.add(cmbCaracteristica);
+        panelCaracteristicas.add(cmbCaracteristica);
         cmbCaracteristica.setBounds(100, 30, 180, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Valor Desde");
-        jPanel3.add(jLabel6);
+        panelCaracteristicas.add(jLabel6);
         jLabel6.setBounds(300, 30, 90, 20);
-        jPanel3.add(txtValorHasta);
+        panelCaracteristicas.add(txtValorHasta);
         txtValorHasta.setBounds(550, 30, 90, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Valor Hasta");
-        jPanel3.add(jLabel7);
+        panelCaracteristicas.add(jLabel7);
         jLabel7.setBounds(480, 30, 90, 20);
-        jPanel3.add(txtValorDesde);
+        panelCaracteristicas.add(txtValorDesde);
         txtValorDesde.setBounds(370, 30, 90, 20);
 
         tblCaracteristica.setModel(new javax.swing.table.DefaultTableModel(
@@ -307,7 +306,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         ));
         jScrollPane2.setViewportView(tblCaracteristica);
 
-        jPanel3.add(jScrollPane2);
+        panelCaracteristicas.add(jScrollPane2);
         jScrollPane2.setBounds(40, 110, 590, 110);
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -317,7 +316,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAgregar);
+        panelCaracteristicas.add(btnAgregar);
         btnAgregar.setBounds(280, 70, 100, 30);
 
         btnEliminarLocal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
@@ -326,16 +325,13 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 btnEliminarLocalActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEliminarLocal);
+        panelCaracteristicas.add(btnEliminarLocal);
         btnEliminarLocal.setBounds(640, 150, 40, 30);
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
+        panelContenedor.add(panelCaracteristicas);
+        panelCaracteristicas.setBounds(10, 280, 702, 232);
+
+        jPanel6.setLayout(null);
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -344,29 +340,42 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 btnNuevoActionPerformed(evt);
             }
         });
+        jPanel6.add(btnNuevo);
+        btnNuevo.setBounds(10, 10, 100, 30);
+
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnGuardar);
+        btnGuardar.setBounds(120, 10, 100, 30);
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnCancelar.setText("Salir");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnCancelar);
+        btnCancelar.setBounds(230, 10, 100, 30);
+
+        panelContenedor.add(jPanel6);
+        jPanel6.setBounds(190, 530, 340, 41);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -379,15 +388,8 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 .addGap(6, 6, 6)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -408,11 +410,6 @@ private void txtNombreCerealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
            evt.consume();
               }
 }//GEN-LAST:event_txtNombreCerealKeyTyped
-
-private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    gestorR.guardarCaracteristicas(tblCaracteristica, txtNombreCereal, labelCosecha, labelSiembra, cmbMesInicioCosecha, cmbMesFinCosecha, cmbMesInicioSiembra, cmbMesFinSiembra);
-    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");  
-}//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
        txtNombreCereal.setText("");
@@ -438,6 +435,11 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         DefaultTableModel modeloT = (DefaultTableModel) tblCaracteristica.getModel();
         modeloT.removeRow(tblCaracteristica.getSelectedRow());
     }//GEN-LAST:event_btnEliminarLocalActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        gestorR.guardarCaracteristicas(tblCaracteristica, txtNombreCereal, labelCosecha, labelSiembra, cmbMesInicioCosecha, cmbMesFinCosecha, cmbMesInicioSiembra, cmbMesFinSiembra);
+        JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaCereal;
@@ -465,15 +467,17 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCosecha;
     private javax.swing.JLabel labelSiembra;
     private javax.swing.JLabel labelusuario;
+    private javax.swing.JPanel panelCaracteristicas;
+    private javax.swing.JPanel panelContenedor;
+    private javax.swing.JPanel panelDatosC;
     private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
