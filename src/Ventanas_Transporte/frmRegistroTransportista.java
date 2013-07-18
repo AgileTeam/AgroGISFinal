@@ -55,7 +55,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jScrollPane4.setVisible(false);
         tblModificaT.setVisible(false);
         panelTransportista.setVisible(true);
-        panelVehiculo.setVisible(true);
+        
         
         for(int i=0;i<panelContratacion.getComponents().length;i++){
            panelContratacion.getComponent(i).setEnabled(true);
@@ -111,7 +111,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         txtHora.setText(formateadorHora.format(calendario.getTime()));
         
         
-        //redimensionar columnas de la tabla
+        //redimensionar columnas de las tabla
         tblVehiculo.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(1).setPreferredWidth(120);
         tblVehiculo.getColumnModel().getColumn(2).setPreferredWidth(120);
@@ -119,6 +119,10 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         tblVehiculo.getColumnModel().getColumn(4).setPreferredWidth(80);
         tblTelefono.getColumnModel().getColumn(0).setPreferredWidth(5);
         tblTelefono.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tblModificaT.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblModificaT.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblModificaT.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblModificaT.getColumnModel().getColumn(3).setPreferredWidth(50);
         
         //centrar cabecera jtable
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTelefono.getTableHeader().getDefaultRenderer();
@@ -645,7 +649,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
             },
             new String [] {
-                "Nº Documento", "Apellido y Nombre"
+                "Nº Documento", "Apellido y Nombre", "Modelo Vehículo", "Dominio Vehículo"
             }
         ));
         jScrollPane4.setViewportView(tblModificaT);

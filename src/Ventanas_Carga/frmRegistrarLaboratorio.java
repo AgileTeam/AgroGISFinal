@@ -41,6 +41,17 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
     /** Creates new form frmRegistrarLaboratorio */
     public frmRegistrarLaboratorio() {
         initComponents();
+        
+        panelEdicion.setVisible(false);
+        panelDatosL.setVisible(true);
+        jScrollPane2.setVisible(false);
+        tblEditar.setVisible(false);
+        panelContenedor.setVisible(true);
+        
+        for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
+         
         gLaboratorio.actualizarUsuario(labelusuario);
         cmbEspecialidad.setModel(gLaboratorio.rellenaComboEspecialidad());
         cmbTipoTel.setModel(gLaboratorio.rellenaComboTipoTelefono());
@@ -75,6 +86,8 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         //centrar cabecera jtable
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblLaboratorio.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer1 = (DefaultTableCellRenderer) tblEditar.getTableHeader().getDefaultRenderer();
+        renderer1.setHorizontalAlignment(0);
 
          
     //lineas para mejorar el aspecto de la pantalla    
@@ -132,7 +145,20 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         txtHora = new javax.swing.JTextField();
         labelusuario = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelContenedor = new javax.swing.JPanel();
+        panelAgregar = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLaboratorio = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        btnAgregarLab = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        panelEdicion = new javax.swing.JPanel();
+        btnAceptar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEditar = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        panelDatosL = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtRazonSocial = new javax.swing.JTextField();
         cmbEspecialidad = new javax.swing.JComboBox();
@@ -154,8 +180,6 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         txtTelefono = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnAgregarLab = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         btnAgregarDepto = new javax.swing.JButton();
@@ -163,12 +187,6 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         jPanel18 = new javax.swing.JPanel();
         btnAgregarProv = new javax.swing.JButton();
         btnAgregarLocal = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblLaboratorio = new javax.swing.JTable();
-        btnEliminar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -200,104 +218,29 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         jPanel2.add(jLabel14);
         jLabel14.setBounds(670, 0, 30, 30);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel1.setLayout(null);
+        panelContenedor.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setText("Especialidad");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(370, 30, 130, 20);
+        tblLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        txtRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtRazonSocialKeyTyped(evt);
+            },
+            new String [] {
+                "Nombre", "Especialidad", "Localidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jPanel1.add(txtRazonSocial);
-        txtRazonSocial.setBounds(90, 30, 210, 20);
+        tblLaboratorio.getTableHeader().setResizingAllowed(false);
+        tblLaboratorio.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblLaboratorio);
 
-        jPanel1.add(cmbEspecialidad);
-        cmbEspecialidad.setBounds(450, 30, 190, 20);
-
-        txtCalle.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCalleKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtCalle);
-        txtCalle.setBounds(90, 70, 250, 20);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Calle");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 70, 90, 20);
-        jPanel1.add(txtNum);
-        txtNum.setBounds(450, 70, 50, 20);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Número");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(400, 70, 110, 20);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Provincia");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 110, 90, 20);
-
-        jPanel1.add(cmbProvincia);
-        cmbProvincia.setBounds(90, 110, 200, 20);
-
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setText("Departamento");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(370, 110, 160, 20);
-
-        jPanel1.add(cmbDepartamento);
-        cmbDepartamento.setBounds(450, 110, 190, 20);
-
-        jPanel1.add(cmbLocalidad);
-        cmbLocalidad.setBounds(90, 150, 200, 20);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Localidad");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 150, 110, 20);
-
-        jPanel1.add(cmbBarrio);
-        cmbBarrio.setBounds(450, 150, 190, 20);
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Barrio");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(410, 150, 140, 20);
-
-        jPanel1.add(cmbTipoTel);
-        cmbTipoTel.setBounds(90, 190, 120, 20);
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Tipo Teléfono");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(10, 190, 90, 20);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel10.setText("Teléfono");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(400, 190, 90, 20);
-
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtTelefono);
-        txtTelefono.setBounds(450, 190, 150, 20);
-        jPanel1.add(txtEmail);
-        txtEmail.setBounds(90, 230, 240, 20);
-
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel17.setText("E-Mail");
-        jPanel1.add(jLabel17);
-        jLabel17.setBounds(50, 230, 70, 20);
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
 
         btnAgregarLab.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnAgregarLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -308,29 +251,207 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAgregarLab)
-                .addContainerGap(17, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelAgregarLayout = new javax.swing.GroupLayout(panelAgregar);
+        panelAgregar.setLayout(panelAgregarLayout);
+        panelAgregarLayout.setHorizontalGroup(
+            panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarLayout.createSequentialGroup()
+                .addGroup(panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAgregarLayout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(btnAgregarLab)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelAgregarLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panelAgregarLayout.setVerticalGroup(
+            panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAgregarLab, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(290, 260, 120, 40);
+        panelContenedor.add(panelAgregar);
+        panelAgregar.setBounds(80, 240, 570, 170);
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        panelContenedor.add(btnGuardar);
+        btnGuardar.setBounds(200, 420, 100, 30);
+
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        panelContenedor.add(btnSalir);
+        btnSalir.setBounds(420, 420, 100, 30);
+
+        panelEdicion.setLayout(null);
+
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        panelEdicion.add(btnAceptar);
+        btnAceptar.setBounds(630, 90, 49, 30);
+
+        tblEditar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Especialidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblEditar.getTableHeader().setResizingAllowed(false);
+        tblEditar.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblEditar);
+
+        panelEdicion.add(jScrollPane2);
+        jScrollPane2.setBounds(90, 50, 530, 120);
+
+        panelContenedor.add(panelEdicion);
+        panelEdicion.setBounds(10, -10, 710, 230);
+
+        btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        panelContenedor.add(btnEditar);
+        btnEditar.setBounds(310, 420, 100, 30);
+
+        panelDatosL.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelDatosL.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setText("Especialidad");
+        panelDatosL.add(jLabel1);
+        jLabel1.setBounds(360, 30, 130, 20);
+
+        txtRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRazonSocialKeyTyped(evt);
+            }
+        });
+        panelDatosL.add(txtRazonSocial);
+        txtRazonSocial.setBounds(90, 30, 210, 20);
+
+        panelDatosL.add(cmbEspecialidad);
+        cmbEspecialidad.setBounds(450, 30, 190, 20);
+
+        txtCalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCalleKeyTyped(evt);
+            }
+        });
+        panelDatosL.add(txtCalle);
+        txtCalle.setBounds(90, 60, 250, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Calle");
+        panelDatosL.add(jLabel3);
+        jLabel3.setBounds(50, 60, 90, 20);
+        panelDatosL.add(txtNum);
+        txtNum.setBounds(450, 60, 50, 20);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("Número");
+        panelDatosL.add(jLabel4);
+        jLabel4.setBounds(390, 60, 110, 20);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setText("Provincia");
+        panelDatosL.add(jLabel6);
+        jLabel6.setBounds(30, 90, 90, 20);
+
+        panelDatosL.add(cmbProvincia);
+        cmbProvincia.setBounds(90, 90, 200, 20);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setText("Departamento");
+        panelDatosL.add(jLabel7);
+        jLabel7.setBounds(360, 90, 160, 20);
+
+        panelDatosL.add(cmbDepartamento);
+        cmbDepartamento.setBounds(450, 90, 190, 20);
+
+        panelDatosL.add(cmbLocalidad);
+        cmbLocalidad.setBounds(90, 130, 200, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Localidad");
+        panelDatosL.add(jLabel5);
+        jLabel5.setBounds(30, 130, 110, 20);
+
+        panelDatosL.add(cmbBarrio);
+        cmbBarrio.setBounds(450, 130, 190, 20);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText("Barrio");
+        panelDatosL.add(jLabel8);
+        jLabel8.setBounds(410, 130, 140, 20);
+
+        panelDatosL.add(cmbTipoTel);
+        cmbTipoTel.setBounds(90, 160, 120, 20);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel9.setText("Tipo Teléfono");
+        panelDatosL.add(jLabel9);
+        jLabel9.setBounds(10, 160, 90, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setText("Teléfono");
+        panelDatosL.add(jLabel10);
+        jLabel10.setBounds(400, 160, 90, 20);
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+        panelDatosL.add(txtTelefono);
+        txtTelefono.setBounds(450, 160, 150, 20);
+        panelDatosL.add(txtEmail);
+        txtEmail.setBounds(90, 190, 240, 20);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setText("E-Mail");
+        panelDatosL.add(jLabel17);
+        jLabel17.setBounds(50, 190, 70, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2);
+        panelDatosL.add(jLabel2);
         jLabel2.setBounds(40, 30, 100, 20);
 
         btnAgregarDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -358,8 +479,8 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel17);
-        jPanel17.setBounds(600, 80, 100, 140);
+        panelDatosL.add(jPanel17);
+        jPanel17.setBounds(600, 60, 100, 140);
 
         btnAgregarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
 
@@ -386,72 +507,11 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel18);
-        jPanel18.setBounds(250, 80, 100, 140);
+        panelDatosL.add(jPanel18);
+        jPanel18.setBounds(250, 60, 100, 140);
 
-        tblLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Especialidad", "Localidad"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblLaboratorio.getTableHeader().setResizingAllowed(false);
-        tblLaboratorio.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblLaboratorio);
-
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-
-        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
+        panelContenedor.add(panelDatosL);
+        panelDatosL.setBounds(0, 0, 710, 240);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -459,34 +519,18 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)))
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -557,12 +601,26 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     }//GEN-LAST:event_btnAgregarLabActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        panelEdicion.setVisible(true);
+        panelDatosL.setVisible(false);
+        jScrollPane2.setVisible(true);
+        tblEditar.setVisible(true);
+        panelContenedor.setVisible(true);
+        
+        for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(false);
+         }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarBarrio;
     private javax.swing.JButton btnAgregarDepto;
     private javax.swing.JButton btnAgregarLab;
     private javax.swing.JButton btnAgregarLocal;
     private javax.swing.JButton btnAgregarProv;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
@@ -586,14 +644,17 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelusuario;
+    private javax.swing.JPanel panelAgregar;
+    private javax.swing.JPanel panelContenedor;
+    private javax.swing.JPanel panelDatosL;
+    private javax.swing.JPanel panelEdicion;
+    private javax.swing.JTable tblEditar;
     private javax.swing.JTable tblLaboratorio;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtEmail;
