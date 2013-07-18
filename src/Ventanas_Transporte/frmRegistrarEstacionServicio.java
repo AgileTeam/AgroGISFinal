@@ -487,6 +487,11 @@ gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
         jScrollPane2.setBounds(100, 20, 430, 150);
 
         btnAceptarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptarTransp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTranspActionPerformed(evt);
+            }
+        });
         panelEdicion.add(btnAceptarTransp);
         btnAceptarTransp.setBounds(540, 70, 49, 30);
 
@@ -514,7 +519,7 @@ gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -627,11 +632,40 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
         jScrollPane2.setVisible(true);
         tblEdicion.setVisible(true);
         panelEdicion.setVisible(true);
-        
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
+        DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+        Iterator ite = gestorH.listarClase(EstacionDeServicio.class).iterator();
+        while(ite.hasNext()){
+            EstacionDeServicio p = (EstacionDeServicio) ite.next();
+            Object fila[] = {p.getCUIT(),p.getRazonSocial()};
+            modeloT.addRow(fila);
+            tblEdicion.setModel(modeloT);
+        }
     }//GEN-LAST:event_btnEditarEstacionActionPerformed
+
+    private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+       int fila = tblEdicion.getSelectedRow();
+       Iterator ite = gestorH.listarClase(EstacionDeServicio.class).iterator();
+       while(ite.hasNext()){
+           EstacionDeServicio e = (EstacionDeServicio) ite.next();
+           if(e.getCUIT().equalsIgnoreCase(modeloT.getValueAt(fila,0).toString())){
+               txtRazonSocial.setText(e.getRazonSocial());
+               txtCUIT.setText(e.getCUIT());
+               txtTelefono.setText(e.getTelefono());
+               txtEmail.setText(e.getEmail());
+               txtCalle.setText(e.getDomicilio().getCalle());
+               txtNum.setText(String.valueOf(e.getDomicilio().getNumero()));
+               cmbBarrio.setSelectedItem(e.getDomicilio().getBarrio());
+               cmbLocalidad.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad());
+               cmbDepartamento.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento());
+               cmbProvincia.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
+               cmbProveedor.setSelectedItem(e.getProveedor());
+           }
+       }
+    }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
