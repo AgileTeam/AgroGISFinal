@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -483,13 +484,17 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     Iterator ite=gestorH.listarClase(Productor.class).iterator();
+    int campo = gRegistro.campoObligatorio(txtHas1, txtToneladas2);
+    if(campo==0){
     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
         if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
             gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal2.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2, calendarioViaje.getText());
        }
     }
-    
+    txtHas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
