@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -38,6 +39,8 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarLaboratorio extends javax.swing.JInternalFrame {
 gestorRegistroLaboratorio gLaboratorio = new gestorRegistroLaboratorio();
 gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
+GestorHibernate gestorH = new GestorHibernate();
+boolean editar=false;
     /** Creates new form frmRegistrarLaboratorio */
     public frmRegistrarLaboratorio() {
         initComponents();
@@ -310,6 +313,11 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
         panelEdicion.setLayout(null);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
         panelEdicion.add(btnAceptar);
         btnAceptar.setBounds(630, 90, 49, 30);
 
@@ -529,7 +537,7 @@ gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
                 .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -595,10 +603,15 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio)cmbBarrio.getSelectedItem());
     laboratorio.setDomicilio(domicilio);
-    gestorH.guardarObjeto(laboratorio);
+    if(editar==false){
+    gestorH.guardarObjeto(laboratorio);}
+    else{
+    gestorH.actualizarObjeto(laboratorio);
+    }
     txtRazonSocial.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
+    editar=false;
     }//GEN-LAST:event_btnAgregarLabActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -612,6 +625,28 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
            panelAgregar.getComponent(i).setEnabled(false);
          }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+      DefaultTableModel modeloT = (DefaultTableModel) tblEditar.getModel();
+       int fila = tblEditar.getSelectedRow();
+       Iterator ite = gestorH.listarClase(Laboratorio.class).iterator();
+       while(ite.hasNext()){
+           Laboratorio e = (Laboratorio) ite.next();
+           if(e.getRazonSocial().equalsIgnoreCase(modeloT.getValueAt(fila,0).toString())){
+               txtRazonSocial.setText(e.getRazonSocial());
+               txtTelefono.setText(e.getTelefono());
+               txtEmail.setText(e.geteMail());
+               txtCalle.setText(e.getDomicilio().getCalle());
+               txtNum.setText(String.valueOf(e.getDomicilio().getNumero()));
+               cmbBarrio.setSelectedItem(e.getDomicilio().getBarrio());
+               cmbLocalidad.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad());
+               cmbDepartamento.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento());
+               cmbProvincia.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
+               cmbEspecialidad.setSelectedItem(e.getEspecialidad());
+           }
+       }
+       editar=true;
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

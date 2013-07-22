@@ -27,6 +27,7 @@ public class frmRegistrarTallerReparacion extends javax.swing.JInternalFrame {
 gestorRegistrarTaller gestorT = new gestorRegistrarTaller();
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
+boolean editar=false;
     /**
      * Creates new form frmRegistrarTallerReparacion
      */
@@ -251,6 +252,11 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
         jScrollPane1.setBounds(90, 50, 452, 170);
 
         btnAceptarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTallerActionPerformed(evt);
+            }
+        });
         panelEdicion.add(btnAceptarTaller);
         btnAceptarTaller.setBounds(550, 110, 49, 30);
 
@@ -518,7 +524,7 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
         );
 
         pack();
@@ -592,7 +598,11 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
     taller.setDomicilio(domicilio);
+    if(editar==false){
     gestorH.guardarObjeto(taller);
+    }else{
+    gestorH.actualizarObjeto(taller);
+    }
     DefaultTableModel modeloTabla = (DefaultTableModel) tblTaller.getModel();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
@@ -608,6 +618,7 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     }
     
     }
+    editar=false;
     }//GEN-LAST:event_btnNuevoTallerActionPerformed
 
     private void btnEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTallerActionPerformed
@@ -653,6 +664,29 @@ gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
     private void btnGuardarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarTallerActionPerformed
         JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarTallerActionPerformed
+
+    private void btnAceptarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTallerActionPerformed
+       DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+       int fila = tblEdicion.getSelectedRow();
+       Iterator ite = gestorH.listarClase(TallerReparacion.class).iterator();
+       while(ite.hasNext()){
+           TallerReparacion e = (TallerReparacion) ite.next();
+           if(e.getCuit().equalsIgnoreCase(modeloT.getValueAt(fila,0).toString())){
+               txtRazonSocial.setText(e.getRazonSocial());
+               txtCUIT.setText(e.getCuit());
+               txtTelefono.setText(e.getNumeroTelefono());
+               txtEmail.setText(e.getEmail());
+               txtCalle.setText(e.getDomicilio().getCalle());
+               txtNum.setText(String.valueOf(e.getDomicilio().getNumero()));
+               cmbBarrio.setSelectedItem(e.getDomicilio().getBarrio());
+               cmbLocalidad.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad());
+               cmbDepartamento.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento());
+               cmbProvincia.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
+               cmbCondicion.setSelectedItem(e.getCondicionIva());
+           }
+       }
+       editar=true;
+    }//GEN-LAST:event_btnAceptarTallerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTaller;
