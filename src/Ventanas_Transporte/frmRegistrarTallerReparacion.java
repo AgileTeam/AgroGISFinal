@@ -643,6 +643,14 @@ boolean editar=false;
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
+        DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+        Iterator ite = gestorH.listarClase(TallerReparacion.class).iterator();
+        while(ite.hasNext()){
+            TallerReparacion p = (TallerReparacion) ite.next();
+            Object fila[] = {p.getCuit(),p.getRazonSocial()};
+            modeloT.addRow(fila);
+            tblEdicion.setModel(modeloT);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed

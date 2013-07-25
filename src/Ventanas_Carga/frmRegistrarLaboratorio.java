@@ -624,6 +624,14 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
+        DefaultTableModel modeloT = (DefaultTableModel) tblEditar.getModel();
+        Iterator ite = gestorH.listarClase(Laboratorio.class).iterator();
+        while(ite.hasNext()){
+            Laboratorio p = (Laboratorio) ite.next();
+            Object fila[] = {p.getRazonSocial(),p.getEspecialidad()};
+            modeloT.addRow(fila);
+            tblEditar.setModel(modeloT);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
