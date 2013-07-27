@@ -90,7 +90,7 @@ GestorHibernate gestorH = new GestorHibernate();
 //    int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //    int posY = (int) ((tamanioPantalla.height - alto) / 2);
     this.setSize(ancho, alto);
-    this.setLocation(360, 50);
+    this.setLocation(310, 30);
 
         cmbRol.setModel(gestorU.cargarRoles());
         
@@ -169,11 +169,11 @@ GestorHibernate gestorH = new GestorHibernate();
         labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelUsuario.setText("Usuario");
         jPanel3.add(labelUsuario);
-        labelUsuario.setBounds(490, 10, 50, 15);
+        labelUsuario.setBounds(600, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(540, 0, 30, 30);
+        jLabel12.setBounds(650, 0, 30, 30);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -415,7 +415,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
