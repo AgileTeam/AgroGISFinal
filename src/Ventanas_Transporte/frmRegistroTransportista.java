@@ -47,6 +47,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     gestorTipoTelefono gTipoTel = new gestorTipoTelefono();
     gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
     gestorRegistrarProductor gProductor = new gestorRegistrarProductor();
+    GestorHibernate gestorH = new GestorHibernate();
+    boolean editar=false;
     
     public frmRegistroTransportista() {
         initComponents();    
@@ -658,6 +660,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jScrollPane4.setBounds(60, 10, 580, 130);
 
         btnAceptarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptarTransp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTranspActionPerformed(evt);
+            }
+        });
         panelTabla.add(btnAceptarTransp);
         btnAceptarTransp.setBounds(650, 60, 49, 30);
 
@@ -824,7 +831,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         calendarioNacimiento.setBounds(130, 70, 120, 20);
 
         panelTransportista.add(panelDatosP);
-        panelDatosP.setBounds(130, 40, 730, 180);
+        panelDatosP.setBounds(130, 50, 730, 180);
 
         jTabbedPane1.addTab("Transportista", panelTransportista);
 
@@ -1403,6 +1410,14 @@ private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent ev
        for(int i=0;i<panelBotonesD.getComponents().length;i++){
            panelBotonesD.getComponent(i).setEnabled(false);
        }
+       DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
+       Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo v = (Vehiculo) ite.next();
+           Object fila[]= {v.getTransportista().getNumeroDocumento(), v.getTransportista().getApellido() + v.getTransportista().getNombre(), v.getModelo(),v.getDominio()};
+           modeloT.addRow(fila);
+           tblModificaT.setModel(modeloT);       
+       }
 }//GEN-LAST:event_btnBuscarTransportistaActionPerformed
 
 private void btnAgregarAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAcopladoActionPerformed
@@ -1600,6 +1615,42 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private void txtAnchoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnchoCamionKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnchoCamionKeyTyped
+
+    private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
+    DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
+       int fila = tblModificaT.getSelectedRow();
+       Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
+       while(ite.hasNext()){
+           Vehiculo e = (Vehiculo) ite.next();
+           if(e.getDominio().equalsIgnoreCase(modeloT.getValueAt(fila,3).toString())){
+               txtApellido.setText(e.getTransportista().getApellido());
+               txtNombres.setText(e.getTransportista().getNombre());
+               txtDocumento.setText(e.getTransportista().getNumeroDocumento());
+               cmbEstadoCivil.setSelectedItem(e.getTransportista().getEstadoCivil());
+               txtCalle.setText(e.getTransportista().getDomicilio().getCalle());
+               txtNumero.setText(String.valueOf(e.getTransportista().getDomicilio().getNumero()));
+               cmbBarrio.setSelectedItem(e.getTransportista().getDomicilio().getBarrio());
+               cmbLocalidad.setSelectedItem(e.getTransportista().getDomicilio().getBarrio().getLocalidad());
+               cmbDepto.setSelectedItem(e.getTransportista().getDomicilio().getBarrio().getLocalidad().getDepartamento());
+               cmbProvincia.setSelectedItem(e.getTransportista().getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
+               cmbTipoContratacion.setSelectedItem(e.getTransportista().getCondicionContratacion().toString());
+               txtCUIL.setText(e.getTransportista().getCuil());
+               calendarioIngreso.setText(e.getTransportista().getFechaIngreso());
+               calendarioFin.setText(e.getTransportista().getFechaSalida());
+               calendarioNacimiento.setText(e.getTransportista().getFechaNacimiento());
+               cmbMarcaCamion.setSelectedItem(e.getModelo().getMarca());
+               cmbModeloCamion.setSelectedItem(e.getModelo());
+               cmbAnioCamion.setSelectedItem(e.getAnioCompra());
+               txtKilometros.setText(String.valueOf(e.getCantidadKms()));
+               txtDominioCamion.setText(e.getDominio());
+               txtAnchoCamion.setText(String.valueOf(e.getAncho()));
+               txtLargoCamion.setText(String.valueOf(e.getLargo()));
+               txtTaraCamion.setText(String.valueOf(e.getTara()));
+               
+           }
+       }
+       editar=true;
+    }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;

@@ -30,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarUsuario extends javax.swing.JInternalFrame {
 gestorRegistrarUsuario gestorU = new gestorRegistrarUsuario();
 GestorHibernate gestorH = new GestorHibernate();
-
+boolean editar = false;
     /**
      * Creates new form frmRegistrarUsuario
      */
@@ -131,10 +131,8 @@ GestorHibernate gestorH = new GestorHibernate();
         btnAgregar = new javax.swing.JButton();
         panelDatosU = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
         cmbRol = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -304,32 +302,25 @@ GestorHibernate gestorH = new GestorHibernate();
         panelDatosU.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setText("Apellido");
+        jLabel1.setText("Apellido y Nombres");
         panelDatosU.add(jLabel1);
-        jLabel1.setBounds(40, 30, 80, 20);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Nombre");
-        panelDatosU.add(jLabel2);
-        jLabel2.setBounds(330, 30, 80, 20);
+        jLabel1.setBounds(40, 30, 120, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Rol");
         panelDatosU.add(jLabel4);
-        jLabel4.setBounds(60, 60, 70, 20);
+        jLabel4.setBounds(60, 70, 70, 20);
         panelDatosU.add(txtApellido);
-        txtApellido.setBounds(90, 30, 180, 20);
-        panelDatosU.add(txtNombre);
-        txtNombre.setBounds(390, 30, 190, 20);
+        txtApellido.setBounds(150, 30, 430, 20);
 
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panelDatosU.add(cmbRol);
-        cmbRol.setBounds(90, 60, 180, 20);
+        cmbRol.setBounds(90, 70, 180, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Descripcion");
         panelDatosU.add(jLabel5);
-        jLabel5.setBounds(320, 60, 90, 30);
+        jLabel5.setBounds(320, 70, 90, 20);
 
         areaDescrp.setColumns(20);
         areaDescrp.setRows(3);
@@ -349,7 +340,7 @@ GestorHibernate gestorH = new GestorHibernate();
 
             },
             new String [] {
-                "Apellido y Nombre", "Rol", "Nombre de Usuario"
+                "Apellido y Nombre", "Nombre de Usuario"
             }
         ));
         tblEdicion.getTableHeader().setResizingAllowed(false);
@@ -445,19 +436,23 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     int bandera1= gestorU.CampoObligatorio(txtApellido);
-    int bandera2= gestorU.CampoObligatorio(txtNombre);
     int bandera3= gestorU.CampoObligatorio(txtPass2);
     int bandera4= gestorU.CampoObligatorio(txtUsuario);
     int bandera5= gestorU.CampoObligatorio(txtpass1);
-    if(bandera1==0 && bandera2==0 && bandera3==0 && bandera4==0 && bandera5==0){
+    if(bandera1==0 && bandera3==0 && bandera4==0 && bandera5==0){
     if(txtpass1.getText().equalsIgnoreCase(txtPass2.getText())){
     DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
     Usuario usuario = new Usuario();
-    usuario.setPersona(txtApellido.getText() + "," + txtNombre.getText());
+    usuario.setPersona(txtApellido.getText());
     usuario.setNombreUsuario(txtUsuario.getText());
     usuario.setPassword(txtpass1.getText());
     usuario.setEstado(false);
+    if(editar==false){
     gestorH.guardarObjeto(usuario);
+    }
+    else{
+    gestorH.actualizarObjeto(usuario);
+    }
     for (int i=0; i<modeloT.getRowCount(); i++ ){
         Iterator ite = gestorH.listarClase(Rol.class).iterator();
         while(ite.hasNext()){
@@ -482,10 +477,31 @@ GestorHibernate gestorH = new GestorHibernate();
     else {
     JOptionPane.showMessageDialog(null, "Campo Obligatorio");
     }
+    editar = false;
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+     DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+     DefaultTableModel modeloTabla = (DefaultTableModel) tblRoles.getModel();
+       int fila = tblEdicion.getSelectedRow();
+       Iterator ite = gestorH.listarClase(Usuario.class).iterator();
+       while(ite.hasNext()){
+           Usuario e = (Usuario) ite.next();
+           if(e.getNombreUsuario().equalsIgnoreCase(modeloT.getValueAt(fila,1).toString())){
+               txtApellido.setText(e.getPersona());
+               txtUsuario.setText(e.getNombreUsuario());
+               Iterator ite1 = gestorH.listarClase(UsuarioPorRol.class).iterator();
+               while(ite1.hasNext()){
+                   UsuarioPorRol u = (UsuarioPorRol) ite1.next();
+                   if(u.getUsuario().getNombreUsuario().equalsIgnoreCase(e.getNombreUsuario())){
+                       Object fila1[] = {u.getRol()};
+                       modeloTabla.addRow(fila1);
+                       tblRoles.setModel(modeloTabla);
+                   }
+               }
+           }
+       }
+       editar=true;
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -493,9 +509,7 @@ GestorHibernate gestorH = new GestorHibernate();
         panelDatosU.setVisible(false);
         jScrollPane3.setVisible(true);
         tblEdicion.setVisible(true);
-        panelContenedor.setVisible(true);
-        
-        
+        panelContenedor.setVisible(true);       
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
@@ -503,6 +517,14 @@ GestorHibernate gestorH = new GestorHibernate();
         for(int i=0;i<panelSesion.getComponents().length;i++){
            panelSesion.getComponent(i).setEnabled(false);
          }
+        DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
+        Iterator ite = gestorH.listarClase(Usuario.class).iterator();
+        while(ite.hasNext()){
+            Usuario p = (Usuario) ite.next();
+            Object fila[] = {p.getPersona(),p.getNombreUsuario()};
+            modeloT.addRow(fila);
+            tblEdicion.setModel(modeloT);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -518,7 +540,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -541,7 +562,6 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass2;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JPasswordField txtpass1;

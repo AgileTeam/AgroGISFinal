@@ -40,7 +40,7 @@
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="panelContenedor" pref="467" max="32767" attributes="0"/>
+              <Component id="panelContenedor" pref="475" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -273,6 +273,9 @@
                   <Image iconType="3" name="/Imagenes/Aceptar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="630" y="90" width="-1" height="30"/>

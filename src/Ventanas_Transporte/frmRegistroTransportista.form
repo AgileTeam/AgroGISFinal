@@ -823,6 +823,9 @@
                           <Image iconType="3" name="/Imagenes/Aceptar.png"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarTranspActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="650" y="60" width="-1" height="30"/>
@@ -834,7 +837,7 @@
                 <Container class="javax.swing.JPanel" name="panelDatosP">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="40" width="730" height="180"/>
+                      <AbsoluteConstraints x="130" y="50" width="730" height="180"/>
                     </Constraint>
                   </Constraints>
 

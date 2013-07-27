@@ -43,6 +43,7 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
 gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
+boolean editar=false;
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
@@ -611,7 +612,12 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
     estacion.setDomicilio(domicilio);
+    if(editar==false){
     gestorH.guardarObjeto(estacion);
+    }
+    else{
+    gestorH.actualizarObjeto(estacion);
+    }
     DefaultTableModel modeloTabla = (DefaultTableModel) tblEstacion.getModel();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
@@ -625,6 +631,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(null, "Ingrese un email valido");
     }
     }
+    editar=false;
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEditarEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstacionActionPerformed
@@ -665,6 +672,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
                cmbProveedor.setSelectedItem(e.getProveedor());
            }
        }
+       editar=true;
     }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
