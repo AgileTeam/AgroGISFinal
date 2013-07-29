@@ -31,7 +31,8 @@ private Vehiculo vehiculo;
     private double largo;
     private double tara;
     private String estado;
-
+    private String ejes;
+    private String serie;
     /**
      * @return the idAcoplado
      */
@@ -158,6 +159,34 @@ private Vehiculo vehiculo;
      */
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    /**
+     * @return the ejes
+     */
+    public String getEjes() {
+        return ejes;
+    }
+
+    /**
+     * @param ejes the ejes to set
+     */
+    public void setEjes(String ejes) {
+        this.ejes = ejes;
+    }
+
+    /**
+     * @return the serie
+     */
+    public String getSerie() {
+        return serie;
+    }
+
+    /**
+     * @param serie the serie to set
+     */
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
     
     
