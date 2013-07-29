@@ -48,23 +48,23 @@ GestorHibernate gestorH = new GestorHibernate();
         
         //items habilitados y deshabilitados para la reunion de avance
         ItemTransportista.setEnabled(true);
-        ItemVehiculo.setEnabled(false);
+        ItemVehiculo.setEnabled(true);
         ItemEstacion.setEnabled(true);
         ItemVerEstacion.setEnabled(true);
-        ItemVerTransp.setEnabled(false);
-        ItemVerVehiculo.setEnabled(false);
-        ItemVerTaller.setEnabled(false);
-        ItemDetalleConsumo.setEnabled(false);
-        MenuEliminarOrden.setEnabled(false);
-        ItemRegistroCarga.setEnabled(false);
-        ItemFichaPersonal.setEnabled(false);
-        ItemCargaCombustible.setEnabled(false);
+        ItemVerTransp.setEnabled(true);
+        ItemVerVehiculo.setEnabled(true);
+        ItemVerTaller.setEnabled(true);
+        ItemDetalleConsumo.setEnabled(true);
+        MenuEliminarOrden.setEnabled(true);
+        ItemRegistroCarga.setEnabled(true);
+        ItemFichaPersonal.setEnabled(true);
+        ItemCargaCombustible.setEnabled(true);
         menuModificarViaje.setEnabled(true);
         ItemNuevoLab.setEnabled(true);
         ItemNuevoSilo.setEnabled(true);
-        MenuVerCarga.setEnabled(false);
-        ItemResultadosLab.setEnabled(false);
-        ItemEnvioMuestras.setEnabled(false);
+        MenuVerCarga.setEnabled(true);
+        ItemResultadosLab.setEnabled(true);
+        ItemEnvioMuestras.setEnabled(true);
         ItemFichaPersonal.setEnabled(true);
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
