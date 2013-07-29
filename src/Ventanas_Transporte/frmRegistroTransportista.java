@@ -119,16 +119,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         tblVehiculo.getColumnModel().getColumn(2).setPreferredWidth(120);
         tblVehiculo.getColumnModel().getColumn(3).setPreferredWidth(100);
         tblVehiculo.getColumnModel().getColumn(4).setPreferredWidth(80);
-        tblTelefono.getColumnModel().getColumn(0).setPreferredWidth(5);
-        tblTelefono.getColumnModel().getColumn(1).setPreferredWidth(80);
         tblModificaT.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblModificaT.getColumnModel().getColumn(1).setPreferredWidth(100);
         tblModificaT.getColumnModel().getColumn(2).setPreferredWidth(100);
         tblModificaT.getColumnModel().getColumn(3).setPreferredWidth(50);
         
         //centrar cabecera jtable
-        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblTelefono.getTableHeader().getDefaultRenderer();
-        renderer.setHorizontalAlignment(0);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblVehiculo.getTableHeader().getDefaultRenderer();
         renderer2.setHorizontalAlignment(0);
         DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblModificaT.getTableHeader().getDefaultRenderer();
@@ -271,12 +267,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         cmbTipoTel = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblTelefono = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
-        btnEliminarTel = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        btnAgregarTel = new javax.swing.JButton();
         calendarioNacimiento = new datechooser.beans.DateChooserCombo();
         panelVehiculo = new javax.swing.JPanel();
         panelAcoplado = new javax.swing.JPanel();
@@ -755,29 +747,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelDatosP.add(txtTelefono);
         txtTelefono.setBounds(450, 100, 170, 20);
 
-        tblTelefono.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tipo Teléfono", "Número Teléfono"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblTelefono.getTableHeader().setResizingAllowed(false);
-        tblTelefono.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tblTelefono);
-
-        panelDatosP.add(jScrollPane2);
-        jScrollPane2.setBounds(210, 130, 320, 50);
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -792,37 +761,15 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelDatosP.add(jPanel7);
         jPanel7.setBounds(-20, -50, 700, 40);
 
-        btnEliminarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnEliminarTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarTelActionPerformed(evt);
-            }
-        });
-        panelDatosP.add(btnEliminarTel);
-        btnEliminarTel.setBounds(540, 140, 40, 30);
-
-        btnAgregarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTelActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(btnAgregarTel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 100, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnAgregarTel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+            .addGap(0, 70, Short.MAX_VALUE)
         );
 
         panelDatosP.add(jPanel10);
@@ -1253,7 +1200,6 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     boolean cuit = gRegistro.validarCuit(txtCUIL.getText());
     if(cuit==true){    
     if(tblVehiculo.getRowCount()!=0){
-    DefaultTableModel modelo = (DefaultTableModel) tblTelefono.getModel();
     GestorHibernate gestorH = new GestorHibernate();
     Transportista transportista= new Transportista();
 
@@ -1391,19 +1337,6 @@ private void btnEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {/
         }
     }
 }//GEN-LAST:event_btnEditarVehiculoActionPerformed
-
-private void btnAgregarTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTelActionPerformed
-    DefaultTableModel modeloTabla = (DefaultTableModel)tblTelefono.getModel();
-    Object fila[] = {cmbTipoTel.getSelectedItem(), txtTelefono.getText()};
-    modeloTabla.addRow(fila);
-    tblTelefono.setModel(modeloTabla);
-    txtTelefono.setText("");
-}//GEN-LAST:event_btnAgregarTelActionPerformed
-
-private void btnEliminarTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTelActionPerformed
-    DefaultTableModel modeloT = (DefaultTableModel) tblTelefono.getModel();
-    modeloT.removeRow(tblTelefono.getSelectedRow());
-}//GEN-LAST:event_btnEliminarTelActionPerformed
 
 private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTransportistaActionPerformed
        panelDatosP.setVisible(false);
@@ -1676,11 +1609,9 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JButton btnAgregarLocalidad;
     private javax.swing.JButton btnAgregarPais;
     private javax.swing.JButton btnAgregarProvincia;
-    private javax.swing.JButton btnAgregarTel;
     private javax.swing.JButton btnBuscarTransportista;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditarVehiculo;
-    private javax.swing.JButton btnEliminarTel;
     private javax.swing.JButton btnEliminarVehiculo;
     private javax.swing.JButton btnEmitirFicha;
     private javax.swing.JButton btnGuardar;
@@ -1763,7 +1694,6 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
@@ -1780,7 +1710,6 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JPanel panelVehiculo;
     private javax.swing.JTable tblModificaT;
     private javax.swing.JScrollPane tblPrueba;
-    private javax.swing.JTable tblTelefono;
     private javax.swing.JTable tblVehiculo;
     private javax.swing.JTextField txtAnchoAcoplado;
     private javax.swing.JTextField txtAnchoCamion;
