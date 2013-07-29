@@ -36,7 +36,7 @@ boolean editar = false;
      */
     public frmRegistrarUsuario() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelUsuario);
         panelEdicion.setVisible(false);
         panelDatosU.setVisible(true);
         jScrollPane3.setVisible(false);
