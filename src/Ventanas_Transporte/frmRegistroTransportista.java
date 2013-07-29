@@ -1362,7 +1362,6 @@ private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent 
 }//GEN-LAST:event_btnAgregarCamionAcopladoActionPerformed
 
 private void btnEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarVehiculoActionPerformed
-    if(buttonAcoplado.isSelected()==true){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     int fila= tblVehiculo.getSelectedRow();
     Vehiculo v= gRegistro.editar((String) modeloTabla.getValueAt(fila, 0));
@@ -1377,7 +1376,20 @@ private void btnEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {/
     Marca marca = mod.getMarca();
     cmbMarcaCamion.setSelectedItem(marca);
     modeloTabla.removeRow(tblVehiculo.getSelectedRow());
-   }
+    Iterator ite = gestorH.listarClase(Acoplado.class).iterator();
+    while(ite.hasNext()){
+        Acoplado a = (Acoplado) ite.next();
+        if(a.getVehiculo().getDominio().equalsIgnoreCase(v.getDominio())){
+            cmbMarcaAcoplado.setSelectedItem(a.getMarca());
+            cmbEjesAcoplado.setSelectedItem(a.getEjes());
+            cmbAnioAcoplado.setSelectedItem(a.getAnioCompra());
+            txtDominioAcoplado.setText(a.getDominio());
+            txtTaraAcoplado.setText(String.valueOf(a.getTara()));
+            txtSerieAcoplado.setText(a.getSerie());
+            txtLargoAcplado.setText(String.valueOf(a.getLargo()));
+            txtAnchoAcoplado.setText(String.valueOf(a.getAncho()));
+        }
+    }
 }//GEN-LAST:event_btnEditarVehiculoActionPerformed
 
 private void btnAgregarTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTelActionPerformed
@@ -1618,6 +1630,7 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
 
     private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
     DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
+    DefaultTableModel modeloV = (DefaultTableModel) tblVehiculo.getModel();
        int fila = tblModificaT.getSelectedRow();
        Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
        while(ite.hasNext()){
@@ -1638,14 +1651,15 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
                calendarioIngreso.setText(e.getTransportista().getFechaIngreso());
                calendarioFin.setText(e.getTransportista().getFechaSalida());
                calendarioNacimiento.setText(e.getTransportista().getFechaNacimiento());
-               cmbMarcaCamion.setSelectedItem(e.getModelo().getMarca());
-               cmbModeloCamion.setSelectedItem(e.getModelo());
-               cmbAnioCamion.setSelectedItem(e.getAnioCompra());
-               txtKilometros.setText(String.valueOf(e.getCantidadKms()));
-               txtDominioCamion.setText(e.getDominio());
-               txtAnchoCamion.setText(String.valueOf(e.getAncho()));
-               txtLargoCamion.setText(String.valueOf(e.getLargo()));
-               txtTaraCamion.setText(String.valueOf(e.getTara()));
+               Iterator ite1 = gestorH.listarClase(Acoplado.class).iterator();
+               while(ite1.hasNext()){
+                   Acoplado a = (Acoplado) ite1.next();
+                   if(a.getVehiculo().getDominio().equalsIgnoreCase(e.getDominio())){
+                       Object fila1[] = {e.getDominio(),e.getModelo().getMarca(),e.getModelo(),a.getDominio(),a.getSerie()};
+                       modeloV.addRow(fila1);
+                       tblVehiculo.setModel(modeloV);
+                   }
+               }
                
            }
        }
