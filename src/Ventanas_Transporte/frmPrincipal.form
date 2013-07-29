@@ -157,7 +157,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Especialidad Taller Reparacion"/>
+                    <Property name="text" type="java.lang.String" value="Especialidad Taller Reparaci&#xf3;n"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemEspTallerActionPerformed"/>
@@ -215,7 +215,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Vehiculo"/>
+                    <Property name="text" type="java.lang.String" value="Veh&#xed;culo"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVehiculoActionPerformed"/>
@@ -226,7 +226,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Taller de Reparacion"/>
+                    <Property name="text" type="java.lang.String" value="Taller de Reparaci&#xf3;n"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemTallerActionPerformed"/>
@@ -237,7 +237,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Estacion de Servicio"/>
+                    <Property name="text" type="java.lang.String" value="Estaci&#xf3;n de Servicio"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemEstacionActionPerformed"/>
@@ -269,7 +269,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Vehiculo"/>
+                    <Property name="text" type="java.lang.String" value="Veh&#xed;culo"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemVerTaller">
@@ -277,7 +277,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Taller de Reparacion"/>
+                    <Property name="text" type="java.lang.String" value="Taller de Reparaci&#xf3;n"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemVerEstacion">
@@ -285,7 +285,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Estacion de Servicio"/>
+                    <Property name="text" type="java.lang.String" value="Estaci&#xf3;n de Servicio"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
@@ -403,7 +403,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="12" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Envio a Taller"/>
+                        <Property name="text" type="java.lang.String" value="Env&#xed;o a Taller"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemEnvioTallerActionPerformed"/>

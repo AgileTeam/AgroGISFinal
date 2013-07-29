@@ -346,7 +346,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuInicioNuevo.add(ItemEspecialidad);
 
         itemEspTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemEspTaller.setText("Especialidad Taller Reparacion");
+        itemEspTaller.setText("Especialidad Taller Reparación");
         itemEspTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemEspTallerActionPerformed(evt);
@@ -385,7 +385,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuNuevoTransp.add(ItemTransportista);
 
         ItemVehiculo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemVehiculo.setText("Vehiculo");
+        ItemVehiculo.setText("Vehículo");
         ItemVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemVehiculoActionPerformed(evt);
@@ -394,7 +394,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuNuevoTransp.add(ItemVehiculo);
 
         ItemTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemTaller.setText("Taller de Reparacion");
+        ItemTaller.setText("Taller de Reparación");
         ItemTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemTallerActionPerformed(evt);
@@ -403,7 +403,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuNuevoTransp.add(ItemTaller);
 
         ItemEstacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemEstacion.setText("Estacion de Servicio");
+        ItemEstacion.setText("Estación de Servicio");
         ItemEstacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemEstacionActionPerformed(evt);
@@ -426,15 +426,15 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuVerTransp.add(ItemVerTransp);
 
         ItemVerVehiculo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemVerVehiculo.setText("Vehiculo");
+        ItemVerVehiculo.setText("Vehículo");
         MenuVerTransp.add(ItemVerVehiculo);
 
         ItemVerTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemVerTaller.setText("Taller de Reparacion");
+        ItemVerTaller.setText("Taller de Reparación");
         MenuVerTransp.add(ItemVerTaller);
 
         ItemVerEstacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemVerEstacion.setText("Estacion de Servicio");
+        ItemVerEstacion.setText("Estación de Servicio");
         MenuVerTransp.add(ItemVerEstacion);
         MenuVerTransp.add(jSeparator2);
 
@@ -517,7 +517,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuOrdenServicio.add(ItemCargaCombustible);
 
         ItemEnvioTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemEnvioTaller.setText("Envio a Taller");
+        ItemEnvioTaller.setText("Envío a Taller");
         ItemEnvioTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemEnvioTallerActionPerformed(evt);
