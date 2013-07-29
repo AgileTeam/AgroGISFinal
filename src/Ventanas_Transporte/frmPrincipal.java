@@ -346,7 +346,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuInicioNuevo.add(ItemEspecialidad);
 
         itemEspTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemEspTaller.setText("Especialidad Taller Reparacion");
+        itemEspTaller.setText("Especialidad Taller Reparación");
         itemEspTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemEspTallerActionPerformed(evt);
