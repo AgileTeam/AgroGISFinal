@@ -59,4 +59,8 @@ private long idEspecialidadLaboratorio;
         this.codigoEspecialidad = codigoEspecialidad;
     }
     
+    public String toString(){
+        return getNombreEspecialidad();
+    }
+    
 }

@@ -5,6 +5,7 @@
 package Ventanas_Carga;
 
 import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Cliente.Establecimiento;
 import Gestores_Vista.gestorRegistrarSolicitud;
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -292,6 +293,15 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
              txtProductor.setText(sol.getProductor().toString());
              txtCereal.setText(sol.getTipoCereal().toString());
              txtFechaSolicitud.setText(sol.getFechaSolicitud());
+             Iterator ite1 = gestorS.listarClase(Establecimiento.class).iterator();
+             while(ite1.hasNext()){
+                 Establecimiento e = (Establecimiento) ite1.next();
+                 if(e.getProductor().toString().equalsIgnoreCase(txtProductor.getText())){
+                      txtEstablecimiento.setText(e.getNombreEstablecimiento());
+                 }
+             }
+        
+             txtFechaEstimada.setText(sol.getFechaEstimadaViaje());
              
          }
      }
@@ -299,14 +309,18 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
     Iterator ite = gestorS.listarClase(SolicitudRetiro.class).iterator();
+    DefaultTableModel modeloT = (DefaultTableModel) tblSolicitudes.getModel();
     while(ite.hasNext()){
         SolicitudRetiro sol = (SolicitudRetiro) ite.next();
         if(sol.getNumeroSolicitud() == Long.parseLong(txtNumSolicitud5.getText())){
-            int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar el viaje?");
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar la solicitud?");
                     if (respuesta==0){
                          sol.setEstado("Cancelada");
                          gestorS.actualizarObjeto(sol);
                          txtEstadoSolicitud.setText(sol.getEstado());
+                         modeloT.setRowCount(0);
+                         tblSolicitudes.setModel(modeloT);
+                         gestorS.cargaTabla(tblSolicitudes);
                         }
            
             
