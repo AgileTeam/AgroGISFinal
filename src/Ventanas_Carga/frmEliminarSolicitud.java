@@ -161,7 +161,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Tipo Solicitud");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(220, 180, 120, 20);
+        jLabel2.setBounds(200, 180, 120, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Productor");
@@ -181,7 +181,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(440, 180, 80, 20);
+        jLabel6.setBounds(450, 180, 80, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Fecha Estimada de Viaje");
@@ -193,7 +193,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
         jPanel1.add(jLabel8);
         jLabel8.setBounds(10, 270, 120, 20);
         jPanel1.add(txtTipoSolicitud);
-        txtTipoSolicitud.setBounds(300, 180, 120, 20);
+        txtTipoSolicitud.setBounds(280, 180, 160, 20);
 
         btnAgregarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAgregarSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +266,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
