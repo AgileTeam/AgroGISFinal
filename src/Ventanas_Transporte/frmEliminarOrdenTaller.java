@@ -84,7 +84,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
-        
+        tblMotivo.setEnabled(false);
         tblTransportista.setEnabled(false);
       
     }
@@ -719,7 +719,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                     while (ite2.hasNext()) {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         //comparo el rango de fechas
-                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) {
+                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                             //Guardo el objeto orden en la tabla
                             gestorC.cargarTabla(tblReparacion, orden, carga);
                         }
@@ -739,21 +739,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
 
                         if (cmbOrden.getSelectedItem() == ">=") {
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero >= Integer.parseInt(txtOrdenRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbOrden.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbOrden.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero <= Integer.parseInt(txtOrdenRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (numero <= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
@@ -775,7 +775,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -797,21 +797,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
@@ -833,7 +833,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -862,19 +862,19 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
 
                         if (cmbOrden.getSelectedItem() == ">=") {
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If carga
                         }
                         if (cmbOrden.getSelectedItem() == "=") {
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If carga
                         }
                         if (cmbOrden.getSelectedItem() == "<=") {
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If carga
@@ -904,7 +904,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -932,21 +932,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
                         }
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             //Comparo que el importe para traer la orden correspondiente comparo el operador
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             }
@@ -975,7 +975,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                             //Comparo que el importe para traer la orden correspondiente
-                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                            if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                 //Guardo el objeto orden en la tabla
                                 gestorC.cargarTabla(tblReparacion, orden, carga);
                             } //Cierre If Carga
@@ -998,7 +998,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1023,7 +1023,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1032,7 +1032,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1041,7 +1041,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1066,21 +1066,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1089,21 +1089,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         }
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1111,21 +1111,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         }
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1150,7 +1150,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1160,7 +1160,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1169,7 +1169,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1193,7 +1193,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1202,7 +1202,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1211,7 +1211,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText()))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1237,7 +1237,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1245,7 +1245,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1253,7 +1253,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1264,7 +1264,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1272,7 +1272,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1280,7 +1280,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1290,7 +1290,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1298,7 +1298,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1306,7 +1306,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1332,7 +1332,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1341,7 +1341,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1350,7 +1350,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1382,21 +1382,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         EnvioTaller carga = (EnvioTaller) ite2.next();
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1405,21 +1405,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         }
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1427,21 +1427,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         }
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             if (cmbOrden.getSelectedItem() == ">=") {
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
                             }
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1474,7 +1474,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1483,7 +1483,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1492,7 +1492,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1517,7 +1517,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1528,7 +1528,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1539,7 +1539,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1565,7 +1565,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1577,7 +1577,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1589,7 +1589,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1624,7 +1624,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1634,7 +1634,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1643,7 +1643,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1673,7 +1673,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1682,7 +1682,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1691,7 +1691,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbImporteRep.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 }
@@ -1722,7 +1722,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == ">=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1731,7 +1731,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero == Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1740,7 +1740,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         if (cmbOrden.getSelectedItem() == "<=") {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtOrdenRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1772,7 +1772,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                         for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                             for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                 //Comparo que el importe para traer la orden correspondiente
-                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                     //Guardo el objeto orden en la tabla
                                     gestorC.cargarTabla(tblReparacion, orden, carga);
                                 } //Cierre If Carga
@@ -1799,7 +1799,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1809,7 +1809,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1818,7 +1818,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1831,7 +1831,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1841,7 +1841,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1851,7 +1851,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1863,7 +1863,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1873,7 +1873,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1883,7 +1883,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText()))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -1917,7 +1917,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1928,7 +1928,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1939,7 +1939,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                 for (int j = 0; j < tblTransportista.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtOrdenRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1971,7 +1971,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1983,7 +1983,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -1995,7 +1995,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                 for (int j = 0; j < tblMotivo.getRowCount(); j++) {
                                     //Comparo que el importe para traer la orden correspondiente
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (orden.getMotivo() == tblMotivo.getValueAt(j, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     } //Cierre If Carga
@@ -2024,7 +2024,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2034,7 +2034,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2044,7 +2044,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2057,7 +2057,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2067,7 +2067,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2077,7 +2077,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2089,7 +2089,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2099,7 +2099,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2109,7 +2109,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2144,7 +2144,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2154,7 +2154,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2163,7 +2163,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2176,7 +2176,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2186,7 +2186,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2196,7 +2196,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2208,7 +2208,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2218,7 +2218,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2228,7 +2228,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblTransportista.getRowCount(); i++) {
                                     //Comparo que el importe para traer la orden correspondiente comparo el operador
-                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                    if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(i, 0)) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                         //Guardo el objeto orden en la tabla
                                         gestorC.cargarTabla(tblReparacion, orden, carga);
                                     }
@@ -2264,7 +2264,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2274,7 +2274,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2284,7 +2284,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2297,7 +2297,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2307,7 +2307,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2317,7 +2317,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() == Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2329,7 +2329,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == ">=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden >= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2339,7 +2339,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden == Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
@@ -2349,7 +2349,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
                             if (cmbOrden.getSelectedItem() == "<=") {
                                 for (int i = 0; i < tblMotivo.getRowCount(); i++) {
                                     for (int j = 0; j < tblTransportista.getRowCount(); j++) {
-                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1))))) {
+                                        if ((bandera == 0) && (carga.getOrdenServicio() == orden) && (nroOrden <= Integer.parseInt(txtOrdenRep.getText())) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteRep.getText())) && (orden.getMotivo() == tblMotivo.getValueAt(i, 0)) && (orden.getVehiculo().getTransportista() == tblTransportista.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || ((fecha2.equals(fecha3) || fecha2.equals(fecha1)))) && (orden.getEstado().equalsIgnoreCase("Pendiente"))) {
                                             //Guardo el objeto orden en la tabla
                                             gestorC.cargarTabla(tblReparacion, orden, carga);
                                         }
