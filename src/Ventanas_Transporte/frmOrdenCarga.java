@@ -151,7 +151,7 @@ GestorHibernate gestorH = new GestorHibernate();
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 // int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(300, 30);
+        this.setLocation(280, 30);
     
     }
 
