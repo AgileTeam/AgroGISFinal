@@ -185,9 +185,9 @@ boolean editar=false;
         jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Laboratorio");
 
         jPanel2.setLayout(null);
@@ -313,7 +313,7 @@ boolean editar=false;
             }
         });
         panelEdicion.add(btnAceptar);
-        btnAceptar.setBounds(630, 90, 49, 30);
+        btnAceptar.setBounds(630, 110, 49, 30);
 
         tblEditar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,10 +336,10 @@ boolean editar=false;
         jScrollPane2.setViewportView(tblEditar);
 
         panelEdicion.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 50, 530, 120);
+        jScrollPane2.setBounds(90, 50, 530, 140);
 
         panelContenedor.add(panelEdicion);
-        panelEdicion.setBounds(10, -10, 710, 230);
+        panelEdicion.setBounds(10, 0, 710, 220);
 
         btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
@@ -369,7 +369,7 @@ boolean editar=false;
         txtRazonSocial.setBounds(90, 30, 210, 20);
 
         panelDatosL.add(cmbEspecialidad);
-        cmbEspecialidad.setBounds(450, 30, 190, 20);
+        cmbEspecialidad.setBounds(450, 30, 260, 20);
 
         txtCalle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -384,7 +384,7 @@ boolean editar=false;
         panelDatosL.add(jLabel3);
         jLabel3.setBounds(50, 60, 90, 20);
         panelDatosL.add(txtNum);
-        txtNum.setBounds(450, 60, 50, 20);
+        txtNum.setBounds(450, 60, 70, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Número");
@@ -457,7 +457,7 @@ boolean editar=false;
         jLabel2.setBounds(40, 30, 100, 20);
 
         panelContenedor.add(panelDatosL);
-        panelDatosL.setBounds(0, 0, 710, 240);
+        panelDatosL.setBounds(10, 0, 720, 240);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -466,7 +466,7 @@ boolean editar=false;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -474,8 +474,8 @@ boolean editar=false;
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
