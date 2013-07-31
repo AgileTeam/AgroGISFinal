@@ -9,6 +9,7 @@ import Gestores_Vista.gestorConsultarAgenda;
 import Hibernate.GestorHibernate;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.print.PrinterException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ireport.GestorDeReportes;
 
 /**
  *
@@ -638,10 +640,10 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             Viaje viaje = (Viaje) ite.next();
             if(viaje.getFecha().equalsIgnoreCase(calendario.getText())){
                 String productor = viaje.getProductor().getNombre();
-                if(viaje.getHora().equalsIgnoreCase("8:00")){
+                if(viaje.getHora().equalsIgnoreCase("08:00")){
                     gestorC.cargarAgenda(tblOcho, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
-                if(viaje.getHora().equalsIgnoreCase("9:00")){
+                if(viaje.getHora().equalsIgnoreCase("09:00")){
                     gestorC.cargarAgenda(tblNueve, fecha, rutaPendiente, rutaAsignado, rutaEnProceso, rutaFinalizado, viaje.getProductor(), viaje);           
                 }
                 if(viaje.getHora().equalsIgnoreCase("10:00")){
@@ -692,7 +694,10 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnImprimirAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirAgendaActionPerformed
- 
+    String arc="D:/Mis Documentos/Informes/ListadoViajes.jasper";
+    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+    gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+    gestorReportes.imprimir(); 
     }//GEN-LAST:event_btnImprimirAgendaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
