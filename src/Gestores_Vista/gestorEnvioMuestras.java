@@ -4,6 +4,7 @@
  */
 package Gestores_Vista;
 
+import Clases_Modulo_Carga.EspecialidadLaboratorio;
 import Clases_Modulo_Carga.Laboratorio;
 import Clases_Modulo_Transporte.Especialidad;
 import Hibernate.GestorHibernate;
@@ -18,9 +19,9 @@ public class gestorEnvioMuestras extends GestorHibernate{
     
      public DefaultComboBoxModel rellenaComboEspecialidad(){
        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-       Iterator ite = this.listarClase(Especialidad.class).iterator();
+       Iterator ite = this.listarClase(EspecialidadLaboratorio.class).iterator();
        while(ite.hasNext()){
-           Especialidad especialidad =(Especialidad) ite.next();
+           EspecialidadLaboratorio especialidad =(EspecialidadLaboratorio) ite.next();
                modelo.addElement(especialidad);
            }
        return modelo;
