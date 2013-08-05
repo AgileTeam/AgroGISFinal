@@ -76,7 +76,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 730;
-        int alto = 620;
+        int alto = 630;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
@@ -102,7 +102,6 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -149,17 +148,6 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Cereal");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 4, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jPanel4.setLayout(null);
 
@@ -269,7 +257,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         cmbMesFinSiembra.setBounds(460, 220, 100, 20);
 
         panelContenedor.add(panelDatosC);
-        panelDatosC.setBounds(50, 10, 622, 257);
+        panelDatosC.setBounds(40, 0, 622, 257);
 
         panelCaracteristicas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Características Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelCaracteristicas.setLayout(null);
@@ -329,7 +317,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         btnEliminarLocal.setBounds(640, 150, 40, 30);
 
         panelContenedor.add(panelCaracteristicas);
-        panelCaracteristicas.setBounds(10, 280, 702, 232);
+        panelCaracteristicas.setBounds(10, 270, 700, 232);
 
         jPanel6.setLayout(null);
 
@@ -364,32 +352,26 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
         btnCancelar.setBounds(230, 10, 100, 30);
 
         panelContenedor.add(jPanel6);
-        jPanel6.setBounds(190, 530, 340, 41);
+        jPanel6.setBounds(200, 500, 340, 41);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -467,7 +449,6 @@ private void txtNombreCerealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;

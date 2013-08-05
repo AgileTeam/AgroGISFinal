@@ -70,7 +70,7 @@ GestorHibernate gestorH = new GestorHibernate();
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 20);
+        this.setLocation(260, 20);
         
          //redimensionar columnas de la tabla
         tblViaje.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -174,11 +174,11 @@ GestorHibernate gestorH = new GestorHibernate();
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Carolina");
         jPanel1.add(labelusuario);
-        labelusuario.setBounds(680, 0, 50, 30);
+        labelusuario.setBounds(650, 0, 50, 30);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(730, 0, 30, 30);
+        jLabel13.setBounds(700, 0, 30, 30);
         jPanel1.add(txtFecha);
         txtFecha.setBounds(50, 10, 80, 20);
 
@@ -420,8 +420,8 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNuevo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir)
-                        .addGap(268, 268, 268))
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(258, 258, 258))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -446,7 +446,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();

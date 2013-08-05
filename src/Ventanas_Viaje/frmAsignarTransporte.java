@@ -63,7 +63,7 @@ GestorHibernate gestorH = new GestorHibernate();
 //        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(260, 10);
+        this.setLocation(260, 30);
         
         //redimensionar columnas tabla
         tblViaje.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -330,7 +330,7 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel5.add(btnAceptarVehiculo);
-        btnAceptarVehiculo.setBounds(730, 70, 49, 30);
+        btnAceptarVehiculo.setBounds(730, 60, 49, 30);
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel16.setText("Tn.");
@@ -368,11 +368,11 @@ GestorHibernate gestorH = new GestorHibernate();
                                 .addGap(29, 29, 29)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 38, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(168, 168, 168))))
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +384,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();

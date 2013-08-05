@@ -76,7 +76,7 @@ GestorHibernate gestorH = new GestorHibernate();
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 1210;
+        int ancho = 935;
         int alto = 630;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
@@ -494,7 +494,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel6.add(jPanel11);
         jPanel11.setBounds(240, 70, 440, 50);
         jPanel6.add(jSeparator1);
-        jSeparator1.setBounds(30, 60, 850, 10);
+        jSeparator1.setBounds(30, 60, 820, 10);
 
         labelDureza.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDureza.setText("Dureza");
@@ -551,7 +551,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel6.add(txtColorObtenido);
         txtColorObtenido.setBounds(520, 250, 100, 20);
         jPanel6.add(jSeparator2);
-        jSeparator2.setBounds(30, 150, 850, 10);
+        jSeparator2.setBounds(30, 150, 820, 10);
         jPanel6.add(txtFEnvio);
         txtFEnvio.setBounds(400, 30, 100, 20);
         jPanel6.add(txtDurezaDesde);
@@ -607,7 +607,9 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -660,8 +662,10 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(338, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,7 +676,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
