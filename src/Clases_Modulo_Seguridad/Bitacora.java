@@ -21,6 +21,9 @@ private long idBitacora;
 @ManyToOne(targetEntity = Operacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Operacion operacion;
 
+@ManyToOne(targetEntity = TipoComprobante.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoComprobante tipoComp;
+
 private String fecha;
 private String nroComprobante;
 private String usuario;
@@ -93,6 +96,20 @@ private String usuario;
      */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    /**
+     * @return the tipoComp
+     */
+    public TipoComprobante getTipoComp() {
+        return tipoComp;
+    }
+
+    /**
+     * @param tipoComp the tipoComp to set
+     */
+    public void setTipoComp(TipoComprobante tipoComp) {
+        this.tipoComp = tipoComp;
     }
     
 }
