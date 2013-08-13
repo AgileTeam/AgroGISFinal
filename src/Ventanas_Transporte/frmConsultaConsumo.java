@@ -67,8 +67,8 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         //centrar cabecera jtable
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblConsumo.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
-
-        
+        DefaultTableCellRenderer renderer1 = (DefaultTableCellRenderer) tblTransportista.getTableHeader().getDefaultRenderer();
+        renderer1.setHorizontalAlignment(0);
         
         
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
@@ -90,7 +90,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         btnQuitarTranspC.setEnabled(false);
         cmbOperacion.setEnabled(false);
         
-        lstTransportista.setModel(new DefaultListModel());
+        tblTransportista.setModel(new DefaultTableModel());
         
     
     }
@@ -119,7 +119,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         btnAgregarTranspC = new javax.swing.JButton();
         btnQuitarTranspC = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        lstTransportista = new javax.swing.JList();
+        tblTransportista = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         cmbOperacion = new javax.swing.JComboBox();
         btnBuscarConsumo = new javax.swing.JButton();
@@ -222,7 +222,15 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
             }
         });
 
-        jScrollPane3.setViewportView(lstTransportista);
+        tblTransportista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Transportista"
+            }
+        ));
+        jScrollPane3.setViewportView(tblTransportista);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -236,22 +244,22 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                     .addComponent(btnQuitarTranspC)
                     .addComponent(btnAgregarTranspC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarTranspC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnQuitarTranspC)))
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTranspCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarTranspC))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQuitarTranspC)
+                .addGap(0, 44, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operación", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -522,20 +530,20 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTranspCActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
+        DefaultListModel modelo = (DefaultListModel) tblTransportista.getModel();
         modelo.addElement(cmbTranspCons.getSelectedItem());
     }//GEN-LAST:event_btnAgregarTranspCActionPerformed
 
     private void btnQuitarTranspCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTranspCActionPerformed
-        DefaultListModel modelo = (DefaultListModel) lstTransportista.getModel();
-        modelo.remove(lstTransportista.getSelectedIndex());
+        DefaultListModel modelo = (DefaultListModel) tblTransportista.getModel();
+        modelo.remove(tblTransportista.getSelectedRow());
     }//GEN-LAST:event_btnQuitarTranspCActionPerformed
 
     private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
@@ -580,7 +588,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         importeTotal = txtImporteCons.getText();
         tipoOperacion = cmbOperacion.getSelectedItem().toString();
         DefaultTableModel modeloT = (DefaultTableModel) tblConsumo.getModel();
-        DefaultTableModel modeloLista = (DefaultTableModel) lstTransportista.getModel();
+        DefaultTableModel modeloLista = (DefaultTableModel) tblTransportista.getModel();
          
         if(fecha1.before(fecha3)){
              
@@ -669,9 +677,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -768,9 +776,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -847,9 +855,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -890,27 +898,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i, 0))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -967,9 +975,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -1027,9 +1035,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -1072,27 +1080,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1151,9 +1159,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -1174,27 +1182,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1253,9 +1261,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -1276,27 +1284,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1320,27 +1328,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) &&(fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden)) &&(fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1401,27 +1409,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1444,9 +1452,9 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0) && (carga.getOrdenServicio() == orden) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                          //Guardo el objeto orden en la tabla
                          gestorC.cargarTabla(tblConsumo, orden, carga);
                             } //Cierre If Carga
@@ -1468,27 +1476,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1512,27 +1520,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              while (ite2.hasNext()) { 
                   CargaCombustible carga = (CargaCombustible) ite2.next();
                   if (cmbImporteCons.getSelectedItem() == ">=") {
-                  for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                  for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                   //Comparo que el importe para traer la orden correspondiente comparo el operador
-                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() >= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                        //Guardo el objeto orden en la tabla
                        gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
                   }
                   }
                   if (cmbImporteCons.getSelectedItem() == "=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                        //Comparo que el importe para traer la orden correspondiente comparo el operador
-                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))&& (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() == Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden))&& (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                         }
                       }
                   }
                   if (cmbImporteCons.getSelectedItem() == "<=") {
-                      for (int i = 0; i < lstTransportista.getModel().getSize(); i++) {
+                      for (int i = 0; i < tblTransportista.getModel().getRowCount(); i++) {
                       //Comparo que el importe para traer la orden correspondiente comparo el operador 
-                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == lstTransportista.getModel().getElementAt(i)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                      if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (carga.getImporteTotal() <= Double.parseDouble(txtImporteCons.getText())) && (orden.getVehiculo().getTransportista() == tblTransportista.getModel().getValueAt(i,0)) && (tipoOp.equalsIgnoreCase(tipoOperacion)) && (nroOrden == Integer.parseInt(numeroOrden)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
                           //Guardo el objeto orden en la tabla
                           gestorC.cargarTabla(tblConsumo, orden, carga);
                   }
@@ -1609,8 +1617,8 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelusuario;
-    private javax.swing.JList lstTransportista;
     private javax.swing.JTable tblConsumo;
+    private javax.swing.JTable tblTransportista;
     private javax.swing.JTextField txtFechaCons;
     private javax.swing.JTextField txtHoraCons;
     private javax.swing.JTextField txtImporteCons;
