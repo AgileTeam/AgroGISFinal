@@ -22,6 +22,7 @@ import Clases_Modulo_Transporte.*;
 import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
+import Ventanas_Bitacora.frmConsultaBitacora;
 import Ventanas_Seguridad.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
@@ -184,6 +185,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados = new javax.swing.JMenu();
         ItemPdf = new javax.swing.JMenuItem();
         MenuAuditoria = new javax.swing.JMenu();
+        ItemBitacora = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -774,6 +776,16 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Bitacora.png"))); // NOI18N
         MenuAuditoria.setText("Auditoria");
         MenuAuditoria.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        ItemBitacora.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ItemBitacora.setText("Consultar Bitácora");
+        ItemBitacora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemBitacoraActionPerformed(evt);
+            }
+        });
+        MenuAuditoria.add(ItemBitacora);
+
         MenuPrincipal.add(MenuAuditoria);
 
         setJMenuBar(MenuPrincipal);
@@ -1051,6 +1063,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         ordenC.setVisible(true);
     }//GEN-LAST:event_ItemEliminarCargaActionPerformed
 
+    private void ItemBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemBitacoraActionPerformed
+        frmConsultaBitacora bitacora=new frmConsultaBitacora();
+        this.Escritorio.add(bitacora);
+        bitacora.setVisible(true);
+    }//GEN-LAST:event_ItemBitacoraActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1092,6 +1110,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private datechooser.beans.DateChooserCombo Calendario;
     public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem ItemAsignarTransporte;
+    private javax.swing.JMenuItem ItemBitacora;
     private javax.swing.JMenuItem ItemCargaCombustible;
     private javax.swing.JMenuItem ItemConsultarViaje;
     private javax.swing.JMenuItem ItemDescargaCereal;
