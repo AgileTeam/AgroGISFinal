@@ -495,7 +495,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
 //        gestorH.guardarObjeto(detalle);
         
         gestorBitacora gestorB = new gestorBitacora();
-        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 7, labelUsuario.getText());
+        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 7, labelUsuario.getText(), "Orden Taller");
        
     String arc="C:/Reportes AgroGIS/OrdenServicio.jasper";
     GestorDeReportes gestorReportes = new GestorDeReportes(arc);

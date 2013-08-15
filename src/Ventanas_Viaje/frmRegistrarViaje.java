@@ -720,7 +720,7 @@ GestorHibernate gestorH = new GestorHibernate();
        JOptionPane.showMessageDialog(null, "Se genero correctamente el viaje Nº" + " " + viaje.getIdViaje());
        txtNumViaje.setText(String.valueOf(viaje.getIdViaje()));
        
-       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 1 , labelusuario.getText());
+       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 1 , labelusuario.getText(),"");
        if(cmbTipoViaje.getSelectedItem().toString().equalsIgnoreCase("Traslado a Puerto")){
            PuertoPorViaje puerto = new PuertoPorViaje();
            Iterator ite = gestorH.listarClase(Puerto.class).iterator();

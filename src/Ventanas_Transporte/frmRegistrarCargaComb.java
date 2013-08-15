@@ -576,7 +576,7 @@ Double total;
             gestorH.guardarObjeto(detalle);
       }
       gestorBitacora gestorB = new gestorBitacora();
-      gestorB.cargarBitacora(String.valueOf(carga.getIdCargaCombustible()), txtFecha.getText(), 8, labelusuario.getText());
+      gestorB.cargarBitacora(String.valueOf(carga.getIdCargaCombustible()), txtFecha.getText(), 8, labelusuario.getText(),"");
     }//GEN-LAST:event_btnGuardar1ActionPerformed
 
     private void txtLitrosCargadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLitrosCargadosActionPerformed

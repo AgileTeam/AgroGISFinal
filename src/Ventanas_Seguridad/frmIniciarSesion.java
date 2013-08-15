@@ -196,7 +196,7 @@ gestorFrmPrincipal gestorF = new gestorFrmPrincipal();
             frm.setVisible(true);
             dispose();
             gestorBitacora gestorB = new gestorBitacora();
-            gestorB.cargarBitacora("", txtFecha.getText(), 11, usuario.getNombreUsuario() );
+            gestorB.cargarBitacora("", txtFecha.getText(), 11, usuario.getNombreUsuario(),"" );
           }
     
     }

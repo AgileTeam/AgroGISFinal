@@ -471,7 +471,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(viaje.getSolicitud().equals(solicitud)){
                     txtFechaViaje.setText(viaje.getFecha());
                     gestorBitacora gestorB = new gestorBitacora();
-                    gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 15, labelusuario.getText());
+                    gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 15, labelusuario.getText(), "");
                 }
             
             }

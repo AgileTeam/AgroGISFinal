@@ -712,7 +712,7 @@ GestorHibernate gestorH = new GestorHibernate();
                gestorH.guardarObjeto(orden);
                txtNumOrden.setText(String.valueOf(orden.getNumeroOrden()));
                JOptionPane.showMessageDialog(null, "Se genero correctamente la orden Nº:"+ " " + orden.getNumeroOrden());
-               gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 2, labelusuario.getText());
+               gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 2, labelusuario.getText(),"Orden de Viaje");
                
            }
        }

@@ -531,7 +531,7 @@ GestorHibernate gestorH = new GestorHibernate();
               envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
               gestorH.actualizarObjeto(envio);
               gestorBitacora gestorB = new gestorBitacora();
-              gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 9, labelUsuario.getText());
+              gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 9, labelUsuario.getText(), "");
               for(int i=0; i<modelo.getRowCount(); i++){
                    DetalleEnvio detalle = new DetalleEnvio();
                    detalle.setArregloEfectuado((ArregloEfectuado)modelo.getValueAt(i,3));

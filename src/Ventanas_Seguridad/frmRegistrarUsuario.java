@@ -465,7 +465,7 @@ boolean editar = false;
        
     }
     gestorBitacora gestorB = new gestorBitacora();
-    gestorB.cargarBitacora("", txtFecha.getText(), 13, labelUsuario.getText());
+    gestorB.cargarBitacora("", txtFecha.getText(), 13, labelUsuario.getText(),"");
     }else{
     JOptionPane.showMessageDialog(null, "Ingrese nuevamente la contraseña");
     txtpass1.setText("");

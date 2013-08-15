@@ -471,7 +471,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             vi.setEstado("Finalizado");
             gestorH.actualizarObjeto(vi);
             gestorBitacora gestorB = new gestorBitacora();
-            gestorB.cargarBitacora(String.valueOf(vi.getIdViaje()), txtFecha.getText(), 14, labelusuario.getText());
+            gestorB.cargarBitacora(String.valueOf(vi.getIdViaje()), txtFecha.getText(), 14, labelusuario.getText(),"");
         }
     
     }

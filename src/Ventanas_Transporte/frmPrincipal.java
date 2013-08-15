@@ -988,7 +988,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
                 u.setEstado(false);
                 gestorH.actualizarObjeto(u);
                 gestorBitacora gestorB = new gestorBitacora();
-                gestorB.cargarBitacora("", Calendario.getText(), 12, u.getNombreUsuario());
+                gestorB.cargarBitacora("", Calendario.getText(), 12, u.getNombreUsuario(), "");
             }
         }
         MenuAuditoria.setEnabled(false);

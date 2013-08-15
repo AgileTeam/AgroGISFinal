@@ -1098,7 +1098,7 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
             }
             JOptionPane.showMessageDialog(null, "Se ha eliminado la orden Nro: " + nroOrden);
             gestorBitacora gestorB = new gestorBitacora();
-            gestorB.cargarBitacora(String.valueOf(nroOrden), txtFechaRep.getText(), 10, labelUsuario.getText());
+            gestorB.cargarBitacora(String.valueOf(nroOrden), txtFechaRep.getText(), 10, labelUsuario.getText(),"");
         }
     }//GEN-LAST:event_btnEliminarOrdenActionPerformed
 

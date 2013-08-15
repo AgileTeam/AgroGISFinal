@@ -456,7 +456,7 @@ GestorHibernate gestorH = new GestorHibernate();
         detalle.setOrdenServicio(orden);
         gestorH.guardarObjeto(detalle);
         gestorBitacora gestorB = new gestorBitacora();
-        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText());
+        gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText(), "Orden de Carga");
         
         //Prueba Nueva Orden
          String arc="C:/Reportes AgroGIS/NuevaOrdenServicio.jasper";

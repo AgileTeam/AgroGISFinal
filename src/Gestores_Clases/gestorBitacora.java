@@ -31,7 +31,7 @@ public class gestorBitacora extends GestorHibernate {
        while(iteT.hasNext()){
            TipoComprobante tipo = (TipoComprobante) iteT.next();
            if(tipo.getNombreTipoComprobante().equalsIgnoreCase(TipoComprobante)){
-               bitacora.
+               bitacora.setTipoComp(tipo);
            }
        }
        bitacora.setUsuario(usuario);

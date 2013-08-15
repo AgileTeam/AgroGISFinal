@@ -455,7 +455,7 @@ GestorHibernate gestorH = new GestorHibernate();
                        gestorH.actualizarObjeto(viaje);
                        vehiculo.setEstado("Asignado");
                        gestorH.actualizarObjeto(vehiculo);
-                       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 3, labelusuario.getText());
+                       gestorB.cargarBitacora(String.valueOf(viaje.getIdViaje()), txtFecha.getText(), 3, labelusuario.getText(),"");
                    }
                }
            

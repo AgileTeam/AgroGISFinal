@@ -1223,11 +1223,11 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Vehiculo vehiculo = new Vehiculo();
         vehiculo = gRegistro.editar((String) modeloT.getValueAt(i, 0));
         vehiculo.setTransportista(transportista);
-        gestorB.cargarBitacora(vehiculo.getDominio(), txtFecha.getText(), 5, labelusuario.getText());
+        gestorB.cargarBitacora(vehiculo.getDominio(), txtFecha.getText(), 5, labelusuario.getText(), "Ficha de Personal");
 
     }
    
-    gestorB.cargarBitacora(transportista.getNumeroDocumento(), txtFecha.getText(), 4, labelusuario.getText());
+    gestorB.cargarBitacora(transportista.getNumeroDocumento(), txtFecha.getText(), 4, labelusuario.getText(), "Ficha de Personal");
     }
 
     else{

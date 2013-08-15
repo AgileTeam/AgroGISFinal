@@ -193,6 +193,11 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
         btnBuscarMov.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarMov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscarMov.setText("Buscar");
+        btnBuscarMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMovActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnBuscarMov);
         btnBuscarMov.setBounds(490, 270, 104, 30);
 
@@ -247,10 +252,20 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
         jPanel12.setBounds(360, 20, 200, 120);
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
+        btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarTodosActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnAceptarTodos);
         btnAceptarTodos.setBounds(20, 150, 30, 30);
 
         btnCancelarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnCancelarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarTodosActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnCancelarTodos);
         btnCancelarTodos.setBounds(50, 150, 30, 30);
 
@@ -504,7 +519,7 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -529,6 +544,58 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
+        if (ckFecha.isSelected()) {
+            calendarioDBitacora.setEnabled(true);
+            calendarioHBitacora.setEnabled(true);
+        }
+        if (ckNumComp.isSelected()) {
+            txtNumComp.setEnabled(true);
+        }
+        if (ckTipoComp.isSelected()) {
+            tblTipoComp.setEnabled(true);
+        }
+        if (ckTipoOp.isSelected()) {
+            tblTipOp.setEnabled(true);
+        }
+        if (ckUsuario.isSelected()){
+            tblUsuario.setEnabled(true);        
+        }
+    }//GEN-LAST:event_btnAceptarTodosActionPerformed
+
+    private void btnCancelarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTodosActionPerformed
+        calendarioDBitacora.setEnabled(false);
+        calendarioHBitacora.setEnabled(false);
+        txtNumComp.setEnabled(false);
+        DefaultTableModel modelo = (DefaultTableModel) tblTipOp.getModel();
+        modelo.setRowCount(0);
+        tblTipOp.setModel(modelo);
+        DefaultTableModel modelo1 = (DefaultTableModel) tblTipoComp.getModel();
+        modelo1.setRowCount(0);
+        tblTipoComp.setModel(modelo1);
+        DefaultTableModel modelo2 = (DefaultTableModel) tblUsuario.getModel();
+        modelo2.setRowCount(0);
+        tblUsuario.setModel(modelo2);
+    }//GEN-LAST:event_btnCancelarTodosActionPerformed
+
+    private void btnBuscarMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMovActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+        Date fecha1=sdf.parse(calendarioDBitacora.getText(), new ParsePosition(0));
+        Date fecha3 = sdf.parse(calendarioHBitacora.getText(), new ParsePosition(0));
+        DefaultTableModel modeloT = (DefaultTableModel) tblBitacora.getModel();
+
+        
+         if(fecha1.before(fecha3)|| calendarioDBitacora.isEnabled()==false || fecha1.equals(fecha3)){
+             
+             
+             
+         }else {
+         JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
+         }
+         
+    }//GEN-LAST:event_btnBuscarMovActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;
