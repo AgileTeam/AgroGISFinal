@@ -4,10 +4,12 @@
  */
 package Ventanas_Bitacora;
 
+import Clases_Modulo_Seguridad.Bitacora;
 import Clases_Modulo_Transporte.CargaCombustible;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Transporte.Vehiculo;
 import GUtilr.ireport.GestorDeReportes;
+import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorConsultarConsumo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
@@ -15,6 +17,8 @@ import java.awt.*;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -25,7 +29,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Carolina
  */
 public class frmConsultaBitacora extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+gestorBitacora gestorB = new gestorBitacora();
     /**
      * Creates new form frmConsultaBitacora
      */
@@ -454,7 +459,7 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Fecha", "Número Comprobante", "Tipo Comprobante", "Tipo Operación", "Usuario"
+                "Fecha", "Número Operación", "Tipo Comprobante", "Tipo Operación", "Usuario"
             }
         ));
         jScrollPane1.setViewportView(tblBitacora);
@@ -589,7 +594,175 @@ public class frmConsultaBitacora extends javax.swing.JInternalFrame {
         
          if(fecha1.before(fecha3)|| calendarioDBitacora.isEnabled()==false || fecha1.equals(fecha3)){
              
-             
+         //Consulta por FECHA
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if ((bandera==0) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }
+         }
+         //Consulta por NRO de COMPROBANTE
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                        if ((bandera==0) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                        if ((bandera==0) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                        if ((bandera==0) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por TIPO de COMPROBANTE
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta Tipo Comp
+         
+         //Consulta por TIPO OPERACION
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta Tipo Operacion
+         
+         //Consulta por USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta USUARIO
+         
+         //Consulta por FECHA - COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                        if ((bandera==0) && (numero >= Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                        if ((bandera==0) && (numero <= Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                        if ((bandera==0) && (numero == Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                        //Guardo el objeto en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                  }
+             }   
+                 
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
              
          }else {
          JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");

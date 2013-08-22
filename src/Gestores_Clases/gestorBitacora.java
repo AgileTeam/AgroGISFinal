@@ -9,6 +9,8 @@ import Clases_Modulo_Seguridad.Operacion;
 import Clases_Modulo_Seguridad.TipoComprobante;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,4 +41,21 @@ public class gestorBitacora extends GestorHibernate {
     
     }
     
+     public int buscarObjeto(JTable tabla, Bitacora bit ){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       int bandera = 0;
+       for(int i=0; i<modelo.getRowCount(); i++){
+           if((bit.getNroComprobante() == tabla.getValueAt(i, 1))&&(bit.getOperacion()== tabla.getValueAt(i, 3))){
+               bandera=1;
+           }
+       }
+       return bandera;
+   }
+     
+      public void cargarTabla(JTable tabla, Bitacora bit){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       Object fila[]={bit.getFecha(), bit.getNroComprobante(), bit.getTipoComp(), bit.getOperacion(), bit.getUsuario()};
+       modelo.addRow(fila);
+       tabla.setModel(modelo);
+      }
 }
