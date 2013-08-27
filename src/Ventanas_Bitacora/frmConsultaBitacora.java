@@ -724,8 +724,8 @@ gestorBitacora gestorB = new gestorBitacora();
              }//Fin While 
          }//Fin Consulta USUARIO
          
-         //Consulta por FECHA - COMPROBANTE
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         //Consulta por FECHA - NRO COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -756,14 +756,858 @@ gestorBitacora gestorB = new gestorBitacora();
                         //Guardo el objeto en la tabla
                         gestorB.cargarTabla(tblBitacora, bit);
                   }
-             }   
-                 
+             }                    
                  //Guardo el objeto orden en la tabla
                   gestorB.cargarTabla(tblBitacora, bit);
                   
              }
          }
              
+         //Consulta por FECHA - TIPO de COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta Tipo Comp
+         
+          //Consulta por FECHA - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta Tipo Operacion
+         
+         //Consulta por FECHA - USUARIO
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))) {
+                    //Guardo el objeto orden en la tabla
+                 gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+               
+             }//Fin While 
+         }//Fin Consulta USUARIO
+         
+         //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por NRO de COMPROBANTE - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtNumComp.getText())) ) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For   
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+               for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtNumComp.getText())) ) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (numero == Integer.parseInt(txtNumComp.getText())) ) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por NRO de COMPROBANTE - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                        for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0)) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                        } //Cierre If Carga
+                        }//Fin For  
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                        for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0)) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                        } //Cierre If Carga
+                        }//Fin For 
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                        for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0)) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                        } //Cierre If Carga
+                        }//Fin For 
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por TIPO OPERACION - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                        //Comparo que el importe para traer la orden correspondiente
+                        if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0))) {
+                        //Guardo el objeto orden en la tabla
+                        gestorB.cargarTabla(tblBitacora, bit);
+                        } //Cierre If Carga
+                        }//Fin For 
+               }//Fin For   
+             }//Fin While 
+         }//Fin Consulta Tipo Operacion
+         
+         //Consulta por TIPO de COMPROBANTE - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }//Fin While 
+         }//Fin Consulta Tipo Comp
+         
+         //Consulta por TIPO de COMPROBANTE - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }//Fin While 
+         }//Fin Consulta Tipo Comp
+         
+         //Consulta por FECHA - NRO COMPROBANTE - TIPO COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+         //Consulta por FECHA - NRO COMPROBANTE - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+         //Consulta por FECHA - NRO COMPROBANTE - USUARIO
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblUsuario.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblUsuario.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblUsuario.getRowCount(); i++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblUsuario.getValueAt(i, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+          //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero >= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for                
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero <= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero == Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero >= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for                
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero <= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero == Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+          //Consulta por TIPO de COMPROBANTE - TIPO OPERACION - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblUsuario.getRowCount(); j++) {
+                     for(int k = 0; k<tblTipOp.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (bit.getOperacion() == tblTipOp.getValueAt(k, 0)) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+                 }//Fin for
+               }//Fin For 
+             }//Fin for  
+             }//Fin While 
+         }//Fin Consulta Tipo Comp
+         
+         //Consulta por FECHA - NRO COMPROBANTE - TIPO OPERACION - TIPO COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                      for(int j = 0; j< tblTipoComp.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                  }//Fin For
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                       for(int j = 0; j< tblTipoComp.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                   }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                      for(int j = 0; j< tblTipoComp.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                  }//Fin For
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+         //Consulta por FECHA - NRO COMPROBANTE - USUARIO - TIPO COMPROBANTE
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                      for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                  }//Fin For
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                       for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                   }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                      for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                  }//Fin For
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+          //Consulta por FECHA - NRO COMPROBANTE - USUARIO - TIPO OPERACION
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+             if (cmbComp.getSelectedItem() == ">=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                      for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero >= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For      
+                  }//Fin For
+                 
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                   for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                       for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero <= Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                   }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                  for (int i = 0; i < tblTipOp.getRowCount(); i++) {
+                      for(int j = 0; j< tblUsuario.getRowCount(); j++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(j, 0)) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) && (numero == Integer.parseInt(txtNumComp.getText()))) {
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For  
+                  }//Fin For
+             }                    
+                 //Guardo el objeto orden en la tabla
+                  gestorB.cargarTabla(tblBitacora, bit);
+                  
+             }
+         }
+         
+         //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - TIPO OPERACION - USUARIO
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k = 0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0))&& (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero >= Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1))) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for 
+                 }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k=0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero <= Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+                 }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k=0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) &&(bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero == Integer.parseInt(txtNumComp.getText())) && (((fecha2.after(fecha1)) && (fecha2.before(fecha3))) || (fecha2.equals(fecha3) || fecha2.equals(fecha1)))){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+                 }//Fin For
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
+         //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - TIPO OPERACION - USUARIO - FECHA
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
+         while(ite.hasNext()){
+             Bitacora bit = (Bitacora) ite.next();
+             int bandera = gestorB.buscarObjeto(tblBitacora, bit);
+             int numero = Integer.parseInt(bit.getNroComprobante());
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(bit.getFecha());
+                    System.out.println(fecha2);
+                } catch (java.text.ParseException ex) {
+                    Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             if (cmbComp.getSelectedItem() == ">=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k = 0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0))&& (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero >= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for 
+                 }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "<=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k=0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) && (bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero <= Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+                 }//Fin For
+             }
+             if (cmbComp.getSelectedItem() == "=") {
+                 for (int i = 0; i < tblTipoComp.getRowCount(); i++) {
+                 for (int j = 0; j < tblTipOp.getRowCount(); j++) {
+                     for(int k=0; k<tblUsuario.getRowCount();k++){
+                     //Comparo que el importe para traer la orden correspondiente
+                    if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(j, 0)) && (bit.getUsuario() == tblUsuario.getValueAt(k, 0)) &&(bit.getTipoComp() == tblTipoComp.getValueAt(i, 0)) &&(numero == Integer.parseInt(txtNumComp.getText())) ){
+                    //Guardo el objeto orden en la tabla
+                    gestorB.cargarTabla(tblBitacora, bit);
+                  } //Cierre If Carga
+               }//Fin For 
+             }//Fin for  
+                 }//Fin For
+             }   
+               
+             }//Fin While
+         }//Fin Consulta NRo Comp
+         
          }else {
          JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
          }
