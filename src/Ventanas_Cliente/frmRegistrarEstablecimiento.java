@@ -233,7 +233,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Establecimiento", jPanel2);
@@ -253,8 +253,8 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(120, 220, 452, 100);
 
-        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarLote.setText("Agregar");
+        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
+        btnAgregarLote.setText("Mapa");
         jPanel3.add(btnAgregarLote);
         btnAgregarLote.setBounds(290, 170, 110, 30);
 
