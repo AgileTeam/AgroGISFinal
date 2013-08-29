@@ -439,7 +439,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
 
     private void btnAgregarLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLoteActionPerformed
          try {
-            String dir = "http://www.google.com.ar";
+            String dir = "http://localhost/agrogis/nuevoLote.php";
             Desktop.getDesktop().browse(new URI(dir));
         } catch (Exception e) {
         }
