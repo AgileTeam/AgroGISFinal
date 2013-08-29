@@ -110,6 +110,7 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Seguridad.UsuarioPorRol.class);
                 conf.addAnnotatedClass(Clases_Modulo_Seguridad.Bitacora.class);
                 conf.addAnnotatedClass(Clases_Modulo_Seguridad.Operacion.class);
+                conf.addAnnotatedClass(Clases_Modulo_Seguridad.TipoComprobante.class);
                 
             sessionFactory = conf.buildSessionFactory();
             session=sessionFactory.openSession();

@@ -560,6 +560,11 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemNuevoEst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemNuevoEst.setText("Establecimiento");
+        ItemNuevoEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemNuevoEstActionPerformed(evt);
+            }
+        });
         MenuNuevoCliente.add(ItemNuevoEst);
 
         itemNuevoLote.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -1068,6 +1073,12 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         this.Escritorio.add(bitacora);
         bitacora.setVisible(true);
     }//GEN-LAST:event_ItemBitacoraActionPerformed
+
+    private void ItemNuevoEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemNuevoEstActionPerformed
+        frmRegistrarEstablecimiento est=new frmRegistrarEstablecimiento();
+        this.Escritorio.add(est);
+        est.setVisible(true);
+    }//GEN-LAST:event_ItemNuevoEstActionPerformed
 
    
     public static void main(String args[]) {
