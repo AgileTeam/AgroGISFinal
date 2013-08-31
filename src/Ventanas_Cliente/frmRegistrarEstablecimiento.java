@@ -7,6 +7,14 @@ package Ventanas_Cliente;
 import Ventanas_Transporte.*;
 import groovy.model.DefaultTableModel;
 import javax.swing.JOptionPane;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  *
@@ -19,6 +27,48 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
      */
     public frmRegistrarEstablecimiento() {
         initComponents();
+        
+        txtFecha.setEnabled(false);
+        txtFecha.setEditable(false);
+        txtHora.setEditable(false);
+        txtHora.setEnabled(false);
+        
+        //setear el campo de fecha con la del sistema
+        GregorianCalendar gc=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        gc.get(Calendar.DAY_OF_WEEK);
+        gc.get(Calendar.MONTH);
+        gc.get(Calendar.YEAR);
+        SimpleDateFormat formateador= new SimpleDateFormat("dd-MM-yyyy");
+        txtFecha.setText(formateador.format(gc.getTime()));
+        //setear el campo de hora con la del sistema
+        GregorianCalendar calendario=new GregorianCalendar();
+        GregorianCalendar.getInstance();
+        gc.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+        calendario.get(Calendar.HOUR);
+        calendario.get(Calendar.MINUTE);
+        SimpleDateFormat formateadorHora=new SimpleDateFormat("HH:mm");
+        txtHora.setText(formateadorHora.format(calendario.getTime()));
+        
+       
+        //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension tamanioPantalla = kit.getScreenSize();
+        int ancho = 680;
+        int alto = 500;
+        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
+        int posY = (int) ((tamanioPantalla.height - alto) / 2);
+        this.setSize(ancho, alto);
+        this.setLocation(posX, 80);
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
@@ -233,7 +283,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Establecimiento", jPanel2);
@@ -253,8 +303,13 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         jPanel3.add(jScrollPane2);
         jScrollPane2.setBounds(120, 220, 452, 100);
 
-        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarLote.setText("Agregar");
+        btnAgregarLote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
+        btnAgregarLote.setText("Mapa");
+        btnAgregarLote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLoteActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnAgregarLote);
         btnAgregarLote.setBounds(290, 170, 110, 30);
 
@@ -348,7 +403,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,6 +436,14 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAgregarLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLoteActionPerformed
+         try {
+            String dir = "http://localhost/agrogis/nuevoLote.php";
+            Desktop.getDesktop().browse(new URI(dir));
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnAgregarLoteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
