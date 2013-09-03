@@ -79,6 +79,8 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         panelProductor.setVisible(true);
         panelEdicionEstab.setVisible(true);
         panelEdicionLote.setVisible(false);
+        btnLotes.setVisible(false);
+        btnGuardar.setVisible(true);
     
     }
 
@@ -98,9 +100,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         txtHora = new javax.swing.JTextField();
         labelusuario = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        btnNuevo = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         panelContenedor = new javax.swing.JPanel();
         panelProductor = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -132,7 +131,11 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         tblProductorEdicion = new javax.swing.JTable();
         btnAceptar1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btnNuevo = new javax.swing.JButton();
+        btnLotes = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -163,23 +166,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel12);
         jLabel12.setBounds(560, 0, 30, 30);
-
-        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
-        btnNuevo.setText("Nuevo");
-
-        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-
-        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
 
         panelContenedor.setLayout(null);
 
@@ -361,6 +347,24 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         panelContenedor.add(panelEdicion);
         panelEdicion.setBounds(10, 10, 600, 200);
 
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        panelContenedor.add(btnNuevo);
+        btnNuevo.setBounds(120, 440, 100, 30);
+
+        btnLotes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnLotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
+        btnLotes.setText("Lotes");
+        panelContenedor.add(btnLotes);
+        btnLotes.setBounds(220, 440, 100, 30);
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        panelContenedor.add(btnGuardar);
+        btnGuardar.setBounds(220, 440, 100, 30);
+
         btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -369,6 +373,19 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
                 btnEditarActionPerformed(evt);
             }
         });
+        panelContenedor.add(btnEditar);
+        btnEditar.setBounds(320, 440, 100, 30);
+
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        panelContenedor.add(btnSalir);
+        btnSalir.setBounds(420, 440, 100, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -377,31 +394,15 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 99, Short.MAX_VALUE)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -446,6 +447,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAgregarProvincia;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLotes;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnNuevoTaller;
     private javax.swing.JButton btnSalir;
