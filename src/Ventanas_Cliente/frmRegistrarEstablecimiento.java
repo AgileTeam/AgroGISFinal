@@ -56,12 +56,12 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 620;
-        int alto = 510;
+        int ancho = 640;
+        int alto = 560;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
         int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(330, 60);
+        this.setLocation(330, 40);
         
         
         //redimensionar columnas de la tabla
@@ -73,6 +73,12 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblProductor.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
        
+        //habilitar y deshabilitar paneles
+        panelContenedor.setVisible(true);
+        panelEdicion.setVisible(false);
+        panelProductor.setVisible(true);
+        panelEdicionEstab.setVisible(true);
+        panelEdicionLote.setVisible(false);
     
     }
 
@@ -95,7 +101,14 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        panelContenedor = new javax.swing.JPanel();
+        panelProductor = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProductor = new javax.swing.JTable();
+        btnAceptar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        labelProductor = new javax.swing.JLabel();
+        panelEdicionEstab = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -108,12 +121,18 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         btnAgregarDepartamento = new javax.swing.JButton();
         btnAgregarProvincia = new javax.swing.JButton();
         btnAgregarLocalidad = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblProductor = new javax.swing.JTable();
-        btnAceptar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        labelProductor = new javax.swing.JLabel();
+        panelEdicionLote = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtEstab = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblDetalleLote = new javax.swing.JTable();
+        btnNuevoTaller = new javax.swing.JButton();
+        panelEdicion = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblProductorEdicion = new javax.swing.JTable();
+        btnAceptar1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -139,11 +158,11 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         labelusuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelusuario.setText("Usuario");
         jPanel1.add(labelusuario);
-        labelusuario.setBounds(490, 10, 50, 15);
+        labelusuario.setBounds(510, 10, 50, 15);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(540, 0, 30, 30);
+        jLabel12.setBounds(560, 0, 30, 30);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -162,38 +181,73 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel4.setLayout(null);
+        panelContenedor.setLayout(null);
+
+        panelProductor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelProductor.setLayout(null);
+
+        tblProductor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Productor", "DNI "
+            }
+        ));
+        jScrollPane1.setViewportView(tblProductor);
+
+        panelProductor.add(jScrollPane1);
+        jScrollPane1.setBounds(90, 30, 430, 110);
+
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        panelProductor.add(btnAceptar);
+        btnAceptar.setBounds(530, 70, 40, 30);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Productor:");
+        panelProductor.add(jLabel2);
+        jLabel2.setBounds(90, 150, 100, 20);
+
+        labelProductor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelProductor.setText("José García");
+        panelProductor.add(labelProductor);
+        labelProductor.setBounds(170, 150, 120, 20);
+
+        panelContenedor.add(panelProductor);
+        panelProductor.setBounds(10, 10, 600, 200);
+
+        panelEdicionEstab.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelEdicionEstab.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Establecimiento");
-        jPanel4.add(jLabel1);
+        panelEdicionEstab.add(jLabel1);
         jLabel1.setBounds(90, 30, 130, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Localidad");
-        jPanel4.add(jLabel4);
+        panelEdicionEstab.add(jLabel4);
         jLabel4.setBounds(120, 150, 100, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Provincia");
-        jPanel4.add(jLabel5);
+        panelEdicionEstab.add(jLabel5);
         jLabel5.setBounds(130, 70, 100, 20);
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Departamento");
-        jPanel4.add(jLabel6);
+        panelEdicionEstab.add(jLabel6);
         jLabel6.setBounds(100, 110, 130, 20);
-        jPanel4.add(txtEstablecimiento);
+        panelEdicionEstab.add(txtEstablecimiento);
         txtEstablecimiento.setBounds(190, 30, 260, 20);
 
-        jPanel4.add(cmbLocalidad);
+        panelEdicionEstab.add(cmbLocalidad);
         cmbLocalidad.setBounds(190, 150, 210, 20);
 
-        jPanel4.add(cmbProvincia);
+        panelEdicionEstab.add(cmbProvincia);
         cmbProvincia.setBounds(190, 70, 210, 20);
 
-        jPanel4.add(cmbDepartamento);
+        panelEdicionEstab.add(cmbDepartamento);
         cmbDepartamento.setBounds(190, 110, 210, 20);
 
         btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
@@ -241,82 +295,114 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16))
         );
 
-        jPanel4.add(jPanel18);
+        panelEdicionEstab.add(jPanel18);
         jPanel18.setBounds(360, 60, 100, 120);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel2.setLayout(null);
+        panelContenedor.add(panelEdicionEstab);
+        panelEdicionEstab.setBounds(10, 220, 600, 200);
 
-        tblProductor.setModel(new javax.swing.table.DefaultTableModel(
+        panelEdicionLote.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Establecimiento", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        panelEdicionLote.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Establecimiento");
+        panelEdicionLote.add(jLabel3);
+        jLabel3.setBounds(10, 40, 130, 20);
+        panelEdicionLote.add(txtEstab);
+        txtEstab.setBounds(110, 40, 230, 20);
+
+        tblDetalleLote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Productor", "DNI "
+                "Nombre Lote", "Hectáreas"
             }
         ));
-        jScrollPane1.setViewportView(tblProductor);
+        jScrollPane3.setViewportView(tblDetalleLote);
 
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(90, 30, 430, 110);
+        panelEdicionLote.add(jScrollPane3);
+        jScrollPane3.setBounds(110, 90, 370, 90);
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
-        jPanel2.add(btnAceptar);
-        btnAceptar.setBounds(530, 70, 40, 30);
+        btnNuevoTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevoTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
+        btnNuevoTaller.setText("Ver Lote");
+        panelEdicionLote.add(btnNuevoTaller);
+        btnNuevoTaller.setBounds(485, 130, 100, 30);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Productor:");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(90, 150, 100, 20);
+        panelContenedor.add(panelEdicionLote);
+        panelEdicionLote.setBounds(10, 220, 600, 200);
 
-        labelProductor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelProductor.setText("José García");
-        jPanel2.add(labelProductor);
-        labelProductor.setBounds(170, 150, 120, 20);
+        panelEdicion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelEdicion.setLayout(null);
+
+        tblProductorEdicion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Establecimiento", "Productor "
+            }
+        ));
+        jScrollPane2.setViewportView(tblProductorEdicion);
+
+        panelEdicion.add(jScrollPane2);
+        jScrollPane2.setBounds(80, 30, 430, 150);
+
+        btnAceptar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        panelEdicion.add(btnAceptar1);
+        btnAceptar1.setBounds(520, 90, 40, 30);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setText("Establecimientos");
+        panelEdicion.add(jLabel7);
+        jLabel7.setBounds(230, 10, 130, 17);
+
+        panelContenedor.add(panelEdicion);
+        panelEdicion.setBounds(10, 10, 600, 200);
+
+        btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 99, Short.MAX_VALUE)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139))))
+                        .addGap(108, 108, 108))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -344,13 +430,24 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         provincia.setVisible(true);
     }//GEN-LAST:event_btnAgregarDepartamentoActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        panelEdicion.setVisible(true);
+        panelProductor.setVisible(false);
+        panelEdicionEstab.setVisible(false);
+        panelEdicionLote.setVisible(true);
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnAgregarDepartamento;
     private javax.swing.JButton btnAgregarLocalidad;
     private javax.swing.JButton btnAgregarProvincia;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnNuevoTaller;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cmbDepartamento;
     private javax.swing.JComboBox cmbLocalidad;
@@ -359,18 +456,28 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelProductor;
     private javax.swing.JLabel labelusuario;
+    private javax.swing.JPanel panelContenedor;
+    private javax.swing.JPanel panelEdicion;
+    private javax.swing.JPanel panelEdicionEstab;
+    private javax.swing.JPanel panelEdicionLote;
+    private javax.swing.JPanel panelProductor;
+    private javax.swing.JTable tblDetalleLote;
     private javax.swing.JTable tblProductor;
+    private javax.swing.JTable tblProductorEdicion;
+    private javax.swing.JTextField txtEstab;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
