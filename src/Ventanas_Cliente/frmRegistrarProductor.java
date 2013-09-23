@@ -22,6 +22,7 @@ import java.util.TimeZone;
 import Gestores_Clases.*;
 import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,11 +75,11 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 760;
-        int alto = 570;
+        int alto = 520;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 20);        
+        this.setLocation(300, 60);        
         
          //Carga Tipo Documento
         cmbTipoDoc.setModel(gRegistro.rellenaComboTipoDoc());
@@ -153,12 +154,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         cmbTipoTel = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblTelefono = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
-        btnEliminarTel = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        btnAgregarTel = new javax.swing.JButton();
         calendarioNacimiento = new datechooser.beans.DateChooserCombo();
         jLabel1 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -197,6 +193,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnEstablecimiento = new javax.swing.JButton();
+        btnNuevo1 = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -249,7 +246,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Nombres");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(390, 10, 70, 20);
+        jLabel6.setBounds(410, 10, 80, 20);
 
         txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -257,7 +254,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
             }
         });
         jPanel3.add(txtNombres);
-        txtNombres.setBounds(450, 10, 240, 20);
+        txtNombres.setBounds(470, 10, 240, 20);
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Tipo Documento");
@@ -268,9 +265,9 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         cmbTipoDoc.setBounds(130, 40, 120, 20);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Numero Documento");
+        jLabel8.setText("Número Documento");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(330, 40, 120, 20);
+        jLabel8.setBounds(350, 40, 160, 20);
 
         txtDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -278,7 +275,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
             }
         });
         jPanel3.add(txtDocumento);
-        txtDocumento.setBounds(450, 40, 120, 20);
+        txtDocumento.setBounds(470, 40, 120, 20);
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Fecha de Nacimiento");
@@ -288,16 +285,16 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Estado Civil");
         jPanel3.add(jLabel13);
-        jLabel13.setBounds(380, 70, 70, 20);
+        jLabel13.setBounds(390, 70, 100, 20);
 
         cmbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero", "Casado", "Viudo" }));
         jPanel3.add(cmbEstadoCivil);
-        cmbEstadoCivil.setBounds(450, 70, 120, 20);
+        cmbEstadoCivil.setBounds(470, 70, 120, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Tipo Teléfono");
         jPanel3.add(jLabel14);
-        jLabel14.setBounds(10, 100, 80, 20);
+        jLabel14.setBounds(50, 100, 110, 20);
 
         jPanel3.add(cmbTipoTel);
         cmbTipoTel.setBounds(130, 100, 120, 20);
@@ -305,7 +302,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel15.setText("Número Teléfono");
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(350, 100, 100, 20);
+        jLabel15.setBounds(360, 100, 130, 20);
 
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -313,30 +310,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
             }
         });
         jPanel3.add(txtTelefono);
-        txtTelefono.setBounds(450, 100, 170, 20);
-
-        tblTelefono.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tipo Teléfono", "Número Teléfono"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblTelefono.getTableHeader().setResizingAllowed(false);
-        tblTelefono.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tblTelefono);
-
-        jPanel3.add(jScrollPane2);
-        jScrollPane2.setBounds(200, 140, 320, 60);
+        txtTelefono.setBounds(470, 100, 170, 20);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -351,77 +325,41 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel7);
         jPanel7.setBounds(-20, -50, 700, 40);
-
-        btnEliminarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
-        btnEliminarTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarTelActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnEliminarTel);
-        btnEliminarTel.setBounds(530, 160, 40, 30);
-
-        btnAgregarTel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(btnAgregarTel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnAgregarTel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel10);
-        jPanel10.setBounds(580, 70, 100, 70);
         jPanel3.add(calendarioNacimiento);
         calendarioNacimiento.setBounds(130, 70, 120, 20);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("E-Mail");
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(80, 210, 70, 20);
+        jLabel1.setBounds(90, 130, 70, 20);
         jPanel3.add(txtEmail);
-        txtEmail.setBounds(130, 210, 240, 20);
+        txtEmail.setBounds(130, 130, 240, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Condición IVA");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(380, 210, 150, 20);
+        jLabel2.setBounds(380, 130, 150, 20);
 
         jPanel3.add(cmbCategoria);
-        cmbCategoria.setBounds(470, 240, 150, 20);
+        cmbCategoria.setBounds(470, 160, 150, 20);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("CUIT/CUIL");
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(60, 240, 100, 20);
+        jLabel3.setBounds(60, 160, 110, 20);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Categoría Productor");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(350, 240, 170, 20);
+        jLabel4.setBounds(350, 160, 170, 20);
         jPanel3.add(txtCuit);
-        txtCuit.setBounds(130, 240, 160, 20);
+        txtCuit.setBounds(130, 160, 160, 20);
 
         jPanel3.add(cmbCondicionIva);
-        cmbCondicionIva.setBounds(470, 210, 150, 20);
+        cmbCondicionIva.setBounds(470, 130, 150, 20);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 20, 720, 270);
+        jPanel3.setBounds(10, 20, 720, 200);
 
         jPanel4.setLayout(null);
 
@@ -598,7 +536,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jPanel20.setBounds(590, 20, 100, 110);
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 300, 720, 150);
+        jPanel4.setBounds(10, 220, 720, 150);
 
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
@@ -619,8 +557,17 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         });
 
         btnEstablecimiento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnEstablecimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map.png"))); // NOI18N
+        btnEstablecimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
         btnEstablecimiento.setText("Establecimiento");
+
+        btnNuevo1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnNuevo1.setText("Salir");
+        btnNuevo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevo1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -630,32 +577,35 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 195, Short.MAX_VALUE)
-                        .addComponent(btnEstablecimiento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNuevo)
-                        .addGap(229, 229, 229))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(btnEstablecimiento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(btnEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -702,19 +652,6 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
             evt.consume();  // ignorar el evento de teclado
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
-
-    private void btnEliminarTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTelActionPerformed
-        DefaultTableModel modeloT = (DefaultTableModel) tblTelefono.getModel();
-//        modeloT.removeRow(tblTelefono.getSelectedRow());
-    }//GEN-LAST:event_btnEliminarTelActionPerformed
-
-    private void btnAgregarTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTelActionPerformed
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblTelefono.getModel();
-        Object fila[] = {cmbTipoTel.getSelectedItem(), txtTelefono.getText()};
-//        modeloTabla.addRow(fila);
-        tblTelefono.setModel(modeloTabla);
-        txtTelefono.setText("");
-    }//GEN-LAST:event_btnAgregarTelActionPerformed
 
     private void txtCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalleKeyTyped
         char c = evt.getKeyChar();
@@ -798,17 +735,23 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     txtTelefono.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
+    private void btnNuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo1ActionPerformed
+       int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
+        if (respuesta == 0) {
+            dispose();
+        }
+    }//GEN-LAST:event_btnNuevo1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarBarrio;
     private javax.swing.JButton btnAgregarDepartamento;
     private javax.swing.JButton btnAgregarLocalidad;
     private javax.swing.JButton btnAgregarPais;
     private javax.swing.JButton btnAgregarProvincia;
-    private javax.swing.JButton btnAgregarTel;
-    private javax.swing.JButton btnEliminarTel;
     private javax.swing.JButton btnEstablecimiento;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnNuevo1;
     private datechooser.beans.DateChooserCombo calendarioNacimiento;
     private javax.swing.JComboBox cmbBarrio;
     private javax.swing.JComboBox cmbCategoria;
@@ -845,16 +788,13 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelusuario;
-    private javax.swing.JTable tblTelefono;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtCuit;

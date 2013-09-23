@@ -154,11 +154,9 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuNuevoCliente = new javax.swing.JMenu();
         ItemNuevoProductor = new javax.swing.JMenuItem();
         ItemNuevoEst = new javax.swing.JMenuItem();
-        itemNuevoLote = new javax.swing.JMenuItem();
         MenuConsultarCliente = new javax.swing.JMenu();
         itemConsultarProd = new javax.swing.JMenuItem();
         itemConsultarEst = new javax.swing.JMenuItem();
-        itemConsultarLote = new javax.swing.JMenuItem();
         MenuViaje = new javax.swing.JMenu();
         menuNuevoViaje = new javax.swing.JMenu();
         ItemNuevoViaje = new javax.swing.JMenuItem();
@@ -567,10 +565,6 @@ GestorHibernate gestorH = new GestorHibernate();
         });
         MenuNuevoCliente.add(ItemNuevoEst);
 
-        itemNuevoLote.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemNuevoLote.setText("Lote");
-        MenuNuevoCliente.add(itemNuevoLote);
-
         MenuClientes.add(MenuNuevoCliente);
 
         MenuConsultarCliente.setText("Consultar / Modificar");
@@ -583,10 +577,6 @@ GestorHibernate gestorH = new GestorHibernate();
         itemConsultarEst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         itemConsultarEst.setText("Establecimiento");
         MenuConsultarCliente.add(itemConsultarEst);
-
-        itemConsultarLote.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemConsultarLote.setText("Lote");
-        MenuConsultarCliente.add(itemConsultarLote);
 
         MenuClientes.add(MenuConsultarCliente);
 
@@ -1187,10 +1177,8 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuViaje;
     private javax.swing.JMenuItem itemConsultarAgenda;
     private javax.swing.JMenuItem itemConsultarEst;
-    private javax.swing.JMenuItem itemConsultarLote;
     private javax.swing.JMenuItem itemConsultarProd;
     private javax.swing.JMenuItem itemEspTaller;
-    private javax.swing.JMenuItem itemNuevoLote;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
