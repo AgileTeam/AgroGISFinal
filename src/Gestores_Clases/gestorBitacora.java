@@ -7,8 +7,10 @@ package Gestores_Clases;
 import Clases_Modulo_Seguridad.Bitacora;
 import Clases_Modulo_Seguridad.Operacion;
 import Clases_Modulo_Seguridad.TipoComprobante;
+import Clases_Modulo_Seguridad.Usuario;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,4 +60,34 @@ public class gestorBitacora extends GestorHibernate {
        modelo.addRow(fila);
        tabla.setModel(modelo);
       }
+      
+      public DefaultComboBoxModel getComboModelUsuario(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        Iterator iterador= this.listarClase(Usuario.class).iterator();
+        while(iterador.hasNext()){
+            Usuario c= (Usuario) iterador.next();
+            modelo.addElement(c);
+        }
+        return modelo;
+    }
+      
+       public DefaultComboBoxModel getComboModelTipoComp(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        Iterator iterador= this.listarClase(TipoComprobante.class).iterator();
+        while(iterador.hasNext()){
+            TipoComprobante c= (TipoComprobante) iterador.next();
+            modelo.addElement(c);
+        }
+        return modelo;
+    }
+        public DefaultComboBoxModel getComboModelTipoOperacion(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        Iterator iterador= this.listarClase(Operacion.class).iterator();
+        while(iterador.hasNext()){
+            Operacion c= (Operacion) iterador.next();
+            modelo.addElement(c);
+        }
+        return modelo;
+    }
+    
 }

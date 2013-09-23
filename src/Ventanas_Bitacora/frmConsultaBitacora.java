@@ -14,6 +14,7 @@ import Gestores_Vista.gestorConsultarConsumo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.awt.print.PrinterException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -101,7 +102,9 @@ gestorBitacora gestorB = new gestorBitacora();
         cmbUsuario.setEnabled(false);
         btnAgregarUs.setEnabled(false);
         btnQuitarUs.setEnabled(false);
-        
+        cmbTipoComp.setModel(gestorB.getComboModelTipoComp());
+        cmbTipoOp.setModel(gestorB.getComboModelTipoOperacion());
+        cmbUsuario.setModel(gestorB.getComboModelUsuario());
     }
 
     /**
@@ -290,9 +293,19 @@ gestorBitacora gestorB = new gestorBitacora();
 
         btnAgregarUs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAgregarUs.setText(">");
+        btnAgregarUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarUsActionPerformed(evt);
+            }
+        });
 
         btnQuitarUs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnQuitarUs.setText("<");
+        btnQuitarUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarUsActionPerformed(evt);
+            }
+        });
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -346,9 +359,19 @@ gestorBitacora gestorB = new gestorBitacora();
 
         btnAgregarTipo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAgregarTipo.setText(">");
+        btnAgregarTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTipoActionPerformed(evt);
+            }
+        });
 
         btnQuitarTipo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnQuitarTipo.setText("<");
+        btnQuitarTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarTipoActionPerformed(evt);
+            }
+        });
 
         tblTipoComp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -402,9 +425,19 @@ gestorBitacora gestorB = new gestorBitacora();
 
         btnAgregarOp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAgregarOp.setText(">");
+        btnAgregarOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarOpActionPerformed(evt);
+            }
+        });
 
         btnQuitarOp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnQuitarOp.setText("<");
+        btnQuitarOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarOpActionPerformed(evt);
+            }
+        });
 
         tblTipOp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -467,6 +500,11 @@ gestorBitacora gestorB = new gestorBitacora();
         btnImprimir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -524,7 +562,7 @@ gestorBitacora gestorB = new gestorBitacora();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -556,23 +594,41 @@ gestorBitacora gestorB = new gestorBitacora();
             calendarioHBitacora.setEnabled(true);
         }
         if (ckNumComp.isSelected()) {
+            cmbComp.setEnabled(true);
             txtNumComp.setEnabled(true);
         }
         if (ckTipoComp.isSelected()) {
-            tblTipoComp.setEnabled(true);
+            cmbTipoComp.setEnabled(true);
+            btnAgregarTipo.setEnabled(true);
+            btnQuitarTipo.setEnabled(true);
         }
         if (ckTipoOp.isSelected()) {
-            tblTipOp.setEnabled(true);
+            cmbTipoOp.setEnabled(true);
+            btnAgregarOp.setEnabled(true);
+            btnQuitarOp.setEnabled(true);
         }
         if (ckUsuario.isSelected()){
-            tblUsuario.setEnabled(true);        
+            cmbUsuario.setEnabled(true);
+            btnAgregarUs.setEnabled(true);
+            btnQuitarUs.setEnabled(true);
         }
     }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
     private void btnCancelarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTodosActionPerformed
         calendarioDBitacora.setEnabled(false);
         calendarioHBitacora.setEnabled(false);
+        cmbComp.setEnabled(false);
         txtNumComp.setEnabled(false);
+        txtNumComp.setEnabled(false);
+        cmbTipoComp.setEnabled(false);
+        btnAgregarTipo.setEnabled(false);
+        btnQuitarTipo.setEnabled(false);
+        cmbTipoOp.setEnabled(false);
+        btnAgregarOp.setEnabled(false);
+        btnQuitarOp.setEnabled(false);
+        cmbUsuario.setEnabled(false);
+        btnAgregarUs.setEnabled(false);
+        btnQuitarUs.setEnabled(false);
         DefaultTableModel modelo = (DefaultTableModel) tblTipOp.getModel();
         modelo.setRowCount(0);
         tblTipOp.setModel(modelo);
@@ -595,7 +651,7 @@ gestorBitacora gestorB = new gestorBitacora();
          if(fecha1.before(fecha3)|| calendarioDBitacora.isEnabled()==false || fecha1.equals(fecha3)){
              
          //Consulta por FECHA
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -614,7 +670,7 @@ gestorBitacora gestorB = new gestorBitacora();
              }
          }
          //Consulta por NRO de COMPROBANTE
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -650,7 +706,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
          //Consulta por TIPO de COMPROBANTE
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -675,7 +731,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Comp
          
          //Consulta por TIPO OPERACION
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -700,12 +756,13 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Operacion
          
          //Consulta por USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
              int bandera = gestorB.buscarObjeto(tblBitacora, bit);
              int numero = Integer.parseInt(bit.getNroComprobante());
+             System.out.println(bit.getUsuario());
              Date fecha2=null;
                 try {
                     fecha2 = sdfguion.parse(bit.getFecha());
@@ -715,7 +772,7 @@ gestorBitacora gestorB = new gestorBitacora();
                 }
              for (int i = 0; i < tblUsuario.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                if ((bandera==0) && (bit.getUsuario() == tblUsuario.getValueAt(i, 0))) {
+                if ((bandera==0) && (bit.getUsuario().equalsIgnoreCase(tblUsuario.getValueAt(i, 0).toString()))) {
                     //Guardo el objeto orden en la tabla
                  gestorB.cargarTabla(tblBitacora, bit);
                   } //Cierre If Carga
@@ -725,7 +782,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta USUARIO
          
          //Consulta por FECHA - NRO COMPROBANTE
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -764,7 +821,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
              
          //Consulta por FECHA - TIPO de COMPROBANTE
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -789,7 +846,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Comp
          
           //Consulta por FECHA - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -814,7 +871,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Operacion
          
          //Consulta por FECHA - USUARIO
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -839,7 +896,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta USUARIO
          
          //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -885,7 +942,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
          //Consulta por NRO de COMPROBANTE - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -930,7 +987,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
          //Consulta por NRO de COMPROBANTE - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -975,7 +1032,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
          //Consulta por TIPO OPERACION - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1001,7 +1058,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Operacion
          
          //Consulta por TIPO de COMPROBANTE - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1027,7 +1084,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Comp
          
          //Consulta por TIPO de COMPROBANTE - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1053,7 +1110,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta Tipo Comp
          
          //Consulta por FECHA - NRO COMPROBANTE - TIPO COMPROBANTE
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1102,7 +1159,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
          //Consulta por FECHA - NRO COMPROBANTE - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1151,7 +1208,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
          //Consulta por FECHA - NRO COMPROBANTE - USUARIO
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1200,7 +1257,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
           //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1251,7 +1308,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
          //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()==false){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()==false){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1302,7 +1359,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }//Fin Consulta NRo Comp
          
           //Consulta por TIPO de COMPROBANTE - TIPO OPERACION - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled()==false && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1385,7 +1442,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
          //Consulta por FECHA - NRO COMPROBANTE - USUARIO - TIPO COMPROBANTE
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled()==false && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled()==false && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1440,7 +1497,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
           //Consulta por FECHA - NRO COMPROBANTE - USUARIO - TIPO OPERACION
-         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled()==false && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled() && calendarioHBitacora.isEnabled() && txtNumComp.isEnabled() && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled()==false && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1495,7 +1552,7 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
          //Consulta por NRO de COMPROBANTE - TIPO COMPROBANTE - TIPO OPERACION - USUARIO
-         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && tblTipOp.isEnabled() && tblTipoComp.isEnabled() && tblUsuario.isEnabled()){
+         if(calendarioDBitacora.isEnabled()==false && calendarioHBitacora.isEnabled()==false && txtNumComp.isEnabled() && cmbTipoOp.isEnabled() && cmbTipoComp.isEnabled() && cmbUsuario.isEnabled()){
          Iterator ite = gestorH.listarClase(Bitacora.class).iterator();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
@@ -1613,6 +1670,57 @@ gestorBitacora gestorB = new gestorBitacora();
          }
          
     }//GEN-LAST:event_btnBuscarMovActionPerformed
+
+    private void btnAgregarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTipoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblTipoComp.getModel();
+        Object fila[]={cmbTipoComp.getSelectedItem()};
+        modelo.addRow(fila);
+        tblTipoComp.setModel(modelo);   
+    }//GEN-LAST:event_btnAgregarTipoActionPerformed
+
+    private void btnQuitarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTipoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblTipoComp.getModel();
+        int fila = tblTipoComp.getSelectedRow();
+        modelo.removeRow(fila);
+        tblTipoComp.setModel(modelo);
+    }//GEN-LAST:event_btnQuitarTipoActionPerformed
+
+    private void btnAgregarOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarOpActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblTipOp.getModel();
+        Object fila[]={cmbTipoOp.getSelectedItem()};
+        modelo.addRow(fila);
+        tblTipOp.setModel(modelo); 
+    }//GEN-LAST:event_btnAgregarOpActionPerformed
+
+    private void btnQuitarOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarOpActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblTipOp.getModel();
+        int fila = tblTipOp.getSelectedRow();
+        modelo.removeRow(fila);
+        tblTipOp.setModel(modelo);
+    }//GEN-LAST:event_btnQuitarOpActionPerformed
+
+    private void btnAgregarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblUsuario.getModel();
+        Object fila[]={cmbUsuario.getSelectedItem()};
+        modelo.addRow(fila);
+        tblUsuario.setModel(modelo); 
+    }//GEN-LAST:event_btnAgregarUsActionPerformed
+
+    private void btnQuitarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarUsActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblUsuario.getModel();
+        int fila = tblUsuario.getSelectedRow();
+        modelo.removeRow(fila);
+        tblUsuario.setModel(modelo);
+    }//GEN-LAST:event_btnQuitarUsActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+       DefaultTableModel modelot = (DefaultTableModel) tblBitacora.getModel();
+        try {
+            tblBitacora.print();
+          } catch (PrinterException ex) {
+            Logger.getLogger(frmConsultaBitacora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;

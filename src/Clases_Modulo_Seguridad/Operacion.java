@@ -50,6 +50,10 @@ private String nombreOperacion;
     public void setNombreOperacion(String nombreOperacion) {
         this.nombreOperacion = nombreOperacion;
     }
+    
+     public String toString(){
+        return (nombreOperacion);
+    }
 
     
 }
