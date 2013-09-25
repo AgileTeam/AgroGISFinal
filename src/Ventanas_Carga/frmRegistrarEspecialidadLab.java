@@ -107,7 +107,7 @@ long idEspecialidad;
         tblEspecialidad = new javax.swing.JTable();
         btnEliminarPais = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnEditarPais = new javax.swing.JButton();
+        btnEditarEsp = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
@@ -250,12 +250,12 @@ long idEspecialidad;
             }
         });
 
-        btnEditarPais.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnEditarPais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
-        btnEditarPais.setText("Editar");
-        btnEditarPais.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarEsp.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnEditarEsp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnEditarEsp.setText("Editar");
+        btnEditarEsp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPaisActionPerformed(evt);
+                btnEditarEspActionPerformed(evt);
             }
         });
 
@@ -298,7 +298,7 @@ long idEspecialidad;
                                 .addGap(51, 51, 51)
                                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
-                                .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEditarEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
                                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -321,10 +321,10 @@ long idEspecialidad;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -348,23 +348,23 @@ long idEspecialidad;
         modeloT.removeRow(fila);
     }//GEN-LAST:event_btnAceptarEdicionActionPerformed
 
-    private void btnEditarPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPaisActionPerformed
+    private void btnEditarEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEspActionPerformed
         btnNuevo.setEnabled(false);
         txtCodEsp.setEnabled(false);
         txtNombreEsp.setEnabled(false);
         areaDescripcion.setEnabled(false);
         btnAceptarEdicion.setEnabled(true);
-    }//GEN-LAST:event_btnEditarPaisActionPerformed
+    }//GEN-LAST:event_btnEditarEspActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        btnEditarPais.setEnabled(false);
+        btnEditarEsp.setEnabled(false);
         txtCodEsp.setEnabled(true);
         txtNombreEsp.setEnabled(true);
         areaDescripcion.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (btnEditarPais.isEnabled()) {
+        if (btnEditarEsp.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");            
         } else {
             gestorE.guardarEspecialidadLaboratorio(tblEspecialidad);
@@ -417,7 +417,7 @@ long idEspecialidad;
     private javax.swing.JTextArea areaDescripcion;
     private javax.swing.JButton btnAceptarEdicion;
     private javax.swing.JButton btnAgregarEsp;
-    private javax.swing.JButton btnEditarPais;
+    private javax.swing.JButton btnEditarEsp;
     private javax.swing.JButton btnEliminarPais;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
