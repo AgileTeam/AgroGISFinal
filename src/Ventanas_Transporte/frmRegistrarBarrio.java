@@ -14,6 +14,7 @@ import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Transporte.Localidad;
 import Gestores_Clases.gestorBarrio;
 import Gestores_Clases.gestorPais;
+import Gestores_Vista.gestorRegistrarUsuario;
 import Gestores_Vista.gestorRegistroBarrio;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -45,8 +46,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
     public frmRegistrarBarrio() {
         initComponents();   
         gestorH.actualizarUsuario(labelusuario);
-        
-        txtFecha.setEnabled(false);
+               txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
