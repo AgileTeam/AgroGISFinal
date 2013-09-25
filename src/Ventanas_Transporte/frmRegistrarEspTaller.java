@@ -30,6 +30,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorEspecialidadTaller gestorE= new gestorEspecialidadTaller();
 gestorPais gestorEs = new gestorPais();
+gestorRegistrarUsuario gestoru = nes gestorRegistrarUsuario();
 long idEsp;
     /**
      * Creates new form frmRegistrarEspTaller
@@ -376,13 +377,19 @@ long idEsp;
     }//GEN-LAST:event_btnEditarEspecialidadActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        int bandera1 = gestoru.CampoObligatorio(txtPais);
+        if(bandera1==0){
+        
         if (btnEditarEspecialidad.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             gestorE.guardarEspecialidad(tblPais);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
-
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
+        }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

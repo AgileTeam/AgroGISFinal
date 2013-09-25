@@ -36,6 +36,7 @@ public class frmRegistrarProvincia extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorProvincia gestorP = new gestorProvincia();
 gestorPais gestor = new gestorPais();
+gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
 long idProvincia;
 int bandera = 0;
     /** Creates new form frmRegistrarProvincia */
@@ -397,13 +398,18 @@ private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-      
+        int bandera1 = gestoru.CampoObligatorio(txtProvincia);
+        if(bandera1==0){
         if(btnEditarProvincia.isEnabled()){
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
         else{
         gestorP.guardarProvincia(tblProvincia);
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
+        }
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
         }
          
     }//GEN-LAST:event_btnGuardarActionPerformed
