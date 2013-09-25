@@ -404,7 +404,7 @@ boolean editar = false;
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -479,6 +479,22 @@ boolean editar = false;
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        panelEdicion.setVisible(false);
+        panelDatosU.setVisible(true);
+        jScrollPane3.setVisible(false);
+        tblEdicion.setVisible(false);
+        panelContenedor.setVisible(true);
+        panelAgregar.setVisible(true);
+        panelSesion.setVisible(true);
+        
+        for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
+        
+        for(int i=0;i<panelSesion.getComponents().length;i++){
+           panelSesion.getComponent(i).setEnabled(true);
+         }
+        
      DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
      DefaultTableModel modeloTabla = (DefaultTableModel) tblRoles.getModel();
        int fila = tblEdicion.getSelectedRow();
