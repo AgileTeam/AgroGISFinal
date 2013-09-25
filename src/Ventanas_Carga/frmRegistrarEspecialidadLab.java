@@ -6,6 +6,7 @@ package Ventanas_Carga;
 
 import Clases_Modulo_Carga.EspecialidadLaboratorio;
 import Gestores_Clases.gestorEspecialidadLaboratorio;
+import Gestores_Vista.gestorRegistrarUsuario;
 import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmRegistrarEspecialidadLab extends javax.swing.JInternalFrame {
 gestorEspecialidadLaboratorio gestorE = new gestorEspecialidadLaboratorio();
 GestorHibernate gestorH = new GestorHibernate();
+gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
 long idEspecialidad;
     /**
      * Creates new form frmRegistrarEspecialidadLab
@@ -364,6 +366,10 @@ long idEspecialidad;
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        int bandera1 = gestoru.CampoObligatorio(txtCodEsp);
+        int bandera2 = gestoru.CampoObligatorio(txtNombreEsp);
+        if(bandera1==0 && bandera2==0){
+        
         if (btnEditarPais.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");            
         } else {
@@ -371,7 +377,10 @@ long idEspecialidad;
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");            
         }
 
-
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
+        }
                     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAgregarEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEspActionPerformed
