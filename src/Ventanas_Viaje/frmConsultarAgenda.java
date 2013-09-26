@@ -286,7 +286,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblOcho.setRowHeight(30);
         jScrollPane21.setViewportView(tblOcho);
 
@@ -297,7 +305,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblNueve.setRowHeight(30);
         jScrollPane23.setViewportView(tblNueve);
 
@@ -308,7 +324,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDiez.setRowHeight(30);
         jScrollPane24.setViewportView(tblDiez);
 
@@ -319,7 +343,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblOnce.setRowHeight(30);
         jScrollPane25.setViewportView(tblOnce);
 
@@ -330,7 +362,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDoce.setRowHeight(30);
         jScrollPane27.setViewportView(tblDoce);
 
@@ -341,7 +381,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblTrece.setRowHeight(30);
         jScrollPane22.setViewportView(tblTrece);
 
@@ -352,7 +400,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblCatorce.setRowHeight(30);
         jScrollPane26.setViewportView(tblCatorce);
 
@@ -363,7 +419,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblQuince.setRowHeight(30);
         jScrollPane28.setViewportView(tblQuince);
 
@@ -374,7 +438,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDieciseis.setRowHeight(30);
         jScrollPane29.setViewportView(tblDieciseis);
 
@@ -385,7 +457,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDiecisiete.setRowHeight(30);
         jScrollPane30.setViewportView(tblDiecisiete);
 
@@ -396,7 +476,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDieciocho.setRowHeight(30);
         jScrollPane31.setViewportView(tblDieciocho);
 
@@ -407,7 +495,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDiecinueve.setRowHeight(30);
         jScrollPane33.setViewportView(tblDiecinueve);
 
@@ -418,7 +514,15 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
             new String [] {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblVeinte.setRowHeight(30);
         jScrollPane32.setViewportView(tblVeinte);
 
@@ -616,7 +720,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2489, Short.MAX_VALUE)
+            .addComponent(scrollPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 2493, Short.MAX_VALUE)
         );
 
         pack();

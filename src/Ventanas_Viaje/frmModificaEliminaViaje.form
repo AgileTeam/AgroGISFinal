@@ -63,7 +63,7 @@
                   <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnModificar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -173,8 +173,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
-                    <Column editable="true" title="N&#xba; Viaje" type="java.lang.Object"/>
-                    <Column editable="true" title="Tipo Viaje" type="java.lang.Object"/>
+                    <Column editable="false" title="N&#xba; Viaje" type="java.lang.Object"/>
+                    <Column editable="false" title="Tipo Viaje" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
