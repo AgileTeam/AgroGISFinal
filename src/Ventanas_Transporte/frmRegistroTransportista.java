@@ -83,7 +83,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         int ancho = 1020;
         int alto = 620;
         this.setSize(ancho, alto);
-        this.setLocation(50, 0);
+        this.setLocation(70, 0);
         ButtonGroup grupo = new ButtonGroup();
         grupo.add(buttonAcoplado);
         grupo.add(buttonCamion);
@@ -516,7 +516,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         tblPrueba.setBounds(100, -130, 660, 130);
 
         panelTransportista.add(panelDatosU);
-        panelDatosU.setBounds(140, 220, 720, 150);
+        panelDatosU.setBounds(140, 210, 720, 150);
 
         panelContratacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de contratación", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelContratacion.setLayout(null);
@@ -894,33 +894,39 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         buttonCamion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamion.setText("Camión");
+        buttonCamion.setContentAreaFilled(false);
+        buttonCamion.setFocusPainted(false);
         buttonCamion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCamionActionPerformed(evt);
             }
         });
         jPanel11.add(buttonCamion);
-        buttonCamion.setBounds(130, 10, 93, 23);
+        buttonCamion.setBounds(130, 10, 93, 22);
 
         buttonAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonAcoplado.setText("Acoplado");
+        buttonAcoplado.setContentAreaFilled(false);
+        buttonAcoplado.setFocusPainted(false);
         buttonAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAcopladoActionPerformed(evt);
             }
         });
         jPanel11.add(buttonAcoplado);
-        buttonAcoplado.setBounds(220, 10, 80, 23);
+        buttonAcoplado.setBounds(220, 10, 80, 22);
 
         buttonCamionAcoplado.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         buttonCamionAcoplado.setText("Camión y Acoplado");
+        buttonCamionAcoplado.setContentAreaFilled(false);
+        buttonCamionAcoplado.setFocusPainted(false);
         buttonCamionAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCamionAcopladoActionPerformed(evt);
             }
         });
         jPanel11.add(buttonCamionAcoplado);
-        buttonCamionAcoplado.setBounds(310, 10, 120, 23);
+        buttonCamionAcoplado.setBounds(310, 10, 120, 22);
 
         panelVehiculo.add(jPanel11);
         jPanel11.setBounds(309, 11, 535, 43);
@@ -963,7 +969,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelVehiculo.add(btnAgregarCamionAcoplado);
         btnAgregarCamionAcoplado.setBounds(460, 270, 110, 30);
 
-        btnAgregarCamion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarCamion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarCamion.setText("Agregar");
         btnAgregarCamion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -973,7 +979,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelVehiculo.add(btnAgregarCamion);
         btnAgregarCamion.setBounds(460, 270, 110, 30);
 
-        btnAgregarAcoplado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
+        btnAgregarAcoplado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAgregarAcoplado.setText("Agregar");
         btnAgregarAcoplado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

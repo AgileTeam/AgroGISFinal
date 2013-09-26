@@ -140,6 +140,7 @@ boolean editar=false;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEdicion = new javax.swing.JTable();
         btnAceptarTaller = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         panelDatosT = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         cmbEspecialidad = new javax.swing.JComboBox();
@@ -184,7 +185,8 @@ boolean editar=false;
 
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Taller Reparacion");
+        setResizable(true);
+        setTitle("Taller Reparación");
 
         panelContenedor.setLayout(null);
 
@@ -216,13 +218,14 @@ boolean editar=false;
         btnNuevoTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevoTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnNuevoTaller.setText("Agregar");
+        btnNuevoTaller.setFocusPainted(false);
         btnNuevoTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoTallerActionPerformed(evt);
             }
         });
         panelAgregar.add(btnNuevoTaller);
-        btnNuevoTaller.setBounds(280, 10, 93, 30);
+        btnNuevoTaller.setBounds(280, 10, 92, 30);
 
         btnEliminarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnEliminarTaller.addActionListener(new java.awt.event.ActionListener() {
@@ -268,8 +271,13 @@ boolean editar=false;
         panelEdicion.add(btnAceptarTaller);
         btnAceptarTaller.setBounds(550, 110, 49, 30);
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setText("Talleres de Reparación");
+        panelEdicion.add(jLabel3);
+        jLabel3.setBounds(240, 17, 170, 30);
+
         panelContenedor.add(panelEdicion);
-        panelEdicion.setBounds(10, 30, 670, 250);
+        panelEdicion.setBounds(10, 30, 670, 280);
 
         panelDatosT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Taller", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelDatosT.setLayout(null);
@@ -404,7 +412,7 @@ boolean editar=false;
         txtEmail.setBounds(100, 270, 240, 20);
 
         panelContenedor.add(panelDatosT);
-        panelDatosT.setBounds(20, 10, 650, 310);
+        panelDatosT.setBounds(0, 10, 680, 310);
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -446,9 +454,9 @@ boolean editar=false;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +541,7 @@ boolean editar=false;
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
         );
 
         pack();
@@ -669,6 +677,7 @@ boolean editar=false;
      txtNombreTaller.setText("");
      txtRazonSocial.setText("");
      txtTelefono.setText("");
+     txtNum.setText("");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -730,6 +739,7 @@ boolean editar=false;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;

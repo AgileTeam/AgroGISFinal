@@ -104,7 +104,7 @@ boolean editar=false;
         int ancho = 700;
         int alto = 550;
         this.setSize(ancho, alto);
-        this.setLocation(280, 65);
+        this.setLocation(280, 50);
         
         cmbProvincia.addActionListener(new ActionListener() {
 
@@ -190,6 +190,7 @@ boolean editar=false;
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEdicion = new javax.swing.JTable();
         btnAceptarTransp = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -210,15 +211,15 @@ boolean editar=false;
         labelUsuario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelUsuario.setText("Usuario");
         jPanel3.add(labelUsuario);
-        labelUsuario.setBounds(500, 10, 50, 15);
+        labelUsuario.setBounds(580, 10, 50, 15);
         jPanel3.add(txtFecha);
-        txtFecha.setBounds(60, 10, 80, 20);
+        txtFecha.setBounds(50, 10, 80, 20);
         jPanel3.add(txtHora);
-        txtHora.setBounds(250, 10, 80, 20);
+        txtHora.setBounds(240, 10, 80, 20);
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel3.add(jLabel17);
-        jLabel17.setBounds(550, 0, 30, 30);
+        jLabel17.setBounds(630, 0, 30, 30);
 
         panelContenedor.setLayout(null);
 
@@ -350,7 +351,7 @@ boolean editar=false;
         jSeparator2.setBounds(0, -8, 620, 10);
 
         panelContenedor.add(panelDatosE);
-        panelDatosE.setBounds(30, 10, 640, 240);
+        panelDatosE.setBounds(10, 10, 660, 240);
 
         btnGuardarEstacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardarEstacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -452,21 +453,22 @@ boolean editar=false;
                 .addComponent(btnEliminarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
             .addGroup(panelAgregarLayout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addGap(259, 259, 259)
                 .addComponent(btnNuevo)
                 .addContainerGap())
         );
         panelAgregarLayout.setVerticalGroup(
             panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAgregarLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEliminarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(37, 37, 37))
         );
 
         panelContenedor.add(panelAgregar);
@@ -485,7 +487,7 @@ boolean editar=false;
         jScrollPane2.setViewportView(tblEdicion);
 
         panelEdicion.add(jScrollPane2);
-        jScrollPane2.setBounds(100, 20, 430, 150);
+        jScrollPane2.setBounds(100, 30, 430, 150);
 
         btnAceptarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAceptarTransp.addActionListener(new java.awt.event.ActionListener() {
@@ -494,7 +496,12 @@ boolean editar=false;
             }
         });
         panelEdicion.add(btnAceptarTransp);
-        btnAceptarTransp.setBounds(540, 70, 49, 30);
+        btnAceptarTransp.setBounds(540, 90, 49, 30);
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel16.setText("Estaciones de Servicio");
+        panelEdicion.add(jLabel16);
+        jLabel16.setBounds(230, 0, 170, 20);
 
         panelContenedor.add(panelEdicion);
         panelEdicion.setBounds(20, 20, 670, 250);
@@ -506,12 +513,9 @@ boolean editar=false;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 79, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,7 +524,7 @@ boolean editar=false;
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -696,6 +700,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

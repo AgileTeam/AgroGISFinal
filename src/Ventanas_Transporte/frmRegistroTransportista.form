@@ -174,7 +174,7 @@
                 <Container class="javax.swing.JPanel" name="panelDatosU">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="140" y="220" width="720" height="150"/>
+                      <AbsoluteConstraints x="140" y="210" width="720" height="150"/>
                     </Constraint>
                   </Constraints>
 
@@ -1355,6 +1355,8 @@
                           <Font name="Arial" size="11" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cami&#xf3;n"/>
+                        <Property name="contentAreaFilled" type="boolean" value="false"/>
+                        <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCamionActionPerformed"/>
@@ -1371,6 +1373,8 @@
                           <Font name="Arial" size="11" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Acoplado"/>
+                        <Property name="contentAreaFilled" type="boolean" value="false"/>
+                        <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAcopladoActionPerformed"/>
@@ -1387,6 +1391,8 @@
                           <Font name="Arial" size="11" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cami&#xf3;n y Acoplado"/>
+                        <Property name="contentAreaFilled" type="boolean" value="false"/>
+                        <Property name="focusPainted" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCamionAcopladoActionPerformed"/>
@@ -1492,7 +1498,7 @@
                 <Component class="javax.swing.JButton" name="btnAgregarCamion">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/Agregar.png"/>
+                      <Image iconType="3" name="/Imagenes/icono_mas.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>
@@ -1508,7 +1514,7 @@
                 <Component class="javax.swing.JButton" name="btnAgregarAcoplado">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/Agregar.png"/>
+                      <Image iconType="3" name="/Imagenes/icono_mas.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>

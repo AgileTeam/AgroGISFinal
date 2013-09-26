@@ -4,7 +4,8 @@
   <Properties>
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Taller Reparacion"/>
+    <Property name="resizable" type="boolean" value="true"/>
+    <Property name="title" type="java.lang.String" value="Taller Reparaci&#xf3;n"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -40,7 +41,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelContenedor" pref="556" max="32767" attributes="0"/>
+              <Component id="panelContenedor" pref="564" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,6 +101,7 @@
                   <Image iconType="3" name="/Imagenes/icono_mas.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoTallerActionPerformed"/>
@@ -130,7 +132,7 @@
         <Container class="javax.swing.JPanel" name="panelEdicion">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="30" width="670" height="250"/>
+              <AbsoluteConstraints x="10" y="30" width="670" height="280"/>
             </Constraint>
           </Constraints>
 
@@ -177,6 +179,19 @@
                 </Constraint>
               </Constraints>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Talleres de Reparaci&#xf3;n"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="240" y="17" width="170" height="30"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelDatosT">
@@ -191,7 +206,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="10" width="650" height="310"/>
+              <AbsoluteConstraints x="0" y="10" width="680" height="310"/>
             </Constraint>
           </Constraints>
 
@@ -539,9 +554,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="btnNuevo" min="-2" pref="94" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnGuardarTaller" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEditar" min="-2" pref="100" max="-2" attributes="0"/>
