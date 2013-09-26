@@ -31,7 +31,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorEspecialidadTaller gestorE= new gestorEspecialidadTaller();
 gestorPais gestorEs = new gestorPais();
-gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
+gestorRegistrarUsuario gestoru = nes gestorRegistrarUsuario();
 long idEsp;
     /**
      * Creates new form frmRegistrarEspTaller
