@@ -348,7 +348,15 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         new String [] {
             "Transportista"
         }
-    ));
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
     jScrollPane2.setViewportView(tblTransportista);
 
     javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -500,7 +508,7 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(41, Short.MAX_VALUE))
+            .addContainerGap(49, Short.MAX_VALUE))
     );
 
     pack();

@@ -334,7 +334,15 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         new String [] {
             "Transportista"
         }
-    ));
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
     jScrollPane2.setViewportView(tblTransportista);
 
     javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -393,7 +401,7 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         }
     ) {
         boolean[] canEdit = new boolean [] {
-            false, false, false, true, false
+            false, false, false, false, false
         };
 
         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -505,7 +513,15 @@ gestorConsultaReparaciones gestorC = new gestorConsultaReparaciones();
         new String [] {
             "Motivo"
         }
-    ));
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
     jScrollPane3.setViewportView(tblMotivo);
 
     javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);

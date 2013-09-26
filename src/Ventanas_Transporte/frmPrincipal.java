@@ -933,9 +933,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_ItemAsignarTransporteActionPerformed
 
     private void ItemEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEspecialidadActionPerformed
-        frmRegistrarEspecialidadLab especialidad=new frmRegistrarEspecialidadLab();
-        this.Escritorio.add(especialidad);
-        especialidad.setVisible(true);
+        frmRegistrarEspecialidadLab esp=new frmRegistrarEspecialidadLab();
+       this.Escritorio.add(esp);
+       esp.setVisible(true);
     }//GEN-LAST:event_ItemEspecialidadActionPerformed
 
     private void ItemDetalleReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemDetalleReparacionActionPerformed

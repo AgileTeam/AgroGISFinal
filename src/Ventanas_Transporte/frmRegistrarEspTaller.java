@@ -31,7 +31,7 @@ public class frmRegistrarEspTaller extends javax.swing.JInternalFrame {
 GestorHibernate gestorH = new GestorHibernate();
 gestorEspecialidadTaller gestorE= new gestorEspecialidadTaller();
 gestorPais gestorEs = new gestorPais();
-gestorRegistrarUsuario gestoru = nes gestorRegistrarUsuario();
+gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
 long idEsp;
     /**
      * Creates new form frmRegistrarEspTaller
@@ -305,7 +305,7 @@ long idEsp;
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
