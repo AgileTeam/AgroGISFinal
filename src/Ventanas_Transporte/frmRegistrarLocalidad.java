@@ -14,6 +14,7 @@ import Clases_Modulo_Transporte.Departamento;
 import Clases_Modulo_Transporte.Localidad;
 import Gestores_Clases.gestorLocalidad;
 import Gestores_Clases.gestorPais;
+import Gestores_Vista.gestorRegistrarUsuario;
 import Gestores_Vista.gestorRegistroLocalidad;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -39,6 +40,8 @@ public class frmRegistrarLocalidad extends javax.swing.JInternalFrame {
     gestorLocalidad glocalidad = new gestorLocalidad();
     gestorRegistroLocalidad gRLocalidad = new gestorRegistroLocalidad();
     GestorHibernate gestorH = new GestorHibernate();
+    gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
+    
     long idLocalidad;
     public frmRegistrarLocalidad() {
     initComponents();
@@ -488,14 +491,19 @@ private void txtCodigoPostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
+        int bandera1 = gestoru.CampoObligatorio(txtLocalidad);
+        int bandera2 = gestoru.CampoObligatorio(txtCodigoPostal);
+        if(bandera1==0 && bandera2==0){
         if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             glocalidad.guardarLocalidad(tblLocal);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
-        
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed

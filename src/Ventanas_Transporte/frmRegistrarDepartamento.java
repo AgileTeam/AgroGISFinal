@@ -14,6 +14,7 @@ import Clases_Modulo_Transporte.Departamento;
 import Clases_Modulo_Transporte.Provincia;
 import Gestores_Clases.gestorDepartamento;
 import Gestores_Clases.gestorPais;
+import Gestores_Vista.gestorRegistrarUsuario;
 import Gestores_Vista.gestorRegistroDepartamento;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -39,6 +40,7 @@ public class frmRegistrarDepartamento extends javax.swing.JInternalFrame {
     gestorPais gPais = new gestorPais();
     gestorDepartamento gDepto = new gestorDepartamento();
     GestorHibernate gestorH = new GestorHibernate();
+    gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
     long idDepto;
     
     public frmRegistrarDepartamento() {
@@ -438,11 +440,17 @@ private void txtDeptoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-      if (btnEditarProvincia.isEnabled()) {
+       int bandera1 = gestoru.CampoObligatorio(txtDepto);
+       if(bandera1==0){
+       if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             gDepto.guardarDepartamento(tblDepto);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+        }
+       }
+       else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
         }
       
     }//GEN-LAST:event_btnGuardarActionPerformed

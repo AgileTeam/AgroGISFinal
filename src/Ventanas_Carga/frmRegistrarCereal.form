@@ -40,7 +40,7 @@
               <Component id="jPanel4" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelContenedor" min="-2" pref="586" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -456,9 +456,9 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="0">
-                        <Column editable="true" title="Caracter&#xed;stica" type="java.lang.Object"/>
-                        <Column editable="true" title="Valor Desde" type="java.lang.Object"/>
-                        <Column editable="true" title="Valor Hasta" type="java.lang.Object"/>
+                        <Column editable="false" title="Caracter&#xed;stica" type="java.lang.Object"/>
+                        <Column editable="false" title="Valor Desde" type="java.lang.Object"/>
+                        <Column editable="false" title="Valor Hasta" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>

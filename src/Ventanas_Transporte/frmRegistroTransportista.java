@@ -645,7 +645,15 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
             new String [] {
                 "Nº Documento", "Apellido y Nombre", "Modelo Vehículo", "Dominio Vehículo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(tblModificaT);
 
         panelTabla.add(jScrollPane4);

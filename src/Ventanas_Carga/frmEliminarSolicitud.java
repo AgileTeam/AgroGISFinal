@@ -148,7 +148,15 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
             new String [] {
                 "Nº Solicitud", "Tipo Solicitud"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblSolicitudes);
 
         jPanel1.add(jScrollPane1);
@@ -267,7 +275,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

@@ -291,7 +291,15 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
             new String [] {
                 "Característica", "Valor Desde", "Valor Hasta"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblCaracteristica);
 
         panelCaracteristicas.add(jScrollPane2);
@@ -371,7 +379,7 @@ gestorRegistrarEnvioAlTaller gestorE = new gestorRegistrarEnvioAlTaller();
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

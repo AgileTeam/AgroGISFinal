@@ -85,7 +85,7 @@
                       <Component id="btnEliminar" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -428,10 +428,10 @@
               <Table columnCount="6" rowCount="0">
                 <Column editable="false" title="N&#xba; Silo" type="java.lang.Object"/>
                 <Column editable="false" title="Alto" type="java.lang.Object"/>
-                <Column editable="true" title="Di&#xe1;metro" type="java.lang.Object"/>
-                <Column editable="true" title="Capacidad" type="java.lang.Object"/>
-                <Column editable="true" title="Tipo Cereal" type="java.lang.Object"/>
-                <Column editable="true" title="Descripci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Di&#xe1;metro" type="java.lang.Object"/>
+                <Column editable="false" title="Capacidad" type="java.lang.Object"/>
+                <Column editable="false" title="Tipo Cereal" type="java.lang.Object"/>
+                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

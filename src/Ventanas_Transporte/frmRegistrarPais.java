@@ -12,6 +12,7 @@ package Ventanas_Transporte;
 
 import Clases_Modulo_Transporte.Pais;
 import Gestores_Clases.gestorPais;
+import Gestores_Vista.gestorRegistrarUsuario;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import Hibernate.GestorHibernate;
@@ -35,6 +36,7 @@ import javax.swing.table.TableModel;
 public class frmRegistrarPais extends javax.swing.JInternalFrame {
  gestorPais gestorP = new gestorPais();
  GestorHibernate gestorH = new GestorHibernate();
+ gestorRegistrarUsuario gestoru = new gestorRegistrarUsuario();
  long idPais;
     /** Creates new form frmRegistrarPais */
     public frmRegistrarPais() {
@@ -348,7 +350,8 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_btnSalirActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
- 
+        int bandera1 = gestoru.CampoObligatorio(txtPais);
+        if(bandera1==0){
    if(btnEditarPais.isEnabled()){
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
@@ -356,7 +359,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         gestorP.guardarPais(tblPais);
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");   
         }
-   
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
+        }
     
 }//GEN-LAST:event_btnGuardarActionPerformed
 
