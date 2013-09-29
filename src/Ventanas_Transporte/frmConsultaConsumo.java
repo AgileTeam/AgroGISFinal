@@ -83,13 +83,15 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         
         calendarioDCons.setEnabled(false);
         calendarioHCons.setEnabled(false);
+        cmbOrden.setEnabled(false);
+        cmbImporteCons.setEnabled(false);
         txtImporteCons.setEnabled(false);
         txtOrdenCons.setEnabled(false);
         cmbTranspCons.setEnabled(false);
         btnAgregarTranspC.setEnabled(false);
         btnQuitarTranspC.setEnabled(false);
         cmbOperacion.setEnabled(false);
-        
+        cmbTranspCons.setModel(gestorC.rellenaComboTransportista());
         tblTransportista.setModel(new DefaultTableModel());
         
     
@@ -152,7 +154,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Detalle");
+        setTitle("Detalle de Consumo");
 
         jPanel3.setLayout(null);
 
@@ -180,6 +182,8 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         jLabel9.setBounds(890, 0, 30, 30);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Importe Total", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        cmbImporteCons.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "=", "<=" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -464,17 +468,21 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(59, 59, 59))
-                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(48, 48, 48)))
+                                    .addGap(48, 48, 48))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(9, 9, 9)))
+                                    .addGap(59, 59, 59)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -497,10 +505,6 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                         .addGap(416, 416, 416)
                         .addComponent(jLabel7)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 899, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,7 +542,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -560,15 +564,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
             calendarioHCons.setEnabled(true);
         }
         if (ckImporteCons.isSelected()) {
+            cmbImporteCons.setEnabled(true);
             txtImporteCons.setEnabled(true);
         }
         if (ckOperacion.isSelected()) {
             cmbOperacion.setEnabled(true);
         }
         if (ckOrdenCons.isSelected()) {
+            cmbOrden.setEnabled(true);
             txtOrdenCons.setEnabled(true);
         }
         if (ckTranspCons.isSelected()) {
+            cmbTranspCons.setEnabled(true);
             btnAgregarTranspC.setEnabled(true);
             btnQuitarTranspC.setEnabled(true);
         }
@@ -578,11 +585,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
     private void btnQuitarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosActionPerformed
         calendarioDCons.setEnabled(false);
         calendarioHCons.setEnabled(false);
+        cmbOrden.setEnabled(false);
+        cmbImporteCons.setEnabled(false);
         txtImporteCons.setEnabled(false);
         txtOrdenCons.setEnabled(false);
         btnAgregarTranspC.setEnabled(false);
         btnQuitarTranspC.setEnabled(false);
         cmbOperacion.setEnabled(false);
+        ckFechaCons.setSelected(false);
+        ckImporteCons.setSelected(false);
+        ckOperacion.setSelected(false);
+        ckOrdenCons.setSelected(false);
+        ckTranspCons.setSelected(false);
     }//GEN-LAST:event_btnQuitarTodosActionPerformed
 
     private void btnBuscarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumoActionPerformed

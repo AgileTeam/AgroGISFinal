@@ -181,6 +181,7 @@ boolean editar=false;
         btnGuardarEstacion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnEditarEstacion = new javax.swing.JButton();
+        btnNuevaEstacion = new javax.swing.JButton();
         panelAgregar = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstacion = new javax.swing.JTable();
@@ -380,12 +381,23 @@ boolean editar=false;
             }
         });
 
+        btnNuevaEstacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevaEstacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevaEstacion.setText("Nuevo");
+        btnNuevaEstacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaEstacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(btnNuevaEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,11 +412,12 @@ boolean editar=false;
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEditarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevaEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         panelContenedor.add(jPanel5);
-        jPanel5.setBounds(180, 400, 332, 42);
+        jPanel5.setBounds(100, 400, 460, 42);
 
         tblEstacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -524,7 +537,7 @@ boolean editar=false;
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -679,11 +692,16 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
        editar=true;
     }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
+    private void btnNuevaEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaEstacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevaEstacionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
     private javax.swing.JButton btnEditarEstacion;
     private javax.swing.JButton btnEliminarEstacion;
     private javax.swing.JButton btnGuardarEstacion;
+    private javax.swing.JButton btnNuevaEstacion;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cmbBarrio;
