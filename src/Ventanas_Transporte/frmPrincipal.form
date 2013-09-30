@@ -271,6 +271,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Veh&#xed;culo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVerVehiculoActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemVerTaller">
                   <Properties>
@@ -279,6 +282,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Taller de Reparaci&#xf3;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVerTallerActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="ItemVerEstacion">
                   <Properties>
@@ -287,6 +293,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Estaci&#xf3;n de Servicio"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemVerEstacionActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
                 </MenuItem>

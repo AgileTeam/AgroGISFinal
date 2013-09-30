@@ -427,14 +427,29 @@ GestorHibernate gestorH = new GestorHibernate();
 
         ItemVerVehiculo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemVerVehiculo.setText("Vehículo");
+        ItemVerVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemVerVehiculoActionPerformed(evt);
+            }
+        });
         MenuVerTransp.add(ItemVerVehiculo);
 
         ItemVerTaller.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemVerTaller.setText("Taller de Reparación");
+        ItemVerTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemVerTallerActionPerformed(evt);
+            }
+        });
         MenuVerTransp.add(ItemVerTaller);
 
         ItemVerEstacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         ItemVerEstacion.setText("Estación de Servicio");
+        ItemVerEstacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemVerEstacionActionPerformed(evt);
+            }
+        });
         MenuVerTransp.add(ItemVerEstacion);
         MenuVerTransp.add(jSeparator2);
 
@@ -1049,7 +1064,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_ItemVehiculoActionPerformed
 
     private void ItemVerTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVerTranspActionPerformed
-        // TODO add your handling code here:
+        frmRegistroTransportista transp= new frmRegistroTransportista();
+        this.Escritorio.add(transp);
+        transp.setVisible(true);
     }//GEN-LAST:event_ItemVerTranspActionPerformed
 
     private void ItemEliminarCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarCargaActionPerformed
@@ -1069,6 +1086,24 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         this.Escritorio.add(est);
         est.setVisible(true);
     }//GEN-LAST:event_ItemNuevoEstActionPerformed
+
+    private void ItemVerVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVerVehiculoActionPerformed
+       frmRegistroTransportista vehic= new frmRegistroTransportista();
+       this.Escritorio.add(vehic);
+       vehic.setVisible(true);
+    }//GEN-LAST:event_ItemVerVehiculoActionPerformed
+
+    private void ItemVerTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVerTallerActionPerformed
+        frmRegistrarTallerReparacion t= new frmRegistrarTallerReparacion();
+        this.Escritorio.add(t);
+        t.setVisible(true);
+    }//GEN-LAST:event_ItemVerTallerActionPerformed
+
+    private void ItemVerEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemVerEstacionActionPerformed
+        frmRegistrarEstacionServicio es= new frmRegistrarEstacionServicio();
+        this.Escritorio.add(es);
+        es.setVisible(true);
+    }//GEN-LAST:event_ItemVerEstacionActionPerformed
 
    
     public static void main(String args[]) {
