@@ -5,6 +5,7 @@
 
 package Hibernate;
 import Clases_Modulo_Seguridad.Usuario;
+import Clases_Modulo_Transporte.Localidad;
 import Clases_Modulo_Transporte.OrdenServicio;
 import java.awt.Component;
 import java.util.Iterator;
@@ -69,6 +70,20 @@ private Transaction tx;
        List lista = null;
        lista.add(orden.getNumeroOrden());
        lista.add(orden.getVehiculo().getTransportista());
+       return lista;  
+   
+   }
+ 
+      public List listarLocalidad(){
+       List lista = null;
+       Iterator ite = this.listarClase(Localidad.class).iterator();
+       while(ite.hasNext()){
+           Localidad loc = (Localidad)ite.next();
+           lista.add(loc.getNombreLocalidad());
+           lista.add(loc.getCodigoPostal());
+           lista.add(loc.getDepartamento());
+           lista.add(loc.getDepartamento().getProvincia());
+       }
        return lista;  
    
    }

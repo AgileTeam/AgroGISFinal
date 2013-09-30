@@ -7,10 +7,12 @@ package Ventanas_Seguridad;
 import Clases_Modulo_Seguridad.Rol;
 import Clases_Modulo_Seguridad.Usuario;
 import Clases_Modulo_Seguridad.UsuarioPorRol;
+import Clases_Modulo_Transporte.Localidad;
 import Gestores_Clases.gestorBitacora;
 import Gestores_Clases.gestorEspecialidadLaboratorio;
 import Gestores_Vista.gestorRegistrarUsuario;
 import Hibernate.GestorHibernate;
+import ireport.GestorDeReportes;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -46,11 +48,11 @@ boolean editar = false;
         panelSesion.setVisible(true);
         
         for(int i=0;i<panelAgregar.getComponents().length;i++){
-           panelAgregar.getComponent(i).setEnabled(true);
+           panelAgregar.getComponent(i).setEnabled(false);
          }
         
         for(int i=0;i<panelSesion.getComponents().length;i++){
-           panelSesion.getComponent(i).setEnabled(true);
+           panelSesion.getComponent(i).setEnabled(false);
          }
         
         
@@ -79,7 +81,6 @@ boolean editar = false;
         
         //redimensionar columnas de la tabla
         tblRoles.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tblRoles.getColumnModel().getColumn(1).setPreferredWidth(100);
         
         
           //lineas para mejorar el aspecto de la pantalla     
@@ -176,6 +177,11 @@ boolean editar = false;
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -233,11 +239,11 @@ boolean editar = false;
 
             },
             new String [] {
-                "Rol", "Descripcion"
+                "Rol"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -404,7 +410,7 @@ boolean editar = false;
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -447,9 +453,11 @@ boolean editar = false;
     usuario.setEstado(false);
     if(editar==false){
     gestorH.guardarObjeto(usuario);
+    JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
     }
     else{
     gestorH.actualizarObjeto(usuario);
+    JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
     }
     for (int i=0; i<modeloT.getRowCount(); i++ ){
         Iterator ite = gestorH.listarClase(Rol.class).iterator();
@@ -525,6 +533,7 @@ boolean editar = false;
         tblEdicion.setVisible(true);
         panelContenedor.setVisible(true);
         editar=true;
+        btnNuevo.setEnabled(false);
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
@@ -541,6 +550,13 @@ boolean editar = false;
             tblEdicion.setModel(modeloT);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    String arc="D:/Mis Documentos/ListadoLocalidad.jasper";
+    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+    gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(Localidad.class, "nombreLocalidad"));
+    gestorReportes.imprimir();
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescrp;
