@@ -523,7 +523,8 @@ boolean editar = false;
         panelDatosU.setVisible(false);
         jScrollPane3.setVisible(true);
         tblEdicion.setVisible(true);
-        panelContenedor.setVisible(true);       
+        panelContenedor.setVisible(true);
+        editar=true;
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
