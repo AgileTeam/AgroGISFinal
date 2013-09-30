@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Descarga {
     
 @Id @GeneratedValue(strategy=javax.persistence.GenerationType.IDENTITY)
-private long numeroMuestraTomada;;    
+private long numeroMuestraTomada;    
     
 @ManyToOne(targetEntity = Silo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private Silo silo;
