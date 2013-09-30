@@ -133,6 +133,14 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         //Carga Tipo Documento
         cmbTipoDoc.setModel(gRegistro.rellenaComboTipoDoc());
         
+        //Carga Anio compra
+        
+        cmbAnioCamion.setModel(gRegistro.rellenaComboAnio());
+        cmbAnioAcoplado.setModel(gRegistro.rellenaComboAnio());
+        
+        //Carga Marca Acoplado
+        cmbMarcaAcoplado.setModel(gRegistro.rellenaComboMarca());
+        
         //Carga Provincia de acuerdo al Pais
         cmbPais.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent arg0){
@@ -180,7 +188,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         );
         cmbModeloCamion.setModel(gRegistro.rellenaComboModelo(cmbMarcaCamion.getSelectedItem().toString()));
          
-         
+       
          
          
     }

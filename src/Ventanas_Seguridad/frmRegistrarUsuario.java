@@ -55,6 +55,9 @@ boolean editar = false;
            panelSesion.getComponent(i).setEnabled(false);
          }
         
+          for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(false);
+         }       
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -446,20 +449,17 @@ boolean editar = false;
     if(bandera1==0 && bandera3==0 && bandera4==0 && bandera5==0){
     if(txtpass1.getText().equalsIgnoreCase(txtPass2.getText())){
     DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
+    
+    //BOTON NUEVO
+    if(editar==false){
     Usuario usuario = new Usuario();
     usuario.setPersona(txtApellido.getText());
     usuario.setNombreUsuario(txtUsuario.getText());
     usuario.setPassword(txtpass1.getText());
     usuario.setEstado(false);
-    if(editar==false){
     gestorH.guardarObjeto(usuario);
     JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
-    }
-    else{
-    gestorH.actualizarObjeto(usuario);
-    JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
-    }
-    for (int i=0; i<modeloT.getRowCount(); i++ ){
+     for (int i=0; i<modeloT.getRowCount(); i++ ){
         Iterator ite = gestorH.listarClase(Rol.class).iterator();
         while(ite.hasNext()){
             Rol rol = (Rol) ite.next();
@@ -470,8 +470,26 @@ boolean editar = false;
              gestorH.guardarObjeto(usu);
             }
         }
-       
     }
+    }
+    //BOTON EDITAR ACTIVADO
+    else{
+    Iterator ite1 = gestorH.listarClase(Usuario.class).iterator();
+    while(ite1.hasNext()){
+        Usuario u = (Usuario) ite1.next();
+        if(u.getNombreUsuario().equalsIgnoreCase(txtUsuario.getText())){
+              u.setPersona(txtApellido.getText());
+              u.setNombreUsuario(txtUsuario.getText());
+              u.setPassword(txtpass1.getText());
+              u.setEstado(false);   
+             gestorH.actualizarObjeto(u);
+             JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
+        }
+    }
+   
+    }
+   
+    
     gestorBitacora gestorB = new gestorBitacora();
     gestorB.cargarBitacora("", txtFecha.getText(), 13, labelUsuario.getText(),"");
     }else{
@@ -503,6 +521,9 @@ boolean editar = false;
            panelSesion.getComponent(i).setEnabled(true);
          }
         
+         for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+         }
      DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
      DefaultTableModel modeloTabla = (DefaultTableModel) tblRoles.getModel();
        int fila = tblEdicion.getSelectedRow();
@@ -552,10 +573,27 @@ boolean editar = false;
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-    String arc="D:/Mis Documentos/ListadoLocalidad.jasper";
-    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-    gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(Localidad.class, "nombreLocalidad"));
-    gestorReportes.imprimir();
+      for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
+        
+      for(int i=0;i<panelSesion.getComponents().length;i++){
+           panelSesion.getComponent(i).setEnabled(true);
+         }
+        
+      for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+         }  
+      
+      txtApellido.setText("");
+      txtPass2.setText("");
+      txtUsuario.setText("");
+      txtpass1.setText("");
+      DefaultTableModel modelo = (DefaultTableModel) tblRoles.getModel();
+      for(int i=0; i<tblRoles.getRowCount(); i++){
+          modelo.removeRow(i);
+      }
+      tblRoles.setModel(modelo);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
