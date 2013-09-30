@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -46,6 +47,8 @@ boolean editar = false;
         panelContenedor.setVisible(true);
         panelAgregar.setVisible(true);
         panelSesion.setVisible(true);
+        btnGuardar.setEnabled(false);
+   
         
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
@@ -54,7 +57,10 @@ boolean editar = false;
         for(int i=0;i<panelSesion.getComponents().length;i++){
            panelSesion.getComponent(i).setEnabled(false);
          }
-        
+       
+        for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(false);
+         }
         
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
@@ -82,8 +88,14 @@ boolean editar = false;
         //redimensionar columnas de la tabla
         tblRoles.getColumnModel().getColumn(0).setPreferredWidth(100);
         
+        //centrar cabecera jtable
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblRoles.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DefaultTableCellRenderer renderer1 = (DefaultTableCellRenderer) tblEdicion.getTableHeader().getDefaultRenderer();
+        renderer1.setHorizontalAlignment(0);
+     
         
-          //lineas para mejorar el aspecto de la pantalla     
+        //lineas para mejorar el aspecto de la pantalla     
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension tamanioPantalla = kit.getScreenSize();
     int ancho = 720;
@@ -142,6 +154,7 @@ boolean editar = false;
         jScrollPane3 = new javax.swing.JScrollPane();
         tblEdicion = new javax.swing.JTable();
         btnAceptar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
 
         setIconifiable(true);
@@ -275,34 +288,32 @@ boolean editar = false;
         panelAgregarLayout.setHorizontalGroup(
             panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAgregarLayout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarLayout.createSequentialGroup()
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(259, 259, 259))))
+                .addContainerGap(188, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
+            .addGroup(panelAgregarLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelAgregarLayout.setVerticalGroup(
             panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAgregarLayout.createSequentialGroup()
-                .addGroup(panelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAgregarLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                    .addGroup(panelAgregarLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(4, 4, 4)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap(18, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
 
         panelContenedor.add(panelAgregar);
-        panelAgregar.setBounds(40, 170, 630, 160);
+        panelAgregar.setBounds(50, 170, 630, 160);
 
         panelDatosU.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelDatosU.setLayout(null);
@@ -324,13 +335,14 @@ boolean editar = false;
         cmbRol.setBounds(90, 70, 180, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Descripcion");
+        jLabel5.setText("Descripción");
         panelDatosU.add(jLabel5);
         jLabel5.setBounds(320, 70, 90, 20);
 
         areaDescrp.setColumns(20);
         areaDescrp.setRows(3);
         areaDescrp.setTabSize(5);
+        areaDescrp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane2.setViewportView(areaDescrp);
 
         panelDatosU.add(jScrollPane2);
@@ -354,7 +366,7 @@ boolean editar = false;
         jScrollPane3.setViewportView(tblEdicion);
 
         panelEdicion.add(jScrollPane3);
-        jScrollPane3.setBounds(70, 10, 520, 120);
+        jScrollPane3.setBounds(70, 30, 520, 120);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +375,12 @@ boolean editar = false;
             }
         });
         panelEdicion.add(btnAceptar);
-        btnAceptar.setBounds(600, 60, 50, 30);
+        btnAceptar.setBounds(600, 80, 50, 30);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Usuarios");
+        panelEdicion.add(jLabel2);
+        jLabel2.setBounds(300, 10, 70, 14);
 
         panelContenedor.add(panelEdicion);
         panelEdicion.setBounds(10, 10, 680, 170);
@@ -394,9 +411,9 @@ boolean editar = false;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +427,7 @@ boolean editar = false;
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -428,6 +445,10 @@ boolean editar = false;
        Object fila[]= {cmbRol.getSelectedItem(), areaDescrp.getText()};
        modeloT.addRow(fila);
        tblRoles.setModel(modeloT);
+       
+       for(int i=0;i<panelSesion.getComponents().length;i++){
+           panelSesion.getComponent(i).setEnabled(true);
+         }
        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -495,6 +516,7 @@ boolean editar = false;
         panelAgregar.setVisible(true);
         panelSesion.setVisible(true);
         
+        
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(true);
          }
@@ -502,6 +524,10 @@ boolean editar = false;
         for(int i=0;i<panelSesion.getComponents().length;i++){
            panelSesion.getComponent(i).setEnabled(true);
          }
+        for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+         }
+        
         
      DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
      DefaultTableModel modeloTabla = (DefaultTableModel) tblRoles.getModel();
@@ -532,6 +558,7 @@ boolean editar = false;
         jScrollPane3.setVisible(true);
         tblEdicion.setVisible(true);
         panelContenedor.setVisible(true);
+        btnGuardar.setEnabled(true);
         editar=true;
         btnNuevo.setEnabled(false);
         for(int i=0;i<panelAgregar.getComponents().length;i++){
@@ -552,10 +579,22 @@ boolean editar = false;
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-    String arc="D:/Mis Documentos/ListadoLocalidad.jasper";
-    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-    gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(Localidad.class, "nombreLocalidad"));
-    gestorReportes.imprimir();
+    for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+         }
+    
+     for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
+     
+    btnEditar.setEnabled(true);
+    btnGuardar.setEnabled(true);
+    
+    
+//    String arc="D:/Mis Documentos/ListadoLocalidad.jasper";
+//    GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+//    gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(Localidad.class, "nombreLocalidad"));
+//    gestorReportes.imprimir();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -571,6 +610,7 @@ boolean editar = false;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
