@@ -224,9 +224,9 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         btnEmitirOrden = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Reparacion");
 
         jPanel1.setLayout(null);
@@ -300,7 +300,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(250, 140, 120, 20);
         jPanel2.add(jSeparator1);
-        jSeparator1.setBounds(40, 170, 600, 10);
+        jSeparator1.setBounds(10, 170, 680, 10);
         jPanel2.add(txtAnioCompra);
         txtAnioCompra.setBounds(130, 210, 100, 20);
 
@@ -354,7 +354,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         jPanel3.add(txtDomicilio);
         txtDomicilio.setBounds(130, 60, 230, 20);
         jPanel3.add(jSeparator2);
-        jSeparator2.setBounds(30, 130, 630, 10);
+        jSeparator2.setBounds(10, 130, 680, 10);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel17.setText("Observaciones");
@@ -445,7 +445,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
