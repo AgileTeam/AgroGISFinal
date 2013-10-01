@@ -28,6 +28,7 @@ gestorRegistrarTaller gestorT = new gestorRegistrarTaller();
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistroTransportista  gRegistro = new gestorRegistroTransportista();
 boolean editar=false;
+long id = 0;
     /**
      * Creates new form frmRegistrarTallerReparacion
      */
@@ -41,9 +42,15 @@ boolean editar=false;
         panelEdicion.setVisible(false);
         
         for(int i=0;i<panelAgregar.getComponents().length;i++){
-           panelAgregar.getComponent(i).setEnabled(true);
+           panelAgregar.getComponent(i).setEnabled(false);
          }
-        
+         for(int i=0;i<panelDatosT.getComponents().length;i++){
+           panelDatosT.getComponent(i).setEnabled(false);
+         }
+        for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(false);
+         }
+        btnGuardarTaller.setEnabled(false);
         
         gestorH.actualizarUsuario(labelusuario);
         cmbProvincia.setModel(gestorT.rellenaCombo());
@@ -172,9 +179,9 @@ boolean editar=false;
         txtEmail = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
-        btnGuardarTaller = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnGuardarTaller = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
@@ -422,15 +429,6 @@ boolean editar=false;
             }
         });
 
-        btnGuardarTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardarTaller.setText("Guardar");
-        btnGuardarTaller.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarTallerActionPerformed(evt);
-            }
-        });
-
         btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -449,6 +447,15 @@ boolean editar=false;
             }
         });
 
+        btnGuardarTaller.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardarTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardarTaller.setText("Guardar");
+        btnGuardarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarTallerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -457,9 +464,9 @@ boolean editar=false;
                 .addGap(14, 14, 14)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -470,9 +477,9 @@ boolean editar=false;
                 .addGap(0, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         panelContenedor.add(jPanel1);
@@ -541,7 +548,7 @@ boolean editar=false;
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
         );
 
         pack();
@@ -590,12 +597,16 @@ boolean editar=false;
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
+    GestorHibernate gestorH = new GestorHibernate();
     int campo = gestorT.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum,txtNombreTaller);
-    if(campo == 0){        
+    if(campo == 0){
+
+    //BOTON NUEVO
+    if(editar==false){
     boolean mail = gRegistro.isEmail(txtEmail.getText());
     System.out.println(mail);
     if(mail==true){
-    GestorHibernate gestorH = new GestorHibernate();
+    
     TallerReparacion taller = new TallerReparacion();
     Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
     while(ite.hasNext()){
@@ -614,11 +625,45 @@ boolean editar=false;
     domicilio.setCalle(txtCalle.getText());
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
-    taller.setDomicilio(domicilio);
-    if(editar==false){
-    gestorH.guardarObjeto(taller);
-    }else{
-    gestorH.actualizarObjeto(taller);
+    taller.setDomicilio(domicilio);    
+    gestorH.guardarObjeto(taller);  
+   
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
+    }
+    
+    }
+     //BOTON EDITAR
+    else{
+    Iterator ite1 =  gestorH.listarClase(TallerReparacion.class).iterator();
+    while(ite1.hasNext()){
+        TallerReparacion t = (TallerReparacion)ite1.next();
+        if(t.getIdTallerReparacion()== id){
+            Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
+            while(ite.hasNext()){
+                Especialidad e = (Especialidad) ite.next();
+                if(e.equals((Especialidad)cmbEspecialidad.getSelectedItem())){
+                t.setEspecialidad(e);
+                }
+            } 
+            t.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
+            t.setEmail(txtEmail.getText());
+            t.setRazonSocial(txtRazonSocial.getText());
+            t.setNumeroTelefono((txtTelefono.getText()));
+            t.setCuit(txtCUIT.getText());
+            t.setTipoTelefono((TipoTelefono) cmbTipoTel.getSelectedItem());
+            Domicilio domicilio = new Domicilio();
+            domicilio.setCalle(txtCalle.getText());
+            domicilio.setNumero(Integer.parseInt(txtNum.getText()));
+            domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
+            t.setDomicilio(domicilio);
+        
+        }
+        gestorH.actualizarObjeto(t);
+    }
+        
+    
     }
     DefaultTableModel modeloTabla = (DefaultTableModel) tblTaller.getModel();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
@@ -630,12 +675,8 @@ boolean editar=false;
     txtNum.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     
     }
-     else{
-        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
-    }
-    
-    }
     editar=false;
+    btnGuardarTaller.setEnabled(true);
     }//GEN-LAST:event_btnNuevoTallerActionPerformed
 
     private void btnEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTallerActionPerformed
@@ -656,9 +697,13 @@ boolean editar=false;
         jScrollPane1.setVisible(true);
         tblEdicion.setVisible(true);
         panelEdicion.setVisible(true);
+        btnNuevoTaller.setEnabled(false);
         
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
+         }
+        for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(true);
          }
         DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
         Iterator ite = gestorH.listarClase(TallerReparacion.class).iterator();
@@ -671,6 +716,16 @@ boolean editar=false;
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+     for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelDatosT.getComponents().length;i++){
+           panelDatosT.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(true);
+     }
+     
      txtCUIT.setText("");
      txtCalle.setText("");
      txtEmail.setText("");
@@ -678,6 +733,8 @@ boolean editar=false;
      txtRazonSocial.setText("");
      txtTelefono.setText("");
      txtNum.setText("");
+     btnEditar.setEnabled(false);
+     btnGuardarTaller.setEnabled(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -692,6 +749,14 @@ boolean editar=false;
     }//GEN-LAST:event_btnGuardarTallerActionPerformed
 
     private void btnAceptarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTallerActionPerformed
+       panelDatosT.setVisible(true);
+       panelEdicion.setVisible(false);
+       for(int i=0;i<panelDatosT.getComponents().length;i++){
+           panelDatosT.getComponent(i).setEnabled(true);
+         }
+       for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
        DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
        int fila = tblEdicion.getSelectedRow();
        Iterator ite = gestorH.listarClase(TallerReparacion.class).iterator();
@@ -709,9 +774,12 @@ boolean editar=false;
                cmbDepartamento.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento());
                cmbProvincia.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
                cmbCondicion.setSelectedItem(e.getCondicionIva());
+               txtNombreTaller.setText(e.getNombre());
+               id = e.getIdTallerReparacion();
            }
        }
        editar=true;
+       
     }//GEN-LAST:event_btnAceptarTallerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
