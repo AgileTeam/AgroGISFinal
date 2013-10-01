@@ -84,8 +84,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
+        cmbMotivo.setModel(gestorC.rellenaComboMotivo());
         tblMotivo.setEnabled(false);
         tblTransportista.setEnabled(false);
+        btnAgregarMotivo.setEnabled(false);
+        btnQuitarMotivo.setEnabled(false);
       
     }
 
@@ -631,7 +634,10 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             if(orden.getNumeroOrden() == nroOrden){
                 orden.setHabilita("0");
                 gestorH.actualizarObjeto(orden);
+                modelo.removeRow(fila);
+                tblReparacion.setModel(modelo);
             }
+            
         }
         JOptionPane.showMessageDialog(null, "Se ha eliminado la orden Nro: " + nroOrden);
         gestorBitacora gestorB = new gestorBitacora();
