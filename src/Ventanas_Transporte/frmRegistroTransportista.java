@@ -816,6 +816,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelAcoplado.add(jLabel39);
         jLabel39.setBounds(250, 40, 60, 20);
 
+        cmbEjesAcoplado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4" }));
         panelAcoplado.add(cmbEjesAcoplado);
         cmbEjesAcoplado.setBounds(290, 40, 90, 20);
 
