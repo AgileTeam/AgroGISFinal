@@ -146,7 +146,7 @@ GestorHibernate gestorH = new GestorHibernate();
     //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 750;
+        int ancho = 740;
         int alto = 565;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 // int posY = (int) ((tamanioPantalla.height - alto) / 2);
@@ -204,10 +204,10 @@ GestorHibernate gestorH = new GestorHibernate();
         btnSalir = new javax.swing.JButton();
         btnEmitirOrden = new javax.swing.JButton();
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Orden Carga de Combustible");
+        setResizable(true);
+        setTitle("Carga de Combustible");
 
         jPanel1.setLayout(null);
         jPanel1.add(txtFechaCarga);
@@ -263,19 +263,18 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel2.add(btnAgregarTransportista);
-        btnAgregarTransportista.setBounds(580, 70, 40, 30);
+        btnAgregarTransportista.setBounds(580, 80, 40, 30);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(250, 160, 110, 17);
+        jLabel4.setBounds(230, 160, 110, 17);
 
         labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelTransportista.setText("Jose Torrea");
         jPanel2.add(labelTransportista);
-        labelTransportista.setBounds(350, 160, 110, 17);
+        labelTransportista.setBounds(330, 160, 230, 20);
         jPanel2.add(jSeparator1);
-        jSeparator1.setBounds(40, 190, 600, 10);
+        jSeparator1.setBounds(10, 190, 680, 10);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Vehículo");
@@ -307,7 +306,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel17.setBounds(420, 230, 50, 20);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(30, 50, 680, 270);
+        jPanel2.setBounds(10, 50, 710, 270);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Proveedor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel3.setLayout(null);
@@ -365,7 +364,7 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbOperacion.setBounds(130, 120, 180, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(30, 330, 680, 150);
+        jPanel3.setBounds(10, 330, 710, 150);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogueado.png"))); // NOI18N
         jPanel1.add(jLabel13);
@@ -393,13 +392,15 @@ GestorHibernate gestorH = new GestorHibernate();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(269, 269, 269)
                 .addComponent(btnEmitirOrden)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,14 +410,14 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
