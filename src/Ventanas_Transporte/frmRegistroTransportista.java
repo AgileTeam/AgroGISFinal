@@ -57,21 +57,26 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jScrollPane4.setVisible(false);
         tblModificaT.setVisible(false);
         panelTransportista.setVisible(true);
-        
+        btnGuardar.setEnabled(false);
+        btnEmitirFicha.setEnabled(false);
         
         for(int i=0;i<panelContratacion.getComponents().length;i++){
-           panelContratacion.getComponent(i).setEnabled(true);
+           panelContratacion.getComponent(i).setEnabled(false);
+         }
+        
+        for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(false);
          }
         
         for(int i=0;i<panelDatosP.getComponents().length;i++){
-           panelDatosP.getComponent(i).setEnabled(true);
+           panelDatosP.getComponent(i).setEnabled(false);
          }
         
         for(int i=0;i<panelBotonesI.getComponents().length;i++){
-           panelBotonesI.getComponent(i).setEnabled(true);
+           panelBotonesI.getComponent(i).setEnabled(false);
        }
        for(int i=0;i<panelBotonesD.getComponents().length;i++){
-           panelBotonesD.getComponent(i).setEnabled(true);
+           panelBotonesD.getComponent(i).setEnabled(false);
        }
         
         gBarrio.actualizarUsuario(labelusuario);
@@ -276,7 +281,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel12 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
         calendarioNacimiento = new datechooser.beans.DateChooserCombo();
         panelVehiculo = new javax.swing.JPanel();
         panelAcoplado = new javax.swing.JPanel();
@@ -457,7 +461,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelBotonesILayout.setHorizontalGroup(
             panelBotonesILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesILayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBotonesILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregarPais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,7 +481,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         );
 
         panelDatosU.add(panelBotonesI);
-        panelBotonesI.setBounds(250, 30, 100, 120);
+        panelBotonesI.setBounds(290, 30, 60, 120);
 
         btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
 
@@ -488,24 +492,24 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         panelBotonesDLayout.setHorizontalGroup(
             panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesDLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBotonesDLayout.setVerticalGroup(
             panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesDLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(12, 12, 12)
                 .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         panelDatosU.add(panelBotonesD);
-        panelBotonesD.setBounds(590, 20, 100, 110);
+        panelBotonesD.setBounds(630, 30, 60, 100);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -568,10 +572,10 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         jPanel8.setLayout(null);
 
-        jLabel26.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setText("Buscar Transportista");
         jPanel8.add(jLabel26);
-        jLabel26.setBounds(10, 0, 130, 30);
+        jLabel26.setBounds(60, 0, 190, 30);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -639,10 +643,10 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         );
 
         jPanel8.add(jPanel19);
-        jPanel19.setBounds(120, 0, 100, 40);
+        jPanel19.setBounds(190, 0, 100, 40);
 
         panelTransportista.add(jPanel8);
-        jPanel8.setBounds(360, 0, 250, 40);
+        jPanel8.setBounds(310, 0, 300, 40);
 
         panelTabla.setLayout(null);
 
@@ -776,25 +780,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         panelDatosP.add(jPanel7);
         jPanel7.setBounds(-20, -50, 700, 40);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        panelDatosP.add(jPanel10);
-        jPanel10.setBounds(580, 70, 100, 70);
         panelDatosP.add(calendarioNacimiento);
         calendarioNacimiento.setBounds(130, 70, 120, 20);
 
         panelTransportista.add(panelDatosP);
-        panelDatosP.setBounds(130, 50, 730, 180);
+        panelDatosP.setBounds(130, 50, 740, 180);
 
         jTabbedPane1.addTab("Transportista", panelTransportista);
 
@@ -1123,9 +1113,9 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, Short.MAX_VALUE)
                 .addComponent(labelusuario)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
@@ -1141,7 +1131,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelusuario)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1150,7 +1139,9 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
                             .addComponent(jLabel4)))
                     .addComponent(jLabel48)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(8, 8, 8)
+                        .addComponent(labelusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1158,6 +1149,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -1585,6 +1581,21 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_txtAnchoCamionKeyTyped
 
     private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
+    for(int i=0;i<panelContratacion.getComponents().length;i++){
+           panelContratacion.getComponent(i).setEnabled(true);
+       }
+       for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+       }
+       
+       for(int i=0;i<panelBotonesI.getComponents().length;i++){
+           panelBotonesI.getComponent(i).setEnabled(true);
+       }
+       for(int i=0;i<panelBotonesD.getComponents().length;i++){
+           panelBotonesD.getComponent(i).setEnabled(true);
+       }
+        
+        
     DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
     DefaultTableModel modeloV = (DefaultTableModel) tblVehiculo.getModel();
        int fila = tblModificaT.getSelectedRow();
@@ -1621,6 +1632,30 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
        }
        editar=true;
     }//GEN-LAST:event_btnAceptarTranspActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        for(int i=0;i<panelContratacion.getComponents().length;i++){
+           panelContratacion.getComponent(i).setEnabled(true);
+         }
+        
+        for(int i=0;i<panelDatosU.getComponents().length;i++){
+           panelDatosU.getComponent(i).setEnabled(true);
+         }
+        
+        for(int i=0;i<panelDatosP.getComponents().length;i++){
+           panelDatosP.getComponent(i).setEnabled(true);
+         }
+        
+        for(int i=0;i<panelBotonesI.getComponents().length;i++){
+           panelBotonesI.getComponent(i).setEnabled(true);
+       }
+       for(int i=0;i<panelBotonesD.getComponents().length;i++){
+           panelBotonesD.getComponent(i).setEnabled(true);
+       }
+        btnGuardar.setEnabled(true);
+        btnEmitirFicha.setEnabled(true);
+       
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
@@ -1707,7 +1742,6 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
