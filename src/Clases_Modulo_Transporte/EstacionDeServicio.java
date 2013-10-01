@@ -149,4 +149,18 @@ private String CUIT;
     public String toString(){
         return getRazonSocial();
     }
+
+    /**
+     * @return the idEstacionDeServicio
+     */
+    public long getIdEstacionDeServicio() {
+        return idEstacionDeServicio;
+    }
+
+    /**
+     * @param idEstacionDeServicio the idEstacionDeServicio to set
+     */
+    public void setIdEstacionDeServicio(long idEstacionDeServicio) {
+        this.idEstacionDeServicio = idEstacionDeServicio;
+    }
 }

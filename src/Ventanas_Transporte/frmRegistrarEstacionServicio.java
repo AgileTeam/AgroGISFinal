@@ -43,7 +43,8 @@ gestorRegistrarEstacionServicio gEstacion = new gestorRegistrarEstacionServicio(
 GestorHibernate gestorH = new GestorHibernate();
 gestorRegistroTransportista gRegistro = new gestorRegistroTransportista();
 gestorRegistrarTaller gTaller = new gestorRegistrarTaller();
-boolean editar=false;
+boolean editar=false; 
+long id=0;
     /** Creates new form frmRegistrarEstacionServicio */
     public frmRegistrarEstacionServicio() {
         initComponents();
@@ -57,6 +58,14 @@ boolean editar=false;
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(true);
          }
+        
+         for(int i=0;i<panelDatosE.getComponents().length;i++){
+           panelDatosE.getComponent(i).setEnabled(false);
+         }
+        for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(false);
+         }
+        btnGuardarEstacion.setEnabled(false);
      
         gestorH.actualizarUsuario(labelUsuario);
         
@@ -610,12 +619,13 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    GestorHibernate gestorH = new GestorHibernate();
     int campo = gTaller.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum,txtTelefono);
     if(campo == 0){
-    boolean mail = gRegistro.isEmail(txtEmail.getText());
-    System.out.println(mail);
-    if(mail==true){
-    GestorHibernate gestorH = new GestorHibernate();
+   
+    if(editar==false){
+    
+   
     EstacionDeServicio estacion = new EstacionDeServicio();
     estacion.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
     estacion.setEmail(txtEmail.getText());
@@ -629,12 +639,32 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
     estacion.setDomicilio(domicilio);
-    if(editar==false){
     gestorH.guardarObjeto(estacion);
     }
+    //EDITAR
     else{
-    gestorH.actualizarObjeto(estacion);
+    Iterator ite = (gestorH.listarClase(EstacionDeServicio.class).iterator());
+    while(ite.hasNext()){
+        EstacionDeServicio e = (EstacionDeServicio) ite.next();
+        if(e.getIdEstacionDeServicio() == id){
+        e.setCondicionIva((CondicionIva) cmbCondicion.getSelectedItem());
+        e.setEmail(txtEmail.getText());
+        e.setProveedor((ProveedorCombustible) cmbProveedor.getSelectedItem());
+        e.setRazonSocial(txtRazonSocial.getText());
+        e.setTelefono(txtTelefono.getText());
+        e.setCUIT(txtCUIT.getText());
+        e.setTipoTelefono((TipoTelefono) cmbTipoTel.getSelectedItem());
+        Domicilio domicilio = new Domicilio();
+        domicilio.setCalle(txtCalle.getText());
+        domicilio.setNumero(Integer.parseInt(txtNum.getText()));
+        domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
+        e.setDomicilio(domicilio);
+        gestorH.actualizarObjeto(e);
+        }
+    
     }
+    }
+    
     DefaultTableModel modeloTabla = (DefaultTableModel) tblEstacion.getModel();
     Object fila[]={txtRazonSocial.getText(), txtCUIT.getText(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
@@ -643,10 +673,6 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     txtCUIT.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtNum.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-    }
-    else{
-        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
-    }
     }
     editar=false;
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -670,6 +696,14 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_btnEditarEstacionActionPerformed
 
     private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
+       panelDatosE.setVisible(true);
+       panelEdicion.setVisible(false);
+       for(int i=0;i<panelDatosE.getComponents().length;i++){
+           panelDatosE.getComponent(i).setEnabled(true);
+         }
+       for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
        DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
        int fila = tblEdicion.getSelectedRow();
        Iterator ite = gestorH.listarClase(EstacionDeServicio.class).iterator();
@@ -687,13 +721,31 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
                cmbDepartamento.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento());
                cmbProvincia.setSelectedItem(e.getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia());
                cmbProveedor.setSelectedItem(e.getProveedor());
+               id = e.getIdEstacionDeServicio();
            }
        }
        editar=true;
     }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
     private void btnNuevaEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaEstacionActionPerformed
-        // TODO add your handling code here:
+     for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelDatosE.getComponents().length;i++){
+           panelDatosE.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(true);
+     }
+     
+     txtCUIT.setText("");
+     txtCalle.setText("");
+     txtEmail.setText("");
+     txtRazonSocial.setText("");
+     txtTelefono.setText("");
+     txtNum.setText("");
+     btnEditarEstacion.setEnabled(false);
+     btnGuardarEstacion.setEnabled(false);
     }//GEN-LAST:event_btnNuevaEstacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
