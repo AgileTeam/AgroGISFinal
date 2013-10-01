@@ -151,7 +151,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar Orden");
+        setTitle("Orden Envío a Taller");
 
         jPanel17.setLayout(null);
 
@@ -602,7 +602,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(48, Short.MAX_VALUE))
+            .addContainerGap(52, Short.MAX_VALUE))
     );
 
     pack();
