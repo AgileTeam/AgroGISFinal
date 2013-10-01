@@ -602,11 +602,7 @@ long id = 0;
     if(campo == 0){
 
     //BOTON NUEVO
-    if(editar==false){
-    boolean mail = gRegistro.isEmail(txtEmail.getText());
-    System.out.println(mail);
-    if(mail==true){
-    
+    if(editar==false){    
     TallerReparacion taller = new TallerReparacion();
     Iterator ite = gestorH.listarClase(Especialidad.class).iterator();
     while(ite.hasNext()){
@@ -621,18 +617,14 @@ long id = 0;
     taller.setNumeroTelefono((txtTelefono.getText()));
     taller.setCuit(txtCUIT.getText());
     taller.setTipoTelefono((TipoTelefono) cmbTipoTel.getSelectedItem());
+    taller.setNombre(txtNombreTaller.getText());
     Domicilio domicilio = new Domicilio();
     domicilio.setCalle(txtCalle.getText());
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio) cmbBarrio.getSelectedItem());
     taller.setDomicilio(domicilio);    
     gestorH.guardarObjeto(taller);  
-   
-    }
-    else{
-        JOptionPane.showMessageDialog(null, "Ingrese un email valido");
-    }
-    
+     
     }
      //BOTON EDITAR
     else{
