@@ -147,7 +147,7 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar Orden");
+        setTitle("Orden Carga Combustible");
 
         jPanel17.setLayout(null);
 
@@ -508,7 +508,7 @@ public class frmEliminarOrdenCarga extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(49, Short.MAX_VALUE))
+            .addContainerGap(53, Short.MAX_VALUE))
     );
 
     pack();
