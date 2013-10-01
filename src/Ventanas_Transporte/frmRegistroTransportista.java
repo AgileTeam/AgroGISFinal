@@ -1294,7 +1294,9 @@ private void buttonCamionAcopladoActionPerformed(java.awt.event.ActionEvent evt)
 }//GEN-LAST:event_buttonCamionAcopladoActionPerformed
 
 private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCamionAcopladoActionPerformed
-   DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
+    int campo = gRegistro.campoObligatorioCA(txtAnchoAcoplado, txtAnchoCamion, txtDominioAcoplado, txtDominioCamion, txtLargoAcplado, txtLargoCamion, txtSerieAcoplado, txtTaraAcoplado, txtTaraCamion, txtKilometros);
+    if(campo==0){
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH= new GestorHibernate();
     Vehiculo vehiculo = new Vehiculo();
     vehiculo.setAncho((Integer.parseInt(txtAnchoCamion.getText())));
@@ -1326,6 +1328,7 @@ private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent 
     txtSerieAcoplado.setText("");
     txtLargoAcplado.setText("");
     txtTaraAcoplado.setText("");
+    }
 //    btnAceptarCamion.setEnabled(true);
 }//GEN-LAST:event_btnAgregarCamionAcopladoActionPerformed
 
@@ -1388,6 +1391,8 @@ private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent ev
 }//GEN-LAST:event_btnBuscarTransportistaActionPerformed
 
 private void btnAgregarAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAcopladoActionPerformed
+    int campo = gRegistro.campoObligatorioCOA(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtSerieAcoplado, txtTaraAcoplado);
+    if(campo==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH = new GestorHibernate();
     Vehiculo vehiculo = gRegistro.editar(txtDominioCamion.getText());
@@ -1414,9 +1419,13 @@ private void btnAgregarAcopladoActionPerformed(java.awt.event.ActionEvent evt) {
     txtLargoAcplado.setText("");
     txtTaraAcoplado.setText("");
 //    btnAceptarCamion.setEnabled(true);
+    
+    }
 }//GEN-LAST:event_btnAgregarAcopladoActionPerformed
 
 private void btnAgregarCamionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCamionActionPerformed
+    int campo = gRegistro.campoObligatorioCOA(txtAnchoCamion, txtDominioCamion, txtKilometros, txtLargoCamion, txtTaraCamion);
+    if(campo==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH = new GestorHibernate();
     Vehiculo vehiculo = new Vehiculo();
@@ -1438,6 +1447,8 @@ private void btnAgregarCamionActionPerformed(java.awt.event.ActionEvent evt) {//
     txtKilometros.setText("");
     txtLargoCamion.setText("");
 //    btnAceptarCamion.setEnabled(true);
+    
+    }
 }//GEN-LAST:event_btnAgregarCamionActionPerformed
 
 private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped

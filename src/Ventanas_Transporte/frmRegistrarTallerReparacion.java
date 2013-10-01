@@ -590,7 +590,7 @@ boolean editar=false;
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void btnNuevoTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTallerActionPerformed
-    int campo = gestorT.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum);
+    int campo = gestorT.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum,txtNombreTaller);
     if(campo == 0){        
     boolean mail = gRegistro.isEmail(txtEmail.getText());
     System.out.println(mail);

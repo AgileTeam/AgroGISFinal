@@ -105,7 +105,7 @@ public class gestorRegistrarTaller extends GestorHibernate {
       return modelo;
    }  
        
-   public int campoObligatorio(JTextField texto1, JTextField texto2, JTextField texto3, JTextField texto4){
+   public int campoObligatorio(JTextField texto1, JTextField texto2, JTextField texto3, JTextField texto4, JTextField texto5){
          int campo = 0;   
          if(texto1.getText().equalsIgnoreCase("")){
                 texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
@@ -121,6 +121,10 @@ public class gestorRegistrarTaller extends GestorHibernate {
             }
             if(texto4.getText().equalsIgnoreCase("")){
                 texto4.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+            if(texto5.getText().equalsIgnoreCase("")){
+                texto5.setBorder(BorderFactory.createLineBorder(Color.RED,1));
                 campo=1;
             }
          if(campo == 1){
