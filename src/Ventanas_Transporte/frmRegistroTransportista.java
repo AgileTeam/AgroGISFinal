@@ -135,6 +135,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         DefaultTableCellRenderer renderer3 = (DefaultTableCellRenderer) tblModificaT.getTableHeader().getDefaultRenderer();
         renderer3.setHorizontalAlignment(0);
     
+        //Carga Tipo Tel
+        cmbTipoTel.setModel(gRegistro.rellenaComboTipoTel());
+        
+        //Carga Tipo Contratacion
+        cmbTipoContratacion.setModel(gRegistro.rellenaComboTipoContratacion());
+        
         //Carga Tipo Documento
         cmbTipoDoc.setModel(gRegistro.rellenaComboTipoDoc());
         
@@ -1214,12 +1220,12 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtDominioCamion, txtTaraCamion);
+    GestorHibernate gestorH = new GestorHibernate();
     if(campo==0){
     gestorBitacora gestorB = new gestorBitacora();
-    boolean cuit = gRegistro.validarCuit(txtCUIL.getText());
-    if(cuit==true){    
+    if(editar==false){
     if(tblVehiculo.getRowCount()!=0){
-    GestorHibernate gestorH = new GestorHibernate();
+    
     Transportista transportista= new Transportista();
 
     transportista.setApellido(txtApellido.getText());
@@ -1239,10 +1245,15 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     gestorH.guardarObjeto(transportista);
     DefaultTableModel modeloT = (DefaultTableModel) tblVehiculo.getModel();
     for (int i =0; i<tblVehiculo.getRowCount(); i++){
-        Vehiculo vehiculo = new Vehiculo();
-        vehiculo = gRegistro.editar((String) modeloT.getValueAt(i, 0));
-        vehiculo.setTransportista(transportista);
-        gestorB.cargarBitacora(vehiculo.getDominio(), txtFecha.getText(), 5, labelusuario.getText(), "Ficha de Personal");
+        Iterator ite5 = gestorH.listarClase(Vehiculo.class).iterator();
+        while(ite5.hasNext()){
+            Vehiculo vehiculo = (Vehiculo) ite5.next();
+            if(vehiculo.getDominio().equalsIgnoreCase(((String) modeloT.getValueAt(i, 0)))){
+            vehiculo.setTransportista(transportista);}
+            gestorB.cargarBitacora(vehiculo.getDominio(), txtFecha.getText(), 5, labelusuario.getText(), "Ficha de Personal");
+        }
+          
+        
 
     }
    
@@ -1252,11 +1263,50 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }
-    } else{
-        JOptionPane.showMessageDialog(null, "El CUIT ingresado no es valido");
     }
+    //EDITAR TRANSPORTISTA
+    else{
+    if(tblVehiculo.getRowCount()!=0){
+    Iterator ite3 = gestorH.listarClase(Transportista.class).iterator();
+    while(ite3.hasNext()){
+        Transportista t = (Transportista) ite3.next();
+        if(t.getNumeroDocumento().equalsIgnoreCase(txtDocumento.getText())){
+        t.setApellido(txtApellido.getText());
+        t.setFechaNacimiento(calendarioNacimiento.getText());
+        t.setNombre(txtNombres.getText());
+        t.setNumeroDocumento(txtDocumento.getText());
+        t.setCondicionContratacion((CondicionContratacion)cmbTipoContratacion.getSelectedItem());
+        t.setCuil(txtCUIL.getText());
+        t.setEstadoCivil((String)cmbEstadoCivil.getSelectedItem());
+        t.setFechaIngreso(calendarioNacimiento.getText());
+        t.setFechaSalida(calendarioFin.getText());
+        t.setTipoDocumento((TipoDocumento)cmbTipoDoc.getSelectedItem());
+        Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
+        gestorH.guardarObjeto(domicilio);
+        t.setDomicilio(domicilio);
+        gestorH.actualizarObjeto(t);
+        DefaultTableModel modeloT = (DefaultTableModel) tblVehiculo.getModel();
+        for (int i =0; i<tblVehiculo.getRowCount(); i++){
+        Iterator ite4 = gestorH.listarClase(Vehiculo.class).iterator();
+        while(ite4.hasNext()){
+            Vehiculo v = (Vehiculo) ite4.next();
+            if(v.getDominio().equalsIgnoreCase(((String) modeloT.getValueAt(i, 0)))){
+            v.setTransportista(t);
+        }
+        }
+       }       
     }
         
+    }
+    }
+
+    else{
+        JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
+    }  
+    
+    }
+    } 
+   
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -1270,24 +1320,27 @@ private void buttonCamionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
      gRegistro.habilitar(txtAnchoCamion, txtDominioCamion, txtKilometros, txtLargoCamion, txtTaraCamion, cmbAnioCamion, cmbMarcaCamion, cmbModeloCamion);
      gRegistro.deshabilitar(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtLargoAcplado, txtSerieAcoplado, cmbAnioAcoplado, cmbEjesAcoplado, cmbMarcaAcoplado);
 //     btnAceptarCamion.setVisible(true);
-     btnAgregarCamion.setVisible(false);
+     btnAgregarCamion.setVisible(true);
      btnAgregarCamionAcoplado.setVisible(false);
+     btnAgregarAcoplado.setVisible(false);
 }//GEN-LAST:event_buttonCamionActionPerformed
 
 private void buttonAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcopladoActionPerformed
-    gRegistro.habilitar(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtLargoAcplado, txtSerieAcoplado, cmbAnioAcoplado, cmbEjesAcoplado, cmbMarcaAcoplado);
+    gRegistro.habilitar(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtTaraAcoplado, txtSerieAcoplado, cmbAnioAcoplado, cmbEjesAcoplado, cmbMarcaAcoplado);
     gRegistro.deshabilitar(txtAnchoCamion, txtDominioCamion, txtKilometros, txtLargoCamion, txtTaraCamion, cmbAnioCamion, cmbMarcaCamion, cmbModeloCamion);
-    btnAgregarCamion.setVisible(true);
+    btnAgregarCamion.setVisible(false);
 //    btnAceptarCamion.setVisible(false);
     btnAgregarCamionAcoplado.setVisible(false);
+    btnAgregarAcoplado.setVisible(true);
 }//GEN-LAST:event_buttonAcopladoActionPerformed
 
 private void buttonCamionAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCamionAcopladoActionPerformed
-     gRegistro.habilitar(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtLargoAcplado, txtSerieAcoplado, cmbAnioAcoplado, cmbEjesAcoplado, cmbMarcaAcoplado);
+     gRegistro.habilitar(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtTaraAcoplado, txtSerieAcoplado, cmbAnioAcoplado, cmbEjesAcoplado, cmbMarcaAcoplado);
      gRegistro.habilitar(txtAnchoCamion, txtDominioCamion, txtKilometros, txtLargoCamion, txtTaraCamion, cmbAnioCamion, cmbMarcaCamion, cmbModeloCamion);
      btnAgregarCamion.setVisible(false);
 //     btnAceptarCamion.setVisible(false);
      btnAgregarCamionAcoplado.setVisible(true);
+     btnAgregarAcoplado.setVisible(false);
 }//GEN-LAST:event_buttonCamionAcopladoActionPerformed
 
 private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCamionAcopladoActionPerformed
@@ -1295,14 +1348,18 @@ private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent 
     if(campo==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH= new GestorHibernate();
+    //NUEVO VEHICULO Y ACOPLADO
+    if(editar==false){
+   
     Vehiculo vehiculo = new Vehiculo();
-    vehiculo.setAncho((Integer.parseInt(txtAnchoCamion.getText())));
+    vehiculo.setAncho((Double.parseDouble(txtAnchoCamion.getText())));
     vehiculo.setAnioCompra((AnioCompra)cmbAnioCamion.getSelectedItem());
     vehiculo.setCantidadKms((Double.parseDouble (txtKilometros.getText())));
     vehiculo.setDominio(txtDominioCamion.getText());
     vehiculo.setLargo(Double.parseDouble(txtLargoCamion.getText()));
     vehiculo.setModelo((Modelo)cmbModeloCamion.getSelectedItem());
     vehiculo.setTara(Double.parseDouble(txtTaraCamion.getText()));
+    vehiculo.setEstado("Disponible");
     gestorH.guardarObjeto(vehiculo);
     Acoplado acoplado = new Acoplado();
     acoplado.setAncho(Double.parseDouble(txtAnchoAcoplado.getText()));
@@ -1310,8 +1367,44 @@ private void btnAgregarCamionAcopladoActionPerformed(java.awt.event.ActionEvent 
     acoplado.setDominio(txtDominioAcoplado.getText());
     acoplado.setLargo(Double.parseDouble(txtLargoAcplado.getText()));
     acoplado.setMarca((Marca)cmbMarcaAcoplado.getSelectedItem());
+    acoplado.setSerie(txtSerieAcoplado.getText());
     acoplado.setVehiculo(vehiculo);
     gestorH.guardarObjeto(acoplado);
+    }
+    //EDITAR VEHICULO Y ACOPLADO
+    else{
+    Vehiculo veh = null;
+    Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
+    while(ite.hasNext()){
+        Vehiculo v = (Vehiculo) ite.next();
+        if(v.getDominio().equalsIgnoreCase(txtDominioCamion.getText())){
+            v.setAncho((Double.parseDouble(txtAnchoCamion.getText())));
+            v.setAnioCompra((AnioCompra)cmbAnioCamion.getSelectedItem());
+            v.setCantidadKms((Double.parseDouble (txtKilometros.getText())));
+            v.setDominio(txtDominioCamion.getText());
+            v.setLargo(Double.parseDouble(txtLargoCamion.getText()));
+            v.setModelo((Modelo)cmbModeloCamion.getSelectedItem());
+            v.setTara(Double.parseDouble(txtTaraCamion.getText()));
+            gestorH.actualizarObjeto(v);
+            veh = v;
+        }
+    }
+    Iterator ite2 = gestorH.listarClase(Acoplado.class).iterator();
+    while(ite2.hasNext()){
+        Acoplado ac = (Acoplado) ite2.next();
+        if(ac.getDominio().equalsIgnoreCase(txtDominioAcoplado.getText())){
+            ac.setAncho(Double.parseDouble(txtAnchoAcoplado.getText()));
+            ac.setAnioCompra((AnioCompra)cmbAnioAcoplado.getSelectedItem());
+            ac.setDominio(txtDominioAcoplado.getText());
+            ac.setLargo(Double.parseDouble(txtLargoAcplado.getText()));
+            ac.setMarca((Marca)cmbMarcaAcoplado.getSelectedItem());
+            ac.setSerie(txtSerieAcoplado.getText());
+            ac.setVehiculo(veh);
+            gestorH.actualizarObjeto(ac);
+        
+        }
+    }    
+    }
     Object fila[]= {txtDominioCamion.getText(), cmbMarcaCamion.getSelectedItem(), cmbModeloCamion.getSelectedItem(), txtDominioAcoplado.getText(), txtSerieAcoplado.getText()};
     modeloTabla.addRow(fila);
     tblVehiculo.setModel(modeloTabla);
@@ -1381,17 +1474,29 @@ private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent ev
        Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
        while(ite.hasNext()){
            Vehiculo v = (Vehiculo) ite.next();
-           Object fila[]= {v.getTransportista().getNumeroDocumento(), v.getTransportista().getApellido() + v.getTransportista().getNombre(), v.getModelo(),v.getDominio()};
+           Object fila[]= {v.getTransportista().getNumeroDocumento(), v.getTransportista().getApellido() +" " +  v.getTransportista().getNombre(), v.getModelo(),v.getDominio()};
            modeloT.addRow(fila);
            tblModificaT.setModel(modeloT);       
        }
+       btnNuevo.setEnabled(false);
 }//GEN-LAST:event_btnBuscarTransportistaActionPerformed
 
 private void btnAgregarAcopladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAcopladoActionPerformed
     int campo = gRegistro.campoObligatorioCOA(txtAnchoAcoplado, txtDominioAcoplado, txtLargoAcplado, txtSerieAcoplado, txtTaraAcoplado);
+    int bandera = 0;
     if(campo==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH = new GestorHibernate();
+    //ACOPLADO NUEVO
+    Iterator ite = gestorH.listarClase(Acoplado.class).iterator();
+    while(ite.hasNext()){
+        Acoplado a = (Acoplado) ite.next();
+        if(a.getDominio().equalsIgnoreCase(txtDominioAcoplado.getText())){
+            bandera=1;
+        }
+    }
+    //ACOPLADO NUEVO
+    if(bandera == 0){
     Vehiculo vehiculo = gRegistro.editar(txtDominioCamion.getText());
     Acoplado acoplado = new Acoplado();
     acoplado.setAncho(Double.parseDouble(txtAnchoAcoplado.getText()));
@@ -1400,7 +1505,29 @@ private void btnAgregarAcopladoActionPerformed(java.awt.event.ActionEvent evt) {
     acoplado.setLargo(Double.parseDouble(txtLargoAcplado.getText()));
     acoplado.setMarca((Marca)cmbMarcaAcoplado.getSelectedItem());
     acoplado.setVehiculo(vehiculo);
+    acoplado.setSerie(txtSerieAcoplado.getText());
     gestorH.guardarObjeto(acoplado);
+    }
+    
+    //ACOPLADO MODIFICADO
+    else{
+    Vehiculo vehiculo = gRegistro.editar(txtDominioCamion.getText());
+    Iterator ite1 = gestorH.listarClase(Acoplado.class).iterator();
+    while(ite1.hasNext()){
+        Acoplado ac = (Acoplado) ite1.next();
+        if(ac.getDominio().equalsIgnoreCase(txtDominioAcoplado.getText())){
+            ac.setAncho(Double.parseDouble(txtAnchoAcoplado.getText()));
+            ac.setAnioCompra((AnioCompra)cmbAnioAcoplado.getSelectedItem());
+            ac.setDominio(txtDominioAcoplado.getText());
+            ac.setLargo(Double.parseDouble(txtLargoAcplado.getText()));
+            ac.setMarca((Marca)cmbMarcaAcoplado.getSelectedItem());
+            ac.setVehiculo(vehiculo);
+            ac.setSerie(txtSerieAcoplado.getText());
+            gestorH.actualizarObjeto(ac);
+        }
+    }
+    
+    }
 
     Object fila[]= {txtDominioCamion.getText(), cmbMarcaCamion.getSelectedItem(), cmbModeloCamion.getSelectedItem(), txtDominioAcoplado.getText(), txtSerieAcoplado.getText()};
     modeloTabla.addRow(fila);
@@ -1425,16 +1552,39 @@ private void btnAgregarCamionActionPerformed(java.awt.event.ActionEvent evt) {//
     if(campo==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblVehiculo.getModel();
     GestorHibernate gestorH = new GestorHibernate();
+    //NUEVO VEHICULO
+    if(editar==false){
+   
     Vehiculo vehiculo = new Vehiculo();
-    vehiculo.setAncho((Integer.parseInt(txtAnchoCamion.getText())));
+    vehiculo.setAncho((Double.parseDouble(txtAnchoCamion.getText())));
     vehiculo.setAnioCompra((AnioCompra)cmbAnioCamion.getSelectedItem());
     vehiculo.setCantidadKms((Double.parseDouble (txtKilometros.getText())));
     vehiculo.setDominio(txtDominioCamion.getText());
     vehiculo.setLargo(Double.parseDouble(txtLargoCamion.getText()));
     vehiculo.setModelo((Modelo)cmbModeloCamion.getSelectedItem());
     vehiculo.setTara(Double.parseDouble(txtTaraCamion.getText()));
+    vehiculo.setEstado("Disponible");
     gestorH.guardarObjeto(vehiculo);
-
+      }
+    //VEHICULO EDITADO
+    else{
+    Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
+    while(ite.hasNext()){
+        Vehiculo v = (Vehiculo) ite.next();
+        if(v.getDominio().equalsIgnoreCase(txtDominioCamion.getText())){
+             v.setAncho((Double.parseDouble(txtAnchoCamion.getText())));
+             v.setAnioCompra((AnioCompra)cmbAnioCamion.getSelectedItem());
+             v.setCantidadKms((Double.parseDouble (txtKilometros.getText())));
+             v.setDominio(txtDominioCamion.getText());
+             v.setLargo(Double.parseDouble(txtLargoCamion.getText()));
+             v.setModelo((Modelo)cmbModeloCamion.getSelectedItem());
+             v.setTara(Double.parseDouble(txtTaraCamion.getText()));
+             gestorH.actualizarObjeto(v);
+        }
+    }
+      
+     } 
+    
     Object fila[]= {txtDominioCamion.getText(), cmbMarcaCamion.getSelectedItem(), cmbModeloCamion.getSelectedItem(), "No posee", "No posee"};
     modeloTabla.addRow(fila);
     tblVehiculo.setModel(modeloTabla);
@@ -1606,7 +1756,7 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
            panelBotonesD.getComponent(i).setEnabled(true);
        }
         
-        
+    int bandera = 0;
     DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
     DefaultTableModel modeloV = (DefaultTableModel) tblVehiculo.getModel();
        int fila = tblModificaT.getSelectedRow();
@@ -1636,12 +1786,20 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
                        Object fila1[] = {e.getDominio(),e.getModelo().getMarca(),e.getModelo(),a.getDominio(),a.getSerie()};
                        modeloV.addRow(fila1);
                        tblVehiculo.setModel(modeloV);
+                       bandera=1;
                    }
+               }
+               if(bandera==0){
+               Object filatable[]={e.getDominio(), e.getModelo().getMarca(), e.getModelo(), "NO POSEE", "NO POSEE"};
+               modeloV.addRow(filatable);
+               tblVehiculo.setModel(modeloV);
                }
                
            }
+          
        }
        editar=true;
+       btnGuardar.setEnabled(true);
     }//GEN-LAST:event_btnAceptarTranspActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
