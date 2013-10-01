@@ -439,7 +439,7 @@ GestorHibernate gestorH = new GestorHibernate();
         Iterator ite = gestorH.listarClase(TipoServicio.class).iterator();
         while(ite.hasNext()){
              TipoServicio tipoSer = (TipoServicio) ite.next();
-           if (tipoSer.getIdTipoServicio() == 0) {
+           if (tipoSer.getIdTipoServicio() == 2) {
                orden.setTipoServicio(tipoSer);
            }
         }
@@ -448,6 +448,7 @@ GestorHibernate gestorH = new GestorHibernate();
         orden.setVehiculo((Vehiculo)cmbVehiculo.getSelectedItem());
         orden.setEstado("Pendiente");
         orden.setHabilita("1");
+        orden.setResponsable(labelUsuario.getText());
         gestorH.guardarObjeto(orden);
         carga.setEstacionServicio((EstacionDeServicio)cmbEstacionServicio.getSelectedItem());
         carga.setTipo((TipoOperacionEstacionServicio)cmbOperacion.getSelectedItem());
@@ -460,10 +461,10 @@ GestorHibernate gestorH = new GestorHibernate();
         gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText(), "Orden de Carga");
         
         //Prueba Nueva Orden
-         String arc="C:/Reportes AgroGIS/NuevaOrdenServicio.jasper";
-         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-         gestorReportes.setColeccionDeDatos(gestorH.listarAtributosVarios(orden));
-         gestorReportes.imprimir();
+//         String arc="C:/Reportes AgroGIS/NuevaOrdenServicio.jasper";
+//         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+//         gestorReportes.setColeccionDeDatos(gestorH.listarAtributosVarios(orden));
+//         gestorReportes.imprimir();
     }//GEN-LAST:event_btnEmitirOrdenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

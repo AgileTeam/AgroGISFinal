@@ -20,7 +20,7 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
        Iterator ite = this.listarClase(OrdenServicio.class).iterator();
        while(ite.hasNext()){
            OrdenServicio orden =(OrdenServicio) ite.next();
-               if(orden.getTipoServicio().getIdTipoServicio() == 0){
+               if((orden.getTipoServicio().getIdTipoServicio() == 2 )&& (orden.getEstado().equalsIgnoreCase("Pendiente"))){
                modelo.addElement(orden);
                }
            }
@@ -47,7 +47,7 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
            CargaCombustible carga=(CargaCombustible) ite.next();
            Iterator ite1 = this.listarClase(DetalleConsumo.class).iterator();
             while(ite1.hasNext()){
-                DetalleConsumo detalle = (DetalleConsumo) ite.next();
+                DetalleConsumo detalle = (DetalleConsumo) ite1.next();
                 if((detalle.getCargaCombustible() == carga)&&(detalle.getOrdenServicio()== (OrdenServicio)seleccion)){
                     estacion= carga.getEstacionServicio().toString();
                 }
@@ -64,14 +64,14 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
            CargaCombustible carga=(CargaCombustible) ite.next();
            Iterator ite1 = this.listarClase(DetalleConsumo.class).iterator();
             while(ite1.hasNext()){
-                DetalleConsumo detalle = (DetalleConsumo) ite.next();
+                DetalleConsumo detalle = (DetalleConsumo) ite1.next();
                 if((detalle.getCargaCombustible()== carga)&&(detalle.getOrdenServicio()== (OrdenServicio)seleccion)){
-                    operacion =carga.getTipoOperacion().toString();
+                    operacion = carga.getTipo().toString();
                 }
             }
            
            }
        return operacion;
        }
-    
+//    
 }
