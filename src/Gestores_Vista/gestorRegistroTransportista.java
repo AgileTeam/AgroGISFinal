@@ -347,4 +347,81 @@ public class gestorRegistroTransportista extends GestorHibernate{
          return campo;
      }
  
+     
+     public int campoObligatorioCA(JTextField texto1, JTextField texto2, JTextField texto3, JTextField texto4, JTextField texto5, JTextField texto6, JTextField texto7, JTextField texto8, JTextField texto9, JTextField texto10){
+         int campo = 0;   
+         if(texto1.getText().equalsIgnoreCase("")){
+                texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+          if(texto2.getText().equalsIgnoreCase("")){
+                texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+           if(texto3.getText().equalsIgnoreCase("")){
+                texto3.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+            if(texto4.getText().equalsIgnoreCase("")){
+                texto4.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+             if(texto5.getText().equalsIgnoreCase("")){
+                texto5.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+             if(texto6.getText().equalsIgnoreCase("")){
+                texto6.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+             if(texto7.getText().equalsIgnoreCase("")){
+                texto7.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+              if(texto8.getText().equalsIgnoreCase("")){
+                texto8.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+              if(texto9.getText().equalsIgnoreCase("")){
+                texto9.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+              if(texto10.getText().equalsIgnoreCase("")){
+                texto10.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+         if(campo == 1){
+            JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+         }
+         return campo;
+     }
+     
+      public int campoObligatorioCOA(JTextField texto1, JTextField texto2, JTextField texto3, JTextField texto4, JTextField texto5){
+         int campo = 0;   
+         if(texto1.getText().equalsIgnoreCase("")){
+                texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+          if(texto2.getText().equalsIgnoreCase("")){
+                texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+           if(texto3.getText().equalsIgnoreCase("")){
+                texto3.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+            if(texto4.getText().equalsIgnoreCase("")){
+                texto4.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+             if(texto5.getText().equalsIgnoreCase("")){
+                texto5.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+          
+         if(campo == 1){
+            JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+         }
+         return campo;
+     }
 }

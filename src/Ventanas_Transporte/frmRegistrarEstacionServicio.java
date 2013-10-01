@@ -610,7 +610,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-    int campo = gTaller.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum);
+    int campo = gTaller.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum,txtTelefono);
     if(campo == 0){
     boolean mail = gRegistro.isEmail(txtEmail.getText());
     System.out.println(mail);

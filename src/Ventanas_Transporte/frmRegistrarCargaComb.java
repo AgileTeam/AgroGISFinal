@@ -528,7 +528,7 @@ Double total;
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
-      int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtPrecioLitro);
+      int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtPrecioLitro, txtPrecioLitro);
       if(campo==0){
       Object fila []= {calendarioFU.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),txtOperacion.getText(),cmbProducto.getSelectedItem(),txtImporteTotal.getText()};
       modeloT.addRow(fila);

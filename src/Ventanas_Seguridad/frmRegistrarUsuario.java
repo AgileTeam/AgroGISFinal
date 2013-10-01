@@ -467,19 +467,19 @@ boolean editar = false;
     if(bandera1==0 && bandera3==0 && bandera4==0 && bandera5==0){
     if(txtpass1.getText().equalsIgnoreCase(txtPass2.getText())){
     DefaultTableModel modeloT = (DefaultTableModel) tblRoles.getModel();
+    
+    //BOTON NUEVO
+    if(editar==false){
+        
     Usuario usuario = new Usuario();
     usuario.setPersona(txtApellido.getText());
     usuario.setNombreUsuario(txtUsuario.getText());
     usuario.setPassword(txtpass1.getText());
     usuario.setEstado(false);
-    if(editar==false){
+    
     gestorH.guardarObjeto(usuario);
     JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
-    }
-    else{
-    gestorH.actualizarObjeto(usuario);
-    JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
-    }
+    
     for (int i=0; i<modeloT.getRowCount(); i++ ){
         Iterator ite = gestorH.listarClase(Rol.class).iterator();
         while(ite.hasNext()){
@@ -493,6 +493,26 @@ boolean editar = false;
         }
        
     }
+    }
+    
+    //BOTON EDITAR
+    else{
+    Iterator ite1 = gestorH.listarClase(Usuario.class).iterator();
+    while(ite1.hasNext()){
+        Usuario u = (Usuario) ite1.next();
+        if(u.getNombreUsuario().equalsIgnoreCase(txtUsuario.getText())){
+            u.setPersona(txtApellido.getText());
+            u.setNombreUsuario(txtUsuario.getText());
+            u.setPassword(txtpass1.getText());
+            u.setEstado(false);
+            gestorH.actualizarObjeto(u);
+            JOptionPane.showMessageDialog(null, "Los cambios se guardaron correctamente");
+        }
+    }
+    
+    
+    }
+    
     gestorBitacora gestorB = new gestorBitacora();
     gestorB.cargarBitacora("", txtFecha.getText(), 13, labelUsuario.getText(),"");
     }else{
@@ -505,6 +525,10 @@ boolean editar = false;
     JOptionPane.showMessageDialog(null, "Campo Obligatorio");
     }
     editar = false;
+    btnNuevo.setEnabled(true);
+    btnEditar.setEnabled(true);
+            
+    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -587,9 +611,22 @@ boolean editar = false;
            panelAgregar.getComponent(i).setEnabled(true);
          }
      
+     for(int i=0;i<panelSesion.getComponents().length;i++){
+           panelSesion.getComponent(i).setEnabled(true);
+         }
+     
     btnEditar.setEnabled(true);
     btnGuardar.setEnabled(true);
-    
+    txtApellido.setText("");
+    txtUsuario.setText("");
+    txtPass2.setText("");
+    txtpass1.setText("");
+    DefaultTableModel modelo = (DefaultTableModel) tblRoles.getModel();
+    for(int i=0; i<tblRoles.getRowCount(); i++){
+        modelo.removeRow(i);    
+    }
+    tblRoles.setModel(modelo);
+    btnEditar.setEnabled(false);
     
 //    String arc="D:/Mis Documentos/ListadoLocalidad.jasper";
 //    GestorDeReportes gestorReportes = new GestorDeReportes(arc);

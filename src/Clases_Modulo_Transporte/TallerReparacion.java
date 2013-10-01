@@ -33,6 +33,7 @@ private Especialidad especialidad;
     private String numeroTelefono;
     private String razonSocial;
     private String cuit;
+    private String nombre;
     /**
      * @return the condicionIva
      */
@@ -150,6 +151,34 @@ private Especialidad especialidad;
      */
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the idTallerReparacion
+     */
+    public long getIdTallerReparacion() {
+        return idTallerReparacion;
+    }
+
+    /**
+     * @param idTallerReparacion the idTallerReparacion to set
+     */
+    public void setIdTallerReparacion(long idTallerReparacion) {
+        this.idTallerReparacion = idTallerReparacion;
     }
     
   
