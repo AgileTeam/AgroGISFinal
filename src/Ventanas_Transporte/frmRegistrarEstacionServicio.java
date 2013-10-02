@@ -56,7 +56,7 @@ long id=0;
         panelEdicion.setVisible(false);
         
         for(int i=0;i<panelAgregar.getComponents().length;i++){
-           panelAgregar.getComponent(i).setEnabled(true);
+           panelAgregar.getComponent(i).setEnabled(false);
          }
         
          for(int i=0;i<panelDatosE.getComponents().length;i++){
@@ -263,7 +263,7 @@ long id=0;
         jLabel12.setBounds(270, 60, 160, 20);
 
         panelDatosE.add(cmbProveedor);
-        cmbProveedor.setBounds(420, 60, 190, 20);
+        cmbProveedor.setBounds(420, 60, 130, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("CUIT");
@@ -361,7 +361,7 @@ long id=0;
         jSeparator2.setBounds(0, -8, 620, 10);
 
         panelContenedor.add(panelDatosE);
-        panelDatosE.setBounds(10, 10, 660, 240);
+        panelDatosE.setBounds(30, 20, 650, 240);
 
         btnGuardarEstacion.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardarEstacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -417,16 +417,17 @@ long id=0;
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevaEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevaEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         panelContenedor.add(jPanel5);
-        jPanel5.setBounds(100, 400, 460, 42);
+        jPanel5.setBounds(110, 420, 460, 50);
 
         tblEstacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -494,7 +495,7 @@ long id=0;
         );
 
         panelContenedor.add(panelAgregar);
-        panelAgregar.setBounds(30, 250, 640, 150);
+        panelAgregar.setBounds(40, 270, 640, 150);
 
         panelEdicion.setLayout(null);
 
@@ -509,7 +510,7 @@ long id=0;
         jScrollPane2.setViewportView(tblEdicion);
 
         panelEdicion.add(jScrollPane2);
-        jScrollPane2.setBounds(100, 30, 430, 150);
+        jScrollPane2.setBounds(100, 30, 430, 180);
 
         btnAceptarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
         btnAceptarTransp.addActionListener(new java.awt.event.ActionListener() {
@@ -526,17 +527,18 @@ long id=0;
         jLabel16.setBounds(230, 0, 170, 20);
 
         panelContenedor.add(panelEdicion);
-        panelEdicion.setBounds(20, 20, 670, 250);
+        panelEdicion.setBounds(20, 20, 670, 240);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -545,8 +547,8 @@ long id=0;
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -619,6 +621,7 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_btnGuardarEstacionActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    btnGuardarEstacion.setEnabled(true);
     GestorHibernate gestorH = new GestorHibernate();
     int campo = gTaller.campoObligatorio(txtRazonSocial, txtCUIT, txtCalle, txtNum,txtTelefono);
     if(campo == 0){
@@ -685,6 +688,10 @@ private void btnGuardarEstacionActionPerformed(java.awt.event.ActionEvent evt) {
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
+         for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(true);
+         }
+        
         DefaultTableModel modeloT = (DefaultTableModel) tblEdicion.getModel();
         Iterator ite = gestorH.listarClase(EstacionDeServicio.class).iterator();
         while(ite.hasNext()){
