@@ -475,6 +475,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 txtTipoVehiculo.setText(puerto.getViaje().getVehiculo().getTipoVehiculo().toString());
                 txtTara.setText(String.valueOf(puerto.getViaje().getVehiculo().getTara()));
                 txtDestino.setText(puerto.getPuerto().getNombrePuerto());
+                txtResponsable.setText(labelusuario.getText());
                 Iterator ite1 = gestorH.listarClase(PuertoPorSolicitud.class).iterator();
                 while(ite1.hasNext()){
                     PuertoPorSolicitud p = (PuertoPorSolicitud) ite1.next();
@@ -545,7 +546,7 @@ GestorHibernate gestorH = new GestorHibernate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yy");
         Date fecha1 = sdf.parse(calendarioDViaje.getText(), new ParsePosition(0));
-        System.out.println("Fecha1" + fecha1);
+        //System.out.println("Fecha1" + fecha1);
         Date fecha3 = sdf.parse(calendarioHViaje.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblViaje.getModel();
        
@@ -575,7 +576,7 @@ GestorHibernate gestorH = new GestorHibernate();
         
          //Buscar NRO VIAJE
         if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled() && cmbProductor.isEnabled()==false){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
@@ -596,7 +597,7 @@ GestorHibernate gestorH = new GestorHibernate();
         
          //Buscar PRODUCTOR
         if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled()==false && cmbProductor.isEnabled()){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
@@ -608,7 +609,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     Logger.getLogger(frmEmitirOrdenViaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
               //comparo el rango de fechas
-                  if ((bandera==0) && ((fecha2.after(fecha1)) && (viaje.getProductor().equals(cmbProductor.getSelectedItem())))) {
+                  if ((bandera==0) && (viaje.getProductor().equals(cmbProductor.getSelectedItem()))) {
                   //Guardo el objeto orden en la tabla
                   gestorE.cargarTabla(tblViaje, viaje);
                   }
@@ -617,7 +618,7 @@ GestorHibernate gestorH = new GestorHibernate();
         
         // buscar FECHA NRO VIAJE
          if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled() && cmbProductor.isEnabled()==false){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
@@ -635,9 +636,9 @@ GestorHibernate gestorH = new GestorHibernate();
                   }
              }
          }        
-         
+         //FECHA PRODUCTOR
           if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled()==false && cmbProductor.isEnabled()){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
@@ -658,7 +659,7 @@ GestorHibernate gestorH = new GestorHibernate();
           
          //buscar PRODUCTOR NRO ORDEN
          if(calendarioDViaje.isEnabled()==false && calendarioHViaje.isEnabled()==false && txtNumViaje.isEnabled() && cmbProductor.isEnabled()){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
@@ -679,7 +680,7 @@ GestorHibernate gestorH = new GestorHibernate();
          
          //buscar FECHA NRO ORDEN PRODUCTOR
          if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumViaje.isEnabled() && cmbProductor.isEnabled()){
-         Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+         Iterator ite = gestorH.listarClaseFitradaPorString(Viaje.class, "estado", "Con vehiculo asignado").iterator();
          while(ite.hasNext()){
              Viaje viaje = (Viaje) ite.next();
              int bandera = gestorE.buscarObjeto(tblViaje, viaje);
