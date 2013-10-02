@@ -26,6 +26,8 @@ private TipoDocumento tipoDocumento;
 @ManyToOne(targetEntity = CondicionContratacion.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private CondicionContratacion condicionContratacion;
 
+@ManyToOne(targetEntity = TipoTelefono.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private TipoTelefono tipoTelefono;
 
 
 private String apellido;
@@ -37,6 +39,7 @@ private String fechaIngreso;
 private String fechaSalida;
 private String cuil;
 private String estadoCivil;
+private String numTelefono;
 
     /**
      * @return the idTransportista
@@ -225,5 +228,33 @@ private String estadoCivil;
     
     public String toString(){
         return (nombre +" "+ apellido);
+    }
+
+    /**
+     * @return the tipoTelefono
+     */
+    public TipoTelefono getTipoTelefono() {
+        return tipoTelefono;
+    }
+
+    /**
+     * @param tipoTelefono the tipoTelefono to set
+     */
+    public void setTipoTelefono(TipoTelefono tipoTelefono) {
+        this.tipoTelefono = tipoTelefono;
+    }
+
+    /**
+     * @return the numTelefono
+     */
+    public String getNumTelefono() {
+        return numTelefono;
+    }
+
+    /**
+     * @param numTelefono the numTelefono to set
+     */
+    public void setNumTelefono(String numTelefono) {
+        this.numTelefono = numTelefono;
     }
 }

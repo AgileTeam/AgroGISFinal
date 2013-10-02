@@ -1196,6 +1196,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    btnNuevo.setEnabled(true);
     int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtCUIL, txtCUIL);
     GestorHibernate gestorH = new GestorHibernate();
     if(campo==0){
@@ -1215,6 +1216,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     transportista.setFechaIngreso(calendarioNacimiento.getText());
     transportista.setFechaSalida(calendarioFin.getText());
     transportista.setTipoDocumento((TipoDocumento)cmbTipoDoc.getSelectedItem());
+    transportista.setTipoTelefono((TipoTelefono)cmbTipoTel.getSelectedItem());
+    transportista.setNumTelefono(txtTelefono.getText());
     Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
 
     gestorH.guardarObjeto(domicilio);
@@ -1240,6 +1243,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }
+    JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
     }
     //EDITAR TRANSPORTISTA
     else{
@@ -1258,6 +1262,8 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         t.setFechaIngreso(calendarioNacimiento.getText());
         t.setFechaSalida(calendarioFin.getText());
         t.setTipoDocumento((TipoDocumento)cmbTipoDoc.getSelectedItem());
+        t.setTipoTelefono((TipoTelefono)cmbTipoTel.getSelectedItem());
+        t.setNumTelefono(txtTelefono.getText());
         Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
         gestorH.guardarObjeto(domicilio);
         t.setDomicilio(domicilio);
@@ -1280,7 +1286,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }  
-    
+    JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
     }
     } 
    
@@ -1671,11 +1677,18 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
     }//GEN-LAST:event_txtKilometrosKeyTyped
 
     private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
-    for(int i=0;i<panelContratacion.getComponents().length;i++){
+        panelDatosP.setVisible(true);
+        panelTabla.setVisible(false);
+        
+       for(int i=0;i<panelContratacion.getComponents().length;i++){
            panelContratacion.getComponent(i).setEnabled(true);
        }
        for(int i=0;i<panelDatosU.getComponents().length;i++){
            panelDatosU.getComponent(i).setEnabled(true);
+       }
+       
+        for(int i=0;i<panelDatosP.getComponents().length;i++){
+           panelDatosP.getComponent(i).setEnabled(true);
        }
        
        for(int i=0;i<panelBotonesI.getComponents().length;i++){
@@ -1752,6 +1765,24 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
        }
         btnGuardar.setEnabled(true);
         btnEmitirFicha.setEnabled(true);
+        txtApellido.setText("");
+        txtDocumento.setText("");
+        txtCalle.setText("");
+        txtCUIL.setText("");
+        txtDepto.setText("");
+        txtNombres.setText("");
+        txtNumero.setText("0");
+        txtPiso.setText("0");
+        txtTaraCamion.setText("");
+        txtAnchoCamion.setText("");
+        txtDominioCamion.setText("");
+        txtKilometros.setText("");
+        txtLargoCamion.setText("");
+        txtAnchoAcoplado.setText("");
+        txtDominioAcoplado.setText("");
+        txtSerieAcoplado.setText("");
+        txtLargoAcplado.setText("");
+        txtTaraAcoplado.setText("");
        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
