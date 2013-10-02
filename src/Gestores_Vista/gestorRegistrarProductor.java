@@ -27,7 +27,7 @@ public class gestorRegistrarProductor extends GestorHibernate {
             }
         }
         domicilio.setCalle(calle);
-        domicilio.setNumero(Integer.parseInt(numero));
+        domicilio.setNumero(Integer.parseInt((numero)));
         domicilio.setDepartamento(departamento);
         domicilio.setPiso(Integer.parseInt(piso));
         this.guardarObjeto(domicilio);

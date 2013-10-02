@@ -65,6 +65,12 @@ private Barrio barrio;
         this.departamento = departamento;
     }
 
+   
+    
+    public String toString(){
+        return (getCalle() +" "+ String.valueOf(getNumero()));
+    }
+
     /**
      * @return the numero
      */
@@ -92,9 +98,10 @@ private Barrio barrio;
     public void setPiso(int piso) {
         this.piso = piso;
     }
+
+    /**
+     * @return the numero
+     */
     
-    public String toString(){
-        return (getCalle() +" "+ String.valueOf(getNumero()));
-    }
     
 }

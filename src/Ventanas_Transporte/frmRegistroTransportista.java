@@ -94,7 +94,8 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         grupo.add(buttonCamion);
         grupo.add(buttonCamionAcoplado);
         buttonCamion.setSelected(true);
-        
+        txtNumero.setText("0");
+        txtPiso.setText("0");
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -308,6 +309,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         txtAnchoAcoplado = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         buttonCamion = new javax.swing.JRadioButton();
@@ -339,6 +341,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         txtAnchoCamion = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -835,12 +838,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel42.setText("Serie");
         panelAcoplado.add(jLabel42);
         jLabel42.setBounds(250, 100, 70, 20);
-
-        txtTaraAcoplado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTaraAcopladoKeyTyped(evt);
-            }
-        });
         panelAcoplado.add(txtTaraAcoplado);
         txtTaraAcoplado.setBounds(100, 100, 100, 20);
 
@@ -848,12 +845,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel43.setText("Largo");
         panelAcoplado.add(jLabel43);
         jLabel43.setBounds(60, 130, 40, 20);
-
-        txtLargoAcplado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtLargoAcpladoKeyTyped(evt);
-            }
-        });
         panelAcoplado.add(txtLargoAcplado);
         txtLargoAcplado.setBounds(100, 130, 100, 20);
 
@@ -878,14 +869,13 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel47.setText("Tara");
         panelAcoplado.add(jLabel47);
         jLabel47.setBounds(70, 100, 50, 20);
-
-        txtAnchoAcoplado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnchoAcopladoKeyTyped(evt);
-            }
-        });
         panelAcoplado.add(txtAnchoAcoplado);
         txtAnchoAcoplado.setBounds(290, 130, 100, 20);
+
+        jLabel27.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel27.setText("Tn");
+        panelAcoplado.add(jLabel27);
+        jLabel27.setBounds(200, 100, 30, 20);
 
         panelVehiculo.add(panelAcoplado);
         panelAcoplado.setBounds(517, 60, 418, 190);
@@ -1064,28 +1054,10 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel56.setText("Tara");
         panelCamion1.add(jLabel56);
         jLabel56.setBounds(290, 100, 60, 20);
-
-        txtLargoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtLargoCamionKeyTyped(evt);
-            }
-        });
         panelCamion1.add(txtLargoCamion);
         txtLargoCamion.setBounds(100, 130, 100, 20);
-
-        txtTaraCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTaraCamionKeyTyped(evt);
-            }
-        });
         panelCamion1.add(txtTaraCamion);
         txtTaraCamion.setBounds(330, 100, 100, 20);
-
-        txtAnchoCamion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnchoCamionKeyTyped(evt);
-            }
-        });
         panelCamion1.add(txtAnchoCamion);
         txtAnchoCamion.setBounds(330, 130, 100, 20);
 
@@ -1098,6 +1070,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         jLabel58.setText("mts");
         panelCamion1.add(jLabel58);
         jLabel58.setBounds(200, 130, 30, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Tn");
+        panelCamion1.add(jLabel3);
+        jLabel3.setBounds(430, 100, 30, 20);
 
         panelVehiculo.add(panelCamion1);
         panelCamion1.setBounds(40, 60, 471, 190);
@@ -1219,7 +1196,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtDominioCamion, txtTaraCamion);
+    int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtCUIL, txtCUIL);
     GestorHibernate gestorH = new GestorHibernate();
     if(campo==0){
     gestorBitacora gestorB = new gestorBitacora();
@@ -1685,42 +1662,6 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
       }
 }//GEN-LAST:event_txtCUILKeyTyped
 
-private void txtTaraAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraAcopladoKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtTaraAcopladoKeyTyped
-
-private void txtLargoAcpladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLargoAcpladoKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtLargoAcpladoKeyTyped
-
-private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnchoAcopladoKeyTyped
-    char caracter = evt.getKeyChar();
-
-      // Verificar si la tecla pulsada no es un digito
-      if(((caracter < '0') ||
-         (caracter > '9')) &&
-         (caracter != '\b' /*corresponde a BACK_SPACE*/))
-      {
-         evt.consume();  // ignorar el evento de teclado
-      }
-}//GEN-LAST:event_txtAnchoAcopladoKeyTyped
-
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
@@ -1728,18 +1669,6 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private void txtKilometrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrosKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKilometrosKeyTyped
-
-    private void txtLargoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLargoCamionKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLargoCamionKeyTyped
-
-    private void txtTaraCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraCamionKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTaraCamionKeyTyped
-
-    private void txtAnchoCamionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnchoCamionKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnchoCamionKeyTyped
 
     private void btnAceptarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTranspActionPerformed
     for(int i=0;i<panelContratacion.getComponents().length;i++){
@@ -1883,6 +1812,8 @@ private void txtAnchoAcopladoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
