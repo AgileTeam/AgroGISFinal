@@ -438,8 +438,8 @@ GestorHibernate gestorH = new GestorHibernate();
         CargaCombustible carga = new CargaCombustible();
         Iterator ite = gestorH.listarClase(TipoServicio.class).iterator();
         while(ite.hasNext()){
-             TipoServicio tipoSer = (TipoServicio) ite.next();
-           if (tipoSer.getIdTipoServicio() == 2) {
+           TipoServicio tipoSer = (TipoServicio) ite.next();
+           if (tipoSer.getNombreTipoServicio().equalsIgnoreCase((String)cmbOperacion.getSelectedItem())) {
                orden.setTipoServicio(tipoSer);
            }
         }
