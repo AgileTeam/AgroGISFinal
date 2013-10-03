@@ -460,7 +460,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gestorBitacora gestorB = new gestorBitacora();
         gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText(), "Orden de Carga");
         
-         String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/OrdenServicioCarga.jasper";
+         String arc="C:/Reportes AgroGIS/OrdenServicioCarga.jasper";
          GestorDeReportes gestorReportes = new GestorDeReportes(arc);
          gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",orden.getNumeroOrden()));
          gestorReportes.imprimir();
