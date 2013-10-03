@@ -505,7 +505,7 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         gestorBitacora gestorB = new gestorBitacora();
         gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 7, labelUsuario.getText(), "Orden Taller");
        
-    String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/OrdenServicio.jasper";
+    String arc="C:/Reportes AgroGIS/OrdenServicio.jasper";
     GestorDeReportes gestorReportes = new GestorDeReportes(arc);
     gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",orden.getNumeroOrden()));
     gestorReportes.imprimir();
