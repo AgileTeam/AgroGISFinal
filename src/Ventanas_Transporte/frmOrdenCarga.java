@@ -268,7 +268,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Transportista:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(230, 160, 110, 20);
+        jLabel4.setBounds(230, 160, 110, 17);
 
         labelTransportista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel2.add(labelTransportista);
@@ -359,6 +359,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jPanel3.add(jLabel15);
         jLabel15.setBounds(60, 120, 60, 20);
 
+        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Carga Combustible", "Compra Insumos" }));
         jPanel3.add(cmbOperacion);
         cmbOperacion.setBounds(130, 120, 180, 20);
 
@@ -409,7 +410,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmitirOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
@@ -459,7 +460,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gestorBitacora gestorB = new gestorBitacora();
         gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtHoraCarga.getText(), 6, labelUsuario.getText(), "Orden de Carga");
         
-         String arc="C:/Reportes AgroGIS/OrdenServicioCarga.jasper";
+         String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/OrdenServicioCarga.jasper";
          GestorDeReportes gestorReportes = new GestorDeReportes(arc);
          gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorInteger(OrdenServicio.class,"numeroOrden",orden.getNumeroOrden()));
          gestorReportes.imprimir();
