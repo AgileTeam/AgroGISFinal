@@ -73,5 +73,10 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
            }
        return operacion;
        }
+       
+       
+       
+       
+       
 //    
 }
