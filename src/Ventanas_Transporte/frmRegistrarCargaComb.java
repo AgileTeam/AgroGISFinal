@@ -88,6 +88,7 @@ Double total;
         this.setLocation(posX, 30);
         
          cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+         cmbProducto.setModel(gRegistro.rellenaComboProducto());
         
           cmbOrden.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){

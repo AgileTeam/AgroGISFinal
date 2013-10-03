@@ -74,6 +74,16 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
        return operacion;
        }
        
+       public DefaultComboBoxModel rellenaComboProducto(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(TipoCombustible.class).iterator();
+       while(ite.hasNext()){
+          TipoCombustible t = (TipoCombustible) ite.next();
+          modelo.addElement(t);
+        }
+
+       return modelo;
+   }
        
        
        
