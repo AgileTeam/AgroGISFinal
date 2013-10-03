@@ -79,10 +79,14 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         
         calendarioDRep.setEnabled(false);
         calendarioHRep.setEnabled(false);
+        cmbImporteRep.setEnabled(false);
         txtImporteRep.setEnabled(false);
+        cmbOrden.setEnabled(false);
         txtOrdenRep.setEnabled(false);
         btnAgregarTranspR.setEnabled(false);
         btnQuitarTranspR.setEnabled(false);
+        cmbMotivo.setEnabled(false);
+        cmbTranspRep.setEnabled(false);
         cmbTranspRep.setModel(gestorC.rellenaComboTransportista());
         cmbMotivo.setModel(gestorC.rellenaComboMotivo());
         tblMotivo.setEnabled(false);
@@ -381,21 +385,25 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
     ckFechaRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
     ckFechaRep.setText("Fecha");
+    ckFechaRep.setFocusPainted(false);
     jPanel1.add(ckFechaRep);
     ckFechaRep.setBounds(210, 20, 80, 30);
 
     ckOrdenRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
     ckOrdenRep.setText("Número Orden");
+    ckOrdenRep.setFocusPainted(false);
     jPanel1.add(ckOrdenRep);
     ckOrdenRep.setBounds(300, 20, 130, 30);
 
     ckTranspRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
     ckTranspRep.setText("Transportista");
+    ckTranspRep.setFocusPainted(false);
     jPanel1.add(ckTranspRep);
     ckTranspRep.setBounds(710, 20, 120, 30);
 
     ckMotivo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
     ckMotivo.setText("Motivo de Envío");
+    ckMotivo.setFocusPainted(false);
     jPanel1.add(ckMotivo);
     ckMotivo.setBounds(570, 20, 120, 30);
 
@@ -419,6 +427,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
     ckImporteRep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
     ckImporteRep.setText("Importe Total");
+    ckImporteRep.setFocusPainted(false);
     jPanel1.add(ckImporteRep);
     ckImporteRep.setBounds(430, 20, 120, 30);
 
@@ -602,7 +611,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(52, Short.MAX_VALUE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
 
     pack();
@@ -658,17 +667,21 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             calendarioHRep.setEnabled(true);
         }
         if (ckImporteRep.isSelected()) {
+            cmbImporteRep.setEnabled(true);
             txtImporteRep.setEnabled(true);
         }
         if (ckOrdenRep.isSelected()) {
+            cmbOrden.setEnabled(true);
             txtOrdenRep.setEnabled(true);
         }
         if (ckTranspRep.isSelected()) {
+            cmbTranspRep.setEnabled(true);
             btnAgregarTranspR.setEnabled(true);
             btnQuitarTranspR.setEnabled(true);
             tblTransportista.setEnabled(true);
         }
         if (ckMotivo.isSelected()) {
+            cmbMotivo.setEnabled(true);
             tblMotivo.setEnabled(true);
             btnAgregarMotivo.setEnabled(true);
             btnQuitarMotivo.setEnabled(true);
@@ -684,6 +697,15 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         btnQuitarTranspR.setEnabled(false);
         btnAgregarMotivo.setEnabled(false);
         btnQuitarMotivo.setEnabled(false);
+        cmbImporteRep.setEnabled(false);
+        cmbMotivo.setEnabled(false);
+        cmbOrden.setEnabled(false);
+        cmbTranspRep.setEnabled(false);
+        ckFechaRep.setSelected(false);
+        ckImporteRep.setSelected(false);
+        ckMotivo.setSelected(false);
+        ckOrdenRep.setSelected(false);
+        ckTranspRep.setSelected(false);
         txtOrdenRep.setText("");
         txtImporteRep.setText("");
         DefaultTableModel modelo = (DefaultTableModel) tblMotivo.getModel();
@@ -691,7 +713,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
         tblMotivo.setModel(modelo);
         DefaultTableModel modelo1 = (DefaultTableModel) tblTransportista.getModel();
         modelo1.setRowCount(0);
-        tblMotivo.setModel(modelo1);
+        tblTransportista.setModel(modelo1);
 
     }//GEN-LAST:event_btnQuitarTodosRActionPerformed
 
