@@ -534,6 +534,7 @@ Double total;
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      Double total= 0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
       int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtPrecioLitro, txtPrecioLitro);
       if(campo==0){
@@ -541,7 +542,7 @@ Double total;
       modeloT.addRow(fila);
       tblDetalleCarga.setModel(modeloT);
       for(int i=0; i<modeloT.getRowCount(); i++){
-           total = total + (Double.parseDouble(modeloT.getValueAt(i,4).toString()));
+           total = total + (Double.parseDouble(modeloT.getValueAt(i,5).toString()));
            txtTotal.setText(total.toString());
        }
       txtLitrosCargados.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
