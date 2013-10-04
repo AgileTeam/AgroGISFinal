@@ -527,6 +527,7 @@ Double total;
     DefaultTableModel modelo = (DefaultTableModel) tblDetalleCarga.getModel();
     modelo.removeRow(fila);
     tblDetalleCarga.setModel(modelo);
+    txtTotal.setText("");
     }//GEN-LAST:event_btnEliminarDetalleActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -586,6 +587,7 @@ Double total;
             detalle.setCargaCombustible(carga);
             gestorH.guardarObjeto(detalle);
       }
+      JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
       gestorBitacora gestorB = new gestorBitacora();
       gestorB.cargarBitacora(String.valueOf(carga.getIdCargaCombustible()), txtFecha.getText(), 8, labelusuario.getText(),"");
     }//GEN-LAST:event_btnGuardar1ActionPerformed
