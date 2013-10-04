@@ -15,6 +15,7 @@ import Clases_Modulo_Viaje.PuertoPorViaje;
 import Clases_Modulo_Viaje.TipoViaje;
 import Clases_Modulo_Viaje.Viaje;
 import Gestores_Clases.gestorBitacora;
+import Gestores_Vista.gestorEnvioMuestras;
 import Gestores_Vista.gestorRegistrarViaje;
 import Hibernate.GestorHibernate;
 import java.awt.*;
@@ -693,6 +694,8 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //VER GUARDAR SOLICITUD
+       int campo = gViaje.campoObligatorio(txtProductor, txtProductorEst);
+       if(campo==0){
        gestorBitacora gestorB = new gestorBitacora();
        int filaE = tblEstablecimiento.getSelectedRow(); 
        int filaP = tblProductor.getSelectedRow();
@@ -776,6 +779,9 @@ GestorHibernate gestorH = new GestorHibernate();
                }
            }
        } 
+       }else{
+    JOptionPane.showMessageDialog(null,"Campos Obligatorios");
+    }
    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
