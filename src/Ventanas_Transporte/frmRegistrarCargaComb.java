@@ -523,7 +523,10 @@ Double total;
     }//GEN-LAST:event_txtResponsableKeyTyped
 
     private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed
-// TODO add your handling code here:
+    int fila = tblDetalleCarga.getSelectedRow();
+    DefaultTableModel modelo = (DefaultTableModel) tblDetalleCarga.getModel();
+    modelo.removeRow(fila);
+    tblDetalleCarga.setModel(modelo);
     }//GEN-LAST:event_btnEliminarDetalleActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
