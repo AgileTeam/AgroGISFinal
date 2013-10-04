@@ -331,7 +331,7 @@ Double total;
         labelUnidades.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelUnidades.setText("Unidades");
         jPanel3.add(labelUnidades);
-        labelUnidades.setBounds(60, 60, 80, 20);
+        labelUnidades.setBounds(70, 60, 80, 20);
 
         labelPrecioU.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelPrecioU.setText("Precio Unitario:  $");
