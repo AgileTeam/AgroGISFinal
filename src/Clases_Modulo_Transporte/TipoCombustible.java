@@ -29,4 +29,8 @@ private long idTipo;
     public void setNombreTipoCombustible(String nombreTipoCombustible) {
         this.nombreTipoCombustible = nombreTipoCombustible;
     }
+    
+    public String toString(){
+        return getNombreTipoCombustible();
+    }
 }

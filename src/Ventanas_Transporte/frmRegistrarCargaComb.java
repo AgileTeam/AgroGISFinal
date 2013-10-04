@@ -109,14 +109,8 @@ Double total;
         cmbOrden.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0){
             txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
-        }
-        }
-        );
-            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
             
-       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
-       
-       if(txtOperacion.getText() == "Carga Combustible"){
+            if(txtOperacion.getText().equalsIgnoreCase("Carga de Combustible")){
             labelLitros.setVisible(true);
             labelPrecioLitro.setVisible(true);
             labelUnidades.setVisible(false);
@@ -128,6 +122,18 @@ Double total;
             labelUnidades.setVisible(true);
             labelPrecioU.setVisible(true);
        }
+            
+            
+            
+            
+        }
+        }
+        );
+            txtOperacion.setText(gRegistro.rellenaTxtOperacion((OrdenServicio)cmbOrden.getSelectedItem()));
+            
+       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+       
+  
        
        
     }
@@ -452,7 +458,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
