@@ -458,7 +458,7 @@ Double total;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,7 +542,7 @@ Double total;
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
       Double total= 0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
-      int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtPrecioLitro, txtPrecioLitro);
+      int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtImporteTotal, txtResponsable);
       if(campo==0){
       Object fila []= {calendarioFU.getText(),cmbOrden.getSelectedItem(),txtNumComprobante.getText(),txtOperacion.getText(),cmbProducto.getSelectedItem(),txtImporteTotal.getText()};
       modeloT.addRow(fila);
@@ -555,6 +555,7 @@ Double total;
       txtPrecioLitro.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtResponsable.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtNumComprobante.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      txtImporteTotal.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
