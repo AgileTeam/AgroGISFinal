@@ -356,6 +356,7 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
        btnGuardar.setEnabled(false);
        dateChooserViaje.setVisible(false);
        txtFechaRealiza.setVisible(true);
+       DefaultTableModel modelo = (DefaultTableModel) tblViajes.getModel();
         Iterator ite = gestorV.listarClase(Viaje.class).iterator();
         while(ite.hasNext()){
             Viaje viaje = (Viaje) ite.next();
@@ -365,15 +366,36 @@ public class frmModificaEliminaViaje extends javax.swing.JInternalFrame {
                          viaje.setEstado("Cancelado");
                          gestorV.actualizarObjeto(viaje);
                          txtEstadoViaje.setText(viaje.getEstado());
+                         modelo.setRowCount(0);
+                         tblViajes.setModel(modelo);
+                         gestorV.cargaTabla(tblViajes);
+                         txtFechaRealiza.setVisible(false);
+                         txtNumViaje.setText("");
+                         txtEstadoViaje.setText("");
+                         txtHoraRealiza.setText("");
+                         txtProductor.setText("");
+                         txtSolicitante.setText("");
+                         txtTipoViaje.setText("");
+                         txtDestino.setText("");
+                         btnGuardar.setEnabled(true);
+                         btnModificar.setEnabled(true);
                         }
             }
         }
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
     btnEliminar.setEnabled(false);
     dateChooserViaje.setVisible(true);
     txtFechaRealiza.setVisible(false);
+    txtNumViaje.setEnabled(false);
+    txtEstadoViaje.setEnabled(false);
+    txtHoraRealiza.setEnabled(false);
+    txtProductor.setEnabled(false);
+    txtSolicitante.setEnabled(false);
+    txtTipoViaje.setEnabled(false);
+    txtDestino.setEnabled(false);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

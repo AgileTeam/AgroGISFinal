@@ -523,11 +523,13 @@ Double total;
     }//GEN-LAST:event_txtResponsableKeyTyped
 
     private void btnEliminarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDetalleActionPerformed
-    int fila = tblDetalleCarga.getSelectedRow();
-    DefaultTableModel modelo = (DefaultTableModel) tblDetalleCarga.getModel();
-    modelo.removeRow(fila);
-    tblDetalleCarga.setModel(modelo);
-    txtTotal.setText("");
+    Double total=0.0;
+    DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
+    modeloT.removeRow(tblDetalleCarga.getSelectedRow());
+       for(int i=0; i<modeloT.getRowCount(); i++){
+       total = total + (Double.parseDouble(modeloT.getValueAt(i,5).toString()));
+       txtTotal.setText(total.toString());
+       }
     }//GEN-LAST:event_btnEliminarDetalleActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

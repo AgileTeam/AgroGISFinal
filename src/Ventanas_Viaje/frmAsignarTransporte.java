@@ -432,10 +432,10 @@ GestorHibernate gestorH = new GestorHibernate();
                    }
                }
                Iterator ite2 = gestorH.listarClase(PuertoPorViaje.class).iterator();
-               while(ite1.hasNext()){
-                   EstablecimientoPorViaje est = (EstablecimientoPorViaje) ite1.next();
+               while(ite2.hasNext()){
+                   PuertoPorViaje est = (PuertoPorViaje) ite2.next();
                    if(est.getViaje().equals(viaje)){
-                       txtDestino.setText(est.getEstablecimiento().getNombreEstablecimiento());
+                       txtDestino.setText(est.getPuerto().getNombrePuerto());
                    }
                }
                gestorA.RellenarTablaVehiculo(tblVehiculo, viaje);
