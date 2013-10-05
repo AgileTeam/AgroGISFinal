@@ -478,7 +478,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -504,10 +504,20 @@ GestorHibernate gestorH = new GestorHibernate();
     if(campo==0){
     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
-        if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
+        Iterator ite1 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
+        while(ite1.hasNext()){
+            ToneladasPorCereal t = (ToneladasPorCereal) ite1.next();
+            if((productor.getIdProductor()== t.getHistorial().getIdHistorial()) && (cmbTipoCereal2.getSelectedItem().toString().equalsIgnoreCase(t.getTipoCereal().getNombreCereal()))&& (t.getToneladas()>= (Double.parseDouble(txtToneladas2.getText())))){
+            if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
             gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal2.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2, calendarioViaje.getText());
-       }
-    }
+        }
+        }else{
+            JOptionPane.showMessageDialog(null,"Toneladas ingresadas no disponibles. Ingrese otra cantidad");
+            break;
+            }
+        }
+        }
+       
     txtHas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
