@@ -60,7 +60,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
         //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
-        int ancho = 1110;
+        int ancho = 1060;
         int alto = 600;
 //        int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
