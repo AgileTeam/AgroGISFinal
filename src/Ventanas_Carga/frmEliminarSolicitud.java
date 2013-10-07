@@ -4,7 +4,10 @@
  */
 package Ventanas_Carga;
 
+import Clases_Modulo_Carga.EstablecimientoPorSolicitud;
+import Clases_Modulo_Carga.PuertoPorSolicitud;
 import Clases_Modulo_Carga.SolicitudRetiro;
+import Clases_Modulo_Carga.ToneladasPorCereal;
 import Clases_Modulo_Cliente.Establecimiento;
 import Gestores_Vista.gestorRegistrarSolicitud;
 import java.awt.*;
@@ -318,20 +321,49 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
     Iterator ite = gestorS.listarClase(SolicitudRetiro.class).iterator();
     DefaultTableModel modeloT = (DefaultTableModel) tblSolicitudes.getModel();
+    double ton = 0;
     while(ite.hasNext()){
         SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-        if(sol.getNumeroSolicitud() == Long.parseLong(txtNumSolicitud5.getText())){
+        Iterator ite1 = gestorS.listarClase(ToneladasPorCereal.class).iterator();
+        while(ite1.hasNext()){
+        ToneladasPorCereal t = (ToneladasPorCereal) ite1.next();
+        if((sol.getNumeroSolicitud() == Long.parseLong(txtNumSolicitud5.getText())) && (t.getHistorial().getIdHistorial() == sol.getProductor().getIdProductor()) && (t.getTipoCereal().getIdTipoCereal() == sol.getTipoCereal().getIdTipoCereal())){
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar la solicitud?");
                     if (respuesta==0){
                          sol.setEstado("Cancelada");
                          gestorS.actualizarObjeto(sol);
+                         Iterator ite2 = gestorS.listarClase(EstablecimientoPorSolicitud.class).iterator();
+                         while(ite2.hasNext()){
+                         EstablecimientoPorSolicitud e = (EstablecimientoPorSolicitud) ite2.next();
+                         if(e.getSolicitud().getNumeroSolicitud() == sol.getNumeroSolicitud()){
+                         t.setToneladas(e.getToneladasAExtraer() + t.getToneladas());
+                         gestorS.actualizarObjeto(t);
+                         }
+                         }
+                         Iterator ite3 = gestorS.listarClase(PuertoPorSolicitud.class).iterator();
+                         while(ite3.hasNext()){
+                         PuertoPorSolicitud e = (PuertoPorSolicitud) ite3.next();
+                         if(e.getSolicitud().getNumeroSolicitud() == sol.getNumeroSolicitud()){
+                         t.setToneladas(e.getToneladasAExtraer() + t.getToneladas());
+                         gestorS.actualizarObjeto(t);
+                         }
+                         }
+                         
                          txtEstadoSolicitud.setText(sol.getEstado());
                          modeloT.setRowCount(0);
                          tblSolicitudes.setModel(modeloT);
                          gestorS.cargaTabla(tblSolicitudes);
+                         txtCereal.setText("");
+                         txtEstablecimiento.setText("");
+                         txtFechaSolicitud.setText("");
+                         txtNumSolicitud5.setText("");
+                         txtProductor.setText("");
+                         txtTipoSolicitud.setText("");
+                         txtFechaEstimada.setText("");
                         }
            
             
+        }
         }
     }
     }//GEN-LAST:event_btnEliminarActionPerformed
