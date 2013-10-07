@@ -186,7 +186,7 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbSilo2 = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnGuardar1 = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -434,9 +434,14 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        btnGuardar1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
-        btnGuardar1.setText("Nuevo");
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -453,7 +458,7 @@ GestorHibernate gestorH = new GestorHibernate();
                             .addGap(183, 183, 183)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
@@ -476,9 +481,9 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -501,26 +506,24 @@ GestorHibernate gestorH = new GestorHibernate();
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     Iterator ite=gestorH.listarClase(Productor.class).iterator();
     int campo = gRegistro.campoObligatorio(txtHas1, txtToneladas2);
+    int bandera = 0;
     if(campo==0){
-    while(ite.hasNext()){
+     while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
-        Iterator ite1 = gestorH.listarClase(ToneladasPorCereal.class).iterator();
-        while(ite1.hasNext()){
-            ToneladasPorCereal t = (ToneladasPorCereal) ite1.next();
-            if((productor.getIdProductor()== t.getHistorial().getIdHistorial()) && (cmbTipoCereal2.getSelectedItem().toString().equalsIgnoreCase(t.getTipoCereal().getNombreCereal()))&& (t.getToneladas()>= (Double.parseDouble(txtToneladas2.getText())))){
+
             if(productor.getNombre().equalsIgnoreCase(txtProductor1.getText())||productor.getNombre().equalsIgnoreCase(txtProductor2.getText())){
-            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal2.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2, calendarioViaje.getText());
-        }
-        }else{
-            JOptionPane.showMessageDialog(null,"Toneladas ingresadas no disponibles. Ingrese otra cantidad");
-            break;
+            gRegistro.guardarSolicitud((TipoSolicitud)cmbTipoSolicitud.getSelectedItem(), calendarioViaje.getText(), productor ,(TipoCereal)cmbTipoCereal2.getSelectedItem(),(Establecimiento)cmbEstablecimiento1.getSelectedItem() , Double.parseDouble(txtHas1.getText()), 
+                                       (TipoOperacion)cmbTipoOperacion2.getSelectedItem(), cmbNombre2.getSelectedItem().toString(), (Silo)cmbSilo2.getSelectedItem(), 
+                                       Double.parseDouble(txtToneladas2.getText()), txtNumSolicitud, txtToneladas2, calendarioViaje.getText());
+            
             }
-        }
-        }
-       
+
+    }
+         
+    }
     txtHas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-    }
+    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -530,11 +533,19 @@ GestorHibernate gestorH = new GestorHibernate();
     }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    txtHas1.setText("");
+    txtNumSolicitud.setText("");
+    txtProductor1.setText("");
+    txtProductor2.setText("");
+    txtToneladas2.setText("");
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProductor1;
     private javax.swing.JButton btnAgregarProductor2;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardar1;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioViaje;
     private javax.swing.JComboBox cmbDestino2;
