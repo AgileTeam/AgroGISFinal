@@ -155,8 +155,8 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         calendarioHSolicitud = new datechooser.beans.DateChooserCombo();
         calendarioDSolicitud = new datechooser.beans.DateChooserCombo();
         jPanel12 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         txtNumSolicitud = new javax.swing.JTextField();
+        cmbNro = new javax.swing.JComboBox();
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
         btnAceptarTodos1 = new javax.swing.JButton();
@@ -352,13 +352,12 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Solicitud", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setText("Nº");
-        jPanel12.add(jLabel14);
-        jLabel14.setBounds(30, 40, 50, 20);
         jPanel12.add(txtNumSolicitud);
-        txtNumSolicitud.setBounds(50, 40, 120, 20);
+        txtNumSolicitud.setBounds(90, 40, 80, 20);
+
+        cmbNro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "<=", "=" }));
+        jPanel12.add(cmbNro);
+        cmbNro.setBounds(10, 40, 70, 20);
 
         jPanel1.add(jPanel12);
         jPanel12.setBounds(340, 20, 200, 90);
@@ -436,7 +435,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -579,11 +578,25 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
+             if(cmbNro.getSelectedItem() == ">="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()>= Long.parseLong(txtNumSolicitud.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+             if(cmbNro.getSelectedItem() == "<="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()<= Long.parseLong(txtNumSolicitud.getText()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+             if(cmbNro.getSelectedItem() == "="){
              if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
              }
+         }
          }  
        
            //Consulta por PRODUCTOR
@@ -617,10 +630,25 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+              if(cmbNro.getSelectedItem() == ">="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()>= Long.parseLong(txtNumSolicitud.getText())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
+             }
+             if(cmbNro.getSelectedItem() == "<="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()<= Long.parseLong(txtNumSolicitud.getText())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+             if(cmbNro.getSelectedItem() == "="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }  
+                
              }
          }  
          //Consulta por FECHA PRODUCTOR
@@ -654,10 +682,25 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  (solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText()))) {
+             if(cmbNro.getSelectedItem() == ">="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()>= Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
+             }
+             if(cmbNro.getSelectedItem() == "<="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()<= Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+             if(cmbNro.getSelectedItem() == "="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem()))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+                
              }
          }    
          
@@ -673,12 +716,26 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (java.text.ParseException ex) {
                     Logger.getLogger(frmRegistrarRetiroCereal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getProductor().equals(cmbProductor.getSelectedItem())) &&  ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) && solicitud.getNumeroSolicitud()==Long.parseLong(txtNumSolicitud.getText())) {
+                if(cmbNro.getSelectedItem() == ">="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()>= Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
                   //Guardo el objeto orden en la tabla
                   gestorR.cargarTabla(tblSolicitud, solicitud);
                   }
              }
-         } 
+             if(cmbNro.getSelectedItem() == "<="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()<= Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+             if(cmbNro.getSelectedItem() == "="){
+             if ((bandera==0) && (solicitud.getEstado().equalsIgnoreCase("Pendiente")) && (solicitud.getTipoSolicitud().getIdTipoSolicitud()==2) &&(solicitud.getNumeroSolicitud()== Long.parseLong(txtNumSolicitud.getText())) && (solicitud.getProductor().equals(cmbProductor.getSelectedItem())) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1))) {
+                  //Guardo el objeto orden en la tabla
+                  gestorR.cargarTabla(tblSolicitud, solicitud);
+                  }
+             }
+         }
+        } 
         }else{JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");}
     }//GEN-LAST:event_btnBuscarSolicitudActionPerformed
 
@@ -717,12 +774,12 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumSolicitud;
     private javax.swing.JCheckBox ckProductor;
+    private javax.swing.JComboBox cmbNro;
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
