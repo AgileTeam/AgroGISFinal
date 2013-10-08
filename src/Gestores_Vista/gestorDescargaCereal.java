@@ -115,6 +115,7 @@ public class gestorDescargaCereal extends GestorHibernate {
             MuestraTomada muestra = new MuestraTomada();
             muestra.setDescarga(descarga);
             muestra.setEstado(0);
+           
             this.guardarObjeto(muestra);
             for (int i=0; i< modeloTabla.getRowCount(); i++){
                 CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();

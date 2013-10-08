@@ -154,7 +154,7 @@ boolean editar=false;
         tblLaboratorio = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
         btnAgregarLab = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         panelEdicion = new javax.swing.JPanel();
         btnAceptar = new javax.swing.JButton();
@@ -184,6 +184,7 @@ boolean editar=false;
         txtEmail = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -282,16 +283,16 @@ boolean editar=false;
         panelContenedor.add(panelAgregar);
         panelAgregar.setBounds(80, 240, 570, 170);
 
-        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
             }
         });
-        panelContenedor.add(btnGuardar);
-        btnGuardar.setBounds(200, 420, 100, 30);
+        panelContenedor.add(btnNuevo);
+        btnNuevo.setBounds(160, 420, 100, 30);
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -302,7 +303,7 @@ boolean editar=false;
             }
         });
         panelContenedor.add(btnSalir);
-        btnSalir.setBounds(420, 420, 100, 30);
+        btnSalir.setBounds(490, 420, 100, 30);
 
         panelEdicion.setLayout(null);
 
@@ -350,7 +351,7 @@ boolean editar=false;
             }
         });
         panelContenedor.add(btnEditar);
-        btnEditar.setBounds(310, 420, 100, 30);
+        btnEditar.setBounds(380, 420, 100, 30);
 
         panelDatosL.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelDatosL.setLayout(null);
@@ -459,6 +460,17 @@ boolean editar=false;
         panelContenedor.add(panelDatosL);
         panelDatosL.setBounds(10, 0, 720, 240);
 
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        panelContenedor.add(btnGuardar);
+        btnGuardar.setBounds(270, 420, 100, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -475,7 +487,7 @@ boolean editar=false;
                 .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -483,7 +495,7 @@ boolean editar=false;
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea cancelar la operación?");
+    int respuesta = JOptionPane.showConfirmDialog(null, "Confirma que desea salir?");
     if (respuesta==0){
     dispose();
     }
@@ -519,9 +531,25 @@ private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
       }
 }//GEN-LAST:event_txtTelefonoKeyTyped
 
-private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
-}//GEN-LAST:event_btnGuardarActionPerformed
+private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelDatosL.getComponents().length;i++){
+         panelDatosL.getComponent(i).setEnabled(true);
+     }
+     for(int i=0;i<panelEdicion.getComponents().length;i++){
+           panelEdicion.getComponent(i).setEnabled(true);
+     }
+     
+     txtCalle.setText("");
+     txtEmail.setText("");
+     txtRazonSocial.setText("");
+     txtTelefono.setText("");
+     txtNum.setText("");
+     btnEditar.setEnabled(false);
+     btnNuevo.setEnabled(false);
+}//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnAgregarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLabActionPerformed
     DefaultTableModel modeloTabla = (DefaultTableModel) tblLaboratorio.getModel();
@@ -531,6 +559,9 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     Object fila[]= {txtRazonSocial.getText(), cmbEspecialidad.getSelectedItem(), cmbLocalidad.getSelectedItem()};
     modeloTabla.addRow(fila);
     tblLaboratorio.setModel(modeloTabla);
+   
+    //Boton nuevo
+    if(editar==false){
     Laboratorio laboratorio = new Laboratorio();
     laboratorio.setRazonSocial(txtRazonSocial.getText());
     laboratorio.setEspecialidad((EspecialidadLaboratorio) cmbEspecialidad.getSelectedItem());
@@ -541,10 +572,28 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     domicilio.setNumero(Integer.parseInt(txtNum.getText()));
     domicilio.setBarrio((Barrio)cmbBarrio.getSelectedItem());
     laboratorio.setDomicilio(domicilio);
-    if(editar==false){
+    
     gestorH.guardarObjeto(laboratorio);}
+    
+    //Boton editar
     else{
-    gestorH.actualizarObjeto(laboratorio);
+    Iterator ite = gestorH.listarClase(Laboratorio.class).iterator();
+    while(ite.hasNext()){
+        Laboratorio l = (Laboratorio) ite.next();
+        if(l.getRazonSocial().equalsIgnoreCase(txtRazonSocial.getText())){
+         l.setRazonSocial(txtRazonSocial.getText());
+         l.setEspecialidad((EspecialidadLaboratorio) cmbEspecialidad.getSelectedItem());
+         l.setTelefono(txtTelefono.getText());
+         l.setTipoTel((TipoTelefono)cmbTipoTel.getSelectedItem());
+         Domicilio domicilio = new Domicilio();
+         domicilio.setCalle(txtCalle.getText());
+         domicilio.setNumero(Integer.parseInt(txtNum.getText()));
+         domicilio.setBarrio((Barrio)cmbBarrio.getSelectedItem());
+         l.setDomicilio(domicilio);
+         gestorH.actualizarObjeto(l);
+        }
+    }
+    
     }
     txtRazonSocial.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtCalle.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
@@ -558,7 +607,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         jScrollPane2.setVisible(true);
         tblEditar.setVisible(true);
         panelContenedor.setVisible(true);
-        
+        btnNuevo.setVisible(false);
         for(int i=0;i<panelAgregar.getComponents().length;i++){
            panelAgregar.getComponent(i).setEnabled(false);
          }
@@ -573,7 +622,15 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-      DefaultTableModel modeloT = (DefaultTableModel) tblEditar.getModel();
+       for(int i=0;i<panelAgregar.getComponents().length;i++){
+           panelAgregar.getComponent(i).setEnabled(true);
+         }
+       for(int i=0;i<panelDatosL.getComponents().length;i++){
+           panelDatosL.getComponent(i).setEnabled(true);
+         }
+       panelDatosL.setVisible(true);
+       panelEdicion.setVisible(false);
+       DefaultTableModel modeloT = (DefaultTableModel) tblEditar.getModel();
        int fila = tblEditar.getSelectedRow();
        Iterator ite = gestorH.listarClase(Laboratorio.class).iterator();
        while(ite.hasNext()){
@@ -594,12 +651,19 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
        editar=true;
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+    btnNuevo.setVisible(true);
+    btnEditar.setVisible(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarLab;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cmbBarrio;
     private javax.swing.JComboBox cmbDepartamento;
