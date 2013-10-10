@@ -4,12 +4,16 @@
  */
 package Gestores_Vista;
 
+import Clases_Modulo_Carga.Descarga;
 import Clases_Modulo_Carga.EspecialidadLaboratorio;
 import Clases_Modulo_Carga.Laboratorio;
+import Clases_Modulo_Carga.MuestraTomada;
 import Clases_Modulo_Transporte.Especialidad;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,5 +40,24 @@ public class gestorEnvioMuestras extends GestorHibernate{
            }
        return modelo;
    }
+     
+       public int buscarObjeto(JTable tabla, MuestraTomada d){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       int bandera = 0;
+       for(int i=0; i<modelo.getRowCount(); i++){
+           if(d.getNumeroMuestra() == tabla.getValueAt(i, 1)){
+               bandera=1;
+           }
+       }
+       return bandera;
+   }
+       
+       public void cargarTabla(JTable tabla, MuestraTomada muestra, Descarga carga){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       Object fila[]={carga.getFecha(), muestra.getNumeroMuestra(), carga.getProductor()};
+       modelo.addRow(fila);
+       tabla.setModel(modelo);
+   
+   } 
      
 }
