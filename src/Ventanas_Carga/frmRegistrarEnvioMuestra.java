@@ -18,6 +18,8 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -84,9 +86,11 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         calendarioHMuestra.setEnabled(false);
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
+        txtNumMuestra.setText("0");
         
         cmbEspecialidad.setModel(gestorE.rellenaComboEspecialidad());
         cmbLaboratorio.setModel(gestorE.rellenaComboLaboratorio());
+        cmbProductor.setModel(gestorE.rellenaComboProductor());
     }
 
     /**
@@ -561,14 +565,17 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         String numeroMuestra = null;
         String productor = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+        System.out.println(calendarioDMuestra.getText());
         Date fecha1 = sdf.parse(calendarioDMuestra.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHMuestra.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblMuestra.getModel();
         numeroMuestra = txtNumMuestra.getText();
         productor = cmbProductor.getSelectedItem().toString();
         
+         if(fecha1.before(fecha3)|| calendarioDMuestra.isEnabled()==false || fecha1.equals(fecha3)){
         //FECHA
-        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && numeroMuestra==null && productor==null){
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()==false){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -576,9 +583,14 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
              Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
              while (ite2.hasNext()) {
                   Descarga descarga = (Descarga) ite2.next();
-                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
-                  //comparo el rango de fechas
-                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                  Date fecha2=null;
+                    try {
+                    fecha2 = sdfguion.parse(descarga.getFecha());
+                    } catch (ParseException ex) {
+                    Logger.getLogger(frmRegistrarEnvioMuestra.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 //comparo el rango de fechas
+                  if ((bandera==0) && (d.getDescarga().getNumeroMuestraTomada()==(descarga.getNumeroMuestraTomada())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) {
                   //Guardo el objeto orden en la tabla
                   gestorE.cargarTabla(tblMuestra, d, descarga);
                   }
@@ -586,7 +598,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
          }        
         }
         //PRODUCTOR
-        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && numeroMuestra==null && productor != null){
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -594,7 +606,14 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
              Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
              while (ite2.hasNext()) {
                   Descarga descarga = (Descarga) ite2.next();
-                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  Date fecha2=null;
+                    try {
+                    fecha2 = sdfguion.parse(descarga.getFecha());
+                    System.out.println(fecha2);
+                    } catch (ParseException ex) {
+                    Logger.getLogger(frmRegistrarEnvioMuestra.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             
                   //comparo el rango de fechas
                   if ((bandera==0) && (d.getDescarga().equals(descarga)) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
                   //Guardo el objeto orden en la tabla
@@ -605,7 +624,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         }
        
         //NRO MUESTRA
-        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && numeroMuestra != null && productor == null){
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()==false){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -635,7 +654,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         }
         
          //FECHA - PRODUCTOR
-        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && numeroMuestra==null && productor != null){
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -654,7 +673,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         }
         
         //FECHA NRO MUESRTRA
-        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && numeroMuestra !=null && productor==null){
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()==false){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -683,7 +702,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         }
         
         //NRO MUESTRA PRODUCTOR
-        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && numeroMuestra != null && productor != null){
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()){
          Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
@@ -712,6 +731,39 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
          }        
         }
         
+        //NRO MUESTRA PRODUCTOR FECHA
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  //comparo el rango de fechas
+                  if(cmbNumMuestra.getSelectedItem() == ">="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && (d.getNumeroMuestra() >= Long.parseLong(txtNumMuestra.getText())) && (descarga.getProductor().getNombre().equalsIgnoreCase(productor)) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "<="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() <= Long.parseLong(txtNumMuestra.getText()) && descarga.getProductor().getNombre().equalsIgnoreCase(productor) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() == Long.parseLong(txtNumMuestra.getText()) && descarga.getProductor().getNombre().equalsIgnoreCase(productor) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+             }
+         }        
+        }
+        }else {
+         JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
+         }
+        
     }//GEN-LAST:event_btnBuscarMuestraActionPerformed
 
     private void btnAceptarMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarMuestraActionPerformed
@@ -721,11 +773,11 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     txtProductor.setText(modeloTabla.getValueAt(fila,2).toString());
     Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
     while(ite.hasNext()){
-          MuestraTomada muestra = new MuestraTomada();
-          if(muestra.getNumeroMuestra()== modeloTabla.getValueAt(fila,1)){
-              txtEstablecimiento.setText(muestra.getDescarga().getEstablecimiento().toString());
-              txtMuestra.setText(String.valueOf(muestra.getNumeroMuestra()));
-              txtCereal.setText(muestra.getDescarga().getCereal().toString());
+          MuestraTomada m = (MuestraTomada)ite.next();
+          if(m.getNumeroMuestra()== modeloTabla.getValueAt(fila,1)){
+              txtEstablecimiento.setText(m.getDescarga().getEstablecimiento().toString());
+              txtMuestra.setText(String.valueOf(m.getNumeroMuestra()));
+              txtCereal.setText(m.getDescarga().getCereal().toString());
           }
     }
     
@@ -750,8 +802,9 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         for(int i=0; i<tblEnvios.getRowCount(); i++){
             Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
             while(ite.hasNext()){
-                MuestraTomada muestra = new MuestraTomada();
-                if(muestra.getNumeroMuestra() == modeloTabla.getValueAt(i, 1)){
+                MuestraTomada muestra = (MuestraTomada)ite.next();
+                System.out.println(modeloTabla.getValueAt(i, 1));
+                if(muestra.getNumeroMuestra() == Long.parseLong(modeloTabla.getValueAt(i, 1).toString())){
                     muestra.setFechaEnvio(modeloTabla.getValueAt(i, 0).toString());
                     muestra.setLaboratorio((Laboratorio)modeloTabla.getValueAt(i, 4));
                     muestra.setEstado(1);

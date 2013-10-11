@@ -8,6 +8,7 @@ import Clases_Modulo_Carga.Descarga;
 import Clases_Modulo_Carga.EspecialidadLaboratorio;
 import Clases_Modulo_Carga.Laboratorio;
 import Clases_Modulo_Carga.MuestraTomada;
+import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Especialidad;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
@@ -37,6 +38,16 @@ public class gestorEnvioMuestras extends GestorHibernate{
        while(ite.hasNext()){
            Laboratorio laboratorio =(Laboratorio) ite.next();
                modelo.addElement(laboratorio);
+           }
+       return modelo;
+   }
+     
+      public DefaultComboBoxModel rellenaComboProductor(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(Productor.class).iterator();
+       while(ite.hasNext()){
+           Productor p =(Productor) ite.next();
+               modelo.addElement(p);
            }
        return modelo;
    }
