@@ -584,7 +584,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -694,8 +694,8 @@ GestorHibernate gestorH = new GestorHibernate();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //VER GUARDAR SOLICITUD
-       int campo = gViaje.campoObligatorio(txtProductor, txtProductorEst);
-       if(campo==0){
+       //int campo = gViaje.campoObligatorio(txtProductor, txtProductorEst);
+       //if(campo==0){
        gestorBitacora gestorB = new gestorBitacora();
        int filaE = tblEstablecimiento.getSelectedRow(); 
        int filaP = tblProductor.getSelectedRow();
@@ -779,9 +779,9 @@ GestorHibernate gestorH = new GestorHibernate();
                }
            }
        } 
-       }else{
-    JOptionPane.showMessageDialog(null,"Campos Obligatorios");
-    }
+      // }else{
+    //JOptionPane.showMessageDialog(null,"Campos Obligatorios");
+    //}
    
     }//GEN-LAST:event_btnGuardarActionPerformed
 

@@ -163,10 +163,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
                 texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
                 campo=1;
             }
-         if(campo == 1){
-            JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
-         }
-         return campo;
+          return campo;
      }  
      
         }

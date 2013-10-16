@@ -566,7 +566,6 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         String productor = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
-        System.out.println(calendarioDMuestra.getText());
         Date fecha1 = sdf.parse(calendarioDMuestra.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHMuestra.getText(), new ParsePosition(0));
         DefaultTableModel modeloT = (DefaultTableModel) tblMuestra.getModel();

@@ -13,6 +13,7 @@ import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -123,8 +124,8 @@ GestorHibernate gestorH = new GestorHibernate();
         calendarioHViaje = new datechooser.beans.DateChooserCombo();
         calendarioDViaje = new datechooser.beans.DateChooserCombo();
         jPanel12 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         txtNumMuestra = new javax.swing.JTextField();
+        cmbNroMuestra = new javax.swing.JComboBox();
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
         btnBuscarViaje = new javax.swing.JButton();
@@ -250,12 +251,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jLabel10.setText("Hasta");
         jPanel10.add(jLabel10);
         jLabel10.setBounds(10, 50, 60, 20);
-
-        calendarioHViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioHViaje);
         calendarioHViaje.setBounds(50, 50, 90, 20);
-
-        calendarioDViaje.setLocale(new java.util.Locale("es", "AR", ""));
         jPanel10.add(calendarioDViaje);
         calendarioDViaje.setBounds(50, 20, 90, 20);
 
@@ -264,13 +261,12 @@ GestorHibernate gestorH = new GestorHibernate();
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
-
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Nº");
-        jPanel12.add(jLabel11);
-        jLabel11.setBounds(20, 40, 50, 20);
         jPanel12.add(txtNumMuestra);
-        txtNumMuestra.setBounds(40, 40, 100, 20);
+        txtNumMuestra.setBounds(90, 40, 60, 20);
+
+        cmbNroMuestra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "<=", "=" }));
+        jPanel12.add(cmbNroMuestra);
+        cmbNroMuestra.setBounds(20, 40, 60, 20);
 
         jPanel5.add(jPanel12);
         jPanel12.setBounds(340, 30, 160, 90);
@@ -684,7 +680,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -717,104 +713,201 @@ GestorHibernate gestorH = new GestorHibernate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha1 = sdf.parse(calendarioDViaje.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHViaje.getText(), new ParsePosition(0));
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
         DefaultTableModel modeloT = (DefaultTableModel) tblMuestras.getModel();
-        //Verifico que este seleccionada la opcion de fecha
-        if (calendarioDViaje.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                MuestraTomada muestra = (MuestraTomada) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
+        
+        if(fecha1.before(fecha3)|| calendarioDViaje.isEnabled()==false || fecha1.equals(fecha3)){
+            //FECHA
+        if(calendarioDViaje.isEnabled() && calendarioHViaje.isEnabled() && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2=null;
+                    try {
+                    fecha2 = sdfguion.parse(descarga.getFecha());
+                    } catch (ParseException ex) {
+                    Logger.getLogger(frmRegistrarEnvioMuestra.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(muestra.getDescarga().getFecha(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
-                    //Busco el objeto viaje
-                    while (ite2.hasNext()) {
-                        Viaje viaje = (Viaje) ite2.next();
-                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (fecha2.after(fecha1)) && (fecha1.before(fecha3)) && muestra.getEstado()==1) {
-                            //Guardo el objeto muestra en la tabla
-                            Object fila[] = {muestra.getDescarga().getFecha(), muestra.getNumeroMuestra(), viaje.getProductor()};
-                            modeloT.addRow(fila);
-                            tblMuestras.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+                 //comparo el rango de fechas
+                  if ((bandera==0) && (d.getDescarga().getNumeroMuestraTomada()==(descarga.getNumeroMuestraTomada())) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) || fecha2.equals(fecha3) || fecha2.equals(fecha1)) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+             }
+         }        
         }
-        //Verifico que este seleccionada la opcion de Productor
-        if (cmbProductor.isEnabled()) {
-            //Creo el objeto muestra
-            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                MuestraTomada muestra = (MuestraTomada) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
+        //PRODUCTOR
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2=null;
+                    try {
+                    fecha2 = sdfguion.parse(descarga.getFecha());
+                    System.out.println(fecha2);
+                    } catch (ParseException ex) {
+                    Logger.getLogger(frmRegistrarEnvioMuestra.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
-                    //Busco el objeto viaje
-                    while (ite2.hasNext()) {
-                        Viaje viaje = (Viaje) ite2.next();
-                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (viaje.getProductor()== cmbProductor.getSelectedItem()) && muestra.getEstado()==1) {
-                            //Guardo el objeto muestra en la tabla
-                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
-                            modeloT.addRow(fila);
-                            tblMuestras.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+             
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+             }
+         }        
         }
-         //Verifico que este seleccionada la opcion de Numero de muestra
-        if (txtNumMuestra.isEnabled()) {
-            //Creo el objeto orden
-            Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
-            while (ite.hasNext()) {
-                int banderaFecha = 0;
-                MuestraTomada muestra = (MuestraTomada) ite.next();
-                //Verifico que la muestra no este en la tabla previamente cargada
-                for (int i = 0; i < modeloT.getRowCount(); i++) {
-                    if (muestra.getNumeroMuestra() == modeloT.getValueAt(i, 1)) {
-                        banderaFecha = 1;
-                    }
-                }
-                //La orden no esta cargada
-                if (banderaFecha == 0) {
-                    Date fecha2 = sdf.parse(muestra.getFechaEnvio(), new ParsePosition(0));
-                    Iterator ite2 = gestorH.listarClase(Viaje.class).iterator();
-                    //Busco el objeto viaje
-                    while (ite2.hasNext()) {
-                        Viaje viaje = (Viaje) ite2.next();
-                        //Comparo el viaje que corresponde a la muestra, comparo el rango de fechas
-                        if ((Long.parseLong(String.valueOf(muestra.getViaje())) == viaje.getIdViaje()) && (muestra.getNumeroMuestra()== Long.parseLong(txtNumMuestra.getText())) && muestra.getEstado()==1) {
-                            //Guardo el objeto muestra en la tabla
-                            Object fila[] = {muestra.getFechaEnvio(), muestra.getNumeroMuestra(), viaje.getProductor()};
-                            modeloT.addRow(fila);
-                            tblMuestras.setModel(modeloT);
-                        }
-                    }
-
-                }
-            }
+       
+        //NRO MUESTRA
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  //comparo el rango de fechas
+                  if(cmbNumMuestra.getSelectedItem() == ">="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() >= Long.parseLong(numeroMuestra)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "<="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() <= Long.parseLong(numeroMuestra)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() == Long.parseLong(numeroMuestra)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+             }
+         }        
         }
         
+         //FECHA - PRODUCTOR
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled()==false && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  //comparo el rango de fechas
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && (fecha2.after(fecha1)) && (fecha2.before(fecha3)) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
+                  //Guardo el objeto orden en la tabla
+                  gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+             }
+         }        
+        }
+        
+        //FECHA NRO MUESRTRA
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()==false){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  if(cmbNumMuestra.getSelectedItem() == ">="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() >= Long.parseLong(numeroMuestra) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "<="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() <= Long.parseLong(numeroMuestra) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() == Long.parseLong(numeroMuestra) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+             }
+         }        
+        }
+        
+        //NRO MUESTRA PRODUCTOR
+        if(calendarioDMuestra.isEnabled()==false && calendarioHMuestra.isEnabled()==false && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  //comparo el rango de fechas
+                  if(cmbNumMuestra.getSelectedItem() == ">="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() >= Long.parseLong(numeroMuestra) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "<="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() <= Long.parseLong(numeroMuestra) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() == Long.parseLong(numeroMuestra) && descarga.getProductor().getNombre().equalsIgnoreCase(productor)) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+             }
+         }        
+        }
+        
+        //NRO MUESTRA PRODUCTOR FECHA
+        if(calendarioDMuestra.isEnabled() && calendarioHMuestra.isEnabled() && txtNumMuestra.isEnabled() && cmbProductor.isEnabled()){
+         Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+         while(ite.hasNext()){
+             MuestraTomada d = (MuestraTomada) ite.next();
+             int bandera = gestorE.buscarObjeto(tblMuestra, d);
+             Iterator ite2 = gestorH.listarClase(Descarga.class).iterator();
+             while (ite2.hasNext()) {
+                  Descarga descarga = (Descarga) ite2.next();
+                  Date fecha2 = sdf.parse(descarga.getFecha(), new ParsePosition(0));
+                  //comparo el rango de fechas
+                  if(cmbNumMuestra.getSelectedItem() == ">="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && (d.getNumeroMuestra() >= Long.parseLong(txtNumMuestra.getText())) && (descarga.getProductor().getNombre().equalsIgnoreCase(productor)) && ((fecha2.after(fecha1)) && (fecha2.before(fecha3)))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "<="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() <= Long.parseLong(txtNumMuestra.getText()) && descarga.getProductor().getNombre().equalsIgnoreCase(productor) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+                  if(cmbNumMuestra.getSelectedItem() == "="){
+                  if ((bandera==0) && (d.getDescarga().equals(descarga)) && d.getNumeroMuestra() == Long.parseLong(txtNumMuestra.getText()) && descarga.getProductor().getNombre().equalsIgnoreCase(productor) && (fecha2.after(fecha1)) && (fecha2.before(fecha3))) {
+                    gestorE.cargarTabla(tblMuestra, d, descarga);
+                  }
+                  }
+             }
+         }        
+        }
+            
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de Fechas");
+        }
         
     }//GEN-LAST:event_btnBuscarViajeActionPerformed
 
@@ -942,10 +1035,10 @@ GestorHibernate gestorH = new GestorHibernate();
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumMuestra;
     private javax.swing.JCheckBox ckProductor;
+    private javax.swing.JComboBox cmbNroMuestra;
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
