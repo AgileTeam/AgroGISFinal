@@ -475,6 +475,16 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         gestorH.guardarObjeto(retiro);
         JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+        DefaultTableModel modelot = (DefaultTableModel) tblSolicitud.getModel();
+        int fila = tblSolicitud.getSelectedRow();
+        modelot.removeRow(fila);
+        txtNumeroSolicitud.setText("");
+        txtFechaViaje.setText("");
+        txtProductor.setText("");
+        txtSilo.setText("");
+        txtTipoCereal.setText("");
+        txtTnDisponibles.setText("");
+        txtTnExtraidas.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAceptarSolicitud1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarSolicitud1ActionPerformed

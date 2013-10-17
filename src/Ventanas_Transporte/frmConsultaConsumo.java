@@ -12,9 +12,12 @@ import Gestores_Vista.gestorConsultarConsumo;
 import Gestores_Vista.gestorFecha;
 import Hibernate.GestorHibernate;
 import java.awt.*;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -604,6 +607,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         String importeTotal = null;
         String tipoOperacion = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
         Date fecha1 = sdf.parse(calendarioDCons.getText(), new ParsePosition(0));
         Date fecha3 = sdf.parse(calendarioHCons.getText(), new ParsePosition(0));
         numeroOrden = txtOrdenCons.getText();
@@ -615,12 +619,19 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         if(fecha1.before(fecha3)){
              
          //Seleccion de FECHA
-         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
@@ -634,7 +645,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
          }        
         }
         //Seleccion de NUMERO DE ORDEN
-         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -653,7 +664,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
          }        
         }
         //Seleccion de IMPORTE TOTAL
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -689,7 +700,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
          }//Cierre If Numero Orden Orden
          
         //Seleccion de TRANSPORTISTA
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
          Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -711,7 +722,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden  
         
         //Seleccion de TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -731,11 +742,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion Fecha y Numero de Orden
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int nroOrden = orden.getNumeroOrden();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -752,11 +769,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA e IMPORTE
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -788,11 +811,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion de FECHA y TRANSPORTISTAS
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -810,12 +839,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden  
         
         //seleccion de FECHA Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              String tipoServicio= orden.getTipoServicio().toString();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -831,7 +866,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //seleccion NRO ORDEN E IMPORTE
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -867,7 +902,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion de NRO DE ORDEN y TRANSPORTISTAS
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -889,7 +924,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -910,7 +945,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion IMPORTE y TRANSPORTISTAS
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -951,7 +986,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
          //Seleccion IMPORTE Y TIPO OPERACION
-         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+         if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -987,7 +1022,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion de TRANSPORTISTAS Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1009,11 +1044,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion FECHA, NRO ORDEN E IMPORTE
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int nroOrden = orden.getNumeroOrden();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1046,12 +1087,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, NRO ORDEN, TRANSPORTISTA
-         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+         if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -1069,12 +1116,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
          //Seleccion FECHA, NRO ORDEN Y TIPO DE OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              String tipoServicio= orden.getTipoServicio().toString();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int nroOrden = orden.getNumeroOrden();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1091,11 +1144,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
          
         //Seleccion FECHA, IMPORTE Y TRANSPORTISTA
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -1133,11 +1192,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
        
         //Seleccion FECHA IMPORTE TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              String tipoOp = orden.getTipoServicio().toString();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1170,11 +1235,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden==null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              String tipoOp = orden.getTipoServicio().toString();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1193,7 +1264,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1235,7 +1306,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1272,7 +1343,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion NRO ORDEN, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1295,7 +1366,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         // Seleccion IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1338,12 +1409,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         
         //Seleccion FECHA, NRO ORDEN, IMPORTE, TRANSPORTISTA
         
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion == null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() == false && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
              //Busco el objeto carga para traer el importe de la orden
@@ -1381,12 +1458,18 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion FECHA, NRO ORDEN, IMPORTE, TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()== 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()==false){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
              int nroOrden = orden.getNumeroOrden();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+               Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              String tipoOp = orden.getTipoServicio().toString();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1419,11 +1502,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden
         
         //Seleccion FECHA, IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden == null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled()==false && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+              Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              String tipoOp = orden.getTipoServicio().toString();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
              Iterator ite2 = gestorH.listarClase(CargaCombustible.class).iterator();
@@ -1462,11 +1551,17 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion FECHA, NRO ORDEN, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden!=null && importeTotal==null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled()==false && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
-             Date fecha2 = sdf.parse(orden.getFecha(), new ParsePosition(0));
+             Date fecha2=null;
+                try {
+                    fecha2 = sdfguion.parse(orden.getFecha());
+                    System.out.println(fecha2);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmConsultaConsumo.class.getName()).log(Level.SEVERE, null, ex);
+                }
              int nroOrden = orden.getNumeroOrden();
              String tipoOp = orden.getTipoServicio().toString();
              int bandera = gestorC.buscarObjeto(tblConsumo, orden);
@@ -1486,7 +1581,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              } //Cierre If Orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA, TIPO OPERACION
-        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled()==false && calendarioHCons.isEnabled()==false && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
@@ -1529,7 +1624,7 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
         }//Cierre if orden 
         
         //Seleccion NRO ORDEN, IMPORTE, TRANSPORTISTA, FECHA, TIPO OPERACION
-        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && numeroOrden != null && importeTotal!=null && tipoOperacion != null && modeloLista.getRowCount()!= 0){
+        if(calendarioDCons.isEnabled() && calendarioHCons.isEnabled() && txtOrdenCons.isEnabled() && txtImporteCons.isEnabled() && cmbOperacion.isEnabled() && cmbTranspCons.isEnabled()){
         Iterator ite = gestorH.listarClase(OrdenServicio.class).iterator();
          while(ite.hasNext()){
              OrdenServicio orden = (OrdenServicio) ite.next();
