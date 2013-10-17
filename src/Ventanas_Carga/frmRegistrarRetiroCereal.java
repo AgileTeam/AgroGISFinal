@@ -53,6 +53,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         
         calendarioDSolicitud.setEnabled(false);
         calendarioHSolicitud.setEnabled(false);
+        cmbNro.setEnabled(false);
         txtNumSolicitud.setEnabled(false);
         cmbProductor.setModel(gestorR.rellenaComboProductor());
         cmbProductor.setEnabled(false);
@@ -310,7 +311,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
             }
         });
         jPanel1.add(btnBuscarSolicitud);
-        btnBuscarSolicitud.setBounds(380, 120, 104, 30);
+        btnBuscarSolicitud.setBounds(360, 120, 104, 30);
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha Emisión");
@@ -336,16 +337,16 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText("Desde");
         jPanel10.add(jLabel7);
-        jLabel7.setBounds(30, 20, 60, 20);
+        jLabel7.setBounds(30, 30, 70, 20);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Hasta");
         jPanel10.add(jLabel13);
-        jLabel13.setBounds(30, 50, 60, 20);
+        jLabel13.setBounds(30, 60, 60, 20);
         jPanel10.add(calendarioHSolicitud);
-        calendarioHSolicitud.setBounds(70, 50, 90, 20);
+        calendarioHSolicitud.setBounds(70, 60, 90, 20);
         jPanel10.add(calendarioDSolicitud);
-        calendarioDSolicitud.setBounds(70, 20, 90, 20);
+        calendarioDSolicitud.setBounds(70, 30, 90, 20);
 
         jPanel1.add(jPanel10);
         jPanel10.setBounds(140, 20, 200, 90);
@@ -387,7 +388,7 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
             }
         });
         jPanel1.add(btnCancelarTodos);
-        btnCancelarTodos.setBounds(60, 110, 30, 30);
+        btnCancelarTodos.setBounds(50, 110, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -406,10 +407,10 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(302, 302, 302)
-                                .addComponent(btnGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(287, 287, 287)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,21 +422,21 @@ gestorRegistrarRetiro gestorR = new gestorRegistrarRetiro();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptarSolicitud1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -745,6 +746,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             calendarioHSolicitud.setEnabled(true);
         }
            if (ckNumSolicitud.isSelected()) {
+            cmbNro.setEnabled(true);
             txtNumSolicitud.setEnabled(true);
         }
             if (ckProductor.isSelected()) {
@@ -753,8 +755,12 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
 
     private void btnCancelarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTodosActionPerformed
+        ckFecha.setSelected(false);
+        ckNumSolicitud.setSelected(false);
+        ckProductor.setSelected(false);
         calendarioDSolicitud.setEnabled(false);
         calendarioHSolicitud.setEnabled(false);
+        cmbNro.setEnabled(false);
         txtNumSolicitud.setEnabled(false);
         cmbProductor.setEnabled(false);
     }//GEN-LAST:event_btnCancelarTodosActionPerformed
