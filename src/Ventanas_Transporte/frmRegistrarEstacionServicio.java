@@ -477,7 +477,7 @@ long id=0;
                 .addGap(69, 69, 69))
             .addGroup(panelAgregarLayout.createSequentialGroup()
                 .addGap(259, 259, 259)
-                .addComponent(btnNuevo)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelAgregarLayout.setVerticalGroup(
@@ -548,7 +548,7 @@ long id=0;
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
