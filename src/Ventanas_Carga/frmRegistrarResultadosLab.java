@@ -486,18 +486,21 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
 
         botonMaiz.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonMaiz.setText("Maiz");
+        botonMaiz.setFocusPainted(false);
         jPanel11.add(botonMaiz);
-        botonMaiz.setBounds(40, 20, 50, 23);
+        botonMaiz.setBounds(40, 20, 50, 22);
 
         botonSoja.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonSoja.setText("Soja");
+        botonSoja.setFocusPainted(false);
         jPanel11.add(botonSoja);
-        botonSoja.setBounds(190, 20, 50, 23);
+        botonSoja.setBounds(190, 20, 50, 22);
 
         botonTrigo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         botonTrigo.setText("Trigo");
+        botonTrigo.setFocusPainted(false);
         jPanel11.add(botonTrigo);
-        botonTrigo.setBounds(330, 20, 60, 23);
+        botonTrigo.setBounds(330, 20, 60, 22);
 
         jPanel6.add(jPanel11);
         jPanel11.setBounds(240, 70, 440, 50);

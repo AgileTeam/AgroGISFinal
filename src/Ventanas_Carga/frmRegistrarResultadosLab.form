@@ -879,6 +879,7 @@
                               <Font name="Arial" size="11" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Maiz"/>
+                            <Property name="focusPainted" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -892,6 +893,7 @@
                               <Font name="Arial" size="11" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Soja"/>
+                            <Property name="focusPainted" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -905,6 +907,7 @@
                               <Font name="Arial" size="11" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Trigo"/>
+                            <Property name="focusPainted" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
