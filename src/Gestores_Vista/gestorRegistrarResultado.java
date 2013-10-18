@@ -5,7 +5,9 @@
 package Gestores_Vista;
 
 import Clases_Modulo_Carga.MuestraTomada;
+import Clases_Modulo_Cliente.Productor;
 import Hibernate.GestorHibernate;
+import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -37,4 +39,11 @@ public class gestorRegistrarResultado extends GestorHibernate {
        return bandera;
    }
     
+       public void cargarTabla(JTable tabla, MuestraTomada muestra){
+       DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+       Object fila[]={muestra.getFechaEnvio(), muestra.getNumeroMuestra(), muestra.getDescarga().getProductor()};
+       modelo.addRow(fila);
+       tabla.setModel(modelo);
+   
+   } 
 }
