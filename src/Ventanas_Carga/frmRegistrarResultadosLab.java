@@ -652,6 +652,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
@@ -687,7 +692,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
@@ -770,12 +775,8 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
          while(ite.hasNext()){
              MuestraTomada d = (MuestraTomada) ite.next();
              int bandera = gestorE.buscarObjeto(tblMuestras, d);
-             Date fecha2=null;
-                    try {
-                    fecha2 = sdf.parse(d.getFechaEnvio());
-                    } catch (ParseException ex) {
-                    Logger.getLogger(frmRegistrarResultadosLab.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+             if(d.getFechaEnvio() != null){
+             Date fecha2 = sdf.parse(d.getFechaEnvio(), new ParsePosition(0));
              System.out.println(fecha2);
                   if(cmbNroMuestra.getSelectedItem() == ">="){
                   if ((bandera==0) &&  d.getNumeroMuestra() >= Long.parseLong(txtNumMuestra.getText())) {
@@ -793,6 +794,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                   }
                   }
              }        
+        }
         }
         
          //FECHA - PRODUCTOR
@@ -919,18 +921,17 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
 
     private void btnAceptarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarViajeActionPerformed
    DefaultTableModel modeloTabla = (DefaultTableModel) tblMuestras.getModel();
-  
     int fila = tblMuestras.getSelectedRow();
     txtProductor.setText(modeloTabla.getValueAt(fila,2).toString());
     Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
     while(ite.hasNext()){
-          MuestraTomada muestra = new MuestraTomada();
+          MuestraTomada muestra = (MuestraTomada) ite.next();
           if(muestra.getNumeroMuestra()== modeloTabla.getValueAt(fila,1)){
-              txtEstablecimiento.setText(muestra.getDescarga().getEstablecimiento().toString());
+              txtEnviadoPor.setText(muestra.getDescarga().getEstablecimiento().toString());
               txtMuestra.setText(String.valueOf(muestra.getNumeroMuestra()));
               txtCereal.setText(muestra.getDescarga().getCereal().toString());
               txtFechaEnvio.setText(muestra.getFechaEnvio());
-              txtEnviadoPor.setText(muestra.getResponsableEnvio());
+              txtEstablecimiento.setText(muestra.getResponsableEnvio());
               txtLaboratorio.setText(muestra.getLaboratorio().toString());
               txtEspecialidad.setText(muestra.getLaboratorio().getEspecialidad().toString());
               txtDomicilioLab.setText(muestra.getLaboratorio().getDomicilio().getCalle().toString());
@@ -938,19 +939,20 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
               txtProvinciaLab.setText(muestra.getLaboratorio().getDomicilio().getBarrio().getLocalidad().getDepartamento().getProvincia().toString());
               txtTelefonoLab.setText(muestra.getLaboratorio().getTelefono().toString());
               txtMuestraLab.setText(String.valueOf(muestra.getNumeroMuestra()));
+              txtFEnvio.setText(muestra.getFechaEnvio());
           }
     }
-    if(txtCereal.getText()=="Trigo"){
+    if(txtCereal.getText().equalsIgnoreCase("Trigo")){
         botonTrigo.setSelected(true);
         botonMaiz.setSelected(false);
         botonSoja.setSelected(false);
     }
-    if(txtCereal.getText()=="Soja"){
+    if(txtCereal.getText().equalsIgnoreCase("Soja")){
         botonTrigo.setSelected(false);
         botonMaiz.setSelected(false);
         botonSoja.setSelected(true);
     }
-    if(txtCereal.getText()=="Maiz"){
+    if(txtCereal.getText().equalsIgnoreCase("Maiz")){
         botonTrigo.setSelected(false);
         botonMaiz.setSelected(true);
         botonSoja.setSelected(false);
@@ -1023,6 +1025,13 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             tblMuestras.setModel(modeloT);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea salir?");
+    if (respuesta==0){
+    dispose();
+    }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton botonMaiz;
