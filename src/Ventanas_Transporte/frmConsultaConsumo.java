@@ -649,11 +649,27 @@ gestorConsultarConsumo gestorC = new gestorConsultarConsumo();
              //Busco el objeto carga para traer el importe de la orden
              while (ite2.hasNext()) {
                   CargaCombustible carga = (CargaCombustible) ite2.next();
-                  //comparo el rango de fechas
-                  if ((bandera==0) && (carga.getOrdenServicio() == orden) && (numero == Integer.parseInt(txtOrdenCons.getText()))) {
-                  //Guardo el objeto orden en la tabla
-                  gestorC.cargarTabla(tblConsumo, orden, carga);
+                  if (cmbImporteCons.getSelectedItem() == ">=") {
+                  //Comparo que el importe para traer la orden correspondiente comparo el operador
+                     if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (orden.getNumeroOrden() >= Integer.parseInt(txtOrdenCons.getText()))) {
+                       //Guardo el objeto orden en la tabla
+                       gestorC.cargarTabla(tblConsumo, orden, carga);
+                     }
                   }
+                  if (cmbImporteCons.getSelectedItem() == "=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (orden.getNumeroOrden() == Integer.parseInt(txtOrdenCons.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                  }
+                  if (cmbImporteCons.getSelectedItem() == "<=") {
+                       //Comparo que el importe para traer la orden correspondiente comparo el operador
+                       if ((bandera==0)&&(carga.getOrdenServicio() == orden) && (orden.getNumeroOrden() <= Integer.parseInt(txtOrdenCons.getText()))) {
+                          //Guardo el objeto orden en la tabla
+                          gestorC.cargarTabla(tblConsumo, orden, carga);
+                        }
+                    }
              }
          }        
         }
