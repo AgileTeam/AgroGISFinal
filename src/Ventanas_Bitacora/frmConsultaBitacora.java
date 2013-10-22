@@ -789,7 +789,6 @@ gestorBitacora gestorB = new gestorBitacora();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
              int bandera = gestorB.buscarObjeto(tblBitacora, bit);
-             int numero = Integer.parseInt(bit.getNroComprobante());
              System.out.println(bit.getUsuario());
              Date fecha2=null;
                 try {
