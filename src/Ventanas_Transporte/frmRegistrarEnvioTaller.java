@@ -554,6 +554,15 @@ GestorHibernate gestorH = new GestorHibernate();
           }
       
       }
+      txtEspecialidad.setText("");
+      txtImporteTotal.setText("");
+      txtNumComprobante.setText("");
+      txtResponsable.setText("");
+      txtTaller.setText("");
+      txtTotal.setText("");
+      areaObservacion.setText("");
+      modelo.setRowCount(0);
+      tblDetalleRep.setModel(modelo);
       JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
       
     }//GEN-LAST:event_btnGuardarActionPerformed

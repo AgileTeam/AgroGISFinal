@@ -1238,12 +1238,13 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
    
     gestorB.cargarBitacora(transportista.getNumeroDocumento(), txtFecha.getText(), 4, labelusuario.getText(), "Ficha de Personal");
+    JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
     }
 
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }
-    JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
+    
     }
     //EDITAR TRANSPORTISTA
     else{
@@ -1281,12 +1282,13 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
         
     }
+     JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
     }
 
     else{
         JOptionPane.showMessageDialog(null, "No posee un vehiculo asociado.\n Registre un vehiculo");
     }  
-    JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
+   
     }
     } 
    
