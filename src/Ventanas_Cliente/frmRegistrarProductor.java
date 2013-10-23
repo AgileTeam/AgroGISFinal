@@ -4,6 +4,9 @@
  */
 package Ventanas_Cliente;
 
+import Clases_Modulo_Carga.HistorialProductor;
+import Clases_Modulo_Carga.TipoCereal;
+import Clases_Modulo_Carga.ToneladasPorCereal;
 import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Transporte.Domicilio;
@@ -22,6 +25,7 @@ import java.util.TimeZone;
 import Gestores_Clases.*;
 import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -592,7 +596,20 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     productor.setNumeroDocumento(txtNombres.getText());
     productor.seteMail(txtEmail.getText());
     gHibernate.guardarObjeto(productor);
+    HistorialProductor h = new HistorialProductor();
+    h.setProductor(productor);
+    gHibernate.guardarObjeto(h);
+    Iterator ite = (gHibernate.listarClase(TipoCereal.class).iterator());
+    while(ite.hasNext()){
+        TipoCereal t = (TipoCereal) ite.next();
+        ToneladasPorCereal tc = new ToneladasPorCereal();
+        tc.setHistorial(h);
+        tc.setTipoCereal(t);
+        tc.setToneladas(0.0);
+        gHibernate.guardarObjeto(tc);
+    }
     
+   
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
