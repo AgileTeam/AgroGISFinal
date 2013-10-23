@@ -116,10 +116,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         cmbLocalidad = new javax.swing.JComboBox();
         cmbProvincia = new javax.swing.JComboBox();
         cmbDepartamento = new javax.swing.JComboBox();
-        jPanel18 = new javax.swing.JPanel();
-        btnAgregarDepartamento = new javax.swing.JButton();
-        btnAgregarProvincia = new javax.swing.JButton();
-        btnAgregarLocalidad = new javax.swing.JButton();
         panelEdicionLote = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtEstab = new javax.swing.JTextField();
@@ -203,9 +199,8 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         jLabel2.setBounds(90, 150, 100, 20);
 
         labelProductor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelProductor.setText("José García");
         panelProductor.add(labelProductor);
-        labelProductor.setBounds(170, 150, 120, 20);
+        labelProductor.setBounds(170, 150, 220, 20);
 
         panelContenedor.add(panelProductor);
         panelProductor.setBounds(10, 10, 600, 200);
@@ -243,54 +238,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
 
         panelEdicionEstab.add(cmbDepartamento);
         cmbDepartamento.setBounds(190, 110, 210, 20);
-
-        btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarDepartamentoActionPerformed(evt);
-            }
-        });
-
-        btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarProvincia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProvinciaActionPerformed(evt);
-            }
-        });
-
-        btnAgregarLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarLocalidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarLocalidadActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-
-        panelEdicionEstab.add(jPanel18);
-        jPanel18.setBounds(360, 60, 100, 120);
 
         panelContenedor.add(panelEdicionEstab);
         panelEdicionEstab.setBounds(10, 220, 600, 200);
@@ -411,7 +358,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -424,21 +371,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnAgregarLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLocalidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarLocalidadActionPerformed
-
-    private void btnAgregarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProvinciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProvinciaActionPerformed
-
-    private void btnAgregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDepartamentoActionPerformed
-        frmRegistrarProvincia provincia = new frmRegistrarProvincia();
-        frmPrincipal.Escritorio.add(provincia);
-        provincia.toFront();
-        provincia.setVisible(true);
-    }//GEN-LAST:event_btnAgregarDepartamentoActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         panelEdicion.setVisible(true);
         panelProductor.setVisible(false);
@@ -450,9 +382,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
-    private javax.swing.JButton btnAgregarDepartamento;
-    private javax.swing.JButton btnAgregarLocalidad;
-    private javax.swing.JButton btnAgregarProvincia;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLotes;
@@ -473,7 +402,6 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
