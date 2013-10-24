@@ -344,6 +344,11 @@ GestorHibernate gestorH = new GestorHibernate();
         btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -451,7 +456,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -734,6 +739,20 @@ GestorHibernate gestorH = new GestorHibernate();
                 dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+      txtVehiculo.setText("");
+      txtTransportista.setText("");
+      txtTara.setText("");
+      txtTipoVehiculo.setText("");
+      txtResponsable.setText("");
+      txtDestino.setText("");
+      txtHas.setText("");
+      txtNumOrden.setText("");
+      DefaultTableModel modelo = (DefaultTableModel) tblViaje.getModel();
+      modelo.setRowCount(0);
+      tblViaje.setModel(modelo);
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;

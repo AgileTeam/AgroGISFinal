@@ -1785,6 +1785,10 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
         txtSerieAcoplado.setText("");
         txtLargoAcplado.setText("");
         txtTaraAcoplado.setText("");
+        txtTelefono.setText("");
+        DefaultTableModel modelo = (DefaultTableModel) tblVehiculo.getModel();
+        modelo.setRowCount(0);
+        tblVehiculo.setModel(modelo);
        
     }//GEN-LAST:event_btnNuevoActionPerformed
 

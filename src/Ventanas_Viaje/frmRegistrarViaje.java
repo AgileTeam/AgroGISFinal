@@ -320,6 +320,11 @@ GestorHibernate gestorH = new GestorHibernate();
         btnNuevoViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnNuevoViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
         btnNuevoViaje.setText("Nuevo");
+        btnNuevoViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoViajeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -591,7 +596,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -798,6 +803,24 @@ GestorHibernate gestorH = new GestorHibernate();
             dispose();
     }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevoViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoViajeActionPerformed
+        txtNumViaje.setText("");
+        txtCerealR.setText("");
+        txtCerealT.setText("");
+        txtDepto.setText("");
+        txtHas.setText("");
+        txtLocalidad.setText("");
+        txtLocalidadEst.setText("");
+        txtProductor.setText("");
+        txtProductorEst.setText("");
+        txtProvinciaT.setText("");
+        txtRetiro.setText("");
+        txtSilo.setText("");
+        txtSolicitante.setText("");
+        txtToneladasE.setText("");
+        txtTraslado.setText("");
+    }//GEN-LAST:event_btnNuevoViajeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

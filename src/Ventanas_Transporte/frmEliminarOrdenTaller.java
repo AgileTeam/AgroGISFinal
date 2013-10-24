@@ -274,11 +274,11 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
 
         },
         new String [] {
-            "Fecha", "Orden N°", "Transportista", "Importe Total"
+            "Fecha", "Orden N°", "Transportista", "Motivo de Envio", "Importe Total"
         }
     ) {
         boolean[] canEdit = new boolean [] {
-            false, false, false, false
+            false, false, false, false, false
         };
 
         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -611,7 +611,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(56, Short.MAX_VALUE))
+            .addContainerGap(60, Short.MAX_VALUE))
     );
 
     pack();
@@ -641,6 +641,7 @@ public class frmEliminarOrdenTaller extends javax.swing.JInternalFrame {
             while(ite.hasNext()){
             OrdenServicio orden = (OrdenServicio) ite.next();
             if(orden.getNumeroOrden() == nroOrden){
+                orden.setEstado("Cancelada");
                 orden.setHabilita("0");
                 gestorH.actualizarObjeto(orden);
                 modelo.removeRow(fila);

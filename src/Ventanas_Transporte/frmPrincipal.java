@@ -10,6 +10,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Cliente.*;
 import Ventanas_Cliente.*;
 import Clases_Modulo_Seguridad.*;
@@ -24,6 +25,7 @@ import Gestores_Vista.*;
 import Hibernate.GestorHibernate;
 import Ventanas_Bitacora.frmConsultaBitacora;
 import Ventanas_Seguridad.*;
+import ireport.GestorDeReportes;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.net.*;
@@ -1042,7 +1044,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private void MenuSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSolicitudesActionPerformed
        String arc="C:/Reportes AgroGIS/ListadoSolicitudes.jasper";
        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-       gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+       gestorReportes.setColeccionDeDatos(gestorH.listarClase(SolicitudRetiro.class);
        gestorReportes.imprimir();
 
     }//GEN-LAST:event_MenuSolicitudesActionPerformed
@@ -1128,14 +1130,14 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private void MenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVehiculosActionPerformed
         String arc="C:/Reportes AgroGIS/ListadoVehiculos.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-        gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+        gestorReportes.setColeccionDeDatos(gestorH.listarClase(Vehiculo.class));
         gestorReportes.imprimir();
     }//GEN-LAST:event_MenuVehiculosActionPerformed
 
     private void MenuTransportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTransportistasActionPerformed
         String arc="C:/Reportes AgroGIS/ListadoTransportista.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-        gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+        gestorReportes.setColeccionDeDatos(gestorH.listarClase(Transportista.class));
         gestorReportes.imprimir();
     }//GEN-LAST:event_MenuTransportistasActionPerformed
 

@@ -507,7 +507,7 @@ GestorHibernate gestorH = new GestorHibernate();
     Iterator ite=gestorH.listarClase(Productor.class).iterator();
     int campo = gRegistro.campoObligatorio(txtHas1, txtToneladas2);
     int bandera = 0;
-    if(campo==0){
+    if(campo==0 && (Double.parseDouble(txtHas1.getText()) > 0.0 || Double.parseDouble(txtToneladas2.getText()) > 0.0 )){
      while(ite.hasNext()){
         Productor productor=(Productor) ite.next();
 
@@ -520,9 +520,15 @@ GestorHibernate gestorH = new GestorHibernate();
 
     }
          
-    }
     txtHas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Ingrese un valor superior a cero");
+        txtHas1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+        txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+    }
+    
     
     }//GEN-LAST:event_btnGuardarActionPerformed
 
