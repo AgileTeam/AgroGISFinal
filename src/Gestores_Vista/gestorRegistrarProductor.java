@@ -8,8 +8,10 @@ import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Barrio;
 import Clases_Modulo_Transporte.CondicionIva;
 import Clases_Modulo_Transporte.Domicilio;
+import Clases_Modulo_Transporte.TipoTelefono;
 import Hibernate.GestorHibernate;
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -44,4 +46,25 @@ public class gestorRegistrarProductor extends GestorHibernate {
         }
     
     }
+    public DefaultComboBoxModel rellenaComboTipoTel(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(TipoTelefono.class).iterator();
+       while(ite.hasNext()){
+           TipoTelefono tipoTel =(TipoTelefono) ite.next();
+               modelo.addElement(tipoTel);
+           }
+
+       return modelo;
+   } 
+    
+    public DefaultComboBoxModel rellenaComboCondicionIva(){
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+       Iterator ite = this.listarClase(CondicionIva.class).iterator();
+       while(ite.hasNext()){
+           CondicionIva tipoTel =(CondicionIva) ite.next();
+               modelo.addElement(tipoTel);
+           }
+
+       return modelo;
+   } 
 }
