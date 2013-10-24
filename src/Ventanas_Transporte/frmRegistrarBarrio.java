@@ -440,6 +440,8 @@ private void btnEliminarBarrioActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_btnEliminarBarrioActionPerformed
 
 private void btnAgregarBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBarrioActionPerformed
+    int bandera1 = gestoru.CampoObligatorio(txtBarrio);
+    if(bandera1==0){
     DefaultTableModel modeloTabla = (DefaultTableModel) tblBarrio.getModel();
     int campo = gPais.campoObligatorio(txtBarrio);
     if(campo==0){
@@ -450,6 +452,10 @@ private void btnAgregarBarrioActionPerformed(java.awt.event.ActionEvent evt) {//
     txtBarrio.setText(""); 
     txtBarrio.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
+    }
+        else{
+        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
+        }
 }//GEN-LAST:event_btnAgregarBarrioActionPerformed
 
 private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarrioKeyTyped
@@ -469,18 +475,14 @@ private void txtBarrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int bandera1 = gestoru.CampoObligatorio(txtBarrio);
-        if(bandera1==0){
+       
         if (btnEditarProvincia.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         } else {
             gBarrio.guardarBarrio(tblBarrio);
             JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
         }
-        }
-        else{
-        JOptionPane.showMessageDialog(null, "Campo Obligatorio");        
-        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProvinciaActionPerformed
