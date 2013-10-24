@@ -15,12 +15,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -89,7 +93,7 @@ gestorPais gPais = new gestorPais();
         panelProductor.setVisible(true);
         panelEdicionEstab.setVisible(true);
         panelEdicionLote.setVisible(false);
-        btnLotes.setVisible(false);
+        btnLotes.setVisible(true);
         btnGuardar.setVisible(true);
         DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
         Iterator ite = gestorH.listarClase(Productor.class).iterator();
@@ -165,7 +169,6 @@ gestorPais gPais = new gestorPais();
         btnNuevo = new javax.swing.JButton();
         btnLotes = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         setIconifiable(true);
@@ -351,25 +354,19 @@ gestorPais gPais = new gestorPais();
         btnLotes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnLotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin_verde.png"))); // NOI18N
         btnLotes.setText("Lotes");
+        btnLotes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLotesActionPerformed(evt);
+            }
+        });
         panelContenedor.add(btnLotes);
-        btnLotes.setBounds(220, 440, 100, 30);
+        btnLotes.setBounds(320, 440, 100, 30);
 
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         panelContenedor.add(btnGuardar);
         btnGuardar.setBounds(220, 440, 100, 30);
-
-        btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        panelContenedor.add(btnEditar);
-        btnEditar.setBounds(320, 440, 100, 30);
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -398,7 +395,7 @@ gestorPais gPais = new gestorPais();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -411,23 +408,27 @@ gestorPais gPais = new gestorPais();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        panelEdicion.setVisible(true);
-        panelProductor.setVisible(false);
-        panelEdicionEstab.setVisible(false);
-        panelEdicionLote.setVisible(true);
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
       DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
       int fila= tblProductor.getSelectedRow();
       labelProductor.setText(modeloT.getValueAt(fila, 0).toString());
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void btnLotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLotesActionPerformed
+     if(java.awt.Desktop.isDesktopSupported()){
+    try{
+      Desktop dk = Desktop.getDesktop();
+      dk.browse(new URI("http://localhost:800/agrogis/nuevoLote.php"));
+    }catch(Exception e){
+     System.out.println("Error al abrir URL: "+e.getMessage());
+    }
+}
+        
+    }//GEN-LAST:event_btnLotesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAceptar1;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLotes;
     private javax.swing.JButton btnNuevo;
