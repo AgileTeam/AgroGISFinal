@@ -29,6 +29,16 @@ public class gestorPais extends GestorHibernate {
         return modelo;
     }
     
+      public DefaultComboBoxModel getComboModelProvincia(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        Iterator iterador= this.listarClase(Provincia.class).iterator();
+        while(iterador.hasNext()){
+            Provincia c= (Provincia) iterador.next();
+            modelo.addElement(c);
+        }
+        return modelo;
+    }
+    
      public void guardarPais(JTable tabla){
      DefaultTableModel modeloTabla = (DefaultTableModel) tabla.getModel();      
         Iterator iterator = this.listarClase(Pais.class).iterator();

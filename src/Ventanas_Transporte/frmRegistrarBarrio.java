@@ -46,7 +46,7 @@ public class frmRegistrarBarrio extends javax.swing.JInternalFrame {
     public frmRegistrarBarrio() {
         initComponents();   
         gestorH.actualizarUsuario(labelusuario);
-               txtFecha.setEnabled(false);
+        txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);

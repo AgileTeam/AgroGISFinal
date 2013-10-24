@@ -4,31 +4,41 @@
  */
 package Ventanas_Cliente;
 
+import Clases_Modulo_Cliente.Productor;
+import Gestores_Clases.gestorPais;
+import Gestores_Vista.gestorRegistroBarrio;
+import Hibernate.GestorHibernate;
 import Ventanas_Transporte.*;
-import groovy.model.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.TimeZone;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Carolina
  */
 public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
-
+GestorHibernate gestorH = new GestorHibernate();
+gestorRegistroBarrio gRBarrio = new gestorRegistroBarrio();
+gestorPais gPais = new gestorPais();
     /**
      * Creates new form frmRegistrarEstablecimiento
      */
     public frmRegistrarEstablecimiento() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -81,6 +91,31 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         panelEdicionLote.setVisible(false);
         btnLotes.setVisible(false);
         btnGuardar.setVisible(true);
+        DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
+        Iterator ite = gestorH.listarClase(Productor.class).iterator();
+        while(ite.hasNext()){
+            Productor p = (Productor) ite.next();
+            Object fila[] = {p.getNombre(), p.getNumeroDocumento()};
+            modeloT.addRow(fila);
+            tblProductor.setModel(modeloT);
+        }
+        cmbProvincia.setModel(gPais.getComboModelProvincia());
+         cmbProvincia.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbDepartamento.setModel(gRBarrio.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+            }
+        });
+        cmbDepartamento.setModel(gRBarrio.rellenaComboDepartamento(cmbProvincia.getSelectedItem().toString()));
+       
+        //Relleno Localidad de acuerdo al Departamento
+        cmbDepartamento.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+                cmbLocalidad.setModel(gRBarrio.rellenaComboLocalidad(cmbDepartamento.getSelectedItem().toString()));
+            }
+        });
+        cmbLocalidad.setModel(gRBarrio.rellenaComboLocalidad(cmbDepartamento.getSelectedItem().toString()));
     
     }
 
@@ -190,6 +225,11 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         jScrollPane1.setBounds(90, 30, 430, 110);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
         panelProductor.add(btnAceptar);
         btnAceptar.setBounds(530, 70, 40, 30);
 
@@ -358,7 +398,7 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -376,8 +416,13 @@ public class frmRegistrarEstablecimiento extends javax.swing.JInternalFrame {
         panelProductor.setVisible(false);
         panelEdicionEstab.setVisible(false);
         panelEdicionLote.setVisible(true);
-        
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+      DefaultTableModel modeloT = (DefaultTableModel) tblProductor.getModel();
+      int fila= tblProductor.getSelectedRow();
+      labelProductor.setText(modeloT.getValueAt(fila, 0).toString());
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
