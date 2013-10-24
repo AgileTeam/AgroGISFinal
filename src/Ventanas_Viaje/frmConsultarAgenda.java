@@ -798,7 +798,7 @@ gestorConsultarAgenda gestorC = new gestorConsultarAgenda();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnImprimirAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirAgendaActionPerformed
-    String arc="D:/Mis Documentos/Informes/ListadoViajes.jasper";
+    String arc="C:/Reportes AgroGIS/ListadoViajes.jasper";
     GestorDeReportes gestorReportes = new GestorDeReportes(arc);
     gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
     gestorReportes.imprimir(); 

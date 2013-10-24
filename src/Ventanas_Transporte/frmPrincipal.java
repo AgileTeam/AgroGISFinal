@@ -103,6 +103,7 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Escritorio = new javax.swing.JDesktopPane();
         Calendario = new datechooser.beans.DateChooserCombo();
         pnlUsuarioLogin = new javax.swing.JPanel();
@@ -181,7 +182,9 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemEnvioMuestras = new javax.swing.JMenuItem();
         ItemResultadosLab = new javax.swing.JMenuItem();
         MenuListados = new javax.swing.JMenu();
-        ItemPdf = new javax.swing.JMenuItem();
+        MenuSolicitudes = new javax.swing.JMenuItem();
+        MenuVehiculos = new javax.swing.JMenuItem();
+        MenuTransportistas = new javax.swing.JMenuItem();
         MenuAuditoria = new javax.swing.JMenu();
         ItemBitacora = new javax.swing.JMenuItem();
 
@@ -192,6 +195,8 @@ GestorHibernate gestorH = new GestorHibernate();
         jMenuItem8.setText("jMenuItem8");
 
         jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AgroGIS");
@@ -772,14 +777,32 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados.setText("Listados");
         MenuListados.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        ItemPdf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemPdf.setText("Informe Pdf");
-        ItemPdf.addActionListener(new java.awt.event.ActionListener() {
+        MenuSolicitudes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        MenuSolicitudes.setText(" Solicitudes de Retiro");
+        MenuSolicitudes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemPdfActionPerformed(evt);
+                MenuSolicitudesActionPerformed(evt);
             }
         });
-        MenuListados.add(ItemPdf);
+        MenuListados.add(MenuSolicitudes);
+
+        MenuVehiculos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        MenuVehiculos.setText("Vehículos");
+        MenuVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuVehiculosActionPerformed(evt);
+            }
+        });
+        MenuListados.add(MenuVehiculos);
+
+        MenuTransportistas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        MenuTransportistas.setText("Transportistas");
+        MenuTransportistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuTransportistasActionPerformed(evt);
+            }
+        });
+        MenuListados.add(MenuTransportistas);
 
         MenuPrincipal.add(MenuListados);
 
@@ -1016,16 +1039,13 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         usuario.setVisible(true);
     }//GEN-LAST:event_ItemUsuarioActionPerformed
 
-    private void ItemPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemPdfActionPerformed
-       try {
-        File path = new File ("C:/prueba.pdf");
-        Desktop.getDesktop().open(path);
-        }catch (IOException ex) {
-        ex.printStackTrace();
+    private void MenuSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSolicitudesActionPerformed
+       String arc="C:/Reportes AgroGIS/ListadoSolicitudes.jasper";
+       GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+       gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+       gestorReportes.imprimir();
 
-}
-
-    }//GEN-LAST:event_ItemPdfActionPerformed
+    }//GEN-LAST:event_MenuSolicitudesActionPerformed
 
     private void ItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarTallerActionPerformed
        frmEliminarOrdenTaller orden=new frmEliminarOrdenTaller();
@@ -1105,6 +1125,20 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         es.setVisible(true);
     }//GEN-LAST:event_ItemVerEstacionActionPerformed
 
+    private void MenuVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVehiculosActionPerformed
+        String arc="C:/Reportes AgroGIS/ListadoVehiculos.jasper";
+        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+        gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+        gestorReportes.imprimir();
+    }//GEN-LAST:event_MenuVehiculosActionPerformed
+
+    private void MenuTransportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTransportistasActionPerformed
+        String arc="C:/Reportes AgroGIS/ListadoTransportista.jasper";
+        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+        gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorStringOrdenada(Viaje.class,"fecha",calendario.getText(),"hora"));
+        gestorReportes.imprimir();
+    }//GEN-LAST:event_MenuTransportistasActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1172,7 +1206,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemNuevoSilo;
     private javax.swing.JMenuItem ItemNuevoTipoCereal;
     private javax.swing.JMenuItem ItemNuevoViaje;
-    private javax.swing.JMenuItem ItemPdf;
     private javax.swing.JMenuItem ItemRegistroCarga;
     private javax.swing.JMenuItem ItemRegistroEnvio;
     private javax.swing.JMenuItem ItemResultadosLab;
@@ -1206,7 +1239,10 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuOrdenServicio;
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JMenu MenuSesion;
+    private javax.swing.JMenuItem MenuSolicitudes;
     private javax.swing.JMenu MenuTransporte;
+    private javax.swing.JMenuItem MenuTransportistas;
+    private javax.swing.JMenuItem MenuVehiculos;
     private javax.swing.JMenu MenuVerCarga;
     private javax.swing.JMenu MenuVerTransp;
     private javax.swing.JMenu MenuViaje;
@@ -1216,6 +1252,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem itemEspTaller;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
