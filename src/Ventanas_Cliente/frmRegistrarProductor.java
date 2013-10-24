@@ -57,6 +57,8 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        txtNumero.setText("0");
+        txtPiso.setText("0");
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -122,7 +124,8 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         );
          cmbBarrio.setModel(gRegistro.rellenaComboBarrio(cmbLocalidad.getSelectedItem().toString()));
                 
-                      
+        cmbTipoTel.setModel(gProductor.rellenaComboTipoTel());      
+        cmbCondicionIva.setModel(gProductor.rellenaComboCondicionIva());
         }
 
     /**
@@ -163,9 +166,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cmbCategoria = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtCuit = new javax.swing.JTextField();
         cmbCondicionIva = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
@@ -336,18 +337,10 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel2);
         jLabel2.setBounds(380, 130, 150, 20);
 
-        jPanel3.add(cmbCategoria);
-        cmbCategoria.setBounds(470, 160, 150, 20);
-
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("CUIT/CUIL");
         jPanel3.add(jLabel3);
         jLabel3.setBounds(60, 160, 110, 20);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Categoría Productor");
-        jPanel3.add(jLabel4);
-        jLabel4.setBounds(350, 160, 170, 20);
         jPanel3.add(txtCuit);
         txtCuit.setBounds(130, 160, 160, 20);
 
@@ -505,7 +498,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -638,7 +631,6 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNuevo1;
     private datechooser.beans.DateChooserCombo calendarioNacimiento;
     private javax.swing.JComboBox cmbBarrio;
-    private javax.swing.JComboBox cmbCategoria;
     private javax.swing.JComboBox cmbCondicionIva;
     private javax.swing.JComboBox cmbDepto;
     private javax.swing.JComboBox cmbEstadoCivil;
@@ -665,7 +657,6 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

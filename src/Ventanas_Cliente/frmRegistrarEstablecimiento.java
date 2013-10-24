@@ -4,7 +4,9 @@
  */
 package Ventanas_Cliente;
 
+import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Productor;
+import Clases_Modulo_Transporte.Localidad;
 import Gestores_Clases.gestorPais;
 import Gestores_Vista.gestorRegistroBarrio;
 import Hibernate.GestorHibernate;
@@ -365,6 +367,11 @@ gestorPais gPais = new gestorPais();
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         panelContenedor.add(btnGuardar);
         btnGuardar.setBounds(220, 440, 100, 30);
 
@@ -395,7 +402,7 @@ gestorPais gPais = new gestorPais();
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -425,6 +432,28 @@ gestorPais gPais = new gestorPais();
 }
         
     }//GEN-LAST:event_btnLotesActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    Establecimiento e = new Establecimiento();
+    e.setNombreEstablecimiento(txtEstablecimiento.getText());
+    Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
+    while(ite1.hasNext()){
+        Productor p = (Productor) ite1.next();
+        if(p.getNombre().equalsIgnoreCase(labelProductor.getText())){
+            e.setProductor(p);
+        }
+    }
+    Iterator ite2 = gestorH.listarClase(Localidad.class).iterator();
+    while(ite2.hasNext()){
+        Localidad l = (Localidad) ite1.next();
+        if(l.getNombreLocalidad().equalsIgnoreCase(cmbLocalidad.getSelectedItem().toString())){
+            e.setLocalidad(l);
+        }
+    }   
+    gestorH.guardarObjeto(e);
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+    
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
