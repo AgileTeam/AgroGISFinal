@@ -1044,7 +1044,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private void MenuSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSolicitudesActionPerformed
        String arc="C:/Reportes AgroGIS/ListadoSolicitudes.jasper";
        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-       gestorReportes.setColeccionDeDatos(gestorH.listarClase(SolicitudRetiro.class);
+       gestorReportes.setColeccionDeDatos(gestorH.listarClase(SolicitudRetiro.class));
        gestorReportes.imprimir();
 
     }//GEN-LAST:event_MenuSolicitudesActionPerformed

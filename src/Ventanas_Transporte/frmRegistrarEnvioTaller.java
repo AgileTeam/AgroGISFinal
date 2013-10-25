@@ -564,7 +564,7 @@ GestorHibernate gestorH = new GestorHibernate();
       modelo.setRowCount(0);
       tblDetalleRep.setModel(modelo);
       JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
-      
+      cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

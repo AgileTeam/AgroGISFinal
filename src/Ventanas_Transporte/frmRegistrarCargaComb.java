@@ -569,13 +569,19 @@ Double total;
 
     private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
      DefaultTableModel modelo = (DefaultTableModel) tblDetalleCarga.getModel();
-     CargaCombustible carga= new CargaCombustible();
+     Iterator ite1 = gestorH.listarClase(CargaCombustible.class).iterator();
+      while(ite1.hasNext()){
+      CargaCombustible carga = (CargaCombustible)ite1.next();
+      if(carga.getOrdenServicio().equals(cmbOrden.getSelectedItem())){
+      OrdenServicio orden = carga.getOrdenServicio();
+      orden.setEstado("Utilizada");
       carga.setFecha(modelo.getValueAt(0,0).toString());
       carga.setImporteTotal(Double.parseDouble(txtImporteTotal.getText()));
       carga.setOrdenServicio((OrdenServicio)cmbOrden.getSelectedItem());
       carga.setResponsableVenta(txtResponsable.getText());
       carga.setTipoOperacion(txtOperacion.getText());
-      gestorH.guardarObjeto(carga);
+      carga.setProducto(cmbProducto.getSelectedItem().toString());
+      gestorH.actualizarObjeto(carga);
       for(int i=0; i<modelo.getRowCount(); i++){
             DetalleCarga detalle = new DetalleCarga();
             detalle.setImporteTotal(Double.parseDouble(modelo.getValueAt(i,5).toString()));
@@ -589,10 +595,26 @@ Double total;
             
             detalle.setCargaCombustible(carga);
             gestorH.guardarObjeto(detalle);
+            
       }
-      JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+      }
+     
       gestorBitacora gestorB = new gestorBitacora();
       gestorB.cargarBitacora(String.valueOf(carga.getIdCargaCombustible()), txtFecha.getText(), 8, labelusuario.getText(),"");
+      }
+      JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+      txtEstacion.setText("");
+      txtFechaEmision.setText("");
+      txtOperacion.setText("");
+      txtLitrosCargados.setText("0");
+      txtPrecioLitro.setText("0");
+      txtImporteTotal.setText("0");
+      txtNumComprobante.setText("");
+      txtResponsable.setText("");
+      modelo.setRowCount(0);
+      tblDetalleCarga.setModel(modelo);
+      cmbOrden.setModel(gRegistro.rellenaComboOrdenServicio());
+      
     }//GEN-LAST:event_btnGuardar1ActionPerformed
 
     private void txtLitrosCargadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLitrosCargadosActionPerformed
