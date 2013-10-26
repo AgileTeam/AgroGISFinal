@@ -477,6 +477,14 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Viaje vi = (Viaje) ite2.next();
         if(vi.getIdViaje() == (Long.parseLong(txtNumViaje.getText()))){
             vi.setEstado("Finalizado");
+            Iterator ite3  = gestorH.listarClase(SolicitudRetiro.class).iterator();
+            while(ite3.hasNext()){
+                SolicitudRetiro sol = (SolicitudRetiro) ite3.next();
+                if(vi.getSolicitud().equals(sol)){
+                    sol.setEstado("Utilizada");
+                    gestorH.actualizarObjeto(sol);
+                }
+            }
             gestorH.actualizarObjeto(vi);
             gestorBitacora gestorB = new gestorBitacora();
             gestorB.cargarBitacora(String.valueOf(vi.getIdViaje()), txtFecha.getText(), 14, labelusuario.getText(),"");
