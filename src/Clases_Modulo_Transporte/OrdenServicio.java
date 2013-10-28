@@ -35,6 +35,7 @@ private Motivo motivo;
     private String estado;
     private String observaciones;
     private String habilita;
+    private String taller;
    
    
 
@@ -184,5 +185,19 @@ private Motivo motivo;
      */
     public void setHabilita(String habilita) {
         this.habilita = habilita;
+    }
+
+    /**
+     * @return the taller
+     */
+    public String getTaller() {
+        return taller;
+    }
+
+    /**
+     * @param taller the taller to set
+     */
+    public void setTaller(String taller) {
+        this.taller = taller;
     }
 }

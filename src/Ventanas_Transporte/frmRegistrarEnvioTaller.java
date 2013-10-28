@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
@@ -485,6 +486,12 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+      SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+      Date fecha1=sdf.parse(calendarioReparacion.getText(), new ParsePosition(0));
+      Date fecha3 = sdfguion.parse(txtFechaEmision.getText(), new ParsePosition(0));
+      
+      if(fecha1.before(fecha3)){
       Double total=0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
       int campo = gRegistro.campoObligatorio(txtImporteTotal, txtResponsable, txtNumComprobante);
@@ -499,6 +506,10 @@ GestorHibernate gestorH = new GestorHibernate();
       txtImporteTotal.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtResponsable.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtNumComprobante.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      }
+      }
+      else{
+      JOptionPane.showMessageDialog(null, "La fecha de reparación no es válida");
       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
