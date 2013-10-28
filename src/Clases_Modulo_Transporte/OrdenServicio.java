@@ -36,6 +36,7 @@ private Motivo motivo;
     private String observaciones;
     private String habilita;
     private String taller;
+    private String estacion;
    
    
 
@@ -199,5 +200,19 @@ private Motivo motivo;
      */
     public void setTaller(String taller) {
         this.taller = taller;
+    }
+
+    /**
+     * @return the estacion
+     */
+    public String getEstacion() {
+        return estacion;
+    }
+
+    /**
+     * @param estacion the estacion to set
+     */
+    public void setEstacion(String estacion) {
+        this.estacion = estacion;
     }
 }

@@ -329,7 +329,7 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         jPanel3.add(btnEliminarDetalle);
-        btnEliminarDetalle.setBounds(710, 320, 47, 30);
+        btnEliminarDetalle.setBounds(710, 330, 47, 30);
 
         txtTotal.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         jPanel3.add(txtTotal);
@@ -438,7 +438,7 @@ GestorHibernate gestorH = new GestorHibernate();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addGap(0, 85, Short.MAX_VALUE))
         );
 
         pack();
@@ -491,7 +491,7 @@ GestorHibernate gestorH = new GestorHibernate();
       Date fecha1=sdf.parse(calendarioReparacion.getText(), new ParsePosition(0));
       Date fecha3 = sdfguion.parse(txtFechaEmision.getText(), new ParsePosition(0));
       
-      if(fecha1.before(fecha3)){
+      if(fecha3.before(fecha1)){
       Double total=0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleRep.getModel();
       int campo = gRegistro.campoObligatorio(txtImporteTotal, txtResponsable, txtNumComprobante);

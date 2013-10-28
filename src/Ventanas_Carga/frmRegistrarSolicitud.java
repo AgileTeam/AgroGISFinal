@@ -540,11 +540,11 @@ GestorHibernate gestorH = new GestorHibernate();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-    txtHas1.setText("");
+    txtHas1.setText("0.0");
     txtNumSolicitud.setText("");
     txtProductor1.setText("");
     txtProductor2.setText("");
-    txtToneladas2.setText("");
+    txtToneladas2.setText("0.0");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
