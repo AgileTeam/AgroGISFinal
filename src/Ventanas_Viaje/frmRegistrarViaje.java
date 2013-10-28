@@ -794,7 +794,37 @@ GestorHibernate gestorH = new GestorHibernate();
       // }else{
     //JOptionPane.showMessageDialog(null,"Campos Obligatorios");
     //}
-   
+         txtCerealR.setText("");
+         txtCerealT.setText("");
+         txtDepto.setText("");
+         txtHas.setText("");
+         txtLocalidad.setText("");
+         txtLocalidadEst.setText("");
+         txtProductor.setText("");
+         txtProductorEst.setText("");
+         txtProvinciaT.setText("");
+         txtRetiro.setText("");
+         txtSilo.setText("");
+         txtSolicitante.setText("");
+         txtToneladasE.setText("0.0");
+         txtTraslado.setText("");        
+         DefaultTableModel modelot = (DefaultTableModel) tblProductor.getModel();
+         modelot.setRowCount(0);
+         tblProductor.setModel(modelot);
+         DefaultTableModel modelot1 = (DefaultTableModel) tblEstablecimiento.getModel();
+         modelot1.setRowCount(0);
+         tblEstablecimiento.setModel(modelot1);
+        final int banderaP = gViaje.ContarPuerto();
+        final int banderaE= gViaje.ContarEst();
+        cmbTipoViaje.setModel(gViaje.AgregarTipoViaje());
+        cmbTipoViaje.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent arg0){
+           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento,tblProductor, banderaE, banderaP);
+           }
+        }
+        );
+          gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento, tblProductor, banderaE, banderaP);
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

@@ -54,10 +54,10 @@ public class gestorRegistrarViaje extends GestorHibernate {
         panelEstablecimiento.setVisible(true);
           DefaultTableModel modelo= (DefaultTableModel) tblRetiro.getModel();
            modelo.setRowCount(0);
-        Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
-        while(ite.hasNext()){
+            Iterator ite = this.listarClase(SolicitudRetiro.class).iterator();
+            while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-            if(sol.getTipoSolicitud().getIdTipoSolicitud()==1){
+            if(sol.getTipoSolicitud().getIdTipoSolicitud()==1 && sol.getEstado().equalsIgnoreCase("Pendiente")){
             Object fila[]= {sol.getNumeroSolicitud(), sol.getProductor(), sol.getProductor().getNumeroDocumento()};
             modelo.addRow(fila);
             tblEstablecimiento.setModel(modelo);
@@ -79,7 +79,7 @@ public class gestorRegistrarViaje extends GestorHibernate {
         Iterator ite = this.listarClase(EstablecimientoPorSolicitud.class).iterator();
         while(ite.hasNext()){
             EstablecimientoPorSolicitud est = (EstablecimientoPorSolicitud) ite.next();
-            if(est.getSolicitud().getEstado().equalsIgnoreCase("Pendiente")){
+            if(est.getSolicitud().getEstado().equalsIgnoreCase("Pendiente") && est.getSolicitud().getTipoSolicitud().getIdTipoSolicitud() == 2){
             Object fila[]= {est.getSolicitud().getNumeroSolicitud(), est.getSolicitud().getProductor(), est.getSolicitud().getProductor().getNumeroDocumento()};
             modelo.addRow(fila);
             tblEstablecimiento.setModel(modelo);

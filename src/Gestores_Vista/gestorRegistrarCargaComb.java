@@ -20,7 +20,7 @@ public class gestorRegistrarCargaComb extends GestorHibernate{
        Iterator ite = this.listarClase(OrdenServicio.class).iterator();
        while(ite.hasNext()){
            OrdenServicio orden =(OrdenServicio) ite.next();
-               if((orden.getTipoServicio().getIdTipoServicio() == 2 )&& (orden.getEstado().equalsIgnoreCase("Pendiente"))){
+               if((orden.getTipoServicio().getIdTipoServicio() == 2 || orden.getTipoServicio().getIdTipoServicio() == 3  )&& (orden.getEstado().equalsIgnoreCase("Pendiente"))){
                modelo.addElement(orden);
                }
            }
