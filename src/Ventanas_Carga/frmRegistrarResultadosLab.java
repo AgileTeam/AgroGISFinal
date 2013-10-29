@@ -198,6 +198,13 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtDurezaHasta = new javax.swing.JTextField();
         txtProtHasta = new javax.swing.JTextField();
         txtGlutenHasta = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        txtDurezaObtenida1 = new javax.swing.JTextField();
+        txtDurezaObtenida2 = new javax.swing.JTextField();
+        txtDurezaObtenida3 = new javax.swing.JTextField();
+        txtDurezaObtenida4 = new javax.swing.JTextField();
+        txtDurezaObtenida5 = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -510,69 +517,89 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         labelDureza.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDureza.setText("Dureza");
         jPanel6.add(labelDureza);
-        labelDureza.setBounds(140, 160, 120, 20);
+        labelDureza.setBounds(90, 160, 120, 20);
 
         labelProteinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelProteinas.setText("Nivel de Proteínas");
         jPanel6.add(labelProteinas);
-        labelProteinas.setBounds(140, 190, 130, 20);
+        labelProteinas.setBounds(90, 190, 130, 20);
 
         labelGluten.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelGluten.setText("Nivel de Gluten");
         jPanel6.add(labelGluten);
-        labelGluten.setBounds(140, 220, 140, 20);
+        labelGluten.setBounds(90, 220, 140, 20);
 
         labelColor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelColor.setText("Color");
         jPanel6.add(labelColor);
-        labelColor.setBounds(140, 250, 110, 20);
+        labelColor.setBounds(90, 250, 110, 20);
 
         labelAlmidon.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelAlmidon.setText("Almidón");
         jPanel6.add(labelAlmidon);
-        labelAlmidon.setBounds(140, 280, 100, 20);
+        labelAlmidon.setBounds(90, 280, 100, 20);
 
         jLabel39.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel39.setText("Valores Obtenidos");
+        jLabel39.setText("Valores Mensis");
         jPanel6.add(jLabel39);
-        jLabel39.setBounds(520, 130, 110, 15);
+        jLabel39.setBounds(670, 130, 90, 20);
 
         jLabel40.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel40.setText("Valores Normales");
+        jLabel40.setText("Característica");
         jPanel6.add(jLabel40);
-        jLabel40.setBounds(330, 130, 110, 15);
+        jLabel40.setBounds(80, 130, 90, 20);
         jPanel6.add(txtDurezaObtenida);
-        txtDurezaObtenida.setBounds(520, 160, 100, 20);
+        txtDurezaObtenida.setBounds(660, 280, 100, 20);
         jPanel6.add(txtAlmidonHasta);
-        txtAlmidonHasta.setBounds(380, 280, 40, 20);
+        txtAlmidonHasta.setBounds(320, 280, 40, 20);
         jPanel6.add(txtProtDesde);
-        txtProtDesde.setBounds(330, 190, 40, 20);
+        txtProtDesde.setBounds(270, 190, 40, 20);
         jPanel6.add(txtGlutenDesde);
-        txtGlutenDesde.setBounds(330, 220, 40, 20);
+        txtGlutenDesde.setBounds(270, 220, 40, 20);
         jPanel6.add(txtAlmidonDesde);
-        txtAlmidonDesde.setBounds(330, 280, 40, 20);
+        txtAlmidonDesde.setBounds(270, 280, 40, 20);
         jPanel6.add(txtProtObtenidas);
-        txtProtObtenidas.setBounds(520, 190, 100, 20);
+        txtProtObtenidas.setBounds(460, 190, 100, 20);
         jPanel6.add(txtGlutenObtenido);
-        txtGlutenObtenido.setBounds(520, 220, 100, 20);
+        txtGlutenObtenido.setBounds(460, 220, 100, 20);
         jPanel6.add(txtColorNormal);
-        txtColorNormal.setBounds(330, 250, 90, 20);
+        txtColorNormal.setBounds(270, 250, 90, 20);
         jPanel6.add(txtAlmidonObtenido);
-        txtAlmidonObtenido.setBounds(520, 280, 100, 20);
+        txtAlmidonObtenido.setBounds(460, 280, 100, 20);
         jPanel6.add(txtColorObtenido);
-        txtColorObtenido.setBounds(520, 250, 100, 20);
+        txtColorObtenido.setBounds(460, 250, 100, 20);
         jPanel6.add(jSeparator2);
         jSeparator2.setBounds(30, 150, 820, 10);
         jPanel6.add(txtFEnvio);
         txtFEnvio.setBounds(400, 30, 100, 20);
         jPanel6.add(txtDurezaDesde);
-        txtDurezaDesde.setBounds(330, 160, 40, 20);
+        txtDurezaDesde.setBounds(270, 160, 40, 20);
         jPanel6.add(txtDurezaHasta);
-        txtDurezaHasta.setBounds(380, 160, 40, 20);
+        txtDurezaHasta.setBounds(320, 160, 40, 20);
         jPanel6.add(txtProtHasta);
-        txtProtHasta.setBounds(380, 190, 40, 20);
+        txtProtHasta.setBounds(320, 190, 40, 20);
         jPanel6.add(txtGlutenHasta);
-        txtGlutenHasta.setBounds(380, 220, 40, 20);
+        txtGlutenHasta.setBounds(320, 220, 40, 20);
+
+        jLabel42.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel42.setText("Valores Laboratorio");
+        jPanel6.add(jLabel42);
+        jLabel42.setBounds(460, 130, 120, 20);
+        jPanel6.add(txtDurezaObtenida1);
+        txtDurezaObtenida1.setBounds(460, 160, 100, 20);
+        jPanel6.add(txtDurezaObtenida2);
+        txtDurezaObtenida2.setBounds(660, 160, 100, 20);
+        jPanel6.add(txtDurezaObtenida3);
+        txtDurezaObtenida3.setBounds(660, 190, 100, 20);
+        jPanel6.add(txtDurezaObtenida4);
+        txtDurezaObtenida4.setBounds(660, 220, 100, 20);
+        jPanel6.add(txtDurezaObtenida5);
+        txtDurezaObtenida5.setBounds(660, 250, 100, 20);
+
+        jLabel44.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel44.setText("Valores Normales");
+        jPanel6.add(jLabel44);
+        jLabel44.setBounds(270, 130, 110, 20);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -692,7 +719,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -1068,7 +1095,9 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1106,6 +1135,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtDurezaDesde;
     private javax.swing.JTextField txtDurezaHasta;
     private javax.swing.JTextField txtDurezaObtenida;
+    private javax.swing.JTextField txtDurezaObtenida1;
+    private javax.swing.JTextField txtDurezaObtenida2;
+    private javax.swing.JTextField txtDurezaObtenida3;
+    private javax.swing.JTextField txtDurezaObtenida4;
+    private javax.swing.JTextField txtDurezaObtenida5;
     private javax.swing.JTextField txtEnviadoPor;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtEstablecimiento;
