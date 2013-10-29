@@ -26,6 +26,9 @@ private TipoSolicitud tipoSolicitud;
 @ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TipoCereal tipoCereal;
 
+@ManyToOne(targetEntity = Silo.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+private Silo silo;
+
     private String estado;
     private String fechaSolicitud;
     private String fechaEstimadaViaje;
@@ -130,5 +133,19 @@ private TipoCereal tipoCereal;
      */
     public void setFechaEstimadaViaje(String fechaEstimadaViaje) {
         this.fechaEstimadaViaje = fechaEstimadaViaje;
+    }
+
+    /**
+     * @return the silo
+     */
+    public Silo getSilo() {
+        return silo;
+    }
+
+    /**
+     * @param silo the silo to set
+     */
+    public void setSilo(Silo silo) {
+        this.silo = silo;
     }
 }

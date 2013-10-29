@@ -162,6 +162,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                   solicitud.setTipoCereal(tipoCereal);
                   solicitud.setEstado("Pendiente");
                   solicitud.setFechaEstimadaViaje(fechaEstimada);
+                  solicitud.setSilo(silo);
                   this.guardarObjeto(solicitud);
                   ton.setToneladas(resultado);
                   System.out.println(resultado);
@@ -203,6 +204,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
                   solicitud.setTipoCereal(tipoCereal);
                   solicitud.setEstado("Pendiente");
                   solicitud.setFechaEstimadaViaje(fechaEstimada);
+                  solicitud.setSilo(silo);
                   this.guardarObjeto(solicitud);
                   ton.setToneladas(resultado);
                   System.out.println(resultado);

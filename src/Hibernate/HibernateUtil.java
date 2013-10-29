@@ -90,6 +90,7 @@ public class HibernateUtil {
                 conf.addAnnotatedClass(Clases_Modulo_Carga.TipoTemporadaPorTipoCereal.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.ToneladasPorCereal.class);
                 conf.addAnnotatedClass(Clases_Modulo_Carga.EncuestaSiembra.class);
+                conf.addAnnotatedClass(Clases_Modulo_Carga.Mensis.class);
                 //tablas modulo Viaje
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Agenda.class);
                 conf.addAnnotatedClass(Clases_Modulo_Viaje.Anio.class);
