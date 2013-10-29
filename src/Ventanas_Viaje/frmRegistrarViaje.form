@@ -56,7 +56,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="103" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPuerto" pref="498" max="32767" attributes="0"/>
+              <Component id="panelPuerto" pref="502" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelEstablecimiento" min="-2" pref="312" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -319,7 +319,7 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="btnNuevoViaje" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnGuardar1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAsignarVeh" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnGuardar" min="-2" pref="105" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -336,7 +336,7 @@
                       <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnSalir" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnNuevoViaje" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnGuardar1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnAsignarVeh" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -386,7 +386,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoViajeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnGuardar1">
+        <Component class="javax.swing.JButton" name="btnAsignarVeh">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="11" style="0"/>
@@ -397,7 +397,7 @@
             <Property name="text" type="java.lang.String" value="Asignar Veh&#xed;culo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAsignarVehActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

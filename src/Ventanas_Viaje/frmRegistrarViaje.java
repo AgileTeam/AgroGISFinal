@@ -18,6 +18,7 @@ import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorEnvioMuestras;
 import Gestores_Vista.gestorRegistrarViaje;
 import Hibernate.GestorHibernate;
+import Ventanas_Transporte.frmPrincipal;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +53,7 @@ GestorHibernate gestorH = new GestorHibernate();
         cmbLote.setEnabled(false);
         btnAgregarLote.setEnabled(false);
         tblLote.setEnabled(false);
+        btnAsignarVeh.setEnabled(false);
         
 //        tblEstablecimiento.getTableHeader().setVisible(false);
 
@@ -175,7 +177,7 @@ GestorHibernate gestorH = new GestorHibernate();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnNuevoViaje = new javax.swing.JButton();
-        btnGuardar1 = new javax.swing.JButton();
+        btnAsignarVeh = new javax.swing.JButton();
         panelPuerto = new javax.swing.JPanel();
         txtProductor = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
@@ -328,12 +330,12 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        btnGuardar1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
-        btnGuardar1.setText("Asignar Vehículo");
-        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAsignarVeh.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnAsignarVeh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
+        btnAsignarVeh.setText("Asignar Vehículo");
+        btnAsignarVeh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardar1ActionPerformed(evt);
+                btnAsignarVehActionPerformed(evt);
             }
         });
 
@@ -345,7 +347,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGap(15, 15, 15)
                 .addComponent(btnNuevoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar1)
+                .addComponent(btnAsignarVeh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,7 +362,7 @@ GestorHibernate gestorH = new GestorHibernate();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAsignarVeh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -610,7 +612,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -838,7 +840,7 @@ GestorHibernate gestorH = new GestorHibernate();
         }
         );
           gViaje.ActualizarDatos(cmbTipoViaje.getSelectedItem().toString(), panelPuerto, panelEstablecimiento, labelPuerto, labelEstablecimiento, labelProvincia, labelDepto, tblEstablecimiento,scpEstablecimiento, tblProductor, banderaE, banderaP);
-        
+        btnAsignarVeh.setEnabled(true);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -864,18 +866,23 @@ GestorHibernate gestorH = new GestorHibernate();
         txtSolicitante.setText("");
         txtToneladasE.setText("");
         txtTraslado.setText("");
+        btnGuardar.setEnabled(true);
+        btnAsignarVeh.setEnabled(false);
     }//GEN-LAST:event_btnNuevoViajeActionPerformed
 
-    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardar1ActionPerformed
+    private void btnAsignarVehActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarVehActionPerformed
+        frmAsignarTransporte asignar= new frmAsignarTransporte();
+        frmPrincipal.Escritorio.add(asignar);
+        asignar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAsignarVehActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregarLote;
     private javax.swing.JButton btnAgregarProductor;
+    private javax.swing.JButton btnAsignarVeh;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnNuevoViaje;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioViaje;

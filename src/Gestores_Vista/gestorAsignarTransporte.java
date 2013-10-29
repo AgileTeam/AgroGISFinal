@@ -31,6 +31,7 @@ public class gestorAsignarTransporte extends GestorHibernate{
     }
     
      public void RellenarTablaVehiculo(JTable tabla, Viaje viaje1){
+      
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         Iterator ite1 = this.listarClase(Vehiculo.class).iterator();
             while(ite1.hasNext()){
@@ -40,10 +41,19 @@ public class gestorAsignarTransporte extends GestorHibernate{
                 while(ite.hasNext()){
                     Viaje viaje = (Viaje) ite.next();
                     if(vehiculo.getEstado().equalsIgnoreCase("Asignado")){
-                    if(viaje.getFecha()== viaje1.getFecha() && viaje.getVehiculo()==vehiculo){
+                    if((viaje.getFecha().equalsIgnoreCase(viaje1.getFecha()) && (viaje.getVehiculo()==vehiculo))){
                         bandera=1;
                     }
+                    String hora = viaje.getHora().substring(0, 2);
+                    String hora1 = viaje1.getHora().substring(0, 2);
+                    if((viaje.getFecha().equalsIgnoreCase(viaje1.getFecha()) && (viaje.getVehiculo()==vehiculo) && ((Integer.parseInt(hora) <= 12 && Integer.parseInt(hora1) > 12) || (Integer.parseInt(hora) > 12 && Integer.parseInt(hora1) <= 12)))){
+                        Object fila[]={vehiculo.getDominio(), vehiculo.getCarga(), vehiculo.getTransportista()};
+                        modelo.addRow(fila);
                     }
+                    }
+                    
+                    
+                    
                 }
                  if(bandera == 0 && vehiculo.getEstado().equalsIgnoreCase("Disponible")){
                     Object fila[]={vehiculo.getDominio(), vehiculo.getCarga(), vehiculo.getTransportista()};
