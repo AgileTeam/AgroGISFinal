@@ -20,8 +20,8 @@ private CaracteristicasCereal caracteristicas;
 @ManyToOne(targetEntity = TipoCereal.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
 private TipoCereal tipoCereal;
     
-private double valorDesde;
-private double valorHasta;
+private double valor;
+
 
     /**
      * @return the idCaracteristicaPorTipoCereal
@@ -66,30 +66,19 @@ private double valorHasta;
     }
 
     /**
-     * @return the valorDesde
+     * @return the valor
      */
-    public double getValorDesde() {
-        return valorDesde;
+    public double getValor() {
+        return valor;
     }
 
     /**
-     * @param valorDesde the valorDesde to set
+     * @param valor the valor to set
      */
-    public void setValorDesde(double valorDesde) {
-        this.valorDesde = valorDesde;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    /**
-     * @return the valorHasta
-     */
-    public double getValorHasta() {
-        return valorHasta;
-    }
 
-    /**
-     * @param valorHasta the valorHasta to set
-     */
-    public void setValorHasta(double valorHasta) {
-        this.valorHasta = valorHasta;
-    }
+ 
 }
