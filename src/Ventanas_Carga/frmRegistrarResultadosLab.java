@@ -4,10 +4,7 @@
  */
 package Ventanas_Carga;
 
-import Clases_Modulo_Carga.CaracteristicasCereal;
-import Clases_Modulo_Carga.CaracteristicasPorTipoDeCerealPorMuestra;
-import Clases_Modulo_Carga.Descarga;
-import Clases_Modulo_Carga.MuestraTomada;
+import Clases_Modulo_Carga.*;
 import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorRegistrarResultado;
 import Hibernate.GestorHibernate;
@@ -48,15 +45,13 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
  
-        txtAlmidonDesde.setEnabled(false);
-        txtAlmidonHasta.setEnabled(false);
-        txtColorNormal.setEnabled(false);
-        txtDurezaDesde.setEnabled(false);
-        txtDurezaHasta.setEnabled(false);
-        txtGlutenDesde.setEnabled(false);
-        txtGlutenHasta.setEnabled(false);
-        txtProtDesde.setEnabled(false);
-        txtProtHasta.setEnabled(false);
+        
+        txtPesoDesde.setEnabled(false);
+        txtPesoHasta.setEnabled(false);
+        txtImpDesde.setEnabled(false);
+        txtImpHasta.setEnabled(false);
+        txtHumDesde.setEnabled(false);
+        txtHumHasta.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -171,39 +166,28 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jLabel32 = new javax.swing.JLabel();
         txtMuestraLab = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
-        botonMaiz = new javax.swing.JRadioButton();
-        botonSoja = new javax.swing.JRadioButton();
-        botonTrigo = new javax.swing.JRadioButton();
+        txtCerealMuestra = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        labelDureza = new javax.swing.JLabel();
-        labelProteinas = new javax.swing.JLabel();
-        labelGluten = new javax.swing.JLabel();
-        labelColor = new javax.swing.JLabel();
-        labelAlmidon = new javax.swing.JLabel();
+        labelPesoH = new javax.swing.JLabel();
+        labelHumedad = new javax.swing.JLabel();
+        labelImpurezas = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        txtDurezaObtenida = new javax.swing.JTextField();
-        txtAlmidonHasta = new javax.swing.JTextField();
-        txtProtDesde = new javax.swing.JTextField();
-        txtGlutenDesde = new javax.swing.JTextField();
-        txtAlmidonDesde = new javax.swing.JTextField();
-        txtProtObtenidas = new javax.swing.JTextField();
-        txtGlutenObtenido = new javax.swing.JTextField();
-        txtColorNormal = new javax.swing.JTextField();
-        txtAlmidonObtenido = new javax.swing.JTextField();
-        txtColorObtenido = new javax.swing.JTextField();
+        txtHumDesde = new javax.swing.JTextField();
+        txtImpDesde = new javax.swing.JTextField();
+        txtHumedadLab = new javax.swing.JTextField();
+        txtImpurezasLab = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         txtFEnvio = new javax.swing.JTextField();
-        txtDurezaDesde = new javax.swing.JTextField();
-        txtDurezaHasta = new javax.swing.JTextField();
-        txtProtHasta = new javax.swing.JTextField();
-        txtGlutenHasta = new javax.swing.JTextField();
+        txtPesoDesde = new javax.swing.JTextField();
+        txtPesoHasta = new javax.swing.JTextField();
+        txtHumHasta = new javax.swing.JTextField();
+        txtImpHasta = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        txtDurezaObtenida1 = new javax.swing.JTextField();
-        txtDurezaObtenida2 = new javax.swing.JTextField();
-        txtDurezaObtenida3 = new javax.swing.JTextField();
-        txtDurezaObtenida4 = new javax.swing.JTextField();
-        txtDurezaObtenida5 = new javax.swing.JTextField();
+        txtPesoLab = new javax.swing.JTextField();
+        txtPesoMensis = new javax.swing.JTextField();
+        txtHumedadMensis = new javax.swing.JTextField();
+        txtImpurezasMensis = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -490,54 +474,28 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         jPanel11.setLayout(null);
-
-        botonMaiz.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        botonMaiz.setText("Maiz");
-        botonMaiz.setFocusPainted(false);
-        jPanel11.add(botonMaiz);
-        botonMaiz.setBounds(40, 20, 50, 22);
-
-        botonSoja.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        botonSoja.setText("Soja");
-        botonSoja.setFocusPainted(false);
-        jPanel11.add(botonSoja);
-        botonSoja.setBounds(190, 20, 50, 22);
-
-        botonTrigo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        botonTrigo.setText("Trigo");
-        botonTrigo.setFocusPainted(false);
-        jPanel11.add(botonTrigo);
-        botonTrigo.setBounds(330, 20, 60, 22);
+        jPanel11.add(txtCerealMuestra);
+        txtCerealMuestra.setBounds(150, 20, 140, 20);
 
         jPanel6.add(jPanel11);
         jPanel11.setBounds(240, 70, 440, 50);
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(30, 60, 820, 10);
 
-        labelDureza.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelDureza.setText("Dureza");
-        jPanel6.add(labelDureza);
-        labelDureza.setBounds(90, 160, 120, 20);
+        labelPesoH.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPesoH.setText("Peso Hectolitrico");
+        jPanel6.add(labelPesoH);
+        labelPesoH.setBounds(90, 160, 120, 20);
 
-        labelProteinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelProteinas.setText("Nivel de Proteínas");
-        jPanel6.add(labelProteinas);
-        labelProteinas.setBounds(90, 190, 130, 20);
+        labelHumedad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelHumedad.setText("Humedad");
+        jPanel6.add(labelHumedad);
+        labelHumedad.setBounds(90, 190, 130, 20);
 
-        labelGluten.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelGluten.setText("Nivel de Gluten");
-        jPanel6.add(labelGluten);
-        labelGluten.setBounds(90, 220, 140, 20);
-
-        labelColor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelColor.setText("Color");
-        jPanel6.add(labelColor);
-        labelColor.setBounds(90, 250, 110, 20);
-
-        labelAlmidon.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelAlmidon.setText("Almidón");
-        jPanel6.add(labelAlmidon);
-        labelAlmidon.setBounds(90, 280, 100, 20);
+        labelImpurezas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelImpurezas.setText("Impurezas");
+        jPanel6.add(labelImpurezas);
+        labelImpurezas.setBounds(90, 220, 140, 20);
 
         jLabel39.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel39.setText("Valores Mensis");
@@ -548,53 +506,39 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jLabel40.setText("Característica");
         jPanel6.add(jLabel40);
         jLabel40.setBounds(80, 130, 90, 20);
-        jPanel6.add(txtDurezaObtenida);
-        txtDurezaObtenida.setBounds(660, 280, 100, 20);
-        jPanel6.add(txtAlmidonHasta);
-        txtAlmidonHasta.setBounds(320, 280, 40, 20);
-        jPanel6.add(txtProtDesde);
-        txtProtDesde.setBounds(270, 190, 40, 20);
-        jPanel6.add(txtGlutenDesde);
-        txtGlutenDesde.setBounds(270, 220, 40, 20);
-        jPanel6.add(txtAlmidonDesde);
-        txtAlmidonDesde.setBounds(270, 280, 40, 20);
-        jPanel6.add(txtProtObtenidas);
-        txtProtObtenidas.setBounds(460, 190, 100, 20);
-        jPanel6.add(txtGlutenObtenido);
-        txtGlutenObtenido.setBounds(460, 220, 100, 20);
-        jPanel6.add(txtColorNormal);
-        txtColorNormal.setBounds(270, 250, 90, 20);
-        jPanel6.add(txtAlmidonObtenido);
-        txtAlmidonObtenido.setBounds(460, 280, 100, 20);
-        jPanel6.add(txtColorObtenido);
-        txtColorObtenido.setBounds(460, 250, 100, 20);
+        jPanel6.add(txtHumDesde);
+        txtHumDesde.setBounds(270, 190, 40, 20);
+        jPanel6.add(txtImpDesde);
+        txtImpDesde.setBounds(270, 220, 40, 20);
+        jPanel6.add(txtHumedadLab);
+        txtHumedadLab.setBounds(460, 190, 100, 20);
+        jPanel6.add(txtImpurezasLab);
+        txtImpurezasLab.setBounds(460, 220, 100, 20);
         jPanel6.add(jSeparator2);
         jSeparator2.setBounds(30, 150, 820, 10);
         jPanel6.add(txtFEnvio);
         txtFEnvio.setBounds(400, 30, 100, 20);
-        jPanel6.add(txtDurezaDesde);
-        txtDurezaDesde.setBounds(270, 160, 40, 20);
-        jPanel6.add(txtDurezaHasta);
-        txtDurezaHasta.setBounds(320, 160, 40, 20);
-        jPanel6.add(txtProtHasta);
-        txtProtHasta.setBounds(320, 190, 40, 20);
-        jPanel6.add(txtGlutenHasta);
-        txtGlutenHasta.setBounds(320, 220, 40, 20);
+        jPanel6.add(txtPesoDesde);
+        txtPesoDesde.setBounds(270, 160, 40, 20);
+        jPanel6.add(txtPesoHasta);
+        txtPesoHasta.setBounds(320, 160, 40, 20);
+        jPanel6.add(txtHumHasta);
+        txtHumHasta.setBounds(320, 190, 40, 20);
+        jPanel6.add(txtImpHasta);
+        txtImpHasta.setBounds(320, 220, 40, 20);
 
         jLabel42.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel42.setText("Valores Laboratorio");
         jPanel6.add(jLabel42);
         jLabel42.setBounds(460, 130, 120, 20);
-        jPanel6.add(txtDurezaObtenida1);
-        txtDurezaObtenida1.setBounds(460, 160, 100, 20);
-        jPanel6.add(txtDurezaObtenida2);
-        txtDurezaObtenida2.setBounds(660, 160, 100, 20);
-        jPanel6.add(txtDurezaObtenida3);
-        txtDurezaObtenida3.setBounds(660, 190, 100, 20);
-        jPanel6.add(txtDurezaObtenida4);
-        txtDurezaObtenida4.setBounds(660, 220, 100, 20);
-        jPanel6.add(txtDurezaObtenida5);
-        txtDurezaObtenida5.setBounds(660, 250, 100, 20);
+        jPanel6.add(txtPesoLab);
+        txtPesoLab.setBounds(460, 160, 100, 20);
+        jPanel6.add(txtPesoMensis);
+        txtPesoMensis.setBounds(660, 160, 100, 20);
+        jPanel6.add(txtHumedadMensis);
+        txtHumedadMensis.setBounds(660, 190, 100, 20);
+        jPanel6.add(txtImpurezasMensis);
+        txtImpurezasMensis.setBounds(660, 220, 100, 20);
 
         jLabel44.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel44.setText("Valores Normales");
@@ -719,7 +663,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -967,60 +911,87 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
               txtTelefonoLab.setText(muestra.getLaboratorio().getTelefono().toString());
               txtMuestraLab.setText(String.valueOf(muestra.getNumeroMuestra()));
               txtFEnvio.setText(muestra.getFechaEnvio());
+              Iterator ite2 = gestorH.listarClase(Mensis.class).iterator();
+              while(ite2.hasNext()){
+                  Mensis m = (Mensis) ite2.next();
+                  if(m.getNumeroMuestra() == muestra.getNumeroMuestra()){
+                      txtHumedadMensis.setText(m.getHumedad());
+                      txtImpurezasMensis.setText(m.getImpurezas());
+                      txtPesoMensis.setText(m.getPesoH());
+                      txtCerealMuestra.setText(m.getCereal());
+                  
+                  }
+              }
           }
-    }
-    if(txtCereal.getText().equalsIgnoreCase("Trigo")){
-        botonTrigo.setSelected(true);
-        botonMaiz.setSelected(false);
-        botonSoja.setSelected(false);
-    }
-    if(txtCereal.getText().equalsIgnoreCase("Soja")){
-        botonTrigo.setSelected(false);
-        botonMaiz.setSelected(false);
-        botonSoja.setSelected(true);
-    }
-    if(txtCereal.getText().equalsIgnoreCase("Maiz")){
-        botonTrigo.setSelected(false);
-        botonMaiz.setSelected(true);
-        botonSoja.setSelected(false);
     }
     }//GEN-LAST:event_btnAceptarViajeActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Iterator ite = gestorH.listarClase(CaracteristicasCereal.class).iterator();
-        CaracteristicasCereal caracteristicas = new CaracteristicasCereal();
         while(ite.hasNext()){
-            if(caracteristicas.getNombreCaracteristica()== labelAlmidon.getText()){
+            CaracteristicasCereal caracteristicas = (CaracteristicasCereal) ite.next();
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelPesoH.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtAlmidonObtenido.getText()));
+                car1.setValor(Double.parseDouble(txtPesoLab.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
                 gestorH.guardarObjeto(car1);
             }
-            if(caracteristicas.getNombreCaracteristica()== labelColor.getText()){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelHumedad.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtColorObtenido.getText()));
+                car1.setValor(Double.parseDouble(txtHumedadLab.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
                 gestorH.guardarObjeto(car1);
             }
-            if(caracteristicas.getNombreCaracteristica()== labelDureza.getText()){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelImpurezas.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtDurezaObtenida.getText()));
-                gestorH.guardarObjeto(car1);
-            }
-            if(caracteristicas.getNombreCaracteristica()== labelGluten.getText()){
-                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
-                car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtGlutenObtenido.getText()));
-                gestorH.guardarObjeto(car1);
-            }
-            if(caracteristicas.getNombreCaracteristica()== labelProteinas.getText()){
-                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
-                car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtProtObtenidas.getText()));
+                car1.setValor(Double.parseDouble(txtImpurezasLab.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
                 gestorH.guardarObjeto(car1);
             }
         }
+        JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -1042,11 +1013,9 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtTelefonoLab.setText("");
         txtLocalidadLab.setText("");
         txtFEnvio.setText("");
-        txtAlmidonObtenido.setText("");
-        txtDurezaObtenida.setText("");
-        txtGlutenObtenido.setText("");
-        txtProtObtenidas.setText("");
-        txtColorObtenido.setText("");
+        txtHumedadLab.setText("");
+        txtImpurezasLab.setText("");
+        txtImpurezasLab.setText("");
          for(int i=0; i<modeloT.getRowCount(); i++){
             modeloT.removeRow(i);
             tblMuestras.setModel(modeloT);
@@ -1061,9 +1030,6 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton botonMaiz;
-    private javax.swing.JRadioButton botonSoja;
-    private javax.swing.JRadioButton botonTrigo;
     private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAceptarViaje;
@@ -1118,47 +1084,39 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel labelAlmidon;
-    private javax.swing.JLabel labelColor;
-    private javax.swing.JLabel labelDureza;
-    private javax.swing.JLabel labelGluten;
-    private javax.swing.JLabel labelProteinas;
+    private javax.swing.JLabel labelHumedad;
+    private javax.swing.JLabel labelImpurezas;
+    private javax.swing.JLabel labelPesoH;
     private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblMuestras;
-    private javax.swing.JTextField txtAlmidonDesde;
-    private javax.swing.JTextField txtAlmidonHasta;
-    private javax.swing.JTextField txtAlmidonObtenido;
     private javax.swing.JTextField txtCereal;
-    private javax.swing.JTextField txtColorNormal;
-    private javax.swing.JTextField txtColorObtenido;
+    private javax.swing.JTextField txtCerealMuestra;
     private javax.swing.JTextField txtDomicilioLab;
-    private javax.swing.JTextField txtDurezaDesde;
-    private javax.swing.JTextField txtDurezaHasta;
-    private javax.swing.JTextField txtDurezaObtenida;
-    private javax.swing.JTextField txtDurezaObtenida1;
-    private javax.swing.JTextField txtDurezaObtenida2;
-    private javax.swing.JTextField txtDurezaObtenida3;
-    private javax.swing.JTextField txtDurezaObtenida4;
-    private javax.swing.JTextField txtDurezaObtenida5;
     private javax.swing.JTextField txtEnviadoPor;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFEnvio;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFechaEnvio;
-    private javax.swing.JTextField txtGlutenDesde;
-    private javax.swing.JTextField txtGlutenHasta;
-    private javax.swing.JTextField txtGlutenObtenido;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtHumDesde;
+    private javax.swing.JTextField txtHumHasta;
+    private javax.swing.JTextField txtHumedadLab;
+    private javax.swing.JTextField txtHumedadMensis;
+    private javax.swing.JTextField txtImpDesde;
+    private javax.swing.JTextField txtImpHasta;
+    private javax.swing.JTextField txtImpurezasLab;
+    private javax.swing.JTextField txtImpurezasMensis;
     private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txtLocalidadLab;
     private javax.swing.JTextField txtMuestra;
     private javax.swing.JTextField txtMuestraLab;
     private javax.swing.JTextField txtNumMuestra;
+    private javax.swing.JTextField txtPesoDesde;
+    private javax.swing.JTextField txtPesoHasta;
+    private javax.swing.JTextField txtPesoLab;
+    private javax.swing.JTextField txtPesoMensis;
     private javax.swing.JTextField txtProductor;
-    private javax.swing.JTextField txtProtDesde;
-    private javax.swing.JTextField txtProtHasta;
-    private javax.swing.JTextField txtProtObtenidas;
     private javax.swing.JTextField txtProvinciaLab;
     private javax.swing.JTextField txtTelefonoLab;
     // End of variables declaration//GEN-END:variables
