@@ -46,11 +46,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         cmbProductor.setEnabled(false);
  
         
-        txtPesoDesde.setEnabled(false);
+        txtHumedadSojaN.setEnabled(false);
         txtPesoHasta.setEnabled(false);
-        txtImpDesde.setEnabled(false);
+        txtPHectTrigoN.setEnabled(false);
         txtImpHasta.setEnabled(false);
-        txtHumDesde.setEnabled(false);
+        txtMatExtTrigoN.setEnabled(false);
         txtHumHasta.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
@@ -170,25 +170,173 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jSeparator1 = new javax.swing.JSeparator();
         labelPesoH = new javax.swing.JLabel();
         labelHumedad = new javax.swing.JLabel();
-        labelImpurezas = new javax.swing.JLabel();
+        labelGQuebrados = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        txtHumDesde = new javax.swing.JTextField();
-        txtImpDesde = new javax.swing.JTextField();
-        txtHumedadLab = new javax.swing.JTextField();
-        txtImpurezasLab = new javax.swing.JTextField();
+        txtMatExtTrigoN = new javax.swing.JTextField();
+        txtPHectTrigoN = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         txtFEnvio = new javax.swing.JTextField();
-        txtPesoDesde = new javax.swing.JTextField();
-        txtPesoHasta = new javax.swing.JTextField();
-        txtHumHasta = new javax.swing.JTextField();
-        txtImpHasta = new javax.swing.JTextField();
+        txtHumedadSojaN = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        txtPesoLab = new javax.swing.JTextField();
-        txtPesoMensis = new javax.swing.JTextField();
         txtHumedadMensis = new javax.swing.JTextField();
-        txtImpurezasMensis = new javax.swing.JTextField();
+        txtMatExtMensis = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
+        labelMatExt = new javax.swing.JLabel();
+        labelGDaniados = new javax.swing.JLabel();
+        txtGDaniadosTrigoN = new javax.swing.JTextField();
+        txtGQuebradosSojaN = new javax.swing.JTextField();
+        labelGranosV = new javax.swing.JLabel();
+        txtHumedadMaizN = new javax.swing.JTextField();
+        txtHumedadTrigoN = new javax.swing.JTextField();
+        txtMatExtSojaN = new javax.swing.JTextField();
+        txtMatExtMaizN = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        calendarioRecep1 = new datechooser.beans.DateChooserCombo();
+        jLabel35 = new javax.swing.JLabel();
+        txtMuestraLab1 = new javax.swing.JTextField();
+        jPanel14 = new javax.swing.JPanel();
+        txtCerealMuestra1 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        labelPesoH1 = new javax.swing.JLabel();
+        labelHumedad1 = new javax.swing.JLabel();
+        labelGQuebrados1 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        txtMatExtTrigo1 = new javax.swing.JTextField();
+        txtPHect1 = new javax.swing.JTextField();
+        txtHumedadLab1 = new javax.swing.JTextField();
+        txtImpurezasLab1 = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtFEnvio1 = new javax.swing.JTextField();
+        txtHumedadSoja1 = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        txtPesoLab1 = new javax.swing.JTextField();
+        txtPesoMensis1 = new javax.swing.JTextField();
+        txtHumedadMensis1 = new javax.swing.JTextField();
+        txtImpurezasMensis1 = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        labelMatExt1 = new javax.swing.JLabel();
+        labelGDaniados1 = new javax.swing.JLabel();
+        txtGDaniados1 = new javax.swing.JTextField();
+        txtGQuebrados1 = new javax.swing.JTextField();
+        labelGranosV1 = new javax.swing.JLabel();
+        txtHumedadMaiz1 = new javax.swing.JTextField();
+        txtHumedadTrigo1 = new javax.swing.JTextField();
+        txtMatExtSoja1 = new javax.swing.JTextField();
+        txtMatExtMaiz1 = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        calendarioRecep2 = new datechooser.beans.DateChooserCombo();
+        jLabel38 = new javax.swing.JLabel();
+        txtMuestraLab2 = new javax.swing.JTextField();
+        jPanel16 = new javax.swing.JPanel();
+        txtCerealMuestra2 = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        labelPesoH2 = new javax.swing.JLabel();
+        labelHumedad2 = new javax.swing.JLabel();
+        labelGQuebrados2 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        txtMatExtTrigo2 = new javax.swing.JTextField();
+        txtPHect2 = new javax.swing.JTextField();
+        txtHumedadLab2 = new javax.swing.JTextField();
+        txtImpurezasLab2 = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        txtFEnvio2 = new javax.swing.JTextField();
+        txtHumedadSoja2 = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        txtPesoLab2 = new javax.swing.JTextField();
+        txtPesoMensis2 = new javax.swing.JTextField();
+        txtHumedadMensis2 = new javax.swing.JTextField();
+        txtImpurezasMensis2 = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        labelMatExt2 = new javax.swing.JLabel();
+        labelGDaniados2 = new javax.swing.JLabel();
+        txtGDaniados2 = new javax.swing.JTextField();
+        txtGQuebrados2 = new javax.swing.JTextField();
+        labelGranosV2 = new javax.swing.JLabel();
+        txtHumedadMaiz2 = new javax.swing.JTextField();
+        txtHumedadTrigo2 = new javax.swing.JTextField();
+        txtMatExtSoja2 = new javax.swing.JTextField();
+        txtMatExtMaiz2 = new javax.swing.JTextField();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        calendarioRecep3 = new datechooser.beans.DateChooserCombo();
+        jLabel56 = new javax.swing.JLabel();
+        txtMuestraLab3 = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        txtCerealMuestra3 = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        labelPesoH3 = new javax.swing.JLabel();
+        labelHumedad3 = new javax.swing.JLabel();
+        labelGQuebrados3 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        txtMatExtTrigo3 = new javax.swing.JTextField();
+        txtPHect3 = new javax.swing.JTextField();
+        txtHumedadLab3 = new javax.swing.JTextField();
+        txtImpurezasLab3 = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        txtFEnvio3 = new javax.swing.JTextField();
+        txtHumedadSoja3 = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        txtPesoLab3 = new javax.swing.JTextField();
+        txtPesoMensis3 = new javax.swing.JTextField();
+        txtHumedadMensis3 = new javax.swing.JTextField();
+        txtImpurezasMensis3 = new javax.swing.JTextField();
+        jLabel60 = new javax.swing.JLabel();
+        labelMatExt3 = new javax.swing.JLabel();
+        labelGDaniados3 = new javax.swing.JLabel();
+        txtGDaniados3 = new javax.swing.JTextField();
+        txtGQuebrados3 = new javax.swing.JTextField();
+        labelGranosV3 = new javax.swing.JLabel();
+        txtHumedadMaiz3 = new javax.swing.JTextField();
+        txtHumedadTrigo3 = new javax.swing.JTextField();
+        txtMatExtSoja3 = new javax.swing.JTextField();
+        txtMatExtMaiz3 = new javax.swing.JTextField();
+        txtGDaniadosSojaN = new javax.swing.JTextField();
+        txtGDaniadosMaizN = new javax.swing.JTextField();
+        txtGQuebradosMaizN = new javax.swing.JTextField();
+        txtGQuebradosTrigoN = new javax.swing.JTextField();
+        txtGranosVerdesN = new javax.swing.JTextField();
+        txtPHectMaizN = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtHumedadTrigoL = new javax.swing.JTextField();
+        txtHumedadMaizL = new javax.swing.JTextField();
+        txtHumedadSojaL = new javax.swing.JTextField();
+        txtMatExtTrigoL = new javax.swing.JTextField();
+        txtMatExtSojaL = new javax.swing.JTextField();
+        txtMatExtMaizL = new javax.swing.JTextField();
+        txtGDaniadosTrigoL = new javax.swing.JTextField();
+        txtGDaniadosSojaL = new javax.swing.JTextField();
+        txtGDaniadosMaizL = new javax.swing.JTextField();
+        txtGQuebradosTrigoL = new javax.swing.JTextField();
+        txtGQuebradosMaizL = new javax.swing.JTextField();
+        txtGQuebradosSojaL = new javax.swing.JTextField();
+        txtGranosVerdesL = new javax.swing.JTextField();
+        txtPHectMaizL = new javax.swing.JTextField();
+        txtPHectTrigoL = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -257,14 +405,14 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
         jPanel12.add(txtNumMuestra);
-        txtNumMuestra.setBounds(90, 40, 60, 20);
+        txtNumMuestra.setBounds(100, 40, 80, 20);
 
         cmbNroMuestra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "<=", "=" }));
         jPanel12.add(cmbNroMuestra);
-        cmbNroMuestra.setBounds(20, 40, 60, 20);
+        cmbNroMuestra.setBounds(10, 40, 80, 20);
 
         jPanel5.add(jPanel12);
-        jPanel12.setBounds(340, 30, 160, 90);
+        jPanel12.setBounds(340, 30, 200, 90);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
@@ -273,7 +421,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         cmbProductor.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel13);
-        jPanel13.setBounds(520, 30, 240, 90);
+        jPanel13.setBounds(550, 30, 250, 90);
 
         btnBuscarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
@@ -284,7 +432,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             }
         });
         jPanel5.add(btnBuscarViaje);
-        btnBuscarViaje.setBounds(390, 130, 100, 30);
+        btnBuscarViaje.setBounds(380, 130, 100, 30);
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
@@ -485,65 +633,556 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         labelPesoH.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelPesoH.setText("Peso Hectolitrico");
         jPanel6.add(labelPesoH);
-        labelPesoH.setBounds(90, 160, 120, 20);
+        labelPesoH.setBounds(80, 280, 120, 20);
 
         labelHumedad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelHumedad.setText("Humedad");
         jPanel6.add(labelHumedad);
-        labelHumedad.setBounds(90, 190, 130, 20);
+        labelHumedad.setBounds(80, 160, 130, 20);
 
-        labelImpurezas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelImpurezas.setText("Impurezas");
-        jPanel6.add(labelImpurezas);
-        labelImpurezas.setBounds(90, 220, 140, 20);
+        labelGQuebrados.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGQuebrados.setText("Granos Quebrados");
+        jPanel6.add(labelGQuebrados);
+        labelGQuebrados.setBounds(80, 250, 140, 20);
 
         jLabel39.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel39.setText("Valores Mensis");
         jPanel6.add(jLabel39);
-        jLabel39.setBounds(670, 130, 90, 20);
+        jLabel39.setBounds(590, 130, 100, 20);
 
         jLabel40.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel40.setText("Característica");
         jPanel6.add(jLabel40);
         jLabel40.setBounds(80, 130, 90, 20);
-        jPanel6.add(txtHumDesde);
-        txtHumDesde.setBounds(270, 190, 40, 20);
-        jPanel6.add(txtImpDesde);
-        txtImpDesde.setBounds(270, 220, 40, 20);
-        jPanel6.add(txtHumedadLab);
-        txtHumedadLab.setBounds(460, 190, 100, 20);
-        jPanel6.add(txtImpurezasLab);
-        txtImpurezasLab.setBounds(460, 220, 100, 20);
+        jPanel6.add(txtMatExtTrigoN);
+        txtMatExtTrigoN.setBounds(280, 190, 70, 20);
+        jPanel6.add(txtPHectTrigoN);
+        txtPHectTrigoN.setBounds(280, 280, 70, 20);
         jPanel6.add(jSeparator2);
         jSeparator2.setBounds(30, 150, 820, 10);
         jPanel6.add(txtFEnvio);
         txtFEnvio.setBounds(400, 30, 100, 20);
-        jPanel6.add(txtPesoDesde);
-        txtPesoDesde.setBounds(270, 160, 40, 20);
-        jPanel6.add(txtPesoHasta);
-        txtPesoHasta.setBounds(320, 160, 40, 20);
-        jPanel6.add(txtHumHasta);
-        txtHumHasta.setBounds(320, 190, 40, 20);
-        jPanel6.add(txtImpHasta);
-        txtImpHasta.setBounds(320, 220, 40, 20);
+        jPanel6.add(txtHumedadSojaN);
+        txtHumedadSojaN.setBounds(280, 160, 70, 20);
 
         jLabel42.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel42.setText("Valores Laboratorio");
         jPanel6.add(jLabel42);
-        jLabel42.setBounds(460, 130, 120, 20);
-        jPanel6.add(txtPesoLab);
-        txtPesoLab.setBounds(460, 160, 100, 20);
-        jPanel6.add(txtPesoMensis);
-        txtPesoMensis.setBounds(660, 160, 100, 20);
+        jLabel42.setBounds(430, 130, 120, 20);
         jPanel6.add(txtHumedadMensis);
-        txtHumedadMensis.setBounds(660, 190, 100, 20);
-        jPanel6.add(txtImpurezasMensis);
-        txtImpurezasMensis.setBounds(660, 220, 100, 20);
+        txtHumedadMensis.setBounds(600, 160, 70, 20);
+        jPanel6.add(txtMatExtMensis);
+        txtMatExtMensis.setBounds(600, 190, 70, 20);
 
         jLabel44.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel44.setText("Valores Normales");
         jPanel6.add(jLabel44);
         jLabel44.setBounds(270, 130, 110, 20);
+
+        labelMatExt.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelMatExt.setText("Materias Extrañas");
+        jPanel6.add(labelMatExt);
+        labelMatExt.setBounds(80, 190, 140, 20);
+
+        labelGDaniados.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGDaniados.setText("Granos Dañados");
+        jPanel6.add(labelGDaniados);
+        labelGDaniados.setBounds(80, 220, 140, 20);
+        jPanel6.add(txtGDaniadosTrigoN);
+        txtGDaniadosTrigoN.setBounds(280, 220, 70, 20);
+        jPanel6.add(txtGQuebradosSojaN);
+        txtGQuebradosSojaN.setBounds(280, 250, 70, 20);
+
+        labelGranosV.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGranosV.setText("Granos Verdes");
+        jPanel6.add(labelGranosV);
+        labelGranosV.setBounds(80, 280, 120, 20);
+        jPanel6.add(txtHumedadMaizN);
+        txtHumedadMaizN.setBounds(280, 160, 70, 20);
+        jPanel6.add(txtHumedadTrigoN);
+        txtHumedadTrigoN.setBounds(280, 160, 70, 20);
+        jPanel6.add(txtMatExtSojaN);
+        txtMatExtSojaN.setBounds(280, 190, 70, 20);
+        jPanel6.add(txtMatExtMaizN);
+        txtMatExtMaizN.setBounds(280, 190, 70, 20);
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultados Analisis", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel9.setLayout(null);
+
+        jLabel33.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel33.setText("Fecha Envío");
+        jPanel9.add(jLabel33);
+        jLabel33.setBounds(330, 30, 100, 20);
+
+        jLabel34.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel34.setText("Fecha Recepción");
+        jPanel9.add(jLabel34);
+        jLabel34.setBounds(580, 30, 120, 20);
+        jPanel9.add(calendarioRecep1);
+        calendarioRecep1.setBounds(680, 30, 110, 20);
+
+        jLabel35.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel35.setText("Muestra Nº");
+        jPanel9.add(jLabel35);
+        jLabel35.setBounds(60, 30, 100, 20);
+        jPanel9.add(txtMuestraLab1);
+        txtMuestraLab1.setBounds(130, 30, 100, 20);
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel14.setLayout(null);
+        jPanel14.add(txtCerealMuestra1);
+        txtCerealMuestra1.setBounds(150, 20, 140, 20);
+
+        jPanel9.add(jPanel14);
+        jPanel14.setBounds(240, 70, 440, 50);
+        jPanel9.add(jSeparator3);
+        jSeparator3.setBounds(30, 60, 820, 10);
+
+        labelPesoH1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPesoH1.setText("Peso Hectolitrico");
+        jPanel9.add(labelPesoH1);
+        labelPesoH1.setBounds(80, 280, 120, 20);
+
+        labelHumedad1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelHumedad1.setText("Humedad");
+        jPanel9.add(labelHumedad1);
+        labelHumedad1.setBounds(80, 160, 130, 20);
+
+        labelGQuebrados1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGQuebrados1.setText("Granos Quebrados");
+        jPanel9.add(labelGQuebrados1);
+        labelGQuebrados1.setBounds(80, 250, 140, 20);
+
+        jLabel45.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel45.setText("Valores Mensis");
+        jPanel9.add(jLabel45);
+        jLabel45.setBounds(670, 130, 90, 20);
+
+        jLabel46.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel46.setText("Característica");
+        jPanel9.add(jLabel46);
+        jLabel46.setBounds(80, 130, 90, 20);
+        jPanel9.add(txtMatExtTrigo1);
+        txtMatExtTrigo1.setBounds(270, 190, 70, 20);
+        jPanel9.add(txtPHect1);
+        txtPHect1.setBounds(270, 280, 70, 20);
+        jPanel9.add(txtHumedadLab1);
+        txtHumedadLab1.setBounds(460, 190, 100, 20);
+        jPanel9.add(txtImpurezasLab1);
+        txtImpurezasLab1.setBounds(460, 220, 100, 20);
+        jPanel9.add(jSeparator4);
+        jSeparator4.setBounds(30, 150, 820, 10);
+        jPanel9.add(txtFEnvio1);
+        txtFEnvio1.setBounds(400, 30, 100, 20);
+        jPanel9.add(txtHumedadSoja1);
+        txtHumedadSoja1.setBounds(270, 160, 70, 20);
+
+        jLabel47.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel47.setText("Valores Laboratorio");
+        jPanel9.add(jLabel47);
+        jLabel47.setBounds(460, 130, 120, 20);
+        jPanel9.add(txtPesoLab1);
+        txtPesoLab1.setBounds(460, 160, 100, 20);
+        jPanel9.add(txtPesoMensis1);
+        txtPesoMensis1.setBounds(660, 160, 100, 20);
+        jPanel9.add(txtHumedadMensis1);
+        txtHumedadMensis1.setBounds(660, 190, 100, 20);
+        jPanel9.add(txtImpurezasMensis1);
+        txtImpurezasMensis1.setBounds(660, 220, 100, 20);
+
+        jLabel49.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel49.setText("Valores Normales");
+        jPanel9.add(jLabel49);
+        jLabel49.setBounds(270, 130, 110, 20);
+
+        labelMatExt1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelMatExt1.setText("Materias Extrañas");
+        jPanel9.add(labelMatExt1);
+        labelMatExt1.setBounds(80, 190, 140, 20);
+
+        labelGDaniados1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGDaniados1.setText("Granos Dañados");
+        jPanel9.add(labelGDaniados1);
+        labelGDaniados1.setBounds(80, 220, 140, 20);
+        jPanel9.add(txtGDaniados1);
+        txtGDaniados1.setBounds(270, 220, 70, 20);
+        jPanel9.add(txtGQuebrados1);
+        txtGQuebrados1.setBounds(270, 250, 70, 20);
+
+        labelGranosV1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGranosV1.setText("Granos Verdes");
+        jPanel9.add(labelGranosV1);
+        labelGranosV1.setBounds(80, 280, 120, 20);
+        jPanel9.add(txtHumedadMaiz1);
+        txtHumedadMaiz1.setBounds(270, 160, 70, 20);
+        jPanel9.add(txtHumedadTrigo1);
+        txtHumedadTrigo1.setBounds(270, 160, 70, 20);
+        jPanel9.add(txtMatExtSoja1);
+        txtMatExtSoja1.setBounds(270, 190, 70, 20);
+        jPanel9.add(txtMatExtMaiz1);
+        txtMatExtMaiz1.setBounds(270, 190, 70, 20);
+
+        jPanel6.add(jPanel9);
+        jPanel9.setBounds(0, 0, 0, 0);
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultados Analisis", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel15.setLayout(null);
+
+        jLabel36.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel36.setText("Fecha Envío");
+        jPanel15.add(jLabel36);
+        jLabel36.setBounds(330, 30, 100, 20);
+
+        jLabel37.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel37.setText("Fecha Recepción");
+        jPanel15.add(jLabel37);
+        jLabel37.setBounds(580, 30, 120, 20);
+        jPanel15.add(calendarioRecep2);
+        calendarioRecep2.setBounds(680, 30, 110, 20);
+
+        jLabel38.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel38.setText("Muestra Nº");
+        jPanel15.add(jLabel38);
+        jLabel38.setBounds(60, 30, 100, 20);
+        jPanel15.add(txtMuestraLab2);
+        txtMuestraLab2.setBounds(130, 30, 100, 20);
+
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel16.setLayout(null);
+        jPanel16.add(txtCerealMuestra2);
+        txtCerealMuestra2.setBounds(150, 20, 140, 20);
+
+        jPanel15.add(jPanel16);
+        jPanel16.setBounds(240, 70, 440, 50);
+        jPanel15.add(jSeparator5);
+        jSeparator5.setBounds(30, 60, 820, 10);
+
+        labelPesoH2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPesoH2.setText("Peso Hectolitrico");
+        jPanel15.add(labelPesoH2);
+        labelPesoH2.setBounds(80, 280, 120, 20);
+
+        labelHumedad2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelHumedad2.setText("Humedad");
+        jPanel15.add(labelHumedad2);
+        labelHumedad2.setBounds(80, 160, 130, 20);
+
+        labelGQuebrados2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGQuebrados2.setText("Granos Quebrados");
+        jPanel15.add(labelGQuebrados2);
+        labelGQuebrados2.setBounds(80, 250, 140, 20);
+
+        jLabel50.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel50.setText("Valores Mensis");
+        jPanel15.add(jLabel50);
+        jLabel50.setBounds(670, 130, 90, 20);
+
+        jLabel51.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel51.setText("Característica");
+        jPanel15.add(jLabel51);
+        jLabel51.setBounds(80, 130, 90, 20);
+        jPanel15.add(txtMatExtTrigo2);
+        txtMatExtTrigo2.setBounds(270, 190, 70, 20);
+        jPanel15.add(txtPHect2);
+        txtPHect2.setBounds(270, 280, 70, 20);
+        jPanel15.add(txtHumedadLab2);
+        txtHumedadLab2.setBounds(460, 190, 100, 20);
+        jPanel15.add(txtImpurezasLab2);
+        txtImpurezasLab2.setBounds(460, 220, 100, 20);
+        jPanel15.add(jSeparator6);
+        jSeparator6.setBounds(30, 150, 820, 10);
+        jPanel15.add(txtFEnvio2);
+        txtFEnvio2.setBounds(400, 30, 100, 20);
+        jPanel15.add(txtHumedadSoja2);
+        txtHumedadSoja2.setBounds(270, 160, 70, 20);
+
+        jLabel52.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel52.setText("Valores Laboratorio");
+        jPanel15.add(jLabel52);
+        jLabel52.setBounds(460, 130, 120, 20);
+        jPanel15.add(txtPesoLab2);
+        txtPesoLab2.setBounds(460, 160, 100, 20);
+        jPanel15.add(txtPesoMensis2);
+        txtPesoMensis2.setBounds(660, 160, 100, 20);
+        jPanel15.add(txtHumedadMensis2);
+        txtHumedadMensis2.setBounds(660, 190, 100, 20);
+        jPanel15.add(txtImpurezasMensis2);
+        txtImpurezasMensis2.setBounds(660, 220, 100, 20);
+
+        jLabel53.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel53.setText("Valores Normales");
+        jPanel15.add(jLabel53);
+        jLabel53.setBounds(270, 130, 110, 20);
+
+        labelMatExt2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelMatExt2.setText("Materias Extrañas");
+        jPanel15.add(labelMatExt2);
+        labelMatExt2.setBounds(80, 190, 140, 20);
+
+        labelGDaniados2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGDaniados2.setText("Granos Dañados");
+        jPanel15.add(labelGDaniados2);
+        labelGDaniados2.setBounds(80, 220, 140, 20);
+        jPanel15.add(txtGDaniados2);
+        txtGDaniados2.setBounds(270, 220, 70, 20);
+        jPanel15.add(txtGQuebrados2);
+        txtGQuebrados2.setBounds(270, 250, 70, 20);
+
+        labelGranosV2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGranosV2.setText("Granos Verdes");
+        jPanel15.add(labelGranosV2);
+        labelGranosV2.setBounds(80, 280, 120, 20);
+        jPanel15.add(txtHumedadMaiz2);
+        txtHumedadMaiz2.setBounds(270, 160, 70, 20);
+        jPanel15.add(txtHumedadTrigo2);
+        txtHumedadTrigo2.setBounds(270, 160, 70, 20);
+        jPanel15.add(txtMatExtSoja2);
+        txtMatExtSoja2.setBounds(270, 190, 70, 20);
+        jPanel15.add(txtMatExtMaiz2);
+        txtMatExtMaiz2.setBounds(270, 190, 70, 20);
+
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultados Analisis", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel17.setLayout(null);
+
+        jLabel54.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel54.setText("Fecha Envío");
+        jPanel17.add(jLabel54);
+        jLabel54.setBounds(330, 30, 100, 20);
+
+        jLabel55.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel55.setText("Fecha Recepción");
+        jPanel17.add(jLabel55);
+        jLabel55.setBounds(580, 30, 120, 20);
+        jPanel17.add(calendarioRecep3);
+        calendarioRecep3.setBounds(680, 30, 110, 20);
+
+        jLabel56.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel56.setText("Muestra Nº");
+        jPanel17.add(jLabel56);
+        jLabel56.setBounds(60, 30, 100, 20);
+        jPanel17.add(txtMuestraLab3);
+        txtMuestraLab3.setBounds(130, 30, 100, 20);
+
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cereal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        jPanel18.setLayout(null);
+        jPanel18.add(txtCerealMuestra3);
+        txtCerealMuestra3.setBounds(150, 20, 140, 20);
+
+        jPanel17.add(jPanel18);
+        jPanel18.setBounds(240, 70, 440, 50);
+        jPanel17.add(jSeparator7);
+        jSeparator7.setBounds(30, 60, 820, 10);
+
+        labelPesoH3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPesoH3.setText("Peso Hectolitrico");
+        jPanel17.add(labelPesoH3);
+        labelPesoH3.setBounds(80, 280, 120, 20);
+
+        labelHumedad3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelHumedad3.setText("Humedad");
+        jPanel17.add(labelHumedad3);
+        labelHumedad3.setBounds(80, 160, 130, 20);
+
+        labelGQuebrados3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGQuebrados3.setText("Granos Quebrados");
+        jPanel17.add(labelGQuebrados3);
+        labelGQuebrados3.setBounds(80, 250, 140, 20);
+
+        jLabel57.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel57.setText("Valores Mensis");
+        jPanel17.add(jLabel57);
+        jLabel57.setBounds(670, 130, 90, 20);
+
+        jLabel58.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel58.setText("Característica");
+        jPanel17.add(jLabel58);
+        jLabel58.setBounds(80, 130, 90, 20);
+        jPanel17.add(txtMatExtTrigo3);
+        txtMatExtTrigo3.setBounds(270, 190, 70, 20);
+        jPanel17.add(txtPHect3);
+        txtPHect3.setBounds(270, 280, 70, 20);
+        jPanel17.add(txtHumedadLab3);
+        txtHumedadLab3.setBounds(460, 190, 100, 20);
+        jPanel17.add(txtImpurezasLab3);
+        txtImpurezasLab3.setBounds(460, 220, 100, 20);
+        jPanel17.add(jSeparator8);
+        jSeparator8.setBounds(30, 150, 820, 10);
+        jPanel17.add(txtFEnvio3);
+        txtFEnvio3.setBounds(400, 30, 100, 20);
+        jPanel17.add(txtHumedadSoja3);
+        txtHumedadSoja3.setBounds(270, 160, 70, 20);
+
+        jLabel59.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel59.setText("Valores Laboratorio");
+        jPanel17.add(jLabel59);
+        jLabel59.setBounds(460, 130, 120, 20);
+        jPanel17.add(txtPesoLab3);
+        txtPesoLab3.setBounds(460, 160, 100, 20);
+        jPanel17.add(txtPesoMensis3);
+        txtPesoMensis3.setBounds(660, 160, 100, 20);
+        jPanel17.add(txtHumedadMensis3);
+        txtHumedadMensis3.setBounds(660, 190, 100, 20);
+        jPanel17.add(txtImpurezasMensis3);
+        txtImpurezasMensis3.setBounds(660, 220, 100, 20);
+
+        jLabel60.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel60.setText("Valores Normales");
+        jPanel17.add(jLabel60);
+        jLabel60.setBounds(270, 130, 110, 20);
+
+        labelMatExt3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelMatExt3.setText("Materias Extrañas");
+        jPanel17.add(labelMatExt3);
+        labelMatExt3.setBounds(80, 190, 140, 20);
+
+        labelGDaniados3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGDaniados3.setText("Granos Dañados");
+        jPanel17.add(labelGDaniados3);
+        labelGDaniados3.setBounds(80, 220, 140, 20);
+        jPanel17.add(txtGDaniados3);
+        txtGDaniados3.setBounds(270, 220, 70, 20);
+        jPanel17.add(txtGQuebrados3);
+        txtGQuebrados3.setBounds(270, 250, 70, 20);
+
+        labelGranosV3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelGranosV3.setText("Granos Verdes");
+        jPanel17.add(labelGranosV3);
+        labelGranosV3.setBounds(80, 280, 120, 20);
+        jPanel17.add(txtHumedadMaiz3);
+        txtHumedadMaiz3.setBounds(270, 160, 70, 20);
+        jPanel17.add(txtHumedadTrigo3);
+        txtHumedadTrigo3.setBounds(270, 160, 70, 20);
+        jPanel17.add(txtMatExtSoja3);
+        txtMatExtSoja3.setBounds(270, 190, 70, 20);
+        jPanel17.add(txtMatExtMaiz3);
+        txtMatExtMaiz3.setBounds(270, 190, 70, 20);
+
+        jPanel15.add(jPanel17);
+        jPanel17.setBounds(0, 0, 0, 0);
+
+        jPanel6.add(jPanel15);
+        jPanel15.setBounds(0, 0, 0, 0);
+        jPanel6.add(txtGDaniadosSojaN);
+        txtGDaniadosSojaN.setBounds(280, 220, 70, 20);
+        jPanel6.add(txtGDaniadosMaizN);
+        txtGDaniadosMaizN.setBounds(280, 220, 70, 20);
+        jPanel6.add(txtGQuebradosMaizN);
+        txtGQuebradosMaizN.setBounds(280, 250, 70, 20);
+        jPanel6.add(txtGQuebradosTrigoN);
+        txtGQuebradosTrigoN.setBounds(280, 250, 70, 20);
+        jPanel6.add(txtGranosVerdesN);
+        txtGranosVerdesN.setBounds(280, 280, 70, 20);
+        jPanel6.add(txtPHectMaizN);
+        txtPHectMaizN.setBounds(280, 280, 70, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("%");
+        jPanel6.add(jLabel3);
+        jLabel3.setBounds(350, 280, 40, 20);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("%");
+        jPanel6.add(jLabel4);
+        jLabel4.setBounds(520, 280, 40, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("%");
+        jPanel6.add(jLabel5);
+        jLabel5.setBounds(350, 190, 40, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("%");
+        jPanel6.add(jLabel11);
+        jLabel11.setBounds(350, 220, 40, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setText("%");
+        jPanel6.add(jLabel12);
+        jLabel12.setBounds(350, 250, 40, 20);
+        jPanel6.add(txtHumedadTrigoL);
+        txtHumedadTrigoL.setBounds(450, 160, 70, 20);
+        jPanel6.add(txtHumedadMaizL);
+        txtHumedadMaizL.setBounds(450, 160, 70, 20);
+        jPanel6.add(txtHumedadSojaL);
+        txtHumedadSojaL.setBounds(450, 160, 70, 20);
+        jPanel6.add(txtMatExtTrigoL);
+        txtMatExtTrigoL.setBounds(450, 190, 70, 20);
+        jPanel6.add(txtMatExtSojaL);
+        txtMatExtSojaL.setBounds(450, 190, 70, 20);
+        jPanel6.add(txtMatExtMaizL);
+        txtMatExtMaizL.setBounds(450, 190, 70, 20);
+        jPanel6.add(txtGDaniadosTrigoL);
+        txtGDaniadosTrigoL.setBounds(450, 220, 70, 20);
+        jPanel6.add(txtGDaniadosSojaL);
+        txtGDaniadosSojaL.setBounds(450, 220, 70, 20);
+        jPanel6.add(txtGDaniadosMaizL);
+        txtGDaniadosMaizL.setBounds(450, 220, 70, 20);
+        jPanel6.add(txtGQuebradosTrigoL);
+        txtGQuebradosTrigoL.setBounds(450, 250, 70, 20);
+        jPanel6.add(txtGQuebradosMaizL);
+        txtGQuebradosMaizL.setBounds(450, 250, 70, 20);
+        jPanel6.add(txtGQuebradosSojaL);
+        txtGQuebradosSojaL.setBounds(450, 250, 70, 20);
+        jPanel6.add(txtGranosVerdesL);
+        txtGranosVerdesL.setBounds(450, 280, 70, 20);
+        jPanel6.add(txtPHectMaizL);
+        txtPHectMaizL.setBounds(450, 280, 70, 20);
+        jPanel6.add(txtPHectTrigoL);
+        txtPHectTrigoL.setBounds(450, 280, 70, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setText("%");
+        jPanel6.add(jLabel14);
+        jLabel14.setBounds(350, 160, 40, 20);
+
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel15.setText("%");
+        jPanel6.add(jLabel15);
+        jLabel15.setBounds(670, 190, 40, 20);
+
+        jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel16.setText("%");
+        jPanel6.add(jLabel16);
+        jLabel16.setBounds(520, 190, 40, 20);
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setText("%");
+        jPanel6.add(jLabel17);
+        jLabel17.setBounds(520, 220, 40, 20);
+
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel18.setText("%");
+        jPanel6.add(jLabel18);
+        jLabel18.setBounds(520, 250, 40, 20);
+
+        jLabel19.setText("No se calcula");
+        jPanel6.add(jLabel19);
+        jLabel19.setBounds(600, 280, 70, 20);
+
+        jLabel20.setText("No se calcula");
+        jPanel6.add(jLabel20);
+        jLabel20.setBounds(600, 250, 70, 20);
+
+        jLabel21.setText("No se calcula");
+        jPanel6.add(jLabel21);
+        jLabel21.setBounds(600, 220, 70, 20);
+
+        jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel22.setText("%");
+        jPanel6.add(jLabel22);
+        jLabel22.setBounds(520, 160, 40, 20);
+
+        jLabel23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel23.setText("%");
+        jPanel6.add(jLabel23);
+        jLabel23.setBounds(670, 160, 40, 20);
+
+        jLabel61.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel61.setText("Resultado Análisis: ");
+        jPanel6.add(jLabel61);
+        jLabel61.setBounds(290, 320, 150, 20);
+        jPanel6.add(jTextField1);
+        jTextField1.setBounds(400, 320, 110, 20);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -552,11 +1191,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -565,8 +1204,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 .addGap(16, 16, 16)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Datos Análisis", jPanel3);
@@ -607,7 +1245,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                             .addComponent(labelusuario)))
                     .addComponent(jLabel48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -643,27 +1281,27 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -915,9 +1553,9 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
               while(ite2.hasNext()){
                   Mensis m = (Mensis) ite2.next();
                   if(m.getNumeroMuestra() == muestra.getNumeroMuestra()){
-                      txtHumedadMensis.setText(m.getHumedad());
-                      txtImpurezasMensis.setText(m.getImpurezas());
-                      txtPesoMensis.setText(m.getPesoH());
+                      txtMatExtMensis.setText(m.getHumedad());
+                      txtGDaniadosMensis.setText(m.getImpurezas());
+                      txtHumedadMensis.setText(m.getPesoH());
                       txtCerealMuestra.setText(m.getCereal());
                   
                   }
@@ -970,7 +1608,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 }
                 gestorH.guardarObjeto(car1);
             }
-            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelImpurezas.getText())){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGQuebrados.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
                 car1.setValor(Double.parseDouble(txtImpurezasLab.getText()));
@@ -1040,6 +1678,9 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private datechooser.beans.DateChooserCombo calendarioDViaje;
     private datechooser.beans.DateChooserCombo calendarioHViaje;
     private datechooser.beans.DateChooserCombo calendarioRecep;
+    private datechooser.beans.DateChooserCombo calendarioRecep1;
+    private datechooser.beans.DateChooserCombo calendarioRecep2;
+    private datechooser.beans.DateChooserCombo calendarioRecep3;
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumMuestra;
     private javax.swing.JCheckBox ckProductor;
@@ -1047,25 +1688,62 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JComboBox cmbProductor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1074,48 +1752,156 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelGDaniados;
+    private javax.swing.JLabel labelGDaniados1;
+    private javax.swing.JLabel labelGDaniados2;
+    private javax.swing.JLabel labelGDaniados3;
+    private javax.swing.JLabel labelGQuebrados;
+    private javax.swing.JLabel labelGQuebrados1;
+    private javax.swing.JLabel labelGQuebrados2;
+    private javax.swing.JLabel labelGQuebrados3;
+    private javax.swing.JLabel labelGranosV;
+    private javax.swing.JLabel labelGranosV1;
+    private javax.swing.JLabel labelGranosV2;
+    private javax.swing.JLabel labelGranosV3;
     private javax.swing.JLabel labelHumedad;
-    private javax.swing.JLabel labelImpurezas;
+    private javax.swing.JLabel labelHumedad1;
+    private javax.swing.JLabel labelHumedad2;
+    private javax.swing.JLabel labelHumedad3;
+    private javax.swing.JLabel labelMatExt;
+    private javax.swing.JLabel labelMatExt1;
+    private javax.swing.JLabel labelMatExt2;
+    private javax.swing.JLabel labelMatExt3;
     private javax.swing.JLabel labelPesoH;
+    private javax.swing.JLabel labelPesoH1;
+    private javax.swing.JLabel labelPesoH2;
+    private javax.swing.JLabel labelPesoH3;
     private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblMuestras;
     private javax.swing.JTextField txtCereal;
     private javax.swing.JTextField txtCerealMuestra;
+    private javax.swing.JTextField txtCerealMuestra1;
+    private javax.swing.JTextField txtCerealMuestra2;
+    private javax.swing.JTextField txtCerealMuestra3;
     private javax.swing.JTextField txtDomicilioLab;
     private javax.swing.JTextField txtEnviadoPor;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtEstablecimiento;
     private javax.swing.JTextField txtFEnvio;
+    private javax.swing.JTextField txtFEnvio1;
+    private javax.swing.JTextField txtFEnvio2;
+    private javax.swing.JTextField txtFEnvio3;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFechaEnvio;
+    private javax.swing.JTextField txtGDaniados1;
+    private javax.swing.JTextField txtGDaniados2;
+    private javax.swing.JTextField txtGDaniados3;
+    private javax.swing.JTextField txtGDaniadosMaizL;
+    private javax.swing.JTextField txtGDaniadosMaizN;
+    private javax.swing.JTextField txtGDaniadosSojaL;
+    private javax.swing.JTextField txtGDaniadosSojaN;
+    private javax.swing.JTextField txtGDaniadosTrigoL;
+    private javax.swing.JTextField txtGDaniadosTrigoN;
+    private javax.swing.JTextField txtGQuebrados1;
+    private javax.swing.JTextField txtGQuebrados2;
+    private javax.swing.JTextField txtGQuebrados3;
+    private javax.swing.JTextField txtGQuebradosMaizL;
+    private javax.swing.JTextField txtGQuebradosMaizN;
+    private javax.swing.JTextField txtGQuebradosSojaL;
+    private javax.swing.JTextField txtGQuebradosSojaN;
+    private javax.swing.JTextField txtGQuebradosTrigoL;
+    private javax.swing.JTextField txtGQuebradosTrigoN;
+    private javax.swing.JTextField txtGranosVerdesL;
+    private javax.swing.JTextField txtGranosVerdesN;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtHumDesde;
-    private javax.swing.JTextField txtHumHasta;
-    private javax.swing.JTextField txtHumedadLab;
+    private javax.swing.JTextField txtHumedadLab1;
+    private javax.swing.JTextField txtHumedadLab2;
+    private javax.swing.JTextField txtHumedadLab3;
+    private javax.swing.JTextField txtHumedadMaiz1;
+    private javax.swing.JTextField txtHumedadMaiz2;
+    private javax.swing.JTextField txtHumedadMaiz3;
+    private javax.swing.JTextField txtHumedadMaizL;
+    private javax.swing.JTextField txtHumedadMaizN;
     private javax.swing.JTextField txtHumedadMensis;
-    private javax.swing.JTextField txtImpDesde;
-    private javax.swing.JTextField txtImpHasta;
-    private javax.swing.JTextField txtImpurezasLab;
-    private javax.swing.JTextField txtImpurezasMensis;
+    private javax.swing.JTextField txtHumedadMensis1;
+    private javax.swing.JTextField txtHumedadMensis2;
+    private javax.swing.JTextField txtHumedadMensis3;
+    private javax.swing.JTextField txtHumedadSoja1;
+    private javax.swing.JTextField txtHumedadSoja2;
+    private javax.swing.JTextField txtHumedadSoja3;
+    private javax.swing.JTextField txtHumedadSojaL;
+    private javax.swing.JTextField txtHumedadSojaN;
+    private javax.swing.JTextField txtHumedadTrigo1;
+    private javax.swing.JTextField txtHumedadTrigo2;
+    private javax.swing.JTextField txtHumedadTrigo3;
+    private javax.swing.JTextField txtHumedadTrigoL;
+    private javax.swing.JTextField txtHumedadTrigoN;
+    private javax.swing.JTextField txtImpurezasLab1;
+    private javax.swing.JTextField txtImpurezasLab2;
+    private javax.swing.JTextField txtImpurezasLab3;
+    private javax.swing.JTextField txtImpurezasMensis1;
+    private javax.swing.JTextField txtImpurezasMensis2;
+    private javax.swing.JTextField txtImpurezasMensis3;
     private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txtLocalidadLab;
+    private javax.swing.JTextField txtMatExtMaiz1;
+    private javax.swing.JTextField txtMatExtMaiz2;
+    private javax.swing.JTextField txtMatExtMaiz3;
+    private javax.swing.JTextField txtMatExtMaizL;
+    private javax.swing.JTextField txtMatExtMaizN;
+    private javax.swing.JTextField txtMatExtMensis;
+    private javax.swing.JTextField txtMatExtSoja1;
+    private javax.swing.JTextField txtMatExtSoja2;
+    private javax.swing.JTextField txtMatExtSoja3;
+    private javax.swing.JTextField txtMatExtSojaL;
+    private javax.swing.JTextField txtMatExtSojaN;
+    private javax.swing.JTextField txtMatExtTrigo1;
+    private javax.swing.JTextField txtMatExtTrigo2;
+    private javax.swing.JTextField txtMatExtTrigo3;
+    private javax.swing.JTextField txtMatExtTrigoL;
+    private javax.swing.JTextField txtMatExtTrigoN;
     private javax.swing.JTextField txtMuestra;
     private javax.swing.JTextField txtMuestraLab;
+    private javax.swing.JTextField txtMuestraLab1;
+    private javax.swing.JTextField txtMuestraLab2;
+    private javax.swing.JTextField txtMuestraLab3;
     private javax.swing.JTextField txtNumMuestra;
-    private javax.swing.JTextField txtPesoDesde;
-    private javax.swing.JTextField txtPesoHasta;
-    private javax.swing.JTextField txtPesoLab;
-    private javax.swing.JTextField txtPesoMensis;
+    private javax.swing.JTextField txtPHect1;
+    private javax.swing.JTextField txtPHect2;
+    private javax.swing.JTextField txtPHect3;
+    private javax.swing.JTextField txtPHectMaizL;
+    private javax.swing.JTextField txtPHectMaizN;
+    private javax.swing.JTextField txtPHectTrigoL;
+    private javax.swing.JTextField txtPHectTrigoN;
+    private javax.swing.JTextField txtPesoLab1;
+    private javax.swing.JTextField txtPesoLab2;
+    private javax.swing.JTextField txtPesoLab3;
+    private javax.swing.JTextField txtPesoMensis1;
+    private javax.swing.JTextField txtPesoMensis2;
+    private javax.swing.JTextField txtPesoMensis3;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProvinciaLab;
     private javax.swing.JTextField txtTelefonoLab;
