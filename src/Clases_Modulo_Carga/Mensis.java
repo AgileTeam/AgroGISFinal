@@ -18,7 +18,8 @@ private int numeroMuestra;
 private String cereal;
 private String pesoH;
 private String humedad;
-private String impurezas;
+private String materiasExt;
+
 
     /**
      * @return the idMensis
@@ -91,17 +92,18 @@ private String impurezas;
     }
 
     /**
-     * @return the impurezas
+     * @return the materiasExt
      */
-    public String getImpurezas() {
-        return impurezas;
+    public String getMateriasExt() {
+        return materiasExt;
     }
 
     /**
-     * @param impurezas the impurezas to set
+     * @param materiasExt the materiasExt to set
      */
-    public void setImpurezas(String impurezas) {
-        this.impurezas = impurezas;
+    public void setMateriasExt(String materiasExt) {
+        this.materiasExt = materiasExt;
     }
+   
     
 }

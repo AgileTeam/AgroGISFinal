@@ -30,6 +30,7 @@ public class MuestraTomada {
     private String fechaEnvio;
     private int estado;
     private String responsableEnvio;
+    private String resultado;
 
     /**
      * @return the numeroMuestra
@@ -127,6 +128,20 @@ public class MuestraTomada {
      */
     public void setResponsableEnvio(String responsableEnvio) {
         this.responsableEnvio = responsableEnvio;
+    }
+
+    /**
+     * @return the resultado
+     */
+    public String getResultado() {
+        return resultado;
+    }
+
+    /**
+     * @param resultado the resultado to set
+     */
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
    
 
