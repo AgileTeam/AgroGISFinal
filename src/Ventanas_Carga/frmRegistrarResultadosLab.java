@@ -257,14 +257,14 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nº Muestra", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel12.setLayout(null);
         jPanel12.add(txtNumMuestra);
-        txtNumMuestra.setBounds(90, 40, 60, 20);
+        txtNumMuestra.setBounds(100, 40, 80, 20);
 
         cmbNroMuestra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">=", "<=", "=" }));
         jPanel12.add(cmbNroMuestra);
-        cmbNroMuestra.setBounds(20, 40, 60, 20);
+        cmbNroMuestra.setBounds(10, 40, 80, 20);
 
         jPanel5.add(jPanel12);
-        jPanel12.setBounds(340, 30, 160, 90);
+        jPanel12.setBounds(340, 30, 200, 90);
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel13.setLayout(null);
@@ -273,7 +273,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         cmbProductor.setBounds(20, 40, 200, 20);
 
         jPanel5.add(jPanel13);
-        jPanel13.setBounds(520, 30, 240, 90);
+        jPanel13.setBounds(550, 30, 250, 90);
 
         btnBuscarViaje.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
@@ -284,7 +284,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             }
         });
         jPanel5.add(btnBuscarViaje);
-        btnBuscarViaje.setBounds(390, 130, 100, 30);
+        btnBuscarViaje.setBounds(380, 130, 100, 30);
 
         btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
@@ -552,11 +552,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -643,12 +643,12 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addComponent(btnNuevo)
+                .addGap(286, 286, 286)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -663,7 +663,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
