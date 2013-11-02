@@ -36,6 +36,9 @@ public class gestorRegistrarResultado extends GestorHibernate {
                bandera=1;
            }
        }
+       if(d.getEstado() != 1){
+           bandera = 1;
+       }
        return bandera;
    }
     

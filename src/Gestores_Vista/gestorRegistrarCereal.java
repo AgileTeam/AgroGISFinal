@@ -46,8 +46,6 @@ public class gestorRegistrarCereal extends GestorHibernate {
      for(int i=0; i<tabla.getRowCount(); i++){
      CaracteristicasPorTipoDeCereal caracteristicas = new CaracteristicasPorTipoDeCereal();
      caracteristicas.setCaracteristicas((CaracteristicasCereal)modeloTabla.getValueAt(i,0));
-     caracteristicas.setValorDesde((Double.parseDouble(modeloTabla.getValueAt(i,1).toString())));
-     caracteristicas.setValorHasta((Double.parseDouble(modeloTabla.getValueAt(i,2).toString())));
      caracteristicas.setTipoCereal(tipo);
      this.guardarObjeto(caracteristicas);
      }

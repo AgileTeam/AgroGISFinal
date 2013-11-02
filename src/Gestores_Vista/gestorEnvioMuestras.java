@@ -60,6 +60,9 @@ public class gestorEnvioMuestras extends GestorHibernate{
                bandera=1;
            }
        }
+       if(d.getEstado()!= 0){
+           bandera = 1;
+       }
        return bandera;
    }
        

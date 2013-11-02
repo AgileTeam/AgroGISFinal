@@ -1640,7 +1640,9 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
                     if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        m.setEstado(2);
                         car1.setMuestra(m);
+                        gestorH.actualizarObjeto(m);
                     }
                 }
                 Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
