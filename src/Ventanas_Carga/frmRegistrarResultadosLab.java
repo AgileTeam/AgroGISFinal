@@ -47,11 +47,38 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
  
         
         txtHumedadSojaN.setEnabled(false);
-        txtPesoHasta.setEnabled(false);
         txtPHectTrigoN.setEnabled(false);
-        txtImpHasta.setEnabled(false);
         txtMatExtTrigoN.setEnabled(false);
-        txtHumHasta.setEnabled(false);
+        txtGDaniadosTrigoN.setEnabled(false);
+        txtGDaniadosTrigoN.setText("1.0");
+        txtGDaniadosMaizN.setEnabled(false);
+        txtGDaniadosMaizN.setText("5.33");
+        txtGDaniadosSojaN.setEnabled(false);
+        txtGDaniadosSojaN.setText("5.0");
+        txtGQuebradosMaizN.setEnabled(false);
+        txtGQuebradosMaizN.setText("3.33");
+        txtGQuebradosSojaN.setEnabled(false);
+        txtGQuebradosSojaN.setText("25.0");
+        txtGQuebradosTrigoN.setEnabled(false);
+        txtGQuebradosTrigoN.setText("1.23");
+        txtHumedadMaizN.setEnabled(false);
+        txtHumedadMaizN.setText("14.5");
+        txtHumedadSojaN.setEnabled(false);
+        txtHumedadSojaN.setText("13.5");
+        txtHumedadTrigoN.setEnabled(false);
+        txtHumedadTrigoN.setText("14.0");
+        txtMatExtMaizN.setEnabled(false);
+        txtMatExtMaizN.setText("1.50");
+        txtMatExtSojaN.setEnabled(false);
+        txtMatExtSojaN.setText("2.0");
+        txtMatExtTrigoN.setEnabled(false);
+        txtMatExtTrigoN.setText("0.83");
+        txtGranosVerdesN.setEnabled(false);
+        txtGranosVerdesN.setText("7.5");
+        txtPHectMaizN.setEnabled(false);
+        txtPHectMaizN.setText("72.0");
+        txtPHectTrigoN.setEnabled(false);
+        txtPHectTrigoN.setText("76.0");
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
@@ -305,26 +332,16 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtGQuebradosTrigoN = new javax.swing.JTextField();
         txtGranosVerdesN = new javax.swing.JTextField();
         txtPHectMaizN = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelPorcentaje = new javax.swing.JLabel();
+        labelPorcentaje2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtHumedadTrigoL = new javax.swing.JTextField();
-        txtHumedadMaizL = new javax.swing.JTextField();
-        txtHumedadSojaL = new javax.swing.JTextField();
-        txtMatExtTrigoL = new javax.swing.JTextField();
-        txtMatExtSojaL = new javax.swing.JTextField();
-        txtMatExtMaizL = new javax.swing.JTextField();
-        txtGDaniadosTrigoL = new javax.swing.JTextField();
-        txtGDaniadosSojaL = new javax.swing.JTextField();
-        txtGDaniadosMaizL = new javax.swing.JTextField();
-        txtGQuebradosTrigoL = new javax.swing.JTextField();
-        txtGQuebradosMaizL = new javax.swing.JTextField();
-        txtGQuebradosSojaL = new javax.swing.JTextField();
-        txtGranosVerdesL = new javax.swing.JTextField();
-        txtPHectMaizL = new javax.swing.JTextField();
-        txtPHectTrigoL = new javax.swing.JTextField();
+        txtHumedadLab = new javax.swing.JTextField();
+        txtMatExtLab = new javax.swing.JTextField();
+        txtGDaniadosLab = new javax.swing.JTextField();
+        txtGQuebradosLab = new javax.swing.JTextField();
+        txtPHectLab = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -336,10 +353,11 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtResultadoMuestra = new javax.swing.JTextField();
+        btnResultado = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -1075,15 +1093,15 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jPanel6.add(txtPHectMaizN);
         txtPHectMaizN.setBounds(280, 280, 70, 20);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("%");
-        jPanel6.add(jLabel3);
-        jLabel3.setBounds(350, 280, 40, 20);
+        labelPorcentaje.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPorcentaje.setText("%");
+        jPanel6.add(labelPorcentaje);
+        labelPorcentaje.setBounds(350, 280, 40, 20);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("%");
-        jPanel6.add(jLabel4);
-        jLabel4.setBounds(520, 280, 40, 20);
+        labelPorcentaje2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelPorcentaje2.setText("%");
+        jPanel6.add(labelPorcentaje2);
+        labelPorcentaje2.setBounds(520, 280, 40, 20);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("%");
@@ -1099,36 +1117,16 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jLabel12.setText("%");
         jPanel6.add(jLabel12);
         jLabel12.setBounds(350, 250, 40, 20);
-        jPanel6.add(txtHumedadTrigoL);
-        txtHumedadTrigoL.setBounds(450, 160, 70, 20);
-        jPanel6.add(txtHumedadMaizL);
-        txtHumedadMaizL.setBounds(450, 160, 70, 20);
-        jPanel6.add(txtHumedadSojaL);
-        txtHumedadSojaL.setBounds(450, 160, 70, 20);
-        jPanel6.add(txtMatExtTrigoL);
-        txtMatExtTrigoL.setBounds(450, 190, 70, 20);
-        jPanel6.add(txtMatExtSojaL);
-        txtMatExtSojaL.setBounds(450, 190, 70, 20);
-        jPanel6.add(txtMatExtMaizL);
-        txtMatExtMaizL.setBounds(450, 190, 70, 20);
-        jPanel6.add(txtGDaniadosTrigoL);
-        txtGDaniadosTrigoL.setBounds(450, 220, 70, 20);
-        jPanel6.add(txtGDaniadosSojaL);
-        txtGDaniadosSojaL.setBounds(450, 220, 70, 20);
-        jPanel6.add(txtGDaniadosMaizL);
-        txtGDaniadosMaizL.setBounds(450, 220, 70, 20);
-        jPanel6.add(txtGQuebradosTrigoL);
-        txtGQuebradosTrigoL.setBounds(450, 250, 70, 20);
-        jPanel6.add(txtGQuebradosMaizL);
-        txtGQuebradosMaizL.setBounds(450, 250, 70, 20);
-        jPanel6.add(txtGQuebradosSojaL);
-        txtGQuebradosSojaL.setBounds(450, 250, 70, 20);
-        jPanel6.add(txtGranosVerdesL);
-        txtGranosVerdesL.setBounds(450, 280, 70, 20);
-        jPanel6.add(txtPHectMaizL);
-        txtPHectMaizL.setBounds(450, 280, 70, 20);
-        jPanel6.add(txtPHectTrigoL);
-        txtPHectTrigoL.setBounds(450, 280, 70, 20);
+        jPanel6.add(txtHumedadLab);
+        txtHumedadLab.setBounds(450, 160, 70, 20);
+        jPanel6.add(txtMatExtLab);
+        txtMatExtLab.setBounds(450, 190, 70, 20);
+        jPanel6.add(txtGDaniadosLab);
+        txtGDaniadosLab.setBounds(450, 220, 70, 20);
+        jPanel6.add(txtGQuebradosLab);
+        txtGQuebradosLab.setBounds(450, 250, 70, 20);
+        jPanel6.add(txtPHectLab);
+        txtPHectLab.setBounds(450, 280, 70, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("%");
@@ -1180,9 +1178,19 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jLabel61.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel61.setText("Resultado Análisis: ");
         jPanel6.add(jLabel61);
-        jLabel61.setBounds(290, 320, 150, 20);
-        jPanel6.add(jTextField1);
-        jTextField1.setBounds(400, 320, 110, 20);
+        jLabel61.setBounds(80, 310, 150, 20);
+        jPanel6.add(txtResultadoMuestra);
+        txtResultadoMuestra.setBounds(280, 310, 110, 20);
+
+        btnResultado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calculadora2.png"))); // NOI18N
+        btnResultado.setText("Resultado");
+        btnResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResultadoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnResultado);
+        btnResultado.setBounds(720, 230, 110, 30);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1191,23 +1199,52 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 81, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(4, 4, 4)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Datos Análisis", jPanel3);
+
+        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1230,6 +1267,14 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1245,36 +1290,14 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                             .addComponent(labelusuario)))
                     .addComponent(jLabel48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        btnNuevo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icononuevo.PNG"))); // NOI18N
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-
-        btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
-        btnGuardar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1283,25 +1306,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(288, 288, 288)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1549,18 +1557,74 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
               txtTelefonoLab.setText(muestra.getLaboratorio().getTelefono().toString());
               txtMuestraLab.setText(String.valueOf(muestra.getNumeroMuestra()));
               txtFEnvio.setText(muestra.getFechaEnvio());
+              txtCerealMuestra.setText(muestra.getDescarga().getCereal().toString());
               Iterator ite2 = gestorH.listarClase(Mensis.class).iterator();
               while(ite2.hasNext()){
                   Mensis m = (Mensis) ite2.next();
                   if(m.getNumeroMuestra() == muestra.getNumeroMuestra()){
-                      txtMatExtMensis.setText(m.getHumedad());
-                      txtGDaniadosMensis.setText(m.getImpurezas());
-                      txtHumedadMensis.setText(m.getPesoH());
-                      txtCerealMuestra.setText(m.getCereal());
+                      txtMatExtMensis.setText(m.getMateriasExt());
+                      txtHumedadMensis.setText(m.getHumedad());
                   
                   }
               }
           }
+    }
+    if(txtCerealMuestra.getText().equalsIgnoreCase("Maiz")){
+        labelPesoH.setVisible(true);
+        labelGranosV.setVisible(false);
+        txtGDaniadosTrigoN.setVisible(false);
+        txtGDaniadosMaizN.setVisible(true);
+        txtGDaniadosSojaN.setVisible(false);
+        txtGQuebradosMaizN.setVisible(true);
+        txtGQuebradosSojaN.setVisible(false);
+        txtGQuebradosTrigoN.setVisible(false);
+        txtHumedadMaizN.setVisible(true);
+        txtHumedadSojaN.setVisible(false);
+        txtHumedadTrigoN.setVisible(false);
+        txtMatExtMaizN.setVisible(true);
+        txtMatExtSojaN.setVisible(false);
+        txtMatExtTrigoN.setVisible(false);
+        txtGranosVerdesN.setVisible(false);
+        txtPHectMaizN.setVisible(true);
+        txtPHectTrigoN.setVisible(false);
+    }
+     if(txtCerealMuestra.getText().equalsIgnoreCase("Soja")){
+        labelPesoH.setVisible(false);
+        labelGranosV.setVisible(true);
+        txtGDaniadosTrigoN.setVisible(false);
+        txtGDaniadosMaizN.setVisible(false);
+        txtGDaniadosSojaN.setVisible(true);
+        txtGQuebradosMaizN.setVisible(false);
+        txtGQuebradosSojaN.setVisible(true);
+        txtGQuebradosTrigoN.setVisible(false);
+        txtHumedadMaizN.setVisible(false);
+        txtHumedadSojaN.setVisible(true);
+        txtHumedadTrigoN.setVisible(false);
+        txtMatExtMaizN.setVisible(false);
+        txtMatExtSojaN.setVisible(true);
+        txtMatExtTrigoN.setVisible(false);
+        txtGranosVerdesN.setVisible(true);
+        txtPHectMaizN.setVisible(false);
+        txtPHectTrigoN.setVisible(false);
+    }
+      if(txtCerealMuestra.getText().equalsIgnoreCase("Trigo")){
+        labelPesoH.setVisible(true);
+        labelGranosV.setVisible(false);
+        txtGDaniadosTrigoN.setVisible(true);
+        txtGDaniadosMaizN.setVisible(false);
+        txtGDaniadosSojaN.setVisible(false);
+        txtGQuebradosMaizN.setVisible(false);
+        txtGQuebradosSojaN.setVisible(false);
+        txtGQuebradosTrigoN.setVisible(true);
+        txtHumedadMaizN.setVisible(false);
+        txtHumedadSojaN.setVisible(false);
+        txtHumedadTrigoN.setVisible(true);
+        txtMatExtMaizN.setVisible(false);
+        txtMatExtSojaN.setVisible(false);
+        txtMatExtTrigoN.setVisible(true);
+        txtGranosVerdesN.setVisible(false);
+        txtPHectMaizN.setVisible(false);
+        txtPHectTrigoN.setVisible(true);
     }
     }//GEN-LAST:event_btnAceptarViajeActionPerformed
 
@@ -1571,7 +1635,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelPesoH.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtPesoLab.getText()));
+//                car1.setValor(Double.parseDouble(txtPesoLab.getText()));
                 Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
@@ -1611,7 +1675,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGQuebrados.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtImpurezasLab.getText()));
+//                car1.setValor(Double.parseDouble(txtImpurezasLab.getText()));
                 Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
@@ -1652,9 +1716,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtLocalidadLab.setText("");
         txtFEnvio.setText("");
         txtHumedadLab.setText("");
-        txtImpurezasLab.setText("");
-        txtImpurezasLab.setText("");
-         for(int i=0; i<modeloT.getRowCount(); i++){
+        for(int i=0; i<modeloT.getRowCount(); i++){
             modeloT.removeRow(i);
             tblMuestras.setModel(modeloT);
         }
@@ -1667,6 +1729,209 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
+     if (txtCerealMuestra.getText().equalsIgnoreCase("Trigo")){
+     Double peso = Double.parseDouble(txtPHectLab.getText());
+     int resPH = 0;
+     if(peso > 0 && peso <= 73){
+         resPH=3;
+     }
+     if(peso >73  && peso <= 76){
+         resPH=2;
+     }
+     if(peso > 76 && peso <= 100){
+         resPH=1;
+     }
+     Double materia = Double.parseDouble(txtMatExtLab.getText());
+     int resMat = 0;
+     if(materia > 0 && materia <= 0.20){
+         resMat=1;
+     }
+     if(materia >0.20  && materia <= 0.80){
+         resMat=2;
+     }
+     if(materia > 0.80 && materia <= 1.5){
+         resMat=3;
+     }
+     Double grano = Double.parseDouble(txtGDaniadosLab.getText());
+     int resGD = 0;
+     if(grano > 0 && grano <= 0.50){
+         resGD = 1;
+     }
+     if(grano > 0.50 && grano <= 1.0){
+         resGD = 2;
+     }
+     if(grano > 1.0 && grano <= 1.50){
+         resGD = 3;
+     }
+     
+     Double granoQ = Double.parseDouble(txtGQuebradosLab.getText());
+     int resGQ = 0;
+     if(granoQ > 0 && granoQ <= 0.50){
+         resGQ = 1;
+     }
+     if(granoQ > 0.50 && granoQ <= 1.20){
+         resGQ = 2;
+     }
+     if(granoQ > 1.20 && granoQ <= 2.0){
+         resGQ = 3;
+     }
+     
+     Double humedad = Double.parseDouble(txtHumedadLab.getText());
+     int hum = 0;
+      if(humedad > 14){
+         hum = 3;
+     } else{
+          hum = 1;
+      }
+      
+      Double total = ((resPH + resGQ + hum + resGD + resMat) / 5.0 );
+      if( total >0 && total <=1.5){
+          txtResultadoMuestra.setText("Grado 1");
+      }
+       if( total > 1.50 && total <= 2.5){
+          txtResultadoMuestra.setText("Grado 2");
+      }
+        if( total >2.5 && total <=4){
+          txtResultadoMuestra.setText("Grado 3");
+      }
+     }
+     
+     if (txtCerealMuestra.getText().equalsIgnoreCase("Maiz")){
+     Double peso = Double.parseDouble(txtPHectLab.getText());
+     int resPH = 0;
+     if(peso > 0 && peso <= 69){
+         resPH=3;
+     }
+     if(peso >69  && peso <= 72){
+         resPH=2;
+     }
+     if(peso > 72 && peso <= 75){
+         resPH=1;
+     }
+     Double materia = Double.parseDouble(txtMatExtLab.getText());
+     int resMat = 0;
+     if(materia > 0 && materia <= 1.0){
+         resMat=1;
+     }
+     if(materia >1.0  && materia <= 1.50){
+         resMat=2;
+     }
+     if(materia > 1.50 && materia <= 2){
+         resMat=3;
+     }
+     Double grano = Double.parseDouble(txtGDaniadosLab.getText());
+     int resGD = 0;
+     if(grano > 0 && grano <= 3.0){
+         resGD = 1;
+     }
+     if(grano > 3.0 && grano <= 5.0){
+         resGD = 2;
+     }
+     if(grano > 5.0 && grano <= 8.0){
+         resGD = 3;
+     }
+     
+     Double granoQ = Double.parseDouble(txtGQuebradosLab.getText());
+     int resGQ = 0;
+     if(granoQ > 0 && granoQ <= 2.0){
+         resGQ = 1;
+     }
+     if(granoQ > 2.0 && granoQ <= 3.0){
+         resGQ = 2;
+     }
+     if(granoQ > 3.0 && granoQ <= 5.0){
+         resGQ = 3;
+     }
+     
+     Double humedad = Double.parseDouble(txtHumedadLab.getText());
+     int hum = 0;
+      if(humedad > 14.5){
+         hum = 3;
+     } else{
+          hum = 1;
+      }
+      
+      Double total = ((resPH + resGQ + hum + resGD + resMat) / 5.0 );
+      if( total >0 && total <=1.5){
+          txtResultadoMuestra.setText("Grado 1");
+      }
+       if( total > 1.50 && total <= 2.5){
+          txtResultadoMuestra.setText("Grado 2");
+      }
+        if( total >2.5 && total <=4){
+          txtResultadoMuestra.setText("Grado 3");
+      }
+     }
+     
+     if (txtCerealMuestra.getText().equalsIgnoreCase("Soja")){
+     Double peso = Double.parseDouble(txtPHectLab.getText());
+     int resPH = 0;
+     if(peso > 0 && peso <= 5){
+         resPH=1;
+     }
+     if(peso >5  && peso <= 10){
+         resPH=2;
+     }
+     if(peso > 10 && peso <= 15){
+         resPH=3;
+     }
+     Double materia = Double.parseDouble(txtMatExtLab.getText());
+     int resMat = 0;
+     if(materia > 0 && materia <= 1.0){
+         resMat=1;
+     }
+     if(materia >1.0  && materia <= 3.0){
+         resMat=2;
+     }
+     if(materia > 3.0 && materia <= 5.0){
+         resMat=3;
+     }
+     Double grano = Double.parseDouble(txtGDaniadosLab.getText());
+     int resGD = 0;
+     if(grano > 0 && grano <= 5.0){
+         resGD = 1;
+     }
+     if(grano > 5.0 && grano <= 5.50){
+         resGD = 2;
+     }
+     if(grano > 5.50 && grano <= 7.0){
+         resGD = 3;
+     }
+     
+     Double granoQ = Double.parseDouble(txtGQuebradosLab.getText());
+     int resGQ = 0;
+     if(granoQ > 0 && granoQ <= 20.0){
+         resGQ = 1;
+     }
+     if(granoQ > 20.0 && granoQ <= 30.0){
+         resGQ = 2;
+     }
+     if(granoQ > 30.0 && granoQ <= 50.0){
+         resGQ = 3;
+     }
+     
+     Double humedad = Double.parseDouble(txtHumedadLab.getText());
+     int hum = 0;
+      if(humedad > 13.5){
+         hum = 3;
+     } else{
+          hum = 1;
+      }
+      
+      Double total = ((resPH + resGQ + hum + resGD + resMat) / 5.0 );
+      if( total >0 && total <=1.5){
+          txtResultadoMuestra.setText("Grado 1");
+      }
+       if( total > 1.50 && total <= 2.5){
+          txtResultadoMuestra.setText("Grado 2");
+      }
+        if( total >2.5 && total <=4){
+          txtResultadoMuestra.setText("Grado 3");
+      }
+     }
+    }//GEN-LAST:event_btnResultadoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;
     private javax.swing.JButton btnAceptarTodos1;
@@ -1674,6 +1939,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JButton btnBuscarViaje;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnResultado;
     private javax.swing.JButton btnSalir;
     private datechooser.beans.DateChooserCombo calendarioDViaje;
     private datechooser.beans.DateChooserCombo calendarioHViaje;
@@ -1708,7 +1974,6 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1719,7 +1984,6 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1774,7 +2038,6 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelGDaniados;
     private javax.swing.JLabel labelGDaniados1;
     private javax.swing.JLabel labelGDaniados2;
@@ -1799,6 +2062,8 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JLabel labelPesoH1;
     private javax.swing.JLabel labelPesoH2;
     private javax.swing.JLabel labelPesoH3;
+    private javax.swing.JLabel labelPorcentaje;
+    private javax.swing.JLabel labelPorcentaje2;
     private javax.swing.JLabel labelusuario;
     private javax.swing.JTable tblMuestras;
     private javax.swing.JTextField txtCereal;
@@ -1819,31 +2084,26 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtGDaniados1;
     private javax.swing.JTextField txtGDaniados2;
     private javax.swing.JTextField txtGDaniados3;
-    private javax.swing.JTextField txtGDaniadosMaizL;
+    private javax.swing.JTextField txtGDaniadosLab;
     private javax.swing.JTextField txtGDaniadosMaizN;
-    private javax.swing.JTextField txtGDaniadosSojaL;
     private javax.swing.JTextField txtGDaniadosSojaN;
-    private javax.swing.JTextField txtGDaniadosTrigoL;
     private javax.swing.JTextField txtGDaniadosTrigoN;
     private javax.swing.JTextField txtGQuebrados1;
     private javax.swing.JTextField txtGQuebrados2;
     private javax.swing.JTextField txtGQuebrados3;
-    private javax.swing.JTextField txtGQuebradosMaizL;
+    private javax.swing.JTextField txtGQuebradosLab;
     private javax.swing.JTextField txtGQuebradosMaizN;
-    private javax.swing.JTextField txtGQuebradosSojaL;
     private javax.swing.JTextField txtGQuebradosSojaN;
-    private javax.swing.JTextField txtGQuebradosTrigoL;
     private javax.swing.JTextField txtGQuebradosTrigoN;
-    private javax.swing.JTextField txtGranosVerdesL;
     private javax.swing.JTextField txtGranosVerdesN;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtHumedadLab;
     private javax.swing.JTextField txtHumedadLab1;
     private javax.swing.JTextField txtHumedadLab2;
     private javax.swing.JTextField txtHumedadLab3;
     private javax.swing.JTextField txtHumedadMaiz1;
     private javax.swing.JTextField txtHumedadMaiz2;
     private javax.swing.JTextField txtHumedadMaiz3;
-    private javax.swing.JTextField txtHumedadMaizL;
     private javax.swing.JTextField txtHumedadMaizN;
     private javax.swing.JTextField txtHumedadMensis;
     private javax.swing.JTextField txtHumedadMensis1;
@@ -1852,12 +2112,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtHumedadSoja1;
     private javax.swing.JTextField txtHumedadSoja2;
     private javax.swing.JTextField txtHumedadSoja3;
-    private javax.swing.JTextField txtHumedadSojaL;
     private javax.swing.JTextField txtHumedadSojaN;
     private javax.swing.JTextField txtHumedadTrigo1;
     private javax.swing.JTextField txtHumedadTrigo2;
     private javax.swing.JTextField txtHumedadTrigo3;
-    private javax.swing.JTextField txtHumedadTrigoL;
     private javax.swing.JTextField txtHumedadTrigoN;
     private javax.swing.JTextField txtImpurezasLab1;
     private javax.swing.JTextField txtImpurezasLab2;
@@ -1867,21 +2125,19 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtImpurezasMensis3;
     private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txtLocalidadLab;
+    private javax.swing.JTextField txtMatExtLab;
     private javax.swing.JTextField txtMatExtMaiz1;
     private javax.swing.JTextField txtMatExtMaiz2;
     private javax.swing.JTextField txtMatExtMaiz3;
-    private javax.swing.JTextField txtMatExtMaizL;
     private javax.swing.JTextField txtMatExtMaizN;
     private javax.swing.JTextField txtMatExtMensis;
     private javax.swing.JTextField txtMatExtSoja1;
     private javax.swing.JTextField txtMatExtSoja2;
     private javax.swing.JTextField txtMatExtSoja3;
-    private javax.swing.JTextField txtMatExtSojaL;
     private javax.swing.JTextField txtMatExtSojaN;
     private javax.swing.JTextField txtMatExtTrigo1;
     private javax.swing.JTextField txtMatExtTrigo2;
     private javax.swing.JTextField txtMatExtTrigo3;
-    private javax.swing.JTextField txtMatExtTrigoL;
     private javax.swing.JTextField txtMatExtTrigoN;
     private javax.swing.JTextField txtMuestra;
     private javax.swing.JTextField txtMuestraLab;
@@ -1892,9 +2148,8 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtPHect1;
     private javax.swing.JTextField txtPHect2;
     private javax.swing.JTextField txtPHect3;
-    private javax.swing.JTextField txtPHectMaizL;
+    private javax.swing.JTextField txtPHectLab;
     private javax.swing.JTextField txtPHectMaizN;
-    private javax.swing.JTextField txtPHectTrigoL;
     private javax.swing.JTextField txtPHectTrigoN;
     private javax.swing.JTextField txtPesoLab1;
     private javax.swing.JTextField txtPesoLab2;
@@ -1904,6 +2159,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     private javax.swing.JTextField txtPesoMensis3;
     private javax.swing.JTextField txtProductor;
     private javax.swing.JTextField txtProvinciaLab;
+    private javax.swing.JTextField txtResultadoMuestra;
     private javax.swing.JTextField txtTelefonoLab;
     // End of variables declaration//GEN-END:variables
 }
