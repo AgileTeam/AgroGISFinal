@@ -16,7 +16,6 @@ private long idMensis;
 
 private int numeroMuestra;
 private String cereal;
-private String pesoH;
 private String humedad;
 private String materiasExt;
 
@@ -63,19 +62,7 @@ private String materiasExt;
         this.cereal = cereal;
     }
 
-    /**
-     * @return the pesoH
-     */
-    public String getPesoH() {
-        return pesoH;
-    }
-
-    /**
-     * @param pesoH the pesoH to set
-     */
-    public void setPesoH(String pesoH) {
-        this.pesoH = pesoH;
-    }
+    
 
     /**
      * @return the humedad
