@@ -1632,10 +1632,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         Iterator ite = gestorH.listarClase(CaracteristicasCereal.class).iterator();
         while(ite.hasNext()){
             CaracteristicasCereal caracteristicas = (CaracteristicasCereal) ite.next();
-            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelPesoH.getText())){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelHumedad.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-//                car1.setValor(Double.parseDouble(txtPesoLab.getText()));
+                car1.setValor(Double.parseDouble(txtHumedadLab.getText()));
                 Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
@@ -1654,10 +1654,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 }
                 gestorH.guardarObjeto(car1);
             }
-            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelHumedad.getText())){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelMatExt.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-                car1.setValor(Double.parseDouble(txtHumedadLab.getText()));
+                car1.setValor(Double.parseDouble(txtMatExtLab.getText()));
                 Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
@@ -1674,10 +1674,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 }
                 gestorH.guardarObjeto(car1);
             }
-            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGQuebrados.getText())){
+            if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGDaniados.getText())){
                 CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
                 car1.setCaracteristicas(caracteristicas);
-//                car1.setValor(Double.parseDouble(txtImpurezasLab.getText()));
+               car1.setValor(Double.parseDouble(txtGDaniadosLab.getText()));
                 Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
                 while(ite2.hasNext()){
                     MuestraTomada m = (MuestraTomada) ite2.next();
@@ -1694,6 +1694,70 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                 }
                 gestorH.guardarObjeto(car1);
             }
+             if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGQuebrados.getText())){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtGQuebradosLab.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
+                gestorH.guardarObjeto(car1);
+            }
+             if(labelGranosV.isVisible()==true){
+              if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelGranosV.getText())){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtGranosVerdesN.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
+                gestorH.guardarObjeto(car1);
+            }
+           }else{
+             if(caracteristicas.getNombreCaracteristica().equalsIgnoreCase(labelPesoH.getText())){
+                CaracteristicasPorTipoDeCerealPorMuestra car1 = new CaracteristicasPorTipoDeCerealPorMuestra();
+                car1.setCaracteristicas(caracteristicas);
+                car1.setValor(Double.parseDouble(txtPHectLab.getText()));
+                Iterator ite2 = gestorH.listarClase(MuestraTomada.class).iterator();
+                while(ite2.hasNext()){
+                    MuestraTomada m = (MuestraTomada) ite2.next();
+                    if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+                        car1.setMuestra(m);
+                    }
+                }
+                Iterator ite3 = gestorH.listarClase(TipoCereal.class).iterator();
+                while(ite3.hasNext()){
+                    TipoCereal t = (TipoCereal) ite3.next();
+                    if(t.getNombreCereal().equalsIgnoreCase(txtCereal.getText())){
+                        car1.setTipoCereal(t);
+                    }
+                }
+                gestorH.guardarObjeto(car1);
+            }
+             
+             }
         }
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed

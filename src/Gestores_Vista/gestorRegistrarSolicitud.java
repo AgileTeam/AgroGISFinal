@@ -142,6 +142,7 @@ public class gestorRegistrarSolicitud extends GestorHibernate {
             estab.setSolicitud(solicitud);
             estab.setHectareasATrillar(hectareas);
             this.guardarObjeto(estab);
+            JOptionPane.showMessageDialog(null,"Se genero correctamente la solicitud Nº:" + "" + solicitud.getNumeroSolicitud());
             numeroSolicitud.setText(String.valueOf(solicitud.getNumeroSolicitud()));
         }
         

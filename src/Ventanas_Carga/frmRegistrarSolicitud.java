@@ -522,6 +522,7 @@ GestorHibernate gestorH = new GestorHibernate();
          
     txtHas1.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     txtToneladas2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    
     }
     else{
         JOptionPane.showMessageDialog(null, "Ingrese un valor superior a cero");
