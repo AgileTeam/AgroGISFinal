@@ -56,7 +56,7 @@ public class gestorBitacora extends GestorHibernate {
      
       public void cargarTabla(JTable tabla, Bitacora bit){
        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-       Object fila[]={bit.getFecha(), bit.getNroComprobante(), bit.getTipoComp(), bit.getOperacion(), bit.getUsuario()};
+       Object fila[]={bit.getFecha(), bit.getNroComprobante(), bit.getOperacion(), bit.getUsuario()};
        modelo.addRow(fila);
        tabla.setModel(modelo);
       }

@@ -434,23 +434,23 @@ gestorPais gPais = new gestorPais();
     }//GEN-LAST:event_btnLotesActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-//    Establecimiento e = new Establecimiento();
-//    e.setNombreEstablecimiento(txtEstablecimiento.getText());
-//    Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
-//    while(ite1.hasNext()){
-//        Productor p = (Productor) ite1.next();
-//        if(p.getNombre().equalsIgnoreCase(labelProductor.getText())){
-//            e.setProductor(p);
-//        }
-//    }
-//    Iterator ite2 = gestorH.listarClase(Localidad.class).iterator();
-//    while(ite2.hasNext()){
-//        Localidad l = (Localidad) ite1.next();
-//        if(l.getNombreLocalidad().equalsIgnoreCase(cmbLocalidad.getSelectedItem().toString())){
-//            e.setLocalidad(l);
-//        }
-//    }   
-//    gestorH.guardarObjeto(e);
+    Establecimiento e = new Establecimiento();
+    e.setNombreEstablecimiento(txtEstablecimiento.getText());
+    Iterator ite1 = gestorH.listarClase(Productor.class).iterator();
+    while(ite1.hasNext()){
+        Productor p = (Productor) ite1.next();
+        if(p.getNombre().equalsIgnoreCase(labelProductor.getText())){
+            e.setProductor(p);
+        }
+    }
+    Iterator ite2 = gestorH.listarClase(Localidad.class).iterator();
+    while(ite2.hasNext()){
+        Localidad l = (Localidad) ite1.next();
+        if(l.getNombreLocalidad().equalsIgnoreCase(cmbLocalidad.getSelectedItem().toString())){
+            e.setLocalidad(l);
+        }
+    }   
+    gestorH.guardarObjeto(e);
     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     btnLotes.setEnabled(true);
     }//GEN-LAST:event_btnGuardarActionPerformed
