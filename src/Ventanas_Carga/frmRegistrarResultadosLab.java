@@ -1782,10 +1782,14 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         txtLocalidadLab.setText("");
         txtFEnvio.setText("");
         txtHumedadLab.setText("");
-        for(int i=0; i<modeloT.getRowCount(); i++){
-            modeloT.removeRow(i);
-            tblMuestras.setModel(modeloT);
-        }
+        txtGDaniadosLab.setText("");
+        txtGQuebradosLab.setText("");
+        txtPHectLab.setText("");
+        txtMatExtLab.setText("");
+        txtMuestraLab.setText("");
+        int fila = tblMuestras.getSelectedRow();
+        modeloT.removeRow(fila);
+        tblMuestras.setModel(modeloT);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
