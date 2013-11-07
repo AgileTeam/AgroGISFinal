@@ -66,7 +66,6 @@ gestorBitacora gestorB = new gestorBitacora();
         tblBitacora.getColumnModel().getColumn(1).setPreferredWidth(50);
         tblBitacora.getColumnModel().getColumn(2).setPreferredWidth(50);
         tblBitacora.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tblBitacora.getColumnModel().getColumn(4).setPreferredWidth(50);
         
         //centrar cabecera jtable
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblBitacora.getTableHeader().getDefaultRenderer();
