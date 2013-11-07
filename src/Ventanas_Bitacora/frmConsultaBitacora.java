@@ -642,7 +642,6 @@ gestorBitacora gestorB = new gestorBitacora();
          while(ite.hasNext()){
              Bitacora bit = (Bitacora) ite.next();
              int bandera = gestorB.buscarObjeto(tblBitacora, bit);
-             int numero = Integer.parseInt(bit.getNroComprobante());
              Date fecha2=null;
                 try {
                     fecha2 = sdfguion.parse(bit.getFecha());
@@ -652,7 +651,7 @@ gestorBitacora gestorB = new gestorBitacora();
                 }
              for (int i = 0; i < tblTipOp.getRowCount(); i++) {
                      //Comparo que el importe para traer la orden correspondiente
-                if ((bandera==0) && (bit.getOperacion() == tblTipOp.getValueAt(i, 0))) {
+                if ((bandera==0) && (bit.getOperacion().getNombreOperacion().equalsIgnoreCase(tblTipOp.getValueAt(i, 0).toString()))) {
                     //Guardo el objeto orden en la tabla
                  gestorB.cargarTabla(tblBitacora, bit);
                   } //Cierre If Carga
