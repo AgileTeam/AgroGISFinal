@@ -584,9 +584,8 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
     Productor productor = new Productor();
     Domicilio domicilio = gProductor.guardarDomicilio(cmbBarrio.getSelectedItem().toString(), txtCalle.getText(),txtDepto.getText(), txtNumero.getText(), txtPiso.getText());
     gProductor.guardarCondicionIva(cmbCondicionIva.getSelectedItem().toString(), productor);
-    productor.setApellido(txtApellido.getText());
-    productor.setNombre(txtNombres.getText());
-    productor.setNumeroDocumento(txtNombres.getText());
+    productor.setNombre(txtApellido.getText() + "" + txtNombres.getText());
+    productor.setNumeroDocumento(txtDocumento.getText());
     productor.seteMail(txtEmail.getText());
     gHibernate.guardarObjeto(productor);
     HistorialProductor h = new HistorialProductor();
@@ -601,7 +600,7 @@ public class frmRegistrarProductor extends javax.swing.JInternalFrame {
         tc.setToneladas(0.0);
         gHibernate.guardarObjeto(tc);
     }
-    
+    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
    
     }//GEN-LAST:event_btnGuardarActionPerformed
 
