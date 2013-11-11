@@ -445,7 +445,7 @@ gestorPais gPais = new gestorPais();
     }
     Iterator ite2 = gestorH.listarClase(Localidad.class).iterator();
     while(ite2.hasNext()){
-        Localidad l = (Localidad) ite1.next();
+        Localidad l = (Localidad) ite2.next();
         if(l.getNombreLocalidad().equalsIgnoreCase(cmbLocalidad.getSelectedItem().toString())){
             e.setLocalidad(l);
         }

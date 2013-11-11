@@ -387,18 +387,21 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
 
         ckFecha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckFecha.setText("Fecha Envío");
+        ckFecha.setFocusPainted(false);
         jPanel5.add(ckFecha);
-        ckFecha.setBounds(20, 40, 90, 23);
+        ckFecha.setBounds(20, 40, 90, 22);
 
         ckNumMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckNumMuestra.setText("Número Muestra");
+        ckNumMuestra.setFocusPainted(false);
         jPanel5.add(ckNumMuestra);
-        ckNumMuestra.setBounds(20, 60, 110, 23);
+        ckNumMuestra.setBounds(20, 60, 110, 22);
 
         ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckProductor.setText("Productor");
+        ckProductor.setFocusPainted(false);
         jPanel5.add(ckProductor);
-        ckProductor.setBounds(20, 80, 90, 23);
+        ckProductor.setBounds(20, 80, 90, 22);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha Envío", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -459,7 +462,7 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
             }
         });
         jPanel5.add(btnAceptarTodos1);
-        btnAceptarTodos1.setBounds(20, 110, 30, 30);
+        btnAceptarTodos1.setBounds(30, 110, 30, 30);
 
         btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
