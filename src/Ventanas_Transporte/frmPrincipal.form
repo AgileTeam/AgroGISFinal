@@ -485,20 +485,12 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="MenuConsultarCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar / Modificar"/>
+                <Property name="text" type="java.lang.String" value="Consultar"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="itemConsultarProd">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Productor"/>
-                  </Properties>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemConsultarEst">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -506,6 +498,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Establecimiento"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemConsultarEstActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

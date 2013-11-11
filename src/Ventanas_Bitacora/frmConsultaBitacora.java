@@ -132,7 +132,6 @@ gestorBitacora gestorB = new gestorBitacora();
         cmbComp = new javax.swing.JComboBox();
         btnAceptarTodos = new javax.swing.JButton();
         btnCancelarTodos = new javax.swing.JButton();
-        ckTipoComp = new javax.swing.JCheckBox();
         ckTipoOp = new javax.swing.JCheckBox();
         jPanel23 = new javax.swing.JPanel();
         cmbUsuario = new javax.swing.JComboBox();
@@ -212,7 +211,7 @@ gestorBitacora gestorB = new gestorBitacora();
         ckUsuario.setText("Usuario");
         ckUsuario.setFocusPainted(false);
         jPanel4.add(ckUsuario);
-        ckUsuario.setBounds(10, 110, 90, 22);
+        ckUsuario.setBounds(10, 90, 90, 22);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel10.setLayout(null);
@@ -253,7 +252,7 @@ gestorBitacora gestorB = new gestorBitacora();
             }
         });
         jPanel4.add(btnAceptarTodos);
-        btnAceptarTodos.setBounds(20, 150, 30, 30);
+        btnAceptarTodos.setBounds(30, 120, 30, 30);
 
         btnCancelarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         btnCancelarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -262,19 +261,13 @@ gestorBitacora gestorB = new gestorBitacora();
             }
         });
         jPanel4.add(btnCancelarTodos);
-        btnCancelarTodos.setBounds(50, 150, 30, 30);
-
-        ckTipoComp.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckTipoComp.setText("Tipo Comprobante");
-        ckTipoComp.setFocusPainted(false);
-        jPanel4.add(ckTipoComp);
-        ckTipoComp.setBounds(10, 70, 140, 22);
+        btnCancelarTodos.setBounds(60, 120, 30, 30);
 
         ckTipoOp.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         ckTipoOp.setText("Tipo Operación");
         ckTipoOp.setFocusPainted(false);
         jPanel4.add(ckTipoOp);
-        ckTipoOp.setBounds(10, 90, 140, 22);
+        ckTipoOp.setBounds(10, 70, 140, 22);
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -503,7 +496,7 @@ gestorBitacora gestorB = new gestorBitacora();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1104,7 +1097,6 @@ gestorBitacora gestorB = new gestorBitacora();
     private datechooser.beans.DateChooserCombo calendarioHBitacora;
     private javax.swing.JCheckBox ckFecha;
     private javax.swing.JCheckBox ckNumComp;
-    private javax.swing.JCheckBox ckTipoComp;
     private javax.swing.JCheckBox ckTipoOp;
     private javax.swing.JCheckBox ckUsuario;
     private javax.swing.JComboBox cmbComp;

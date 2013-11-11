@@ -158,7 +158,6 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemNuevoProductor = new javax.swing.JMenuItem();
         ItemNuevoEst = new javax.swing.JMenuItem();
         MenuConsultarCliente = new javax.swing.JMenu();
-        itemConsultarProd = new javax.swing.JMenuItem();
         itemConsultarEst = new javax.swing.JMenuItem();
         MenuViaje = new javax.swing.JMenu();
         menuNuevoViaje = new javax.swing.JMenu();
@@ -589,15 +588,16 @@ GestorHibernate gestorH = new GestorHibernate();
 
         MenuClientes.add(MenuNuevoCliente);
 
-        MenuConsultarCliente.setText("Consultar / Modificar");
+        MenuConsultarCliente.setText("Consultar");
         MenuConsultarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        itemConsultarProd.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        itemConsultarProd.setText("Productor");
-        MenuConsultarCliente.add(itemConsultarProd);
 
         itemConsultarEst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         itemConsultarEst.setText("Establecimiento");
+        itemConsultarEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConsultarEstActionPerformed(evt);
+            }
+        });
         MenuConsultarCliente.add(itemConsultarEst);
 
         MenuClientes.add(MenuConsultarCliente);
@@ -1141,6 +1141,17 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         gestorReportes.imprimir();
     }//GEN-LAST:event_MenuTransportistasActionPerformed
 
+    private void itemConsultarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultarEstActionPerformed
+            if(java.awt.Desktop.isDesktopSupported()){
+    try{
+      Desktop dk = Desktop.getDesktop();
+      dk.browse(new URI("http://localhost:800/agrogis/nuevoLote.php?tipo=NOSAVE&pag=CL"));
+    }catch(Exception e){
+     System.out.println("Error al abrir URL: "+e.getMessage());
+    }
+}
+    }//GEN-LAST:event_itemConsultarEstActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1250,7 +1261,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenu MenuViaje;
     private javax.swing.JMenuItem itemConsultarAgenda;
     private javax.swing.JMenuItem itemConsultarEst;
-    private javax.swing.JMenuItem itemConsultarProd;
     private javax.swing.JMenuItem itemEspTaller;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
