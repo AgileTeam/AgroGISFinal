@@ -753,10 +753,28 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     }//GEN-LAST:event_btnAceptarMuestraActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       int bandera = 0;       
+       Iterator ite = gestorH.listarClase(MuestraTomada.class).iterator();
+       while(ite.hasNext()){
+           MuestraTomada m = (MuestraTomada) ite.next();
+           if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+              SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+              Date fecha1 = sdf.parse(m.getFechaEnvio(), new ParsePosition(0)); 
+              Date fecha2 = sdf.parse(calendarioEnvio.getText(), new ParsePosition(0)); 
+              if(fecha1.before(fecha2)){
+                  bandera = 1;
+              }
+           }
+       }
+       if(bandera == 1) {
        DefaultTableModel modeloTabla = (DefaultTableModel) tblEnvios.getModel();
        Object fila[]={calendarioEnvio.getText(), txtMuestra.getText(), txtProductor.getText(), txtCereal.getText(), cmbLaboratorio.getSelectedItem()};
        modeloTabla.addRow(fila);
        tblEnvios.setModel(modeloTabla);
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "Ingrese correctamente la fecha de envío");
+       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEnvioActionPerformed
@@ -783,6 +801,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         }
             
         }
+        JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
