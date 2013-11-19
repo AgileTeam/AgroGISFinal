@@ -160,6 +160,7 @@ boolean editar=false;
         btnAceptar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEditar = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
         panelDatosL = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -338,6 +339,11 @@ boolean editar=false;
 
         panelEdicion.add(jScrollPane2);
         jScrollPane2.setBounds(90, 50, 530, 140);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setText("Laboratorios");
+        panelEdicion.add(jLabel13);
+        jLabel13.setBounds(300, 30, 100, 17);
 
         panelContenedor.add(panelEdicion);
         panelEdicion.setBounds(10, 0, 710, 220);
@@ -675,6 +681,7 @@ private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
