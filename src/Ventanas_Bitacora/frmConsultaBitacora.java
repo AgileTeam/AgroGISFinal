@@ -544,6 +544,10 @@ gestorBitacora gestorB = new gestorBitacora();
     }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
     private void btnCancelarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarTodosActionPerformed
+        ckFecha.setSelected(false);
+        ckNumComp.setSelected(false);
+        ckTipoOp.setSelected(false);
+        ckUsuario.setSelected(false);
         calendarioDBitacora.setEnabled(false);
         calendarioHBitacora.setEnabled(false);
         cmbComp.setEnabled(false);
