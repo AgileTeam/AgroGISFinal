@@ -377,7 +377,7 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         while(ite1.hasNext()){
             Transportista transportista = (Transportista) ite1.next();
             if(transportista.toString().equalsIgnoreCase(txtTransportista.getText()) && tipo.getNombreCereal().equalsIgnoreCase(txtTipoCereal.getText())){
-                gestorD.guardarDescarga(tblCaracteristica, txtEstablecimiento, txtFecha, txtHora, txtNumViaje, tipo, txtPesoNeto, transportista, (Silo)cmbSilo.getSelectedItem());
+                gestorD.guardarDescarga(txtEstablecimiento, txtFecha, txtHora, txtNumViaje, tipo, txtPesoNeto, transportista, (Silo)cmbSilo.getSelectedItem());
             }
         }
     }
