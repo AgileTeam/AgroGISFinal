@@ -758,10 +758,13 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
        while(ite.hasNext()){
            MuestraTomada m = (MuestraTomada) ite.next();
            if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
-              SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-              Date fecha1 = sdf.parse(m.getFechaEnvio(), new ParsePosition(0)); 
+              SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+              SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+              Date fecha1 = sdfguion.parse(m.getDescarga().getFecha(), new ParsePosition(0)); 
               Date fecha2 = sdf.parse(calendarioEnvio.getText(), new ParsePosition(0)); 
-              if(fecha1.before(fecha2)){
+              System.out.println("Fecha1" + fecha1);
+              System.out.println("Fecha2" + fecha2);
+              if(fecha1.before(fecha2) || (fecha1.equals(fecha2)) ){
                   bandera = 1;
               }
            }
