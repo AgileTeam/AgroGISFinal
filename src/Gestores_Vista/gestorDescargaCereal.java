@@ -55,166 +55,123 @@ public class gestorDescargaCereal extends GestorHibernate {
    }
        
        
-     public void guardarDescarga(JTable tablaCaracteristica, JTextField establecimiento, JTextField fecha, JTextField hora, JTextField viaje, TipoCereal tipoCereal, JTextField toneladas, Transportista transportista, Silo silo){
-     DefaultTableModel modeloTabla = (DefaultTableModel) tablaCaracteristica.getModel(); 
-      
-            Descarga descarga = new Descarga();
-            descarga.setCereal((TipoCereal)tipoCereal);
-            descarga.setFecha(fecha.getText());
-            descarga.setHora(hora.getText());
-            descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
-            
-            descarga.setToneladas(Double.parseDouble(toneladas.getText()));
-            descarga.setTransportista((Transportista)transportista);
-            descarga.setSilo(silo);
-            this.guardarObjeto(descarga);
-            Iterator ite2= this.listarClase(HistorialProductor.class).iterator();
-            while(ite2.hasNext()){
-                HistorialProductor h = (HistorialProductor) ite2.next();
-                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
-                while(ite3.hasNext()){
-                Establecimiento est = (Establecimiento) ite3.next();
-                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
-                    descarga.setEstablecimiento(est);
-                    descarga.setProductor(est.getProductor());
-                    this.actualizarObjeto(descarga);
-                    DescargaPorHistorial desc = new DescargaPorHistorial();
-                    desc.setHistorial(h);
-                    desc.setDescarga(descarga);
-                    this.guardarObjeto(desc);
-                    Iterator ite4 = this.listarClase(ToneladasPorCereal.class).iterator();
-                    while(ite4.hasNext()) {
-                        ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
-                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
-                           double suma_t=t.getToneladas();
-                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
-                            t.setToneladas(resultado);
-                            System.out.println(resultado);
-                            this.actualizarObjeto(t);
-                        
-                        }
-                    
-                    }
-                }
-                
-                }
-                
-            
-            }
-            MuestraTomada muestra = new MuestraTomada();
-            muestra.setDescarga(descarga);
-            muestra.setEstado(0);
-           
-            this.guardarObjeto(muestra);
-            for (int i=0; i< modeloTabla.getRowCount(); i++){
-                CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
-                c.setMuestra(muestra);
-                c.setTipoCereal((TipoCereal)tipoCereal);
-                Iterator iteCa = this.listarClase(CaracteristicasCereal.class).iterator();
-                        while(iteCa.hasNext()){
-                            CaracteristicasCereal ca = (CaracteristicasCereal) iteCa.next();
-                            if(ca.getNombreCaracteristica().equalsIgnoreCase(modeloTabla.getValueAt(i,0).toString())){
-                                c.setCaracteristicas(ca);
-                            }
-                        }
-                c.setValor(Double.parseDouble(modeloTabla.getValueAt(i, 1).toString()));
-                this.guardarObjeto(c);
-            }
-            
-        
-        for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-                int bandera=0;
-                CaracteristicasPorTipoDeCerealPorMuestra caracteristicas = new CaracteristicasPorTipoDeCerealPorMuestra();
-                Iterator ite = this.listarClase(CaracteristicasPorTipoDeCerealPorMuestra.class).iterator();
-                while(ite.hasNext()){
-                    CaracteristicasPorTipoDeCerealPorMuestra c = (CaracteristicasPorTipoDeCerealPorMuestra) ite.next();
-                    if((c.getCaracteristicas()==(modeloTabla.getValueAt(i,0)))){
-                         bandera=1;               
-                    }
-                }
-        
-                if(bandera==0){
-                    descarga.setCereal((TipoCereal)tipoCereal);
-                    descarga.setFecha(fecha.getText());
-                    descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
-                    descarga.setToneladas(Double.parseDouble(toneladas.getText()));
-                    descarga.setTransportista((Transportista)transportista);
-                    descarga.setSilo(silo);
-                    this.guardarObjeto(descarga);
-                    muestra.setDescarga(descarga);
-                    muestra.setEstado(0);
-                    this.guardarObjeto(muestra);
-                    for (int j=0; j< modeloTabla.getRowCount(); j++){
-                        CaracteristicasPorTipoDeCerealPorMuestra c = new CaracteristicasPorTipoDeCerealPorMuestra();
-                        c.setMuestra(muestra);
-                        c.setTipoCereal((TipoCereal)tipoCereal);
-                        Iterator iteC = this.listarClase(CaracteristicasCereal.class).iterator();
-                        while(iteC.hasNext()){
-                            CaracteristicasCereal ca = (CaracteristicasCereal) iteC.next();
-                            if(ca.getNombreCaracteristica().equalsIgnoreCase(modeloTabla.getValueAt(j,0).toString())){
-                                c.setCaracteristicas(ca);
-                            }
-                        }
-                        
-                        c.setValor(Double.parseDouble(modeloTabla.getValueAt(j, 1).toString()));
-                        this.guardarObjeto(c);
-                    }
-                     Iterator ite4= this.listarClase(HistorialProductor.class).iterator();
-                while(ite4.hasNext()){
-                HistorialProductor h = (HistorialProductor) ite4.next();
-                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
-                while(ite3.hasNext()){
-                Establecimiento est = (Establecimiento) ite3.next();
-                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
-                    descarga.setEstablecimiento(est);
-                    descarga.setProductor(est.getProductor());
-                    this.actualizarObjeto(descarga);
-                    DescargaPorHistorial desc = new DescargaPorHistorial();
-                    desc.setHistorial(h);
-                    desc.setDescarga(descarga);
-                    this.guardarObjeto(desc);
-                    Iterator ite5 = this.listarClase(ToneladasPorCereal.class).iterator();
-                    while(ite5.hasNext()) {
-                        ToneladasPorCereal t = (ToneladasPorCereal) ite5.next();
-                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
-                            double suma_t=t.getToneladas();
-                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
-                            t.setToneladas(resultado);
-                            System.out.println(resultado);
-                            this.actualizarObjeto(t);
-                        
-                        }
-                    
-                    }
-                }
-                
-                }
-                
-            
-            }
-                 }
-        } 
-     }
-                
-     
-     
-        public DefaultComboBoxModel rellenaComboCaracteristica(){
-            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-            Iterator ite = this.listarClase(CaracteristicasCereal.class).iterator();
-            while(ite.hasNext()){
-                CaracteristicasCereal cc =(CaracteristicasCereal) ite.next();
-                modelo.addElement(cc.getNombreCaracteristica());
-           }
-                return modelo;
-         }
-     
-     public long obtenerNumeroMuestra(){
-         Iterator ite = listarClase(MuestraTomada.class).iterator();
-         long numero=0;
-         while(ite.hasNext()){
-            MuestraTomada muestra = (MuestraTomada) ite.next();
-            numero= muestra.getNumeroMuestra();
-         }
-         return numero;
-     }
+//     public void guardarDescarga(JTable tablaCaracteristica, JTextField establecimiento, JTextField fecha, JTextField hora, JTextField viaje, TipoCereal tipoCereal, JTextField toneladas, Transportista transportista, Silo silo){     
+//            Descarga descarga = new Descarga();
+//            descarga.setCereal((TipoCereal)tipoCereal);
+//            descarga.setFecha(fecha.getText());
+//            descarga.setHora(hora.getText());
+//            descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
+//            
+//            descarga.setToneladas(Double.parseDouble(toneladas.getText()));
+//            descarga.setTransportista((Transportista)transportista);
+//            descarga.setSilo(silo);
+//            this.guardarObjeto(descarga);
+//            Iterator ite2= this.listarClase(HistorialProductor.class).iterator();
+//            while(ite2.hasNext()){
+//                HistorialProductor h = (HistorialProductor) ite2.next();
+//                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
+//                while(ite3.hasNext()){
+//                Establecimiento est = (Establecimiento) ite3.next();
+//                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
+//                    descarga.setEstablecimiento(est);
+//                    descarga.setProductor(est.getProductor());
+//                    this.actualizarObjeto(descarga);
+//                    DescargaPorHistorial desc = new DescargaPorHistorial();
+//                    desc.setHistorial(h);
+//                    desc.setDescarga(descarga);
+//                    this.guardarObjeto(desc);
+//                    Iterator ite4 = this.listarClase(ToneladasPorCereal.class).iterator();
+//                    while(ite4.hasNext()) {
+//                        ToneladasPorCereal t = (ToneladasPorCereal) ite4.next();
+//                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
+//                           double suma_t=t.getToneladas();
+//                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
+//                            t.setToneladas(resultado);
+//                            System.out.println(resultado);
+//                            this.actualizarObjeto(t);
+//                        
+//                        }
+//                    
+//                    }
+//                }
+//                
+//                }
+//                
+//            
+//            }
+//            MuestraTomada muestra = new MuestraTomada();
+//            muestra.setDescarga(descarga);
+//            muestra.setEstado(0);
+//           
+//            this.guardarObjeto(muestra);
+//            
+//                  if(bandera==0){
+//                    descarga.setCereal((TipoCereal)tipoCereal);
+//                    descarga.setFecha(fecha.getText());
+//                    descarga.setNumeroViaje(Integer.parseInt(viaje.getText()));
+//                    descarga.setToneladas(Double.parseDouble(toneladas.getText()));
+//                    descarga.setTransportista((Transportista)transportista);
+//                    descarga.setSilo(silo);
+//                    this.guardarObjeto(descarga);
+//                    muestra.setDescarga(descarga);
+//                    muestra.setEstado(0);
+//                    this.guardarObjeto(muestra);
+//                     Iterator ite4= this.listarClase(HistorialProductor.class).iterator();
+//                while(ite4.hasNext()){
+//                HistorialProductor h = (HistorialProductor) ite4.next();
+//                Iterator ite3= this.listarClase(Establecimiento.class).iterator();
+//                while(ite3.hasNext()){
+//                Establecimiento est = (Establecimiento) ite3.next();
+//                if(est.getNombreEstablecimiento().equalsIgnoreCase(establecimiento.getText()) && (est.getProductor().equals(h.getProductor()))){
+//                    descarga.setEstablecimiento(est);
+//                    descarga.setProductor(est.getProductor());
+//                    this.actualizarObjeto(descarga);
+//                    DescargaPorHistorial desc = new DescargaPorHistorial();
+//                    desc.setHistorial(h);
+//                    desc.setDescarga(descarga);
+//                    this.guardarObjeto(desc);
+//                    Iterator ite5 = this.listarClase(ToneladasPorCereal.class).iterator();
+//                    while(ite5.hasNext()) {
+//                        ToneladasPorCereal t = (ToneladasPorCereal) ite5.next();
+//                        if(t.getHistorial().equals(h) && t.getTipoCereal().equals(tipoCereal)){
+//                            double suma_t=t.getToneladas();
+//                           double resultado=Double.parseDouble(toneladas.getText())+suma_t;
+//                            t.setToneladas(resultado);
+//                            System.out.println(resultado);
+//                            this.actualizarObjeto(t);
+//                        
+//                        }
+//                    
+//                    }
+//                }
+//                
+//                }
+//                
+//            
+//            }
+//                 }
+//        } 
+//     }
+//                
+//     
+//     
+//        public DefaultComboBoxModel rellenaComboCaracteristica(){
+//            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+//            Iterator ite = this.listarClase(CaracteristicasCereal.class).iterator();
+//            while(ite.hasNext()){
+//                CaracteristicasCereal cc =(CaracteristicasCereal) ite.next();
+//                modelo.addElement(cc.getNombreCaracteristica());
+//           }
+//                return modelo;
+//         }
+//     
+//     public long obtenerNumeroMuestra(){
+//         Iterator ite = listarClase(MuestraTomada.class).iterator();
+//         long numero=0;
+//         while(ite.hasNext()){
+//            MuestraTomada muestra = (MuestraTomada) ite.next();
+//            numero= muestra.getNumeroMuestra();
+//         }
+//         return numero;
+//     }
 }

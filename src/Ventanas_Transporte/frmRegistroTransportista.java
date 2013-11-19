@@ -71,13 +71,7 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         for(int i=0;i<panelDatosP.getComponents().length;i++){
            panelDatosP.getComponent(i).setEnabled(false);
          }
-        
-        for(int i=0;i<panelBotonesI.getComponents().length;i++){
-           panelBotonesI.getComponent(i).setEnabled(false);
-       }
-       for(int i=0;i<panelBotonesD.getComponents().length;i++){
-           panelBotonesD.getComponent(i).setEnabled(false);
-       }
+  
         
         gBarrio.actualizarUsuario(labelusuario);
         cmbPais.setModel(gPais.getComboModelPais());
@@ -242,13 +236,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         cmbBarrio = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
         cmbDepto = new javax.swing.JComboBox();
-        panelBotonesI = new javax.swing.JPanel();
-        btnAgregarDepartamento = new javax.swing.JButton();
-        btnAgregarPais = new javax.swing.JButton();
-        btnAgregarBarrio = new javax.swing.JButton();
-        panelBotonesD = new javax.swing.JPanel();
-        btnAgregarProvincia = new javax.swing.JButton();
-        btnAgregarLocalidad = new javax.swing.JButton();
         tblPrueba = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         panelContratacion = new javax.swing.JPanel();
@@ -458,67 +445,6 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
 
         panelDatosU.add(cmbDepto);
         cmbDepto.setBounds(100, 80, 190, 20);
-
-        btnAgregarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-
-        btnAgregarPais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-
-        btnAgregarBarrio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-
-        javax.swing.GroupLayout panelBotonesILayout = new javax.swing.GroupLayout(panelBotonesI);
-        panelBotonesI.setLayout(panelBotonesILayout);
-        panelBotonesILayout.setHorizontalGroup(
-            panelBotonesILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonesILayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelBotonesILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarPais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarBarrio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBotonesILayout.setVerticalGroup(
-            panelBotonesILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesILayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(btnAgregarPais, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-
-        panelDatosU.add(panelBotonesI);
-        panelBotonesI.setBounds(290, 30, 60, 120);
-
-        btnAgregarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-
-        btnAgregarLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-
-        javax.swing.GroupLayout panelBotonesDLayout = new javax.swing.GroupLayout(panelBotonesD);
-        panelBotonesD.setLayout(panelBotonesDLayout);
-        panelBotonesDLayout.setHorizontalGroup(
-            panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonesDLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBotonesDLayout.setVerticalGroup(
-            panelBotonesDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonesDLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(btnAgregarProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-
-        panelDatosU.add(panelBotonesD);
-        panelBotonesD.setBounds(630, 30, 60, 100);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1449,12 +1375,7 @@ private void btnBuscarTransportistaActionPerformed(java.awt.event.ActionEvent ev
        for(int i=0;i<panelDatosU.getComponents().length;i++){
            panelDatosU.getComponent(i).setEnabled(false);
        }
-       for(int i=0;i<panelBotonesI.getComponents().length;i++){
-           panelBotonesI.getComponent(i).setEnabled(false);
-       }
-       for(int i=0;i<panelBotonesD.getComponents().length;i++){
-           panelBotonesD.getComponent(i).setEnabled(false);
-       }
+       
        DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
        Iterator ite = gestorH.listarClase(Vehiculo.class).iterator();
        while(ite.hasNext()){
@@ -1693,12 +1614,7 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
            panelDatosP.getComponent(i).setEnabled(true);
        }
        
-       for(int i=0;i<panelBotonesI.getComponents().length;i++){
-           panelBotonesI.getComponent(i).setEnabled(true);
-       }
-       for(int i=0;i<panelBotonesD.getComponents().length;i++){
-           panelBotonesD.getComponent(i).setEnabled(true);
-       }
+       
         
     int bandera = 0;
     DefaultTableModel modeloT = (DefaultTableModel) tblModificaT.getModel();
@@ -1759,12 +1675,7 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
            panelDatosP.getComponent(i).setEnabled(true);
          }
         
-        for(int i=0;i<panelBotonesI.getComponents().length;i++){
-           panelBotonesI.getComponent(i).setEnabled(true);
-       }
-       for(int i=0;i<panelBotonesD.getComponents().length;i++){
-           panelBotonesD.getComponent(i).setEnabled(true);
-       }
+        
         btnGuardar.setEnabled(true);
         btnEmitirFicha.setEnabled(true);
         txtApellido.setText("");
@@ -1795,13 +1706,8 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
     private javax.swing.JButton btnAgregarAcoplado;
-    private javax.swing.JButton btnAgregarBarrio;
     private javax.swing.JButton btnAgregarCamion;
     private javax.swing.JButton btnAgregarCamionAcoplado;
-    private javax.swing.JButton btnAgregarDepartamento;
-    private javax.swing.JButton btnAgregarLocalidad;
-    private javax.swing.JButton btnAgregarPais;
-    private javax.swing.JButton btnAgregarProvincia;
     private javax.swing.JButton btnBuscarTransportista;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditarVehiculo;
@@ -1893,8 +1799,6 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelusuario;
     private javax.swing.JPanel panelAcoplado;
-    private javax.swing.JPanel panelBotonesD;
-    private javax.swing.JPanel panelBotonesI;
     private javax.swing.JPanel panelCamion1;
     private javax.swing.JPanel panelContratacion;
     private javax.swing.JPanel panelDatosP;

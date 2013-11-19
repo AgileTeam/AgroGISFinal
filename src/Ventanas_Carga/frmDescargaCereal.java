@@ -44,8 +44,7 @@ GestorHibernate gestorH = new GestorHibernate();
         gestorH.actualizarUsuario(labelusuario);
         gestorD.rellenaTablaProductor(tblEstablecimiento);
         cmbSilo.setModel(gestorD.rellenaComboSilo());
-        cmbCaracteristica.setModel(gestorD.rellenaComboCaracteristica());
-        
+       
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
@@ -73,20 +72,18 @@ GestorHibernate gestorH = new GestorHibernate();
         //redimensionar columnas de la tabla
         tblEstablecimiento.getColumnModel().getColumn(0).setPreferredWidth(100);
         tblEstablecimiento.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tblCaracteristica.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tblCaracteristica.getColumnModel().getColumn(1).setPreferredWidth(50);
+
         //centrar cabecera de la tabla
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tblEstablecimiento.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
-        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblCaracteristica.getTableHeader().getDefaultRenderer();
-        renderer2.setHorizontalAlignment(0);
+        
 
         
          //Las siguientes lineas son para dar a la pantalla el tamaño requerido y luego centrarla en la pantalla.
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 720;
-        int alto = 620;
+        int alto = 500;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
@@ -140,15 +137,6 @@ GestorHibernate gestorH = new GestorHibernate();
         txtTipoCereal = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        txtValor = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        cmbCaracteristica = new javax.swing.JComboBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblCaracteristica = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        btnAgregarCaracteristica = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -338,73 +326,6 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Muestra Tomada", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
-        jPanel2.setLayout(null);
-
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel20.setText("Valor");
-        jPanel2.add(jLabel20);
-        jLabel20.setBounds(70, 70, 80, 20);
-        jPanel2.add(txtValor);
-        txtValor.setBounds(110, 70, 91, 20);
-
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel21.setText("Característica");
-        jPanel2.add(jLabel21);
-        jLabel21.setBounds(20, 30, 110, 20);
-
-        jPanel2.add(cmbCaracteristica);
-        cmbCaracteristica.setBounds(110, 30, 190, 20);
-
-        tblCaracteristica.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Característica", "Valor"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tblCaracteristica);
-
-        jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(310, 30, 370, 98);
-
-        btnAgregarCaracteristica.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btnAgregarCaracteristica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAgregarCaracteristica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCaracteristicaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(btnAgregarCaracteristica, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnAgregarCaracteristica, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel4);
-        jPanel4.setBounds(180, 40, 90, 80);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -415,10 +336,9 @@ GestorHibernate gestorH = new GestorHibernate();
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(271, 271, 271)
+                        .addGap(267, 267, 267)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -431,13 +351,11 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -513,14 +431,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnAgregarCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCaracteristicaActionPerformed
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblCaracteristica.getModel();
-        Object fila[]={cmbCaracteristica.getSelectedItem(), txtValor.getText()};
-        modeloTabla.addRow(fila);
-        tblCaracteristica.setModel(modeloTabla);
-        txtValor.setText("");
-    }//GEN-LAST:event_btnAgregarCaracteristicaActionPerformed
-
     private void txtTaraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaraKeyReleased
     txtPesoNeto.setText(String.valueOf(Double.parseDouble(txtPesoTotal.getText()) - Double.parseDouble(txtTara.getText())));
     }//GEN-LAST:event_txtTaraKeyReleased
@@ -531,10 +441,8 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnAgregarCaracteristica;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox cmbCaracteristica;
     private javax.swing.JComboBox cmbSilo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -546,8 +454,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -556,13 +462,9 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelusuario;
-    private javax.swing.JTable tblCaracteristica;
     private javax.swing.JTable tblEstablecimiento;
     private javax.swing.JTextField txtDominio;
     private javax.swing.JTextField txtEstablecimiento;
@@ -575,7 +477,6 @@ private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JTextField txtTara;
     private javax.swing.JTextField txtTipoCereal;
     private javax.swing.JTextField txtTransportista;
-    private javax.swing.JTextField txtValor;
     private javax.swing.JTextField txtVehiculo;
     // End of variables declaration//GEN-END:variables
 }
