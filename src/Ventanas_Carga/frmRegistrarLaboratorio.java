@@ -292,7 +292,7 @@ boolean editar=false;
             }
         });
         panelContenedor.add(btnNuevo);
-        btnNuevo.setBounds(160, 420, 100, 30);
+        btnNuevo.setBounds(170, 420, 100, 30);
 
         btnSalir.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -303,7 +303,7 @@ boolean editar=false;
             }
         });
         panelContenedor.add(btnSalir);
-        btnSalir.setBounds(490, 420, 100, 30);
+        btnSalir.setBounds(470, 420, 100, 30);
 
         panelEdicion.setLayout(null);
 
@@ -351,7 +351,7 @@ boolean editar=false;
             }
         });
         panelContenedor.add(btnEditar);
-        btnEditar.setBounds(380, 420, 100, 30);
+        btnEditar.setBounds(370, 420, 100, 30);
 
         panelDatosL.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Laboratorio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
         panelDatosL.setLayout(null);
@@ -487,7 +487,7 @@ boolean editar=false;
                 .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
