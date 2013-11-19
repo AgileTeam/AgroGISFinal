@@ -149,9 +149,9 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         cmbNumMuestra = new javax.swing.JComboBox();
         btnEliminarTodos = new javax.swing.JButton();
         btnAceptarTodos1 = new javax.swing.JButton();
-        ckFechaCons = new javax.swing.JCheckBox();
-        ckFechaCons1 = new javax.swing.JCheckBox();
-        ckFechaCons3 = new javax.swing.JCheckBox();
+        ckProductor = new javax.swing.JCheckBox();
+        ckNumMuestra = new javax.swing.JCheckBox();
+        ckFechaMuestra = new javax.swing.JCheckBox();
         btnBuscarMuestra = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMuestra = new javax.swing.JTable();
@@ -376,34 +376,34 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jPanel2.add(btnAceptarTodos1);
         btnAceptarTodos1.setBounds(30, 100, 30, 27);
 
-        ckFechaCons.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFechaCons.setText("Productor");
-        ckFechaCons.setContentAreaFilled(false);
-        ckFechaCons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ckFechaCons.setFocusPainted(false);
-        jPanel2.add(ckFechaCons);
-        ckFechaCons.setBounds(10, 50, 100, 20);
+        ckProductor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckProductor.setText("Productor");
+        ckProductor.setContentAreaFilled(false);
+        ckProductor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckProductor.setFocusPainted(false);
+        jPanel2.add(ckProductor);
+        ckProductor.setBounds(10, 50, 100, 20);
 
-        ckFechaCons1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFechaCons1.setText("Nº Muestra");
-        ckFechaCons1.setContentAreaFilled(false);
-        ckFechaCons1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ckFechaCons1.setFocusPainted(false);
-        jPanel2.add(ckFechaCons1);
-        ckFechaCons1.setBounds(10, 70, 118, 22);
+        ckNumMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckNumMuestra.setText("Nº Muestra");
+        ckNumMuestra.setContentAreaFilled(false);
+        ckNumMuestra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckNumMuestra.setFocusPainted(false);
+        jPanel2.add(ckNumMuestra);
+        ckNumMuestra.setBounds(10, 70, 118, 22);
 
-        ckFechaCons3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        ckFechaCons3.setText("Fecha de Muestreo");
-        ckFechaCons3.setContentAreaFilled(false);
-        ckFechaCons3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ckFechaCons3.setFocusPainted(false);
-        ckFechaCons3.addActionListener(new java.awt.event.ActionListener() {
+        ckFechaMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        ckFechaMuestra.setText("Fecha de Muestreo");
+        ckFechaMuestra.setContentAreaFilled(false);
+        ckFechaMuestra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ckFechaMuestra.setFocusPainted(false);
+        ckFechaMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckFechaCons3ActionPerformed(evt);
+                ckFechaMuestraActionPerformed(evt);
             }
         });
-        jPanel2.add(ckFechaCons3);
-        ckFechaCons3.setBounds(10, 30, 130, 20);
+        jPanel2.add(ckFechaMuestra);
+        ckFechaMuestra.setBounds(10, 30, 130, 20);
 
         btnBuscarMuestra.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnBuscarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
@@ -495,7 +495,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                             .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(59, Short.MAX_VALUE))
+                        .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(btnAceptarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -507,24 +507,27 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ckFechaCons3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckFechaCons3ActionPerformed
+    private void ckFechaMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckFechaMuestraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ckFechaCons3ActionPerformed
+    }//GEN-LAST:event_ckFechaMuestraActionPerformed
 
     private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
-        if (ckFechaCons3.isSelected()) {
+        if (ckFechaMuestra.isSelected()) {
             calendarioDMuestra.setEnabled(true);
             calendarioHMuestra.setEnabled(true);
         }
-        if (ckFechaCons.isSelected()) {
+        if (ckProductor.isSelected()) {
             cmbProductor.setEnabled(true);
            }
-        if (ckFechaCons1.isSelected()) {
+        if (ckNumMuestra.isSelected()) {
             txtNumMuestra.setEnabled(true);
         }
     }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
 
     private void btnEliminarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTodosActionPerformed
+        ckProductor.setSelected(false);
+        ckFechaMuestra.setSelected(false);
+        ckNumMuestra.setSelected(false);
         calendarioDMuestra.setEnabled(false);
         calendarioHMuestra.setEnabled(false);
         txtNumMuestra.setEnabled(false);
@@ -849,9 +852,9 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
     private datechooser.beans.DateChooserCombo calendarioDMuestra;
     private datechooser.beans.DateChooserCombo calendarioEnvio;
     private datechooser.beans.DateChooserCombo calendarioHMuestra;
-    private javax.swing.JCheckBox ckFechaCons;
-    private javax.swing.JCheckBox ckFechaCons1;
-    private javax.swing.JCheckBox ckFechaCons3;
+    private javax.swing.JCheckBox ckFechaMuestra;
+    private javax.swing.JCheckBox ckNumMuestra;
+    private javax.swing.JCheckBox ckProductor;
     private javax.swing.JComboBox cmbEspecialidad;
     private javax.swing.JComboBox cmbLaboratorio;
     private javax.swing.JComboBox cmbNumMuestra;

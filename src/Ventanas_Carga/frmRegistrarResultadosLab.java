@@ -119,6 +119,22 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         renderer.setHorizontalAlignment(0);
 
        
+        //deshabilitar campos de texto de la pestaña Datos analisis
+        txtEspecialidad.setEnabled(false);
+        txtLaboratorio.setEnabled(false);
+        txtDomicilioLab.setEnabled(false);
+        txtLocalidadLab.setEnabled(false);
+        txtProvinciaLab.setEnabled(false);
+        txtTelefonoLab.setEnabled(false);
+        txtMuestraLab.setEnabled(false);
+        txtFEnvio.setEnabled(false);
+        txtCerealMuestra.setEnabled(false);
+        txtHumedadMensis.setEnabled(false);
+        txtMatExtMensis.setEnabled(false);
+        
+        
+        
+        
     }
 
     /**
@@ -155,8 +171,8 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jPanel13 = new javax.swing.JPanel();
         cmbProductor = new javax.swing.JComboBox();
         btnBuscarViaje = new javax.swing.JButton();
-        btnAceptarTodos1 = new javax.swing.JButton();
         btnAceptarTodos = new javax.swing.JButton();
+        btnBorrarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMuestras = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -455,23 +471,23 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         jPanel5.add(btnBuscarViaje);
         btnBuscarViaje.setBounds(380, 130, 100, 30);
 
-        btnAceptarTodos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
-        btnAceptarTodos1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarTodos1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnAceptarTodos1);
-        btnAceptarTodos1.setBounds(30, 110, 30, 30);
-
-        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnAceptarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono_mas.png"))); // NOI18N
         btnAceptarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarTodosActionPerformed(evt);
             }
         });
         jPanel5.add(btnAceptarTodos);
-        btnAceptarTodos.setBounds(60, 110, 30, 30);
+        btnAceptarTodos.setBounds(30, 110, 30, 30);
+
+        btnBorrarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
+        btnBorrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarTodosActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnBorrarTodos);
+        btnBorrarTodos.setBounds(60, 110, 30, 30);
 
         tblMuestras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1318,28 +1334,33 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAceptarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodos1ActionPerformed
+    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
          if (ckFecha.isSelected()) {
             calendarioDViaje.setEnabled(true);
             calendarioHViaje.setEnabled(true);
         }
       
          if (ckNumMuestra.isSelected()) {
+           cmbNroMuestra.setEnabled(true);  
            txtNumMuestra.setEnabled(true);
         }
          if (ckProductor.isSelected()) {
             cmbProductor.setEnabled(true);
         }
     
-    }//GEN-LAST:event_btnAceptarTodos1ActionPerformed
+    }//GEN-LAST:event_btnAceptarTodosActionPerformed
 
-    private void btnAceptarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarTodosActionPerformed
+    private void btnBorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarTodosActionPerformed
+        ckFecha.setSelected(false);
+        ckNumMuestra.setSelected(false);
+        ckProductor.setSelected(false);
         calendarioDViaje.setEnabled(false);
         calendarioHViaje.setEnabled(false);
+        cmbNroMuestra.setEnabled(false);
         txtNumMuestra.setEnabled(false);
         cmbProductor.setEnabled(false);
        
-    }//GEN-LAST:event_btnAceptarTodosActionPerformed
+    }//GEN-LAST:event_btnBorrarTodosActionPerformed
 
     private void btnBuscarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarViajeActionPerformed
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -2007,8 +2028,8 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTodos;
-    private javax.swing.JButton btnAceptarTodos1;
     private javax.swing.JButton btnAceptarViaje;
+    private javax.swing.JButton btnBorrarTodos;
     private javax.swing.JButton btnBuscarViaje;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
