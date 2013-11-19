@@ -370,6 +370,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_btnSalirActionPerformed
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    if(Double.parseDouble(txtPesoNeto.getText()) > 0.0){
     Iterator ite = gestorH.listarClase(TipoCereal.class).iterator();
     while(ite.hasNext()){
         TipoCereal tipo = (TipoCereal) ite.next();
@@ -410,6 +411,9 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     }
     JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente");
+    } else {
+       JOptionPane.showMessageDialog(null, "Ingrese correctamente el Peso Total");
+    }
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
