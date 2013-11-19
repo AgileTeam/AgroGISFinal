@@ -97,7 +97,7 @@
                           <Component id="btnGuardar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btnCancelar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="40" width="200" height="-1"/>
+              <AbsoluteConstraints x="90" y="40" width="260" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -326,7 +326,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="40" width="210" height="-1"/>
+              <AbsoluteConstraints x="440" y="40" width="240" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -360,7 +360,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="40" width="90" height="20"/>
+              <AbsoluteConstraints x="370" y="40" width="90" height="20"/>
             </Constraint>
           </Constraints>
         </Component>

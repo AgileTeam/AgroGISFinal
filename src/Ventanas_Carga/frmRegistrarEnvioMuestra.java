@@ -235,10 +235,10 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         txtMuestra.setBounds(740, 10, 100, 20);
 
         jPanel1.add(cmbEspecialidad);
-        cmbEspecialidad.setBounds(90, 40, 200, 20);
+        cmbEspecialidad.setBounds(90, 40, 260, 20);
 
         jPanel1.add(cmbLaboratorio);
-        cmbLaboratorio.setBounds(420, 40, 210, 20);
+        cmbLaboratorio.setBounds(440, 40, 240, 20);
         jPanel1.add(calendarioEnvio);
         calendarioEnvio.setBounds(90, 70, 90, 20);
         jPanel1.add(txtEstablecimiento);
@@ -249,7 +249,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel14.setText("Laboratorio");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(350, 40, 90, 20);
+        jLabel14.setBounds(370, 40, 90, 20);
         jPanel1.add(txtResponsable);
         txtResponsable.setBounds(420, 70, 210, 20);
 
@@ -495,7 +495,7 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                             .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(51, Short.MAX_VALUE))
+                        .addContainerGap(59, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(btnAceptarMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)

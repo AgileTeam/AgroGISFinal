@@ -83,11 +83,11 @@ GestorHibernate gestorH = new GestorHibernate();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension tamanioPantalla = kit.getScreenSize();
         int ancho = 720;
-        int alto = 500;
+        int alto = 470;
         int posX = (int) ((tamanioPantalla.width - ancho) / 2);
 //        int posY = (int) ((tamanioPantalla.height - alto) / 2);
         this.setSize(ancho, alto);
-        this.setLocation(posX, 10);        
+        this.setLocation(250, 60);        
     }
 
     /** This method is called from within the constructor to
@@ -338,7 +338,7 @@ GestorHibernate gestorH = new GestorHibernate();
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
+                        .addGap(239, 239, 239)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -355,7 +355,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
