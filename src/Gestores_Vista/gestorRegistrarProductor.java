@@ -10,8 +10,12 @@ import Clases_Modulo_Transporte.CondicionIva;
 import Clases_Modulo_Transporte.Domicilio;
 import Clases_Modulo_Transporte.TipoTelefono;
 import Hibernate.GestorHibernate;
+import java.awt.Color;
 import java.util.Iterator;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -67,4 +71,25 @@ public class gestorRegistrarProductor extends GestorHibernate {
 
        return modelo;
    } 
+    
+    public int campoObligatorio(JTextField texto1, JTextField texto2, JTextField texto3){
+         int campo = 0;   
+         if(texto1.getText().equalsIgnoreCase("")){
+                texto1.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+          if(texto2.getText().equalsIgnoreCase("")){
+                texto2.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+           if(texto3.getText().equalsIgnoreCase("")){
+                texto3.setBorder(BorderFactory.createLineBorder(Color.RED,1));
+                campo=1;
+            }
+            
+         if(campo == 1){
+            JOptionPane.showMessageDialog(null, "Debe completar los campos obligatorios");
+         }
+         return campo;
+     }
 }

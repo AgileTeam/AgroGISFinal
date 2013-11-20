@@ -1653,6 +1653,22 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
     }//GEN-LAST:event_btnAceptarViajeActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       int bandera = 0;
+       Iterator ite9 = gestorH.listarClase(MuestraTomada.class).iterator();
+       while(ite9.hasNext()){
+           MuestraTomada m = (MuestraTomada) ite9.next();
+           if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
+              SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+              Date fecha1 = sdf.parse(m.getFechaEnvio(), new ParsePosition(0)); 
+              Date fecha2 = sdf.parse(calendarioRecep.getText(), new ParsePosition(0)); 
+              System.out.println("Fecha1" + fecha1);
+              System.out.println("Fecha2" + fecha2);
+              if(fecha1.before(fecha2) || (fecha1.equals(fecha2)) ){
+                  bandera = 1;
+              }
+           }
+       }
+        if(bandera == 1) {
         Iterator ite = gestorH.listarClase(CaracteristicasCereal.class).iterator();
         while(ite.hasNext()){
             CaracteristicasCereal caracteristicas = (CaracteristicasCereal) ite.next();
@@ -1784,6 +1800,10 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
              }
         }
         JOptionPane.showMessageDialog(null, "Los cambios se han guardado correctamente");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ingrese correctamente la Fecha de Recepción");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
