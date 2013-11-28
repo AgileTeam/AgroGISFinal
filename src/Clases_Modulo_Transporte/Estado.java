@@ -54,6 +54,10 @@ private long idEstado;
     public int getNumeroEstado() {
         return numeroEstado;
     }
+    
+    public String toString(){
+        return getNombreEstado();
+    }
 
     /**
      * @param numeroEstado the numeroEstado to set

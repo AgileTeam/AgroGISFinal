@@ -10,6 +10,7 @@
  */
 package Ventanas_Transporte;
 
+import Clases_Modulo_Carga.MuestraTomada;
 import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Cliente.*;
 import Ventanas_Cliente.*;
@@ -807,6 +808,7 @@ GestorHibernate gestorH = new GestorHibernate();
         });
         MenuListados.add(MenuTransportistas);
 
+        itemMuestraCereal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         itemMuestraCereal.setText("Muestras de Cereal");
         itemMuestraCereal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1162,9 +1164,9 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_itemConsultarEstActionPerformed
 
     private void itemMuestraCerealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMuestraCerealActionPerformed
-        String arc="C:/Reportes AgroGIS/ListadoTransportista.jasper";
+        String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/ListadoMuestras.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
-        gestorReportes.setColeccionDeDatos(gestorH.listarClase(Transportista.class));
+        gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(MuestraTomada.class, "numeroMuestra"));
         gestorReportes.imprimir();
     }//GEN-LAST:event_itemMuestraCerealActionPerformed
 
