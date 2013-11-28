@@ -8,6 +8,7 @@ package Gestores_Vista;
 import Clases_Modulo_Carga.*;
 import Clases_Modulo_Cliente.Establecimiento;
 import Clases_Modulo_Cliente.Lote;
+import Clases_Modulo_Transporte.Estado;
 import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;
 import Clases_Modulo_Viaje.*;
@@ -102,6 +103,13 @@ public class gestorDescargaCereal extends GestorHibernate {
             MuestraTomada muestra = new MuestraTomada();
             muestra.setDescarga(descarga);
             muestra.setEstado(0);
+            Iterator ite9 = this.listarClase(Estado.class).iterator();
+            while(ite9.hasNext()){
+                Estado e = (Estado) ite9.next();
+                if(e.getNumeroEstado() == 0){
+                    muestra.setEstadoMuestra(e);
+                }
+            }
            
             this.guardarObjeto(muestra);
             

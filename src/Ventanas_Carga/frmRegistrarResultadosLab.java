@@ -5,6 +5,7 @@
 package Ventanas_Carga;
 
 import Clases_Modulo_Carga.*;
+import Clases_Modulo_Transporte.Estado;
 import Clases_Modulo_Viaje.Viaje;
 import Gestores_Vista.gestorRegistrarResultado;
 import Hibernate.GestorHibernate;
@@ -1681,6 +1682,13 @@ gestorRegistrarResultado gestorE = new gestorRegistrarResultado();
                     MuestraTomada m = (MuestraTomada) ite2.next();
                     if(m.getNumeroMuestra() == Long.parseLong(txtMuestra.getText())){
                         m.setEstado(2);
+                        Iterator ite10 = gestorE.listarClase(Estado.class).iterator();
+                        while(ite10.hasNext()){
+                        Estado e = (Estado) ite10.next();
+                        if(e.getNumeroEstado() == 2){
+                        m.setEstadoMuestra(e);
+                    }
+                    }
                         car1.setMuestra(m);
                         gestorH.actualizarObjeto(m);
                     }

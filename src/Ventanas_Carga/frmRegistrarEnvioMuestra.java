@@ -8,6 +8,7 @@ import Clases_Modulo_Carga.Descarga;
 import Clases_Modulo_Carga.Laboratorio;
 import Clases_Modulo_Carga.MuestraTomada;
 import Clases_Modulo_Transporte.CargaCombustible;
+import Clases_Modulo_Transporte.Estado;
 import Clases_Modulo_Transporte.OrdenServicio;
 import Clases_Modulo_Viaje.*;
 import Gestores_Vista.gestorEnvioMuestras;
@@ -801,6 +802,13 @@ gestorEnvioMuestras gestorE = new gestorEnvioMuestras();
                     muestra.setFechaEnvio(modeloTabla.getValueAt(i, 0).toString());
                     muestra.setLaboratorio((Laboratorio)modeloTabla.getValueAt(i, 4));
                     muestra.setEstado(1);
+                    Iterator ite9 = gestorE.listarClase(Estado.class).iterator();
+                    while(ite9.hasNext()){
+                    Estado e = (Estado) ite9.next();
+                    if(e.getNumeroEstado() == 1){
+                    muestra.setEstadoMuestra(e);
+                    }
+                    }
                     muestra.setResponsableEnvio(txtResponsable.getText());
                     gestorH.actualizarObjeto(muestra);
                 }

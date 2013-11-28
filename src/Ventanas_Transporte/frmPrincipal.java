@@ -186,6 +186,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuSolicitudes = new javax.swing.JMenuItem();
         MenuVehiculos = new javax.swing.JMenuItem();
         MenuTransportistas = new javax.swing.JMenuItem();
+        itemMuestraCereal = new javax.swing.JMenuItem();
         MenuAuditoria = new javax.swing.JMenu();
         ItemBitacora = new javax.swing.JMenuItem();
 
@@ -780,7 +781,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuListados.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         MenuSolicitudes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        MenuSolicitudes.setText(" Solicitudes de Retiro");
+        MenuSolicitudes.setText("Solicitudes de Retiro");
         MenuSolicitudes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuSolicitudesActionPerformed(evt);
@@ -805,6 +806,14 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         });
         MenuListados.add(MenuTransportistas);
+
+        itemMuestraCereal.setText("Muestras de Cereal");
+        itemMuestraCereal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMuestraCerealActionPerformed(evt);
+            }
+        });
+        MenuListados.add(itemMuestraCereal);
 
         MenuPrincipal.add(MenuListados);
 
@@ -1152,6 +1161,13 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
 }
     }//GEN-LAST:event_itemConsultarEstActionPerformed
 
+    private void itemMuestraCerealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMuestraCerealActionPerformed
+        String arc="C:/Reportes AgroGIS/ListadoTransportista.jasper";
+        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+        gestorReportes.setColeccionDeDatos(gestorH.listarClase(Transportista.class));
+        gestorReportes.imprimir();
+    }//GEN-LAST:event_itemMuestraCerealActionPerformed
+
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1262,6 +1278,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem itemConsultarAgenda;
     private javax.swing.JMenuItem itemConsultarEst;
     private javax.swing.JMenuItem itemEspTaller;
+    private javax.swing.JMenuItem itemMuestraCereal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

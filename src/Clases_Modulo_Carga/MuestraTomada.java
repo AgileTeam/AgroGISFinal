@@ -6,6 +6,7 @@ package Clases_Modulo_Carga;
 
 
 import Clases_Modulo_Transporte.Domicilio;
+import Clases_Modulo_Transporte.Estado;
 import Clases_Modulo_Transporte.TipoTelefono;
 import javax.persistence.*;
 import Clases_Modulo_Viaje.Viaje;
@@ -26,6 +27,9 @@ public class MuestraTomada {
     
     @ManyToOne(targetEntity = Descarga.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
     private Descarga descarga;
+    
+    @ManyToOne(targetEntity = Estado.class, cascade= CascadeType.ALL, fetch=FetchType.LAZY )
+    private Estado estadoMuestra;
    
     private String fechaEnvio;
     private int estado;
@@ -142,6 +146,20 @@ public class MuestraTomada {
      */
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+
+    /**
+     * @return the estadoMuestra
+     */
+    public Estado getEstadoMuestra() {
+        return estadoMuestra;
+    }
+
+    /**
+     * @param estadoMuestra the estadoMuestra to set
+     */
+    public void setEstadoMuestra(Estado estadoMuestra) {
+        this.estadoMuestra = estadoMuestra;
     }
    
 

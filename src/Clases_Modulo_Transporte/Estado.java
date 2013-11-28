@@ -17,6 +17,7 @@ private long idEstado;
     
     
     private String nombreEstado;
+    private int numeroEstado;
 
 
     /**
@@ -31,6 +32,34 @@ private long idEstado;
      */
     public void setNombreEstado(String nombreEstado) {
         this.nombreEstado = nombreEstado;
+    }
+
+    /**
+     * @return the idEstado
+     */
+    public long getIdEstado() {
+        return idEstado;
+    }
+
+    /**
+     * @param idEstado the idEstado to set
+     */
+    public void setIdEstado(long idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    /**
+     * @return the numeroEstado
+     */
+    public int getNumeroEstado() {
+        return numeroEstado;
+    }
+
+    /**
+     * @param numeroEstado the numeroEstado to set
+     */
+    public void setNumeroEstado(int numeroEstado) {
+        this.numeroEstado = numeroEstado;
     }
 
 
