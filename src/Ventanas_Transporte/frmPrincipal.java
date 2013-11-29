@@ -1164,7 +1164,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_itemConsultarEstActionPerformed
 
     private void itemMuestraCerealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMuestraCerealActionPerformed
-        String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/ListadoMuestras.jasper";
+        String arc="C:/Reportes AgroGIS/ListadoMuestras.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
         gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(MuestraTomada.class, "numeroMuestra"));
         gestorReportes.imprimir();
