@@ -21,6 +21,7 @@ import Clases_Modulo_Transporte.*;
 import Gestores_Clases.*;
 import java.awt.event.ActionListener;
 import Gestores_Vista.*;
+import ireport.GestorDeReportes;
 import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -1076,6 +1077,11 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         btnEmitirFicha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEmitirFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/emitir ficha.png"))); // NOI18N
         btnEmitirFicha.setText("Emitir Ficha");
+        btnEmitirFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirFichaActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
@@ -1702,6 +1708,13 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
         tblVehiculo.setModel(modelo);
        
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnEmitirFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirFichaActionPerformed
+        String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/FichaPersonal.jasper";
+        GestorDeReportes gestorReportes = new GestorDeReportes(arc);
+        gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorString(Transportista.class, "numeroDocumento", txtDocumento.getText()));
+        gestorReportes.imprimir();
+    }//GEN-LAST:event_btnEmitirFichaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarTransp;
