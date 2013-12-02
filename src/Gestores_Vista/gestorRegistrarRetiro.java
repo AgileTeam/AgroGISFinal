@@ -8,6 +8,7 @@ import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Cliente.Productor;
 import Clases_Modulo_Transporte.Transportista;
 import Clases_Modulo_Transporte.Vehiculo;
+import Clases_Modulo_Viaje.Viaje;
 import Hibernate.GestorHibernate;
 
 import java.util.Iterator;
@@ -44,10 +45,19 @@ public class gestorRegistrarRetiro extends GestorHibernate {
                bandera=1;
            }
        }
+       Iterator ite = this.listarClase(Viaje.class).iterator();
+       while(ite.hasNext()){
+           Viaje v = (Viaje) ite.next();
+           if((v.getEstado().equalsIgnoreCase("Con vehiculo asignado")) && (v.getSolicitud().getNumeroSolicitud() != sol.getNumeroSolicitud())){
+               bandera=1;
+           }else{
+               bandera=0;
+           }
+       }
        return bandera;
-   }
+    }
        
-        public void cargarTabla(JTable tabla, SolicitudRetiro solicitud){
+       public void cargarTabla(JTable tabla, SolicitudRetiro solicitud){
        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
        Object fila[]={solicitud.getNumeroSolicitud(), solicitud.getProductor(), solicitud.getFechaSolicitud(), solicitud.getEstado()};
        modelo.addRow(fila);

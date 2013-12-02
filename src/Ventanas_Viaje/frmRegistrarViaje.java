@@ -612,7 +612,7 @@ GestorHibernate gestorH = new GestorHibernate();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                .addComponent(panelPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstablecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -671,14 +671,15 @@ GestorHibernate gestorH = new GestorHibernate();
             }
         }
             
-            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
-                    txtCerealT.setText(sol.getTipoCereal().toString());
-                    
-            }
+//            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+//                    txtCerealT.setText(sol.getTipoCereal().toString());
+//                    
+//            }
             Iterator ite1= gestorH.listarClase(PuertoPorSolicitud.class).iterator();
             while(ite1.hasNext()){
                 PuertoPorSolicitud puerto = (PuertoPorSolicitud) ite1.next();
                 if(puerto.getSolicitud()== sol){
+                    txtCerealT.setText(sol.getTipoCereal().toString());
                     txtTraslado.setText(puerto.getPuerto().toString());
                     txtProvinciaT.setText(puerto.getPuerto().getLocalidad().getDepartamento().getProvincia().toString());
                     txtLocalidad.setText(puerto.getPuerto().getLocalidad().toString());
@@ -757,10 +758,10 @@ GestorHibernate gestorH = new GestorHibernate();
        Iterator iteS = gestorH.listarClase(SolicitudRetiro.class).iterator();
        while(iteS.hasNext()){
            SolicitudRetiro sol = (SolicitudRetiro) iteS.next();
-           if(panelPuerto.isVisible() && sol.getNumeroSolicitud()==(tblEstablecimiento.getValueAt(filaE, 0))){
+           if((panelPuerto.isVisible()) && sol.getNumeroSolicitud()==(Double.parseDouble(tblEstablecimiento.getValueAt(filaE, 0).toString()))){
                viaje.setSolicitud(sol);
            }
-           if(panelEstablecimiento.isVisible() && sol.getNumeroSolicitud()==(tblProductor.getValueAt(filaP, 0))){
+           if((panelEstablecimiento.isVisible()) && sol.getNumeroSolicitud() == (Double.parseDouble(tblProductor.getValueAt(filaP, 0).toString()))){
                viaje.setSolicitud(sol);
            }
        }
