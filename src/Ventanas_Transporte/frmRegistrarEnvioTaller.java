@@ -4,10 +4,7 @@
 */
 package Ventanas_Transporte;
 
-import Clases_Modulo_Transporte.ArregloEfectuado;
-import Clases_Modulo_Transporte.DetalleEnvio;
-import Clases_Modulo_Transporte.EnvioTaller;
-import Clases_Modulo_Transporte.OrdenServicio;
+import Clases_Modulo_Transporte.*;
 import Gestores_Clases.gestorBitacora;
 import Gestores_Vista.gestorRegistrarEnvioAlTaller;
 import Hibernate.GestorHibernate;
@@ -551,6 +548,16 @@ GestorHibernate gestorH = new GestorHibernate();
               envio.setResponsable(txtResponsable.getText());
               envio.setImporteTotal(Double.parseDouble(txtTotal.getText()));
               envio.setNumeroComprobante(Integer.parseInt(txtNumComprobante.getText()));
+              
+              Iterator iteV = gestorH.listarClase(Vehiculo.class).iterator();
+              while(iteV.hasNext()){
+              Vehiculo v = (Vehiculo) iteV.next();
+              if(v.getDominio().equalsIgnoreCase(envio.getOrdenServicio().getVehiculo().getDominio())) {
+                v.setEstado("Disponible");
+                gestorH.actualizarObjeto(v);
+            }
+        } 
+              
               gestorH.actualizarObjeto(envio);
               gestorBitacora gestorB = new gestorBitacora();
               gestorB.cargarBitacora(String.valueOf(orden.getNumeroOrden()), txtFecha.getText(), 9, labelUsuario.getText(), "");

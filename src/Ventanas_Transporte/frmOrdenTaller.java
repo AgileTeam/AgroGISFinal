@@ -499,6 +499,15 @@ public class frmOrdenTaller extends javax.swing.JInternalFrame {
         envio.setTaller((TallerReparacion)cmbTalleres.getSelectedItem());
         envio.setOrdenServicio(orden);
         gestorH.guardarObjeto(envio);
+        
+        Iterator iteV = gestorH.listarClase(Vehiculo.class).iterator();
+        while(iteV.hasNext()){
+            Vehiculo v = (Vehiculo) iteV.next();
+            if(v.getDominio().equalsIgnoreCase(txtDominio.getText())){
+                v.setEstado("En Reparacion");
+                gestorH.actualizarObjeto(v);
+            }
+        } 
 //        detalle.setEnvioTaller(envio);
 //        detalle.setOrden(orden);
 //        gestorH.guardarObjeto(detalle);
