@@ -61,7 +61,6 @@ GestorHibernate gestorH = new GestorHibernate();
         ItemDetalleConsumo.setEnabled(true);
         MenuEliminarOrden.setEnabled(true);
         ItemRegistroCarga.setEnabled(true);
-        ItemFichaPersonal.setEnabled(true);
         ItemCargaCombustible.setEnabled(true);
         menuModificarViaje.setEnabled(true);
         ItemNuevoLab.setEnabled(true);
@@ -69,7 +68,7 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuVerCarga.setEnabled(true);
         ItemResultadosLab.setEnabled(true);
         ItemEnvioMuestras.setEnabled(true);
-        ItemFichaPersonal.setEnabled(true);
+        
  
         gestorF.HabilitarMenu(MenuInicio, MenuCarga, MenuTransporte, MenuViaje, MenuClientes, MenuListados, MenuAuditoria);
         Iterator ite = gestorH.listarClase(Usuario.class).iterator();
@@ -153,7 +152,6 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuOrdenServicio = new javax.swing.JMenu();
         ItemCargaCombustible = new javax.swing.JMenuItem();
         ItemEnvioTaller = new javax.swing.JMenuItem();
-        ItemFichaPersonal = new javax.swing.JMenuItem();
         MenuClientes = new javax.swing.JMenu();
         MenuNuevoCliente = new javax.swing.JMenu();
         ItemNuevoProductor = new javax.swing.JMenuItem();
@@ -549,15 +547,6 @@ GestorHibernate gestorH = new GestorHibernate();
         MenuOrdenServicio.add(ItemEnvioTaller);
 
         MenuEmitirTransp.add(MenuOrdenServicio);
-
-        ItemFichaPersonal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        ItemFichaPersonal.setText("Ficha personal");
-        ItemFichaPersonal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemFichaPersonalActionPerformed(evt);
-            }
-        });
-        MenuEmitirTransp.add(ItemFichaPersonal);
 
         MenuTransporte.add(MenuEmitirTransp);
 
@@ -1072,12 +1061,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
         usuario.setVisible(true);
     }//GEN-LAST:event_itemEspTallerActionPerformed
 
-    private void ItemFichaPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemFichaPersonalActionPerformed
-       frmFichaPersonal ficha=new frmFichaPersonal();
-       this.Escritorio.add(ficha);
-       ficha.setVisible(true); 
-    }//GEN-LAST:event_ItemFichaPersonalActionPerformed
-
     private void ItemElimSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemElimSolicitudActionPerformed
        frmEliminarSolicitud solicitud=new frmEliminarSolicitud();
        this.Escritorio.add(solicitud);
@@ -1164,7 +1147,7 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     }//GEN-LAST:event_itemConsultarEstActionPerformed
 
     private void itemMuestraCerealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMuestraCerealActionPerformed
-        String arc="C:/Users/Alejandra/Desktop/Reportes AgroGIS/ListadoMuestras.jasper";
+        String arc="C:/Reportes AgroGIS/ListadoMuestras.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
         gestorReportes.setColeccionDeDatos(gestorH.listarClaseOrdenada(MuestraTomada.class, "numeroMuestra"));
         gestorReportes.imprimir();
@@ -1225,7 +1208,6 @@ private void ItemRetiroCerealActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem ItemEnvioTaller;
     private javax.swing.JMenuItem ItemEspecialidad;
     private javax.swing.JMenuItem ItemEstacion;
-    private javax.swing.JMenuItem ItemFichaPersonal;
     private javax.swing.JMenuItem ItemNuevoBarrio;
     private javax.swing.JMenuItem ItemNuevoDepto;
     private javax.swing.JMenuItem ItemNuevoEst;
