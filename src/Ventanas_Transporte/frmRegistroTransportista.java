@@ -23,11 +23,9 @@ import java.awt.event.ActionListener;
 import Gestores_Vista.*;
 import ireport.GestorDeReportes;
 import java.awt.event.ActionEvent;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.TimeZone;
+import java.util.*;
 import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -195,7 +193,13 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
         );
         cmbModeloCamion.setModel(gRegistro.rellenaComboModelo(cmbMarcaCamion.getSelectedItem().toString()));
          
-       
+       cmbTipoContratacion.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent arg0) {
+               gRegistro.deshabilitarCalendario(cmbTipoContratacion.getSelectedItem().toString(), calendarioFin);
+            }
+        });
+        gRegistro.deshabilitarCalendario(cmbTipoContratacion.getSelectedItem().toString(), calendarioFin);
          
          
     }
@@ -1128,6 +1132,16 @@ public class frmRegistroTransportista extends javax.swing.JInternalFrame{
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    int calendario = 0;
+    if(calendarioFin.isEnabled()== true){
+       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+       Date fecha1 = sdf.parse(calendarioIngreso.getText(), new ParsePosition(0));
+       Date fecha3 = sdf.parse(calendarioFin.getText(), new ParsePosition(0));
+       if(fecha1.after(fecha3)){
+           calendario = 1;
+       }
+    }
+    if(calendario == 0){
     btnNuevo.setEnabled(true);
     int campo = gRegistro.campoObligatorio(txtApellido, txtNombres, txtDocumento, txtCalle, txtNumero, txtCUIL, txtCUIL, txtCUIL);
     GestorHibernate gestorH = new GestorHibernate();
@@ -1145,8 +1159,13 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     transportista.setCondicionContratacion((CondicionContratacion)cmbTipoContratacion.getSelectedItem());
     transportista.setCuil(txtCUIL.getText());
     transportista.setEstadoCivil((String)cmbEstadoCivil.getSelectedItem());
-    transportista.setFechaIngreso(calendarioNacimiento.getText());
+    if(cmbTipoContratacion.getSelectedItem().toString().equalsIgnoreCase("Temporal")){
+    transportista.setFechaIngreso(calendarioIngreso.getText());
     transportista.setFechaSalida(calendarioFin.getText());
+    }
+    if(cmbTipoContratacion.getSelectedItem().toString().equalsIgnoreCase("Estable")){
+    transportista.setFechaIngreso(calendarioIngreso.getText());
+    }
     transportista.setTipoDocumento((TipoDocumento)cmbTipoDoc.getSelectedItem());
     transportista.setTipoTelefono((TipoTelefono)cmbTipoTel.getSelectedItem());
     transportista.setNumTelefono(txtTelefono.getText());
@@ -1223,7 +1242,10 @@ private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
    
     }
     } 
-   
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Ingrese correctamente el rango de fechas");
+    }
 }//GEN-LAST:event_btnGuardarActionPerformed
 
 private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

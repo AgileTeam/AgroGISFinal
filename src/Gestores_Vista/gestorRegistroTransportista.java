@@ -6,6 +6,7 @@ package Gestores_Vista;
 
 import Clases_Modulo_Transporte.*;
 import Hibernate.GestorHibernate;
+import datechooser.beans.DateChooserCombo;
 import java.awt.Color;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -99,6 +100,16 @@ public class gestorRegistroTransportista extends GestorHibernate{
 //       
 //       return modeloT;
 //   }  
+    
+      public void deshabilitarCalendario(String seleccion, DateChooserCombo calendario){
+      if(seleccion.equalsIgnoreCase("Estable")){
+          calendario.setEnabled(false);
+      }
+      else{
+          calendario.setEnabled(true);
+      }
+       
+   } 
     
     public void deshabilitarCombo(JComboBox combo1, JComboBox combo2, JComboBox combo3, 
             JComboBox combo4, JComboBox combo5, JComboBox combo6){
