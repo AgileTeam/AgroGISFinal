@@ -701,7 +701,7 @@ GestorHibernate gestorH = new GestorHibernate();
         Iterator ite= gestorH.listarClase(SolicitudRetiro.class).iterator();
         while(ite.hasNext()){
             SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-            if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila, 0)){
+            if(sol.getNumeroSolicitud() == Double.parseDouble(modeloT.getValueAt(fila, 0).toString())){
                     txtCerealR.setText(sol.getTipoCereal().toString());
                     Iterator ite1= gestorH.listarClase(EstablecimientoPorSolicitud.class).iterator();
                     while(ite1.hasNext()){
