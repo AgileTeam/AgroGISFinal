@@ -76,7 +76,22 @@ GestorHibernate gestorH = new GestorHibernate();
         renderer.setHorizontalAlignment(0);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) tblViaje.getTableHeader().getDefaultRenderer();
         renderer2.setHorizontalAlignment(0);
-
+        
+        Iterator ite = gestorH.listarClase(Viaje.class).iterator();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+        while(ite.hasNext()){
+            Viaje viaje = (Viaje) ite.next();
+            Date fecha1 = sdf.parse(viaje.getFecha(), new ParsePosition(0));
+            Date fecha3 = sdfguion.parse(txtFecha.getText(), new ParsePosition(0));
+            if(viaje.getEstado().equalsIgnoreCase("En Proceso") && (viaje.getTipoViaje().getNombreTipoViaje().equalsIgnoreCase("Traslado a Puerto") || viaje.getTipoViaje().getNombreTipoViaje().equalsIgnoreCase("Traslado a Establecimiento"))){
+                if(fecha1.before(fecha3)){
+                    viaje.setEstado("Finalizado");
+                    viaje.getVehiculo().setEstado("Disponible");
+                } 
+            }
+            
+        }
 
         
         gestorA.RellenarTablaViajes(tblViaje);
