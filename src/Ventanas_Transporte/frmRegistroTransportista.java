@@ -1732,7 +1732,7 @@ private void txtCUILKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEmitirFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirFichaActionPerformed
-        String arc="C:/Reportes AgroGIS/FichaPersonal.jasper";
+        String arc="C:/Reportes AgroGIS/FichaTransportista.jasper";
         GestorDeReportes gestorReportes = new GestorDeReportes(arc);
         gestorReportes.setColeccionDeDatos(gestorH.listarClaseFitradaPorString(Transportista.class, "numeroDocumento", txtDocumento.getText()));
         gestorReportes.imprimir();
