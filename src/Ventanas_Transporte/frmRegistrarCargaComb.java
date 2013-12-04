@@ -540,6 +540,11 @@ Double total;
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+      SimpleDateFormat sdfguion = new SimpleDateFormat("dd-MM-yyyy");
+      Date fecha1 = sdf.parse(calendarioFU.getText(), new ParsePosition(0));
+      Date fecha3 = sdfguion.parse(txtFechaEmision.getText(), new ParsePosition(0));
+      if(fecha1.after(fecha3)){
       Double total= 0.0;
       DefaultTableModel modeloT = (DefaultTableModel) tblDetalleCarga.getModel();
       int campo = gTaller.campoObligatorio(txtLitrosCargados, txtPrecioLitro, txtNumComprobante, txtImporteTotal, txtResponsable);
@@ -556,6 +561,9 @@ Double total;
       txtResponsable.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtNumComprobante.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
       txtImporteTotal.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+      }
+      }else{
+      JOptionPane.showMessageDialog(null, "Ingrese correctamente la fecha de utilización");
       }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
