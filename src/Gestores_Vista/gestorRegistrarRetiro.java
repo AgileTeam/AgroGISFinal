@@ -48,7 +48,7 @@ public class gestorRegistrarRetiro extends GestorHibernate {
        Iterator ite = this.listarClase(Viaje.class).iterator();
        while(ite.hasNext()){
            Viaje v = (Viaje) ite.next();
-           if((v.getEstado().equalsIgnoreCase("Con vehiculo asignado")) && (v.getSolicitud().getNumeroSolicitud() != sol.getNumeroSolicitud())){
+           if((v.getEstado().equalsIgnoreCase("Con vehiculo asignado")) && (v.getSolicitud().getNumeroSolicitud() == sol.getNumeroSolicitud())){
                bandera=1;
            }else{
                bandera=0;

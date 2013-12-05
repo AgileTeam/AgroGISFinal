@@ -297,7 +297,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
      Iterator ite = gestorS.listarClase(SolicitudRetiro.class).iterator();
      while(ite.hasNext()){
          SolicitudRetiro sol = (SolicitudRetiro) ite.next();
-         if(sol.getNumeroSolicitud() == modeloT.getValueAt(fila,0)){
+         if(sol.getNumeroSolicitud() == Double.parseDouble(modeloT.getValueAt(fila,0).toString())){
              txtNumSolicitud5.setText(String.valueOf(sol.getNumeroSolicitud()));
              txtTipoSolicitud.setText(sol.getTipoSolicitud().toString());
              txtEstadoSolicitud.setText(sol.getEstado());
@@ -327,7 +327,7 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
         Iterator ite1 = gestorS.listarClase(ToneladasPorCereal.class).iterator();
         while(ite1.hasNext()){
         ToneladasPorCereal t = (ToneladasPorCereal) ite1.next();
-        if((sol.getNumeroSolicitud() == Long.parseLong(txtNumSolicitud5.getText())) && (t.getHistorial().getIdHistorial() == sol.getProductor().getIdProductor()) && (t.getTipoCereal().getIdTipoCereal() == sol.getTipoCereal().getIdTipoCereal())){
+        if((sol.getNumeroSolicitud() == Double.parseDouble(txtNumSolicitud5.getText())) && (t.getHistorial().getIdHistorial() == sol.getProductor().getIdProductor()) && (t.getTipoCereal().getIdTipoCereal() == sol.getTipoCereal().getIdTipoCereal())){
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Confirma que desea eliminar la solicitud?");
                     if (respuesta==0){
                          sol.setEstado("Cancelada");
@@ -350,16 +350,16 @@ gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
                          }
                          
                          txtEstadoSolicitud.setText(sol.getEstado());
-                         modeloT.setRowCount(0);
-                         tblSolicitudes.setModel(modeloT);
-                         gestorS.cargaTabla(tblSolicitudes);
-                         txtCereal.setText("");
-                         txtEstablecimiento.setText("");
-                         txtFechaSolicitud.setText("");
-                         txtNumSolicitud5.setText("");
-                         txtProductor.setText("");
-                         txtTipoSolicitud.setText("");
-                         txtFechaEstimada.setText("");
+//                         modeloT.setRowCount(0);
+//                         tblSolicitudes.setModel(modeloT);
+//                         gestorS.cargaTabla(tblSolicitudes);
+//                         txtCereal.setText("");
+//                         txtEstablecimiento.setText("");
+//                         txtFechaSolicitud.setText("");
+//                         txtNumSolicitud5.setText("");
+//                         txtProductor.setText("");
+//                         txtTipoSolicitud.setText("");
+//                         txtFechaEstimada.setText("");
                         }
            
             
