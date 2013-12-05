@@ -10,6 +10,7 @@ import Clases_Modulo_Carga.SolicitudRetiro;
 import Clases_Modulo_Carga.ToneladasPorCereal;
 import Clases_Modulo_Cliente.Establecimiento;
 import Gestores_Vista.gestorRegistrarSolicitud;
+import Hibernate.GestorHibernate;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,16 +25,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmEliminarSolicitud extends javax.swing.JInternalFrame {
 gestorRegistrarSolicitud gestorS = new gestorRegistrarSolicitud();
+GestorHibernate gestorH = new GestorHibernate();
     /**
      * Creates new form frmEliminarSolicitud
      */
     public frmEliminarSolicitud() {
         initComponents();
-        
+        gestorH.actualizarUsuario(labelusuario);
         txtFecha.setEnabled(false);
         txtFecha.setEditable(false);
         txtHora.setEditable(false);
         txtHora.setEnabled(false);
+        txtEstadoSolicitud.setEnabled(false);
         //setear el campo de fecha con la del sistema
         GregorianCalendar gc=new GregorianCalendar();
         GregorianCalendar.getInstance();
