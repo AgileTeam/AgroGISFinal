@@ -492,7 +492,7 @@ private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     Iterator ite = gestorH.listarClase(SolicitudRetiro.class).iterator();
     while(ite.hasNext()){
         SolicitudRetiro sol = (SolicitudRetiro)ite.next();
-        if(sol.getNumeroSolicitud()== modeloTabla.getValueAt(fila,0)){
+        if(sol.getNumeroSolicitud()== Double.parseDouble(modeloTabla.getValueAt(fila,0).toString())){
             txtNumeroSolicitud.setText(modeloTabla.getValueAt(fila, 0).toString());
             txtProductor.setText(sol.getProductor().toString());
             txtTipoCereal.setText(sol.getTipoCereal().toString());         
