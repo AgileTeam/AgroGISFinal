@@ -54,6 +54,7 @@ public class gestorRegistrarRetiro extends GestorHibernate {
                bandera=0;
            }
        }
+             
        return bandera;
     }
        
